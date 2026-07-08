@@ -27,7 +27,15 @@ export default function HeroWords() {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
-      utterance.rate = 0.9;
+      utterance.rate = 1.0;
+      
+      const voices = window.speechSynthesis.getVoices();
+      const bestVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Samantha')) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name.includes('Google US English')) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name.includes('Aria')) ||
+                        voices.find(v => v.lang === 'en-US');
+      if (bestVoice) utterance.voice = bestVoice;
+      
       window.speechSynthesis.speak(utterance);
     }
   };
