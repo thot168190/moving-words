@@ -178,8 +178,8 @@ export default function App() {
 
         <div className="relative z-20 px-8 sm:px-12 md:px-16">
           <div className="text-center my-20 sm:my-24">
-            <h2 style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 6.5vw, 56px)', letterSpacing: '-0.02em', lineHeight: 1.25, color: '#141414', wordBreak: 'keep-all' }}>단어를 보고 터치하고 듣는다.<br />어느새 외워진다.</h2>
-            <p className="mt-5 text-[#222222]" style={{ fontFamily: PRET, fontSize: 'clamp(19px, 2.0vw, 24px)', fontWeight: 800 }}>네 가지 원리는 전부 이 한 문장을 위해 있습니다</p>
+            <h2 style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(32px, 8vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1.25, color: '#141414', wordBreak: 'keep-all' }}>단어를 보고 터치하고 듣는다.<br />어느새 외워진다.</h2>
+            <p className="mt-5 text-[#222222]" style={{ fontFamily: PRET, fontSize: 'clamp(19px, 2.0vw, 24px)', fontWeight: 900 }}>네 가지 원리는 전부 이 한 문장을 위해 있습니다</p>
           </div>
 
           <motion.div
@@ -202,10 +202,10 @@ export default function App() {
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   <FeatureDoodle index={i} className="w-14 h-14 mb-3" color={CARD_COLORS[i]} />
-                  <h3 className="mb-2" style={{ color: CARD_COLORS[i], fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(21px, 2.2vw, 26px)', wordBreak: 'keep-all' }}>
+                  <h3 className="mb-2" style={{ color: CARD_COLORS[i], fontFamily: PRET, fontWeight: 900, fontSize: 20, wordBreak: 'keep-all' }}>
                     {f.title}
                   </h3>
-                  <p className="text-[#333333] leading-relaxed" style={{ fontSize: 'clamp(16px, 1.8vw, 19px)', fontWeight: 700, wordBreak: 'keep-all' }}>
+                  <p className="text-[#000000] leading-relaxed" style={{ fontSize: 'clamp(21px, 2.2vw, 26px)', fontWeight: 900, wordBreak: 'keep-all' }}>
                     {f.desc}
                   </p>
                 </motion.div>
