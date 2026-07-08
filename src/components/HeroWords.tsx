@@ -6,11 +6,11 @@
 import { useEffect, useState } from 'react';
 
 const WORDS = [
-  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', enClass: 'text-[20px] md:text-[48px]', koClass: 'text-[12px] md:text-[18px]', rot: -3, delay: 3.2 },
-  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: 2, delay: 4.6 },
-  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: -2, delay: 5.6 },
-  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: 3, delay: 6.6 },
-  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: -2, delay: 7.6 },
+  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', enClass: 'text-[28px] md:text-[48px]', koClass: 'text-[14px] md:text-[18px]', rot: -3, delay: 3.2 },
+  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: 2, delay: 4.6 },
+  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: -2, delay: 5.6 },
+  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: 3, delay: 6.6 },
+  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: -2, delay: 7.6 },
 ];
 
 const CYCLE_MS = 11000;
