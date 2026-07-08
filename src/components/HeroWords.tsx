@@ -6,11 +6,11 @@
 import { useEffect, useState, useRef } from 'react';
 
 const WORDS = [
-  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', enClass: 'text-[32px] md:text-[60px]', koClass: 'text-[16px] md:text-[24px]', rot: -3, delay: 3.2 },
-  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: 2, delay: 4.6 },
-  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: -2, delay: 5.6 },
-  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: 3, delay: 6.6 },
-  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: -2, delay: 7.6 },
+  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', enClass: 'text-[20px] md:text-[48px]', koClass: 'text-[12px] md:text-[18px]', rot: -3, delay: 3.2 },
+  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: 2, delay: 4.6 },
+  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: -2, delay: 5.6 },
+  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: 3, delay: 6.6 },
+  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', enClass: 'text-[14px] md:text-[32px]', koClass: 'text-[10px] md:text-[14px]', rot: -2, delay: 7.6 },
 ];
 
 const CYCLE_MS = 11000;
@@ -64,15 +64,17 @@ export default function HeroWords() {
           style={{ top: w.top, left: w.left, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}
         >
-          <div style={{ fontFamily: '"Space Mono", monospace', fontWeight: 700,
-                        fontSize: w.size, color: '#111', lineHeight: 1,
+          <div className={w.enClass}
+               style={{ fontFamily: '"Space Mono", monospace', fontWeight: 700,
+                        color: '#111', lineHeight: 1,
                         textShadow: '0 0 6px rgba(255,255,255,.9)' }}>
             {[...w.en].map((c, i) => (
               <span key={i} className="hw-letter"
                     style={{ animationDelay: `${w.delay + i * 0.07}s` }}>{c}</span>
             ))}
           </div>
-          <div style={{ fontSize: 'clamp(14px,1.5vw,20px)', color: '#c2410c', fontWeight: 700,
+          <div className={w.koClass}
+               style={{ color: '#c2410c', fontWeight: 700,
                         marginTop: 4, textAlign: 'center',
                         textShadow: '0 0 6px rgba(255,255,255,.9)' }}>{w.ko}</div>
         </div>
