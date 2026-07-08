@@ -6,11 +6,11 @@
 import { useEffect, useState, useRef } from 'react';
 
 const WORDS = [
-  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', size: 'clamp(32px,4vw,60px)', rot: -3, delay: 3.2 },
-  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', size: 'clamp(24px,3vw,46px)', rot: 2, delay: 4.6 },
-  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', size: 'clamp(24px,3vw,46px)', rot: -2, delay: 5.6 },
-  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', size: 'clamp(24px,3vw,46px)', rot: 3, delay: 6.6 },
-  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', size: 'clamp(24px,3vw,46px)', rot: -2, delay: 7.6 },
+  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', size: 'clamp(44px,6vw,70px)', rot: -3, delay: 3.2 },
+  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', size: 'clamp(32px,5vw,50px)', rot: 2, delay: 4.6 },
+  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', size: 'clamp(32px,5vw,50px)', rot: -2, delay: 5.6 },
+  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', size: 'clamp(32px,5vw,50px)', rot: 3, delay: 6.6 },
+  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', size: 'clamp(32px,5vw,50px)', rot: -2, delay: 7.6 },
 ];
 
 const CYCLE_MS = 11000;
@@ -26,15 +26,7 @@ export default function HeroWords() {
   const lastPlay = useRef(0);
 
   const handleHover = (text: string) => {
-    const now = Date.now();
-    if (now - lastPlay.current < 400) return; // 400ms 이내 중복 실행 방지
-    lastPlay.current = now;
-
     if (typeof window !== 'undefined' && window.speechSynthesis) {
-      // iOS 첫 터치 시 cancel()이 먼저 호출되면 음성이 영구 차단되는 버그 방지
-      if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
-        window.speechSynthesis.cancel();
-      }
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
       utterance.rate = 1.0;
@@ -68,9 +60,8 @@ export default function HeroWords() {
       {WORDS.map((w) => (
         <div
           key={w.en}
-          onPointerEnter={(e) => { if (e.pointerType === 'mouse') handleHover(w.en); }}
+          onMouseEnter={() => handleHover(w.en)}
           onClick={() => handleHover(w.en)}
-          onTouchStart={() => handleHover(w.en)}
           className={`hw-word cursor-pointer hover:scale-110 transition-transform`}
           style={{ top: w.top, left: w.left, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}
