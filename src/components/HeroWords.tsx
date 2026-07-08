@@ -22,7 +22,13 @@ export default function HeroWords() {
     return () => clearInterval(t);
   }, []);
 
+  const lastPlay = useRef(0);
+
   const handleHover = (text: string) => {
+    const now = Date.now();
+    if (now - lastPlay.current < 400) return; // 400ms 이내 중복 실행 방지 (모바일 터치 씹힘 해결)
+    lastPlay.current = now;
+
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
@@ -54,15 +60,13 @@ export default function HeroWords() {
                      hw-out .6s ease forwards 9.8s; }
         .hw-letter { display: inline-block; opacity: 0;
           animation: hw-pop .35s cubic-bezier(.2,1.6,.4,1) forwards; }
-          @media (max-width: 767px) { .hw-desktop-only { display: none; } }
       `}</style>
       {WORDS.map((w) => (
         <div
           key={w.en}
           onMouseEnter={() => handleHover(w.en)}
           onClick={() => handleHover(w.en)}
-          onTouchStart={() => handleHover(w.en)}
-          className={`hw-word pointer-events-auto cursor-pointer hover:scale-110 transition-transform ${w.en !== 'COLOSSEUM' ? 'hw-desktop-only' : ''}`}
+          className={`hw-word pointer-events-auto cursor-pointer hover:scale-110 transition-transform`}
           style={{ top: w.top, right: w.right, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}
         >
