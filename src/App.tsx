@@ -178,8 +178,8 @@ export default function App() {
 
         <div className="relative z-20 px-8 sm:px-12 md:px-16">
           <div className="text-center my-20 sm:my-24">
-            <h2 style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(32px, 8vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1.25, color: '#141414', wordBreak: 'keep-all' }}>단어를 보고 터치하고 듣는다.<br />어느새 외워진다.</h2>
-            <p className="mt-5 text-[#222222]" style={{ fontFamily: PRET, fontSize: 'clamp(19px, 2.0vw, 24px)', fontWeight: 900 }}>네 가지 원리는 전부 이 한 문장을 위해 있습니다</p>
+            <h2 style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(28px, 7vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1.25, color: '#141414', wordBreak: 'keep-all' }}>단어를 보고 터치하고 듣는다.<br />어느새 외워진다.</h2>
+            <p className="mt-5 text-[#222222]" style={{ fontFamily: PRET, fontSize: 'clamp(17px, 2.0vw, 24px)', fontWeight: 900, wordBreak: 'keep-all' }}>네 가지 원리는 전부 이 한 문장을 위해 있습니다</p>
           </div>
 
           <motion.div
