@@ -202,10 +202,10 @@ export default function App() {
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   <FeatureDoodle index={i} className="w-14 h-14 mb-3" color={CARD_COLORS[i]} />
-                  <h3 className="text-[#141414] mb-2" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 20 }}>
+                  <h3 className="mb-2" style={{ color: CARD_COLORS[i], fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(21px, 2.2vw, 26px)', wordBreak: 'keep-all' }}>
                     {f.title}
                   </h3>
-                  <p className="text-[#000000] leading-relaxed" style={{ fontSize: 'clamp(21px, 2.2vw, 26px)', fontWeight: 900, wordBreak: 'keep-all' }}>
+                  <p className="text-[#333333] leading-relaxed" style={{ fontSize: 'clamp(16px, 1.8vw, 19px)', fontWeight: 700, wordBreak: 'keep-all' }}>
                     {f.desc}
                   </p>
                 </motion.div>
@@ -329,7 +329,7 @@ export default function App() {
               </tbody>
             </table>
           </div>
-          <p className="text-[#222222] text-[15px] sm:text-[16px] font-extrabold text-center mt-10">각 서비스 공식 페이지 기준 (2026-07 확인) · 정직한 비교를 지향합니다</p>
+          <p className="text-[#888888] text-[13px] sm:text-[14px] font-medium text-center mt-10">각 서비스 공식 페이지 기준 (2026-07 확인) · 정직한 비교를 지향합니다</p>
         </div>
       </section>
 
