@@ -6,11 +6,11 @@
 import { useEffect, useState } from 'react';
 
 const WORDS = [
-  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', enClass: 'text-[28px] md:text-[48px]', koClass: 'text-[14px] md:text-[18px]', rot: -3, delay: 3.2 },
-  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: 2, delay: 4.6 },
-  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: -2, delay: 5.6 },
-  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: 3, delay: 6.6 },
-  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', enClass: 'text-[20px] md:text-[32px]', koClass: 'text-[12px] md:text-[14px]', rot: -2, delay: 7.6 },
+  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', type: 'main', rot: -3, delay: 3.2 },
+  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', type: 'sub', rot: 2, delay: 4.6 },
+  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', type: 'sub', rot: -2, delay: 5.6 },
+  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', type: 'sub', rot: 3, delay: 6.6 },
+  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', type: 'sub', rot: -2, delay: 7.6 },
 ];
 
 const CYCLE_MS = 11000;
@@ -54,17 +54,29 @@ export default function HeroWords() {
                      hw-out .6s ease forwards 9.8s; }
         .hw-letter { display: inline-block; opacity: 0;
           animation: hw-pop .35s cubic-bezier(.2,1.6,.4,1) forwards; }
+        
+        /* 100% Guaranteed Sizes */
+        .hw-main-en { font-size: 36px; }
+        .hw-main-ko { font-size: 16px; }
+        .hw-sub-en { font-size: 24px; }
+        .hw-sub-ko { font-size: 14px; }
+        @media (min-width: 768px) {
+          .hw-main-en { font-size: 56px; }
+          .hw-main-ko { font-size: 24px; }
+          .hw-sub-en { font-size: 36px; }
+          .hw-sub-ko { font-size: 18px; }
+        }
       `}</style>
       {WORDS.map((w) => (
         <div
           key={w.en}
           onMouseEnter={() => handleHover(w.en)}
           onClick={() => handleHover(w.en)}
-          className={`hw-word cursor-pointer hover:scale-110 transition-transform`}
+          className="hw-word cursor-pointer hover:scale-110 transition-transform"
           style={{ top: w.top, left: w.left, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}
         >
-          <div className={w.enClass}
+          <div className={w.type === 'main' ? 'hw-main-en' : 'hw-sub-en'}
                style={{ fontFamily: '"Space Mono", monospace', fontWeight: 900,
                         color: '#111', lineHeight: 1,
                         textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 0 8px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.8)' }}>
@@ -73,7 +85,7 @@ export default function HeroWords() {
                     style={{ animationDelay: `${w.delay + i * 0.07}s` }}>{c}</span>
             ))}
           </div>
-          <div className={w.koClass}
+          <div className={w.type === 'main' ? 'hw-main-ko' : 'hw-sub-ko'}
                style={{ color: '#c2410c', fontWeight: 900,
                         marginTop: 4, textAlign: 'center',
                         textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 0 6px rgba(255,255,255,1)' }}>{w.ko}</div>
