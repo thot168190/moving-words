@@ -202,10 +202,10 @@ export default function App() {
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   <FeatureDoodle index={i} className="w-14 h-14 mb-3" color={CARD_COLORS[i]} />
-                  <h3 className="mb-3" style={{ color: CARD_COLORS[i], fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(24px, 4vw, 36px)', wordBreak: 'keep-all', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
+                  <h3 className="mb-3" style={{ color: '#1a1a1a', fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(24px, 4vw, 36px)', wordBreak: 'keep-all', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
                     {f.title}
                   </h3>
-                  <p className="text-[#333333] leading-relaxed" style={{ fontSize: 'clamp(16px, 1.8vw, 19px)', fontWeight: 600, wordBreak: 'keep-all' }}>
+                  <p className="leading-relaxed" style={{ color: CARD_COLORS[i], fontSize: 'clamp(16px, 1.8vw, 19px)', fontWeight: 600, wordBreak: 'keep-all' }}>
                     {f.desc}
                   </p>
                 </motion.div>
@@ -222,7 +222,9 @@ export default function App() {
           >
             <p className="text-center mt-20" style={{fontSize: 'clamp(20px,2.4vw,28px)', lineHeight: 1.4}}>
               <span style={{color: '#1a1a1a', fontWeight: 600}}>사진 찍듯 외워지는 경험 </span>
-              <span style={{color: '#6b6b6b', fontWeight: 400}}>— 그림으로 배우는 영어입니다.</span>
+              <br className="block sm:hidden" />
+              <span className="hidden sm:inline" style={{color: '#6b6b6b', fontWeight: 400}}>— </span>
+              <span style={{color: '#6b6b6b', fontWeight: 400}}>보는 단어장입니다.</span>
             </p>
           </motion.div>
         </div>

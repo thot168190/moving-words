@@ -126,6 +126,12 @@
     font-weight:400;
     color:#6b6b6b;
   }
+  .global-mobile-only { display: none; }
+  .global-desktop-only { display: inline; }
+  @media (max-width: 767px) {
+    .global-mobile-only { display: block; }
+    .global-desktop-only { display: none; }
+  }
 
   /* ---------- Pricing ---------- */
   .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:26px}
@@ -214,7 +220,8 @@
   </div>
   <p class="global-message">
     <span class="part1">사진 찍듯 외워지는 경험</span>
-    <span class="part2">— 그림으로 배우는 영어입니다.</span>
+    <br class="global-mobile-only">
+    <span class="part2"><span class="global-desktop-only">— </span>보는 단어장입니다.</span>
   </p>
 </section>
 
