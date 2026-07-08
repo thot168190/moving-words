@@ -242,7 +242,7 @@ export default function App() {
             </p>
             <h2
               className="text-[#111111] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-10"
-              style={{ fontSize: 'clamp(28px, 6vw, 56px)' }}
+              style={{ fontSize: 'clamp(32px, 8vw, 80px)' }}
             >
               {architecture.heading}
             </h2>
@@ -279,7 +279,7 @@ export default function App() {
       <section className="bg-neutral-50 py-24 px-6 border-t border-b border-neutral-100">
         <div className="max-w-4xl mx-auto">
           <p className="text-[#c2410c] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
-          <h2 className="text-[#141414] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(24px,4.5vw,40px)' }}>
+          <h2 className="text-[#141414] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)' }}>
             단어 앱은 많습니다 — 방식이 다릅니다
           </h2>
           <div className="overflow-x-auto mt-6 px-1 py-4">

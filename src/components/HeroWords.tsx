@@ -22,6 +22,16 @@ export default function HeroWords() {
     return () => clearInterval(t);
   }, []);
 
+  const handleHover = (text: string) => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
   return (
     <div key={cycle} className="absolute inset-0 pointer-events-none z-[8]">
       <style>{`
@@ -41,7 +51,10 @@ export default function HeroWords() {
       {WORDS.map((w) => (
         <div
           key={w.en}
-          className={`hw-word ${w.en !== 'COLOSSEUM' ? 'hw-desktop-only' : ''}`}
+          onMouseEnter={() => handleHover(w.en)}
+          onClick={() => handleHover(w.en)}
+          onTouchStart={() => handleHover(w.en)}
+          className={`hw-word pointer-events-auto cursor-pointer hover:scale-110 transition-transform ${w.en !== 'COLOSSEUM' ? 'hw-desktop-only' : ''}`}
           style={{ top: w.top, right: w.right, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}
         >
