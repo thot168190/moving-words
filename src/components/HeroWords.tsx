@@ -6,11 +6,11 @@
 import { useEffect, useState, useRef } from 'react';
 
 const WORDS = [
-  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', size: 'clamp(26px,4vw,54px)', rot: -3, delay: 3.2 },
-  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', size: 'clamp(20px,3vw,40px)', rot: 2, delay: 4.6 },
-  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', size: 'clamp(20px,3vw,40px)', rot: -2, delay: 5.6 },
-  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', size: 'clamp(20px,3vw,40px)', rot: 3, delay: 6.6 },
-  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', size: 'clamp(20px,3vw,40px)', rot: -2, delay: 7.6 },
+  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', enClass: 'text-[32px] md:text-[60px]', koClass: 'text-[16px] md:text-[24px]', rot: -3, delay: 3.2 },
+  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: 2, delay: 4.6 },
+  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: -2, delay: 5.6 },
+  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: 3, delay: 6.6 },
+  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', enClass: 'text-[24px] md:text-[40px]', koClass: 'text-[14px] md:text-[20px]', rot: -2, delay: 7.6 },
 ];
 
 const CYCLE_MS = 11000;
@@ -22,8 +22,6 @@ export default function HeroWords() {
     const t = setInterval(() => setCycle((c) => c + 1), CYCLE_MS);
     return () => clearInterval(t);
   }, []);
-
-  const lastPlay = useRef(0);
 
   const handleHover = (text: string) => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
