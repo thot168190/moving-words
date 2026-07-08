@@ -69,13 +69,13 @@ export default function App() {
           className="relative z-20 h-full flex flex-col justify-center max-w-3xl w-full md:w-[50%] px-6 sm:px-10 lg:px-16"
           initial={{ opacity: 0 }} animate={{ opacity: entranceComplete ? 1 : 0 }} transition={{ duration: 1 }}
         >
-          <h1 className="text-[#141414] font-gmarket font-bold leading-[1.1] tracking-[-0.03em]" style={{ fontSize: 'clamp(32px, 5vw, 72px)', wordBreak: 'keep-all' }}>
+          <h1 className="text-[#141414] font-gmarket font-black leading-[1.1] tracking-[-0.03em]" style={{ fontSize: 'clamp(32px, 5vw, 72px)', wordBreak: 'keep-all' }}>
             <ScrambleIn text={hero.titleLeft[0]} delay={200} triggered={entranceComplete} />
             <br />
             <ScrambleIn text={hero.titleLeft[1]} delay={500} triggered={entranceComplete} />
           </h1>
           <motion.p
-            className="max-w-md text-[14px] sm:text-[16px] text-[#3a3a3a] leading-relaxed font-bold mt-6"
+            className="max-w-md text-[16px] sm:text-[18px] text-[#1a1a1a] leading-relaxed font-black mt-6"
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.2 }}
           >
@@ -83,7 +83,7 @@ export default function App() {
           </motion.p>
           <motion.a
             href="/demo.html"
-            className="inline-flex items-center gap-2 self-start border-2 border-[#141414] bg-[#141414] hover:bg-white hover:text-[#141414] text-white font-bold text-[14px] sm:text-[16px] tracking-wide px-7 py-3.5 rounded-full transition-colors mt-8"
+            className="inline-flex items-center gap-2 self-start border-2 border-[#141414] bg-[#141414] hover:bg-white hover:text-[#141414] text-white font-black text-[15px] sm:text-[17px] tracking-wide px-7 py-3.5 rounded-full transition-colors mt-8"
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
@@ -226,12 +226,12 @@ export default function App() {
               {architecture.subtitle}
             </p>
             <h2
-              className="text-[#111111] font-gmarket font-bold leading-[1.15] tracking-[-0.02em] mb-10"
+              className="text-[#111111] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-10"
               style={{ fontSize: 'clamp(28px, 6vw, 56px)' }}
             >
               {architecture.heading}
             </h2>
-            <p className="text-[#2d2d2d] text-[16px] sm:text-[18px] leading-relaxed max-w-xl mx-auto font-bold">
+            <p className="text-[#1a1a1a] text-[17px] sm:text-[19px] leading-relaxed max-w-xl mx-auto font-extrabold">
               {architecture.description}
             </p>
           </motion.div>
@@ -264,7 +264,7 @@ export default function App() {
       <section className="bg-neutral-50 py-24 px-6 border-t border-b border-neutral-100">
         <div className="max-w-4xl mx-auto">
           <p className="text-[#c2410c] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
-          <h2 className="text-[#141414] font-gmarket font-bold text-center mb-10" style={{ fontSize: 'clamp(24px,4.5vw,40px)' }}>
+          <h2 className="text-[#141414] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(24px,4.5vw,40px)' }}>
             단어 앱은 많습니다 — 방식이 다릅니다
           </h2>
           <div className="overflow-x-auto mt-6 px-1 py-4">
@@ -314,7 +314,7 @@ export default function App() {
               </tbody>
             </table>
           </div>
-          <p className="text-[#333333] text-[15px] sm:text-[16px] font-bold text-center mt-10">각 서비스 공식 페이지 기준 (2026-07 확인) · 정직한 비교를 지향합니다</p>
+          <p className="text-[#222222] text-[15px] sm:text-[16px] font-extrabold text-center mt-10">각 서비스 공식 페이지 기준 (2026-07 확인) · 정직한 비교를 지향합니다</p>
         </div>
       </section>
 
@@ -332,12 +332,12 @@ export default function App() {
               Pricing
             </p>
             <h2
-              className="text-[#111111] font-gmarket font-bold leading-[1.15] tracking-[-0.02em] mb-6"
+              className="text-[#111111] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-6"
               style={{ fontSize: 'clamp(28px, 6vw, 56px)' }}
             >
               플랜 선택
             </h2>
-            <p className="text-[#2d2d2d] text-[16px] sm:text-[18px] leading-relaxed max-w-xl mx-auto font-bold">
+            <p className="text-[#1a1a1a] text-[17px] sm:text-[19px] leading-relaxed max-w-xl mx-auto font-extrabold">
               어떻게 외워지는지 직접 확인해 보세요. 데모는 무료, 회원가입도 없습니다.
             </p>
           </motion.div>
@@ -548,13 +548,13 @@ export default function App() {
                 {SITE_CONFIG.brandName}
               </span>
             </div>
-            <p className="text-[#2d2d2d] text-[16px] sm:text-[18px] leading-relaxed max-w-md font-bold">
+            <p className="text-[#1a1a1a] text-[17px] sm:text-[19px] leading-relaxed max-w-md font-extrabold">
               외우게 하는 앱이 아니라, 보게 만드는 앱.<br />
               단어가 안 외워지는 분들의 첫 3분을 만듭니다.
             </p>
           </div>
 
-          <div className="text-[#444444] text-[13.5px] sm:text-[14.5px] leading-6 font-semibold">
+          <div className="text-[#333333] text-[14px] sm:text-[15px] leading-6 font-bold">
             <p className="font-bold text-[#141414] mb-1">매또컴퍼니 | 대표: 이미현</p>
             <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 신고 예정</p>
             <p className="mb-3">주소: 경기도 양주시 고읍로 11-7</p>
