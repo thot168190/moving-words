@@ -281,52 +281,52 @@ export default function App() {
       <section className="bg-neutral-50 py-24 px-6 border-t border-b border-neutral-100">
         <div className="max-w-4xl mx-auto">
           <p className="text-[#c2410c] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
-          <h2 className="text-[#141414] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)' }}>
+          <h2 className="text-[#141414] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)', wordBreak: 'keep-all' }}>
             단어 앱은 많습니다 — 방식이 다릅니다
           </h2>
           <div className="overflow-x-auto mt-6 px-1 py-4">
-            <table className="w-full text-left text-[14px] sm:text-[17px] text-[#1a1a1a] border-separate border-spacing-y-3.5 min-w-[700px]">
+            <table className="w-full text-left text-[14px] sm:text-[17px] text-[#1a1a1a] border-separate border-spacing-y-3.5 min-w-[600px] sm:min-w-full">
               <thead>
                 <tr className="text-[#111111] uppercase text-[14px] sm:text-[15px] tracking-wider font-black">
-                  <th className="pb-2 pr-4 pl-5">서비스</th>
-                  <th className="pb-2 pr-4">방식</th>
-                  <th className="pb-2 pr-4">가격</th>
-                  <th className="pb-2 pl-4">추천 대상</th>
+                  <th className="pb-2 pr-4 pl-5 whitespace-nowrap">서비스</th>
+                  <th className="pb-2 pr-4 whitespace-nowrap">방식</th>
+                  <th className="pb-2 pr-4 whitespace-nowrap">가격</th>
+                  <th className="pb-2 pl-4 whitespace-nowrap">추천 대상</th>
                 </tr>
               </thead>
               <tbody>
                 {/* ── 말해보카 (경쟁사 1 - 톤다운) ── */}
                 <tr className="bg-neutral-50/50 hover:bg-neutral-50 transition-colors duration-200">
-                  <td className="py-5 pr-4 pl-5 font-bold text-[#666666] first:rounded-l-2xl border-y border-l border-neutral-200/60">말해보카</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium border-y border-neutral-200/60">AI 레벨 퀴즈</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium border-y border-neutral-200/60">12개월 ₩119,000</td>
-                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60">스스로 퀴즈 푸는 것이 편한 분</td>
+                  <td className="py-5 pr-4 pl-5 font-bold text-[#666666] whitespace-nowrap first:rounded-l-2xl border-y border-l border-neutral-200/60">말해보카</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">AI 레벨 퀴즈</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">12개월 ₩119,000</td>
+                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>스스로 퀴즈 푸는 것이 편한 분</td>
                 </tr>
 
                 {/* ── 클래스카드 (경쟁사 2 - 톤다운) ── */}
                 <tr className="bg-neutral-50/50 hover:bg-neutral-50 transition-colors duration-200">
-                  <td className="py-5 pr-4 pl-5 font-bold text-[#666666] first:rounded-l-2xl border-y border-l border-neutral-200/60">클래스카드</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium border-y border-neutral-200/60">단어장 반복 암기</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium border-y border-neutral-200/60">무료+유료</td>
-                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60">성실한 반복 암기가 체질인 분</td>
+                  <td className="py-5 pr-4 pl-5 font-bold text-[#666666] whitespace-nowrap first:rounded-l-2xl border-y border-l border-neutral-200/60">클래스카드</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">단어장 반복 암기</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">무료+유료</td>
+                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>성실한 반복 암기가 체질인 분</td>
                 </tr>
 
                 {/* ── 보는 단어장 (자사 - 초강력 하이라이트 & 3D 입체) ── */}
                 <tr className="bg-indigo-50/80 hover:bg-indigo-50 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_15px_40px_rgba(79,70,229,0.12)] transform hover:-translate-y-0.5">
-                  <td className="py-6 pr-4 pl-5 font-black text-[16px] sm:text-[19px] text-indigo-900 first:rounded-l-2xl border-y border-l-2 border-indigo-500/80">
+                  <td className="py-6 pr-4 pl-5 font-black text-[16px] sm:text-[19px] text-indigo-900 whitespace-nowrap first:rounded-l-2xl border-y border-l-2 border-indigo-500/80">
                     <div className="flex items-center gap-2">
                       <span>보는 단어장</span>
                       <span className="bg-rose-500 text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm animate-pulse">추천 ⭐</span>
                     </div>
                   </td>
-                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 border-y border-indigo-500/80">그림→글자 변신 애니메이션</td>
-                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 border-y border-indigo-500/80">
+                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 whitespace-nowrap border-y border-indigo-500/80">그림→글자 변신 애니메이션</td>
+                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 whitespace-nowrap border-y border-indigo-500/80">
                     <div className="flex flex-col">
                       <span className="text-[12px] text-neutral-400 line-through font-bold">₩9,900</span>
                       <span className="text-rose-600 font-extrabold text-[16px] sm:text-[19px]">₩4,900 원샷</span>
                     </div>
                   </td>
-                  <td className="py-6 pl-4 pr-5 font-black text-[15px] sm:text-[18px] text-indigo-700 last:rounded-r-2xl border-y border-r-2 border-indigo-500/80">지루한 암기가 힘들고 단어가 안 외워지는 분</td>
+                  <td className="py-6 pl-4 pr-5 font-black text-[15px] sm:text-[18px] text-indigo-700 last:rounded-r-2xl border-y border-r-2 border-indigo-500/80" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
                 </tr>
               </tbody>
             </table>
