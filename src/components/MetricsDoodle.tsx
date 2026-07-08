@@ -25,6 +25,24 @@ export default function MetricsDoodle() {
       .catch((e) => console.error('Failed to load metric-scenes:', e));
   }, []);
 
+  const handleHover = (text: string) => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 1.0;
+      
+      const voices = window.speechSynthesis.getVoices();
+      const bestVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Samantha')) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name.includes('Google US English')) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name.includes('Aria')) ||
+                        voices.find(v => v.lang === 'en-US');
+      if (bestVoice) utterance.voice = bestVoice;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
   useEffect(() => {
     if (scenes.length === 0) return;
     const token = ++drawTokenRef.current;
@@ -155,11 +173,15 @@ export default function MetricsDoodle() {
 
       {(act === 3 || act === 4) && (
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center transition-opacity duration-[1000ms]"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center transition-opacity duration-[1000ms] cursor-pointer pointer-events-auto hover:scale-110"
           style={{ 
             opacity: act === 4 ? 0 : 1, 
-            fontFamily: "'Pretendard Variable', Pretendard, -apple-system, sans-serif" 
+            fontFamily: "'Pretendard Variable', Pretendard, -apple-system, sans-serif",
+            transition: 'transform 0.3s ease, opacity 1000ms'
           }}
+          onMouseEnter={() => handleHover(sc.en)}
+          onClick={() => handleHover(sc.en)}
+          onTouchStart={() => handleHover(sc.en)}
         >
           <div
             className="font-extrabold text-[#141414] leading-none tracking-[-0.02em]"
