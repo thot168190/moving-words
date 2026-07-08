@@ -19,18 +19,6 @@ export default function HeroWords() {
   const [cycle, setCycle] = useState(0);
   
   useEffect(() => {
-    // iOS Safari 음성 잠금 해제 트릭
-    const unlockAudio = () => {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        const utter = new SpeechSynthesisUtterance('');
-        window.speechSynthesis.speak(utter);
-      }
-      window.removeEventListener('touchstart', unlockAudio);
-      window.removeEventListener('click', unlockAudio);
-    };
-    window.addEventListener('touchstart', unlockAudio, { once: true });
-    window.addEventListener('click', unlockAudio, { once: true });
-
     const t = setInterval(() => setCycle((c) => c + 1), CYCLE_MS);
     return () => clearInterval(t);
   }, []);
@@ -60,7 +48,7 @@ export default function HeroWords() {
   };
 
   return (
-    <div key={cycle} className="absolute inset-0 pointer-events-none z-[8]">
+    <div key={cycle} className="absolute inset-0 z-[8]">
       <style>{`
         @keyframes hw-pop {
           0% { opacity: 0; transform: translateY(16px) rotate(var(--rot)) scale(0.3); }
@@ -79,7 +67,8 @@ export default function HeroWords() {
           key={w.en}
           onPointerEnter={(e) => { if (e.pointerType === 'mouse') handleHover(w.en); }}
           onClick={() => handleHover(w.en)}
-          className={`hw-word pointer-events-auto cursor-pointer hover:scale-110 transition-transform`}
+          onTouchStart={() => handleHover(w.en)}
+          className={`hw-word cursor-pointer hover:scale-110 transition-transform`}
           style={{ top: w.top, left: w.left, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}
         >
