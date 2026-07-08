@@ -3,7 +3,7 @@
 // 콜로세움 그림 위로 단어 가족이 한 글자씩 마커 글씨처럼 튀어나온다.
 // 11초 주기로 무한 반복 (10초 영상 루프와 자연스럽게 맞물림).
 // ============================================================
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const WORDS = [
   { en: 'COLOSSEUM', ko: '콜로세움', top: '12%', right: '6%', size: 'clamp(28px,3.4vw,54px)', rot: -3, delay: 3.2 },
