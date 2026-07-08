@@ -65,18 +65,18 @@ export default function HeroWords() {
                    ['--rot' as string]: `${w.rot}deg` }}
         >
           <div className={w.enClass}
-               style={{ fontFamily: '"Space Mono", monospace', fontWeight: 700,
+               style={{ fontFamily: '"Space Mono", monospace', fontWeight: 900,
                         color: '#111', lineHeight: 1,
-                        textShadow: '0 0 6px rgba(255,255,255,.9)' }}>
+                        textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 0 8px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.8)' }}>
             {[...w.en].map((c, i) => (
               <span key={i} className="hw-letter"
                     style={{ animationDelay: `${w.delay + i * 0.07}s` }}>{c}</span>
             ))}
           </div>
           <div className={w.koClass}
-               style={{ color: '#c2410c', fontWeight: 700,
+               style={{ color: '#c2410c', fontWeight: 900,
                         marginTop: 4, textAlign: 'center',
-                        textShadow: '0 0 6px rgba(255,255,255,.9)' }}>{w.ko}</div>
+                        textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 0 6px rgba(255,255,255,1)' }}>{w.ko}</div>
         </div>
       ))}
     </div>
