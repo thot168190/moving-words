@@ -300,7 +300,19 @@ sceneVideo.addEventListener('ended', () => {
       el.className = 'sc-word show';
       el.style.top = w.top;
       el.style.left = w.left;
+      el.style.pointerEvents = 'auto';
+      el.style.cursor = 'pointer';
       el.innerHTML = `<div class="en">${w.en}</div><div class="ko">${w.ko}</div>`;
+      
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        speak(w.en);
+      });
+      el.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+        speak(w.en);
+      }, {passive: true});
+
       sceneWordsEl.appendChild(el);
       speak(w.en);
     }, i * 1200);
