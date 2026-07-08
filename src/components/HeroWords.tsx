@@ -6,11 +6,11 @@
 import { useEffect, useState, useRef } from 'react';
 
 const WORDS = [
-  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', size: 'clamp(44px,6vw,70px)', rot: -3, delay: 3.2 },
-  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', size: 'clamp(32px,5vw,50px)', rot: 2, delay: 4.6 },
-  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', size: 'clamp(32px,5vw,50px)', rot: -2, delay: 5.6 },
-  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', size: 'clamp(32px,5vw,50px)', rot: 3, delay: 6.6 },
-  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', size: 'clamp(32px,5vw,50px)', rot: -2, delay: 7.6 },
+  { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', size: 'clamp(26px,4vw,54px)', rot: -3, delay: 3.2 },
+  { en: 'SKY', ko: '하늘', top: '15%', left: '15%', size: 'clamp(20px,3vw,40px)', rot: 2, delay: 4.6 },
+  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', size: 'clamp(20px,3vw,40px)', rot: -2, delay: 5.6 },
+  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', size: 'clamp(20px,3vw,40px)', rot: 3, delay: 6.6 },
+  { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', size: 'clamp(20px,3vw,40px)', rot: -2, delay: 7.6 },
 ];
 
 const CYCLE_MS = 11000;
@@ -74,8 +74,8 @@ export default function HeroWords() {
                     style={{ animationDelay: `${w.delay + i * 0.07}s` }}>{c}</span>
             ))}
           </div>
-          <div style={{ fontSize: 'clamp(12px,1.1vw,16px)', color: '#c2410c', fontWeight: 700,
-                        marginTop: 2, textAlign: 'center',
+          <div style={{ fontSize: 'clamp(14px,1.5vw,20px)', color: '#c2410c', fontWeight: 700,
+                        marginTop: 4, textAlign: 'center',
                         textShadow: '0 0 6px rgba(255,255,255,.9)' }}>{w.ko}</div>
         </div>
       ))}
