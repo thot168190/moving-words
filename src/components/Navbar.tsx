@@ -144,13 +144,6 @@ export function Navbar({ entranceComplete }: NavbarProps) {
                   >
                     Sign Out
                   </button>
-                  <span className="text-[#141414]/15 text-[10px] select-none">|</span>
-                  <button
-                    onClick={handleDeleteAccount}
-                    className="text-[12px] text-red-500/70 hover:text-red-600 transition-colors cursor-pointer bg-transparent border-none font-bold"
-                  >
-                    회원 탈퇴
-                  </button>
                 </div>
               </div>
             ) : (

@@ -21,7 +21,22 @@ const CARD_COLORS = ['#3b6ba5', '#c2410c', '#2f8f83', '#b98a2f'];
 
 export default function App() {
   const [entranceComplete, setEntranceComplete] = useState(false);
-  useAuth();
+  const { user, deleteAccount } = useAuth();
+
+  const handleDeleteAccount = async () => {
+    const isConfirmed = window.confirm(
+      '정말로 회원 탈퇴를 진행하시겠습니까?\\n탈퇴 시 즉시 모든 학습 기록과 계정 정보가 영구 삭제되며, 이 작업은 복구할 수 없습니다.'
+    );
+    if (!isConfirmed) return;
+
+    try {
+      await deleteAccount();
+      alert('회원 탈퇴가 완료되었습니다. 그동안 서비스를 이용해 주셔서 감사합니다.');
+      window.location.reload();
+    } catch (err: any) {
+      alert(err.message || '회원 탈퇴 처리 중 오류가 발생했습니다. 다시 시도해 주세요.');
+    }
+  };
 
   // 결제 성공/실패 페이지 분기 처리
   const path = window.location.pathname;
@@ -564,6 +579,12 @@ export default function App() {
               <a href="/terms.html" target="_blank" className="text-indigo-600 underline font-extrabold hover:text-indigo-800">이용약관</a>
               <span className="mx-2 text-neutral-300">·</span>
               <a href="/privacy.html" target="_blank" className="text-indigo-600 underline font-extrabold hover:text-indigo-800">개인정보처리방침</a>
+              {user && (
+                <>
+                  <span className="mx-2 text-neutral-300">·</span>
+                  <button onClick={handleDeleteAccount} className="text-neutral-400 hover:text-red-500 transition-colors bg-transparent border-none cursor-pointer text-[12px] font-normal underline">회원 탈퇴</button>
+                </>
+              )}
             </p>
           </div>
         </div>
