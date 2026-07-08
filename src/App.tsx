@@ -105,9 +105,10 @@ export default function App() {
             ✏️ 30초면 압니다 · 무료 체험 →
           </motion.a>
         </motion.div>
-        <div className="block md:hidden relative w-full h-[45vh]">
+        {/* ── MOBILE HERO ── */}
+        <div className="block md:hidden relative w-full h-[60vh]">
           <video src={VIDEO_URLS.hero} className="absolute inset-0 w-full h-full object-cover" playsInline muted autoPlay loop preload="auto" />
-        {VIDEO_URLS.hero && <HeroWords />}
+          {VIDEO_URLS.hero && <HeroWords />}
         </div>
         </section>
 
@@ -284,7 +285,40 @@ export default function App() {
           <h2 className="text-[#141414] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)', wordBreak: 'keep-all' }}>
             단어 앱은 많습니다 — 방식이 다릅니다
           </h2>
-          <div className="overflow-x-auto mt-6 px-1 py-4">
+          {/* 모바일 화면용 카드 레이아웃 (768px 미만) */}
+          <div className="block md:hidden mt-6 flex flex-col gap-4">
+            {/* 말해보카 */}
+            <div className="bg-white rounded-2xl p-5 border border-neutral-200/60 shadow-sm">
+              <h3 className="font-bold text-[#666666] text-lg mb-3">말해보카</h3>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">AI 레벨 퀴즈</span></p>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>12개월 ₩119,000</span></p>
+              <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">스스로 퀴즈 푸는 것이 편한 분</span></p>
+            </div>
+            {/* 클래스카드 */}
+            <div className="bg-white rounded-2xl p-5 border border-neutral-200/60 shadow-sm">
+              <h3 className="font-bold text-[#666666] text-lg mb-3">클래스카드</h3>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">단어장 반복 암기</span></p>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>무료+유료</span></p>
+              <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">성실한 반복 암기가 체질인 분</span></p>
+            </div>
+            {/* 보는 단어장 */}
+            <div className="bg-indigo-50/80 rounded-2xl p-5 border-2 border-indigo-500/80 shadow-md relative">
+              <div className="flex items-center gap-2 mb-3">
+                <h3 className="font-black text-indigo-900 text-[20px]">보는 단어장</h3>
+                <span className="bg-rose-500 text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm animate-pulse">추천 ⭐</span>
+              </div>
+              <p className="text-indigo-950 font-black text-[16px] mb-3 flex"><span className="font-bold text-indigo-400 w-16 shrink-0">방식</span> <span className="word-break-keep">그림→글자 변신 애니메이션</span></p>
+              <div className="text-indigo-950 font-black text-[16px] mb-3 flex items-center">
+                <span className="font-bold text-indigo-400 w-16 shrink-0">가격</span>
+                <span className="text-[13px] text-neutral-400 line-through font-bold mr-2">₩9,900</span>
+                <span className="text-rose-600 font-extrabold text-[18px]">₩4,900 원샷</span>
+              </div>
+              <p className="text-indigo-700 font-black text-[15px] flex"><span className="font-bold text-indigo-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">지루한 암기가 힘들고 단어가 안 외워지는 분</span></p>
+            </div>
+          </div>
+
+          {/* 데스크탑 화면용 테이블 레이아웃 (768px 이상) */}
+          <div className="hidden md:block overflow-x-auto mt-6 px-1 py-4">
             <table className="w-full text-left text-[14px] sm:text-[17px] text-[#1a1a1a] border-separate border-spacing-y-3.5 min-w-[600px] sm:min-w-full">
               <thead>
                 <tr className="text-[#111111] uppercase text-[14px] sm:text-[15px] tracking-wider font-black">

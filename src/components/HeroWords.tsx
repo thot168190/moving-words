@@ -6,18 +6,31 @@
 import { useEffect, useState, useRef } from 'react';
 
 const WORDS = [
-  { en: 'COLOSSEUM', ko: '콜로세움', top: '12%', right: '6%', size: 'clamp(28px,3.4vw,54px)', rot: -3, delay: 3.2 },
-  { en: 'ROME', ko: '로마', top: '26%', right: '22%', size: 'clamp(20px,2.4vw,38px)', rot: 2, delay: 4.6 },
-  { en: 'ARENA', ko: '경기장', top: '36%', right: '8%', size: 'clamp(20px,2.4vw,38px)', rot: -2, delay: 5.6 },
-  { en: 'EMPIRE', ko: '제국', top: '48%', right: '20%', size: 'clamp(20px,2.4vw,38px)', rot: 3, delay: 6.6 },
-  { en: 'GLADIATOR', ko: '검투사', top: '58%', right: '5%', size: 'clamp(20px,2.4vw,38px)', rot: -2, delay: 7.6 },
+  { en: 'COLOSSEUM', ko: '콜로세움', top: '15%', left: '25%', size: 'clamp(22px,3.4vw,54px)', rot: -3, delay: 3.2 },
+  { en: 'ROME', ko: '로마', top: '35%', left: '15%', size: 'clamp(16px,2.4vw,38px)', rot: 2, delay: 4.6 },
+  { en: 'ARENA', ko: '경기장', top: '45%', left: '45%', size: 'clamp(16px,2.4vw,38px)', rot: -2, delay: 5.6 },
+  { en: 'EMPIRE', ko: '제국', top: '65%', left: '20%', size: 'clamp(16px,2.4vw,38px)', rot: 3, delay: 6.6 },
+  { en: 'GLADIATOR', ko: '검투사', top: '75%', left: '55%', size: 'clamp(16px,2.4vw,38px)', rot: -2, delay: 7.6 },
 ];
 
 const CYCLE_MS = 11000;
 
 export default function HeroWords() {
   const [cycle, setCycle] = useState(0);
+  
   useEffect(() => {
+    // iOS Safari 음성 잠금 해제 트릭
+    const unlockAudio = () => {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        const utter = new SpeechSynthesisUtterance('');
+        window.speechSynthesis.speak(utter);
+      }
+      window.removeEventListener('touchstart', unlockAudio);
+      window.removeEventListener('click', unlockAudio);
+    };
+    window.addEventListener('touchstart', unlockAudio, { once: true });
+    window.addEventListener('click', unlockAudio, { once: true });
+
     const t = setInterval(() => setCycle((c) => c + 1), CYCLE_MS);
     return () => clearInterval(t);
   }, []);
@@ -26,7 +39,7 @@ export default function HeroWords() {
 
   const handleHover = (text: string) => {
     const now = Date.now();
-    if (now - lastPlay.current < 400) return; // 400ms 이내 중복 실행 방지 (모바일 터치 씹힘 해결)
+    if (now - lastPlay.current < 400) return; // 400ms 이내 중복 실행 방지
     lastPlay.current = now;
 
     if (typeof window !== 'undefined' && window.speechSynthesis) {
@@ -55,7 +68,7 @@ export default function HeroWords() {
           100% { opacity: 1; transform: translateY(0) rotate(var(--rot)) scale(1); }
         }
         @keyframes hw-out { to { opacity: 0; } }
-        .hw-word { position: absolute; opacity: 0;
+        .hw-word { position: absolute; opacity: 0; white-space: nowrap;
           animation: hw-pop .5s cubic-bezier(.2,1.6,.4,1) forwards,
                      hw-out .6s ease forwards 9.8s; }
         .hw-letter { display: inline-block; opacity: 0;
@@ -64,7 +77,7 @@ export default function HeroWords() {
       {WORDS.map((w) => (
         <div
           key={w.en}
-          onMouseEnter={() => handleHover(w.en)}
+          onPointerEnter={(e) => { if (e.pointerType === 'mouse') handleHover(w.en); }}
           onClick={() => handleHover(w.en)}
           className={`hw-word pointer-events-auto cursor-pointer hover:scale-110 transition-transform`}
           style={{ top: w.top, right: w.right, animationDelay: `${w.delay}s, 9.8s`,
