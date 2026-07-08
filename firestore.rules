@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. 사용자 프로필 (Users) 보안 규칙
+    // - 로그인한 본인만 자신의 프로필을 읽고 쓸 수 있습니다. (타인 프로필 조회/조작 차단)
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // 2. 주문서 (Orders) 보안 규칙
+    // - 로그인한 본인의 주문 정보만 읽을 수 있습니다.
+    // - 주문을 생성할 때도 로그인한 본인의 UID와 주문서 내의 userId가 일치해야만 허용합니다.
+    // - 결제 위변조를 막기 위해 일반 이용자가 결제 완료된 주문을 변경하거나 삭제하는 것은 불가능합니다.
+    match /orders/{orderId} {
+      allow read: if request.auth != null && (resource == null || resource.data.userId == request.auth.uid);
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false; // 사후 조작 및 임의 삭제 차단
+    }
+    
+    // 3. 구독 상태 (Subscriptions) 보안 규칙
+    // - 로그인한 본인의 활성화된 구독 기록만 읽을 수 있습니다.
+    // - 클라이언트 앱에서 임의로 구독을 '활성(active)'으로 조작하여 결제를 우회하는 것을 막기 위해 모든 쓰기 권한은 불가능으로 막습니다.
+    match /subscriptions/{subscriptionId} {
+      allow read: if request.auth != null && (resource == null || resource.data.userId == request.auth.uid);
+      allow write: if false; // 결제 확인 서버(Admin SDK)를 통해서만 등록되도록 프론트엔드 쓰기 전면 차단
+    }
+    
+    // 4. 상품 및 콘텐츠 정보 (Products) 보안 규칙
+    // - 상품 목록 및 가격, 단어 데이터 등은 비로그인 이용자도 조회(read)할 수 있습니다.
+    // - 단, 일반 이용자가 임의로 상품 가격을 수정하거나 삭제하는 쓰기 권한은 전면 차단합니다.
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false; 
+    }
+  }
+}
