@@ -25,6 +25,7 @@ export default function HeroWords() {
 
   const handleHover = (text: string) => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel(); // 진행 중인 TTS 즉시 취소
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
       utterance.rate = 1.0;
@@ -36,7 +37,10 @@ export default function HeroWords() {
                         voices.find(v => v.lang === 'en-US');
       if (bestVoice) utterance.voice = bestVoice;
       
-      window.speechSynthesis.speak(utterance);
+      // iOS cancel 버그(재생 안됨) 방지를 위해 50ms 딜레이 후 실행
+      setTimeout(() => {
+        window.speechSynthesis.speak(utterance);
+      }, 50);
     }
   };
 
@@ -72,6 +76,7 @@ export default function HeroWords() {
           key={w.en}
           onMouseEnter={() => handleHover(w.en)}
           onClick={() => handleHover(w.en)}
+          onTouchStart={() => handleHover(w.en)}
           className="hw-word cursor-pointer hover:scale-110 transition-transform"
           style={{ top: w.top, left: w.left, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}

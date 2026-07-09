@@ -39,7 +39,10 @@ export default function MetricsDoodle() {
                         voices.find(v => v.lang === 'en-US');
       if (bestVoice) utterance.voice = bestVoice;
       
-      window.speechSynthesis.speak(utterance);
+      // iOS cancel 버그(재생 안됨) 방지를 위해 50ms 딜레이 후 실행
+      setTimeout(() => {
+        window.speechSynthesis.speak(utterance);
+      }, 50);
     }
   };
 

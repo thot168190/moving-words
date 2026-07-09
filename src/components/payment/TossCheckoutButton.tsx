@@ -105,7 +105,7 @@ const TossCheckoutButton: React.FC<TossCheckoutButtonProps> = ({
       onClick={handlePayment}
       disabled={!sdkLoaded || processing}
       className={`
-        w-full max-w-md mx-auto h-[54px] rounded-xl font-extrabold text-[16px]
+        w-full max-w-md mx-auto h-[56px] rounded-[16px] font-bold text-[16px]
         flex items-center justify-center gap-2
         transition-all duration-200 shadow-sm hover:shadow-md
         ${processing
@@ -134,7 +134,7 @@ const TossCheckoutButton: React.FC<TossCheckoutButtonProps> = ({
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
-          <span>{product.price.toLocaleString()}원 시작하기</span>
+          <span>₩{product.price.toLocaleString()} 시작하기</span>
         </>
       )}
     </button>

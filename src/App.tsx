@@ -55,6 +55,24 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  /* ── iOS & 모바일 브라우저용 TTS(SpeechSynthesis) 잠금 해제 ── */
+  useEffect(() => {
+    const unlockTTS = () => {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        const utterance = new SpeechSynthesisUtterance('');
+        window.speechSynthesis.speak(utterance);
+        window.removeEventListener('click', unlockTTS);
+        window.removeEventListener('touchstart', unlockTTS);
+      }
+    };
+    window.addEventListener('click', unlockTTS);
+    window.addEventListener('touchstart', unlockTTS);
+    return () => {
+      window.removeEventListener('click', unlockTTS);
+      window.removeEventListener('touchstart', unlockTTS);
+    };
+  }, []);
+
   /* ── Section 2 scroll-driven 3D text ── */
   const section2Ref = useRef<HTMLDivElement>(null);
 
@@ -67,21 +85,45 @@ export default function App() {
       <Navbar entranceComplete={entranceComplete} />
 
       {/* ════════════════ SECTION 1: HERO ════════════════ */}
-      <section className="relative h-screen h-[100dvh] overflow-hidden bg-white flex flex-col md:flex-row">
-        {/* 오른쪽: 콜로세움 그림 */}
-        <div className="hidden md:block absolute right-0 top-0 h-full w-full md:w-[58%]">
+      <section className="relative min-h-[100dvh] md:h-screen md:h-[100dvh] overflow-hidden bg-white flex flex-col md:flex-row">
+        {/* 모바일 최상단 카피 (텍스트가 흰 배경 위에만 얹히도록 보증) */}
+        <div className="block md:hidden w-full bg-white pt-24 pb-8 px-6">
+          <h1 className="text-[#141414] font-gmarket font-black leading-[1.1] tracking-[-0.03em]" style={{ fontSize: 'clamp(32px, 8vw, 48px)', wordBreak: 'keep-all' }}>
+            <ScrambleIn text={hero.titleLeft[0]} delay={200} triggered={entranceComplete} />
+            <br />
+            <ScrambleIn text={hero.titleLeft[1]} delay={500} triggered={entranceComplete} />
+          </h1>
+          <motion.p
+            className="max-w-md text-[16px] text-[#1a1a1a] leading-relaxed font-black mt-4"
+            initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.2 }}
+          >
+            {hero.description}
+          </motion.p>
+          <motion.a
+            href="/demo.html"
+            className="inline-flex items-center gap-2 border-2 border-[#141414] bg-[#141414] hover:bg-white hover:text-[#141414] text-white font-black text-[15px] tracking-wide px-6 py-3 rounded-full transition-colors mt-6"
+            initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.35 }}
+          >
+            ✏️ 30초면 압니다 · 무료 체험 →
+          </motion.a>
+        </div>
+
+        {/* 오른쪽/하단: 비디오 영역 (데스크톱에서는 w-[58%] / 모바일에서는 h-[45vh] w-full 스택) */}
+        <div className="relative w-full h-[45vh] md:absolute md:right-0 md:top-0 md:h-full md:w-[58%]">
           {VIDEO_URLS.hero ? (
             <video src={VIDEO_URLS.hero}
               className="absolute inset-0 w-full h-full object-cover" playsInline muted autoPlay loop preload="auto" />
           ) : <HeroDoodle />}
           {VIDEO_URLS.hero && <HeroWords />}
-          {/* 왼쪽으로 부드럽게 흰 페이드 */}
-          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+          {/* 왼쪽으로 부드럽게 흰 페이드 (데스크톱 전용) */}
+          <div className="hidden md:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white to-transparent pointer-events-none" />
         </div>
 
-        {/* 왼쪽: 카피 */}
+        {/* 데스크톱 왼쪽 카피 영역 */}
         <motion.div
-          className="relative z-20 h-full flex flex-col justify-center max-w-3xl w-full md:w-[50%] px-6 sm:px-10 lg:px-16"
+          className="hidden md:flex relative z-20 h-full flex flex-col justify-center max-w-3xl w-[50%] px-6 sm:px-10 lg:px-16"
           initial={{ opacity: 0 }} animate={{ opacity: entranceComplete ? 1 : 0 }} transition={{ duration: 1 }}
         >
           <h1 className="text-[#141414] font-gmarket font-black leading-[1.1] tracking-[-0.03em]" style={{ fontSize: 'clamp(32px, 5vw, 72px)', wordBreak: 'keep-all' }}>
@@ -105,12 +147,7 @@ export default function App() {
             ✏️ 30초면 압니다 · 무료 체험 →
           </motion.a>
         </motion.div>
-        {/* ── MOBILE HERO ── */}
-        <div className="block md:hidden relative w-full h-[60vh]">
-          <video src={VIDEO_URLS.hero} className="absolute inset-0 w-full h-full object-cover" playsInline muted autoPlay loop preload="auto" />
-          {VIDEO_URLS.hero && <HeroWords />}
-        </div>
-        </section>
+      </section>
 
       {/* ════════════════ SECTION 2: 워드레인 + 스타워즈 크롤 ════════════════ */}
       <section ref={section2Ref} className="relative h-screen h-[100dvh] overflow-hidden bg-white flex items-center justify-center">
@@ -139,7 +176,7 @@ export default function App() {
           <h2 className="text-center text-[#141414]" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
             {metrics.subtitle}
           </h2>
-          <div className="hidden md:block relative mx-auto mt-10" style={{ height: '46vh', maxHeight: 520, width: 'min(860px, 92%)' }}>
+          <div className="relative mx-auto mt-6 md:mt-10 h-[32vh] sm:h-[40vh] md:h-[46vh] min-h-[240px] max-h-[520px] w-[92%] max-w-[860px]">
             <MetricsDoodle />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-8 text-center mt-14 items-start">
@@ -219,13 +256,12 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="global-box"
           >
-            <p className="text-center mt-20" style={{fontSize: 'clamp(20px,2.4vw,28px)', lineHeight: 1.4}}>
-              <span style={{color: '#1a1a1a', fontWeight: 600}}>사진 찍듯 외워지는 경험 </span>
+            <p className="text-center mt-24 mb-24" style={{fontSize: 'clamp(20px,2.4vw,28px)', letterSpacing: '-0.01em', lineHeight: 1.4}}>
+              <span style={{color: '#1a1a1a', fontWeight: 600}}>사진 찍듯 외워지는 경험</span>
               <br className="block sm:hidden" />
-              <span className="hidden sm:inline" style={{color: '#6b6b6b', fontWeight: 400}}>— </span>
-              <span style={{color: '#6b6b6b', fontWeight: 400}}>보는 단어장입니다.</span>
+              <span className="hidden sm:inline" style={{color: '#6b6b6b', fontWeight: 400}}> — </span>
+              <span style={{color: '#6b6b6b', fontWeight: 400}}>그림으로 배우는 영어입니다.</span>
             </p>
           </motion.div>
         </div>
