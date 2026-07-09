@@ -361,10 +361,16 @@ function speak(text) {
   const voice = getBestVoice();
   if (voice) u.voice = voice;
   
-  // 2. iOS cancel 오디오 컨텍스트 꼬임 방지를 위해 50ms 딜레이 후 실행
-  setTimeout(() => {
+  // iOS는 cancel() 버그 방지를 위해 50ms 딜레이를 주고, 안드로이드/PC는 동기식으로 즉시 실행하여 user gesture 블로킹 방지
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    setTimeout(() => {
+      window.speechSynthesis.speak(u);
+    }, 50);
+  } else {
     window.speechSynthesis.speak(u);
-  }, 50);
+  }
 }
 
 // 단어들을 순차적으로 팝업하고 TTS 소리 내기
