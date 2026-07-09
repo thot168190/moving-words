@@ -330,6 +330,18 @@ if (window.speechSynthesis) {
   window.speechSynthesis.onvoiceschanged = () => {};
 }
 
+// 모바일용 글로벌 TTS 오디오 잠금 해제
+function unlockTTS() {
+  if (window.speechSynthesis) {
+    const u = new SpeechSynthesisUtterance('');
+    window.speechSynthesis.speak(u);
+    window.removeEventListener('click', unlockTTS);
+    window.removeEventListener('touchstart', unlockTTS);
+  }
+}
+window.addEventListener('click', unlockTTS);
+window.addEventListener('touchstart', unlockTTS);
+
 function getBestVoice() {
   const voices = window.speechSynthesis.getVoices();
   return voices.find(v => v.lang.startsWith('en') && v.name.includes('Samantha')) ||
@@ -340,13 +352,19 @@ function getBestVoice() {
 
 function speak(text) {
   if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel(); // 1. 이전 발음 즉시 취소
+  
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
   u.rate = 1.0;
   u.pitch = 1.05;
   const voice = getBestVoice();
   if (voice) u.voice = voice;
-  window.speechSynthesis.speak(u);
+  
+  // 2. iOS cancel 오디오 컨텍스트 꼬임 방지를 위해 50ms 딜레이 후 실행
+  setTimeout(() => {
+    window.speechSynthesis.speak(u);
+  }, 50);
 }
 
 // 단어들을 순차적으로 팝업하고 TTS 소리 내기
