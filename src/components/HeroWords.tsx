@@ -82,7 +82,7 @@ export default function HeroWords() {
           key={w.en}
           onMouseEnter={() => handleHover(w.en)}
           onClick={() => handleHover(w.en)}
-          onTouchStart={() => handleHover(w.en)}
+          onTouchEnd={() => handleHover(w.en)}
           className="hw-word cursor-pointer hover:scale-110 transition-transform"
           style={{ top: w.top, left: w.left, animationDelay: `${w.delay}s, 9.8s`,
                    ['--rot' as string]: `${w.rot}deg` }}

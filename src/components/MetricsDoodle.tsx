@@ -27,7 +27,6 @@ export default function MetricsDoodle() {
 
   const handleHover = (text: string) => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
       utterance.rate = 1.0;
@@ -39,14 +38,15 @@ export default function MetricsDoodle() {
                         voices.find(v => v.lang === 'en-US');
       if (bestVoice) utterance.voice = bestVoice;
       
-      // iOS는 cancel() 버그 방지를 위해 50ms 딜레이를 주고, 안드로이드/PC는 동기식으로 즉시 실행하여 user gesture 블로킹 방지
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       if (isIOS) {
+        window.speechSynthesis.cancel(); // iOS만 cancel 적용
         setTimeout(() => {
           window.speechSynthesis.speak(utterance);
         }, 50);
       } else {
+        // 안드로이드는 cancel() 시 비동기 레이스로 재생 취소되는 버그 예방을 위해 즉시 speak
         window.speechSynthesis.speak(utterance);
       }
     }
@@ -190,7 +190,7 @@ export default function MetricsDoodle() {
           }}
           onMouseEnter={() => handleHover(sc.en)}
           onClick={() => handleHover(sc.en)}
-          onTouchStart={() => handleHover(sc.en)}
+          onTouchEnd={() => handleHover(sc.en)}
         >
           <div
             className="font-extrabold text-[#141414] leading-none tracking-[-0.02em]"

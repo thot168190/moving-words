@@ -352,7 +352,6 @@ function getBestVoice() {
 
 function speak(text) {
   if(!window.speechSynthesis) return;
-  window.speechSynthesis.cancel(); // 1. 이전 발음 즉시 취소
   
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
@@ -361,14 +360,15 @@ function speak(text) {
   const voice = getBestVoice();
   if (voice) u.voice = voice;
   
-  // iOS는 cancel() 버그 방지를 위해 50ms 딜레이를 주고, 안드로이드/PC는 동기식으로 즉시 실행하여 user gesture 블로킹 방지
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   if (isIOS) {
+    window.speechSynthesis.cancel(); // iOS만 cancel 적용
     setTimeout(() => {
       window.speechSynthesis.speak(u);
     }, 50);
   } else {
+    // 안드로이드/PC는 cancel() 호출 시 비동기 취소 레이스로 인해 소리가 안 나는 버그가 있으므로 즉시 발화
     window.speechSynthesis.speak(u);
   }
 }
