@@ -39,10 +39,16 @@ export default function MetricsDoodle() {
                         voices.find(v => v.lang === 'en-US');
       if (bestVoice) utterance.voice = bestVoice;
       
-      // iOS cancel 버그(재생 안됨) 방지를 위해 50ms 딜레이 후 실행
-      setTimeout(() => {
+      // iOS는 cancel() 버그 방지를 위해 50ms 딜레이를 주고, 안드로이드/PC는 동기식으로 즉시 실행하여 user gesture 블로킹 방지
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isIOS) {
+        setTimeout(() => {
+          window.speechSynthesis.speak(utterance);
+        }, 50);
+      } else {
         window.speechSynthesis.speak(utterance);
-      }, 50);
+      }
     }
   };
 
