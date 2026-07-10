@@ -184,6 +184,26 @@
   .sc-word .en{font-weight:800;font-family:'Pretendard Variable', Pretendard, -apple-system, sans-serif;font-size:clamp(22px,3vw,40px);color:var(--ink);
     line-height:1;text-shadow:0 0 4px #fff,0 0 8px #fff,0 0 12px #fff,0 0 20px #fff}
   .sc-word .ko{font-size:clamp(13px,1.6vw,19px);color:var(--accent);font-weight:700;text-shadow:0 0 4px #fff,0 0 8px #fff,0 0 12px #fff,0 0 20px #fff}
+
+  /* R9 마스크 리빌 및 손 오버레이 전용 스타일 */
+  .color-img {
+    opacity: 0;
+    transition: opacity 0.8s, filter 0.8s, transform 0.8s;
+    filter: blur(3px);
+    transform: scale(1.015);
+  }
+  .color-img.active {
+    opacity: 0.82;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  .pen-overlay {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    display: none;
+  }
 </style>
 </head>
 <body>
@@ -197,7 +217,26 @@
     <div class="scene-stage" id="sceneStage">
       <video id="sceneVideo" src="/whale.mp4" muted playsinline style="opacity:0; width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; filter:brightness(1.07) contrast(1.06);"></video>
       <img id="sceneBgImg" class="scene-bg-img" src="" alt="" />
-      <svg id="sceneSvg" style="display:none;"></svg>
+      
+      <!-- R9 마스크 리빌 용 SVG 레이어 -->
+      <svg id="sceneSvg" style="display:none; position:absolute; inset:0; width:100%; height:100%;">
+        <defs>
+          <mask id="lineMask">
+            <!-- 이 그룹 안에 guides path들이 실시간으로 그려짐 -->
+            <g id="maskPathsG"></g>
+          </mask>
+        </defs>
+        <!-- 1. 원화 PNG (아래) -->
+        <image id="colorImg" href="" x="0" y="0" width="100%" height="100%" class="color-img" />
+        <!-- 2. 완성 선화 PNG (위) - 마스크 리빌 적용 -->
+        <image id="lineImg" href="" x="0" y="0" width="100%" height="100%" mask="url(#lineMask)" />
+      </svg>
+      
+      <!-- 실사 손 오버레이 (hand.png v5 기반) -->
+      <div id="penOverlay" class="pen-overlay">
+        <img id="handImg" src="/hand.png?v=11" alt="실사 손" style="width: 100%; height: 100%; object-fit: fill;" />
+      </div>
+
       <div class="scene-words" id="sceneWords"></div>
       <div class="scene-cta" id="sceneCta">👆 터치하면 그려집니다</div>
     </div>
@@ -269,6 +308,12 @@ let sceneState = 'idle';
 let runToken = 0;
 let currentSceneIndex = 0; // 0: whale, 1: lighthouse, 2: ship
 let scenesData = null;
+let handMeta = null;
+let penX = 0;
+let penY = 0;
+let penRot = 45;
+
+const penOverlay = document.getElementById('penOverlay');
 
 // 그림 진실의 법칙 좌표 데이터 (등대, 돛단배)
 const SCENE_WORDS_CONFIG = [
@@ -296,13 +341,20 @@ const SCENE_WORDS_CONFIG = [
   ]
 ];
 
-// JSON 데이터 미리 로드
-fetch('/metric-scenes.json')
-  .then(res => res.json())
-  .then(data => {
-    scenesData = data.scenes;
-  })
-  .catch(err => console.error("씬 데이터 로드 실패:", err));
+// CTA 초기 상태 대기
+sceneCta.textContent = "데이터를 불러오는 중입니다...";
+
+Promise.all([
+  fetch('/metric-scenes.json?v=11').then(res => res.json()),
+  fetch('/hand-meta.json?v=11').then(res => res.json())
+]).then(([sceneData, handData]) => {
+  scenesData = sceneData.scenes;
+  handMeta = handData;
+  sceneCta.textContent = "👆 터치하면 그려집니다";
+}).catch(err => {
+  console.error("데이터 로드 실패:", err);
+  sceneCta.textContent = "로드 실패 (새로고침 해주세요)";
+});
 
 function resetScene() {
   if (window.speechSynthesis) window.speechSynthesis.cancel();
@@ -318,8 +370,34 @@ function resetScene() {
   sceneBgImg.classList.remove('show');
   sceneBgImg.style.display = 'none';
   
-  sceneSvg.innerHTML = '';
+  // SVG 초기화 및 리플로우 브라우저 렌더 캐시 우회
+  const colorImg = document.getElementById('colorImg');
+  const lineImg = document.getElementById('lineImg');
+  if (colorImg) {
+    colorImg.classList.remove('active');
+    colorImg.setAttribute('href', '');
+  }
+  if (lineImg) {
+    lineImg.setAttribute('mask', '');
+    lineImg.offsetHeight; // 강제 레이아웃 트리거
+    lineImg.setAttribute('mask', 'url(#lineMask)');
+    lineImg.setAttribute('href', '');
+  }
+  
+  const maskPathsG = document.getElementById('maskPathsG');
+  if (maskPathsG) {
+    maskPathsG.innerHTML = '';
+  }
+  
   sceneSvg.style.display = 'none';
+  
+  // 손 오버레이 초기화
+  if (penOverlay) {
+    penOverlay.style.display = 'none';
+    penOverlay.style.opacity = '0';
+  }
+  penX = 0;
+  penY = 0;
   
   sceneWordsEl.innerHTML = '';
   sceneCta.classList.remove('hide');
@@ -408,93 +486,361 @@ function triggerWordPopups(words, token) {
   }, words.length * 1200 + 800);
 }
 
-// SVG 드로잉 핵심 로직
-async function startSvgDrawing(sceneId, token) {
-  if (!scenesData) {
-    // 씬 데이터가 미처 준비 안 되었으면 100ms 후 재시도
-    setTimeout(() => startSvgDrawing(sceneId, token), 100);
-    return;
+// 시작 8%·끝 8%만 이징하는 등속 기반 속도 프로파일 함수
+function getEasedProgress(t) {
+  const k = 0.08;
+  const V = 1 / (4 * k / Math.PI + 1 - 2 * k);
+  
+  if (t < k) {
+    return V * k * 2 / Math.PI * (1 - Math.cos(t / k * Math.PI / 2));
   }
+  if (t <= 1 - k) {
+    return V * (t - k) + V * k * 2 / Math.PI;
+  }
+  return V * (1 - 2 * k) + V * k * 2 / Math.PI + V * k * 2 / Math.PI * Math.sin((t - 1 + k) / k * Math.PI / 2);
+}
+
+// 획 데이터 파싱 헬퍼 (시작점/끝점 추출)
+function getPathPoints(dStr) {
+  const coords = dStr.match(/[+-]?\d+(\.\d+)?/g).map(Number);
+  if (coords && coords.length >= 2) {
+    return {
+      startPt: { x: coords[0], y: coords[1] },
+      endPt: { x: coords[coords.length - 2], y: coords[coords.length - 1] }
+    };
+  }
+  return { startPt: { x: 0, y: 0 }, endPt: { x: 0, y: 0 } };
+}
+
+// 부위 구분용 헬퍼 함수
+function getSection(y) {
+  if (currentSceneIndex === 1) { // 등대
+    if (y <= 450) return 'tower';
+    if (y <= 550) return 'rock';
+    return 'sea';
+  } else { // 돛단배
+    if (y <= 380) return 'mast';
+    if (y <= 480) return 'hull';
+    return 'wave';
+  }
+}
+
+// 실사 손 위치 배치 함수 (bottom + right clamp 적용)
+function applyPenTransform(x, y, rot) {
+  if (!scenesData || !handMeta) return;
+  const data = scenesData[currentSceneIndex];
+  if (!data) return;
+  
+  const viewBoxArr = data.vb.split(' ');
+  const vbW = parseFloat(viewBoxArr[2]);
+  const vbH = parseFloat(viewBoxArr[3]);
+  
+  const rect = sceneStage.getBoundingClientRect();
+  const scaleX = rect.width / vbW;
+  const scaleY = rect.height / vbH;
+  
+  const screenX = x * scaleX;
+  const screenY = y * scaleY;
+  
+  // R7/R9 손 이식 공식: s = (화면높이 * 0.5) / h
+  let h_screen = rect.height * 0.5;
+  const s = h_screen / handMeta.h;
+  let w_screen = handMeta.w * s;
+  
+  let tipX_screen = handMeta.tipX * s;
+  let tipY_screen = handMeta.tipY * s;
+  
+  let tx = screenX - tipX_screen;
+  let ty = screenY - tipY_screen;
+  
+  // 1. 잘린 아래변(bottom) 화면 아래 경계 밖 clamp (50px 안전 마진 추가)
+  if (handMeta.cutEdges && handMeta.cutEdges.includes("bottom")) {
+    const bottomEdge = ty + h_screen;
+    if (bottomEdge < rect.height + 50) {
+      const diff = (rect.height + 50) - bottomEdge;
+      h_screen += diff;
+      tipY_screen += diff;
+      ty = screenY - tipY_screen;
+    }
+  }
+
+  // 2. 잘린 우측변(right) 화면 우측 경계 밖 clamp (50px 안전 마진 추가)
+  if (handMeta.cutEdges && handMeta.cutEdges.includes("right")) {
+    const rightEdge = tx + w_screen;
+    if (rightEdge < rect.width + 50) {
+      const diffX = (rect.width + 50) - rightEdge;
+      w_screen += diffX;
+      tipX_screen += diffX;
+      tx = screenX - tipX_screen;
+    }
+  }
+  
+  penOverlay.style.width = `${w_screen}px`;
+  penOverlay.style.height = `${h_screen}px`;
+  // 실사 손은 회전 고정 (회전 금지!)
+  penOverlay.style.transform = `translate(${tx}px, ${ty}px)`;
+}
+
+// SVG 드로잉 핵심 로직 (R9 마스크 리빌 및 실사 손 리듬 연출)
+async function startSvgDrawing(sceneId, token) {
+  if (!scenesData || !handMeta) return;
   const data = scenesData.find(s => s.id === sceneId);
   if (!data) return;
 
   sceneSvg.style.display = 'block';
   sceneSvg.setAttribute('viewBox', data.vb);
-  sceneSvg.innerHTML = '';
+  
+  const maskPathsG = document.getElementById('maskPathsG');
+  if (maskPathsG) maskPathsG.innerHTML = '';
 
   const paths = data.lineart;
-  const sw = data.sw || 4;
-  const totalPauseMs = paths.length * 40; // 획당 평균 40ms 쉴 예정
-  const totalDrawMs = 6000 - totalPauseMs; // 전체 그리기 시간 6초 보정
+  
+  // 선화 및 원화 경로 바인딩
+  const lineImgHref = (sceneId === 'lighthouse') ? '/line-lighthouse-v2.png?v=11' : '/line-ship.png?v=11';
+  const colorImgHref = (sceneId === 'lighthouse') ? '/metric-lighthouse.png?v=11' : '/metric-ship.png?v=11';
+  
+  const lineImg = document.getElementById('lineImg');
+  const colorImg = document.getElementById('colorImg');
+  if (lineImg) lineImg.setAttribute('href', lineImgHref);
+  if (colorImg) {
+    colorImg.setAttribute('href', colorImgHref);
+    colorImg.classList.remove('active');
+  }
 
-  // 각 획의 실제 길이 측정
+  // 전체 길이 연산
   const tempSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  tempSvg.style.position = 'absolute';
+  tempSvg.style.visibility = 'hidden';
+  document.body.appendChild(tempSvg);
+  
   const pathLengths = paths.map(line => {
     const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     p.setAttribute('d', line.d);
     tempSvg.appendChild(p);
-    document.body.appendChild(tempSvg);
     const len = p.getTotalLength();
-    document.body.removeChild(tempSvg);
+    tempSvg.removeChild(p);
     return len;
   });
-  
+  document.body.removeChild(tempSvg);
   const totalLen = pathLengths.reduce((acc, l) => acc + l, 0);
 
-  // SVG 엘리먼트 생성 및 배치
-  const svgPaths = paths.map((line, i) => {
+  // 마스크 패스 생성
+  const svgInkPaths = paths.map((line, i) => {
     const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     p.setAttribute('d', line.d);
-    p.setAttribute('stroke', '#1a1a1a');
-    p.setAttribute('stroke-width', sw);
-    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', 'white');
+    p.setAttribute('stroke-width', '72');
     p.setAttribute('stroke-linecap', 'round');
     p.setAttribute('stroke-linejoin', 'round');
-    p.className.baseVal = 'sc-path';
+    p.setAttribute('fill', 'none');
     
     const len = pathLengths[i];
     p.style.strokeDasharray = len;
     p.style.strokeDashoffset = len;
-    sceneSvg.appendChild(p);
+    if (maskPathsG) {
+      maskPathsG.appendChild(p);
+    }
     return { element: p, length: len };
   });
 
-  // 순차 애니메이션 시작
-  for (let i = 0; i < svgPaths.length; i++) {
-    if (runToken !== token) return;
-    const { element, length } = svgPaths[i];
-    const duration = (length / totalLen) * totalDrawMs;
-
-    element.style.transition = `stroke-dashoffset ${duration}ms linear`;
-    // 강제 리플로우
-    element.getBoundingClientRect();
-    element.style.strokeDashoffset = '0';
-
-    // 해당 획 그리기 끝날 때까지 대기
-    await new Promise(r => setTimeout(r, duration));
+  // 획수 비례 pause 설정 (부위 전이 240ms, 점프 18px 초과 40ms, 이하 0ms)
+  const strokePauses = paths.map((line, i) => {
+    if (i === 0) return 0;
+    const prevPoints = getPathPoints(paths[i-1].d);
+    const currPoints = getPathPoints(paths[i].d);
+    const dist = Math.hypot(currPoints.startPt.x - prevPoints.endPt.x, currPoints.startPt.y - prevPoints.endPt.y);
     
-    // 획 사이의 랜덤 일시정지 (20~60ms)
-    const pause = Math.floor(Math.random() * 41) + 20;
-    await new Promise(r => setTimeout(r, pause));
+    const prevSec = getSection(prevPoints.startPt.y);
+    const currSec = getSection(currPoints.startPt.y);
+    
+    if (prevSec !== currSec) return 240;
+    if (dist > 18) return 40;
+    return 0;
+  });
+  const totalPause = strokePauses.reduce((acc, p) => acc + p, 0);
+  const totalDrawMs = 3800; // 3.8초 드로잉 타임라인 고정
+
+  // 펜 초기 위치
+  if (svgInkPaths.length > 0) {
+    const firstPath = svgInkPaths[0].element;
+    const startPt = firstPath.getPointAtLength(0);
+    penX = startPt.x;
+    penY = startPt.y;
+    applyPenTransform(penX, penY, penRot);
+  }
+
+  penOverlay.style.display = 'block';
+  penOverlay.style.opacity = '1';
+
+  // 획별 순차 드로잉 루프
+  for (let i = 0; i < svgInkPaths.length; i++) {
+    if (runToken !== token) return;
+    const { element, length } = svgInkPaths[i];
+    const strokeDuration = Math.max((length / Math.max(totalLen, 1)) * (totalDrawMs - totalPause), 10);
+
+    if (i > 0 && strokePauses[i] > 0) {
+      await new Promise(r => setTimeout(r, strokePauses[i]));
+    }
+
+    // 펜 리프트/슬라이드 점프 모션 (18px 이하는 딜레이 없이 펜 즉각 갱신)
+    if (i > 0) {
+      if (runToken !== token) return;
+      const prevPoints = getPathPoints(paths[i-1].d);
+      const currPoints = getPathPoints(paths[i].d);
+      const startPt = prevPoints.endPt;
+      const endPt = currPoints.startPt;
+      
+      const dist = Math.hypot(endPt.x - startPt.x, endPt.y - startPt.y);
+      const pauseTime = strokePauses[i];
+      
+      if (pauseTime === 0) {
+        penX = endPt.x;
+        penY = endPt.y;
+        applyPenTransform(penX, penY, penRot);
+      } else {
+        const liftTotalTime = pauseTime;
+        let liftStart = null;
+        const peakY = (pauseTime === 240) ? -12 : -6;
+        
+        await new Promise(resolve => {
+          function liftFrame(timestamp) {
+            if (runToken !== token) { resolve(); return; }
+            if (!liftStart) liftStart = timestamp;
+            const elapsed = timestamp - liftStart;
+            const progress = Math.min(elapsed / liftTotalTime, 1);
+            
+            const currX = startPt.x + (endPt.x - startPt.x) * progress;
+            const currY = startPt.y + (endPt.y - startPt.y) * progress;
+            const liftY = Math.sin(progress * Math.PI) * peakY;
+            
+            penX += (currX - penX) * 0.3;
+            penY += ((currY + liftY) - penY) * 0.3;
+            
+            applyPenTransform(penX, penY, penRot);
+            
+            if (progress < 1) requestAnimationFrame(liftFrame);
+            else resolve();
+          }
+          requestAnimationFrame(liftFrame);
+        });
+      }
+    }
+
+    // 획 드로잉 루프
+    let drawStart = null;
+    await new Promise(resolve => {
+      function drawFrame(timestamp) {
+        if (runToken !== token) { resolve(); return; }
+        if (!drawStart) drawStart = timestamp;
+        const elapsed = timestamp - drawStart;
+        const progress = Math.min(elapsed / strokeDuration, 1);
+        const easedProgress = getEasedProgress(progress);
+        
+        element.style.strokeDashoffset = length * (1 - easedProgress);
+        
+        const pt = element.getPointAtLength(length * easedProgress);
+        
+        penX += (pt.x - penX) * 0.3;
+        penY += (pt.y - penY) * 0.3;
+        
+        // 2.1Hz 미세 떨림 추가
+        const waveY = Math.sin((timestamp / 1000) * 2 * Math.PI * 2.1) * 1.8;
+        
+        applyPenTransform(penX, penY + waveY, penRot);
+        
+        if (progress < 1) requestAnimationFrame(drawFrame);
+        else resolve();
+      }
+      requestAnimationFrame(drawFrame);
+    });
+
+    // 60ms 사람의 호흡 정지
+    if (runToken !== token) return;
+    await new Promise(r => setTimeout(r, 60));
   }
 
   if (runToken !== token) return;
 
-  // 완주 후에만 -> 원화 PNG 크로스페이드
-  sceneBgImg.src = data.img;
-  sceneBgImg.style.display = 'block';
-  // 브라우저 렌더링 동기화를 위해 살짝 대기 후 클래스 부여
-  setTimeout(() => {
-    if (runToken !== token) return;
-    sceneBgImg.classList.add('show');
-  }, 50);
+  // 펜 퇴장 모션
+  const lastPath = svgInkPaths[svgInkPaths.length - 1];
+  const lastPt = lastPath.element.getPointAtLength(lastPath.length);
+  const startX = lastPt.x;
+  const startY = lastPt.y;
+  const endX = parseFloat(data.vb.split(' ')[2]) + 250;
+  const endY = startY - 50;
+  const retreatTotalTime = 400;
+  let retreatStart = null;
 
-  // 0.8초 페이드 끝난 후 단어 팝업 시작
+  await new Promise(resolve => {
+    function retreatFrame(timestamp) {
+      if (runToken !== token) { resolve(); return; }
+      if (!retreatStart) retreatStart = timestamp;
+      const elapsed = timestamp - retreatStart;
+      const progress = Math.min(elapsed / retreatTotalTime, 1);
+      const easedProgress = getEasedProgress(progress);
+      
+      penX += (startX + (endX - startX) * easedProgress - penX) * 0.3;
+      penY += (startY + (endY - startY) * easedProgress - penY) * 0.3;
+      
+      applyPenTransform(penX, penY, penRot);
+      
+      if (progress < 1) requestAnimationFrame(retreatFrame);
+      else {
+        penOverlay.style.opacity = '0';
+        resolve();
+      }
+    }
+    requestAnimationFrame(retreatFrame);
+  });
+
+  if (runToken !== token) return;
+
+  // 채색 번짐 (BLOBS)
+  const BLOBS = (sceneId === 'lighthouse') ? [
+    {x: '50%', y: '15%'}, {x: '50%', y: '35%'}, {x: '50%', y: '55%'},
+    {x: '25%', y: '75%'}, {x: '75%', y: '75%'}, {x: '15%', y: '85%'},
+    {x: '50%', y: '90%'}, {x: '85%', y: '85%'}
+  ] : [
+    {x: '50%', y: '25%'}, {x: '35%', y: '35%'}, {x: '52%', y: '24%'},
+    {x: '48%', y: '72%'}, {x: '34%', y: '35%'}, {x: '64%', y: '84%'},
+    {x: '20%', y: '85%'}, {x: '80%', y: '85%'}
+  ];
+
+  colorImg.classList.add('active');
+  const colorTotalTime = 2500;
+  let colorStart = null;
+
   setTimeout(() => {
-    if (runToken !== token) return;
-    const words = SCENE_WORDS_CONFIG[currentSceneIndex];
-    triggerWordPopups(words, token);
-  }, 850);
+    if (runToken === token) {
+      const words = SCENE_WORDS_CONFIG[currentSceneIndex];
+      triggerWordPopups(words, token);
+    }
+  }, 2250);
+
+  await new Promise(resolve => {
+    function colorFrame(timestamp) {
+      if (runToken !== token) { resolve(); return; }
+      if (!colorStart) colorStart = timestamp;
+      const elapsed = timestamp - colorStart;
+      
+      const maskGradients = BLOBS.map((blob, idx) => {
+        const delay = idx * 200;
+        if (elapsed < delay) return `radial-gradient(circle at ${blob.x} ${blob.y}, white 0%, transparent 0%)`;
+        const progress = Math.min((elapsed - delay) / 1100, 1);
+        const scale = 1.6 * (1 - Math.pow(1 - progress, 2));
+        return `radial-gradient(circle at ${blob.x} ${blob.y}, white ${35 * scale * 0.6}%, transparent ${35 * scale}%)`;
+      });
+
+      colorImg.style.webkitMaskImage = colorImg.style.maskImage = maskGradients.join(', ');
+
+      if (elapsed < colorTotalTime) requestAnimationFrame(colorFrame);
+      else {
+        colorImg.style.webkitMaskImage = colorImg.style.maskImage = '';
+        resolve();
+      }
+    }
+    requestAnimationFrame(colorFrame);
+  });
 }
 
 function startScene() {
