@@ -645,6 +645,8 @@ async function startSvgDrawing(sceneId, token) {
     return { element: p, length: len };
   });
 
+  console.log("DEBUG: startSvgDrawing paths count:", paths.length, "svgInkPaths count:", svgInkPaths.length, "sceneId:", sceneId);
+
   const totalDrawMs = 3800; // 3.8초 드로잉 고정
 
   // 펜 초기 위치 잡기
@@ -708,6 +710,11 @@ async function startSvgDrawing(sceneId, token) {
   });
 
   if (runToken !== token) return;
+
+  if (!svgInkPaths || svgInkPaths.length === 0) {
+    console.error("DEBUG: svgInkPaths is empty. Aborting drawing sequence.");
+    return;
+  }
 
   // 펜 퇴장 모션 (감쇠 0.18)
   const lastPath = svgInkPaths[svgInkPaths.length - 1];
