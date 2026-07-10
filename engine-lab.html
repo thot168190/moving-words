@@ -1,797 +1,304 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>엔진 실험실 R1 — 등대 파일럿 (코다리 개선판)</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>엔진 실험실 — 기준 구현 v11 (로부장)</title>
 <style>
-  :root {
-    --ink: #1a1a1a;
-    --paper: #fdfcf7;
-    --accent: #ff5a36;
-    --blue: #2f6fed;
-    --gray: #6b6b6b;
-    --line: #e6e3d8;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
-  body {
-    font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
-    color: var(--ink);
-    background: var(--paper);
-    background-image: radial-gradient(var(--line) 1px, transparent 1px);
-    background-size: 26px 26px;
-    line-height: 1.5;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
-  h1 {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-  .desc {
-    font-size: 15px;
-    color: var(--gray);
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 600;
-  }
-  
-  /* Stage Setup */
-  .stage-outer {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    background: #fff;
-    border: 3px solid var(--ink);
-    border-radius: 18px;
-    box-shadow: 6px 6px 0 var(--ink);
-    overflow: hidden;
-    aspect-ratio: 1100 / 613;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-
-  /* SVG 레이어 설정 */
-  .canvas-svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-  }
-  
-  .canvas-svg path {
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* Ink 실시간 드로잉선: 진회색으로 위에 덧대어 그려짐 */
-  .ink-path {
-    stroke: var(--ink);
-    transition: stroke-dashoffset 0.05s linear;
-    filter: url(#inkSmooth);
-  }
-
-  /* Color Image Overlay - 콜로세움 및 고래 투명도/multiply 효과 반영 */
-  .color-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    opacity: 0;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    filter: brightness(1.08) contrast(1.04);
-    transition: opacity 0.8s;
-  }
-  .color-img.active {
-    opacity: 0.82;
-  }
-
-  /* Pen Overlay */
-  .pen-overlay {
-    position: absolute;
-    z-index: 10;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    display: none;
-  }
-  
-  /* Text Layer */
-  .words-layer {
-    position: absolute;
-    inset: 0;
-    z-index: 5;
-    pointer-events: none;
-  }
-  .word-pop {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    pointer-events: auto;
-    cursor: pointer;
-    text-align: center;
-    user-select: none;
-  }
-  .word-pop.show {
-    animation: pop-animation 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) forwards;
-  }
-  @keyframes pop-animation {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, calc(-50% + 14px)) scale(0.4) rotate(-8deg);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1) rotate(0deg);
-    }
-  }
-  
-  .word-pop .en {
-    font-weight: 800;
-    font-size: clamp(24px, 3.2vw, 42px);
-    color: var(--ink);
-    line-height: 1;
-    text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #fff;
-    margin-bottom: 2px;
-  }
-  .word-pop .ko {
-    font-size: clamp(16px, 2.2vw, 24px);
-    color: var(--accent);
-    font-weight: 800;
-    text-shadow: 0 0 4px #fff, 0 0 8px #fff;
-  }
-
-  /* CTA Overlay */
-  .cta-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 6;
-    background: rgba(255,255,255,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: 700;
-    transition: opacity 0.4s;
-  }
-  .cta-overlay.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* Controls */
-  .controls {
-    display: flex;
-    gap: 12px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .btn {
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border: 3px solid var(--ink);
-    border-radius: 12px;
-    padding: 8px 18px;
-    background: #fff;
-    box-shadow: 3px 3px 0 var(--ink);
-    transition: transform 0.08s, box-shadow 0.08s;
-  }
-  .btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--ink);
-  }
-  .btn.active {
-    background: var(--blue);
-    color: #fff;
-  }
-</style>
-</head>
-<body>
-
-<h1>엔진 실험실 R5 — 등대 파일럿</h1>
-<div class="desc">마스크 리빌 정화 버전 (순백 시작 + 그림 드러내기 + 펜 기본 숨김)</div>
-
-<div class="stage-outer" id="stageOuter">
-  <!-- 드로잉 및 이미지 통합 SVG 컨테이너 -->
-  <svg id="drawingSvg" class="canvas-svg">
-    <defs>
-      <!-- 선화 리빌용 SVG 마스크 -->
-      <mask id="lineMask">
-        <!-- 기본적으로 완전히 숨김 -->
-        <rect x="0" y="0" width="100%" height="100%" fill="black" />
-        <!-- 이 그룹 안에 guides path들이 실시간으로 그려짐 -->
-        <g id="maskPathsG"></g>
-      </mask>
-    </defs>
-    
-    <!-- 1. 원화 PNG (아래) -->
-    <image id="colorImg" href="/metric-lighthouse.png" x="0" y="0" width="100%" height="100%" class="color-img" />
-    
-    <!-- 2. 완성 선화 PNG (위) - 마스크 리빌 적용 -->
-    <image id="lineImg" href="/line-lighthouse-v2.png?v=11" x="0" y="0" width="100%" height="100%" mask="url(#lineMask)" />
-  </svg>
-  
-  <!-- 실사 손 오버레이 (hand.png 기반) -->
-  <div id="penOverlay" class="pen-overlay">
-    <img id="handImg" src="/hand.png?v=11" alt="실사 손" style="width: 100%; height: 100%; object-fit: fill;" />
-  </div>
-  
-  <!-- 단어 팝업 레이어 -->
-  <div class="words-layer" id="wordsLayer"></div>
-  
-  <!-- 안내 메시지 -->
-  <div class="cta-overlay" id="ctaOverlay">👆 터치하면 실험이 시작됩니다</div>
+body{margin:0;background:#f7f5ef;font-family:Pretendard,-apple-system,sans-serif;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px}
+#wrap{width:min(96vw,1100px);border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.12);background:#fdfcf9;position:relative}
+svg{display:block;width:100%;height:auto}
+#hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#333;background:rgba(253,252,249,.6);cursor:pointer}
+#bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+button{font:inherit;font-weight:700;padding:10px 16px;border-radius:14px;border:2px solid #141414;background:#fff;cursor:pointer}
+button.on{background:#3182f6;color:#fff;border-color:#3182f6}
+.wd{position:absolute;opacity:0;transform:translate(-50%,-50%) scale(.3);transition:all .45s cubic-bezier(.2,1.6,.4,1);text-align:center;pointer-events:none}
+.wd.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.wd .en{font-weight:800;font-size:clamp(22px,3.4vw,44px);color:#141414;text-shadow:0 0 8px #fff,0 0 16px #fff}
+.wd .ko{font-weight:700;font-size:clamp(13px,1.6vw,20px);color:#c2410c;text-shadow:0 0 8px #fff}
+</style></head><body>
+<div id="wrap"><svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg><div id="hint">👆 터치하면 그려집니다</div></div>
+<div id="bar">
+<button id="replay">다시 그리기</button>
+<button class="sp on" data-s="1">속도 1x</button>
+<button class="sp" data-s="0.5">속도 0.5x</button>
+<button class="sp" data-s="2">속도 2x</button>
+<button id="pause">일시정지</button>
+<button id="handtg">손 숨기기</button>
 </div>
-
-<div class="controls">
-  <button class="btn" id="btnRestart">다시 그리기</button>
-  <button class="btn active" id="btnSpeed1" data-speed="1">속도 1x</button>
-  <button class="btn" id="btnSpeed05" data-speed="0.5">속도 0.5x</button>
-  <button class="btn" id="btnSpeed2" data-speed="2">속도 2x</button>
-  <button class="btn" id="btnSpeed4" data-speed="4">속도 4x</button>
-  <button class="btn" id="btnTogglePen">손 숨기기</button>
-</div>
-
 <script>
-const stageOuter = document.getElementById('stageOuter');
-const colorImg = document.getElementById('colorImg');
-const drawingSvg = document.getElementById('drawingSvg');
-const penOverlay = document.getElementById('penOverlay');
-const wordsLayer = document.getElementById('wordsLayer');
-const ctaOverlay = document.getElementById('ctaOverlay');
+const NS='http://www.w3.org/2000/svg';
+let SPEED=1, HAND=true, state='idle', raf=null, phase=0, simT=0, phaseT=0, last=0, paused=false;
+let sc, meta, vw, vh, guides=[], lens=[], cum=[], L=0, handEl, blobs=[], wordsEl=[];
+let hx=0, hy=0, started=false, colorT0=0, exitT0=0;
+const DRAW=4800, BLOBMS=2600; // R13 드로잉 시간 약 4.8초로 확장
+let speechUnlocked=false;
 
-const btnRestart = document.getElementById('btnRestart');
-const btnSpeed1 = document.getElementById('btnSpeed1');
-const btnSpeed05 = document.getElementById('btnSpeed05');
-const btnSpeed2 = document.getElementById('btnSpeed2');
-const btnSpeed4 = document.getElementById('btnSpeed4');
-const btnTogglePen = document.getElementById('btnTogglePen');
-
-// 상태 변수
-let speedMultiplier = 1.0;
-let hidePen = false;
-let runToken = 0;
-let animState = 'idle'; // idle, running, done
-let lighthouseData = null;
-
-// 단어 정보
-const WORDS_CONFIG = [
-  {en: 'Lighthouse', ko: '등대', top: '22%', left: '49%'},
-  {en: 'Light', ko: '빛', top: '14%', left: '26%'},
-  {en: 'Sea', ko: '바다', top: '75%', left: '26%'},
-  {en: 'Rock', ko: '바위', top: '76%', left: '72%'}
+// 4개 부위 그룹화 변수 및 중심점 정의 (R13)
+let partPaths = [[], [], [], []];
+const partCenters = [
+  { x: 440, y: 230 }, // 0: 등탑 (Lighthouse Tower)
+  { x: 270, y: 410 }, // 1: 좌바위 (Left Rock)
+  { x: 630, y: 410 }, // 2: 우바위 (Right Rock)
+  { x: 450, y: 495 }  // 3: 파도 (Wave)
 ];
+let activePartIdx = 0;
+let partState = 'moving'; // 'moving' (이동), 'breathing' (150ms 호흡), 'drawing' (끄적이며 드로잉)
+let partStateTime = 0;
+const partDrawTimes = [1200, 1200, 1200, 1200]; // 각 부위별 드로잉 시간 (합 4800ms)
 
-// 시작 8%·끝 8%만 이징하는 등속 기반 속도 프로파일 함수
-function getEasedProgress(t) {
-  const k = 0.08; // 8%
-  const V = 1 / (4 * k / Math.PI + 1 - 2 * k);
-  const S1 = V * k * 2 / Math.PI;
-  
-  if (t < k) {
-    return V * k * 2 / Math.PI * (1 - Math.cos(t / k * Math.PI / 2));
-  } else if (t <= 1 - k) {
-    return S1 + V * (t - k);
-  } else {
-    const t_back = (1 - t) / k;
-    return 1 - V * k * 2 / Math.PI * (1 - Math.cos(t_back * Math.PI / 2));
+function getPathStartPoint(dStr) {
+  const m = dStr.match(/M\s+([-\d.]+)\s+([-\d.]+)/);
+  if (m) {
+    return { x: parseFloat(m[1]), y: parseFloat(m[2]) };
   }
+  return { x: vw / 2, y: vh / 2 };
 }
 
-// TTS 기능
-let speechUnlocked = false;
-function unlockSpeech() {
-  if (speechUnlocked || !window.speechSynthesis) return;
-  const u = new SpeechSynthesisUtterance(' ');
-  u.volume = 0;
-  window.speechSynthesis.speak(u);
-  speechUnlocked = true;
-}
-
-function getBestVoice() {
-  const voices = window.speechSynthesis.getVoices();
-  return voices.find(v => v.lang.startsWith('en') && v.name.includes('Samantha')) ||
-         voices.find(v => v.lang.startsWith('en') && v.name.includes('Google US English')) ||
-         voices.find(v => v.lang === 'en-US');
-}
-
-function speak(text) {
-  if(!window.speechSynthesis) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US';
-  u.rate = 1.0;
-  u.pitch = 1.05;
-  const voice = getBestVoice();
-  if (voice) u.voice = voice;
-  
-  window.speechSynthesis.cancel();
-  setTimeout(() => {
-    window.speechSynthesis.speak(u);
-  }, 50);
-}
-
-// CTA 초기 상태 대기로 설정
-ctaOverlay.innerText = "데이터를 불러오는 중입니다...";
-
+function unlock(){ if(speechUnlocked||!window.speechSynthesis)return;
+  const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u);speechUnlocked=true;}
+function bestVoice(){ const v=speechSynthesis.getVoices();
+  return v.find(x=>x.lang.startsWith('en')&&x.name.includes('Samantha'))||
+         v.find(x=>x.lang.startsWith('en')&&x.name.includes('Google US English'))||
+         v.find(x=>x.lang.startsWith('en')&&x.name.includes('Aria'))||
+         v.find(x=>x.lang==='en-US'); }
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
+function speak(t){ if(!window.speechSynthesis)return; const u=new SpeechSynthesisUtterance(t);
+  u.lang='en-US';u.rate=1.0;u.pitch=1.05; const v=bestVoice(); if(v)u.voice=v;
+  speechSynthesis.speak(u);}
+const WORDS=[
+  {en:'LIGHTHOUSE',ko:'등대',x:.56,y:.16},{en:'LIGHT',ko:'빛',x:.22,y:.10},
+  {en:'ROCK',ko:'바위',x:.16,y:.58},{en:'SEA',ko:'바다',x:.72,y:.78}];
 Promise.all([
-  fetch('/lab-scenes-v3.json?v=11').then(res => res.json()),
-  fetch('/hand-meta.json?v=11').then(res => res.json())
-]).then(([sceneData, handData]) => {
-  lighthouseData = sceneData.scenes.find(s => s.id === 'lighthouse');
-  handMeta = handData;
-  
-  if (lighthouseData) {
-    drawingSvg.setAttribute('viewBox', lighthouseData.vb);
-    
-    const lineImg = document.getElementById('lineImg');
-    const colorImg = document.getElementById('colorImg');
-    if (lineImg) lineImg.setAttribute('href', lighthouseData.line);
-    if (colorImg) colorImg.setAttribute('href', lighthouseData.img);
-  }
-  
-  // 로딩 완료 후 터치 안내 활성화
-  ctaOverlay.innerText = "👆 터치하면 실험이 시작됩니다";
-}).catch(err => {
-  console.error("로딩 실패:", err);
-  ctaOverlay.innerText = "로드 실패 (새로고침 해주세요)";
-});
-
-// 리셋
-function reset() {
-  if (window.speechSynthesis) window.speechSynthesis.cancel();
-  runToken++;
-  animState = 'idle';
-  
-  ctaOverlay.classList.remove('hide');
-  const colorImg = document.getElementById('colorImg');
-  if (colorImg) {
-    colorImg.classList.remove('active');
-    colorImg.style.webkitMaskImage = 'none';
-    colorImg.style.maskImage = 'none';
-  }
-  
-  // 마스크 컨테이너 비우기
-  const maskPathsG = document.getElementById('maskPathsG');
-  if (maskPathsG) {
-    maskPathsG.innerHTML = '';
-  }
-  
-  // 브라우저 SVG mask 강제 리프레시 (이전 선화 찌꺼기 렌더 버그 해결)
-  const lineImg = document.getElementById('lineImg');
-  if (lineImg) {
-    lineImg.setAttribute('mask', '');
-    lineImg.offsetHeight; // 강제 레이아웃 트리거
-    lineImg.setAttribute('mask', 'url(#lineMask)');
-  }
-  
-  wordsLayer.innerHTML = '';
-  
-  if (lighthouseData) {
-    drawingSvg.setAttribute('viewBox', lighthouseData.vb);
-  }
-  
-  penOverlay.style.opacity = hidePen ? '0' : '1';
-  penOverlay.style.display = hidePen ? 'none' : 'block';
-  penOverlay.style.transform = 'translate(-200px, -200px)';
-  
-  // 상태 변수 초기화
-  penX = 0;
-  penY = 0;
-  penRot = 45;
-}
-
-// 획 데이터 파싱 헬퍼 (시작점/끝점 추출)
-function getPathPoints(dStr) {
-  const coords = dStr.match(/[+-]?\d+(\.\d+)?/g).map(Number);
-  if (coords && coords.length >= 2) {
-    return {
-      startPt: { x: coords[0], y: coords[1] },
-      endPt: { x: coords[coords.length - 2], y: coords[coords.length - 1] }
-    };
-  }
-  return { startPt: { x: 0, y: 0 }, endPt: { x: 0, y: 0 } };
-}
-
-// 부위 구분용 헬퍼 함수
-function getSection(y) {
-  if (y <= 450) return 'tower';
-  if (y <= 550) return 'rock';
-  return 'sea';
-}
-
-// 전역 상태 변수 및 손 메타데이터 로드
-let penX = 0;
-let penY = 0;
-let penRot = 45;
-let handMeta = null;
-
-function applyPenTransform(x, y, rot) {
-  if (!lighthouseData || !handMeta) return;
-  const viewBoxArr = lighthouseData.vb.split(' ');
-  const vbW = parseFloat(viewBoxArr[2]);
-  const vbH = parseFloat(viewBoxArr[3]);
-  
-  const rect = stageOuter.getBoundingClientRect();
-  const scaleX = rect.width / vbW;
-  const scaleY = rect.height / vbH;
-  
-  const screenX = x * scaleX;
-  const screenY = y * scaleY;
-  
-  // R7 손 이식 공식: s = (화면높이 * 0.5) / h
-  let h_screen = rect.height * 0.5;
-  const s = h_screen / handMeta.h;
-  const w_screen = handMeta.w * s;
-  
-  let tipX_screen = handMeta.tipX * s;
-  let tipY_screen = handMeta.tipY * s;
-  
-  let tx = screenX - tipX_screen;
-  let ty = screenY - tipY_screen;
-  
-  // 잘린 아래변(bottom) 화면 아래 경계 밖 clamp (50px 안전 마진 추가)
-  if (handMeta.cutEdges && handMeta.cutEdges.includes("bottom")) {
-    const bottomEdge = ty + h_screen;
-    if (bottomEdge < rect.height + 50) {
-      const diff = (rect.height + 50) - bottomEdge;
-      h_screen += diff;
-      tipY_screen += diff;
-      ty = screenY - tipY_screen;
-    }
-  }
-
-  // 잘린 우측변(right) 화면 우측 경계 밖 clamp (50px 안전 마진 추가)
-  if (handMeta.cutEdges && handMeta.cutEdges.includes("right")) {
-    const rightEdge = tx + w_screen;
-    if (rightEdge < rect.width + 50) {
-      const diffX = (rect.width + 50) - rightEdge;
-      w_screen += diffX;
-      tipX_screen += diffX;
-      tx = screenX - tipX_screen;
-    }
-  }
-  
-  penOverlay.style.width = `${w_screen}px`;
-  penOverlay.style.height = `${h_screen}px`;
-  // 실사 손은 회전 고정 (회전 금지!)
-  penOverlay.style.transform = `translate(${tx}px, ${ty}px)`;
-}
-
-// 단일 타임라인 기반 프레임 애니메이션 루프 (R5/R7 마스크 리빌 엔진)
-async function startDrawingFlow() {
-  const token = runToken;
-  animState = 'running';
-  ctaOverlay.classList.add('hide');
-  
-  if (!lighthouseData) {
-    alert("데이터가 로드되지 않았습니다. 잠시 후 다시 시도해 주세요.");
-    reset();
-    return;
-  }
-
-  // 1. 드로잉용 획 데이터 추출 (guides 51개)
-  const paths = lighthouseData.guides;
-  const maskPathsG = document.getElementById('maskPathsG');
-  if (maskPathsG) maskPathsG.innerHTML = '';
-
-  // 전체 길이 계산
-  const tempSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  tempSvg.style.position = 'absolute';
-  tempSvg.style.visibility = 'hidden';
-  document.body.appendChild(tempSvg);
-  
-  const pathLengths = paths.map(line => {
-    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    p.setAttribute('d', line.d);
-    tempSvg.appendChild(p);
-    const len = p.getTotalLength();
-    tempSvg.removeChild(p);
-    return len;
+  fetch('/lab-scenes-v3.json?v=17').then(r=>r.json()),
+  fetch('/hand-meta.json?v=17').then(r=>r.json())
+]).then(([d,m])=>{ sc=d.scenes[0]; meta=m; build(); });
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
+function build(){
+  const svg=document.getElementById('svg'); window.svg=svg;
+  const vb=sc.vb.split(' ').map(Number); vw=vb[2]; vh=vb[3];
+  svg.setAttribute('viewBox',sc.vb);
+  // 종이 질감 + 비네트
+  const defs=el('defs',{});
+  const f=el('filter',{id:'paper'},defs);
+  el('feTurbulence',{type:'fractalNoise',baseFrequency:'0.9',numOctaves:'2',result:'n'},f);
+  el('feColorMatrix',{'in':'n',type:'matrix',values:'0 0 0 0 0  0 0 0 0 0  0 0 0 .03 0'},f);
+  el('rect',{x:0,y:0,width:vw,height:vh,fill:'#fdfcf9'});
+  // 마스크: 선화 (stroke-width 78 -> 110 확장 및 round화)
+  const mL=el('mask',{id:'mL'},defs);
+  el('rect',{x:0,y:0,width:vw,height:vh,fill:'black'},mL);
+  sc.guides.forEach(g=>{
+    const p=el('path',{d:g.d,fill:'none',stroke:'white','stroke-width':110,'stroke-linecap':'round','stroke-linejoin':'round'},mL);
+    guides.push(p);
   });
-  document.body.removeChild(tempSvg);
-  const totalLen = pathLengths.reduce((acc, l) => acc + l, 0);
-
-  const svgInkPaths = paths.map((line, i) => {
-    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    p.setAttribute('d', line.d);
-    p.setAttribute('stroke', 'white');
-    p.setAttribute('stroke-width', '72');
-    p.setAttribute('stroke-linecap', 'round');
-    p.setAttribute('stroke-linejoin', 'round');
-    p.setAttribute('fill', 'none');
-    
-    const len = pathLengths[i];
-    p.style.strokeDasharray = len;
-    p.style.strokeDashoffset = len;
-    if (maskPathsG) {
-      maskPathsG.appendChild(p);
-    }
-    return { element: p, length: len };
-  });
-
-  // 획수 비례 pause 설정 (부위 전이 240ms, 점프 18px 초과 40ms, 이하 0ms)
-  const strokePauses = paths.map((line, i) => {
-    if (i === 0) return 0;
-    const prevPoints = getPathPoints(paths[i-1].d);
-    const currPoints = getPathPoints(paths[i].d);
-    const dist = Math.hypot(currPoints.startPt.x - prevPoints.endPt.x, currPoints.startPt.y - prevPoints.endPt.y);
-    
-    const prevSec = getSection(prevPoints.startPt.y);
-    const currSec = getSection(currPoints.startPt.y);
-    
-    if (prevSec !== currSec) return 240;
-    if (dist > 18) return 40;
-    return 0;
-  });
-  const totalPause = strokePauses.reduce((acc, p) => acc + p, 0);
-
-  // 펜 초기 위치 설정
-  if (svgInkPaths.length > 0) {
-    const firstPath = svgInkPaths[0].element;
-    const startPt = firstPath.getPointAtLength(0);
-    penX = startPt.x;
-    penY = startPt.y;
-    applyPenTransform(penX, penY, penRot);
+  // 마스크: 채색 (부드러운 블롭)
+  const mC=el('mask',{id:'mC'},defs);
+  el('rect',{x:0,y:0,width:vw,height:vh,fill:'black'},mC);
+  const blur=el('filter',{id:'soft'},defs);
+  el('feGaussianBlur',{stdDeviation:30},blur);
+  const bg=el('g',{filter:'url(#soft)'},mC);
+  for(let i=0;i<8;i++){
+    const fr=(i+0.5)/8, pt=tourPoint(fr*1);
+    blobs.push(el('circle',{cx:pt?pt.x:vw/2,cy:pt?pt.y:vh/2,r:0,fill:'white'},bg));
   }
-
-  if (hidePen) {
-    penOverlay.style.display = 'none';
-    penOverlay.style.opacity = '0';
-  } else {
-    penOverlay.style.display = 'block';
-    penOverlay.style.opacity = '1';
-  }
-
-  const totalDrawMs = 3800;
+  // 레이어: 채색(아래) → 선화(위)
+  el('image',{href:sc.img+'?v=17',x:0,y:0,width:vw,height:vh,mask:'url(#mC)',
+    style:'filter:saturate(.82) brightness(1.06)'});
+  el('image',{href:sc.line+'?v=17',x:0,y:0,width:vw,height:vh,mask:'url(#mL)',
+    style:'mix-blend-mode:multiply'});
+  el('rect',{x:0,y:0,width:vw,height:vh,filter:'url(#paper)','pointer-events':'none'});
   
-  for (let i = 0; i < svgInkPaths.length; i++) {
-    if (runToken !== token) return;
-    const { element, length } = svgInkPaths[i];
-    const strokeDuration = Math.max((length / Math.max(totalLen, 1)) * (totalDrawMs - totalPause), 10);
+  // 손 스케일 균일화 (s = 캔버스높이*0.55 / h) 및 그림자 rgba(0,0,0,.12) 약화
+  const hs=(vh*0.55)/meta.h;
+  handEl=el('image',{href:'/hand.png?v=17',width:meta.w*hs,height:meta.h*hs,
+    style:'filter:drop-shadow(-10px 14px 12px rgba(0,0,0,.12))'});
+  hx=vw+meta.w*hs; hy=vh+meta.h*hs; setHand(hx,hy);
+  
+  // 길이 계산 (마스크 안 path는 getTotalLength 가능)
+  guides.forEach(p=>{const l=p.getTotalLength();lens.push(l);cum.push(L);L+=l;
+    p.setAttribute('stroke-dasharray',l+2);p.setAttribute('stroke-dashoffset',l+2);});
 
-    if (i > 0 && strokePauses[i] > 0) {
-      const pause = strokePauses[i] / speedMultiplier;
-      await new Promise(r => setTimeout(r, pause));
+  // 부위 그룹 분류 (R13)
+  partPaths = [[], [], [], []];
+  guides.forEach((p, idx) => {
+    const dStr = sc.guides[idx].d;
+    const pt = getPathStartPoint(dStr);
+    let partIdx = 0;
+    if (pt.y <= 360) {
+      partIdx = 0; // 등탑
+    } else if (pt.y > 360 && pt.y <= 460 && pt.x < 400) {
+      partIdx = 1; // 좌바위
+    } else if (pt.y > 360 && pt.y <= 460 && pt.x >= 400) {
+      partIdx = 2; // 우바위
+    } else {
+      partIdx = 3; // 파도
     }
-
-    if (i > 0) {
-      if (runToken !== token) return;
-      const prevPoints = getPathPoints(paths[i-1].d);
-      const currPoints = getPathPoints(paths[i].d);
-      const startPt = prevPoints.endPt;
-      const endPt = currPoints.startPt;
-      
-      const pauseTime = strokePauses[i];
-      const peakY = (pauseTime === 240) ? -12 : -6;
-      
-      if (pauseTime === 0) {
-        penX = endPt.x;
-        penY = endPt.y;
-        applyPenTransform(penX, penY, penRot);
-      } else {
-        const liftTotalTime = pauseTime / speedMultiplier;
-        let liftStart = null;
-        
-        await new Promise(resolve => {
-          function liftFrame(timestamp) {
-            if (runToken !== token) { resolve(); return; }
-            if (!liftStart) liftStart = timestamp;
-            const elapsed = (timestamp - liftStart) * speedMultiplier;
-            const progress = Math.min(elapsed / liftTotalTime, 1);
-            
-            const currX = startPt.x + (endPt.x - startPt.x) * progress;
-            const currY = startPt.y + (endPt.y - startPt.y) * progress;
-            const liftY = Math.sin(progress * Math.PI) * peakY;
-            
-            penX += (currX - penX) * 0.3;
-            penY += ((currY + liftY) - penY) * 0.3;
-            
-            applyPenTransform(penX, penY, penRot);
-            
-            if (progress < 1) requestAnimationFrame(liftFrame);
-            else resolve();
-          }
-          requestAnimationFrame(liftFrame);
-        });
-      }
-    }
-
-    let drawStart = null;
-    await new Promise(resolve => {
-      function drawFrame(timestamp) {
-        if (runToken !== token) { resolve(); return; }
-        if (!drawStart) drawStart = timestamp;
-        const elapsed = (timestamp - drawStart) * speedMultiplier;
-        const progress = Math.min(elapsed / strokeDuration, 1);
-        const easedProgress = getEasedProgress(progress);
-        
-        element.style.strokeDashoffset = length * (1 - easedProgress);
-        
-        const pt = element.getPointAtLength(length * easedProgress);
-        
-        penX += (pt.x - penX) * 0.3;
-        penY += (pt.y - penY) * 0.3;
-        
-        // 2.1Hz 미세 손목 요동 추가
-        const waveY = Math.sin((timestamp / 1000) * 2 * Math.PI * 2.1) * 1.8;
-        
-        applyPenTransform(penX, penY + waveY, penRot);
-        
-        if (progress < 1) requestAnimationFrame(drawFrame);
-        else resolve();
-      }
-      requestAnimationFrame(drawFrame);
+    partPaths[partIdx].push({
+      element: p,
+      length: lens[idx],
+      cumOffset: cum[idx],
+      globalIdx: idx
     });
-    if (runToken !== token) return;
-    await new Promise(r => setTimeout(r, 60 / speedMultiplier));
-  }
-
-  if (runToken !== token) return;
-
-  const viewBoxArr = lighthouseData.vb.split(' ');
-  const vbW = parseFloat(viewBoxArr[2]);
-  const vbH = parseFloat(viewBoxArr[3]);
-  const lastPath = svgInkPaths[svgInkPaths.length - 1];
-  const lastPt = lastPath.element.getPointAtLength(lastPath.length);
-
-  const startX = lastPt.x;
-  const startY = lastPt.y;
-  const endX = vbW + 250;
-  const endY = startY - 50;
-  const retreatTotalTime = 400;
-  let retreatStart = null;
-
-  await new Promise(resolve => {
-    function retreatFrame(timestamp) {
-      if (runToken !== token) { resolve(); return; }
-      if (!retreatStart) retreatStart = timestamp;
-      const elapsed = (timestamp - retreatStart) * speedMultiplier;
-      const progress = Math.min(elapsed / retreatTotalTime, 1);
-      const easedProgress = getEasedProgress(progress);
-      
-      penX += (startX + (endX - startX) * easedProgress - penX) * 0.3;
-      penY += (startY + (endY - startY) * easedProgress - penY) * 0.3;
-      
-      applyPenTransform(penX, penY, penRot);
-      
-      if (progress < 1) requestAnimationFrame(retreatFrame);
-      else { penOverlay.style.opacity = '0'; resolve(); }
-    }
-    requestAnimationFrame(retreatFrame);
   });
 
-  if (runToken !== token) return;
-
-  const BLOBS = [
-    {x: '50%', y: '15%'}, {x: '50%', y: '35%'}, {x: '50%', y: '55%'},
-    {x: '25%', y: '75%'}, {x: '75%', y: '75%'}, {x: '15%', y: '85%'},
-    {x: '50%', y: '90%'}, {x: '85%', y: '85%'}
-  ];
-
-  colorImg.classList.add('active');
-  const colorTotalTime = 2500;
-  let colorStart = null;
-
-  setTimeout(() => { if (runToken === token) triggerWordsPop(token); }, 2250 / speedMultiplier);
-
-  await new Promise(resolve => {
-    function colorFrame(timestamp) {
-      if (runToken !== token) { resolve(); return; }
-      if (!colorStart) colorStart = timestamp;
-      const elapsed = (timestamp - colorStart) * speedMultiplier;
+  // 단어
+  WORDS.forEach(w=>{
+    const d=document.createElement('div');d.className='wd';
+    d.style.left=(w.x*100)+'%';d.style.top=(w.y*100)+'%';
+    d.innerHTML='<div class="en">'+w.en+'</div><div class="ko">'+w.ko+'</div>';
+    document.getElementById('wrap').appendChild(d);wordsEl.push(d);
+  });
+  document.getElementById('hint').onclick=start;
+  document.getElementById('replay').onclick=()=>{reset();start();};
+  document.querySelectorAll('.sp').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.sp').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');SPEED=parseFloat(b.dataset.s);});
+  document.getElementById('pause').onclick=e=>{ if(state!=='run')return;
+    paused=!paused; e.target.textContent=paused?'계속':'일시정지';
+    if(paused) speechSynthesis&&speechSynthesis.cancel(); };
+  document.getElementById('handtg').onclick=e=>{HAND=!HAND;
+    handEl.style.display=HAND?'':'none';e.target.textContent=HAND?'손 숨기기':'손 보이기';};
+}
+function tourPoint(frac){ if(!L)return null; const target=Math.max(0,Math.min(L-0.1,frac*L));
+  let i=0; while(i<guides.length-1 && cum[i+1]<=target)i++;
+  return guides[i].getPointAtLength(target-cum[i]); }
+function setHand(x,y){
+  const hs_base = (vh * 0.55) / meta.h;
+  const hs_req_x = (vw - x) / (meta.w - meta.tipX);
+  const hs_req_y = (vh - y) / (meta.h - meta.tipY);
+  // Math.max를 취해 X경계와 Y경계 둘 다 캔버스 밖으로 밀어내어 절단면을 완전히 숨김
+  const hs = Math.max(hs_base, hs_req_x, hs_req_y);
+  
+  handEl.setAttribute('width', meta.w * hs);
+  handEl.setAttribute('height', meta.h * hs);
+  handEl.setAttribute('x', x - meta.tipX * hs);
+  handEl.setAttribute('y', y - meta.tipY * hs);
+}
+function start(){ unlock(); if(state==='run')return;
+  document.getElementById('hint').style.display='none';
+  state='run'; phase=0; simT=0; phaseT=0; last=performance.now(); paused=false;
+  document.getElementById('pause').textContent='일시정지';
+  raf=requestAnimationFrame(tick); }
+function reset(){ cancelAnimationFrame(raf); state='idle'; phase=0; simT=0; phaseT=0; paused=false;
+  speechSynthesis && speechSynthesis.cancel();
+  guides.forEach((p,i)=>p.setAttribute('stroke-dashoffset',lens[i]+2));
+  blobs.forEach(c=>c.setAttribute('r',0));
+  wordsEl.forEach(w=>w.classList.remove('show'));
+  
+  activePartIdx = 0;
+  partState = 'moving';
+  partStateTime = 0;
+  
+  const hs=(vh*0.55)/meta.h; hx=vw+meta.w*hs; hy=vh+meta.h*hs; setHand(hx,hy); }
+function tick(now){
+  const dt=Math.min(50, now-last); last=now;
+  const dt_real = paused ? 0 : dt * SPEED;
+  simT += dt_real;
+  
+  if(phase===0){ // R13 드로잉: 배우와 무대 분리 구조
+    partStateTime += dt_real;
+    const center = partCenters[activePartIdx];
+    
+    if (partState === 'moving') {
+      // 1. 손을 목표 부위 센터로 속도제한(W * 0.35 / sec)을 지키며 부드럽게 비행
+      const dx = center.x - hx;
+      const dy = center.y - hy;
+      const dist = Math.hypot(dx, dy);
+      const maxMove = (vw * 0.35) * (dt_real / 1000);
       
-      const maskGradients = BLOBS.map((blob, idx) => {
-        const delay = idx * 200;
-        if (elapsed < delay) return `radial-gradient(circle at ${blob.x} ${blob.y}, white 0%, transparent 0%)`;
-        const progress = Math.min((elapsed - delay) / 1100, 1);
-        const scale = 1.6 * (1 - Math.pow(1 - progress, 2));
-        return `radial-gradient(circle at ${blob.x} ${blob.y}, white ${35 * scale * 0.6}%, transparent ${35 * scale}%)`;
+      if (dist <= maxMove) {
+        hx = center.x;
+        hy = center.y;
+        partState = 'breathing';
+        partStateTime = 0;
+      } else {
+        hx += (dx / dist) * maxMove;
+        hy += (dy / dist) * maxMove;
+      }
+      if (!paused) setHand(hx, hy);
+    } 
+    else if (partState === 'breathing') {
+      // 2. 부위 도착 후 150ms 동안 호흡정지
+      hx = center.x;
+      hy = center.y;
+      if (!paused) setHand(hx, hy);
+      if (partStateTime >= 150) {
+        partState = 'drawing';
+        partStateTime = 0;
+      }
+    } 
+    else if (partState === 'drawing') {
+      // 3. 리빌되고 있는 활성 획의 팁 주변을 끄적이면서 선화 리빌
+      const drawTime = partDrawTimes[activePartIdx];
+      const partProg = Math.min(partStateTime / drawTime, 1);
+      
+      const pathsInPart = partPaths[activePartIdx];
+      const N = pathsInPart.length;
+      
+      // 현재 리빌되고 있는 획 팁 좌표 추적 (허공 헛손질 박멸)
+      const curIdx = Math.min(Math.floor(partProg * N), N - 1);
+      const pInfo = pathsInPart[curIdx];
+      const localProg = Math.max(0, Math.min(1, (partProg - (curIdx / N)) * N));
+      const pt = pInfo.element.getPointAtLength(pInfo.length * localProg);
+      
+      let targetX = pt.x;
+      let targetY = pt.y;
+      
+      // 획 팁 주변 20px 리사주 요동 끄적임
+      const angle = (partStateTime / 1000) * 2 * Math.PI * 2.0;
+      const radX = 20;
+      const radY = 16;
+      targetX += Math.cos(angle) * radX;
+      targetY += Math.sin(angle * 2) * radY;
+      
+      hx += (targetX - hx) * 0.22;
+      hy += (targetY - hy) * 0.22;
+      if (!paused) setHand(hx, hy);
+      
+      // 부위 guides 순차 리빌
+      pathsInPart.forEach((pInfo, j) => {
+        const startProg = j / N;
+        const endProg = (j + 1) / N;
+        if (partProg >= endProg) {
+          pInfo.element.setAttribute('stroke-dashoffset', 0);
+        } else if (partProg < startProg) {
+          pInfo.element.setAttribute('stroke-dashoffset', pInfo.length + 2);
+        } else {
+          const localProg = (partProg - startProg) * N;
+          pInfo.element.setAttribute('stroke-dashoffset', pInfo.length * (1 - localProg));
+        }
       });
-
-      colorImg.style.webkitMaskImage = colorImg.style.maskImage = maskGradients.join(', ');
-
-      if (elapsed < colorTotalTime) requestAnimationFrame(colorFrame);
-      else { colorImg.style.webkitMaskImage = colorImg.style.maskImage = ''; resolve(); }
+      
+      if (partStateTime >= drawTime) {
+        // 그리기 완료 후 획들 강제 완결
+        pathsInPart.forEach(pInfo => pInfo.element.setAttribute('stroke-dashoffset', 0));
+        activePartIdx++;
+        if (activePartIdx >= 4) {
+          phase = 1;
+          phaseT = simT;
+        } else {
+          partState = 'moving';
+          partStateTime = 0;
+        }
+      }
     }
-    requestAnimationFrame(colorFrame);
-  });
-}
-
-// 5. 단어 순차적 팝업 & 발음 자동 호출
-async function triggerWordsPop(token) {
-  for (let i = 0; i < WORDS_CONFIG.length; i++) {
-    if (runToken !== token) return;
-    const w = WORDS_CONFIG[i];
-    
-    const pop = document.createElement('div');
-    pop.className = 'word-pop show';
-    pop.style.top = w.top;
-    pop.style.left = w.left;
-    pop.innerHTML = `<div class="en">${w.en}</div><div class="ko">${w.ko}</div>`;
-    
-    const playTTS = (e) => {
-      e.stopPropagation();
-      speak(w.en);
-    };
-    pop.addEventListener('click', playTTS);
-    pop.addEventListener('touchstart', playTTS, {passive: true});
-    
-    wordsLayer.appendChild(pop);
-    speak(w.en);
-    
-    await new Promise(r => setTimeout(r, 1200 / speedMultiplier));
+  } else if(phase===1){ // 손 퇴장
+    const k=Math.min(1,(simT-phaseT)/450);
+    const hs=(vh*0.55)/meta.h;
+    if(!paused){ hx+=((vw+meta.w*hs)-hx)*0.12; hy+=((vh+meta.h*hs)-hy)*0.12; setHand(hx,hy); }
+    if(k>=1){ phase=2; phaseT=simT; }
+  } else if(phase===2){ // 물감 방울
+    const e2=simT-phaseT;
+    blobs.forEach((c,i)=>{
+      const s=Math.max(0,Math.min(1,(e2-i*180)/1100));
+      const ease=1-Math.pow(1-s,3);
+      c.setAttribute('r', ease*vw*0.20);
+    });
+    if(e2>BLOBMS){ phase=3; phaseT=simT; }
+  } else if(phase===3){ // 단어 팝
+    const e3=simT-phaseT;
+    wordsEl.forEach((w,i)=>{
+      if(e3>i*900 && !w.classList.contains('show')){ w.classList.add('show'); speak(WORDS[i].en); }
+    });
+    if(e3>WORDS.length*900+600){ state='done'; return; }
   }
-
-  animState = 'done';
+  raf=requestAnimationFrame(tick);
 }
-
-// 시작 및 재시작 바인딩
-stageOuter.addEventListener('click', () => {
-  unlockSpeech();
-  if (animState !== 'idle') return;
-  startDrawingFlow();
-});
-
-btnRestart.addEventListener('click', () => {
-  reset();
-  startDrawingFlow();
-});
-
-// 속도 제어
-const speedButtons = [btnSpeed1, btnSpeed05, btnSpeed2, btnSpeed4];
-speedButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    speedButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    speedMultiplier = parseFloat(btn.getAttribute('data-speed'));
-  });
-});
-
-// 손 토글 버튼 리스너
-btnTogglePen.addEventListener('click', () => {
-  hidePen = !hidePen;
-  if (hidePen) {
-    btnTogglePen.classList.add('active');
-    btnTogglePen.innerText = "손 보이기";
-    penOverlay.style.display = 'none';
-    penOverlay.style.opacity = '0';
-  } else {
-    btnTogglePen.classList.remove('active');
-    btnTogglePen.innerText = "손 숨기기";
-    penOverlay.style.display = 'block';
-    if (animState === 'running') {
-      penOverlay.style.opacity = '1';
-    }
-  }
-});
-
-// 초기 손 토글 버튼 상태 설정
-if (hidePen) {
-  btnTogglePen.classList.add('active');
-  btnTogglePen.innerText = "손 보이기";
-} else {
-  btnTogglePen.innerText = "손 숨기기";
-}
-
-reset();
-</script>
-</body>
-</html>
+</script></body></html>

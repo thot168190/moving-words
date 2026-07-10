@@ -520,6 +520,39 @@ function getPathPoints(dStr) {
   return { startPt: { x: 0, y: 0 }, endPt: { x: 0, y: 0 } };
 }
 
+function applyPenTransform(targetCanvasX, targetCanvasY, rotDeg) {
+  if (!handMeta) return;
+  const rect = sceneSvg.getBoundingClientRect();
+  const scaleX = rect.width / 1100;
+  const scaleY = rect.height / 613;
+  
+  // R13 Dynamic Aspect Scale (Math.max 조합으로 절단면 화면 밖 클램프)
+  const hs_base = (613 * 0.55) / handMeta.h;
+  const hs_req_x = (1100 - targetCanvasX) / (handMeta.w - handMeta.tipX);
+  const hs_req_y = (613 - targetCanvasY) / (handMeta.h - handMeta.tipY);
+  const hs = Math.max(hs_base, hs_req_x, hs_req_y);
+  
+  const w_screen = handMeta.w * hs * scaleX;
+  const h_screen = handMeta.h * hs * scaleY;
+  const pen_screen_x = rect.left + window.scrollX + targetCanvasX * scaleX;
+  const pen_screen_y = rect.top + window.scrollY + targetCanvasY * scaleY;
+  const tx = pen_screen_x - handMeta.tipX * hs * scaleX;
+  const ty = pen_screen_y - handMeta.tipY * hs * scaleY;
+  
+  penOverlay.style.width = `${w_screen}px`;
+  penOverlay.style.height = `${h_screen}px`;
+  // 실사 손은 회전 고정 (회전 금지!)
+  penOverlay.style.transform = `translate(${tx}px, ${ty}px)`;
+}
+
+function getPathStartPoint(dStr) {
+  const m = dStr.match(/M\s+([-\d.]+)\s+([-\d.]+)/);
+  if (m) {
+    return { x: parseFloat(m[1]), y: parseFloat(m[2]) };
+  }
+  return { x: 550, y: 300 };
+}
+
 // 부위 구분용 헬퍼 함수
 function getSection(y) {
   if (currentSceneIndex === 1) { // 등대
@@ -626,12 +659,12 @@ async function startSvgDrawing(sceneId, token) {
   document.body.removeChild(tempSvg);
   const totalLen = pathLengths.reduce((acc, l) => acc + l, 0);
 
-  // 마스크 패스 생성
+  // 마스크 패스 생성 (stroke-width 72 -> 110 확장 및 round화)
   const svgInkPaths = paths.map((line, i) => {
     const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     p.setAttribute('d', line.d);
     p.setAttribute('stroke', 'white');
-    p.setAttribute('stroke-width', '72');
+    p.setAttribute('stroke-width', '110');
     p.setAttribute('stroke-linecap', 'round');
     p.setAttribute('stroke-linejoin', 'round');
     p.setAttribute('fill', 'none');
@@ -647,7 +680,55 @@ async function startSvgDrawing(sceneId, token) {
 
   console.log("DEBUG: startSvgDrawing paths count:", paths.length, "svgInkPaths count:", svgInkPaths.length, "sceneId:", sceneId);
 
-  const totalDrawMs = 3800; // 3.8초 드로잉 고정
+  // R13 배우와 무대 변수 및 부위별 그리기 시간 분배
+  let partCenters;
+  if (sceneId === 'lighthouse') {
+    partCenters = [
+      { x: 440, y: 230 }, // 0: 등탑
+      { x: 270, y: 410 }, // 1: 좌바위
+      { x: 630, y: 410 }, // 2: 우바위
+      { x: 450, y: 495 }  // 3: 파도
+    ];
+  } else {
+    partCenters = [
+      { x: 540, y: 215 }, // 0: 돛
+      { x: 550, y: 410 }, // 1: 선체
+      { x: 300, y: 495 }, // 2: 좌물결
+      { x: 650, y: 495 }  // 3: 우물결
+    ];
+  }
+
+  const partPaths = [[], [], [], []];
+  guides.forEach((p, idx) => {
+    const dStr = paths[idx].d;
+    const pt = getPathStartPoint(dStr);
+    let partIdx = 0;
+    
+    if (sceneId === 'lighthouse') {
+      if (pt.y <= 360) partIdx = 0;
+      else if (pt.y > 360 && pt.y <= 460 && pt.x < 400) partIdx = 1;
+      else if (pt.y > 360 && pt.y <= 460 && pt.x >= 400) partIdx = 2;
+      else partIdx = 3;
+    } else {
+      if (pt.y <= 330) partIdx = 0;
+      else if (pt.y > 330 && pt.y <= 470) partIdx = 1;
+      else if (pt.y > 470 && pt.x < 450) partIdx = 2;
+      else partIdx = 3;
+    }
+    
+    partPaths[partIdx].push({
+      element: p,
+      length: pathLengths[idx],
+      cumOffset: cum[idx],
+      globalIdx: idx
+    });
+  });
+
+  let activePartIdx = 0;
+  let partState = 'moving'; // 'moving', 'breathing', 'drawing'
+  let partStateTime = 0;
+  const partDrawTimes = [1200, 1200, 1200, 1200];
+  const totalDrawMs = 4800; // 총 드로잉 타임 4.8초
 
   // 펜 초기 위치 잡기
   if (svgInkPaths.length > 0) {
@@ -661,50 +742,110 @@ async function startSvgDrawing(sceneId, token) {
   penOverlay.style.display = 'block';
   penOverlay.style.opacity = '1';
 
-  // R8 글로벌 항해 루프 (단일 requestAnimationFrame 프레임 루프 + 0.18 감쇠)
   let drawStart = null;
+  let lastTimestamp = 0;
+
   await new Promise(resolve => {
     function drawFrame(timestamp) {
       if (runToken !== token) { resolve(); return; }
-      if (!drawStart) drawStart = timestamp;
-      const elapsed = timestamp - drawStart;
-      const progress = Math.min(elapsed / totalDrawMs, 1);
-      const easedProgress = getEasedProgress(progress);
-      
-      const currentLen = totalLen * easedProgress;
-      
-      let targetX = penX;
-      let targetY = penY;
-      
-      let accum = 0;
-      for (let i = 0; i < svgInkPaths.length; i++) {
-        const { element, length } = svgInkPaths[i];
-        if (currentLen >= accum + length) {
-          element.style.strokeDashoffset = '0';
-        } else if (currentLen < accum) {
-          element.style.strokeDashoffset = length;
-        } else {
-          const localLen = currentLen - accum;
-          element.style.strokeDashoffset = length - localLen;
-          
-          const pt = element.getPointAtLength(localLen);
-          targetX = pt.x;
-          targetY = pt.y;
-        }
-        accum += length;
+      if (!drawStart) {
+        drawStart = timestamp;
+        lastTimestamp = timestamp;
       }
       
-      // R8 글로벌 감쇠 추종 (0.18)
-      penX += (targetX - penX) * 0.18;
-      penY += (targetY - penY) * 0.18;
+      const dt = Math.min(50, timestamp - lastTimestamp);
+      lastTimestamp = timestamp;
       
-      // 2.1Hz 미세 요동 추가
-      const waveY = Math.sin((timestamp / 1000) * 2 * Math.PI * 2.1) * 1.8;
+      const dt_real = dt;
+      partStateTime += dt_real;
       
-      applyPenTransform(penX, penY + waveY, penRot);
+      const center = partCenters[activePartIdx];
       
-      if (progress < 1) requestAnimationFrame(drawFrame);
-      else resolve();
+      if (partState === 'moving') {
+        // 1. 손을 목표 부위 센터로 속도제한(W * 0.35 / sec)을 지키며 부드럽게 비행
+        const dx = center.x - penX;
+        const dy = center.y - penY;
+        const dist = Math.hypot(dx, dy);
+        const maxMove = (1100 * 0.35) * (dt_real / 1000);
+        
+        if (dist <= maxMove) {
+          penX = center.x;
+          penY = center.y;
+          partState = 'breathing';
+          partStateTime = 0;
+        } else {
+          penX += (dx / dist) * maxMove;
+          penY += (dy / dist) * maxMove;
+        }
+        applyPenTransform(penX, penY, penRot);
+      } 
+      else if (partState === 'breathing') {
+        // 2. 부위 도착 후 150ms 동안 호흡정지
+        penX = center.x;
+        penY = center.y;
+        applyPenTransform(penX, penY, penRot);
+        if (partStateTime >= 150) {
+          partState = 'drawing';
+          partStateTime = 0;
+        }
+      } 
+      else if (partState === 'drawing') {
+        // 3. 리빌되고 있는 활성 획의 팁 주변을 끄적이면서 선화 리빌
+        const drawTime = partDrawTimes[activePartIdx];
+        const partProg = Math.min(partStateTime / drawTime, 1);
+        
+        const pathsInPart = partPaths[activePartIdx];
+        const N = pathsInPart.length;
+        
+        // 현재 리빌되고 있는 획 팁 좌표 추적 (허공 헛손질 박멸)
+        const curIdx = Math.min(Math.floor(partProg * N), N - 1);
+        const pInfo = pathsInPart[curIdx];
+        const localProg = Math.max(0, Math.min(1, (partProg - (curIdx / N)) * N));
+        const pt = pInfo.element.getPointAtLength(pInfo.length * localProg);
+        
+        let targetX = pt.x;
+        let targetY = pt.y;
+        
+        // 획 팁 주변 20px 리사주 요동 끄적임
+        const angle = (partStateTime / 1000) * 2 * Math.PI * 2.0;
+        const radX = 20;
+        const radY = 16;
+        targetX += Math.cos(angle) * radX;
+        targetY += Math.sin(angle * 2) * radY;
+        
+        penX += (targetX - penX) * 0.22;
+        penY += (targetY - penY) * 0.22;
+        applyPenTransform(penX, penY, penRot);
+        
+        // 부위 guides 순차 리빌
+        pathsInPart.forEach((pInfo, j) => {
+          const startProg = j / N;
+          const endProg = (j + 1) / N;
+          if (partProg >= endProg) {
+            pInfo.element.setAttribute('stroke-dashoffset', 0);
+          } else if (partProg < startProg) {
+            pInfo.element.setAttribute('stroke-dashoffset', pInfo.length + 2);
+          } else {
+            const localProg = (partProg - startProg) * N;
+            pInfo.element.setAttribute('stroke-dashoffset', pInfo.length * (1 - localProg));
+          }
+        });
+        
+        if (partStateTime >= drawTime) {
+          // 그리기 완료 후 획들 강제 완결
+          pathsInPart.forEach(pInfo => pInfo.element.setAttribute('stroke-dashoffset', 0));
+          activePartIdx++;
+          if (activePartIdx >= 4) {
+            resolve();
+            return;
+          } else {
+            partState = 'moving';
+            partStateTime = 0;
+          }
+        }
+      }
+      
+      requestAnimationFrame(drawFrame);
     }
     requestAnimationFrame(drawFrame);
   });
