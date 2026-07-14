@@ -1,6 +1,6 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>엔진 실험실 — 기준 구현 v11 (로부장)</title>
+<title>엔진 실험실 — 최종판 v14 (로부장)</title>
 <style>
 body{margin:0;background:#f7f5ef;font-family:Pretendard,-apple-system,sans-serif;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px}
 #wrap{width:min(96vw,1100px);border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.12);background:#fdfcf9;position:relative}
@@ -26,279 +26,142 @@ button.on{background:#3182f6;color:#fff;border-color:#3182f6}
 <script>
 const NS='http://www.w3.org/2000/svg';
 let SPEED=1, HAND=true, state='idle', raf=null, phase=0, simT=0, phaseT=0, last=0, paused=false;
-let sc, meta, vw, vh, guides=[], lens=[], cum=[], L=0, handEl, blobs=[], wordsEl=[];
-let hx=0, hy=0, started=false, colorT0=0, exitT0=0;
-const DRAW=4800, BLOBMS=2600; // R13 드로잉 시간 약 4.8초로 확장
+let sc, meta, vw, vh, guides=[], lens=[], durs=[], handEl, blobs=[], wordsEl=[];
+let gi=0, gLocal=0, flying=true, hx=0, hy=0, hs=1;
+const TOTALDRAW=4600, BLOBMS=2600, HANDSPD=0.38; // 화면폭 비율/초 — 인간 속도
 let speechUnlocked=false;
-
-// 4개 부위 그룹화 변수 및 중심점 정의 (R13)
-let partPaths = [[], [], [], []];
-const partCenters = [
-  { x: 440, y: 230 }, // 0: 등탑 (Lighthouse Tower)
-  { x: 270, y: 410 }, // 1: 좌바위 (Left Rock)
-  { x: 630, y: 410 }, // 2: 우바위 (Right Rock)
-  { x: 450, y: 495 }  // 3: 파도 (Wave)
-];
-let activePartIdx = 0;
-let partState = 'moving'; // 'moving' (이동), 'breathing' (150ms 호흡), 'drawing' (끄적이며 드로잉)
-let partStateTime = 0;
-const partDrawTimes = [1200, 1200, 1200, 1200]; // 각 부위별 드로잉 시간 (합 4800ms)
-
-function getPathStartPoint(dStr) {
-  const m = dStr.match(/M\s+([-\d.]+)\s+([-\d.]+)/);
-  if (m) {
-    return { x: parseFloat(m[1]), y: parseFloat(m[2]) };
-  }
-  return { x: vw / 2, y: vh / 2 };
-}
-
 function unlock(){ if(speechUnlocked||!window.speechSynthesis)return;
-  const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u);speechUnlocked=true;}
+ const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u);speechUnlocked=true;}
 function bestVoice(){ const v=speechSynthesis.getVoices();
-  return v.find(x=>x.lang.startsWith('en')&&x.name.includes('Samantha'))||
-         v.find(x=>x.lang.startsWith('en')&&x.name.includes('Google US English'))||
-         v.find(x=>x.lang.startsWith('en')&&x.name.includes('Aria'))||
-         v.find(x=>x.lang==='en-US'); }
+ return v.find(x=>x.lang.startsWith('en')&&x.name.includes('Samantha'))||
+        v.find(x=>x.lang.startsWith('en')&&x.name.includes('Google US English'))||
+        v.find(x=>x.lang.startsWith('en')&&x.name.includes('Aria'))||
+        v.find(x=>x.lang==='en-US'); }
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
 function speak(t){ if(!window.speechSynthesis)return; const u=new SpeechSynthesisUtterance(t);
-  u.lang='en-US';u.rate=1.0;u.pitch=1.05; const v=bestVoice(); if(v)u.voice=v;
-  speechSynthesis.speak(u);}
+ u.lang='en-US';u.rate=1.0;u.pitch=1.05;const v=bestVoice();if(v)u.voice=v;speechSynthesis.speak(u);}
 const WORDS=[
-  {en:'LIGHTHOUSE',ko:'등대',x:.56,y:.16},{en:'LIGHT',ko:'빛',x:.22,y:.10},
-  {en:'ROCK',ko:'바위',x:.16,y:.58},{en:'SEA',ko:'바다',x:.72,y:.78}];
+ {en:'LIGHTHOUSE',ko:'등대',x:.56,y:.14},{en:'LIGHT',ko:'빛',x:.24,y:.09},
+ {en:'ROCK',ko:'바위',x:.19,y:.52},{en:'SEA',ko:'바다',x:.70,y:.70}];
 Promise.all([
-  fetch('/lab-scenes-v3.json?v=17').then(r=>r.json()),
-  fetch('/hand-meta.json?v=17').then(r=>r.json())
+ fetch('/lab-scenes-v3.json?v=22').then(r=>r.json()),
+ fetch('/hand-meta.json?v=22').then(r=>r.json())
 ]).then(([d,m])=>{ sc=d.scenes[0]; meta=m; build(); });
+let svg;
 function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
 function build(){
-  const svg=document.getElementById('svg'); window.svg=svg;
-  const vb=sc.vb.split(' ').map(Number); vw=vb[2]; vh=vb[3];
-  svg.setAttribute('viewBox',sc.vb);
-  // 종이 질감 + 비네트
-  const defs=el('defs',{});
-  const f=el('filter',{id:'paper'},defs);
-  el('feTurbulence',{type:'fractalNoise',baseFrequency:'0.9',numOctaves:'2',result:'n'},f);
-  el('feColorMatrix',{'in':'n',type:'matrix',values:'0 0 0 0 0  0 0 0 0 0  0 0 0 .03 0'},f);
-  el('rect',{x:0,y:0,width:vw,height:vh,fill:'#fdfcf9'});
-  // 마스크: 선화 (stroke-width 78 -> 110 확장 및 round화)
-  const mL=el('mask',{id:'mL'},defs);
-  el('rect',{x:0,y:0,width:vw,height:vh,fill:'black'},mL);
-  sc.guides.forEach(g=>{
-    const p=el('path',{d:g.d,fill:'none',stroke:'white','stroke-width':110,'stroke-linecap':'round','stroke-linejoin':'round'},mL);
-    guides.push(p);
-  });
-  // 마스크: 채색 (부드러운 블롭)
-  const mC=el('mask',{id:'mC'},defs);
-  el('rect',{x:0,y:0,width:vw,height:vh,fill:'black'},mC);
-  const blur=el('filter',{id:'soft'},defs);
-  el('feGaussianBlur',{stdDeviation:30},blur);
-  const bg=el('g',{filter:'url(#soft)'},mC);
-  for(let i=0;i<8;i++){
-    const fr=(i+0.5)/8, pt=tourPoint(fr*1);
-    blobs.push(el('circle',{cx:pt?pt.x:vw/2,cy:pt?pt.y:vh/2,r:0,fill:'white'},bg));
-  }
-  // 레이어: 채색(아래) → 선화(위)
-  el('image',{href:sc.img+'?v=17',x:0,y:0,width:vw,height:vh,mask:'url(#mC)',
-    style:'filter:saturate(.82) brightness(1.06)'});
-  el('image',{href:sc.line+'?v=17',x:0,y:0,width:vw,height:vh,mask:'url(#mL)',
-    style:'mix-blend-mode:multiply'});
-  el('rect',{x:0,y:0,width:vw,height:vh,filter:'url(#paper)','pointer-events':'none'});
-  
-  // 손 스케일 균일화 (s = 캔버스높이*0.55 / h) 및 그림자 rgba(0,0,0,.12) 약화
-  const hs=(vh*0.55)/meta.h;
-  handEl=el('image',{href:'/hand.png?v=17',width:meta.w*hs,height:meta.h*hs,
-    style:'filter:drop-shadow(-10px 14px 12px rgba(0,0,0,.12))'});
-  hx=vw+meta.w*hs; hy=vh+meta.h*hs; setHand(hx,hy);
-  
-  // 길이 계산 (마스크 안 path는 getTotalLength 가능)
-  guides.forEach(p=>{const l=p.getTotalLength();lens.push(l);cum.push(L);L+=l;
-    p.setAttribute('stroke-dasharray',l+2);p.setAttribute('stroke-dashoffset',l+2);});
-
-  // 부위 그룹 분류 (R13)
-  partPaths = [[], [], [], []];
-  guides.forEach((p, idx) => {
-    const dStr = sc.guides[idx].d;
-    const pt = getPathStartPoint(dStr);
-    let partIdx = 0;
-    if (pt.y <= 360) {
-      partIdx = 0; // 등탑
-    } else if (pt.y > 360 && pt.y <= 460 && pt.x < 400) {
-      partIdx = 1; // 좌바위
-    } else if (pt.y > 360 && pt.y <= 460 && pt.x >= 400) {
-      partIdx = 2; // 우바위
-    } else {
-      partIdx = 3; // 파도
-    }
-    partPaths[partIdx].push({
-      element: p,
-      length: lens[idx],
-      cumOffset: cum[idx],
-      globalIdx: idx
-    });
-  });
-
-  // 단어
-  WORDS.forEach(w=>{
-    const d=document.createElement('div');d.className='wd';
-    d.style.left=(w.x*100)+'%';d.style.top=(w.y*100)+'%';
-    d.innerHTML='<div class="en">'+w.en+'</div><div class="ko">'+w.ko+'</div>';
-    document.getElementById('wrap').appendChild(d);wordsEl.push(d);
-  });
-  document.getElementById('hint').onclick=start;
-  document.getElementById('replay').onclick=()=>{reset();start();};
-  document.querySelectorAll('.sp').forEach(b=>b.onclick=()=>{
-    document.querySelectorAll('.sp').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');SPEED=parseFloat(b.dataset.s);});
-  document.getElementById('pause').onclick=e=>{ if(state!=='run')return;
-    paused=!paused; e.target.textContent=paused?'계속':'일시정지';
-    if(paused) speechSynthesis&&speechSynthesis.cancel(); };
-  document.getElementById('handtg').onclick=e=>{HAND=!HAND;
-    handEl.style.display=HAND?'':'none';e.target.textContent=HAND?'손 숨기기':'손 보이기';};
+ svg=document.getElementById('svg');
+ const vb=sc.vb.split(' ').map(Number); vw=vb[2]; vh=vb[3];
+ svg.setAttribute('viewBox',sc.vb);
+ const defs=el('defs',{});
+ el('rect',{x:0,y:0,width:vw,height:vh,fill:'#fdfcf9'});
+ const mL=el('mask',{id:'mL'},defs);
+ el('rect',{x:0,y:0,width:vw,height:vh,fill:'black'},mL);
+ sc.guides.forEach(g=>{
+  guides.push(el('path',{d:g.d,fill:'none',stroke:'white','stroke-width':96,'stroke-linecap':'butt','stroke-linejoin':'round'},mL));
+ });
+ const mC=el('mask',{id:'mC'},defs);
+ el('rect',{x:0,y:0,width:vw,height:vh,fill:'black'},mC);
+ const blur=el('filter',{id:'soft'},defs);
+ el('feGaussianBlur',{stdDeviation:30},blur);
+ const bg=el('g',{filter:'url(#soft)'},mC);
+ el('image',{href:sc.img+'?v=22',x:0,y:0,width:vw,height:vh,mask:'url(#mC)',
+  style:'filter:saturate(.82) brightness(1.06)'});
+ el('image',{href:sc.line+'?v=22',x:0,y:0,width:vw,height:vh,mask:'url(#mL)',
+  style:'mix-blend-mode:multiply'});
+ // 손
+ hs=(vh*0.62)/meta.h;
+ handEl=el('image',{href:'/hand.png?v=22',width:meta.w*hs,height:meta.h*hs,
+  style:'filter:drop-shadow(-9px 12px 10px rgba(0,0,0,.13))'});
+ hx=vw+meta.w*hs; hy=vh+meta.h*hs; setHand(hx,hy);
+ // 길이·시간 배분
+ let L=0; guides.forEach(p=>{const l=p.getTotalLength();lens.push(l);L+=l;
+  p.setAttribute('stroke-dasharray',l+2);p.setAttribute('stroke-dashoffset',l+2);});
+ guides.forEach((p,i)=>durs.push(lens[i]/L*TOTALDRAW));
+ // 손 항로: 9개 정박점(안내선 중간점 표본) — 손은 이 매끈한 길만 다닌다
+ const step=Math.max(1,Math.floor(guides.length/4));
+ window.hp=[];
+ for(let i=0;i<guides.length;i+=step) hp.push(guides[i].getPointAtLength(lens[i]/2));
+ hp.push(guides[guides.length-1].getPointAtLength(lens[guides.length-1]));
+ window.hpCum=[0];
+ for(let i=1;i<hp.length;i++) hpCum.push(hpCum[i-1]+Math.hypot(hp[i].x-hp[i-1].x,hp[i].y-hp[i-1].y));
+ window.hpL=hpCum[hpCum.length-1];
+ // 채색 방울: 안내선 중간점 8곳
+ for(let i=0;i<8;i++){
+  const gI=Math.floor(i/8*guides.length);
+  const pt=guides[gI].getPointAtLength(lens[gI]/2);
+  blobs.push(el('circle',{cx:pt.x,cy:pt.y,r:0,fill:'white'},bg));
+ }
+ WORDS.forEach(w=>{
+  const d=document.createElement('div');d.className='wd';
+  d.style.left=(w.x*100)+'%';d.style.top=(w.y*100)+'%';
+  d.innerHTML='<div class="en">'+w.en+'</div><div class="ko">'+w.ko+'</div>';
+  document.getElementById('wrap').appendChild(d);wordsEl.push(d);
+ });
+ document.getElementById('hint').onclick=start;
+ document.getElementById('replay').onclick=()=>{reset();start();};
+ document.querySelectorAll('.sp').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.sp').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');SPEED=parseFloat(b.dataset.s);});
+ document.getElementById('pause').onclick=e=>{ if(state!=='run')return;
+  paused=!paused; e.target.textContent=paused?'계속':'일시정지';
+  if(paused&&window.speechSynthesis)speechSynthesis.cancel(); };
+ document.getElementById('handtg').onclick=e=>{HAND=!HAND;
+  handEl.style.display=HAND?'':'none';e.target.textContent=HAND?'손 숨기기':'손 보이기';};
 }
-function tourPoint(frac){ if(!L)return null; const target=Math.max(0,Math.min(L-0.1,frac*L));
-  let i=0; while(i<guides.length-1 && cum[i+1]<=target)i++;
-  return guides[i].getPointAtLength(target-cum[i]); }
-function setHand(x,y){
-  const hs_base = (vh * 0.55) / meta.h;
-  const hs_req_x = (vw - x) / (meta.w - meta.tipX);
-  const hs_req_y = (vh - y) / (meta.h - meta.tipY);
-  // Math.max를 취해 X경계와 Y경계 둘 다 캔버스 밖으로 밀어내어 절단면을 완전히 숨김
-  const hs = Math.max(hs_base, hs_req_x, hs_req_y);
-  
-  handEl.setAttribute('width', meta.w * hs);
-  handEl.setAttribute('height', meta.h * hs);
-  handEl.setAttribute('x', x - meta.tipX * hs);
-  handEl.setAttribute('y', y - meta.tipY * hs);
-}
+function setHand(x,y){ handEl.setAttribute('x',x-meta.tipX*hs); handEl.setAttribute('y',y-meta.tipY*hs); }
 function start(){ unlock(); if(state==='run')return;
-  document.getElementById('hint').style.display='none';
-  state='run'; phase=0; simT=0; phaseT=0; last=performance.now(); paused=false;
-  document.getElementById('pause').textContent='일시정지';
-  raf=requestAnimationFrame(tick); }
-function reset(){ cancelAnimationFrame(raf); state='idle'; phase=0; simT=0; phaseT=0; paused=false;
-  speechSynthesis && speechSynthesis.cancel();
-  guides.forEach((p,i)=>p.setAttribute('stroke-dashoffset',lens[i]+2));
-  blobs.forEach(c=>c.setAttribute('r',0));
-  wordsEl.forEach(w=>w.classList.remove('show'));
-  
-  activePartIdx = 0;
-  partState = 'moving';
-  partStateTime = 0;
-  
-  const hs=(vh*0.55)/meta.h; hx=vw+meta.w*hs; hy=vh+meta.h*hs; setHand(hx,hy); }
+ document.getElementById('hint').style.display='none';
+ state='run'; phase=0; simT=0; phaseT=0; gi=0; gLocal=0; flying=true;
+ last=performance.now(); paused=false;
+ document.getElementById('pause').textContent='일시정지';
+ raf=requestAnimationFrame(tick); }
+function reset(){ cancelAnimationFrame(raf); state='idle'; phase=0; simT=0; gi=0; gLocal=0; flying=true; paused=false;
+ window.speechSynthesis&&speechSynthesis.cancel();
+ guides.forEach((p,i)=>p.setAttribute('stroke-dashoffset',lens[i]+2));
+ blobs.forEach(c=>c.setAttribute('r',0));
+ wordsEl.forEach(w=>w.classList.remove('show'));
+ hx=vw+meta.w*hs; hy=vh+meta.h*hs; setHand(hx,hy); }
 function tick(now){
-  const dt=Math.min(50, now-last); last=now;
-  const dt_real = paused ? 0 : dt * SPEED;
-  simT += dt_real;
-  
-  if(phase===0){ // R13 드로잉: 배우와 무대 분리 구조
-    partStateTime += dt_real;
-    const center = partCenters[activePartIdx];
-    
-    if (partState === 'moving') {
-      // 1. 손을 목표 부위 센터로 속도제한(W * 0.35 / sec)을 지키며 부드럽게 비행
-      const dx = center.x - hx;
-      const dy = center.y - hy;
-      const dist = Math.hypot(dx, dy);
-      const maxMove = (vw * 0.35) * (dt_real / 1000);
-      
-      if (dist <= maxMove) {
-        hx = center.x;
-        hy = center.y;
-        partState = 'breathing';
-        partStateTime = 0;
-      } else {
-        hx += (dx / dist) * maxMove;
-        hy += (dy / dist) * maxMove;
-      }
-      if (!paused) setHand(hx, hy);
-    } 
-    else if (partState === 'breathing') {
-      // 2. 부위 도착 후 150ms 동안 호흡정지
-      hx = center.x;
-      hy = center.y;
-      if (!paused) setHand(hx, hy);
-      if (partStateTime >= 150) {
-        partState = 'drawing';
-        partStateTime = 0;
-      }
-    } 
-    else if (partState === 'drawing') {
-      // 3. 리빌되고 있는 활성 획의 팁 주변을 끄적이면서 선화 리빌
-      const drawTime = partDrawTimes[activePartIdx];
-      const partProg = Math.min(partStateTime / drawTime, 1);
-      
-      const pathsInPart = partPaths[activePartIdx];
-      const N = pathsInPart.length;
-      
-      // 현재 리빌되고 있는 획 팁 좌표 추적 (허공 헛손질 박멸)
-      const curIdx = Math.min(Math.floor(partProg * N), N - 1);
-      const pInfo = pathsInPart[curIdx];
-      const localProg = Math.max(0, Math.min(1, (partProg - (curIdx / N)) * N));
-      const pt = pInfo.element.getPointAtLength(pInfo.length * localProg);
-      
-      let targetX = pt.x;
-      let targetY = pt.y;
-      
-      // 획 팁 주변 20px 리사주 요동 끄적임
-      const angle = (partStateTime / 1000) * 2 * Math.PI * 2.0;
-      const radX = 20;
-      const radY = 16;
-      targetX += Math.cos(angle) * radX;
-      targetY += Math.sin(angle * 2) * radY;
-      
-      hx += (targetX - hx) * 0.22;
-      hy += (targetY - hy) * 0.22;
-      if (!paused) setHand(hx, hy);
-      
-      // 부위 guides 순차 리빌
-      pathsInPart.forEach((pInfo, j) => {
-        const startProg = j / N;
-        const endProg = (j + 1) / N;
-        if (partProg >= endProg) {
-          pInfo.element.setAttribute('stroke-dashoffset', 0);
-        } else if (partProg < startProg) {
-          pInfo.element.setAttribute('stroke-dashoffset', pInfo.length + 2);
-        } else {
-          const localProg = (partProg - startProg) * N;
-          pInfo.element.setAttribute('stroke-dashoffset', pInfo.length * (1 - localProg));
-        }
-      });
-      
-      if (partStateTime >= drawTime) {
-        // 그리기 완료 후 획들 강제 완결
-        pathsInPart.forEach(pInfo => pInfo.element.setAttribute('stroke-dashoffset', 0));
-        activePartIdx++;
-        if (activePartIdx >= 4) {
-          phase = 1;
-          phaseT = simT;
-        } else {
-          partState = 'moving';
-          partStateTime = 0;
-        }
-      }
-    }
-  } else if(phase===1){ // 손 퇴장
-    const k=Math.min(1,(simT-phaseT)/450);
-    const hs=(vh*0.55)/meta.h;
-    if(!paused){ hx+=((vw+meta.w*hs)-hx)*0.12; hy+=((vh+meta.h*hs)-hy)*0.12; setHand(hx,hy); }
-    if(k>=1){ phase=2; phaseT=simT; }
-  } else if(phase===2){ // 물감 방울
-    const e2=simT-phaseT;
-    blobs.forEach((c,i)=>{
-      const s=Math.max(0,Math.min(1,(e2-i*180)/1100));
-      const ease=1-Math.pow(1-s,3);
-      c.setAttribute('r', ease*vw*0.20);
-    });
-    if(e2>BLOBMS){ phase=3; phaseT=simT; }
-  } else if(phase===3){ // 단어 팝
-    const e3=simT-phaseT;
-    wordsEl.forEach((w,i)=>{
-      if(e3>i*900 && !w.classList.contains('show')){ w.classList.add('show'); speak(WORDS[i].en); }
-    });
-    if(e3>WORDS.length*900+600){ state='done'; return; }
-  }
-  raf=requestAnimationFrame(tick);
+ const dt=Math.min(50,now-last); last=now;
+ const d=paused?0:dt*SPEED;
+ simT+=d;
+ if(phase===0){
+  const prog=Math.min(1, simT/TOTALDRAW);
+  // 리빌: 전역 시간표
+  const target=prog* lens.reduce((a,b)=>a+b,0);
+  let acc=0;
+  guides.forEach((g,i)=>{
+   const local=Math.max(0,Math.min(lens[i],target-acc));
+   g.setAttribute('stroke-dashoffset',(lens[i]-local)+(local>=lens[i]?0:2)*0);
+   acc+=lens[i];
+  });
+  // 손: 항로를 등속 스윕 (쓰윽) + 미세 물결
+  const hd=prog*hpL;
+  let i=0; while(i<hp.length-2 && hpCum[i+1]<=hd) i++;
+  const seg=(hd-hpCum[i])/Math.max(1,(hpCum[i+1]-hpCum[i]));
+  const tx=hp[i].x+(hp[i+1].x-hp[i].x)*seg;
+  const ty=hp[i].y+(hp[i+1].y-hp[i].y)*seg;
+  if(d>0){ const wob=Math.sin(simT*0.008)*3;
+   hx+=(tx-hx)*0.08; hy+=(ty+wob-hy)*0.08; setHand(hx,hy); }
+  if(prog>=1){ phase=1; phaseT=simT; }
+ } else if(phase===1){ // 손 퇴장
+  if(d>0){ hx+=((vw+meta.w*hs)-hx)*0.1; hy+=((vh+meta.h*hs)-hy)*0.1; setHand(hx,hy); }
+  if(simT-phaseT>500){ phase=2; phaseT=simT; }
+ } else if(phase===2){ // 물감 방울
+  const e2=simT-phaseT;
+  blobs.forEach((c,i)=>{
+   const s=Math.max(0,Math.min(1,(e2-i*180)/1100));
+   c.setAttribute('r',(1-Math.pow(1-s,3))*vw*0.20);
+  });
+  if(e2>BLOBMS){ phase=3; phaseT=simT; }
+ } else if(phase===3){
+  const e3=simT-phaseT;
+  wordsEl.forEach((w,i)=>{
+   if(e3>i*900 && !w.classList.contains('show')){ w.classList.add('show'); speak(WORDS[i].en); }
+  });
+  if(e3>WORDS.length*900+600){ state='done'; return; }
+ }
+ raf=requestAnimationFrame(tick);
 }
 </script></body></html>
