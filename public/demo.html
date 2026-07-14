@@ -699,7 +699,7 @@ async function startSvgDrawing(sceneId, token) {
   }
 
   const partPaths = [[], [], [], []];
-  guides.forEach((p, idx) => {
+  svgInkPaths.forEach((pInfo, idx) => {
     const dStr = paths[idx].d;
     const pt = getPathStartPoint(dStr);
     let partIdx = 0;
@@ -717,9 +717,8 @@ async function startSvgDrawing(sceneId, token) {
     }
     
     partPaths[partIdx].push({
-      element: p,
-      length: pathLengths[idx],
-      cumOffset: cum[idx],
+      element: pInfo.element,
+      length: pInfo.length,
       globalIdx: idx
     });
   });
