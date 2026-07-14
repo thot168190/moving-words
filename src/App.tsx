@@ -643,7 +643,7 @@ export default function App() {
 
           <div className="text-[#333333] text-[14px] sm:text-[15px] leading-6 font-bold">
             <p className="font-bold text-[#141414] mb-1">매또컴퍼니 | 대표: 이미현</p>
-            <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 신고 예정</p>
+            <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 면제 (부가가치세법상 간이과세자)</p>
             <p className="mb-3">주소: 경기도 양주시 고읍로 11-7</p>
             <p className="mt-3.5">
               <span>문의: thot168190@gmail.com</span>
