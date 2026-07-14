@@ -805,12 +805,14 @@ async function startSvgDrawing(sceneId, token) {
         let targetX = pt.x;
         let targetY = pt.y;
         
-        // 획 팁 주변 20px 리사주 요동 끄적임
+        // 획 팁 주변 리사주 요동 끄적임 제거 (손 떨림 완화)
+        /*
         const angle = (partStateTime / 1000) * 2 * Math.PI * 2.0;
         const radX = 20;
         const radY = 16;
         targetX += Math.cos(angle) * radX;
         targetY += Math.sin(angle * 2) * radY;
+        */
         
         penX += (targetX - penX) * 0.22;
         penY += (targetY - penY) * 0.22;
