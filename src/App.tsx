@@ -346,8 +346,7 @@ export default function App() {
               <p className="text-indigo-950 font-black text-[16px] mb-3 flex"><span className="font-bold text-indigo-400 w-16 shrink-0">방식</span> <span className="word-break-keep">그림→글자 변신 애니메이션</span></p>
               <div className="text-indigo-950 font-black text-[16px] mb-3 flex items-center">
                 <span className="font-bold text-indigo-400 w-16 shrink-0">가격</span>
-                <span className="text-[13px] text-neutral-400 line-through font-bold mr-2">₩9,900</span>
-                <span className="text-rose-600 font-extrabold text-[18px]">₩4,900 원샷</span>
+                <span className="text-rose-600 font-extrabold text-[18px]">완성 코스 ₩9,900</span>
               </div>
               <p className="text-indigo-700 font-black text-[15px] flex"><span className="font-bold text-indigo-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">지루한 암기가 힘들고 단어가 안 외워지는 분</span></p>
             </div>
@@ -392,8 +391,7 @@ export default function App() {
                   <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 whitespace-nowrap border-y border-indigo-500/80">그림→글자 변신 애니메이션</td>
                   <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 whitespace-nowrap border-y border-indigo-500/80">
                     <div className="flex flex-col">
-                      <span className="text-[12px] text-neutral-400 line-through font-bold">₩9,900</span>
-                      <span className="text-rose-600 font-extrabold text-[16px] sm:text-[19px]">₩4,900 원샷</span>
+                      <span className="text-rose-600 font-extrabold text-[16px] sm:text-[19px]">완성 코스 ₩9,900</span>
                     </div>
                   </td>
                   <td className="py-6 pl-4 pr-5 font-black text-[15px] sm:text-[18px] text-indigo-700 last:rounded-r-2xl border-y border-r-2 border-indigo-500/80" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
@@ -429,10 +427,10 @@ export default function App() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-            {/* ── Basic (Starter) ── */}
+          <div className="max-w-md mx-auto">
+            {/* ── 중등 800 완성 코스 (코스 카드) ── */}
             <motion.div
-              className="border border-neutral-200/90 rounded-[28px] p-8 flex flex-col relative bg-white shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300"
+              className="border-2 border-indigo-600 rounded-[28px] p-8 flex flex-col relative bg-neutral-900 shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1.5 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0 }}
@@ -441,182 +439,48 @@ export default function App() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <span className="bg-[#c2410c] text-white text-[11px] font-black tracking-[0.12em] uppercase px-4 py-1.5 rounded-full shadow-sm">런칭 기념가</span>
               </div>
-              <p className="text-[#555555] text-[13px] tracking-[0.15em] uppercase mb-4 font-black">스타터 (Starter)</p>
+              <p className="text-white/60 text-[13px] tracking-[0.15em] uppercase mb-4 font-black">코스 (Course)</p>
               
               <div className="flex flex-col items-start mb-6">
-                <span className="text-[#888888] text-[16px] line-through font-bold mb-1">₩9,900</span>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-[36px] sm:text-[42px] font-black tracking-tight text-[#111111] leading-none">₩4,900</span>
-                  <span className="text-[#444444] text-[13px] sm:text-[14px] font-bold">/ 평생 소장</span>
+                  <span className="text-[36px] sm:text-[42px] font-black tracking-tight text-white leading-none">₩9,900</span>
+                  <span className="text-white/70 text-[13px] sm:text-[14px] font-bold">/ 12주 · 매주 새 챕터 · 구독 아님</span>
                 </div>
               </div>
 
-              <p className="text-[#333333] text-[14.5px] leading-relaxed mb-8 font-bold">
-                중등 필수 800단어 전권. 구독 아님 — 한 번 결제로 평생.
-              </p>
+              <h3 className="text-white font-gmarket font-black text-[22px] mb-4">
+                중등 800 완성 코스
+              </h3>
               
               <ul className="flex flex-col gap-4 mb-10 flex-1">
-                <li className="flex items-start text-[#111111] text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-100 text-[#c2410c] flex items-center justify-center mr-3 mt-0.5">
+                <li className="flex items-start text-white text-[14px] font-bold">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
-                  <span>움직이는 단어 800개 전권</span>
+                  <span>움직이는 단어 800개(매주 추가)</span>
                 </li>
-                <li className="flex items-start text-[#111111] text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-100 text-[#c2410c] flex items-center justify-center mr-3 mt-0.5">
+                <li className="flex items-start text-white text-[14px] font-bold">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
-                  <span>터치 변신 + 원어민 발음 무제한</span>
+                  <span>터치 변신+원어민 발음 무제한</span>
                 </li>
-                <li className="flex items-start text-[#111111] text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-100 text-[#c2410c] flex items-center justify-center mr-3 mt-0.5">
+                <li className="flex items-start text-white text-[14px] font-bold">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
-                  <span>모든 기기 지원 · 광고 없음</span>
+                  <span>완주 후 수능 코스 우선권</span>
                 </li>
               </ul>
               <div className="mt-auto">
                 <TossCheckoutButton
                   product={TOSS_PRODUCTS[0]}
-                  onError={(err) => console.error('Toss error:', err)}
-                />
-              </div>
-            </motion.div>
-
-            {/* ── Pro (Premium) ── */}
-            <motion.div
-              className="border-2 border-indigo-600 rounded-[28px] p-8 flex flex-col relative bg-neutral-900 shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1.5 transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <span className="bg-indigo-600 text-white text-[11px] font-black tracking-[0.12em] uppercase px-4 py-1.5 rounded-full shadow-md">
-                  가장 인기있는 플랜
-                </span>
-              </div>
-              <p className="text-white/60 text-[13px] tracking-[0.15em] uppercase mb-4 font-black">프리미엄 (Premium)</p>
-              
-              <div className="flex flex-col items-start mb-6">
-                <span className="text-white/30 text-[16px] font-bold mb-1 select-none opacity-0">-</span>
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-[36px] sm:text-[42px] font-black tracking-tight text-white leading-none">₩49,000</span>
-                  <span className="text-white/70 text-[13px] sm:text-[14px] font-bold">/ 12개월</span>
-                </div>
-              </div>
-
-              <p className="text-white/80 text-[14.5px] leading-relaxed mb-8 font-bold">
-                매달 새 시리즈가 추가되는 플랜. 수학·과학 확장 시리즈 포함.
-              </p>
-              
-              <ul className="flex flex-col gap-4 mb-10 flex-1">
-                <li className="flex items-start text-white text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>스타터 플랜 혜택 전체 포함</span>
-                </li>
-                <li className="flex items-start text-white text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>매달 새 단어 시리즈 자동 추가</span>
-                </li>
-                <li className="flex items-start text-white text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>수학·과학 개념 시리즈 포함</span>
-                </li>
-                <li className="flex items-start text-white text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>컬러 시네마틱판 우선 이용 (준비중)</span>
-                </li>
-              </ul>
-              <div className="mt-auto">
-                <TossCheckoutButton
-                  product={TOSS_PRODUCTS[1]}
-                  onError={(err) => console.error('Toss error:', err)}
-                />
-              </div>
-            </motion.div>
-
-            {/* ── Enterprise (Lifetime) ── */}
-            <motion.div
-              className="border border-neutral-200/90 rounded-[28px] p-8 flex flex-col bg-neutral-50/20 hover:shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <p className="text-[#555555] text-[13px] tracking-[0.15em] uppercase mb-4 font-black">평생 소장판 (Lifetime)</p>
-              
-              <div className="flex flex-col items-start mb-6">
-                <span className="text-[#888888] text-[16px] font-bold mb-1 select-none opacity-0">-</span>
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-[36px] sm:text-[42px] font-black tracking-tight text-[#111111] leading-none">₩99,000</span>
-                  <span className="text-[#444444] text-[13px] sm:text-[14px] font-bold">/ 평생 소장</span>
-                </div>
-              </div>
-
-              <p className="text-[#333333] text-[14.5px] leading-relaxed mb-8 font-bold">
-                앞으로 나올 모든 시리즈와 언어팩까지, 단 한 번 결제로 평생.
-              </p>
-              
-              <ul className="flex flex-col gap-4 mb-10 flex-1">
-                <li className="flex items-start text-[#111111] text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>프리미엄 혜택 전체 포함</span>
-                </li>
-                <li className="flex items-start text-[#111111] text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>향후 출시 시리즈 전부 포함</span>
-                </li>
-                <li className="flex items-start text-[#111111] text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>다국어 언어팩 (영어 외 추가 언어)</span>
-                </li>
-                <li className="flex items-start text-[#111111] text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>얼리버드 신기능 우선 체험</span>
-                </li>
-              </ul>
-              <div className="mt-auto">
-                <TossCheckoutButton
-                  product={TOSS_PRODUCTS[2]}
                   onError={(err) => console.error('Toss error:', err)}
                 />
               </div>

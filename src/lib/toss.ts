@@ -33,21 +33,9 @@ export interface TossProduct {
 
 export const TOSS_PRODUCTS: TossProduct[] = [
   {
-    id: 'moving-words-starter',
-    name: '보는 단어장 스타터 (런칭 특가)',
-    price: 4900,
-    currency: 'KRW',
-  },
-  {
-    id: 'moving-words-premium',
-    name: '보는 단어장 프리미엄 (12개월)',
-    price: 49000,
-    currency: 'KRW',
-  },
-  {
-    id: 'moving-words-lifetime',
-    name: '보는 단어장 평생 소장판',
-    price: 99000,
+    id: 'moving-words-course',
+    name: '중등 800 완성 코스 (런칭가)',
+    price: 9900,
     currency: 'KRW',
   },
 ];
