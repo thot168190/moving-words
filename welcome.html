@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>결제 완료 — 보는 단어장</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --paper: #fdfcf7;
+    --accent: #ff5a36;
+    --line: #e6e3d8;
+  }
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: radial-gradient(var(--line) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .card {
+    background: #fff;
+    border: 4px solid var(--ink);
+    border-radius: 28px;
+    box-shadow: 8px 8px 0 var(--ink);
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
+  }
+  .icon {
+    font-size: 56px;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: celebrate 1s infinite alternate;
+  }
+  @keyframes celebrate {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15) rotate(5deg); }
+  }
+  h1 {
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 900;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    word-break: keep-all;
+  }
+  .info-box {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  .info-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .info-content {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.5;
+  }
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    background: var(--accent);
+    border: 3px solid var(--ink);
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.08s, box-shadow 0.08s;
+  }
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="icon">🎁</div>
+  <h1>결제가 완료되었습니다!</h1>
+  <p>보는 단어장 중등 800 완성 코스를 선택해 주셔서 대단히 감사합니다.</p>
+  
+  <div class="info-box">
+    <div class="info-title">💡 코스 입장 안내</div>
+    <div class="info-content">
+      결제 확인 후 **24시간 내**에 가입하신 이메일로 코스 입장 링크와 안내 메일을 보내드립니다.<br>
+      (초기에는 대표님께서 결제 내역 확인 후 수동으로 순차 발송하고 있습니다.)
+    </div>
+  </div>
+
+  <a href="/" class="btn">메인 화면으로 가기</a>
+</div>
+
+</body>
+</html>
