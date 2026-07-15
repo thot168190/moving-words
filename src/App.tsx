@@ -423,12 +423,12 @@ export default function App() {
               플랜 선택
             </h2>
             <p className="text-[#1a1a1a] text-[17px] sm:text-[19px] leading-relaxed max-w-xl mx-auto font-extrabold">
-              어떻게 외워지는지 직접 확인해 보세요. 데모는 무료, 회원가입도 없습니다.
+              지루한 암기 대신, 보는 단어장으로 아이에게 새로운 기억을 선물하세요.
             </p>
           </motion.div>
 
           <div className="max-w-md mx-auto">
-            {/* ── 중등 800 완성 코스 (코스 카드) ── */}
+            {/* ── 12주 완성 코스 (코스 카드) ── */}
             <motion.div
               className="border-2 border-indigo-600 rounded-[28px] p-8 flex flex-col relative bg-neutral-900 shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1.5 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
@@ -449,7 +449,7 @@ export default function App() {
               </div>
 
               <h3 className="text-white font-gmarket font-black text-[22px] mb-4">
-                중등 800 완성 코스
+                12주 그림 단어 완성 코스
               </h3>
               
               <ul className="flex flex-col gap-4 mb-10 flex-1">
@@ -459,7 +459,7 @@ export default function App() {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
-                  <span>움직이는 단어 800개(매주 추가)</span>
+                  <span>12개 챕터 월드 맵과 테마별 장면 제공</span>
                 </li>
                 <li className="flex items-start text-white text-[14px] font-bold">
                   <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
@@ -467,7 +467,7 @@ export default function App() {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
-                  <span>터치 변신+원어민 발음 무제한</span>
+                  <span>눈·귀·손으로 동시 각인되는 그림-철자 변신</span>
                 </li>
                 <li className="flex items-start text-white text-[14px] font-bold">
                   <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
@@ -475,7 +475,7 @@ export default function App() {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
-                  <span>완주 후 수능 코스 우선권</span>
+                  <span>나의 단어 박물관 내 영구 소장 도감</span>
                 </li>
               </ul>
               <div className="mt-auto">
