@@ -101,12 +101,12 @@ export default function App() {
             {hero.description}
           </motion.p>
           <motion.a
-            href="/demo.html"
+            href="#course"
             className="inline-flex items-center gap-2 border-2 border-[#141414] bg-[#141414] hover:bg-white hover:text-[#141414] text-white font-black text-[15px] tracking-wide px-6 py-3 rounded-full transition-colors mt-6"
             initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            ✏️ 30초면 압니다 · 무료 체험 →
+            ✏️ 12주 코스 신청하기 →
           </motion.a>
         </div>
 
@@ -139,12 +139,12 @@ export default function App() {
             {hero.description}
           </motion.p>
           <motion.a
-            href="/demo.html"
+            href="#course"
             className="inline-flex items-center gap-2 self-start border-2 border-[#141414] bg-[#141414] hover:bg-white hover:text-[#141414] text-white font-black text-[15px] sm:text-[17px] tracking-wide px-7 py-3.5 rounded-full transition-colors mt-8"
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            ✏️ 30초면 압니다 · 무료 체험 →
+            ✏️ 12주 코스 신청하기 →
           </motion.a>
         </motion.div>
       </section>
