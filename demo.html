@@ -3,174 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>보는 단어장 — 움직이는 그림사전 챕터 1</title>
+<title>보는 단어장 — 한번 보면 절대 잊어버릴 수 없는, 움직이는 단어</title>
+<meta name="description" content="눈앞에서 그려지고, 터치하면 글자로 변신하고, 소리 내어 읽어주는 인터랙티브 그림사전 — 다시 시작하는 어른부터 시험 준비하는 학생까지">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   :root{
     --ink:#1c1c1c; --paper:#fdfcf7; --accent:#ff5a36; --blue:#2f6fed;
-    --gray:#444444; --line:#e6e3d8; --gold: #ffd700;
+    --gray:#444444; --line:#e6e3d8;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{
     font-family:'Pretendard Variable', Pretendard, -apple-system, sans-serif; color:var(--ink); background:var(--paper);
+    background-image:radial-gradient(var(--line) 1px, transparent 1px);
     background-size:26px 26px; line-height:1.5;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh;
-    background-image: radial-gradient(var(--line) 1px, transparent 1px);
-    background-size: 20px 20px;
   }
   .en{font-family:'Pretendard Variable', Pretendard, -apple-system, sans-serif;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 
-  /* ---------- 모바일 디바이스 프레임 (데스크톱 대응) ---------- */
-  .phone-frame {
-    width: 100%;
-    max-width: 412px;
-    height: 100vh;
-    max-height: 840px;
-    background: #fff;
-    border: 4px solid var(--ink);
-    border-radius: 36px;
-    box-shadow: 10px 10px 0 var(--ink);
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto;
+  /* ---------- Hero ---------- */
+  header{padding:48px 0 24px;text-align:center}
+  .badge{
+    display:inline-block;border:2px solid var(--ink);border-radius:999px;
+    padding:4px 16px;font-size:15px;background:#fff;transform:rotate(-1.5deg);
+    box-shadow:3px 3px 0 var(--ink);margin-bottom:22px;
   }
+  h1{font-size:clamp(30px,5.4vw,52px);font-weight:800;line-height:1.25;color:var(--ink)}
+  h1 .hl{
+    background:linear-gradient(transparent 62%, #ffe066 62%);
+    padding:0 4px;white-space:nowrap;
+  }
+  .sub{font-size:clamp(17px,2.6vw,21px);color:#1c1c1c;font-weight:700;margin-top:14px}
+  .hero-stage{
+    display:none;
+    margin:30px auto 8px;max-width:420px;background:#fff;border:3px solid var(--ink);
+    border-radius:18px;box-shadow:6px 6px 0 var(--ink);padding:14px 14px 6px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+  .btn{
+    font-family:'Pretendard Variable', Pretendard, -apple-system, sans-serif;font-size:20px;font-weight:700;cursor:pointer;
+    border:3px solid var(--ink);border-radius:12px;padding:10px 26px;background:#fff;
+    box-shadow:4px 4px 0 var(--ink);transition:transform .08s, box-shadow .08s;text-decoration:none;color:var(--ink);
+    display:inline-block;
+  }
+  .btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+  .btn.primary{background:var(--accent);color:#fff}
 
-  @media (max-width: 480px) {
-    .phone-frame {
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      height: 100vh;
-      max-height: none;
-      margin: 0;
-    }
-  }
+  /* ---------- Sections ---------- */
+  section{padding:56px 0 20px}
+  .sec-title{font-size:clamp(26px,4vw,36px);font-weight:800;text-align:center;color:var(--ink)}
+  .sec-title .doodle-underline{position:relative;display:inline-block}
+  .sec-sub{text-align:center;color:#222;font-weight:700;font-size:18px;margin-top:6px}
 
-  /* ---------- 상단바 & 타이틀 ---------- */
-  .phone-header {
-    height: 60px;
-    border-bottom: 3px solid var(--ink);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    background: var(--paper);
-    font-weight: 800;
-    font-size: 18px;
-    user-select: none;
-    z-index: 10;
+  /* ---------- Demo cards ---------- */
+  .toolbar{display:flex;justify-content:center;gap:12px;margin:22px 0 6px;flex-wrap:wrap}
+  .toggle{
+    font-family:'Pretendard Variable', Pretendard, -apple-system, sans-serif;font-size:18px;font-weight:700;border:3px solid var(--ink);
+    border-radius:999px;padding:8px 22px;background:#fff;cursor:pointer;box-shadow:3px 3px 0 var(--ink);
   }
-
-  /* ---------- 9:16 세로 카드 스테이지 ---------- */
-  .scene-stage {
-    flex: 1;
-    position: relative;
-    background: #fff;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 3px solid var(--ink);
+  .toggle.on{background:var(--blue);color:#fff}
+  .hint{text-align:center;color:var(--gray);font-weight:700;font-size:16px;margin-top:4px}
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:18px;margin-top:20px;
   }
-  .scene-stage svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    pointer-events: none;
+  .card{
+    position:relative;background:#fff;border:3px solid var(--ink);border-radius:16px;
+    box-shadow:5px 5px 0 var(--ink);cursor:pointer;overflow:hidden;
+    transition:transform .1s;user-select:none;
   }
-  .scene-stage .sc-path {
-    fill: none;
-    stroke: #1a1a1a;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  .card:active{transform:scale(.97)}
+  .card svg{display:block;width:100%;height:auto}
+  .ink path{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:opacity .45s}
+  .ghost path{fill:none;stroke:#b9b5a7;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.55;transition:opacity .3s}
+  .card.morphing .ink path{opacity:0}
+  .card .pencil{font-size:20px;visibility:hidden}
+  .word-layer{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.94);opacity:0;pointer-events:none;transition:opacity .35s;
   }
-  .scene-bg-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.8s, filter 0.8s, transform 0.8s;
-    filter: blur(3px);
-    transform: scale(1.015);
-    pointer-events: none;
+  .card.morphing .word-layer{opacity:1}
+  .word-en{font-family:'Pretendard Variable', Pretendard, -apple-system, sans-serif;font-size:clamp(30px,6vw,44px);display:flex}
+  .word-en span{opacity:0;display:inline-block}
+  .card.morphing .word-en span{animation:pop .4s cubic-bezier(.2,1.6,.4,1) forwards}
+  @keyframes pop{
+    0%{opacity:0;transform:translateY(14px) rotate(-8deg) scale(.4)}
+    100%{opacity:1;transform:translateY(0) rotate(0) scale(1)}
   }
-  .scene-bg-img.show {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
-  .scene-cta {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--ink);
-    background: rgba(255, 255, 255, 0.88);
-    transition: opacity .4s;
-    z-index: 3;
-    text-align: center;
-    padding: 20px;
-  }
-  .scene-cta.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .scene-words {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
-  }
-  .sc-word {
-    position: absolute;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.3) rotate(-4deg);
-  }
-  .sc-word.show {
-    animation: pop-center .5s cubic-bezier(.2, 1.6, .4, 1) forwards;
-  }
-  @keyframes pop-center {
-    0% { opacity: 0; transform: translate(-50%, calc(-50% + 14px)) rotate(-8deg) scale(.4); }
-    100% { opacity: 1; transform: translate(-50%, -50%) rotate(0) scale(1); }
-  }
-  .sc-word .en {
-    font-weight: 900;
-    font-size: 26px;
-    color: var(--ink);
-    line-height: 1.1;
-    background: #fff;
-    padding: 4px 10px;
-    border: 2px solid var(--ink);
-    border-radius: 8px;
-    box-shadow: 2px 2px 0 var(--ink);
-  }
-  .sc-word .ko {
-    font-size: 14px;
-    color: var(--accent);
-    font-weight: 800;
-    text-align: center;
-    margin-top: 2px;
-    text-shadow: 0 0 4px #fff, 0 0 8px #fff;
+  .word-ko{font-size:20px;color:var(--accent);font-weight:700;margin-top:2px;opacity:0;transition:opacity .3s .5s}
+  .card.morphing .word-ko{opacity:1}
+  .tap-hint{
+    position:absolute;bottom:6px;right:10px;font-size:14px;color:#1c1c1c;font-weight:700;
   }
 
-  .pen-overlay {
-    position: absolute;
-    z-index: 10;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    display: none;
+  /* ---------- How ---------- */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:26px;align-items:stretch}
+  .step{
+    background:#fff;border:3px solid var(--ink);border-radius:16px;padding:24px 20px;
+    box-shadow:5px 5px 0 var(--ink);text-align:left;height:100%;
+    word-break:keep-all;overflow-wrap:break-word;
+  }
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    border:3px solid var(--ink);border-radius:50%;font-weight:700;font-size:20px;background:#ffe066;margin-bottom:8px;
+  }
+  .step h3{font-size:clamp(14px, 4.5vw, 21px);font-weight:800;margin-bottom:4px;white-space:nowrap;color:var(--ink)}
+  .step p{color:#111;font-size:17px;font-weight:600}
+
+  /* ---------- Global ---------- */
+  .global-message{
+    margin:96px auto;
+    max-width:46rem;
+    text-align:center;
+    font-size:clamp(20px,2.4vw,28px);
+    letter-spacing:-0.01em;
+    line-height:1.4;
+  }
+  .global-message .part1{
+    font-weight:600;
+    color:#1a1a1a;
+  }
+  .global-message .part2{
+    font-weight:400;
+    color:#6b6b6b;
+  }
+  .global-mobile-only { display: none; }
+  .global-desktop-only { display: inline; }
+  @media (max-width: 767px) {
+    .global-mobile-only { display: block; }
+    .global-desktop-only { display: none; }
   }
 
+  /* ---------- Pricing ---------- */
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:26px}
+  .plan{
+    background:#fff;border:3px solid var(--ink);border-radius:16px;padding:24px 20px;
+    box-shadow:5px 5px 0 var(--ink);text-align:center;position:relative;
+  }
+  .plan.best{border-color:var(--accent);box-shadow:5px 5px 0 var(--accent)}
+  .plan .flag{
+    position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-2deg);
+    background:var(--accent);color:#fff;font-size:14px;padding:2px 12px;border-radius:999px;border:2px solid var(--ink);
+  }
+  .plan h3{font-size:22px}
+  .price{font-size:30px;font-weight:700;margin:6px 0}
+  .price small{font-size:15px;color:var(--gray);font-weight:700}
+  .plan ul{list-style:none;font-size:17px;color:#111;margin:10px 0 16px;font-weight:600}
+  .plan li{padding:3px 0}
+  .plan li::before{content:"✔ ";color:var(--blue)}
+  .plan li.soon::before{content:"◷ ";color:var(--gray)}
+  .plan li.soon{color:var(--gray)}
+
+  footer{
+    margin-top:64px;border-top:3px solid var(--ink);padding:26px 0 40px;
+    text-align:center;color:#111;font-weight:700;font-size:15px;background:#fff;
+  }
+  footer .en{font-size:14px;color:#333;font-weight:700}
+
+  /* ---------- 장면 사전 (Scene Stage) ---------- */
+  .scene-tabs{display:flex;gap:10px;justify-content:center;margin:24px 0 14px}
+  .scene-dots{display:flex;gap:12px;justify-content:center;margin:18px 0 24px}
+  .scene-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);background:#fff;cursor:pointer;transition:background-color .2s}
+  .scene-dot.on{background:var(--ink)}
+  .scene-stage{position:relative;background:#fff;border:3px solid var(--ink);border-radius:18px;
+    box-shadow:6px 6px 0 var(--ink);overflow:hidden;cursor:pointer;margin-bottom:12px; aspect-ratio: 1200 / 691;}
+  .scene-stage svg{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+  .scene-stage .sc-path{fill:none;stroke:#1a1a1a;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset 0.05s linear}
+  .scene-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s, filter 0.8s, transform 0.8s;filter:blur(3px);transform:scale(1.015);pointer-events:none}
+  .scene-bg-img.show{opacity:1;filter:blur(0);transform:scale(1)}
+  .scene-cta{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:clamp(20px,3vw,30px);font-weight:700;color:var(--ink);background:rgba(255,255,255,.85);
+    transition:opacity .4s;z-index:3}
+  .scene-cta.hide{opacity:0;pointer-events:none}
+  .scene-words{position:absolute;inset:0;pointer-events:none;z-index:2}
+  .sc-word{position:absolute;opacity:0;transform:translate(-50%, -50%) scale(.3) rotate(-4deg)}
+  .sc-word.show{animation:pop-center .5s cubic-bezier(.2,1.6,.4,1) forwards}
+  @keyframes pop-center{
+    0%{opacity:0;transform:translate(-50%, calc(-50% + 14px)) rotate(-8deg) scale(.4)}
+    100%{opacity:1;transform:translate(-50%, -50%) rotate(0) scale(1)}
+  }
+  .sc-word .en{font-weight:800;font-family:'Pretendard Variable', Pretendard, -apple-system, sans-serif;font-size:clamp(22px,3vw,40px);color:var(--ink);
+    line-height:1;text-shadow:0 0 4px #fff,0 0 8px #fff,0 0 12px #fff,0 0 20px #fff}
+  .sc-word .ko{font-size:clamp(13px,1.6vw,19px);color:var(--accent);font-weight:700;text-shadow:0 0 4px #fff,0 0 8px #fff,0 0 12px #fff,0 0 20px #fff}
+
+  /* R9 마스크 리빌 및 손 오버레이 전용 스타일 */
   .color-img {
     opacity: 0;
     transition: opacity 0.8s, filter 0.8s, transform 0.8s;
@@ -178,515 +193,187 @@
     transform: scale(1.015);
   }
   .color-img.active {
-    opacity: 0.85;
+    opacity: 0.82;
     filter: blur(0);
     transform: scale(1);
   }
-
-  /* ---------- 하단 내비게이션 & 도감 보관소 ---------- */
-  .phone-footer {
-    height: 140px;
-    background: var(--paper);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-    position: relative;
-    user-select: none;
+  .pen-overlay {
+    position: absolute;
     z-index: 10;
-  }
-  .scene-navigation {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-  .nav-arrow {
-    font-size: 20px;
-    font-weight: 900;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--ink);
-    padding: 4px 12px;
-  }
-  .scene-dots {
-    display: flex;
-    gap: 10px;
-  }
-  .scene-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid var(--ink);
-    background: #fff;
-    cursor: pointer;
-    transition: background-color .2s;
-  }
-  .scene-dot.on {
-    background: var(--ink);
-  }
-
-  /* ---------- 박물관 미니 전시판 ---------- */
-  .museum-shelf {
-    display: flex;
-    gap: 12px;
-    background: #fff;
-    border: 2px solid var(--ink);
-    border-radius: 12px;
-    padding: 6px 14px;
-    box-shadow: 3px 3px 0 var(--ink);
-    width: 90%;
-    justify-content: space-around;
-  }
-  .shelf-slot {
-    width: 38px;
-    height: 48px;
-    border: 2px dashed #b9b5a7;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 700;
-    position: relative;
-    background: #faf9f6;
-    color: #b9b5a7;
-    transition: all 0.3s ease;
-  }
-  .shelf-slot.occupied {
-    border-style: solid;
-    border-color: var(--ink);
-    background: #ffe066;
-    box-shadow: 2px 2px 0 var(--ink);
-    color: var(--ink);
-  }
-  .shelf-slot.occupied::after {
-    content: "🌟";
-    font-size: 10px;
-    position: absolute;
-    top: -4px;
-    right: -4px;
-  }
-
-  /* ---------- #22 카드 개봉(획득) 3D 연출 ---------- */
-  .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(20, 20, 20, 0.88);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-  .card-overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .card-container {
-    width: 240px;
-    height: 360px;
-    perspective: 1000px;
-    margin-bottom: 20px;
-  }
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-  }
-  .card-inner.flipped {
-    transform: rotateY(180deg);
-  }
-  .card-face {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    border: 4px solid var(--ink);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-  }
-  .card-front {
-    background: var(--paper);
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .card-front-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border: 3px solid var(--ink);
-    border-radius: 12px;
-    background: #fff;
-  }
-  .card-front-title {
-    font-size: 24px;
-    font-weight: 900;
-    color: var(--ink);
-    text-align: center;
-    margin-top: 8px;
-  }
-  .card-front-badge {
-    background: var(--accent);
-    color: #fff;
-    font-weight: 800;
-    font-size: 13px;
-    padding: 4px 12px;
-    border-radius: 99px;
-    border: 2px solid var(--ink);
-    box-shadow: 2px 2px 0 var(--ink);
-  }
-  
-  /* 카드 뒷면 (터치 전) */
-  .card-back {
-    background: linear-gradient(135deg, #1c1c1c 0%, #3a3a3a 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  .card-back-icon {
-    font-size: 64px;
-    margin-bottom: 14px;
-    animation: bounce 2s infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  .card-back-text {
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-  }
-
-  /* 황금 반짝임 골드 펄 효과 */
-  .card-inner.flipped .card-front {
-    box-shadow: 0 0 25px var(--gold);
-    border-color: var(--gold);
-    animation: goldGlow 2s infinite alternate;
-  }
-  @keyframes goldGlow {
-    0% { box-shadow: 0 0 15px rgba(255,215,0,0.6); }
-    100% { box-shadow: 0 0 35px rgba(255,215,0,0.9); }
-  }
-
-  /* 골드 파티클 */
-  .particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 101;
-  }
-
-  .action-btn {
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 800;
-    padding: 10px 24px;
-    border: 3px solid var(--ink);
-    border-radius: 12px;
-    background: #fff;
-    cursor: pointer;
-    box-shadow: 3px 3px 0 var(--ink);
-    transition: transform .05s, box-shadow .05s;
-  }
-  .action-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--ink);
-  }
-  .action-btn.accent {
-    background: var(--accent);
-    color: #fff;
-  }
-
-  /* ---------- 단어 공방 즉석 생성 페이지 ---------- */
-  .workshop-trigger {
-    background: var(--ink);
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    padding: 4px 8px;
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
-  }
-  .workshop-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.96);
-    z-index: 80;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  .workshop-overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .workshop-title {
-    font-size: 24px;
-    font-weight: 900;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-  .workshop-desc {
-    font-size: 14px;
-    color: var(--gray);
-    margin-bottom: 20px;
-    text-align: center;
-    line-height: 1.4;
-  }
-  .workshop-input-group {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-  .workshop-input {
-    flex: 1;
-    padding: 10px 14px;
-    border: 3px solid var(--ink);
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    outline: none;
-  }
-  .workshop-close {
-    margin-top: auto;
-    align-self: center;
+    transition: opacity 0.3s;
+    display: none;
   }
 </style>
 </head>
 <body>
 
-<div class="phone-frame">
-  <!-- 상단바 -->
-  <div class="phone-header">
-    <span style="font-family: inherit; font-size: 16px;">📖 보는 단어장</span>
-    <span id="headerChapterName" style="color: var(--accent); font-size: 15px;">바다와 모험</span>
-    <div style="display: flex; align-items: center;">
-      <!-- 디지털 액자 모드 토글 버튼 추가 -->
-      <button class="workshop-trigger" id="ambientBtn" style="margin-right: 6px; background: var(--blue);">액자 🖼️</button>
-      <button class="workshop-trigger" id="workshopBtn">공방 🛠️</button>
-    </div>
-  </div>
-
-  <!-- 메인 9:16 카드 스테이지 -->
-  <div class="scene-stage" id="sceneStage">
-    <video id="sceneVideo" src="" muted playsinline style="display:none; width:100%; height:100%; object-fit:cover; mix-blend-mode:multiply; filter:brightness(1.07) contrast(1.06);"></video>
-    <img id="sceneBgImg" class="scene-bg-img" src="" alt="" />
+<header class="wrap">
+  <h1>한번 보면 절대 잊어버릴 수 없는,<br><span class="hl">보는 단어장</span></h1>
+  <p class="sub">영어 싫다는 중학생도, 보기만 하면 외워집니다<br>그려지고 · 변신하고 · 발음까지 — 잔소리 대신 이 화면을 보여주세요</p>
+  
+  <div class="hero-scene-wrap" style="max-width:820px;margin:30px auto 8px;text-align:left">
     
-    <!-- R9 마스크 리빌 용 SVG 레이어 -->
-    <svg id="sceneSvg" style="display:none; position:absolute; inset:0; width:100%; height:100%;">
-      <defs>
-        <mask id="lineMask">
-          <g id="maskPathsG"></g>
-        </mask>
-      </defs>
-      <image id="colorImg" href="" x="0" y="0" width="100%" height="100%" class="color-img" />
-      <image id="lineImg" href="" x="0" y="0" width="100%" height="100%" mask="url(#lineMask)" />
-    </svg>
-    
-    <!-- 실사 손 오버레이 -->
-    <div id="penOverlay" class="pen-overlay">
-      <img id="handImg" src="/hand.png?v=12" alt="실사 손" style="width: 100%; height: 100%; object-fit: fill;" />
-    </div>
-
-    <!-- 단어들이 팝업되는 레이어 -->
-    <div class="scene-words" id="sceneWords"></div>
-    <div class="scene-cta" id="sceneCta">👆 터치하면 그려집니다</div>
-
-    <!-- #22 카드 개봉(획득) 오버레이 -->
-    <div class="card-overlay" id="cardOverlay">
-      <div class="card-container">
-        <div class="card-inner" id="cardInner">
-          <!-- 카드 뒷면 (획득 전) -->
-          <div class="card-face card-back">
-            <div class="card-back-icon">🎁</div>
-            <div class="card-back-text">터치하여 카드 개봉</div>
-          </div>
-          <!-- 카드 앞면 (획득 후) -->
-          <div class="card-face card-front">
-            <div class="card-front-badge">박물관 소장 카드</div>
-            <img class="card-front-img" id="cardFrontImg" src="" alt="카드 이미지" />
-            <div class="card-front-title" id="cardFrontTitle">단어 카드</div>
-            <button class="action-btn accent" id="collectBtn" style="width: 90%; margin-top: 10px;">박물관에 보관하기 🏛️</button>
-          </div>
-        </div>
+    <div class="scene-stage" id="sceneStage">
+      <video id="sceneVideo" src="/whale.mp4" muted playsinline style="opacity:0; width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; filter:brightness(1.07) contrast(1.06);"></video>
+      <img id="sceneBgImg" class="scene-bg-img" src="" alt="" />
+      
+      <!-- R9 마스크 리빌 용 SVG 레이어 -->
+      <svg id="sceneSvg" style="display:none; position:absolute; inset:0; width:100%; height:100%;">
+        <defs>
+          <mask id="lineMask">
+            <!-- 이 그룹 안에 guides path들이 실시간으로 그려짐 -->
+            <g id="maskPathsG"></g>
+          </mask>
+        </defs>
+        <!-- 1. 원화 PNG (아래) -->
+        <image id="colorImg" href="" x="0" y="0" width="100%" height="100%" class="color-img" />
+        <!-- 2. 완성 선화 PNG (위) - 마스크 리빌 적용 -->
+        <image id="lineImg" href="" x="0" y="0" width="100%" height="100%" mask="url(#lineMask)" />
+      </svg>
+      
+      <!-- 실사 손 오버레이 (hand.png v5 기반) -->
+      <div id="penOverlay" class="pen-overlay">
+        <img id="handImg" src="/hand.png?v=12" alt="실사 손" style="width: 100%; height: 100%; object-fit: fill;" />
       </div>
-    </div>
 
-    <!-- 단어 공방 즉석 생성 오버레이 -->
-    <div class="workshop-overlay" id="workshopOverlay">
-      <div class="workshop-title">단어 공방 🛠️</div>
-      <div class="workshop-desc">원하는 영어 단어를 입력하면<br>AI가 실시간으로 드로잉을 생성합니다.</div>
-      <div class="workshop-input-group">
-        <input type="text" class="workshop-input" id="workshopInput" placeholder="단어 입력 (예: lighthouse)" />
-        <button class="action-btn accent" id="workshopGenerateBtn">생성 🪄</button>
-      </div>
-      <button class="action-btn workshop-close" id="workshopCloseBtn">닫기</button>
-    </div>
-  </div>
-
-  <!-- 하단 컨트롤러 -->
-  <div class="phone-footer">
-    <div class="scene-navigation">
-      <button class="nav-arrow" id="prevBtn">◀</button>
-      <div class="scene-dots" id="sceneDots">
-        <!-- 동적으로 점들이 생성됨 -->
-      </div>
-      <button class="nav-arrow" id="nextBtn">▶</button>
+      <div class="scene-words" id="sceneWords"></div>
+      <div class="scene-cta" id="sceneCta">👆 터치하면 그려집니다</div>
     </div>
     
-    <!-- 나의 단어 박물관 미니 전시판 -->
-    <div class="museum-shelf" id="museumShelf">
-      <div class="shelf-slot" id="slot-0" title="장면 1">1</div>
-      <div class="shelf-slot" id="slot-1" title="장면 2">2</div>
-      <div class="shelf-slot" id="slot-2" title="장면 3">3</div>
-      <div class="shelf-slot" id="slot-3" title="장면 4">4</div>
+    <div class="scene-dots" id="sceneDots" style="display:none;">
+      <div class="scene-dot on" data-index="0"></div>
+      <!--
+      <div class="scene-dot" data-index="1"></div>
+      <div class="scene-dot" data-index="2"></div>
+      -->
     </div>
   </div>
-</div>
+  
+  <div style="text-align:center; margin-top:20px; margin-bottom:20px;">
+    <p style="font-size:20px; color:#555; margin-bottom:20px;">지금은 맛보기 장면 1개 — 정식판은 장면 100개, 800단어로 준비 중입니다</p>
+    <div class="cta-row" style="margin-top:0;">
+      <a class="btn primary" href="/#pricing">₩9,900 완성 코스 알아보기 →</a>
+      <a class="btn" href="/">처음부터 보기 →</a>
+    </div>
+  </div>
+</header>
+
+
+
+<section class="wrap">
+  <h2 class="sec-title">작동 원리</h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>그려지는 과정을 본다</h3><p>선이 하나씩 그어지는 동안, 아이 눈은 펜 끝을 쫓느라 딴 데를 못 봅니다. 완성된 그림을 보여줄 때보다 오래 남는 이유입니다.<br><small style="color:#888">(Fiorella &amp; Mayer, 2016)</small></p></div>
+    <div class="step"><div class="num">2</div><h3>터치하면 글자로 변신</h3><p>다 그려진 그림을 톡 누르면, 그림이 사라진 자리에 단어가 나타납니다. 방금 본 장면과 철자가 한 몸으로 묶입니다.</p></div>
+    <div class="step"><div class="num">3</div><h3>발음까지 한 번에</h3><p>글자가 나타나는 순간 원어민 발음이 흘러나옵니다. 눈으로 보고, 손으로 누르고, 귀로 듣고 — 한 단어를 세 번 만나는 셈입니다.</p></div>
+    <div class="step"><div class="num">4</div><h3>장면 하나 = 단어 가족</h3><p>화산 장면 하나면 VOLCANO도, LAVA도, ASH도 같이 따라옵니다. 단어를 하나씩 외우는 게 아니라 이야기째 기억하는 겁니다.</p></div>
+  </div>
+  <p class="global-message">
+    <span class="part1">사진 찍듯 외워지는 경험</span>
+    <br class="global-mobile-only">
+    <span class="part2"><span class="global-desktop-only">— </span>그림으로 배우는 영어입니다.</span>
+  </p>
+</section>
+
+
+
+<footer>
+  <div class="wrap">
+    <p>보는 단어장 · 모든 드로잉은 오리지널 창작물입니다. 특정 출판사의 사전 그림이나 타사 캐릭터 디자인을 복제하지 않습니다.</p>
+    <p class="en">InkWord — Demo #001 of 100 · Built with calculated speed · 2026</p>
+  </div>
+    <p>매또컴퍼니 | 대표: 이미현 | 사업자등록번호: 308-15-96097 | 통신판매업신고: 면제 (부가가치세법상 간이과세자)</p>
+    <p>주소: 경기도 양주시 고읍로 11-7 | 문의: thot168190@gmail.com | <a href="/terms.html" target="_blank">이용약관</a> · <a href="/privacy.html" target="_blank">개인정보처리방침</a></p>
+</footer>
 
 <script>
+
 const sceneVideo = document.getElementById('sceneVideo');
 const sceneBgImg = document.getElementById('sceneBgImg');
 const sceneSvg = document.getElementById('sceneSvg');
 const sceneWordsEl = document.getElementById('sceneWords');
 const sceneCta = document.getElementById('sceneCta');
 const sceneStage = document.getElementById('sceneStage');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const sceneDotsContainer = document.getElementById('sceneDots');
-const museumShelfSlots = [
-  document.getElementById('slot-0'),
-  document.getElementById('slot-1'),
-  document.getElementById('slot-2'),
-  document.getElementById('slot-3')
-];
-
-// #22 카드 획득 연출 셀렉터
-const cardOverlay = document.getElementById('cardOverlay');
-const cardInner = document.getElementById('cardInner');
-const cardFrontImg = document.getElementById('cardFrontImg');
-const cardFrontTitle = document.getElementById('cardFrontTitle');
-const collectBtn = document.getElementById('collectBtn');
-
-// 단어 공방 셀렉터
-const workshopBtn = document.getElementById('workshopBtn');
-const workshopOverlay = document.getElementById('workshopOverlay');
-const workshopCloseBtn = document.getElementById('workshopCloseBtn');
-const workshopGenerateBtn = document.getElementById('workshopGenerateBtn');
-const workshopInput = document.getElementById('workshopInput');
-
-// 디지털 액자 버튼
-const ambientBtn = document.getElementById('ambientBtn');
+const sceneDots = document.querySelectorAll('.scene-dot');
 
 let speechUnlocked = false;
-let sceneState = 'idle'; // 'idle', 'playing', 'done'
+function unlockSpeech() {
+  if (speechUnlocked || !window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(' ');
+  u.volume = 0;
+  window.speechSynthesis.speak(u);
+  speechUnlocked = true;
+}
+
+let sceneState = 'idle';
 let runToken = 0;
-let currentSceneIndex = 0;
+let currentSceneIndex = 0; // 0: whale, 1: lighthouse, 2: ship
 let scenesData = null;
 let handMeta = null;
 let penX = 0;
 let penY = 0;
 let penRot = 45;
-let ambientMode = false; // 디지털 액자 모드 플래그
 
 const penOverlay = document.getElementById('penOverlay');
 
-// LocalStorage 연동: 새로고침해도 박물관 보관 상태가 유지되도록 로드
-let museumCollected = [false, false, false, false];
-try {
-  const saved = localStorage.getItem('museumCollected_ch1');
-  if (saved) {
-    museumCollected = JSON.parse(saved);
-  }
-} catch (e) {
-  console.error("LocalStorage 로드 실패:", e);
-}
+// 그림 진실의 법칙 좌표 데이터 (등대, 돛단배)
+const SCENE_WORDS_CONFIG = [
+  // 0: 고래
+  [
+    {en: 'WHALE', ko: '고래', top: '12%', left: '38%'},
+    {en: 'EYE', ko: '눈', top: '44%', left: '33%'},
+    {en: 'FIN', ko: '지느러미', top: '74%', left: '40%'},
+    {en: 'TAIL', ko: '꼬리', top: '16%', left: '76%'},
+    {en: 'SWIM', ko: '수영하다', top: '82%', left: '66%'}
+  ],
+  /*
+  // 1: 등대
+  [
+    {en: 'LIGHTHOUSE', ko: '등대', top: '22%', left: '49%'},
+    {en: 'LIGHT', ko: '빛', top: '14%', left: '26%'},
+    {en: 'SEA', ko: '바다', top: '75%', left: '26%'},
+    {en: 'ROCK', ko: '바위', top: '76%', left: '72%'}
+  ],
+  // 2: 돛단배
+  [
+    {en: 'SHIP', ko: '돛단배', top: '72%', left: '48%'},
+    {en: 'SAIL', ko: '돛', top: '35%', left: '34%'},
+    {en: 'WAVE', ko: '파도', top: '84%', left: '64%'},
+    {en: 'MAST', ko: '돛대', top: '24%', left: '52%'}
+  ]
+  */
+];
 
-// 데이터 가져오기
+// CTA 초기 상태 대기
+sceneCta.textContent = "데이터를 불러오는 중입니다...";
+
 Promise.all([
-  fetch('/scenes-ch1.json?v=12').then(res => res.json()),
+  fetch('/metric-scenes.json?v=12').then(res => res.json()),
   fetch('/hand-meta.json?v=12').then(res => res.json())
 ]).then(([sceneData, handData]) => {
   scenesData = sceneData.scenes;
   handMeta = handData;
-  initDots();
-  resetScene();
+  sceneCta.textContent = "👆 터치하면 그려집니다";
 }).catch(err => {
   console.error("데이터 로드 실패:", err);
   sceneCta.textContent = "로드 실패 (새로고침 해주세요)";
 });
-
-function initDots() {
-  sceneDotsContainer.innerHTML = '';
-  scenesData.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'scene-dot' + (i === currentSceneIndex ? ' on' : '');
-    dot.addEventListener('click', (e) => {
-      e.stopPropagation();
-      changeScene(i);
-    });
-    sceneDotsContainer.appendChild(dot);
-  });
-}
-
-function updateDots() {
-  const dots = document.querySelectorAll('.scene-dot');
-  dots.forEach((dot, i) => {
-    if (i === currentSceneIndex) dot.classList.add('on');
-    else dot.classList.remove('on');
-  });
-}
-
-function updateMuseumShelf() {
-  museumCollected.forEach((collected, i) => {
-    if (collected) museumShelfSlots[i].classList.add('occupied');
-    else museumShelfSlots[i].classList.remove('occupied');
-  });
-  // LocalStorage에 현재 수집 상태 즉시 영구 저장
-  try {
-    localStorage.setItem('museumCollected_ch1', JSON.stringify(museumCollected));
-  } catch (e) {
-    console.error("LocalStorage 저장 실패:", e);
-  }
-}
-
-function changeScene(idx) {
-  if (idx < 0 || idx >= scenesData.length) return;
-  currentSceneIndex = idx;
-  resetScene();
-}
 
 function resetScene() {
   if (window.speechSynthesis) window.speechSynthesis.cancel();
   sceneState = 'idle';
   runToken++;
 
-  // 모든 렌더링 상태 초기화
+  // 장면에 따른 가로세로 종횡비 동적 교정 (펜 오차 100% 보정용)
+  if (currentSceneIndex === 0) {
+    sceneStage.style.aspectRatio = '1200 / 691';
+  } else {
+    // 등대와 돛단배는 1100 / 613
+    sceneStage.style.aspectRatio = '1100 / 613';
+  }
+  
+  // 모든 렌더링 상태 비우기
   sceneVideo.style.opacity = '0';
   sceneVideo.style.display = 'none';
   sceneVideo.currentTime = 0;
@@ -695,6 +382,7 @@ function resetScene() {
   sceneBgImg.classList.remove('show');
   sceneBgImg.style.display = 'none';
   
+  // SVG 초기화 및 리플로우 브라우저 렌더 캐시 우회
   const colorImg = document.getElementById('colorImg');
   const lineImg = document.getElementById('lineImg');
   if (colorImg) {
@@ -703,37 +391,40 @@ function resetScene() {
   }
   if (lineImg) {
     lineImg.setAttribute('mask', '');
+    lineImg.offsetHeight; // 강제 레이아웃 트리거
+    lineImg.setAttribute('mask', 'url(#lineMask)');
     lineImg.setAttribute('href', '');
   }
   
   const maskPathsG = document.getElementById('maskPathsG');
-  if (maskPathsG) maskPathsG.innerHTML = '';
+  if (maskPathsG) {
+    maskPathsG.innerHTML = '';
+  }
   
   sceneSvg.style.display = 'none';
   
+  // 손 오버레이 초기화
   if (penOverlay) {
     penOverlay.style.display = 'none';
     penOverlay.style.opacity = '0';
   }
+  penX = 0;
+  penY = 0;
   
   sceneWordsEl.innerHTML = '';
   sceneCta.classList.remove('hide');
-  sceneCta.textContent = '👆 터치하면 시작합니다';
+  sceneCta.textContent = '👆 터치하면 그려집니다';
+}
 
-  // #22 카드 획득 연출 초기화 (즉각 닫기 처리하여 레이어 간섭 완벽 차단)
-  cardOverlay.classList.remove('show');
-  cardInner.classList.remove('flipped');
-
-  updateDots();
-  updateMuseumShelf();
+if (window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = () => {};
 }
 
 // 모바일용 글로벌 TTS 오디오 잠금 해제
 function unlockTTS() {
-  if (window.speechSynthesis && !speechUnlocked) {
-    const u = new SpeechSynthesisUtterance(' ');
+  if (window.speechSynthesis) {
+    const u = new SpeechSynthesisUtterance('');
     window.speechSynthesis.speak(u);
-    speechUnlocked = true;
     window.removeEventListener('click', unlockTTS);
     window.removeEventListener('touchstart', unlockTTS);
   }
@@ -741,25 +432,46 @@ function unlockTTS() {
 window.addEventListener('click', unlockTTS);
 window.addEventListener('touchstart', unlockTTS);
 
+function getBestVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  return voices.find(v => v.lang.startsWith('en') && v.name.includes('Samantha')) ||
+         voices.find(v => v.lang.startsWith('en') && v.name.includes('Google US English')) ||
+         voices.find(v => v.lang.startsWith('en') && v.name.includes('Aria')) ||
+         voices.find(v => v.lang === 'en-US');
+}
+
 function speak(text) {
   if(!window.speechSynthesis) return;
+  
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
   u.rate = 1.0;
   u.pitch = 1.05;
-  window.speechSynthesis.speak(u);
+  const voice = getBestVoice();
+  if (voice) u.voice = voice;
+  
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    window.speechSynthesis.cancel(); // iOS만 cancel 적용
+    setTimeout(() => {
+      window.speechSynthesis.speak(u);
+    }, 50);
+  } else {
+    // 안드로이드/PC는 cancel() 호출 시 비동기 취소 레이스로 인해 소리가 안 나는 버그가 있으므로 즉시 발화
+    window.speechSynthesis.speak(u);
+  }
 }
 
 // 단어들을 순차적으로 팝업하고 TTS 소리 내기
 function triggerWordPopups(words, token) {
-  sceneWordsEl.innerHTML = '';
   words.forEach((w, i) => {
     setTimeout(() => {
       if (runToken !== token) return;
       const el = document.createElement('div');
       el.className = 'sc-word show';
-      el.style.top = `${w.y * 100}%`;
-      el.style.left = `${w.x * 100}%`;
+      el.style.top = w.top;
+      el.style.left = w.left;
       el.style.pointerEvents = 'auto';
       el.style.cursor = 'pointer';
       el.innerHTML = `<div class="en">${w.en}</div><div class="ko">${w.ko}</div>`;
@@ -778,80 +490,488 @@ function triggerWordPopups(words, token) {
     }, i * 1200);
   });
 
-  // 모든 단어 완료 시 후속 연출 분기
   setTimeout(() => {
     if (runToken !== token) return;
     sceneState = 'done';
-    
-    // [액자 모드 일 때]
-    if (ambientMode) {
-      sceneCta.textContent = '액자 자동 감상 모드';
-      sceneCta.classList.remove('hide');
-      
-      // 4초 대기 후 자동으로 다음 씬으로 순환 이동
-      setTimeout(() => {
-        if (runToken !== token) return;
-        let nextIdx = currentSceneIndex + 1;
-        if (nextIdx >= scenesData.length) nextIdx = 0;
-        changeScene(nextIdx);
-        sceneState = 'playing';
-        startScene();
-      }, 4000);
-    } 
-    // [일반 학습 모드 일 때] - #22 카드 개봉 연출 등장
-    else {
-      sceneCta.textContent = '다시 보려면 터치';
-      sceneCta.classList.remove('hide');
-      
-      const currentScene = scenesData[currentSceneIndex];
-      cardFrontImg.src = currentScene.poster || '/metric-whale.png';
-      cardFrontTitle.textContent = currentScene.words[0].en;
-      
-      setTimeout(() => {
-        cardOverlay.classList.add('show');
-      }, 800);
-    }
+    sceneCta.textContent = '다시 보려면 터치';
+    sceneCta.classList.remove('hide');
   }, words.length * 1200 + 800);
+}
+
+// 시작 8%·끝 8%만 이징하는 등속 기반 속도 프로파일 함수
+function getEasedProgress(t) {
+  const k = 0.08;
+  const V = 1 / (4 * k / Math.PI + 1 - 2 * k);
+  
+  if (t < k) {
+    return V * k * 2 / Math.PI * (1 - Math.cos(t / k * Math.PI / 2));
+  }
+  if (t <= 1 - k) {
+    return V * (t - k) + V * k * 2 / Math.PI;
+  }
+  return V * (1 - 2 * k) + V * k * 2 / Math.PI + V * k * 2 / Math.PI * Math.sin((t - 1 + k) / k * Math.PI / 2);
+}
+
+// 획 데이터 파싱 헬퍼 (시작점/끝점 추출)
+function getPathPoints(dStr) {
+  const coords = dStr.match(/[+-]?\d+(\.\d+)?/g).map(Number);
+  if (coords && coords.length >= 2) {
+    return {
+      startPt: { x: coords[0], y: coords[1] },
+      endPt: { x: coords[coords.length - 2], y: coords[coords.length - 1] }
+    };
+  }
+  return { startPt: { x: 0, y: 0 }, endPt: { x: 0, y: 0 } };
+}
+
+function applyPenTransform(targetCanvasX, targetCanvasY, rotDeg) {
+  if (!handMeta) return;
+  const rect = sceneSvg.getBoundingClientRect();
+  const scaleX = rect.width / 1100;
+  const scaleY = rect.height / 613;
+  
+  // R13 Dynamic Aspect Scale (Math.max 조합으로 절단면 화면 밖 클램프)
+  const hs_base = (613 * 0.55) / handMeta.h;
+  const hs_req_x = (1100 - targetCanvasX) / (handMeta.w - handMeta.tipX);
+  const hs_req_y = (613 - targetCanvasY) / (handMeta.h - handMeta.tipY);
+  const hs = Math.max(hs_base, hs_req_x, hs_req_y);
+  
+  const w_screen = handMeta.w * hs * scaleX;
+  const h_screen = handMeta.h * hs * scaleY;
+  const pen_screen_x = rect.left + window.scrollX + targetCanvasX * scaleX;
+  const pen_screen_y = rect.top + window.scrollY + targetCanvasY * scaleY;
+  const tx = pen_screen_x - handMeta.tipX * hs * scaleX;
+  const ty = pen_screen_y - handMeta.tipY * hs * scaleY;
+  
+  penOverlay.style.width = `${w_screen}px`;
+  penOverlay.style.height = `${h_screen}px`;
+  // 실사 손은 회전 고정 (회전 금지!)
+  penOverlay.style.transform = `translate(${tx}px, ${ty}px)`;
+}
+
+function getPathStartPoint(dStr) {
+  const m = dStr.match(/M\s+([-\d.]+)\s+([-\d.]+)/);
+  if (m) {
+    return { x: parseFloat(m[1]), y: parseFloat(m[2]) };
+  }
+  return { x: 550, y: 300 };
+}
+
+// 부위 구분용 헬퍼 함수
+function getSection(y) {
+  if (currentSceneIndex === 1) { // 등대
+    if (y <= 450) return 'tower';
+    if (y <= 550) return 'rock';
+    return 'sea';
+  } else { // 돛단배
+    if (y <= 380) return 'mast';
+    if (y <= 480) return 'hull';
+    return 'wave';
+  }
+}
+
+// 실사 손 위치 배치 함수 (균일 스케일 1.36 비율 유지 + bottom/right clamp 오프셋 보정)
+function applyPenTransform(x, y, rot) {
+  if (!scenesData || !handMeta) return;
+  const data = scenesData[currentSceneIndex];
+  if (!data) return;
+  
+  const viewBoxArr = data.vb.split(' ');
+  const vbW = parseFloat(viewBoxArr[2]);
+  const vbH = parseFloat(viewBoxArr[3]);
+  
+  const rect = sceneStage.getBoundingClientRect();
+  const scaleX = rect.width / vbW;
+  const scaleY = rect.height / vbH;
+  
+  const screenX = x * scaleX;
+  const screenY = y * scaleY;
+  
+  // 수정 1 규칙: 균일 스케일 적용 (s 하나만 사용)
+  const s = (rect.height * 0.55) / handMeta.h;
+  const w_screen = handMeta.w * s;
+  const h_screen = handMeta.h * s;
+  
+  const tipX_screen = handMeta.tipX * s;
+  const tipY_screen = handMeta.tipY * s;
+  
+  let tx = screenX - tipX_screen;
+  let ty = screenY - tipY_screen;
+  
+  // 잘린 아래변(bottom) 화면 아래 경계 밖 clamp (50px 안전 마진 추가, 개별 늘리기 금지)
+  if (handMeta.cutEdges && handMeta.cutEdges.includes("bottom")) {
+    const bottomEdge = ty + h_screen;
+    if (bottomEdge < rect.height + 50) {
+      ty = rect.height + 50 - h_screen;
+    }
+  }
+
+  // 잘린 우측변(right) 화면 우측 경계 밖 clamp (50px 안전 마진 추가, 개별 늘리기 금지)
+  if (handMeta.cutEdges && handMeta.cutEdges.includes("right")) {
+    const rightEdge = tx + w_screen;
+    if (rightEdge < rect.width + 50) {
+      tx = rect.width + 50 - w_screen;
+    }
+  }
+  
+  penOverlay.style.width = `${w_screen}px`;
+  penOverlay.style.height = `${h_screen}px`;
+  // 실사 손은 회전 고정 (회전 금지!)
+  penOverlay.style.transform = `translate(${tx}px, ${ty}px)`;
+}
+
+// SVG 드로잉 핵심 로직 (R8 글로벌 항해 + 0.18 감쇠 추종)
+async function startSvgDrawing(sceneId, token) {
+  if (!scenesData || !handMeta) return;
+  const data = scenesData.find(s => s.id === sceneId);
+  if (!data) return;
+
+  sceneSvg.style.display = 'block';
+  sceneSvg.setAttribute('viewBox', data.vb);
+  
+  const maskPathsG = document.getElementById('maskPathsG');
+  if (maskPathsG) maskPathsG.innerHTML = '';
+
+  const paths = data.lineart;
+  
+  // 선화 및 원화 경로 바인딩 (v12 캐시버스터 적용)
+  const lineImgHref = (sceneId === 'lighthouse') ? '/line-lighthouse-v2.png?v=12' : '/line-ship.png?v=12';
+  const colorImgHref = (sceneId === 'lighthouse') ? '/metric-lighthouse.png?v=12' : '/metric-ship.png?v=12';
+  
+  const lineImg = document.getElementById('lineImg');
+  const colorImg = document.getElementById('colorImg');
+  if (lineImg) lineImg.setAttribute('href', lineImgHref);
+  if (colorImg) {
+    colorImg.setAttribute('href', colorImgHref);
+    colorImg.classList.remove('active');
+  }
+
+  // 전체 길이 연산
+  const tempSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  tempSvg.style.position = 'absolute';
+  tempSvg.style.visibility = 'hidden';
+  document.body.appendChild(tempSvg);
+  
+  const pathLengths = paths.map(line => {
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', line.d);
+    tempSvg.appendChild(p);
+    const len = p.getTotalLength();
+    tempSvg.removeChild(p);
+    return len;
+  });
+  document.body.removeChild(tempSvg);
+  const totalLen = pathLengths.reduce((acc, l) => acc + l, 0);
+
+  // 마스크 패스 생성 (stroke-width 72 -> 110 확장 및 round화)
+  const svgInkPaths = paths.map((line, i) => {
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', line.d);
+    p.setAttribute('stroke', 'white');
+    p.setAttribute('stroke-width', '110');
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('stroke-linejoin', 'round');
+    p.setAttribute('fill', 'none');
+    
+    const len = pathLengths[i];
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = len;
+    if (maskPathsG) {
+      maskPathsG.appendChild(p);
+    }
+    return { element: p, length: len };
+  });
+
+  console.log("DEBUG: startSvgDrawing paths count:", paths.length, "svgInkPaths count:", svgInkPaths.length, "sceneId:", sceneId);
+
+  // R13 배우와 무대 변수 및 부위별 그리기 시간 분배
+  let partCenters;
+  if (sceneId === 'lighthouse') {
+    partCenters = [
+      { x: 440, y: 230 }, // 0: 등탑
+      { x: 270, y: 410 }, // 1: 좌바위
+      { x: 630, y: 410 }, // 2: 우바위
+      { x: 450, y: 495 }  // 3: 파도
+    ];
+  } else {
+    partCenters = [
+      { x: 540, y: 215 }, // 0: 돛
+      { x: 550, y: 410 }, // 1: 선체
+      { x: 300, y: 495 }, // 2: 좌물결
+      { x: 650, y: 495 }  // 3: 우물결
+    ];
+  }
+
+  const partPaths = [[], [], [], []];
+  svgInkPaths.forEach((pInfo, idx) => {
+    const dStr = paths[idx].d;
+    const pt = getPathStartPoint(dStr);
+    let partIdx = 0;
+    
+    if (sceneId === 'lighthouse') {
+      if (pt.y <= 360) partIdx = 0;
+      else if (pt.y > 360 && pt.y <= 460 && pt.x < 400) partIdx = 1;
+      else if (pt.y > 360 && pt.y <= 460 && pt.x >= 400) partIdx = 2;
+      else partIdx = 3;
+    } else {
+      if (pt.y <= 330) partIdx = 0;
+      else if (pt.y > 330 && pt.y <= 470) partIdx = 1;
+      else if (pt.y > 470 && pt.x < 450) partIdx = 2;
+      else partIdx = 3;
+    }
+    
+    partPaths[partIdx].push({
+      element: pInfo.element,
+      length: pInfo.length,
+      globalIdx: idx
+    });
+  });
+
+  let activePartIdx = 0;
+  let partState = 'moving'; // 'moving', 'breathing', 'drawing'
+  let partStateTime = 0;
+  const partDrawTimes = [1200, 1200, 1200, 1200];
+  const totalDrawMs = 4800; // 총 드로잉 타임 4.8초
+
+  // 펜 초기 위치 잡기
+  if (svgInkPaths.length > 0) {
+    const firstPath = svgInkPaths[0].element;
+    const startPt = firstPath.getPointAtLength(0);
+    penX = startPt.x;
+    penY = startPt.y;
+    applyPenTransform(penX, penY, penRot);
+  }
+
+  penOverlay.style.display = 'block';
+  penOverlay.style.opacity = '1';
+
+  let drawStart = null;
+  let lastTimestamp = 0;
+
+  await new Promise(resolve => {
+    function drawFrame(timestamp) {
+      if (runToken !== token) { resolve(); return; }
+      if (!drawStart) {
+        drawStart = timestamp;
+        lastTimestamp = timestamp;
+      }
+      
+      const dt = Math.min(50, timestamp - lastTimestamp);
+      lastTimestamp = timestamp;
+      
+      const dt_real = dt;
+      partStateTime += dt_real;
+      
+      const center = partCenters[activePartIdx];
+      
+      if (partState === 'moving') {
+        // 1. 손을 목표 부위 센터로 속도제한(W * 0.35 / sec)을 지키며 부드럽게 비행
+        const dx = center.x - penX;
+        const dy = center.y - penY;
+        const dist = Math.hypot(dx, dy);
+        const maxMove = (1100 * 0.35) * (dt_real / 1000);
+        
+        if (dist <= maxMove) {
+          penX = center.x;
+          penY = center.y;
+          partState = 'breathing';
+          partStateTime = 0;
+        } else {
+          penX += (dx / dist) * maxMove;
+          penY += (dy / dist) * maxMove;
+        }
+        applyPenTransform(penX, penY, penRot);
+      } 
+      else if (partState === 'breathing') {
+        // 2. 부위 도착 후 150ms 동안 호흡정지
+        penX = center.x;
+        penY = center.y;
+        applyPenTransform(penX, penY, penRot);
+        if (partStateTime >= 150) {
+          partState = 'drawing';
+          partStateTime = 0;
+        }
+      } 
+      else if (partState === 'drawing') {
+        // 3. 리빌되고 있는 활성 획의 팁 주변을 끄적이면서 선화 리빌
+        const drawTime = partDrawTimes[activePartIdx];
+        const partProg = Math.min(partStateTime / drawTime, 1);
+        
+        const pathsInPart = partPaths[activePartIdx];
+        const N = pathsInPart.length;
+        
+        // 현재 리빌되고 있는 획 팁 좌표 추적 (허공 헛손질 박멸)
+        const curIdx = Math.min(Math.floor(partProg * N), N - 1);
+        const pInfo = pathsInPart[curIdx];
+        const localProg = Math.max(0, Math.min(1, (partProg - (curIdx / N)) * N));
+        const pt = pInfo.element.getPointAtLength(pInfo.length * localProg);
+        
+        let targetX = pt.x;
+        let targetY = pt.y;
+        
+        // 획 팁 주변 리사주 요동 끄적임 제거 (손 떨림 완화)
+        /*
+        const angle = (partStateTime / 1000) * 2 * Math.PI * 2.0;
+        const radX = 20;
+        const radY = 16;
+        targetX += Math.cos(angle) * radX;
+        targetY += Math.sin(angle * 2) * radY;
+        */
+        
+        penX += (targetX - penX) * 0.22;
+        penY += (targetY - penY) * 0.22;
+        applyPenTransform(penX, penY, penRot);
+        
+        // 부위 guides 순차 리빌
+        pathsInPart.forEach((pInfo, j) => {
+          const startProg = j / N;
+          const endProg = (j + 1) / N;
+          if (partProg >= endProg) {
+            pInfo.element.setAttribute('stroke-dashoffset', 0);
+          } else if (partProg < startProg) {
+            pInfo.element.setAttribute('stroke-dashoffset', pInfo.length + 2);
+          } else {
+            const localProg = (partProg - startProg) * N;
+            pInfo.element.setAttribute('stroke-dashoffset', pInfo.length * (1 - localProg));
+          }
+        });
+        
+        if (partStateTime >= drawTime) {
+          // 그리기 완료 후 획들 강제 완결
+          pathsInPart.forEach(pInfo => pInfo.element.setAttribute('stroke-dashoffset', 0));
+          activePartIdx++;
+          if (activePartIdx >= 4) {
+            resolve();
+            return;
+          } else {
+            partState = 'moving';
+            partStateTime = 0;
+          }
+        }
+      }
+      
+      requestAnimationFrame(drawFrame);
+    }
+    requestAnimationFrame(drawFrame);
+  });
+
+  if (runToken !== token) return;
+
+  if (!svgInkPaths || svgInkPaths.length === 0) {
+    console.error("DEBUG: svgInkPaths is empty. Aborting drawing sequence.");
+    return;
+  }
+
+  // 펜 퇴장 모션 (감쇠 0.18)
+  const lastPath = svgInkPaths[svgInkPaths.length - 1];
+  const lastPt = lastPath.element.getPointAtLength(lastPath.length);
+  const startX = lastPt.x;
+  const startY = lastPt.y;
+  const endX = parseFloat(data.vb.split(' ')[2]) + 250;
+  const endY = startY - 50;
+  const retreatTotalTime = 400;
+  let retreatStart = null;
+
+  await new Promise(resolve => {
+    function retreatFrame(timestamp) {
+      if (runToken !== token) { resolve(); return; }
+      if (!retreatStart) retreatStart = timestamp;
+      const elapsed = timestamp - retreatStart;
+      const progress = Math.min(elapsed / retreatTotalTime, 1);
+      const easedProgress = getEasedProgress(progress);
+      
+      const targetX = startX + (endX - startX) * easedProgress;
+      const targetY = startY + (endY - startY) * easedProgress;
+      
+      penX += (targetX - penX) * 0.18;
+      penY += (targetY - penY) * 0.18;
+      
+      applyPenTransform(penX, penY, penRot);
+      
+      if (progress < 1) requestAnimationFrame(retreatFrame);
+      else {
+        penOverlay.style.opacity = '0';
+        resolve();
+      }
+    }
+    requestAnimationFrame(retreatFrame);
+  });
+
+  if (runToken !== token) return;
+
+  // 채색 번짐 (BLOBS)
+  const BLOBS = (sceneId === 'lighthouse') ? [
+    {x: '50%', y: '15%'}, {x: '50%', y: '35%'}, {x: '50%', y: '55%'},
+    {x: '25%', y: '75%'}, {x: '75%', y: '75%'}, {x: '15%', y: '85%'},
+    {x: '50%', y: '90%'}, {x: '85%', y: '85%'}
+  ] : [
+    {x: '50%', y: '25%'}, {x: '35%', y: '35%'}, {x: '52%', y: '24%'},
+    {x: '48%', y: '72%'}, {x: '34%', y: '35%'}, {x: '64%', y: '84%'},
+    {x: '20%', y: '85%'}, {x: '80%', y: '85%'}
+  ];
+
+  colorImg.classList.add('active');
+  const colorTotalTime = 2500;
+  let colorStart = null;
+
+  setTimeout(() => {
+    if (runToken === token) {
+      const words = SCENE_WORDS_CONFIG[currentSceneIndex];
+      triggerWordPopups(words, token);
+    }
+  }, 2250);
+
+  await new Promise(resolve => {
+    function colorFrame(timestamp) {
+      if (runToken !== token) { resolve(); return; }
+      if (!colorStart) colorStart = timestamp;
+      const elapsed = timestamp - colorStart;
+      
+      const maskGradients = BLOBS.map((blob, idx) => {
+        const delay = idx * 200;
+        if (elapsed < delay) return `radial-gradient(circle at ${blob.x} ${blob.y}, white 0%, transparent 0%)`;
+        const progress = Math.min((elapsed - delay) / 1100, 1);
+        const scale = 1.6 * (1 - Math.pow(1 - progress, 2));
+        return `radial-gradient(circle at ${blob.x} ${blob.y}, white ${35 * scale * 0.6}%, transparent ${35 * scale}%)`;
+      });
+
+      colorImg.style.webkitMaskImage = colorImg.style.maskImage = maskGradients.join(', ');
+
+      if (elapsed < colorTotalTime) requestAnimationFrame(colorFrame);
+      else {
+        colorImg.style.webkitMaskImage = colorImg.style.maskImage = '';
+        resolve();
+      }
+    }
+    requestAnimationFrame(colorFrame);
+  });
 }
 
 function startScene() {
   const token = runToken;
   sceneCta.classList.add('hide');
-  const scene = scenesData[currentSceneIndex];
-  
-  // 비디오 재생 시도
-  sceneVideo.src = scene.video;
-  sceneVideo.style.display = 'block';
-  sceneVideo.style.opacity = '1';
-  
-  sceneVideo.play().then(() => {
-    // 비디오 재생 성공
-    console.log("Playing scene video:", scene.video);
-  }).catch(err => {
-    // 비디오 로드 에러 (예: mp4 파일이 없을 경우) -> 포스터 이미지 띄우고 즉시 단어 팝업 시퀀스로 우아하게 폴백!
-    console.warn("Video play failed, falling back to static poster image:", err);
-    sceneVideo.style.display = 'none';
-    sceneBgImg.src = scene.poster || '/metric-whale.png';
-    sceneBgImg.style.display = 'block';
-    sceneBgImg.classList.add('show');
-    
-    setTimeout(() => {
-      if (runToken === token) {
-        triggerWordPopups(scene.words, token);
-      }
-    }, 1200);
-  });
+
+  if (currentSceneIndex === 0) {
+    // 고래 (기존 비디오 방식)
+    sceneVideo.style.display = 'block';
+    sceneVideo.style.opacity = '1';
+    sceneVideo.play();
+  } else {
+    // 등대(1) 또는 돛단배(2)
+    const sceneId = currentSceneIndex === 1 ? 'lighthouse' : 'ship';
+    startSvgDrawing(sceneId, token);
+  }
 }
 
 sceneVideo.addEventListener('ended', () => {
-  if (sceneState !== 'playing') return;
+  if (sceneState !== 'playing' || currentSceneIndex !== 0) return;
   const token = runToken;
-  const scene = scenesData[currentSceneIndex];
-  triggerWordPopups(scene.words, token);
+  const words = SCENE_WORDS_CONFIG[0];
+  triggerWordPopups(words, token);
 });
 
 sceneStage.addEventListener('click', () => {
-  unlockTTS();
+  unlockSpeech();
   if (sceneState === 'playing') return;
   
   if (sceneState === 'done') {
@@ -859,302 +979,30 @@ sceneStage.addEventListener('click', () => {
     return;
   }
 
+  // idle
   sceneState = 'playing';
   startScene();
 });
 
-// #22 카드 개봉 인터랙션
-cardInner.addEventListener('click', (e) => {
-  e.stopPropagation();
-  if (cardInner.classList.contains('flipped')) return;
-  
-  cardInner.classList.add('flipped');
-  speak(cardFrontTitle.textContent);
-  
-  // 골드 축하 파티클 효과
-  spawnGoldParticles();
-});
-
-function spawnGoldParticles() {
-  const rect = cardInner.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-  
-  for (let i = 0; i < 40; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    document.body.appendChild(particle);
+// 탭/점 전환 이벤트 바인딩
+sceneDots.forEach(dot => {
+  dot.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const idx = parseInt(dot.getAttribute('data-index'));
+    if (idx === currentSceneIndex) return;
     
-    const angle = Math.random() * Math.PI * 2;
-    const velocity = 3 + Math.random() * 8;
-    const dx = Math.cos(angle) * velocity;
-    const dy = Math.sin(angle) * velocity;
+    // 점 활성화 토글
+    sceneDots.forEach(d => d.classList.remove('on'));
+    dot.classList.add('on');
     
-    let px = centerX;
-    let py = centerY;
-    particle.style.transform = `translate(${px}px, ${py}px)`;
-    
-    let life = 0;
-    const maxLife = 40 + Math.random() * 30;
-    
-    function updateParticle() {
-      px += dx;
-      py += dy + 0.15; // 중력 효과
-      life++;
-      particle.style.transform = `translate(${px}px, ${py}px)`;
-      particle.style.opacity = (1 - life / maxLife);
-      
-      if (life < maxLife) {
-        requestAnimationFrame(updateParticle);
-      } else {
-        document.body.removeChild(particle);
-      }
-    }
-    requestAnimationFrame(updateParticle);
-  }
-}
-
-collectBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  
-  // 클릭 즉시 show 클래스를 떼내어 레이어 간섭 현상 완전 방지
-  cardOverlay.classList.remove('show');
-  cardOverlay.style.transition = 'opacity 0.6s ease';
-  cardOverlay.style.opacity = '0';
-
-  const targetSlot = museumShelfSlots[currentSceneIndex];
-  const slotRect = targetSlot.getBoundingClientRect();
-  const cardRect = cardInner.getBoundingClientRect();
-  
-  cardInner.style.transition = 'all 0.6s cubic-bezier(0.55, 0, 0.1, 1)';
-  cardInner.style.transform = `translate(${slotRect.left - cardRect.left}px, ${slotRect.top - cardRect.top}px) scale(0.15)`;
-  
-  setTimeout(() => {
-    museumCollected[currentSceneIndex] = true;
-    updateMuseumShelf();
-    
-    // 모달 상태 물리적 초기화
-    cardOverlay.style.opacity = '';
-    cardInner.style.transition = '';
-    cardInner.style.transform = '';
-    
+    currentSceneIndex = idx;
     resetScene();
-  }, 600);
-});
-
-// 내비게이션 버튼 바인딩
-prevBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  let nextIdx = currentSceneIndex - 1;
-  if (nextIdx < 0) nextIdx = scenesData.length - 1;
-  changeScene(nextIdx);
-});
-
-nextBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  let nextIdx = currentSceneIndex + 1;
-  if (nextIdx >= scenesData.length) nextIdx = 0;
-  changeScene(nextIdx);
-});
-
-// 디지털 액자 모드 온오프 제어
-ambientBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  ambientMode = !ambientMode;
-  
-  if (ambientMode) {
-    ambientBtn.textContent = "액자 ON 🟢";
-    ambientBtn.style.background = "var(--accent)";
-    // 켜지는 즉시 자동 재생 가동
-    if (sceneState !== 'playing') {
-      sceneState = 'playing';
-      startScene();
-    }
-  } else {
-    ambientBtn.textContent = "액자 🖼️";
-    ambientBtn.style.background = "var(--blue)";
-    resetScene();
-  }
-});
-
-// 단어 공방 즉석 생성 시뮬레이션 로직
-workshopBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  // 액자 모드가 켜져있다면 일시 비활성화
-  if (ambientMode) {
-    ambientMode = false;
-    ambientBtn.textContent = "액자 🖼️";
-    ambientBtn.style.background = "var(--blue)";
-  }
-  workshopOverlay.classList.add('show');
-});
-
-workshopCloseBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  workshopOverlay.classList.remove('show');
-});
-
-// 모의 선화 데이터 (기술 시연을 위한 펜 궤적)
-const MOCK_LINEART = [
-  {"d": "M 100 150 L 300 150 L 200 350 Z"},
-  {"d": "M 150 200 C 180 150 220 150 250 200"},
-  {"d": "M 200 100 L 200 400"},
-  {"d": "M 100 300 L 300 300"}
-];
-
-workshopGenerateBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  const word = workshopInput.value.trim().toUpperCase();
-  if (!word) {
-    alert("공방에 의뢰할 단어를 입력해주세요!");
-    return;
-  }
-  
-  workshopOverlay.classList.remove('show');
-  resetScene();
-  
-  sceneCta.textContent = "AI 공방에서 실시간 드로잉 생성 중...";
-  sceneCta.classList.remove('hide');
-  
-  setTimeout(() => {
-    sceneCta.classList.add('hide');
-    runToken++;
-    const token = runToken;
-    
-    // 모의 드로잉 시작
-    simulateWorkshopDrawing(word, token);
-  }, 1500);
-});
-
-async function simulateWorkshopDrawing(word, token) {
-  sceneSvg.style.display = 'block';
-  sceneSvg.setAttribute('viewBox', '0 0 1100 613');
-  
-  const maskPathsG = document.getElementById('maskPathsG');
-  maskPathsG.innerHTML = '';
-  
-  // 마스크 패스 생성
-  const svgInkPaths = MOCK_LINEART.map((line) => {
-    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    p.setAttribute('d', line.d);
-    p.setAttribute('stroke', 'white');
-    p.setAttribute('stroke-width', '100');
-    p.setAttribute('stroke-linecap', 'round');
-    p.setAttribute('stroke-linejoin', 'round');
-    p.setAttribute('fill', 'none');
-    
-    const len = 400; // 가상 길이
-    p.style.strokeDasharray = len;
-    p.style.strokeDashoffset = len;
-    maskPathsG.appendChild(p);
-    return { element: p, length: len };
   });
+});
 
-  const lineImg = document.getElementById('lineImg');
-  const colorImg = document.getElementById('colorImg');
-  // 공방 전용 선화/원화 이미지 Mock 바인딩 (등대용 이미지를 임시 기술 데모로 사용)
-  lineImg.setAttribute('href', '/line-lighthouse-v2.png');
-  colorImg.setAttribute('href', '/metric-lighthouse.png');
-  lineImg.setAttribute('mask', 'url(#lineMask)');
+// Initialize
+resetScene();
 
-  penOverlay.style.display = 'block';
-  penOverlay.style.opacity = '1';
-  
-  // 손 펜 비행 및 드로잉 모사
-  let steps = [
-    {x: 200, y: 150},
-    {x: 400, y: 300},
-    {x: 600, y: 150},
-    {x: 500, y: 400}
-  ];
-  
-  for (let i = 0; i < steps.length; i++) {
-    await new Promise(resolve => {
-      let tStart = null;
-      const stepTime = 800;
-      const startX = penX;
-      const startY = penY;
-      const targetX = steps[i].x;
-      const targetY = steps[i].y;
-      
-      function animatePen(ts) {
-        if (runToken !== token) { resolve(); return; }
-        if (!tStart) tStart = ts;
-        const progress = Math.min((ts - tStart) / stepTime, 1);
-        
-        penX = startX + (targetX - startX) * progress;
-        penY = startY + (targetY - startY) * progress;
-        
-        // 펜 위치 갱신
-        const rect = sceneStage.getBoundingClientRect();
-        const scaleX = rect.width / 1100;
-        const scaleY = rect.height / 613;
-        const s = (rect.height * 0.55) / handMeta.h;
-        const tx = penX * scaleX - handMeta.tipX * s;
-        const ty = penY * scaleY - handMeta.tipY * s;
-        
-        penOverlay.style.width = `${handMeta.w * s}px`;
-        penOverlay.style.height = `${handMeta.h * s}px`;
-        penOverlay.style.transform = `translate(${tx}px, ${ty}px)`;
-        
-        // 마스크 패스 리빌 모사
-        if (svgInkPaths[i]) {
-          svgInkPaths[i].element.setAttribute('stroke-dashoffset', svgInkPaths[i].length * (1 - progress));
-        }
-        
-        if (progress < 1) requestAnimationFrame(animatePen);
-        else resolve();
-      }
-      requestAnimationFrame(animatePen);
-    });
-  }
-  
-  if (runToken !== token) return;
-  
-  // 채색 완료 처리
-  colorImg.classList.add('active');
-  penOverlay.style.opacity = '0';
-  
-  // 완성 단어 팝업 연출
-  setTimeout(() => {
-    if (runToken !== token) return;
-    
-    // [공방 버그 1차 수정] 입력 단어의 씬을 매칭 검색하여 보관 대상 인덱스로 지정!
-    const matchedIdx = scenesData.findIndex(s => 
-      s.words.some(w => w.en.toUpperCase() === word.toUpperCase()) || 
-      s.id.toUpperCase() === word.toUpperCase()
-    );
-    if (matchedIdx !== -1) {
-      currentSceneIndex = matchedIdx;
-    } else {
-      // 매칭되는 게 없으면 빈 박물관 슬롯 중 하나에 임시 할당
-      const emptyIdx = museumCollected.findIndex(c => !c);
-      if (emptyIdx !== -1) {
-        currentSceneIndex = emptyIdx;
-      }
-    }
-
-    // 공방 임시 획득 단어 팝업
-    const mockWord = {en: word, ko: "공방 생성 단어", x: 0.5, y: 0.5};
-    const el = document.createElement('div');
-    el.className = 'sc-word show';
-    el.style.top = `${mockWord.y * 100}%`;
-    el.style.left = `${mockWord.x * 100}%`;
-    el.innerHTML = `<div class="en">${mockWord.en}</div><div class="ko">${mockWord.ko}</div>`;
-    sceneWordsEl.appendChild(el);
-    speak(mockWord.en);
-    
-    sceneState = 'done';
-    
-    // 카드 획득 연출 작동
-    setTimeout(() => {
-      // 공방 수집 카드 이미지도 매칭 포스터로 세팅
-      cardFrontImg.src = (matchedIdx !== -1 ? scenesData[matchedIdx].poster : '/metric-lighthouse.png');
-      cardFrontTitle.textContent = word;
-      cardOverlay.classList.add('show');
-    }, 1500);
-  }, 1000);
-}
 </script>
 </body>
 </html>
