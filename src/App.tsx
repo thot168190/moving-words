@@ -170,14 +170,19 @@ export default function App() {
         <style>{`.sw-crawl{transform-origin:50% 100%;animation:sw-crawl 30s linear infinite}@keyframes sw-crawl{0%{transform:rotateX(22deg) translateY(95vh)}100%{transform:rotateX(22deg) translateY(-170%)}}`}</style>
       </section>
 
-      {/* ════════════════ SECTION 3: METRICS ════════════════ */}
+      {/* ════════════════ SECTION 3: INTERACTIVE DEMO & METRICS ════════════════ */}
       <section className="relative overflow-hidden bg-white py-24 sm:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-center text-[#141414]" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
-            {metrics.subtitle}
+          <h2 className="text-center text-[#141414] mb-8" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
+            화면을 직접 터치해 보세요. 단어의 첫 장면이 그려집니다.
           </h2>
-          <div className="relative mx-auto mt-6 md:mt-10 h-[32vh] sm:h-[40vh] md:h-[46vh] min-h-[240px] max-h-[520px] w-[92%] max-w-[860px]">
-            <MetricsDoodle />
+          <div className="relative mx-auto mt-6 md:mt-10 w-full max-w-[840px]">
+            <iframe
+              src="/demo.html?embed=true"
+              className="w-full min-h-[290px] xs:min-h-[380px] sm:min-h-[520px] border-3 border-[#1c1c1c] rounded-[18px] shadow-[6px_6px_0_#1c1c1c] transition-all"
+              style={{ background: '#fdfcf7' }}
+              title="실시간 드로잉 단어 학습 시연"
+            />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-8 text-center mt-14 items-start">
             {metrics.items.map((m, i) => (
