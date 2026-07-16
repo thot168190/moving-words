@@ -204,6 +204,25 @@
     transition: opacity 0.3s;
     display: none;
   }
+  
+  /* Embed mode overrides */
+  body.is-embedded {
+    background: transparent !important;
+    background-image: none !important;
+    padding: 0 !important;
+  }
+  body.is-embedded header {
+    padding: 0 !important;
+  }
+  body.is-embedded header > h1,
+  body.is-embedded header > p.sub,
+  body.is-embedded header > div:not(.hero-scene-wrap) {
+    display: none !important;
+  }
+  body.is-embedded .hero-scene-wrap {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+  }
 </style>
 </head>
 <body>
@@ -288,6 +307,9 @@
 </footer>
 
 <script>
+if (window.location.search.includes('embed=true')) {
+  document.body.classList.add('is-embedded');
+}
 
 const sceneVideo = document.getElementById('sceneVideo');
 const sceneBgImg = document.getElementById('sceneBgImg');
