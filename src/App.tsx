@@ -7,7 +7,6 @@ import { ScrambleIn } from './components/ScrambleText';
 import { ConnectAILabLogo } from './components/ConnectAILabLogo';
 import HeroDoodle from './components/HeroDoodle';
 import HeroWords from './components/HeroWords';
-import MetricsDoodle from './components/MetricsDoodle';
 import FeatureDoodle from './components/FeatureDoodle';
 import WordRain from './components/WordRain';
 import TossCheckoutButton from './components/payment/TossCheckoutButton';
