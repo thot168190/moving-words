@@ -158,7 +158,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
 
             {/* Download button */}
             <motion.a
-              href="/demo.html"
+              href="#course"
               className="h-12 px-6 bg-[#141414] rounded-full flex items-center gap-2.5 cursor-pointer border-none no-underline"
               whileHover={{ scale: 1.03, backgroundColor: '#3a3a3a' }}
               whileTap={{ scale: 0.97 }}
@@ -167,7 +167,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
             >
               <span className="text-white text-[16px]">✏️</span>
               <span className="text-white text-[16px] font-medium">
-                <ScrambleText text="무료 데모 체험" isHovered={downloadHovered} />
+                <ScrambleText text="12주 코스 신청" isHovered={downloadHovered} />
               </span>
             </motion.a>
           </div>
