@@ -118,7 +118,11 @@
     .chapter-grid .chapter-card.open{background:transparent;border:0;color:#063f31}
     .chapter-grid .chapter-card.open:before{width:42px;height:42px;border-width:1px;border-color:#6f8f84;background:rgba(231,240,236,.2);box-shadow:0 0 0 3px rgba(255,255,255,.28)}
     .chapter-grid .chapter-card small{font-size:13px;letter-spacing:.06em;color:#624500;font-weight:800;text-shadow:0 1px 2px #fff}
-    .chapter-grid .chapter-card h3{display:inline-block;font-family:Pretendard,sans-serif;font-size:clamp(18px,1.45vw,23px);line-height:1.2;margin:3px 0 0;padding:5px 9px;border:0;border-radius:4px;background:rgba(255,255,255,.96);color:#003d2f;box-shadow:0 2px 7px rgba(10,52,42,.1);-webkit-text-stroke:0;text-shadow:none;font-weight:800}
+    .chapter-grid .chapter-card h3{display:inline-grid;font-family:Pretendard,sans-serif;font-size:clamp(18px,1.45vw,23px);line-height:1.2;margin:3px 0 0;padding:5px 9px;border:0;border-radius:4px;background:rgba(255,255,255,.96);color:#003d2f;box-shadow:0 2px 7px rgba(10,52,42,.1);-webkit-text-stroke:0;text-shadow:none;font-weight:800;white-space:nowrap}
+    .chapter-grid .chapter-card h3 span{grid-area:1/1;transition:opacity .18s ease,transform .18s ease}
+    .chapter-grid .chapter-card .label-en{opacity:0;transform:translateY(3px);font-size:.88em;letter-spacing:-.02em}
+    .chapter-grid .chapter-card:hover .label-ko,.chapter-grid .chapter-card:focus-visible .label-ko{opacity:0;transform:translateY(-3px)}
+    .chapter-grid .chapter-card:hover .label-en,.chapter-grid .chapter-card:focus-visible .label-en{opacity:1;transform:translateY(0)}
     .chapter-grid .chapter-note{display:none}
     .chapter-grid .key{left:50%;right:auto;top:-10px;width:8px;height:8px;transform:translateX(-50%)}
     .chapter-grid .key:before{width:7px;height:1px;left:5px;top:6px}
@@ -210,6 +214,10 @@
       '세상을 발견하는 순간','숲과 생명','우리 집','학교생활','도시와 교통','음식과 건강',
       '몸과 감정','운동과 도전','여행과 세계','지구와 날씨','우주와 과학','밤과 꿈'
     ];
+    const chapterEnglish=[
+      'Moments of Discovery','Forest & Life','Our Home','School Life','City & Transport','Food & Health',
+      'Body & Feelings','Sports & Challenges','Travel & World','Earth & Weather','Space & Science','Night & Dreams'
+    ];
     const chapterNotes=[
       '바다에서 시작하는 첫 발견','생명이 이어지는 숲의 질서','일상과 관계가 머무는 곳','배우고 성장하는 하루',
       '이동하며 만나는 도시','몸을 돌보는 건강한 선택','감정을 이해하는 연습','한계를 넘어서는 도전',
@@ -218,7 +226,7 @@
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
     const chapterSpots=[[21,31],[12,50],[30,50],[22,72],[46,31],[44,47],[58,51],[50,72],[77,30],[72,47],[86,55],[77,72]];
     const chapterGrid=document.getElementById('chapterGrid');
-    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${i===0?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>${String(i+1).padStart(2,'0')}</small>${i===0?'':'<i class="key" aria-hidden="true"></i>'}<h3>${name}</h3></button>`).join('');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${i===0?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>${String(i+1).padStart(2,'0')}</small>${i===0?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
     const shelf=document.getElementById('shelf');
     shelf.innerHTML=works.map((w,i)=>`<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${i}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · 8 WORDS</small><h3>${w.title}</h3><p>${w.sub}</p></div></button>`).join('');
 
