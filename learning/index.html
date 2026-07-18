@@ -277,8 +277,21 @@
     }
     function extractGeneratedImage(result){
       const item=result?.data?.[0];
-      if(typeof item==='string')return item;
-      return item?.url||item?.path||item?.image?.url||'';
+      let path = '';
+      if(typeof item==='string') path = item;
+      else path = item?.url||item?.path||item?.image?.url||'';
+      
+      if(path && !path.startsWith('http')){
+        const spaceHost = `https://${config.space.replace('/', '-').toLowerCase()}.hf.space`;
+        if(path.startsWith('/file=')){
+          path = `${spaceHost}${path}`;
+        } else if(path.startsWith('/')){
+          path = `${spaceHost}/file=${path}`;
+        } else {
+          path = `${spaceHost}/file=/${path}`;
+        }
+      }
+      return path;
     }
     // 랜딩에서 소개하는 대표 수채화 카드를 박물관의 상설 전시로도 보여줍니다.
     const featuredMuseumCards=[
