@@ -424,11 +424,11 @@ function LandingPage() {
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
             {[
-              ['01', '움직이는 그림 학습', '그림으로 익혀요', 'LEARN', '/feature-cards/sailing.webp'],
-              ['02', '거꾸로 퀴즈', '게임으로 확인해요', 'PLAY', '/feature-cards/treasure.webp'],
-              ['03', '내 단어 AI 그림 생성', '원하는 단어를 만들어요', 'CREATE', '/feature-cards/fishing.webp'],
-              ['04', '나만의 단어 박물관', '배운 카드를 모아요', 'COLLECT', '/feature-cards/storm.webp'],
-            ].map(([num, title, desc, label, image], index) => (
+              ['01', '움직이는 그림 학습', 'LEARN', '/feature-cards/sailing.webp'],
+              ['02', '거꾸로 퀴즈', 'PLAY', '/feature-cards/treasure.webp'],
+              ['03', '내 단어 AI 그림 생성', 'CREATE', '/feature-cards/fishing.webp'],
+              ['04', '나만의 단어 박물관', 'COLLECT', '/feature-cards/storm.webp'],
+            ].map(([num, title, label, image], index) => (
               <motion.article
                 key={num}
                 className="group overflow-hidden rounded-[24px] border border-[#cfe2db] bg-white shadow-[0_10px_30px_rgba(7,83,63,0.05)] transition-all hover:-translate-y-1 hover:border-[#2f9c75] hover:shadow-[0_18px_38px_rgba(7,83,63,0.11)]"
@@ -439,38 +439,12 @@ function LandingPage() {
               >
                 <div className="relative aspect-square overflow-hidden bg-white">
                   <img src={image} alt={`${title} 실제 화면`} className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" />
-                  {index === 0 && (
-                    <div className="absolute inset-0">
-                      <span className="absolute left-[13%] top-[28%] text-[#07533f] text-[20px] sm:text-[28px] font-black [text-shadow:0_2px_8px_white]">sail</span>
-                      <span className="absolute right-[13%] bottom-[22%] text-[#07533f] text-[18px] sm:text-[25px] font-black [text-shadow:0_2px_8px_white]">anchor</span>
-                    </div>
-                  )}
-                  {index === 1 && (
-                    <div className="absolute inset-0">
-                      <span className="absolute left-[16%] top-[35%] grid h-12 w-12 place-items-center rounded-full bg-white text-[#07533f] text-2xl font-black shadow-lg">?</span>
-                      <div className="absolute inset-x-5 bottom-[30%] flex gap-2">
-                        {['treasure', 'coin', 'key'].map((word) => <span key={word} className="rounded-full bg-white px-3 py-1.5 text-[13px] sm:text-[15px] font-black text-[#07533f] shadow">{word}</span>)}
-                      </div>
-                    </div>
-                  )}
-                  {index === 2 && (
-                    <div className="absolute inset-x-6 top-[17%] rounded-xl bg-white/95 p-3 shadow-lg backdrop-blur">
-                      <span className="block text-[#07533f] text-[18px] sm:text-[22px] font-black">fishing · 낚시</span>
-                      <span className="text-[#527067] text-[12px] sm:text-[14px] font-bold">내가 원하는 장면으로 AI 그림 생성 중…</span>
-                    </div>
-                  )}
-                  {index === 3 && (
-                    <div className="absolute inset-x-5 bottom-[30%] grid grid-cols-3 gap-2">
-                      {['storm', 'wave', 'lightning'].map((word) => <span key={word} className="rounded-lg border border-white/60 bg-white/95 px-2 py-3 text-center text-[13px] sm:text-[16px] font-black text-[#07533f] shadow">{word}</span>)}
-                    </div>
-                  )}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#052f26] via-[#052f26]/90 to-transparent px-6 pb-6 pt-20 text-white sm:px-8 sm:pb-8">
-                    <div className="mb-2 flex items-center justify-between">
+                  <div className="absolute inset-x-4 bottom-4 rounded-[18px] bg-[#052f26]/92 px-5 py-4 text-white shadow-lg backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:px-6">
+                    <div className="mb-1.5 flex items-center justify-between">
                       <span className="text-[#ff9f86] text-[14px] font-black tracking-[0.14em]">{num}</span>
                       <span className="rounded-full bg-white/15 px-3 py-1.5 text-[11px] font-black tracking-[0.14em] backdrop-blur">{label}</span>
                     </div>
-                    <h3 className="font-gmarket font-black text-[25px] sm:text-[31px] tracking-[-0.03em]">{title}</h3>
-                    <p className="mt-1 text-[15px] sm:text-[17px] font-bold text-white/80">{desc}</p>
+                    <h3 className="font-gmarket font-black text-[23px] sm:text-[28px] tracking-[-0.03em]">{title}</h3>
                   </div>
                 </div>
               </motion.article>
