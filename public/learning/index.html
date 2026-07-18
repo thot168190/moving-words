@@ -117,7 +117,7 @@
     .chapter-grid .chapter-card:hover{transform:translate(-50%,-50%) scale(1.05);background:transparent;color:#006a50;box-shadow:none}
     .chapter-grid .chapter-card.open{background:transparent;border:0;color:#063f31}
     .chapter-grid .chapter-card.open:before{width:42px;height:42px;border-width:1px;border-color:#6f8f84;background:rgba(231,240,236,.2);box-shadow:0 0 0 3px rgba(255,255,255,.28)}
-    .chapter-grid .chapter-card small{position:absolute;left:50%;bottom:calc(100% + 5px);transform:translateX(-50%);font-family:Pretendard,sans-serif;font-size:clamp(17px,1.2vw,20px);line-height:1;letter-spacing:.04em;color:#5b4200;font-weight:800;paint-order:stroke fill;-webkit-text-stroke:4px rgba(255,255,255,.96);text-shadow:0 1px 3px #fff}
+    .chapter-grid .chapter-card small{position:absolute;left:50%;bottom:calc(100% + 3px);transform:translateX(-50%);display:inline-block;padding:4px 8px;border-radius:999px;background:#07533f;color:#fff;font-family:Pretendard,sans-serif;font-size:clamp(11px,.82vw,14px);line-height:1;letter-spacing:.08em;font-weight:800;white-space:nowrap;box-shadow:0 2px 6px rgba(7,83,63,.18)}
     .chapter-grid .chapter-card h3{display:inline-grid;width:100%;font-family:Pretendard,sans-serif;font-size:clamp(24px,1.75vw,30px);line-height:1.12;margin:0;padding:0;border:0;background:transparent;color:#003d2f;box-shadow:none;paint-order:stroke fill;-webkit-text-stroke:6px rgba(255,255,255,.96);text-shadow:0 2px 5px rgba(255,255,255,.95);font-weight:800;white-space:normal;text-align:center}
     .chapter-grid .chapter-card h3 span{grid-area:1/1;transition:opacity .18s ease,transform .18s ease}
     .chapter-grid .chapter-card .label-en{opacity:0;transform:translateY(3px);font-size:.88em;letter-spacing:-.02em}
@@ -128,7 +128,7 @@
     .chapter-grid .key:before{width:7px;height:1px;left:5px;top:6px}
     .chapter-grid .key:after{width:3px;height:4px;left:9px;top:7px}
     @media(min-width:901px){.worlds-head h2{white-space:nowrap;font-size:clamp(34px,3.45vw,44px)}}
-    @media(max-width:620px){.section-head h2{font-size:31px}.worlds-head{display:block}.worlds-head h2{font-size:35px}.worlds-head p{margin-top:12px}.world h3{font-size:23px}.map,.worlds{padding-left:0;padding-right:0}.map{overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}.map .section-head{position:sticky;left:0;width:calc(100vw - 32px)}.word strong{font-size:18px}.chapter-grid{display:block;width:1000px;max-width:none;gap:0;border-radius:0}.chapter-grid .chapter-card{width:210px;min-height:0;padding:0}.chapter-grid .chapter-card h3{font-size:23px;line-height:1.12;margin:0;padding:0;background:transparent;-webkit-text-stroke:5px rgba(255,255,255,.97)}.chapter-grid .chapter-card small{font-size:16px;-webkit-text-stroke:3px rgba(255,255,255,.97)}.chapter-note{display:none}.chapter-card.open:before{width:42px;height:42px}}
+    @media(max-width:620px){.section-head h2{font-size:31px}.worlds-head{display:block}.worlds-head h2{font-size:35px}.worlds-head p{margin-top:12px}.world h3{font-size:23px}.map,.worlds{padding-left:0;padding-right:0}.map{overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}.map .section-head{position:sticky;left:0;width:calc(100vw - 32px)}.word strong{font-size:18px}.chapter-grid{display:block;width:1000px;max-width:none;gap:0;border-radius:0}.chapter-grid .chapter-card{width:210px;min-height:0;padding:0}.chapter-grid .chapter-card h3{font-size:23px;line-height:1.12;margin:0;padding:0;background:transparent;-webkit-text-stroke:5px rgba(255,255,255,.97)}.chapter-grid .chapter-card small{font-size:11px;padding:4px 7px}.chapter-note{display:none}.chapter-card.open:before{width:42px;height:42px}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.poster video{display:none}}
   </style>
 </head>
@@ -224,9 +224,9 @@
       '더 넓은 세계로 떠나는 길','변하는 지구와 날씨','질문으로 열어보는 우주','상상과 꿈이 깊어지는 밤'
     ];
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
-    const chapterSpots=[[21,31],[12,50],[30,50],[22,72],[46,31],[44,47],[58,51],[50,72],[77,30],[72,47],[86,55],[77,72]];
+    const chapterSpots=[[21,22],[12,40],[30,40],[22,59],[46,22],[44,37],[58,42],[50,59],[77,21],[72,37],[86,47],[77,59]];
     const chapterGrid=document.getElementById('chapterGrid');
-    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${i===0?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>${String(i+1).padStart(2,'0')}</small>${i===0?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${i===0?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${i===0?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
     const shelf=document.getElementById('shelf');
     shelf.innerHTML=works.map((w,i)=>`<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${i}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · 8 WORDS</small><h3>${w.title}</h3><p>${w.sub}</p></div></button>`).join('');
 
