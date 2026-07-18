@@ -284,7 +284,7 @@
       const learnedCards=works.map((work,index)=>index<completedSceneCount
         ?`<article class="museum-card"><img src="${work.img}" alt="${work.title}"><h3>${work.title}</h3><p>${work.sub}</p></article>`
         :`<article class="museum-card back" aria-label="아직 수집하지 않은 ${index+1}번 카드"><div class="museum-seal"><b>${['I','II','III','IV','V','VI','VII','VIII'][index]}</b></div><p>학습하면 열리는 카드</p></article>`).join('');
-      return `<div class="feature-intro"><h1>나의 박물관</h1><p>학습한 카드와 직접 만든 카드를 한곳에 모아요.</p></div>${customSection}<section class="learned-museum"><div class="custom-museum-head"><h2>챕터 1 학습 카드</h2><span>${completedSceneCount} / 8</span></div><div class="museum-grid">${learnedCards}</div></section>`;
+      return `<div class="feature-intro"><h1>나의 박물관</h1><p>장면으로 익힌 단어 카드를 한 장씩 모아요.</p></div><section class="learned-museum"><div class="custom-museum-head"><h2>챕터 1 학습 카드</h2><span>${completedSceneCount} / 8</span></div><div class="museum-grid">${learnedCards}</div></section>${customSection}`;
     }
     function setupMuseum(){
       document.querySelectorAll('.delete-card').forEach(button=>button.onclick=()=>{
@@ -356,7 +356,8 @@
       else speechSynthesis.speak(utterance);
     }
     let wordLevel=1;
-    function currentWords(work){const i=works.indexOf(work);return wordLevel===1?levelOneWords[i]:work.words}
+    // LEVEL 1은 한 장면에 핵심 4개만 노출하고, LEVEL 2에서 확장 어휘를 보여줍니다.
+    function currentWords(work){const i=works.indexOf(work);return wordLevel===1?levelOneWords[i].slice(0,4):work.words}
     function renderWords(work){
       const sceneIndex=works.indexOf(work),allWords=currentWords(work);
       const indexes=wordLevel===1?[0,1,2,3]:labelIndexes[sceneIndex];
