@@ -39,7 +39,7 @@ export const SITE_CONFIG = {
 
   // 성능 지표 섹션
   metrics: {
-    subtitle: '숫자로 보는 보는 단어장',
+    subtitle: '숫자로 보는 단어장',
     items: [
       { value: '83%', label: '그림 1만 장을 보고도\n기억해낸 비율', note: 'Standing, 1973 —\n그림 기억은 쉽게 지워지지 않습니다' },
       { value: '평생 소장', label: '교육부 기본 어휘 바탕\n그림으로 그리는 핵심 단어 선별', note: '장면 연상 기법으로\n어휘가 이야기째 장기 기억 각인' },
@@ -97,6 +97,6 @@ export const SITE_CONFIG = {
       { label: '소개', scrollMultiplier: 1 },
       { label: '외워지는 이유', scrollMultiplier: 2 },
     ],
-    downloadLabel: '완성 코스 신청',
+    downloadLabel: '학습 시작',
   },
 };

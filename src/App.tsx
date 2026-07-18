@@ -18,9 +18,47 @@ import { SITE_CONFIG } from './config/content';
 const PRET = "'Pretendard Variable', Pretendard, -apple-system, sans-serif";
 const CARD_COLORS = ['#3b6ba5', '#c2410c', '#2f8f83', '#b98a2f'];
 
+// 랜딩 3번째 영역에서 순서대로 보여줄 학습 영상입니다.
+// 영상을 추가하려면 이 배열에만 항목을 추가하면 됩니다.
+const LEARNING_PREVIEW_VIDEOS = [
+  {
+    title: '바람을 타는 범선', src: '/learning-preview/scene-ch1-03.mp4',
+    words: [
+      { en: 'sail', ko: '돛', x: 48, y: 31 }, { en: 'horizon', ko: '수평선', x: 77, y: 25 },
+      { en: 'voyage', ko: '항해', x: 19, y: 65 }, { en: 'current', ko: '해류', x: 70, y: 77 },
+    ],
+  },
+  {
+    title: '밤하늘의 별자리', src: '/learning-preview/scene-ch1-05.mp4',
+    words: [
+      { en: 'telescope', ko: '망원경', x: 31, y: 58 }, { en: 'constellation', ko: '별자리', x: 59, y: 30 },
+      { en: 'observe', ko: '관찰하다', x: 77, y: 66 }, { en: 'universe', ko: '우주', x: 20, y: 23 },
+    ],
+  },
+  {
+    title: '깊은 바다의 산호 협곡', src: '/learning-preview/scene-ch1-08.mp4',
+    words: [
+      { en: 'coral', ko: '산호', x: 18, y: 69 }, { en: 'canyon', ko: '협곡', x: 52, y: 69 },
+      { en: 'creature', ko: '생물', x: 69, y: 37 }, { en: 'ecosystem', ko: '생태계', x: 80, y: 70 },
+    ],
+  },
+];
+
 export default function App() {
   const [entranceComplete, setEntranceComplete] = useState(false);
+  const [previewIndex, setPreviewIndex] = useState(0);
+  const [previewProgress, setPreviewProgress] = useState(0);
   const { user, deleteAccount } = useAuth();
+
+  // 그림 위 단어를 누르면 영어 발음을 들려줍니다.
+  const speakPreviewWord = (word: string) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.82;
+    window.speechSynthesis.speak(utterance);
+  };
 
   const handleDeleteAccount = async () => {
     const isConfirmed = window.confirm(
@@ -105,7 +143,7 @@ export default function App() {
             initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            ✏️ 완성 코스 신청하기 →
+            학습 시작 →
           </motion.a>
         </div>
 
@@ -143,7 +181,7 @@ export default function App() {
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            ✏️ 완성 코스 신청하기 →
+            학습 시작 →
           </motion.a>
         </motion.div>
       </section>
@@ -172,16 +210,89 @@ export default function App() {
       {/* ════════════════ SECTION 3: INTERACTIVE DEMO & METRICS ════════════════ */}
       <section className="relative overflow-hidden bg-white py-24 sm:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-center text-[#141414] mb-8" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
-            화면을 직접 터치해 보세요. 단어의 첫 장면이 그려집니다.
+          <h2 className="text-center text-[#141414] mb-4" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(26px, 3.2vw, 40px)', letterSpacing: '-0.025em' }}>
+            그려지는 순간, 단어가 장면으로 남습니다.
           </h2>
-          <div className="relative mx-auto mt-6 md:mt-10 w-full max-w-[840px] mb-16">
-            <iframe
-              src="/demo.html?embed=true"
-              className="w-full min-h-[290px] xs:min-h-[380px] sm:min-h-[520px] border-3 border-[#1c1c1c] rounded-[18px] shadow-[6px_6px_0_#1c1c1c] transition-all"
-              style={{ background: '#fdfcf7' }}
-              title="실시간 드로잉 단어 학습 시연"
-            />
+          <p className="text-center text-[#5d665f] mb-8 sm:mb-10" style={{ fontFamily: PRET, fontWeight: 600, fontSize: 'clamp(15px, 1.8vw, 18px)' }}>
+            범선에서 별자리로, 다시 깊은 바다로 이어지는 세 장면을 보세요.
+          </p>
+          <div className="relative mx-auto w-full max-w-[960px] mb-20">
+            <div className="relative overflow-hidden rounded-[18px] bg-[#f8faf8]" style={{ aspectRatio: '16 / 9' }}>
+              <video
+                key={LEARNING_PREVIEW_VIDEOS[previewIndex].src}
+                src={LEARNING_PREVIEW_VIDEOS[previewIndex].src}
+                className="absolute inset-0 h-full w-full object-contain"
+                playsInline muted autoPlay preload="metadata"
+                onLoadedMetadata={(event) => {
+                  event.currentTarget.play().catch(() => undefined);
+                  setPreviewProgress(0);
+                }}
+                onTimeUpdate={(event) => {
+                  const { currentTime, duration } = event.currentTarget;
+                  setPreviewProgress(duration ? currentTime / duration : 0);
+                }}
+                onEnded={() => {
+                  setPreviewProgress(0);
+                  setPreviewIndex((current) => (current + 1) % LEARNING_PREVIEW_VIDEOS.length);
+                }}
+              />
+
+              {/* 그림이 완성되는 후, 단어가 장면 위에 하나씩 나타납니다. */}
+              {LEARNING_PREVIEW_VIDEOS[previewIndex].words.map((word, index) => {
+                const visible = previewProgress >= 0.46 + index * 0.09;
+                return (
+                  <button
+                    key={word.en}
+                    type="button"
+                    onClick={() => speakPreviewWord(word.en)}
+                    className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 bg-transparent text-center transition-all duration-500 ${visible ? 'scale-100 opacity-100' : 'pointer-events-none scale-90 opacity-0'}`}
+                    style={{ left: `${word.x}%`, top: `${word.y}%`, fontFamily: PRET }}
+                    aria-label={`${word.en}, ${word.ko} 발음 듣기`}
+                  >
+                    <span
+                      className="block text-[#074f3d]"
+                      style={{
+                        fontWeight: 900,
+                        fontSize: 'clamp(20px, 3vw, 38px)',
+                        lineHeight: 1,
+                        letterSpacing: '-0.035em',
+                        textShadow: '-2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0 3px 10px rgba(255,255,255,.95)',
+                      }}
+                    >
+                      {word.en}
+                    </span>
+                    <span
+                      className="mt-1 block text-[#315f53]"
+                      style={{ fontWeight: 750, fontSize: 'clamp(11px, 1.4vw, 16px)', textShadow: '0 1px 5px #fff, 0 -1px 5px #fff' }}
+                    >
+                      {word.ko}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <div className="mt-5 flex items-center justify-between gap-4 text-[#174f3c]">
+              <strong style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(16px, 2vw, 20px)' }}>{LEARNING_PREVIEW_VIDEOS[previewIndex].title}</strong>
+              <span style={{ fontFamily: PRET, fontWeight: 700, fontSize: 14 }}>{previewIndex + 1} / {LEARNING_PREVIEW_VIDEOS.length}</span>
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-3" aria-label="학습 영상 진행 순서">
+              {LEARNING_PREVIEW_VIDEOS.map((item, index) => {
+                const isCurrent = index === previewIndex;
+                const isComplete = index < previewIndex;
+                const width = isCurrent ? `${Math.max(2, previewProgress * 100)}%` : isComplete ? '100%' : '0%';
+                return (
+                  <button key={item.src} type="button" className="group cursor-pointer text-left" onClick={() => { setPreviewIndex(index); setPreviewProgress(0); }} aria-current={isCurrent ? 'step' : undefined} aria-label={`${item.title} 영상 보기`}>
+                    <span className="block h-[3px] overflow-hidden rounded-full bg-[#dce6e1]">
+                      <span className="block h-full rounded-full bg-[#27765b]" style={{ width }} />
+                    </span>
+                    <span className={`mt-3 flex items-start gap-2 transition-colors ${isCurrent ? 'text-[#174f3c]' : 'text-[#819087] group-hover:text-[#27765b]'}`} style={{ fontFamily: PRET, fontWeight: isCurrent ? 850 : 650, fontSize: 'clamp(13px, 1.5vw, 16px)', lineHeight: 1.35 }}>
+                      <span aria-hidden="true">{isCurrent ? '▶' : `0${index + 1}`}</span>
+                      <span>{item.title}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
           <h2 className="text-center text-[#141414] mb-16" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
             {metrics.subtitle}
@@ -601,4 +712,3 @@ function PaymentFailPage() {
     </div>
   );
 }
-
