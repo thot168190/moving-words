@@ -277,15 +277,23 @@
       if(typeof item==='string')return item;
       return item?.url||item?.path||item?.image?.url||'';
     }
+    // 랜딩에서 소개하는 대표 수채화 카드를 박물관의 상설 전시로도 보여줍니다.
+    const featuredMuseumCards=[
+      {word:'sailing',meaning:'항해',image:'/feature-cards/sailing.webp'},
+      {word:'treasure',meaning:'보물',image:'/feature-cards/treasure.webp'},
+      {word:'fishing',meaning:'낚시',image:'/feature-cards/fishing.webp'},
+      {word:'storm',meaning:'폭풍',image:'/feature-cards/storm.webp'}
+    ];
     function renderMuseumContent(){
       const customCards=readCustomCards();
+      const featuredSection=`<section class="featured-museum"><div class="custom-museum-head"><h2>특별 전시 그림 단어</h2><span>${featuredMuseumCards.length}장</span></div><div class="museum-grid">${featuredMuseumCards.map(card=>`<article class="museum-card"><img src="${card.image}" alt="${card.word} 그림 단어 카드"><h3>${card.word}</h3><p>${card.meaning}</p></article>`).join('')}</div></section>`;
       const customSection=customCards.length
         ?`<section class="custom-museum"><div class="custom-museum-head"><h2>내가 만든 그림 단어</h2><span>${customCards.length} / ${CUSTOM_CARD_LIMIT}</span></div><div class="museum-grid">${customCards.map(card=>`<article class="museum-card custom-card"><img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.word)} 학습 카드"><h3>${escapeHtml(card.word)}</h3><p>${escapeHtml(card.meaning||card.style)}</p><button class="delete-card" type="button" data-card-id="${escapeHtml(card.id)}">삭제</button></article>`).join('')}</div></section>`
         :`<section class="custom-museum empty"><div class="custom-museum-head"><h2>내가 만든 그림 단어</h2><span>0 / ${CUSTOM_CARD_LIMIT}</span></div><p>단어를 직접 만들어 저장하면 이곳에 전시됩니다.</p></section>`;
       const learnedCards=works.map((work,index)=>index<completedSceneCount
         ?`<article class="museum-card"><img src="${work.img}" alt="${work.title}"><h3>${work.title}</h3><p>${work.sub}</p></article>`
         :`<article class="museum-card back" aria-label="아직 수집하지 않은 ${index+1}번 카드"><div class="museum-seal"><b>${['I','II','III','IV','V','VI','VII','VIII'][index]}</b></div><p>학습하면 열리는 카드</p></article>`).join('');
-      return `<div class="feature-intro"><h1>나의 박물관</h1><p>장면으로 익힌 단어 카드를 한 장씩 모아요.</p></div><section class="learned-museum"><div class="custom-museum-head"><h2>챕터 1 학습 카드</h2><span>${completedSceneCount} / 8</span></div><div class="museum-grid">${learnedCards}</div></section>${customSection}`;
+      return `<div class="feature-intro"><h1>나의 박물관</h1><p>장면으로 익힌 단어 카드를 한 장씩 모아요.</p></div>${featuredSection}<section class="learned-museum"><div class="custom-museum-head"><h2>챕터 1 학습 카드</h2><span>${completedSceneCount} / 8</span></div><div class="museum-grid">${learnedCards}</div></section>${customSection}`;
     }
     function setupMuseum(){
       document.querySelectorAll('.delete-card').forEach(button=>button.onclick=()=>{
