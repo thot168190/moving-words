@@ -424,24 +424,53 @@ function LandingPage() {
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
             {[
-              ['01', '움직이는 그림 학습', '그림이 완성되는 과정을 보며 단어의 위치와 장면을 함께 기억합니다.', 'LEARN'],
-              ['02', '거꾸로 퀴즈', '사라진 영어 단어를 그림 속 제자리로 돌려놓으며 기억을 게임처럼 확인합니다.', 'PLAY'],
-              ['03', '내 단어 AI 그림 생성', '제시된 단어만 배우지 않습니다. 원하는 영어 단어와 장면을 직접 그림 카드로 만듭니다.', 'CREATE'],
-              ['04', '나만의 단어 박물관', '배운 카드와 직접 만든 그림 단어를 한곳에 모아 언제든 다시 꺼내봅니다.', 'COLLECT'],
-            ].map(([num, title, desc, label], index) => (
+              ['01', '움직이는 그림 학습', '그림이 완성되는 과정을 보며 단어의 위치와 장면을 함께 기억합니다.', 'LEARN', '/learning/챕터1_완성동영상/scene-ch1-01-poster.jpg'],
+              ['02', '거꾸로 퀴즈', '사라진 영어 단어를 그림 속 제자리로 돌려놓으며 기억을 게임처럼 확인합니다.', 'PLAY', '/learning/챕터1_완성동영상/scene-ch1-02-poster.jpg'],
+              ['03', '내 단어 AI 그림 생성', '제시된 단어만 배우지 않습니다. 원하는 영어 단어와 장면을 직접 그림 카드로 만듭니다.', 'CREATE', '/metric-whale.jpeg'],
+              ['04', '나만의 단어 박물관', '배운 카드와 직접 만든 그림 단어를 한곳에 모아 언제든 다시 꺼내봅니다.', 'COLLECT', '/metric-lighthouse.jpeg'],
+            ].map(([num, title, desc, label, image], index) => (
               <motion.article
                 key={num}
-                className="group min-h-[250px] sm:min-h-[280px] rounded-[24px] border border-[#cfe2db] bg-white p-7 sm:p-9 flex flex-col justify-between shadow-[0_10px_30px_rgba(7,83,63,0.05)] transition-all hover:-translate-y-1 hover:border-[#2f9c75] hover:shadow-[0_18px_38px_rgba(7,83,63,0.11)]"
+                className="group overflow-hidden rounded-[24px] border border-[#cfe2db] bg-white shadow-[0_10px_30px_rgba(7,83,63,0.05)] transition-all hover:-translate-y-1 hover:border-[#2f9c75] hover:shadow-[0_18px_38px_rgba(7,83,63,0.11)]"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-[#c94f3d] text-[15px] font-black tracking-[0.12em]">{num}</span>
-                  <span className="rounded-full bg-[#edf7f2] px-4 py-2 text-[#24765a] text-[12px] font-black tracking-[0.14em]">{label}</span>
+                <div className="relative aspect-[16/8.5] overflow-hidden bg-[#edf5f1]">
+                  <img src={image} alt={`${title} 실제 화면`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#062f26]/45 via-transparent to-transparent" />
+                  {index === 0 && (
+                    <div className="absolute inset-0">
+                      <span className="absolute left-[13%] top-[28%] text-white text-[20px] sm:text-[28px] font-black [text-shadow:0_2px_8px_#07533f]">whale</span>
+                      <span className="absolute right-[13%] bottom-[22%] text-white text-[18px] sm:text-[25px] font-black [text-shadow:0_2px_8px_#07533f]">ocean</span>
+                    </div>
+                  )}
+                  {index === 1 && (
+                    <div className="absolute inset-0">
+                      <span className="absolute left-[16%] top-[35%] grid h-12 w-12 place-items-center rounded-full bg-white text-[#07533f] text-2xl font-black shadow-lg">?</span>
+                      <div className="absolute inset-x-4 bottom-4 flex gap-2">
+                        {['light', 'beam', 'coast'].map((word) => <span key={word} className="rounded-full bg-white px-3 py-1.5 text-[13px] sm:text-[15px] font-black text-[#07533f] shadow">{word}</span>)}
+                      </div>
+                    </div>
+                  )}
+                  {index === 2 && (
+                    <div className="absolute inset-x-5 bottom-4 rounded-xl bg-white/95 p-3 shadow-lg backdrop-blur">
+                      <span className="block text-[#07533f] text-[18px] sm:text-[22px] font-black">whale · 고래</span>
+                      <span className="text-[#527067] text-[12px] sm:text-[14px] font-bold">내가 원하는 장면으로 AI 그림 생성 중…</span>
+                    </div>
+                  )}
+                  {index === 3 && (
+                    <div className="absolute inset-x-4 bottom-4 grid grid-cols-3 gap-2">
+                      {['whale', 'light', 'ocean'].map((word) => <span key={word} className="rounded-lg border border-white/60 bg-white/95 px-2 py-3 text-center text-[13px] sm:text-[16px] font-black text-[#07533f] shadow">{word}</span>)}
+                    </div>
+                  )}
                 </div>
-                <div>
+                <div className="p-7 sm:p-8">
+                  <div className="mb-7 flex items-center justify-between">
+                    <span className="text-[#c94f3d] text-[15px] font-black tracking-[0.12em]">{num}</span>
+                    <span className="rounded-full bg-[#edf7f2] px-4 py-2 text-[#24765a] text-[12px] font-black tracking-[0.14em]">{label}</span>
+                  </div>
                   <h3 className="text-[#07533f] font-gmarket font-black text-[27px] sm:text-[34px] tracking-[-0.03em] mb-4">{title}</h3>
                   <p className="text-[#45665d] text-[16px] sm:text-[18px] font-semibold leading-[1.7] break-keep">{desc}</p>
                 </div>
