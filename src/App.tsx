@@ -424,11 +424,11 @@ function LandingPage() {
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
             {[
-              ['01', '움직이는 그림 학습', 'LEARN', '/feature-cards/sailing.webp'],
-              ['02', '거꾸로 퀴즈', 'PLAY', '/feature-cards/treasure.webp'],
-              ['03', '내 단어 AI 그림 생성', 'CREATE', '/feature-cards/fishing.webp'],
-              ['04', '나만의 단어 박물관', 'COLLECT', '/feature-cards/storm.webp'],
-            ].map(([num, title, label, image], index) => (
+              ['01', '움직이는 그림 학습', 'LEARN', '/feature-cards/sailing.webp', 'sailing'],
+              ['02', '거꾸로 퀴즈', 'PLAY', '/feature-cards/treasure.webp', 'treasure'],
+              ['03', '내 단어 AI 그림 생성', 'CREATE', '/feature-cards/fishing.webp', 'fishing'],
+              ['04', '나만의 단어 박물관', 'COLLECT', '/feature-cards/storm.webp', 'storm'],
+            ].map(([num, title, label, image, effect], index) => (
               <motion.article
                 key={num}
                 className="group overflow-hidden rounded-[24px] border border-[#cfe2db] bg-white shadow-[0_10px_30px_rgba(7,83,63,0.05)] transition-all hover:-translate-y-1 hover:border-[#2f9c75] hover:shadow-[0_18px_38px_rgba(7,83,63,0.11)]"
@@ -437,8 +437,9 @@ function LandingPage() {
                 transition={{ duration: 0.55, delay: index * 0.08 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="relative aspect-square overflow-hidden bg-white">
-                  <img src={image} alt={`${title} 실제 화면`} className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" />
+                <div className={`feature-card-art feature-${effect} relative aspect-square overflow-hidden bg-white`}>
+                  <img src={image} alt={`${title} 실제 화면`} className="feature-card-image h-full w-full object-contain" />
+                  <span className="feature-card-effect" aria-hidden="true" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.72)] to-[#052f26] px-7 pb-7 pt-28 text-white sm:px-9 sm:pb-9 sm:pt-36">
                     <div className="mb-1.5 flex items-center justify-between">
                       <span className="text-[#ff9f86] text-[14px] font-black tracking-[0.14em]">{num}</span>

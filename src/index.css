@@ -47,3 +47,69 @@ body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* 핵심 기능 카드: 마우스를 올린 카드만 조용히 살아납니다. */
+.feature-card-art {
+  isolation: isolate;
+}
+
+.feature-card-image {
+  position: relative;
+  z-index: 0;
+  transform: scale(1);
+  transition: filter 700ms ease, transform 700ms ease;
+  will-change: transform;
+}
+
+.feature-card-effect {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.group:hover .feature-card-effect { opacity: 1; }
+.group:hover .feature-sailing .feature-card-image { animation: feature-sail 2.8s ease-in-out infinite alternate; }
+.group:hover .feature-treasure .feature-card-image { animation: feature-treasure 1.8s ease-in-out infinite alternate; }
+.group:hover .feature-fishing .feature-card-image { animation: feature-float 2.4s ease-in-out infinite alternate; }
+.group:hover .feature-storm .feature-card-image { animation: feature-storm 2.2s ease-in-out infinite alternate; }
+
+.feature-sailing .feature-card-effect {
+  background: linear-gradient(105deg, transparent 30%, rgba(171,230,224,.28) 50%, transparent 70%);
+  transform: translateX(-60%);
+}
+.group:hover .feature-sailing .feature-card-effect { animation: feature-sweep 2.8s ease-in-out infinite; }
+
+.feature-treasure .feature-card-effect {
+  background: radial-gradient(circle at 55% 56%, rgba(255,211,94,.48), transparent 28%);
+  mix-blend-mode: multiply;
+}
+.group:hover .feature-treasure .feature-card-effect { animation: feature-glow 1.6s ease-in-out infinite alternate; }
+
+.feature-fishing .feature-card-effect {
+  background: repeating-radial-gradient(ellipse at 50% 70%, transparent 0 9%, rgba(71,172,187,.16) 10%, transparent 12% 19%);
+}
+.group:hover .feature-fishing .feature-card-effect { animation: feature-ripple 2.2s ease-out infinite; }
+
+.feature-storm .feature-card-effect {
+  background: radial-gradient(circle at 57% 38%, rgba(230,245,255,.68), transparent 17%);
+  mix-blend-mode: screen;
+}
+.group:hover .feature-storm .feature-card-effect { animation: feature-lightning 2.6s linear infinite; }
+
+@keyframes feature-sail { to { transform: scale(1.025) translate(4px,-3px) rotate(.35deg); } }
+@keyframes feature-treasure { to { transform: scale(1.025); filter: saturate(1.08) brightness(1.03); } }
+@keyframes feature-float { to { transform: scale(1.018) translateY(-5px); } }
+@keyframes feature-storm { to { transform: scale(1.02); filter: contrast(1.06) saturate(1.08); } }
+@keyframes feature-sweep { 0% { transform: translateX(-70%); } 70%,100% { transform: translateX(70%); } }
+@keyframes feature-glow { from { opacity: .25; transform: scale(.92); } to { opacity: 1; transform: scale(1.08); } }
+@keyframes feature-ripple { from { opacity: 0; transform: scale(.9); } 35% { opacity: .8; } to { opacity: 0; transform: scale(1.14); } }
+@keyframes feature-lightning { 0%,42%,48%,100% { opacity: 0; } 44% { opacity: .9; } 46% { opacity: .25; } 47% { opacity: .75; } }
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .group:hover .feature-card-image,
+  .group:hover .feature-card-effect { animation: none !important; }
+  .feature-card-effect { display: none; }
+}
