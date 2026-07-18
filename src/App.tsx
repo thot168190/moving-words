@@ -409,52 +409,51 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* 실제 사용 흐름만 짧게 보여줍니다. 장황한 구조 설명은 제거했습니다. */}
-      <section id="course" className="bg-white border-t border-[#dcebe5] px-6 py-16 sm:py-20">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[#34866b] text-[12px] tracking-[0.2em] uppercase mb-4 font-black">How it works</p>
-          <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.025em] mb-10" style={{ fontSize: 'clamp(28px, 4vw, 46px)' }}>
-            보고, 듣고, 기억을 꺼냅니다.
-          </h2>
-          <ol className="grid sm:grid-cols-3 border-y border-[#dcebe5]">
-            {[
-              ['01', '그려지는 장면 보기', '그림이 완성되는 순서를 보며 장면을 기억합니다.'],
-              ['02', '단어에 마우스를 올려 듣기', '그림 위 단어를 가리키면 영어 발음이 바로 재생됩니다.'],
-              ['03', '거꾸로 퀴즈로 확인하기', '단어를 원래 그림 위치로 옮기며 기억을 확인합니다.'],
-            ].map(([num, text, desc], index) => (
-              <li key={num} tabIndex={0} className={`group relative cursor-help py-7 sm:px-6 outline-none ${index > 0 ? 'border-t sm:border-t-0 sm:border-l border-[#dcebe5]' : ''}`}>
-                <span className="block text-[#6aa58f] text-[12px] tracking-[0.15em] font-black mb-2">{num}</span>
-                <strong className="text-[#07533f] text-[18px] sm:text-[20px] font-black">{text}</strong>
-                <span className="mt-3 block text-[#454542] text-[13px] leading-relaxed opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0">
-                  {desc}
-                </span>
+      {/* 학습·게임·AI 생성·박물관까지 제품의 핵심 기능을 한눈에 소개합니다. */}
+      <section id="course" className="bg-[#f7fbf9] border-t border-[#dcebe5] px-6 py-16 sm:py-24">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-4 font-black">More than a wordbook</p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10 sm:mb-14">
+            <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18]" style={{ fontSize: 'clamp(34px, 5vw, 64px)' }}>
+              보고 끝나는 단어장이<br />아닙니다.
+            </h2>
+            <p className="max-w-md text-[#45665d] text-[18px] sm:text-[21px] font-bold leading-relaxed">
+              그림으로 배우고, 게임으로 확인하고,<br className="hidden sm:block" /> 원하는 단어는 AI로 직접 만드세요.
+            </p>
+          </div>
 
-                {/* 마우스를 올리거나 모바일에서 누르면 실제 사용 모습을 보여줍니다. */}
-                <div className="pointer-events-none absolute left-3 right-3 top-[calc(100%-8px)] z-30 overflow-hidden rounded-[16px] border border-[#cfe2db] bg-white opacity-0 translate-y-2 scale-[0.98] shadow-[0_18px_50px_rgba(7,83,63,0.18)] transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-focus:opacity-100 group-focus:translate-y-0 group-focus:scale-100">
-                  <div className="relative aspect-video overflow-hidden bg-[#f5faf7]">
-                    <img src="/metric-whale.jpeg" alt="고래 장면 학습 미리보기" className="h-full w-full object-cover" />
-                    {index === 1 && (
-                      <>
-                        <span className="absolute left-[13%] top-[42%] text-[#07533f] text-[14px] font-black [text-shadow:0_1px_3px_white]">tail</span>
-                        <span className="absolute left-[58%] top-[30%] text-[#07533f] text-[14px] font-black [text-shadow:0_1px_3px_white]">whale</span>
-                        <span className="absolute right-[12%] bottom-[18%] text-[#07533f] text-[14px] font-black [text-shadow:0_1px_3px_white]">ocean</span>
-                      </>
-                    )}
-                    {index === 2 && (
-                      <>
-                        <span className="absolute left-[10%] top-[38%] grid h-10 w-10 place-items-center rounded-full border-2 border-dashed border-[#07533f] bg-white/90 text-[#07533f] text-xl font-black">?</span>
-                        <div className="absolute inset-x-3 bottom-3 flex justify-center gap-2">
-                          {['tail', 'fin', 'eye', 'whale'].map((word) => (
-                            <span key={word} className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-black text-[#07533f] shadow-sm">{word}</span>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+            {[
+              ['01', '움직이는 그림 학습', '그림이 완성되는 과정을 보며 단어의 위치와 장면을 함께 기억합니다.', 'LEARN'],
+              ['02', '거꾸로 퀴즈', '사라진 영어 단어를 그림 속 제자리로 돌려놓으며 기억을 게임처럼 확인합니다.', 'PLAY'],
+              ['03', '내 단어 AI 그림 생성', '제시된 단어만 배우지 않습니다. 원하는 영어 단어와 장면을 직접 그림 카드로 만듭니다.', 'CREATE'],
+              ['04', '나만의 단어 박물관', '배운 카드와 직접 만든 그림 단어를 한곳에 모아 언제든 다시 꺼내봅니다.', 'COLLECT'],
+            ].map(([num, title, desc, label], index) => (
+              <motion.article
+                key={num}
+                className="group min-h-[250px] sm:min-h-[280px] rounded-[24px] border border-[#cfe2db] bg-white p-7 sm:p-9 flex flex-col justify-between shadow-[0_10px_30px_rgba(7,83,63,0.05)] transition-all hover:-translate-y-1 hover:border-[#2f9c75] hover:shadow-[0_18px_38px_rgba(7,83,63,0.11)]"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: index * 0.08 }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[#c94f3d] text-[15px] font-black tracking-[0.12em]">{num}</span>
+                  <span className="rounded-full bg-[#edf7f2] px-4 py-2 text-[#24765a] text-[12px] font-black tracking-[0.14em]">{label}</span>
                 </div>
-              </li>
+                <div>
+                  <h3 className="text-[#07533f] font-gmarket font-black text-[27px] sm:text-[34px] tracking-[-0.03em] mb-4">{title}</h3>
+                  <p className="text-[#45665d] text-[16px] sm:text-[18px] font-semibold leading-[1.7] break-keep">{desc}</p>
+                </div>
+              </motion.article>
             ))}
-          </ol>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <a href={APP_ENTRY_URL} className="inline-flex min-h-14 items-center justify-center rounded-full bg-[#07533f] px-8 text-white text-[17px] font-black shadow-[0_10px_24px_rgba(7,83,63,0.18)] transition-transform hover:-translate-y-0.5">
+              학습 기능 둘러보기 →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -501,9 +500,9 @@ function LandingPage() {
 
           {/* 데스크탑 화면용 테이블 레이아웃 (768px 이상) */}
           <div className="hidden md:block overflow-x-auto mt-6 px-1 py-4">
-            <table className="w-full text-left text-[14px] sm:text-[17px] text-[#1a1a1a] border-separate border-spacing-y-3.5 min-w-[600px] sm:min-w-full">
+            <table className="w-full text-left text-[20px] text-[#1a1a1a] border-separate border-spacing-y-4 min-w-[900px]">
               <thead>
-                <tr className="text-[#111111] uppercase text-[14px] sm:text-[15px] tracking-wider font-black">
+                <tr className="text-[#111111] uppercase text-[18px] tracking-wider font-black">
                   <th className="pb-2 pr-4 pl-5 whitespace-nowrap">서비스</th>
                   <th className="pb-2 pr-4 whitespace-nowrap">방식</th>
                   <th className="pb-2 pr-4 whitespace-nowrap">가격</th>
@@ -523,26 +522,26 @@ function LandingPage() {
                 <tr className="bg-neutral-50/50 hover:bg-neutral-50 transition-colors duration-200">
                   <td className="py-5 pr-4 pl-5 font-bold text-[#666666] whitespace-nowrap first:rounded-l-2xl border-y border-l border-neutral-200/60">클래스카드</td>
                   <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">단어장 반복 암기</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">출시 기념가 ₩9,900</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">무료+유료</td>
                   <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>성실한 반복 암기가 체질인 분</td>
                 </tr>
 
                 {/* ── 보는 단어장 (자사 - 초강력 하이라이트 & 3D 입체) ── */}
                 <tr className="bg-[#f1f8f5] hover:bg-[#e8f4ef] transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_15px_40px_rgba(7,83,63,0.12)] transform hover:-translate-y-0.5">
-                  <td className="py-6 pr-4 pl-5 font-black text-[16px] sm:text-[19px] text-[#07533f] whitespace-nowrap first:rounded-l-2xl border-y border-l-2 border-[#4f927b]">
+                  <td className="py-8 pr-5 pl-7 font-black text-[22px] text-[#07533f] whitespace-nowrap first:rounded-l-2xl border-y border-l-2 border-[#4f927b]">
                     <div className="flex items-center gap-2">
                       <span>보는 단어장</span>
                       <span className="bg-[#4f927b] text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm">추천</span>
                     </div>
                   </td>
-                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">그림→글자 변신 애니메이션</td>
-                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">
+                  <td className="py-8 pr-5 font-black text-[21px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">그림 학습·퀴즈·AI 이미지 생성</td>
+                  <td className="py-8 pr-5 font-black text-[21px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">
                     <div className="flex flex-col">
                       <span className="text-[#6f756f] text-[12px] sm:text-[13px] line-through">6개월 후 정상가 ₩19,800</span>
-                      <span className="text-[#087052] font-extrabold text-[16px] sm:text-[19px]">출시 기념가 ₩9,900</span>
+                      <span className="text-[#087052] font-extrabold text-[22px]">출시 기념가 ₩9,900</span>
                     </div>
                   </td>
-                  <td className="py-6 pl-4 pr-5 font-black text-[15px] sm:text-[18px] text-[#07533f] last:rounded-r-2xl border-y border-r-2 border-[#4f927b]" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
+                  <td className="py-8 pl-6 pr-7 font-black text-[21px] text-[#07533f] last:rounded-r-2xl border-y border-r-2 border-[#4f927b]" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
                 </tr>
               </tbody>
             </table>
@@ -585,18 +584,18 @@ function LandingPage() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <span className="absolute right-7 top-0 -translate-y-1/2 bg-[#d7f580] text-[#07533f] text-[13px] font-black tracking-[0.08em] px-5 py-2.5 rounded-full">출시 기념가</span>
-              <h3 className="font-gmarket font-black text-[27px] sm:text-[30px] mb-2">
+              <h3 className="font-gmarket font-black text-[34px] sm:text-[40px] mb-3">
                 출시 기념 이용권
               </h3>
-              <p className="text-[#4a4a46] text-[14px] mb-5">12개 챕터의 학습 콘텐츠를 이용합니다.</p>
+              <p className="text-[#4a4a46] text-[18px] sm:text-[20px] font-semibold mb-7">12개 챕터의 학습 콘텐츠를 이용합니다.</p>
               <div className="mb-5">
-                <div className="text-[#6f756f] text-[14px] font-semibold line-through mb-1">6개월 후 정상가 ₩19,800</div>
-                <div className="text-[34px] sm:text-[38px] font-black tracking-tight">₩9,900</div>
+                <div className="text-[#6f756f] text-[17px] sm:text-[19px] font-semibold line-through mb-2">6개월 후 정상가 ₩19,800</div>
+                <div className="text-[46px] sm:text-[56px] font-black tracking-tight">₩9,900</div>
               </div>
               <ul className="divide-y divide-[#e2eee9] mb-7 flex-1">
                 {['총 12개 챕터 학습', '학습 어휘를 모으는 나만의 카드 박물관', '학습 내용을 확인하는 퀴즈', '수학·과학 전문 어휘와 중국어 어휘 학습 순차 공개'].map((item) => (
-                  <li key={item} className="py-3 flex items-center gap-3 text-[#353532] text-[14px] font-semibold">
-                    <span className="text-[#2f9c75] text-xl">✓</span>{item}
+                  <li key={item} className="py-5 flex items-center gap-4 text-[#353532] text-[18px] sm:text-[20px] font-bold leading-relaxed">
+                    <span className="text-[#2f9c75] text-2xl">✓</span>{item}
                   </li>
                 ))}
               </ul>

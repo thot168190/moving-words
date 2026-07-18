@@ -105,7 +105,7 @@ const TossCheckoutButton: React.FC<TossCheckoutButtonProps> = ({
       onClick={handlePayment}
       disabled={!sdkLoaded || processing}
       className={`
-        w-full max-w-md mx-auto h-[56px] rounded-[16px] font-bold text-[16px]
+        w-full max-w-none mx-auto h-[68px] rounded-[18px] font-black text-[20px]
         flex items-center justify-center gap-2
         transition-all duration-200 shadow-sm hover:shadow-md
         ${processing
