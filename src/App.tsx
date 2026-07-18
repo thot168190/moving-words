@@ -439,6 +439,14 @@ function LandingPage() {
               >
                 <div className={`feature-card-art feature-${effect} relative aspect-square overflow-hidden bg-white`}>
                   <img src={image} alt={`${title} 실제 화면`} className="feature-card-image h-full w-full object-contain" />
+                  {effect === 'sailing' && (
+                    <video
+                      className="feature-fast-video"
+                      src="/learning-preview/scene-ch1-03.mp4"
+                      muted loop playsInline autoPlay preload="metadata"
+                      onLoadedMetadata={(event) => { event.currentTarget.playbackRate = 2.5; }}
+                    />
+                  )}
                   <span className="feature-card-effect" aria-hidden="true" />
                   {effect === 'sailing' && (
                     <div className="feature-demo feature-demo-learn" aria-hidden="true">
@@ -454,18 +462,29 @@ function LandingPage() {
                   )}
                   {effect === 'fishing' && (
                     <div className="feature-demo feature-demo-create" aria-hidden="true">
-                      <span className="demo-prompt"><b>fishing</b><em>낚시</em></span>
-                      <span className="demo-draw-status">AI 그림을 만드는 중</span>
-                      <i className="demo-draw-line" />
+                      <div className="demo-recording-frame">
+                        <div className="demo-recording-bar"><i /> 화면 미리보기</div>
+                        <label>영어 단어<span className="demo-typed-word">fishing</span></label>
+                        <label>한글 뜻<span>낚시</span></label>
+                        <button type="button">AI 그림 만들기</button>
+                        <span className="demo-draw-status">그림을 생성하고 있어요</span>
+                        <i className="demo-draw-line" />
+                      </div>
                     </div>
                   )}
                   {effect === 'storm' && (
                     <div className="feature-demo feature-demo-collect" aria-hidden="true">
-                      <span className="demo-museum-card"><b>storm</b><em>폭풍</em></span>
-                      <span className="demo-museum-count">나의 박물관 <b>3 → 4</b></span>
+                      <div className="demo-museum-strip">
+                        <span><img src="/feature-cards/sailing.webp" alt="" /><b>sailing</b></span>
+                        <span><img src="/feature-cards/treasure.webp" alt="" /><b>treasure</b></span>
+                        <span><img src="/feature-cards/fishing.webp" alt="" /><b>fishing</b></span>
+                        <span><img src="/feature-cards/storm.webp" alt="" /><b>storm</b></span>
+                        <span><img src="/feature-cards/sailing.webp" alt="" /><b>sailing</b></span>
+                      </div>
+                      <span className="demo-museum-count">나의 박물관 <b>4장의 그림 카드</b></span>
                     </div>
                   )}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.72)] to-[#052f26] px-7 pb-7 pt-28 text-white sm:px-9 sm:pb-9 sm:pt-36">
+                  <div className="absolute inset-x-0 bottom-0 z-[4] bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.72)] to-[#052f26] px-7 pb-7 pt-28 text-white sm:px-9 sm:pb-9 sm:pt-36">
                     <div className="mb-1.5 flex items-center justify-between">
                       <span className="text-[#ff9f86] text-[14px] font-black tracking-[0.14em]">{num}</span>
                       <span className="rounded-full bg-white/15 px-3 py-1.5 text-[11px] font-black tracking-[0.14em] backdrop-blur">{label}</span>
