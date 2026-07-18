@@ -491,7 +491,7 @@ function LandingPage() {
         <div className="max-w-4xl mx-auto">
           <p className="text-[#34866b] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
           <h2 className="text-[#07533f] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)', wordBreak: 'keep-all' }}>
-            단어 앱은 많습니다 — 방식이 다릅니다
+            단어 앱은 많습니다.<br />암기 방식이 다릅니다.
           </h2>
           {/* 모바일 화면용 카드 레이아웃 (768px 미만) */}
           <div className="block md:hidden mt-6 flex flex-col gap-4">
