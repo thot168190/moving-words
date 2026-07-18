@@ -57,7 +57,7 @@
     .step b{display:block;margin-top:8px;color:var(--green);font-size:19px;font-weight:850}
     .cta{display:flex;justify-content:center;margin-top:42px}
     .cta a{padding:15px 26px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:850}
-    
+
     /* 점 indicator 스타일 */
     .dot {
       display:inline-block;
@@ -145,7 +145,7 @@
     const video=document.querySelector('#video'),words=document.querySelector('#words'),title=document.querySelector('#title'),count=document.querySelector('#count'),sceneList=document.querySelector('#scenes'),play=document.querySelector('#play'),bar=document.querySelector('#bar'),speed=document.querySelector('#speed');
     const svgDoodle=document.querySelector('#svg-doodle'),imgDoodle=document.querySelector('#img-doodle');
     let current=0,rateIndex=0,lastSpoken='';const rates=[1,1.5,2];
-    
+
     let svgData=null;
     let activeToken=0;
     let autoNextTimeout=null;
@@ -161,7 +161,7 @@
       lastSpoken=word;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.9;u.pitch=1;
       const voices=speechSynthesis.getVoices();
       u.voice=voices.find(v=>/Samantha|Ava|Jenny|Aria|Google US English/i.test(v.name))||voices.find(v=>v.lang.startsWith('en'))||null;
-      
+
       // 모바일(Safari) 무음 버그 해결을 위한 50ms 시간차 재생
       setTimeout(() => {
         speechSynthesis.speak(u);
@@ -191,22 +191,22 @@
       video.currentTime = 0;
       video.style.opacity = '0';
       video.style.pointerEvents = 'none';
-      
+
       svgDoodle.innerHTML = '';
       svgDoodle.style.opacity = '0';
       svgDoodle.style.pointerEvents = 'none';
-      
+
       imgDoodle.src = '';
       imgDoodle.style.opacity = '0';
       imgDoodle.style.pointerEvents = 'none';
       imgDoodle.style.filter = 'blur(3px)';
       imgDoodle.style.transform = 'scale(1.015)';
-      
+
       if (autoNextTimeout) {
         clearTimeout(autoNextTimeout);
         autoNextTimeout = null;
       }
-      
+
       bar.style.width = '0%';
       words.innerHTML = '';
     }
@@ -220,7 +220,7 @@
       if (!data) return;
 
       const token = activeToken;
-      
+
       svgDoodle.setAttribute('viewBox', data.vb);
       svgDoodle.setAttribute('stroke-width', data.sw || 4);
       svgDoodle.style.opacity = '1';
@@ -315,14 +315,14 @@
     function selectScene(index,auto=true){
       resetScene();
       current=index;
-      
+
       title.textContent=scenes[index].title;
       count.textContent=`SCENE 0${index+1} · 03`;
       renderSceneButtons();
       renderDots();
 
       const sc = scenes[index];
-      
+
       if (sc.type === 'video') {
         video.style.opacity = '1';
         video.style.pointerEvents = 'auto';
@@ -367,7 +367,7 @@
       bar.style.width=(p*100)+'%';
       document.querySelectorAll('.word').forEach((el,i)=>el.classList.toggle('show',p>=.46+i*.09));
     });
-    
+
     video.addEventListener('play',()=>{
       if (scenes[current].type === 'video') play.textContent='Ⅱ';
     });
@@ -377,7 +377,7 @@
     video.addEventListener('ended',()=>{
       if (scenes[current].type === 'video') selectScene((current+1)%scenes.length);
     });
-    
+
     play.addEventListener('click',()=>{
       const sc = scenes[current];
       if (sc.type === 'video') {

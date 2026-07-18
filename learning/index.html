@@ -524,7 +524,7 @@
           const image=extractGeneratedImage(result);if(!image)throw new Error('생성 결과에 이미지가 없습니다.');
           localStorage.setItem(usageKey,String(readUsage()+1));updateQuota();
           currentGeneratedCard={id:`card-${Date.now()}`,word,meaning,scene,style,image,createdAt:new Date().toISOString()};
-          
+
           // 실시간 붓 스케칭 및 수채화 페이드인 드로잉 연출 적용
           preview.innerHTML=`
             <div class="generate-canvas-container" style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff;">
@@ -537,7 +537,7 @@
               </div>
             </div>
           `;
-          
+
           setTimeout(() => {
             const container = preview.querySelector('.generate-canvas-container');
             if (!container) return;
@@ -545,7 +545,7 @@
             const mask = container.querySelector('.brush-mask');
             const finalImg = container.querySelector('.final-effect-img');
             const caption = container.querySelector('.generated-caption');
-            
+
             if (sketch) {
               sketch.style.opacity = '0.9';
               sketch.style.filter = 'blur(0px) contrast(1)';
