@@ -59,6 +59,13 @@ VITE_PAYPAL_CLIENT_ID=여기에_입력
 VITE_TOSS_CLIENT_KEY=여기에_입력
 ```
 
+랜딩페이지와 학습 앱을 같은 사이트에 배포하면 CTA는 기본값인 `/#learn`으로
+연결됩니다. 앱을 별도 도메인에 배포하는 경우에만 아래 값을 추가하세요.
+
+```env
+VITE_APP_ENTRY_URL=https://app.example.com
+```
+
 ### Step 3. 개발 서버 실행
 
 ```bash

@@ -5,6 +5,7 @@ import { SquashHamburger } from './SquashHamburger';
 import { ScrambleText } from './ScrambleText';
 import { AuthModal } from './AuthModal';
 import { useAuth } from '../contexts/AuthContext';
+import { APP_ENTRY_URL } from '../config/app';
 
 interface NavbarProps {
   entranceComplete: boolean;
@@ -297,7 +298,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
                 {learningProgress.lastSceneId ? `마지막 학습: ${learningProgress.lastSceneId}` : '아직 저장된 학습이 없어요. 첫 장면을 시작해보세요.'}
               </p>
               <div className="flex gap-3 mt-7">
-                <a href="/#learn" className="flex-1 rounded-xl bg-[#07533f] text-white text-center py-4 font-black no-underline">학습 계속</a>
+                <a href={APP_ENTRY_URL} className="flex-1 rounded-xl bg-[#07533f] text-white text-center py-4 font-black no-underline">학습 계속</a>
                 <button type="button" onClick={signOut} className="rounded-xl border border-[#b9d2c9] bg-white px-5 font-bold text-[#4a4a46] cursor-pointer">로그아웃</button>
               </div>
             </motion.section>

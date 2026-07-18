@@ -13,6 +13,7 @@ import { useAuth } from './contexts/AuthContext';
 import { TOSS_PRODUCTS } from './lib/toss';
 import { VIDEO_URLS } from './config/videos';
 import { SITE_CONFIG } from './config/content';
+import { APP_ENTRY_URL } from './config/app';
 import LearningPage from './components/LearningPage';
 
 const PRET = "'Pretendard Variable', Pretendard, -apple-system, sans-serif";
@@ -163,7 +164,7 @@ function LandingPage() {
             {hero.description}
           </motion.p>
           <motion.a
-            href="#course"
+            href={APP_ENTRY_URL}
             className="inline-flex items-center gap-2 border-2 border-[#07533f] bg-[#07533f] hover:bg-white hover:text-[#07533f] text-white font-black text-[15px] tracking-wide px-6 py-3 rounded-full transition-colors mt-6"
             initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
@@ -202,7 +203,7 @@ function LandingPage() {
             {hero.description}
           </motion.p>
           <motion.a
-            href="#course"
+            href={APP_ENTRY_URL}
             className="inline-flex items-center gap-2 self-start border-2 border-[#07533f] bg-[#07533f] hover:bg-white hover:text-[#07533f] text-white font-black text-[15px] sm:text-[17px] tracking-wide px-7 py-3.5 rounded-full transition-colors mt-8"
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
@@ -575,7 +576,7 @@ function LandingPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {/* 무료 체험: 회원가입과 결제 없이 대표 장면을 바로 확인합니다. */}
+            {/* 무료 체험도 별도 데모가 아닌 실제 학습 앱 진입점으로 연결합니다. */}
             <motion.div
               className="border border-[#cfe2db] rounded-[20px] p-6 flex flex-col bg-white"
               initial={{ opacity: 0, y: 30 }}
@@ -593,7 +594,7 @@ function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <a href="/demo.html" className="block w-full rounded-xl border border-[#8bb7a7] px-5 py-4 text-center font-black hover:bg-[#f1f8f5] transition-colors">
+              <a href={APP_ENTRY_URL} className="block w-full rounded-xl border border-[#8bb7a7] px-5 py-4 text-center font-black hover:bg-[#f1f8f5] transition-colors">
                 바로 체험하기
               </a>
             </motion.div>
