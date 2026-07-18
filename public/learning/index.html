@@ -25,7 +25,7 @@
     .topbar-inner{width:min(var(--max),calc(100% - 48px));margin:auto;display:flex;align-items:center;justify-content:space-between}
     .brand{font-family:Pretendard,sans-serif;font-weight:700;font-size:21px;letter-spacing:-.035em;color:var(--forest);text-decoration:none;cursor:pointer}
     .nav{display:flex;gap:4px}.nav button{border:0;background:transparent;padding:10px 13px;border-radius:99px;color:var(--forest);cursor:pointer;white-space:nowrap;font-weight:700}.nav .active{background:#3f8a6b;color:#fff}
-    .account{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--sub)}
+    .account{position:relative;display:flex;align-items:center;font-size:13px;color:var(--sub)}.account-button{display:flex;align-items:center;gap:12px;border:0;background:transparent;padding:6px;border-radius:999px;cursor:pointer}.account-button:hover,.account-button[aria-expanded="true"]{background:#eef7f2}.account-menu{display:none;position:absolute;right:0;top:calc(100% + 10px);width:180px;padding:8px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 16px 38px rgba(18,66,52,.16);z-index:30}.account-menu.open{display:grid}.account-menu button,.account-menu a{border:0;background:transparent;padding:11px 12px;border-radius:9px;color:var(--forest);font:700 14px Pretendard,sans-serif;text-align:left;text-decoration:none;cursor:pointer}.account-menu button:hover,.account-menu a:hover{background:#eef7f2}.account-menu .logout{color:#a13b2d}
     .account-mark{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--teal);font-weight:700}
     main{width:min(var(--max),calc(100% - 48px));margin:auto;padding:58px 0 100px}
     .home-view>.welcome,.home-view>.viewer-layout{position:relative}
@@ -143,7 +143,7 @@
     <div class="topbar-inner">
       <a class="brand" href="/" target="_top" aria-label="보는 단어장 홈으로 이동">보는 단어장</a>
       <nav class="nav" aria-label="주 메뉴"><button class="active" id="learnNav">학습하기</button><button id="mapNav">탐험 지도</button><button id="museumNav">박물관</button><button id="playNav" data-secondary="true">퀴즈</button><button id="studioNav" data-secondary="true">내가 만드는 그림 단어</button></nav>
-      <div class="account"><span>이미현 님</span><div class="account-mark">I</div></div>
+      <div class="account"><button class="account-button" id="accountButton" type="button" aria-expanded="false" aria-controls="accountMenu"><span>이미현 님</span><span class="account-mark">I</span></button><div class="account-menu" id="accountMenu"><a href="/" target="_top">홈으로</a><button id="accountLearningHome" type="button">학습 처음으로</button><button class="logout" id="accountLogout" type="button">로그아웃</button></div></div>
     </div>
   </header>
 
@@ -434,6 +434,13 @@
     document.getElementById('backBtn').onclick=leaveChapter;
     document.getElementById('learnNav').onclick=showLearningHome;
     document.getElementById('mapNav').onclick=()=>{featureView.classList.remove('active');if(chapterDetail.classList.contains('active'))leaveChapter();homeView.classList.remove('hidden');activateNav('mapNav');setTimeout(()=>document.getElementById('chapterMap').scrollIntoView({behavior:'smooth'}),20)};
+    const accountButton=document.getElementById('accountButton'),accountMenu=document.getElementById('accountMenu');
+    function closeAccountMenu(){accountMenu.classList.remove('open');accountButton.setAttribute('aria-expanded','false')}
+    accountButton.onclick=event=>{event.stopPropagation();const open=accountMenu.classList.toggle('open');accountButton.setAttribute('aria-expanded',String(open))};
+    document.getElementById('accountLearningHome').onclick=()=>{closeAccountMenu();showLearningHome()};
+    document.getElementById('accountLogout').onclick=()=>{closeAccountMenu();window.parent.postMessage({type:'inkword:logout'},location.origin)};
+    document.addEventListener('click',event=>{if(!event.target.closest('.account'))closeAccountMenu()});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape')closeAccountMenu()});
     const featureView=document.getElementById('featureView'),featureContent=document.getElementById('featureContent');
     function openFeature(type){
       if(chapterDetail.classList.contains('active'))leaveChapter();

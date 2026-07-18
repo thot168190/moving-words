@@ -3,8 +3,8 @@ import { AuthModal } from './AuthModal';
 import { useAuth } from '../contexts/AuthContext';
 
 type SceneCompleteMessage = {
-  type: 'inkword:scene-complete';
-  sceneId: string;
+  type: 'inkword:scene-complete' | 'inkword:logout';
+  sceneId?: string;
   wordIds?: string[];
 };
 
@@ -14,7 +14,7 @@ type SceneCompleteMessage = {
  * 완료 기록만 안전한 메시지로 React/Firebase에 전달합니다.
  */
 export default function LearningPage() {
-  const { user, loading, learningProgress, recordSceneCompletion } = useAuth();
+  const { user, loading, learningProgress, recordSceneCompletion, signOut } = useAuth();
   const [authOpen, setAuthOpen] = useState(false);
   const frameRef = useRef<HTMLIFrameElement>(null);
 
@@ -37,12 +37,16 @@ export default function LearningPage() {
   useEffect(() => {
     const receiveLearningEvent = (event: MessageEvent<SceneCompleteMessage>) => {
       if (event.origin !== window.location.origin) return;
-      if (event.data?.type !== 'inkword:scene-complete') return;
+      if (event.data?.type === 'inkword:logout') {
+        void signOut();
+        return;
+      }
+      if (event.data?.type !== 'inkword:scene-complete' || !event.data.sceneId) return;
       void recordSceneCompletion(event.data.sceneId, event.data.wordIds || []);
     };
     window.addEventListener('message', receiveLearningEvent);
     return () => window.removeEventListener('message', receiveLearningEvent);
-  }, [recordSceneCompletion]);
+  }, [recordSceneCompletion, signOut]);
 
   useEffect(sendAccountState, [user, learningProgress]);
 
@@ -71,7 +75,7 @@ export default function LearningPage() {
     <iframe
       ref={frameRef}
       title="보는 단어장 실제 학습장"
-      src="/learning/index.html?v=20260719-11"
+      src="/learning/index.html?v=20260719-12"
       onLoad={sendAccountState}
       className="fixed inset-0 w-full h-full border-0 bg-white"
       allow="autoplay; microphone"
