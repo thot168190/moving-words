@@ -420,7 +420,7 @@ function LandingPage() {
             {[
               ['01', '그려지는 장면 보기', '그림이 완성되는 순서를 보며 장면을 기억합니다.'],
               ['02', '단어에 마우스를 올려 듣기', '그림 위 단어를 가리키면 영어 발음이 바로 재생됩니다.'],
-              ['03', '거꾸로 놀이로 확인하기', '단어를 원래 그림 위치로 옮기며 기억을 확인합니다.'],
+              ['03', '거꾸로 퀴즈로 확인하기', '단어를 원래 그림 위치로 옮기며 기억을 확인합니다.'],
             ].map(([num, text, desc], index) => (
               <li key={num} tabIndex={0} className={`group relative cursor-help py-7 sm:px-6 outline-none ${index > 0 ? 'border-t sm:border-t-0 sm:border-l border-[#dcebe5]' : ''}`}>
                 <span className="block text-[#6aa58f] text-[12px] tracking-[0.15em] font-black mb-2">{num}</span>
