@@ -439,7 +439,7 @@ function LandingPage() {
               >
                 <div className="relative aspect-square overflow-hidden bg-white">
                   <img src={image} alt={`${title} 실제 화면`} className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" />
-                  <div className="absolute inset-x-4 bottom-4 rounded-[18px] bg-[#052f26]/92 px-5 py-4 text-white shadow-lg backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:px-6">
+                  <div className="absolute inset-x-4 bottom-4 rounded-[18px] bg-[rgba(5,47,38,0.92)] px-5 py-4 text-white shadow-lg backdrop-blur-sm sm:inset-x-6 sm:bottom-6 sm:px-6">
                     <div className="mb-1.5 flex items-center justify-between">
                       <span className="text-[#ff9f86] text-[14px] font-black tracking-[0.14em]">{num}</span>
                       <span className="rounded-full bg-white/15 px-3 py-1.5 text-[11px] font-black tracking-[0.14em] backdrop-blur">{label}</span>
