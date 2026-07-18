@@ -426,7 +426,7 @@ function LandingPage() {
             {[
               ['01', '움직이는 그림 학습', 'LEARN', '/feature-cards/sailing.webp', 'sailing'],
               ['02', '거꾸로 퀴즈', 'PLAY', '/feature-cards/treasure.webp', 'treasure'],
-              ['03', '내 단어 AI 그림 생성', 'CREATE', '/feature-cards/fishing.webp', 'fishing'],
+              ['03', '내가 만드는 그림 카드', 'CREATE', '/feature-cards/fishing.webp', 'fishing'],
               ['04', '나만의 단어 박물관', 'COLLECT', '/feature-cards/storm.webp', 'storm'],
             ].map(([num, title, label, image, effect], index) => (
               <motion.article
