@@ -31,8 +31,8 @@
     .word-layer{position:absolute;inset:0;pointer-events:none}
     .word{position:absolute;translate:-50% -50%;padding:0;background:transparent;color:var(--green);text-align:center;cursor:pointer;pointer-events:auto;opacity:0;scale:.88;transition:opacity .45s,scale .45s}
     .word.show{opacity:1;scale:1}
-    .word strong{display:block;font-size:clamp(20px,3.2vw,38px);font-weight:900;line-height:1;letter-spacing:-.04em;text-shadow:-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,2px 2px 0 #fff,0 3px 12px #fff}
-    .word span{display:block;margin-top:5px;color:#315f53;font-size:clamp(11px,1.4vw,16px);font-weight:750;text-shadow:0 0 6px #fff,0 0 10px #fff}
+    .word strong{display:block;font-size:clamp(16px,3.2vw,38px);font-weight:900;line-height:1;letter-spacing:-.04em;text-shadow:-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,2px 2px 0 #fff,0 3px 12px #fff}
+    .word span{display:block;margin-top:5px;color:#315f53;font-size:clamp(10px,1.4vw,16px);font-weight:750;text-shadow:0 0 6px #fff,0 0 10px #fff}
     .word:hover strong,.word:focus-visible strong{color:var(--gold)}
     .controls{position:absolute;left:18px;right:18px;bottom:16px;z-index:3;display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:999px;background:rgba(7,45,34,.76);backdrop-filter:blur(8px);color:#fff}
     .play{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--green);cursor:pointer;font-weight:900}
@@ -57,6 +57,23 @@
     .step b{display:block;margin-top:8px;color:var(--green);font-size:19px;font-weight:850}
     .cta{display:flex;justify-content:center;margin-top:42px}
     .cta a{padding:15px 26px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:850}
+    
+    /* 점 indicator 스타일 */
+    .dot {
+      display:inline-block;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.4);
+      cursor:pointer;
+      transition:background 0.3s, width 0.3s;
+    }
+    .dot.active {
+      background:#fff;
+      width:14px;
+      border-radius:999px;
+    }
+
     @media(max-width:820px){
       .page{width:min(100% - 24px,680px)}.top{height:68px}.back{font-size:13px}main{padding:44px 0 64px}.intro{margin-bottom:28px}
       .viewer{display:block}.panel{padding:24px 4px 0;border-left:0;border-top:1px solid var(--line)}.scene-list{margin-top:18px}.sound-note{padding:18px 0 23px}
@@ -83,18 +100,25 @@
     </div>
     <section class="viewer" aria-label="무료 학습 장면 체험">
       <div class="stage">
-        <video id="video" playsinline muted preload="metadata"></video>
-        <div id="words" class="word-layer"></div>
-        <div class="controls">
+        <video id="video" playsinline muted preload="metadata" style="transition: opacity 0.5s;"></video>
+        <svg id="svg-doodle" fill="none" stroke="#1a1a1a" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; pointer-events:none; transition:opacity 0.8s; z-index:1;"></svg>
+        <img id="img-doodle" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; pointer-events:none; filter:blur(3px); transform:scale(1.015); transform-origin:center; transition:opacity 0.8s, filter 0.8s, transform 0.8s; z-index:2;">
+        <div id="words" class="word-layer" style="z-index:3;"></div>
+        <div class="controls" style="z-index:4;">
           <button id="play" class="play" type="button" aria-label="재생 또는 일시정지">▶</button>
           <div class="progress" aria-hidden="true"><i id="bar"></i></div>
           <button id="speed" class="speed" type="button" aria-label="재생 속도 변경">1×</button>
+        </div>
+        <div class="dots-indicator" style="position:absolute; left:50%; bottom:76px; transform:translateX(-50%); display:flex; gap:8px; z-index:4;">
+          <span class="dot" data-i="0"></span>
+          <span class="dot" data-i="1"></span>
+          <span class="dot" data-i="2"></span>
         </div>
       </div>
       <aside class="panel">
         <span id="count" class="count">SCENE 01 · 03</span>
         <h2 id="title" class="title"></h2>
-        <p class="guide">세 장면을 직접 골라 학습할 수 있습니다.</p>
+        <p class="guide">맛보기 장면 3개 중 골라서 학습할 수 있습니다.</p>
         <div id="scenes" class="scene-list"></div>
         <p class="sound-note">단어가 보이면 마우스를 올려보세요.<br>모바일에서는 단어를 터치하면 됩니다.</p>
       </aside>
@@ -108,35 +132,272 @@
   </main>
   <script>
     const scenes=[
-      {title:'바람을 타는 범선',src:'/learning-preview/scene-ch1-03.mp4',words:[
-        {en:'sail',ko:'돛',x:48,y:31},{en:'horizon',ko:'수평선',x:77,y:25},{en:'voyage',ko:'항해',x:19,y:65},{en:'current',ko:'해류',x:70,y:77}
+      {id:'whale',title:'바다의 왕 고래',src:'/learning-preview/scene-ch1-01.mp4',type:'video',words:[
+        {en:'whale',ko:'고래',x:58,y:30},{en:'tail',ko:'꼬리',x:13,y:42},{en:'ocean',ko:'대양',x:88,y:82},{en:'fin',ko:'지느러미',x:45,y:55}
       ]},
-      {title:'밤하늘의 별자리',src:'/learning-preview/scene-ch1-05.mp4',words:[
-        {en:'telescope',ko:'망원경',x:31,y:58},{en:'constellation',ko:'별자리',x:59,y:30},{en:'observe',ko:'관찰하다',x:77,y:66},{en:'universe',ko:'우주',x:20,y:23}
+      {id:'lighthouse',title:'빛을 보내는 등대',type:'svg',words:[
+        {en:'lighthouse',ko:'등대',x:48,y:35},{en:'light',ko:'빛',x:75,y:22},{en:'sea',ko:'바다',x:20,y:82},{en:'rock',ko:'바위',x:52,y:76}
       ]},
-      {title:'깊은 바다의 산호 협곡',src:'/learning-preview/scene-ch1-08.mp4',words:[
-        {en:'coral',ko:'산호',x:18,y:69},{en:'canyon',ko:'협곡',x:52,y:69},{en:'creature',ko:'생물',x:69,y:37},{en:'ecosystem',ko:'생태계',x:80,y:70}
+      {id:'ship',title:'바람을 타는 범선',type:'svg',words:[
+        {en:'ship',ko:'돛단배',x:45,y:52},{en:'sail',ko:'돛',x:42,y:22},{en:'wave',ko:'파도',x:75,y:85},{en:'mast',ko:'돛대',x:52,y:38}
       ]}
     ];
     const video=document.querySelector('#video'),words=document.querySelector('#words'),title=document.querySelector('#title'),count=document.querySelector('#count'),sceneList=document.querySelector('#scenes'),play=document.querySelector('#play'),bar=document.querySelector('#bar'),speed=document.querySelector('#speed');
+    const svgDoodle=document.querySelector('#svg-doodle'),imgDoodle=document.querySelector('#img-doodle');
     let current=0,rateIndex=0,lastSpoken='';const rates=[1,1.5,2];
+    
+    let svgData=null;
+    let activeToken=0;
+    let autoNextTimeout=null;
+
+    // metric-scenes.json 미리 로드
+    fetch('/metric-scenes.json')
+      .then(r => r.json())
+      .then(d => { svgData = d.scenes; })
+      .catch(e => console.error('Failed to load metric-scenes:', e));
+
     function speak(word){
       if(!('speechSynthesis' in window)||lastSpoken===word&&speechSynthesis.speaking)return;
       lastSpoken=word;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.9;u.pitch=1;
-      const voices=speechSynthesis.getVoices();u.voice=voices.find(v=>/Samantha|Ava|Jenny|Aria|Google US English/i.test(v.name))||voices.find(v=>v.lang.startsWith('en'))||null;speechSynthesis.speak(u);
+      const voices=speechSynthesis.getVoices();
+      u.voice=voices.find(v=>/Samantha|Ava|Jenny|Aria|Google US English/i.test(v.name))||voices.find(v=>v.lang.startsWith('en'))||null;
+      
+      // 모바일(Safari) 무음 버그 해결을 위한 50ms 시간차 재생
+      setTimeout(() => {
+        speechSynthesis.speak(u);
+      }, 50);
     }
+
     function renderWords(){
-      words.innerHTML='';scenes[current].words.forEach((w,i)=>{const b=document.createElement('button');b.type='button';b.className='word';b.style.left=w.x+'%';b.style.top=w.y+'%';b.innerHTML=`<strong>${w.en}</strong><span>${w.ko}</span>`;b.setAttribute('aria-label',`${w.en}, ${w.ko} 발음 듣기`);b.addEventListener('mouseenter',()=>speak(w.en));b.addEventListener('click',()=>speak(w.en));b.dataset.index=i;words.appendChild(b)});
+      words.innerHTML='';
+      scenes[current].words.forEach((w,i)=>{
+        const b=document.createElement('button');
+        b.type='button';
+        b.className='word';
+        b.style.left=w.x+'%';
+        b.style.top=w.y+'%';
+        b.innerHTML=`<strong>${w.en}</strong><span>${w.ko}</span>`;
+        b.setAttribute('aria-label',`${w.en}, ${w.ko} 발음 듣기`);
+        b.addEventListener('mouseenter',()=>speak(w.en));
+        b.addEventListener('click',()=>speak(w.en));
+        b.dataset.index=i;
+        words.appendChild(b);
+      });
     }
+
+    function resetScene() {
+      activeToken++;
+      video.pause();
+      video.currentTime = 0;
+      video.style.opacity = '0';
+      video.style.pointerEvents = 'none';
+      
+      svgDoodle.innerHTML = '';
+      svgDoodle.style.opacity = '0';
+      svgDoodle.style.pointerEvents = 'none';
+      
+      imgDoodle.src = '';
+      imgDoodle.style.opacity = '0';
+      imgDoodle.style.pointerEvents = 'none';
+      imgDoodle.style.filter = 'blur(3px)';
+      imgDoodle.style.transform = 'scale(1.015)';
+      
+      if (autoNextTimeout) {
+        clearTimeout(autoNextTimeout);
+        autoNextTimeout = null;
+      }
+      
+      bar.style.width = '0%';
+      words.innerHTML = '';
+    }
+
+    async function runSvgSequence(sc) {
+      if (!svgData) {
+        setTimeout(() => runSvgSequence(sc), 100);
+        return;
+      }
+      const data = svgData.find(s => s.id === sc.id);
+      if (!data) return;
+
+      const token = activeToken;
+      
+      svgDoodle.setAttribute('viewBox', data.vb);
+      svgDoodle.setAttribute('stroke-width', data.sw || 4);
+      svgDoodle.style.opacity = '1';
+      svgDoodle.innerHTML = data.lineart.map((p, i) => {
+        return `<path d="${p.d}" ${p.t ? `transform="${p.t}"` : ''}></path>`;
+      }).join('');
+
+      const paths = Array.from(svgDoodle.querySelectorAll('path'));
+      if (paths.length === 0) return;
+
+      // 각 패스별 총 길이 계산 및 스타일 리셋
+      const lengths = paths.map(p => {
+        p.style.transition = 'none';
+        const L = p.getTotalLength();
+        p.style.strokeDasharray = L;
+        p.style.strokeDashoffset = L;
+        return L;
+      });
+
+      let totalLen = lengths.reduce((a, b) => a + b, 0);
+      const budget = 6000 / rates[rateIndex]; // 재생 속도 배속 적용
+      const totalPause = paths.length * 40;
+      const speed = totalLen / Math.max(1, budget - totalPause);
+
+      let currentDrawLen = 0;
+
+      for (let i = 0; i < paths.length; i++) {
+        if (activeToken !== token) return;
+        const p = paths[i];
+        const L = lengths[i];
+        const dur = L / speed;
+
+        await new Promise((res) => {
+          const t0 = performance.now();
+          const step = (t) => {
+            if (activeToken !== token) return res();
+            const progress = dur > 0 ? Math.min(1, (t - t0) / dur) : 1;
+            const ease = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+            p.style.strokeDashoffset = L * (1 - ease);
+
+            // 프로그레스바 갱신
+            const currentP = (currentDrawLen + L * progress) / totalLen;
+            bar.style.width = (currentP * 100) + '%';
+
+            if (progress < 1) requestAnimationFrame(step);
+            else res();
+          };
+          requestAnimationFrame(step);
+        });
+
+        if (activeToken !== token) return;
+        currentDrawLen += L;
+        bar.style.width = (currentDrawLen / totalLen * 100) + '%';
+
+        const pause = (Math.random() * 40 + 20) / rates[rateIndex];
+        await new Promise(r => setTimeout(r, pause));
+      }
+
+      if (activeToken !== token) return;
+
+      // 드로잉 완주 후 원화 이미지 크로스페이드 전개
+      imgDoodle.src = data.img;
+      imgDoodle.style.opacity = '1';
+      imgDoodle.style.pointerEvents = 'auto';
+
+      await new Promise(r => requestAnimationFrame(r));
+      imgDoodle.style.filter = 'blur(0px)';
+      imgDoodle.style.transform = 'scale(1)';
+      svgDoodle.style.opacity = '0';
+
+      // 크로스페이드(0.8s) 지연 대기
+      await new Promise(r => setTimeout(r, 800));
+      if (activeToken !== token) return;
+
+      // 단어 순차 노출 시작
+      renderWords();
+      const wordEls = document.querySelectorAll('.word');
+      wordEls.forEach((el, idx) => {
+        setTimeout(() => {
+          if (activeToken === token) el.classList.add('show');
+        }, idx * 150);
+      });
+
+      // 4초 대기 후 다음 장면 자동 슬라이드
+      autoNextTimeout = setTimeout(() => {
+        if (activeToken === token) {
+          selectScene((current + 1) % scenes.length);
+        }
+      }, 4000);
+    }
+
     function selectScene(index,auto=true){
-      current=index;video.src=scenes[index].src;video.playbackRate=rates[rateIndex];title.textContent=scenes[index].title;count.textContent=`SCENE 0${index+1} · 03`;bar.style.width='0';renderWords();renderSceneButtons();if(auto)video.play().catch(()=>{});
+      resetScene();
+      current=index;
+      
+      title.textContent=scenes[index].title;
+      count.textContent=`SCENE 0${index+1} · 03`;
+      renderSceneButtons();
+      renderDots();
+
+      const sc = scenes[index];
+      
+      if (sc.type === 'video') {
+        video.style.opacity = '1';
+        video.style.pointerEvents = 'auto';
+        video.src = sc.src;
+        video.playbackRate = rates[rateIndex];
+        if (auto) {
+          video.play().catch(()=>{});
+        }
+      } else {
+        runSvgSequence(sc);
+      }
     }
+
     function renderSceneButtons(){
-      sceneList.innerHTML='';scenes.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='scene'+(i===current?' active':'');b.innerHTML=`<small>0${i+1}</small><b>${s.title}</b>`;b.addEventListener('click',()=>selectScene(i));sceneList.appendChild(b)});
+      sceneList.innerHTML='';
+      scenes.forEach((s,i)=>{
+        const b=document.createElement('button');
+        b.type='button';
+        b.className='scene'+(i===current?' active':'');
+        b.innerHTML=`<small>0${i+1}</small><b>${s.title}</b>`;
+        b.addEventListener('click',()=>selectScene(i));
+        sceneList.appendChild(b);
+      });
     }
-    video.addEventListener('timeupdate',()=>{const p=video.duration?video.currentTime/video.duration:0;bar.style.width=(p*100)+'%';document.querySelectorAll('.word').forEach((el,i)=>el.classList.toggle('show',p>=.46+i*.09))});
-    video.addEventListener('play',()=>play.textContent='Ⅱ');video.addEventListener('pause',()=>play.textContent='▶');video.addEventListener('ended',()=>selectScene((current+1)%scenes.length));
-    play.addEventListener('click',()=>video.paused?video.play():video.pause());speed.addEventListener('click',()=>{rateIndex=(rateIndex+1)%rates.length;video.playbackRate=rates[rateIndex];speed.textContent=rates[rateIndex]+'×'});
+
+    function renderDots() {
+      document.querySelectorAll('.dot').forEach((d, i) => {
+        d.className = 'dot' + (i === current ? ' active' : '');
+      });
+    }
+
+    document.querySelectorAll('.dot').forEach(d => {
+      d.addEventListener('click', () => {
+        const idx = Number(d.dataset.i);
+        selectScene(idx);
+      });
+    });
+
+    video.addEventListener('timeupdate',()=>{
+      if (scenes[current].type !== 'video') return;
+      const p=video.duration?video.currentTime/video.duration:0;
+      bar.style.width=(p*100)+'%';
+      document.querySelectorAll('.word').forEach((el,i)=>el.classList.toggle('show',p>=.46+i*.09));
+    });
+    
+    video.addEventListener('play',()=>{
+      if (scenes[current].type === 'video') play.textContent='Ⅱ';
+    });
+    video.addEventListener('pause',()=>{
+      if (scenes[current].type === 'video') play.textContent='▶';
+    });
+    video.addEventListener('ended',()=>{
+      if (scenes[current].type === 'video') selectScene((current+1)%scenes.length);
+    });
+    
+    play.addEventListener('click',()=>{
+      const sc = scenes[current];
+      if (sc.type === 'video') {
+        video.paused ? video.play() : video.pause();
+      } else {
+        // SVG 모드에서는 재생 버튼 클릭 시 씬 강제 리셋 및 재시작
+        selectScene(current);
+      }
+    });
+
+    speed.addEventListener('click',()=>{
+      rateIndex=(rateIndex+1)%rates.length;
+      video.playbackRate=rates[rateIndex];
+      speed.textContent=rates[rateIndex]+'×';
+      if (scenes[current].type === 'svg') {
+        // SVG 드로잉 중 배속 변경 시 리셋 재생
+        selectScene(current);
+      }
+    });
+
     selectScene(0,true);
   </script>
 </body>
