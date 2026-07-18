@@ -478,7 +478,7 @@ function LandingPage() {
             <div className="bg-white rounded-2xl p-5 border border-neutral-200/60 shadow-sm">
               <h3 className="font-bold text-[#666666] text-lg mb-3">클래스카드</h3>
               <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">단어장 반복 암기</span></p>
-              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>무료+유료</span></p>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>출시 기념가 ₩9,900</span></p>
               <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">성실한 반복 암기가 체질인 분</span></p>
             </div>
             {/* 보는 단어장 */}
@@ -492,7 +492,7 @@ function LandingPage() {
                 <span className="font-bold text-indigo-400 w-16 shrink-0">가격</span>
                 <span className="flex flex-col">
                   <span className="text-[#6f756f] text-[13px] line-through">6개월 후 정상가 ₩19,800</span>
-                  <span className="text-[#087052] font-extrabold text-[18px]">얼리 액세스 ₩9,900</span>
+                  <span className="text-[#087052] font-extrabold text-[18px]">출시 기념가 ₩9,900</span>
                 </span>
               </div>
               <p className="text-indigo-700 font-black text-[15px] flex"><span className="font-bold text-indigo-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">지루한 암기가 힘들고 단어가 안 외워지는 분</span></p>
@@ -523,7 +523,7 @@ function LandingPage() {
                 <tr className="bg-neutral-50/50 hover:bg-neutral-50 transition-colors duration-200">
                   <td className="py-5 pr-4 pl-5 font-bold text-[#666666] whitespace-nowrap first:rounded-l-2xl border-y border-l border-neutral-200/60">클래스카드</td>
                   <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">단어장 반복 암기</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">무료+유료</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">출시 기념가 ₩9,900</td>
                   <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>성실한 반복 암기가 체질인 분</td>
                 </tr>
 
@@ -539,7 +539,7 @@ function LandingPage() {
                   <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">
                     <div className="flex flex-col">
                       <span className="text-[#6f756f] text-[12px] sm:text-[13px] line-through">6개월 후 정상가 ₩19,800</span>
-                      <span className="text-[#087052] font-extrabold text-[16px] sm:text-[19px]">얼리 액세스 ₩9,900</span>
+                      <span className="text-[#087052] font-extrabold text-[16px] sm:text-[19px]">출시 기념가 ₩9,900</span>
                     </div>
                   </td>
                   <td className="py-6 pl-4 pr-5 font-black text-[15px] sm:text-[18px] text-[#07533f] last:rounded-r-2xl border-y border-r-2 border-[#4f927b]" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
@@ -568,48 +568,25 @@ function LandingPage() {
               className="text-[#07533f] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-5"
               style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
             >
-              무료로 시작하세요.
+              출시 기념가로 시작하세요.
             </h2>
             <p className="text-[#4a4a46] text-[16px] sm:text-[18px] leading-relaxed max-w-xl mx-auto font-semibold">
-              회원가입 없이 세 장면을 바로 학습할 수 있습니다.
+              한 번의 결제로 보는 단어장의 모든 학습 기능을 이용하세요.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {/* 무료 체험도 별도 데모가 아닌 실제 학습 앱 진입점으로 연결합니다. */}
+          <div className="max-w-xl mx-auto">
+            {/* 출시 기념 이용권: 현재 공개된 콘텐츠와 이후 완성되는 챕터를 이용합니다. */}
             <motion.div
-              className="border border-[#cfe2db] rounded-[20px] p-6 flex flex-col bg-white"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              <h3 className="font-gmarket font-black text-[27px] sm:text-[30px] mb-2">무료 체험</h3>
-              <p className="text-[#4a4a46] text-[14px] mb-5">회원가입도, 결제도 필요 없습니다.</p>
-              <div className="text-[34px] sm:text-[38px] font-black tracking-tight mb-5">₩0</div>
-              <ul className="divide-y divide-[#e2eee9] mb-7 flex-1">
-                {['챕터 1 장면 3개 학습', '그려지는 영상과 단어', '영어 발음 듣기'].map((item) => (
-                  <li key={item} className="py-3 flex items-center gap-3 text-[#353532] text-[14px] font-semibold">
-                    <span className="text-[#2f9c75] text-xl">✓</span>{item}
-                  </li>
-                ))}
-              </ul>
-              <a href={APP_ENTRY_URL} className="block w-full rounded-xl border border-[#8bb7a7] px-5 py-4 text-center font-black hover:bg-[#f1f8f5] transition-colors">
-                바로 체험하기
-              </a>
-            </motion.div>
-
-            {/* 얼리 액세스: 현재 공개된 콘텐츠와 이후 완성되는 챕터를 이용합니다. */}
-            <motion.div
-              className="border-2 border-[#2f9c75] rounded-[20px] p-6 flex flex-col relative bg-[#fbfefc] shadow-[0_12px_28px_rgba(7,83,63,0.08)]"
+              className="border-2 border-[#2f9c75] rounded-[24px] p-7 sm:p-9 flex flex-col relative bg-[#fbfefc] shadow-[0_12px_28px_rgba(7,83,63,0.08)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.08 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <span className="absolute right-7 top-0 -translate-y-1/2 bg-[#d7f580] text-[#07533f] text-[11px] font-black tracking-[0.14em] uppercase px-4 py-2 rounded-full">Early Access</span>
+              <span className="absolute right-7 top-0 -translate-y-1/2 bg-[#d7f580] text-[#07533f] text-[13px] font-black tracking-[0.08em] px-5 py-2.5 rounded-full">출시 기념가</span>
               <h3 className="font-gmarket font-black text-[27px] sm:text-[30px] mb-2">
-                얼리 액세스
+                출시 기념 이용권
               </h3>
               <p className="text-[#4a4a46] text-[14px] mb-5">12개 챕터의 학습 콘텐츠를 이용합니다.</p>
               <div className="mb-5">

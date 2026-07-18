@@ -34,7 +34,7 @@ export interface TossProduct {
 export const TOSS_PRODUCTS: TossProduct[] = [
   {
     id: 'moving-words-course',
-    name: '보는 단어장 얼리 액세스',
+    name: '보는 단어장 출시 기념 이용권',
     price: 9900,
     currency: 'KRW',
   },
