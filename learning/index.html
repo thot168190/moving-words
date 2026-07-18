@@ -146,7 +146,7 @@
   <header class="topbar">
     <div class="topbar-inner">
       <button class="brand" id="learningBrand" type="button" aria-label="학습 홈으로 이동">보는 단어장</button>
-      <nav class="nav" aria-label="주 메뉴"><button class="active" id="learnNav">그림 학습</button><button id="mapNav">단어 탐험</button><button id="museumNav">나의 박물관</button><button id="playNav" data-secondary="true">거꾸로 퀴즈</button><button id="studioNav" data-secondary="true">AI 그림 단어</button></nav>
+      <nav class="nav" aria-label="주 메뉴"><button class="active" id="learnNav">그림 학습</button><button id="mapNav">단어 탐험</button><button id="museumNav">나의 박물관</button><button id="playNav" data-secondary="true">거꾸로 퀴즈</button><button id="studioNav" data-secondary="true">내가 만드는 그림 카드</button></nav>
       <div class="account"><button class="account-button" id="accountButton" type="button" aria-expanded="false" aria-controls="accountMenu"><span>이미현 님</span><span class="account-mark">I</span></button><div class="account-menu" id="accountMenu"><a href="/" target="_top">홈으로</a><button id="accountLearningHome" type="button">학습 처음으로</button><button class="logout" id="accountLogout" type="button">로그아웃</button></div></div>
     </div>
   </header>
@@ -186,7 +186,7 @@
       <div class="world-list">
         <button class="world" data-world="museum"><small>COLLECTION</small><h3>나의 박물관</h3></button>
         <button class="world" data-world="play"><small>REVERSE QUIZ</small><h3>거꾸로 퀴즈</h3></button>
-        <button class="world" data-world="studio"><small>MY CARD LAB</small><h3>내가 만드는 그림 단어</h3></button>
+        <button class="world" data-world="studio"><small>MY CARD LAB</small><h3>내가 만드는 그림 카드</h3></button>
       </div>
     </section>
 
@@ -280,7 +280,7 @@
       let path = '';
       if(typeof item==='string') path = item;
       else path = item?.url||item?.path||item?.image?.url||'';
-      
+
       if(path && !path.startsWith('http')){
         const spaceHost = `https://${config.space.replace('/', '-').toLowerCase()}.hf.space`;
         if(path.startsWith('/file=')){
@@ -302,10 +302,10 @@
     ];
     function renderMuseumContent(){
       const customCards=readCustomCards();
-      const featuredSection=`<section class="featured-museum"><div class="custom-museum-head"><h2>특별 전시 그림 단어</h2><span>${featuredMuseumCards.length}장</span></div><div class="museum-grid">${featuredMuseumCards.map(card=>`<article class="museum-card"><img src="${card.image}" alt="${card.word} 그림 단어 카드"><h3>${card.word}</h3><p>${card.meaning}</p></article>`).join('')}</div></section>`;
+      const featuredSection=`<section class="featured-museum"><div class="custom-museum-head"><h2>특별 전시 그림 카드</h2><span>${featuredMuseumCards.length}장</span></div><div class="museum-grid">${featuredMuseumCards.map(card=>`<article class="museum-card"><img src="${card.image}" alt="${card.word} 그림 카드"><h3>${card.word}</h3><p>${card.meaning}</p></article>`).join('')}</div></section>`;
       const customSection=customCards.length
-        ?`<section class="custom-museum"><div class="custom-museum-head"><h2>내가 만든 그림 단어</h2><span>${customCards.length} / ${CUSTOM_CARD_LIMIT}</span></div><div class="museum-grid">${customCards.map(card=>`<article class="museum-card custom-card"><img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.word)} 학습 카드"><h3>${escapeHtml(card.word)}</h3><p>${escapeHtml(card.meaning||card.style)}</p><button class="delete-card" type="button" data-card-id="${escapeHtml(card.id)}">삭제</button></article>`).join('')}</div></section>`
-        :`<section class="custom-museum empty"><div class="custom-museum-head"><h2>내가 만든 그림 단어</h2><span>0 / ${CUSTOM_CARD_LIMIT}</span></div><p>단어를 직접 만들어 저장하면 이곳에 전시됩니다.</p></section>`;
+        ?`<section class="custom-museum"><div class="custom-museum-head"><h2>내가 만든 그림 카드</h2><span>${customCards.length} / ${CUSTOM_CARD_LIMIT}</span></div><div class="museum-grid">${customCards.map(card=>`<article class="museum-card custom-card"><img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.word)} 학습 카드"><h3>${escapeHtml(card.word)}</h3><p>${escapeHtml(card.meaning||card.style)}</p><button class="delete-card" type="button" data-card-id="${escapeHtml(card.id)}">삭제</button></article>`).join('')}</div></section>`
+        :`<section class="custom-museum empty"><div class="custom-museum-head"><h2>내가 만든 그림 카드</h2><span>0 / ${CUSTOM_CARD_LIMIT}</span></div><p>단어를 직접 만들어 저장하면 이곳에 전시됩니다.</p></section>`;
       const learnedCards=works.map((work,index)=>index<completedSceneCount
         ?`<article class="museum-card"><img src="${work.img}" alt="${work.title}"><h3>${work.title}</h3><p>${work.sub}</p></article>`
         :`<article class="museum-card back" aria-label="아직 수집하지 않은 ${index+1}번 카드"><div class="museum-seal"><b>${['I','II','III','IV','V','VI','VII','VIII'][index]}</b></div><p>학습하면 열리는 카드</p></article>`).join('');
@@ -476,6 +476,7 @@
       if(type==='museum')featureContent.innerHTML=renderMuseumContent();
       if(type==='studio')featureContent.innerHTML=`<div class="feature-intro"><h1>내가 만드는 그림 단어</h1><p>원하는 단어와 장면을 직접 정해 나만의 카드를 만들어요.</p></div><div class="studio-layout"><div class="generate-preview" id="generatePreview"><div class="generate-empty"><strong>어떤 단어를 그리고 싶나요?</strong>원하는 영어 단어와 장면을 적으면<br>새 그림을 직접 생성합니다.</div></div><aside class="studio-side"><label for="generateWord">그리고 싶은 영어 단어</label><input class="word-input" id="generateWord" value="" placeholder="예: astronaut"><label for="generateMeaning">한글 뜻</label><input class="word-input meaning-input" id="generateMeaning" value="" placeholder="예: 우주비행사"><div class="studio-creator unlocked" id="studioCreator"><label for="generateScene">어떤 장면으로 그릴까요?</label><textarea class="word-input" id="generateScene" rows="4" placeholder="예: 달 표면을 걷는 우주비행사. 멀리 푸른 지구가 보이게."></textarea><label class="style-label">그림 스타일</label><div class="style-options"><button class="style-option selected">세밀 수채화</button><button class="style-option">잉크 드로잉</button><button class="style-option">빈티지 도감</button><button class="style-option">밝은 파스텔</button><button class="style-option">귀여운 3D 점토</button><button class="style-option">따뜻한 그림책</button></div><p class="studio-quota" id="studioQuota"></p><p class="studio-connection" id="studioConnection"></p><div class="studio-actions"><button class="primary" id="generateBtn">내 단어로 그림 만들기</button></div><button class="save-generated" id="saveGenerated" disabled>박물관에 저장</button><p class="studio-status" id="studioStatus" aria-live="polite"></p><p class="studio-note">같은 단어도 장면 설명에 따라 전혀 다른 카드가 만들어집니다.</p></div></aside></div>`;
       if(type==='play')featureContent.innerHTML=`<div class="feature-intro"><h1>거꾸로 퀴즈</h1><p>챕터 1의 여덟 장면에서 사라진 단어를 되찾아보세요.</p></div><div class="quiz-scenes" id="quizScenes">${works.map((work,index)=>`<button class="quiz-scene ${index===0?'active':''}" type="button" data-quiz-scene="${index}">${work.n} · ${work.title}</button>`).join('')}</div><div class="memory-layout"><div class="memory-stage" id="memoryStage"></div><aside class="memory-side"><div class="now-label" id="memoryRound">0 / 4</div><h2 id="memoryTitle"></h2><p>단어를 하나 누른 뒤 그림 속 알맞은 물음표를 누르세요.</p><div class="memory-choices" id="memoryChoices"></div><div class="memory-actions"><button class="memory-retry" id="memoryRetry" type="button">다시 풀기</button><button class="memory-next" id="memoryNext" type="button">다음 장면</button></div></aside></div>`;
+      if(type==='studio')featureContent.querySelector('h1').textContent='내가 만드는 그림 카드';
       featureContent.querySelector('.feature-intro')?.classList.add(`${type}-intro`);
       scrollTo({top:0,behavior:'smooth'});if(type==='museum')setupMuseum();if(type==='studio')setupGenerator();if(type==='play')setupQuiz();
     }
@@ -574,7 +575,7 @@
             }, 1400);
           }, 60);
 
-          saveButton.disabled=false;saveButton.classList.add('show');status.textContent='원하는 장면으로 새 그림 단어를 만들었습니다.';
+          saveButton.disabled=false;saveButton.classList.add('show');status.textContent='원하는 장면으로 새 그림 카드를 만들었습니다.';
         }catch(error){preview.innerHTML='<div class="generate-empty"><strong>지금은 이미지를 만들 수 없습니다.</strong>잠시 후 다시 시도해주세요.</div>';status.textContent=`이미지 연구실 연결 오류: ${error.message}`}
         finally{generateButton.disabled=false;generateButton.textContent='다시 만들기'}
       };
