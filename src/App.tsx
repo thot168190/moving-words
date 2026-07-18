@@ -488,9 +488,9 @@ function LandingPage() {
 
       {/* ════════════════ SECTION 5.5: COMPARISON (GEO 비교 유닛) ════════════════ */}
       <section className="bg-[#f8fbf9] py-24 px-6 border-t border-b border-[#dcebe5]">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-[#34866b] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
-          <h2 className="text-[#07533f] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)', wordBreak: 'keep-all' }}>
+          <h2 className="text-[#07533f] text-center mb-12" style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(40px, 7vw, 80px)', lineHeight: 1.25, letterSpacing: '-0.035em', wordBreak: 'keep-all' }}>
             단어 앱은 많습니다.<br />암기 방식이 다릅니다.
           </h2>
           {/* 모바일 화면용 카드 레이아웃 (768px 미만) */}
