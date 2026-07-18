@@ -8,15 +8,17 @@ import { ConnectAILabLogo } from './components/ConnectAILabLogo';
 import HeroDoodle from './components/HeroDoodle';
 import HeroWords from './components/HeroWords';
 import FeatureDoodle from './components/FeatureDoodle';
-import WordRain from './components/WordRain';
 import TossCheckoutButton from './components/payment/TossCheckoutButton';
 import { useAuth } from './contexts/AuthContext';
 import { TOSS_PRODUCTS } from './lib/toss';
 import { VIDEO_URLS } from './config/videos';
 import { SITE_CONFIG } from './config/content';
+import LearningPage from './components/LearningPage';
 
 const PRET = "'Pretendard Variable', Pretendard, -apple-system, sans-serif";
-const CARD_COLORS = ['#3b6ba5', '#c2410c', '#2f8f83', '#b98a2f'];
+// 네 가지 학습 원리를 빠르게 구분하도록 브랜드 녹색과 조화되는 보조색을 사용합니다.
+// 모두 흰 배경에서 읽기 쉬운 명도 대비를 유지합니다.
+const CARD_COLORS = ['#07533F', '#B46F00', '#315C9B', '#A34F32'];
 
 // 랜딩 3번째 영역에서 순서대로 보여줄 학습 영상입니다.
 // 영상을 추가하려면 이 배열에만 항목을 추가하면 됩니다.
@@ -44,20 +46,42 @@ const LEARNING_PREVIEW_VIDEOS = [
   },
 ];
 
-export default function App() {
+function LandingPage() {
   const [entranceComplete, setEntranceComplete] = useState(false);
   const [previewIndex, setPreviewIndex] = useState(0);
   const [previewProgress, setPreviewProgress] = useState(0);
+  const lastSpokenRef = useRef({ word: '', at: 0 });
   const { user, deleteAccount } = useAuth();
 
-  // 그림 위 단어를 누르면 영어 발음을 들려줍니다.
+  // PC에서는 마우스를 올리면, 모바일에서는 터치하면 영어 발음을 들려줍니다.
   const speakPreviewWord = (word: string) => {
     if (!window.speechSynthesis) return;
+    const now = Date.now();
+    if (lastSpokenRef.current.word === word && now - lastSpokenRef.current.at < 900) return;
+    lastSpokenRef.current = { word, at: now };
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(word);
     utterance.lang = 'en-US';
-    utterance.rate = 0.82;
-    window.speechSynthesis.speak(utterance);
+    utterance.rate = 0.92;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+
+    // 첫 화면 콜로세움과 같은 우선순위로 자연스러운 영어 음성을 선택합니다.
+    // 브라우저 기본 음성을 그대로 쓰면 기기마다 지나치게 느리거나 울리는 목소리가 나올 수 있습니다.
+    const voices = window.speechSynthesis.getVoices();
+    const bestVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google US English')) ||
+                      voices.find(v => v.lang.startsWith('en') && v.name.includes('Samantha')) ||
+                      voices.find(v => v.lang.startsWith('en') && v.name.includes('Aria')) ||
+                      voices.find(v => v.lang === 'en-US');
+    if (bestVoice) utterance.voice = bestVoice;
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS) {
+      setTimeout(() => window.speechSynthesis.speak(utterance), 50);
+    } else {
+      window.speechSynthesis.speak(utterance);
+    }
   };
 
   const handleDeleteAccount = async () => {
@@ -115,7 +139,7 @@ export default function App() {
 
 
   /* ── Destructure config for readability ── */
-  const { hero, cinematic, metrics, technology, architecture } = SITE_CONFIG; // brand name updated
+  const { hero, cinematic, metrics, technology } = SITE_CONFIG; // brand name updated
 
   return (
     <div style={{ fontFamily: PRET, overflowX: 'hidden' }}>
@@ -125,13 +149,14 @@ export default function App() {
       <section className="relative min-h-[100dvh] md:h-screen md:h-[100dvh] overflow-hidden bg-white flex flex-col md:flex-row">
         {/* 모바일 최상단 카피 (텍스트가 흰 배경 위에만 얹히도록 보증) */}
         <div className="block md:hidden w-full bg-white pt-24 pb-8 px-6">
-          <h1 className="text-[#141414] font-gmarket font-black leading-[1.1] tracking-[-0.03em]" style={{ fontSize: 'clamp(32px, 8vw, 48px)', wordBreak: 'keep-all' }}>
+          <h1 className="text-[#07533f] font-gmarket font-black leading-[1.08] tracking-[-0.035em]" style={{ fontSize: 'clamp(36px, 8vw, 48px)', wordBreak: 'keep-all' }}>
             <ScrambleIn text={hero.titleLeft[0]} delay={200} triggered={entranceComplete} />
             <br />
             <ScrambleIn text={hero.titleLeft[1]} delay={500} triggered={entranceComplete} />
           </h1>
           <motion.p
-            className="max-w-md text-[16px] text-[#1a1a1a] leading-relaxed font-black mt-4"
+            className="max-w-[34rem] text-[16px] text-[#454542] leading-[1.75] font-bold mt-4 whitespace-pre-line break-keep"
+            style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}
             initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.2 }}
           >
@@ -139,7 +164,7 @@ export default function App() {
           </motion.p>
           <motion.a
             href="#course"
-            className="inline-flex items-center gap-2 border-2 border-[#141414] bg-[#141414] hover:bg-white hover:text-[#141414] text-white font-black text-[15px] tracking-wide px-6 py-3 rounded-full transition-colors mt-6"
+            className="inline-flex items-center gap-2 border-2 border-[#07533f] bg-[#07533f] hover:bg-white hover:text-[#07533f] text-white font-black text-[15px] tracking-wide px-6 py-3 rounded-full transition-colors mt-6"
             initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
@@ -163,13 +188,14 @@ export default function App() {
           className="hidden md:flex relative z-20 h-full flex flex-col justify-center max-w-3xl w-[50%] px-6 sm:px-10 lg:px-16"
           initial={{ opacity: 0 }} animate={{ opacity: entranceComplete ? 1 : 0 }} transition={{ duration: 1 }}
         >
-          <h1 className="text-[#141414] font-gmarket font-black leading-[1.1] tracking-[-0.03em]" style={{ fontSize: 'clamp(32px, 5vw, 72px)', wordBreak: 'keep-all' }}>
+          <h1 className="text-[#07533f] font-gmarket font-black leading-[1.08] tracking-[-0.035em]" style={{ fontSize: 'clamp(42px, 5vw, 72px)', wordBreak: 'keep-all' }}>
             <ScrambleIn text={hero.titleLeft[0]} delay={200} triggered={entranceComplete} />
             <br />
             <ScrambleIn text={hero.titleLeft[1]} delay={500} triggered={entranceComplete} />
           </h1>
           <motion.p
-            className="max-w-md text-[16px] sm:text-[18px] text-[#1a1a1a] leading-relaxed font-black mt-6"
+            className="max-w-[36rem] text-[16px] lg:text-[18px] text-[#454542] leading-[1.75] font-bold mt-6 whitespace-pre-line break-keep"
+            style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.2 }}
           >
@@ -177,7 +203,7 @@ export default function App() {
           </motion.p>
           <motion.a
             href="#course"
-            className="inline-flex items-center gap-2 self-start border-2 border-[#141414] bg-[#141414] hover:bg-white hover:text-[#141414] text-white font-black text-[15px] sm:text-[17px] tracking-wide px-7 py-3.5 rounded-full transition-colors mt-8"
+            className="inline-flex items-center gap-2 self-start border-2 border-[#07533f] bg-[#07533f] hover:bg-white hover:text-[#07533f] text-white font-black text-[15px] sm:text-[17px] tracking-wide px-7 py-3.5 rounded-full transition-colors mt-8"
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
@@ -186,11 +212,8 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* ════════════════ SECTION 2: 워드레인 + 스타워즈 크롤 ════════════════ */}
-      <section ref={section2Ref} className="relative h-screen h-[100dvh] overflow-hidden bg-white flex items-center justify-center">
-        {/* 영단어 떨어짐 */}
-        <WordRain />
-        
+      {/* ════════════════ SECTION 2: 핵심 문장 스크롤 ════════════════ */}
+      <section id="intro" ref={section2Ref} className="relative h-screen h-[100dvh] overflow-hidden bg-white flex items-center justify-center">
         {/* 위/아래 흰 그라디언트로 텍스트가 부드럽게 나타나고 사라지도록 */}
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
@@ -198,7 +221,7 @@ export default function App() {
         {/* 스타워즈 크롤 (Pretendard 서체) */}
         <div className="absolute inset-0 flex justify-center overflow-hidden z-[5] pointer-events-none" style={{ perspective: '340px' }}>
           <div
-            className="sw-crawl text-center font-black text-[#141414] text-[26px] sm:text-[48px] md:text-[64px] leading-[1.8] w-full px-6"
+            className="sw-crawl text-center font-black text-[#07533f] text-[26px] sm:text-[48px] md:text-[64px] leading-[1.8] w-full px-6"
             style={{ whiteSpace: 'pre', fontFamily: 'Pretendard, sans-serif' }}
           >
             {cinematic.text}
@@ -208,9 +231,9 @@ export default function App() {
       </section>
 
       {/* ════════════════ SECTION 3: INTERACTIVE DEMO & METRICS ════════════════ */}
-      <section className="relative overflow-hidden bg-white py-24 sm:py-28">
+      <section id="learning-preview" className="relative overflow-hidden bg-white py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-center text-[#141414] mb-4" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(26px, 3.2vw, 40px)', letterSpacing: '-0.025em' }}>
+          <h2 className="text-center text-[#07533f] mb-4" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(26px, 3.2vw, 40px)', letterSpacing: '-0.025em' }}>
             그려지는 순간, 단어가 장면으로 남습니다.
           </h2>
           <p className="text-center text-[#5d665f] mb-8 sm:mb-10" style={{ fontFamily: PRET, fontWeight: 600, fontSize: 'clamp(15px, 1.8vw, 18px)' }}>
@@ -245,6 +268,7 @@ export default function App() {
                     key={word.en}
                     type="button"
                     onClick={() => speakPreviewWord(word.en)}
+                    onMouseEnter={() => speakPreviewWord(word.en)}
                     className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 bg-transparent text-center transition-all duration-500 ${visible ? 'scale-100 opacity-100' : 'pointer-events-none scale-90 opacity-0'}`}
                     style={{ left: `${word.x}%`, top: `${word.y}%`, fontFamily: PRET }}
                     aria-label={`${word.en}, ${word.ko} 발음 듣기`}
@@ -294,7 +318,7 @@ export default function App() {
               })}
             </div>
           </div>
-          <h2 className="text-center text-[#141414] mb-16" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
+          <h2 className="text-center text-[#07533f] mb-16" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
             {metrics.subtitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-8 text-center items-start">
@@ -306,13 +330,13 @@ export default function App() {
                 transition={{ duration: 0.8, delay: i * 0.15 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <div className="whitespace-nowrap text-[#1d3557]" style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(44px, 6.5vw, 84px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
+                <div className="whitespace-nowrap text-[#07533f]" style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(44px, 6.5vw, 84px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
                   {m.value}
                 </div>
-                <div className="mt-5 text-[#000000]" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(16px, 1.8vw, 19.5px)', letterSpacing: '-0.01em', wordBreak: 'keep-all', whiteSpace: 'pre-line' }}>
+                <div className="mt-5 text-[#07533f]" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(16px, 1.8vw, 19.5px)', letterSpacing: '-0.01em', wordBreak: 'keep-all', whiteSpace: 'pre-line' }}>
                   {m.label}
                 </div>
-                <div className="mt-3.5 text-[#555555]" style={{ fontFamily: PRET, fontWeight: 700, fontSize: 15.5, lineHeight: 1.5, wordBreak: 'keep-all', whiteSpace: 'pre-line' }}>
+                <div className="mt-3.5 text-[#454542]" style={{ fontFamily: PRET, fontWeight: 700, fontSize: 15.5, lineHeight: 1.5, wordBreak: 'keep-all', whiteSpace: 'pre-line' }}>
                   {m.note}
                 </div>
               </motion.div>
@@ -322,20 +346,19 @@ export default function App() {
       </section>
 
       {/* ════════════════ SECTION 4: TECHNOLOGY ════════════════ */}
-      <section className="relative overflow-hidden bg-white py-24 sm:py-32">
+      <section className="relative overflow-hidden bg-white py-14 sm:py-16">
         {/* Background Dot Grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: 'radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(rgba(7, 83, 63, 0.10) 1px, transparent 1px)',
             backgroundSize: '24px 24px',
           }}
         />
 
         <div className="relative z-20 px-8 sm:px-12 md:px-16">
-          <div className="text-center my-20 sm:my-24">
-            <h2 style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(28px, 7vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1.25, color: '#141414', wordBreak: 'keep-all' }}>단어를 보고 터치하고 듣는다.<br />어느새 외워진다.</h2>
-            <p className="mt-5 text-[#222222]" style={{ fontFamily: PRET, fontSize: 'clamp(17px, 2.0vw, 24px)', fontWeight: 900, wordBreak: 'keep-all' }}>네 가지 원리는 전부 이 한 문장을 위해 있습니다</p>
+          <div className="text-center mt-6 mb-14 sm:mt-8 sm:mb-16">
+            <h2 style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(28px, 7vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1.3, color: '#07533f', wordBreak: 'keep-all' }}>그림이 그려지는 과정을 보고 있으면<br />어느새 외워진다.</h2>
           </div>
 
           <motion.div
@@ -349,7 +372,7 @@ export default function App() {
               return (
                 <motion.div
                   key={f.title}
-                  className="border-t-2 border-[#141414]/12 pt-6 transition-colors duration-300 cursor-default group hover:border-[color:var(--c)]"
+                  className="border-t-2 border-[#07533f]/15 pt-6 transition-colors duration-300 cursor-default group hover:border-[color:var(--c)]"
                   style={{ ['--c' as string]: CARD_COLORS[i] } as React.CSSProperties}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -358,7 +381,7 @@ export default function App() {
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   <FeatureDoodle index={i} className="w-14 h-14 mb-3" color={CARD_COLORS[i]} />
-                  <h3 className="mb-3" style={{ color: '#1a1a1a', fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(24px, 4vw, 36px)', wordBreak: 'keep-all', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
+                  <h3 className="mb-3" style={{ color: CARD_COLORS[i], fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(24px, 4vw, 36px)', wordBreak: 'keep-all', letterSpacing: '-0.02em', lineHeight: 1.3 }}>
                     {f.title}
                   </h3>
                   <p className="leading-relaxed" style={{ color: CARD_COLORS[i], fontSize: 'clamp(16px, 1.8vw, 19px)', fontWeight: 600, wordBreak: 'keep-all' }}>
@@ -376,7 +399,7 @@ export default function App() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <p className="text-center mt-24 mb-24" style={{fontSize: 'clamp(20px,2.4vw,28px)', letterSpacing: '-0.01em', lineHeight: 1.4}}>
-              <span style={{color: '#1a1a1a', fontWeight: 600}}>사진 찍듯 외워지는 경험</span>
+              <span style={{color: '#07533f', fontWeight: 700}}>사진 찍듯 외워지는 경험</span>
               <br className="block sm:hidden" />
               <span className="hidden sm:inline" style={{color: '#6b6b6b', fontWeight: 400}}> — </span>
               <span style={{color: '#6b6b6b', fontWeight: 400}}>그림으로 배우는 영어입니다.</span>
@@ -385,58 +408,60 @@ export default function App() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION 5: ARCHITECTURE ════════════════ */}
-      <section className="min-h-screen flex items-center justify-center bg-white border-t border-neutral-100">
-        <div className="max-w-3xl mx-auto px-6 py-32 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0 }}
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            <p className="text-[#c2410c] text-[15px] tracking-[0.25em] uppercase mb-8 font-black">
-              {architecture.subtitle}
-            </p>
-            <h2
-              className="text-[#111111] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-10"
-              style={{ fontSize: 'clamp(32px, 8vw, 80px)' }}
-            >
-              {architecture.heading}
-            </h2>
-            <p className="text-[#1a1a1a] text-[17px] sm:text-[19px] leading-relaxed max-w-xl mx-auto font-extrabold">
-              {architecture.description}
-            </p>
-          </motion.div>
+      {/* 실제 사용 흐름만 짧게 보여줍니다. 장황한 구조 설명은 제거했습니다. */}
+      <section id="course" className="bg-white border-t border-[#dcebe5] px-6 py-16 sm:py-20">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-[#34866b] text-[12px] tracking-[0.2em] uppercase mb-4 font-black">How it works</p>
+          <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.025em] mb-10" style={{ fontSize: 'clamp(28px, 4vw, 46px)' }}>
+            보고, 듣고, 기억을 꺼냅니다.
+          </h2>
+          <ol className="grid sm:grid-cols-3 border-y border-[#dcebe5]">
+            {[
+              ['01', '그려지는 장면 보기', '그림이 완성되는 순서를 보며 장면을 기억합니다.'],
+              ['02', '단어에 마우스를 올려 듣기', '그림 위 단어를 가리키면 영어 발음이 바로 재생됩니다.'],
+              ['03', '거꾸로 놀이로 확인하기', '단어를 원래 그림 위치로 옮기며 기억을 확인합니다.'],
+            ].map(([num, text, desc], index) => (
+              <li key={num} tabIndex={0} className={`group relative cursor-help py-7 sm:px-6 outline-none ${index > 0 ? 'border-t sm:border-t-0 sm:border-l border-[#dcebe5]' : ''}`}>
+                <span className="block text-[#6aa58f] text-[12px] tracking-[0.15em] font-black mb-2">{num}</span>
+                <strong className="text-[#07533f] text-[18px] sm:text-[20px] font-black">{text}</strong>
+                <span className="mt-3 block text-[#454542] text-[13px] leading-relaxed opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0">
+                  {desc}
+                </span>
 
-          <motion.div
-            className="mt-20 flex flex-col items-center gap-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.4 }}
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            {architecture.layers.map((l) => (
-              <div
-                key={l.num}
-                className="w-full max-w-md h-[72px] border-2 border-neutral-300 bg-neutral-50 rounded-lg flex items-center justify-between px-6 shadow-sm"
-              >
-                <span className="text-[#c2410c] text-[13px] sm:text-[14px] tracking-[0.15em] uppercase font-black">
-                  Layer {l.num}
-                </span>
-                <span className="text-[#111111] text-[17px] sm:text-[19px] font-black">
-                  {l.name}
-                </span>
-              </div>
+                {/* 마우스를 올리거나 모바일에서 누르면 실제 사용 모습을 보여줍니다. */}
+                <div className="pointer-events-none absolute left-3 right-3 top-[calc(100%-8px)] z-30 overflow-hidden rounded-[16px] border border-[#cfe2db] bg-white opacity-0 translate-y-2 scale-[0.98] shadow-[0_18px_50px_rgba(7,83,63,0.18)] transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-focus:opacity-100 group-focus:translate-y-0 group-focus:scale-100">
+                  <div className="relative aspect-video overflow-hidden bg-[#f5faf7]">
+                    <img src="/metric-whale.jpeg" alt="고래 장면 학습 미리보기" className="h-full w-full object-cover" />
+                    {index === 1 && (
+                      <>
+                        <span className="absolute left-[13%] top-[42%] text-[#07533f] text-[14px] font-black [text-shadow:0_1px_3px_white]">tail</span>
+                        <span className="absolute left-[58%] top-[30%] text-[#07533f] text-[14px] font-black [text-shadow:0_1px_3px_white]">whale</span>
+                        <span className="absolute right-[12%] bottom-[18%] text-[#07533f] text-[14px] font-black [text-shadow:0_1px_3px_white]">ocean</span>
+                      </>
+                    )}
+                    {index === 2 && (
+                      <>
+                        <span className="absolute left-[10%] top-[38%] grid h-10 w-10 place-items-center rounded-full border-2 border-dashed border-[#07533f] bg-white/90 text-[#07533f] text-xl font-black">?</span>
+                        <div className="absolute inset-x-3 bottom-3 flex justify-center gap-2">
+                          {['tail', 'fin', 'eye', 'whale'].map((word) => (
+                            <span key={word} className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-black text-[#07533f] shadow-sm">{word}</span>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </li>
             ))}
-          </motion.div>
+          </ol>
         </div>
       </section>
 
       {/* ════════════════ SECTION 5.5: COMPARISON (GEO 비교 유닛) ════════════════ */}
-      <section className="bg-neutral-50 py-24 px-6 border-t border-b border-neutral-100">
+      <section className="bg-[#f8fbf9] py-24 px-6 border-t border-b border-[#dcebe5]">
         <div className="max-w-4xl mx-auto">
-          <p className="text-[#c2410c] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
-          <h2 className="text-[#141414] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)', wordBreak: 'keep-all' }}>
+          <p className="text-[#34866b] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
+          <h2 className="text-[#07533f] font-gmarket font-black text-center mb-10" style={{ fontSize: 'clamp(32px, 8vw, 80px)', wordBreak: 'keep-all' }}>
             단어 앱은 많습니다 — 방식이 다릅니다
           </h2>
           {/* 모바일 화면용 카드 레이아웃 (768px 미만) */}
@@ -456,15 +481,18 @@ export default function App() {
               <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">성실한 반복 암기가 체질인 분</span></p>
             </div>
             {/* 보는 단어장 */}
-            <div className="bg-indigo-50/80 rounded-2xl p-5 border-2 border-indigo-500/80 shadow-md relative">
+            <div className="bg-[#eef7f3] rounded-2xl p-5 border-2 border-[#2f9c75] shadow-md relative">
               <div className="flex items-center gap-2 mb-3">
-                <h3 className="font-black text-indigo-900 text-[20px]">보는 단어장</h3>
+                <h3 className="font-black text-[#07533f] text-[20px]">보는 단어장</h3>
                 <span className="bg-rose-500 text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm animate-pulse">추천 ⭐</span>
               </div>
               <p className="text-indigo-950 font-black text-[16px] mb-3 flex"><span className="font-bold text-indigo-400 w-16 shrink-0">방식</span> <span className="word-break-keep">그림→글자 변신 애니메이션</span></p>
               <div className="text-indigo-950 font-black text-[16px] mb-3 flex items-center">
                 <span className="font-bold text-indigo-400 w-16 shrink-0">가격</span>
-                <span className="text-rose-600 font-extrabold text-[18px]">완성 코스 ₩9,900</span>
+                <span className="flex flex-col">
+                  <span className="text-[#6f756f] text-[13px] line-through">6개월 후 정상가 ₩19,800</span>
+                  <span className="text-[#087052] font-extrabold text-[18px]">얼리 액세스 ₩9,900</span>
+                </span>
               </div>
               <p className="text-indigo-700 font-black text-[15px] flex"><span className="font-bold text-indigo-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">지루한 암기가 힘들고 단어가 안 외워지는 분</span></p>
             </div>
@@ -499,20 +527,21 @@ export default function App() {
                 </tr>
 
                 {/* ── 보는 단어장 (자사 - 초강력 하이라이트 & 3D 입체) ── */}
-                <tr className="bg-indigo-50/80 hover:bg-indigo-50 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_15px_40px_rgba(79,70,229,0.12)] transform hover:-translate-y-0.5">
-                  <td className="py-6 pr-4 pl-5 font-black text-[16px] sm:text-[19px] text-indigo-900 whitespace-nowrap first:rounded-l-2xl border-y border-l-2 border-indigo-500/80">
+                <tr className="bg-[#f1f8f5] hover:bg-[#e8f4ef] transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_15px_40px_rgba(7,83,63,0.12)] transform hover:-translate-y-0.5">
+                  <td className="py-6 pr-4 pl-5 font-black text-[16px] sm:text-[19px] text-[#07533f] whitespace-nowrap first:rounded-l-2xl border-y border-l-2 border-[#4f927b]">
                     <div className="flex items-center gap-2">
                       <span>보는 단어장</span>
-                      <span className="bg-rose-500 text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm animate-pulse">추천 ⭐</span>
+                      <span className="bg-[#4f927b] text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm">추천</span>
                     </div>
                   </td>
-                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 whitespace-nowrap border-y border-indigo-500/80">그림→글자 변신 애니메이션</td>
-                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-indigo-950 whitespace-nowrap border-y border-indigo-500/80">
+                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">그림→글자 변신 애니메이션</td>
+                  <td className="py-6 pr-4 font-black text-[15px] sm:text-[18px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">
                     <div className="flex flex-col">
-                      <span className="text-rose-600 font-extrabold text-[16px] sm:text-[19px]">완성 코스 ₩9,900</span>
+                      <span className="text-[#6f756f] text-[12px] sm:text-[13px] line-through">6개월 후 정상가 ₩19,800</span>
+                      <span className="text-[#087052] font-extrabold text-[16px] sm:text-[19px]">얼리 액세스 ₩9,900</span>
                     </div>
                   </td>
-                  <td className="py-6 pl-4 pr-5 font-black text-[15px] sm:text-[18px] text-indigo-700 last:rounded-r-2xl border-y border-r-2 border-indigo-500/80" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
+                  <td className="py-6 pl-4 pr-5 font-black text-[15px] sm:text-[18px] text-[#07533f] last:rounded-r-2xl border-y border-r-2 border-[#4f927b]" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
                 </tr>
               </tbody>
             </table>
@@ -522,79 +551,76 @@ export default function App() {
       </section>
 
       {/* ════════════════ SECTION 6: PRICING ════════════════ */}
-      <section className="min-h-screen bg-[#f2f4f6] py-32 px-6">
+      <section id="pricing" className="bg-white py-14 sm:py-16 px-6 text-[#07533f] border-t border-[#dcebe5]">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <p className="text-[#c2410c] text-[15px] tracking-[0.25em] uppercase mb-8 font-black">
+            <p className="text-[#34866b] text-[12px] tracking-[0.2em] uppercase mb-3 font-black">
               Pricing
             </p>
             <h2
-              className="text-[#111111] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-6"
-              style={{ fontSize: 'clamp(28px, 6vw, 56px)' }}
+              className="text-[#07533f] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-5"
+              style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
             >
-              플랜 선택
+              무료로 시작하세요.
             </h2>
-            <p className="text-[#1a1a1a] text-[17px] sm:text-[19px] leading-relaxed max-w-xl mx-auto font-extrabold">
-              지루한 암기 대신, 보는 단어장으로 아이에게 새로운 기억을 선물하세요.
+            <p className="text-[#4a4a46] text-[16px] sm:text-[18px] leading-relaxed max-w-xl mx-auto font-semibold">
+              회원가입 없이 세 장면을 바로 학습할 수 있습니다.
             </p>
           </motion.div>
 
-          <div className="max-w-md mx-auto">
-            {/* ── 12주 완성 코스 (코스 카드) ── */}
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {/* 무료 체험: 회원가입과 결제 없이 대표 장면을 바로 확인합니다. */}
             <motion.div
-              className="border-2 border-indigo-600 rounded-[28px] p-8 flex flex-col relative bg-neutral-900 shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1.5 transition-all duration-300"
+              className="border border-[#cfe2db] rounded-[20px] p-6 flex flex-col bg-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <span className="bg-[#c2410c] text-white text-[11px] font-black tracking-[0.12em] uppercase px-4 py-1.5 rounded-full shadow-sm">런칭 기념가</span>
-              </div>
-              <p className="text-white/60 text-[13px] tracking-[0.15em] uppercase mb-4 font-black">코스 (Course)</p>
-              
-              <div className="flex flex-col items-start mb-6">
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-[36px] sm:text-[42px] font-black tracking-tight text-white leading-none">₩9,900</span>
-                  <span className="text-white/70 text-[13px] sm:text-[14px] font-bold">/ 평생 소장 · 매주 새 챕터 · 구독 아님</span>
-                </div>
-              </div>
+              <h3 className="font-gmarket font-black text-[27px] sm:text-[30px] mb-2">무료 체험</h3>
+              <p className="text-[#4a4a46] text-[14px] mb-5">회원가입도, 결제도 필요 없습니다.</p>
+              <div className="text-[34px] sm:text-[38px] font-black tracking-tight mb-5">₩0</div>
+              <ul className="divide-y divide-[#e2eee9] mb-7 flex-1">
+                {['챕터 1 장면 3개 학습', '그려지는 영상과 단어', '영어 발음 듣기'].map((item) => (
+                  <li key={item} className="py-3 flex items-center gap-3 text-[#353532] text-[14px] font-semibold">
+                    <span className="text-[#2f9c75] text-xl">✓</span>{item}
+                  </li>
+                ))}
+              </ul>
+              <a href="/demo.html" className="block w-full rounded-xl border border-[#8bb7a7] px-5 py-4 text-center font-black hover:bg-[#f1f8f5] transition-colors">
+                바로 체험하기
+              </a>
+            </motion.div>
 
-              <h3 className="text-white font-gmarket font-black text-[22px] mb-4">
-                그림 단어 완성 코스
+            {/* 얼리 액세스: 현재 공개된 콘텐츠와 이후 완성되는 챕터를 이용합니다. */}
+            <motion.div
+              className="border-2 border-[#2f9c75] rounded-[20px] p-6 flex flex-col relative bg-[#fbfefc] shadow-[0_12px_28px_rgba(7,83,63,0.08)]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.08 }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <span className="absolute right-7 top-0 -translate-y-1/2 bg-[#d7f580] text-[#07533f] text-[11px] font-black tracking-[0.14em] uppercase px-4 py-2 rounded-full">Early Access</span>
+              <h3 className="font-gmarket font-black text-[27px] sm:text-[30px] mb-2">
+                얼리 액세스
               </h3>
-              
-              <ul className="flex flex-col gap-4 mb-10 flex-1">
-                <li className="flex items-start text-white text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>전체 챕터 월드 맵과 테마별 장면 제공</span>
-                </li>
-                <li className="flex items-start text-white text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>눈·귀·손으로 동시 각인되는 그림-철자 변신</span>
-                </li>
-                <li className="flex items-start text-white text-[14px] font-bold">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </span>
-                  <span>나의 단어 박물관 내 영구 소장 도감</span>
-                </li>
+              <p className="text-[#4a4a46] text-[14px] mb-5">12개 챕터의 학습 콘텐츠를 이용합니다.</p>
+              <div className="mb-5">
+                <div className="text-[#6f756f] text-[14px] font-semibold line-through mb-1">6개월 후 정상가 ₩19,800</div>
+                <div className="text-[34px] sm:text-[38px] font-black tracking-tight">₩9,900</div>
+              </div>
+              <ul className="divide-y divide-[#e2eee9] mb-7 flex-1">
+                {['총 12개 챕터 학습', '학습 어휘를 모으는 나만의 카드 박물관', '학습 내용을 확인하는 퀴즈', '수학·과학 전문 어휘와 중국어 어휘 학습 순차 공개'].map((item) => (
+                  <li key={item} className="py-3 flex items-center gap-3 text-[#353532] text-[14px] font-semibold">
+                    <span className="text-[#2f9c75] text-xl">✓</span>{item}
+                  </li>
+                ))}
               </ul>
               <div className="mt-auto">
                 <TossCheckoutButton
@@ -608,23 +634,23 @@ export default function App() {
       </section>
 
       {/* ════════════════ FOOTER ════════════════ */}
-      <footer className="bg-neutral-50 border-t border-neutral-200/80 py-16 px-6 sm:px-10">
+      <footer className="bg-[#f8fbf9] border-t border-[#dcebe5] py-16 px-6 sm:px-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-6">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <ConnectAILabLogo size={20} className="text-[#141414]" />
-              <span className="text-[17px] font-black text-[#141414] tracking-tight">
+              <ConnectAILabLogo size={20} className="text-[#07533f]" />
+              <span className="text-[17px] font-black text-[#07533f] tracking-tight">
                 {SITE_CONFIG.brandName}
               </span>
             </div>
-            <p className="text-[#1a1a1a] text-[17px] sm:text-[19px] leading-relaxed max-w-md font-extrabold">
+            <p className="text-[#454542] text-[17px] sm:text-[19px] leading-relaxed max-w-md font-extrabold">
               외우게 하는 앱이 아니라, 보게 만드는 앱.<br />
               단어가 안 외워지는 분들의 첫 3분을 만듭니다.
             </p>
           </div>
 
           <div className="text-[#333333] text-[14px] sm:text-[15px] leading-6 font-bold">
-            <p className="font-bold text-[#141414] mb-1">매또컴퍼니 | 대표: 이미현</p>
+            <p className="font-bold text-[#07533f] mb-1">매또컴퍼니 | 대표: 이미현</p>
             <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 면제 (부가가치세법상 간이과세자)</p>
             <p className="mb-3">주소: 경기도 양주시 고읍로 11-7</p>
             <p className="mt-3.5">
@@ -645,6 +671,20 @@ export default function App() {
       </footer>
     </div>
   );
+}
+
+export default function App() {
+  const [hash, setHash] = useState(window.location.hash);
+
+  useEffect(() => {
+    const syncHash = () => setHash(window.location.hash);
+    window.addEventListener('hashchange', syncHash);
+    return () => window.removeEventListener('hashchange', syncHash);
+  }, []);
+
+  // 랜딩은 그대로 두고, 로그인 뒤 실제 학습장만 해시 주소로 분리합니다.
+  // GitHub Pages에서도 새 라우터 설정 없이 /#learn 주소가 안전하게 동작합니다.
+  return hash === '#learn' ? <LearningPage /> : <LandingPage />;
 }
 
 /* ── 결제 성공 화면 ── */

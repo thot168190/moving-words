@@ -39,6 +39,8 @@ export interface UserProfile {
   photoURL: string | null;
   createdAt: Timestamp;
   updatedAt: Timestamp;
+  // 학습 진행률은 사용자 문서에 함께 저장해 계정별로 불러옵니다.
+  learningProgress?: LearningProgress;
   subscription?: {
     planId: string;
     status: 'active' | 'cancelled' | 'expired';
@@ -47,6 +49,22 @@ export interface UserProfile {
     endDate?: Timestamp;
   };
 }
+
+export interface LearningProgress {
+  completedSceneIds: string[];
+  learnedWordIds: string[];
+  collectedCardIds: string[];
+  lastSceneId: string | null;
+  lastStudiedAt: string | null;
+}
+
+export const EMPTY_LEARNING_PROGRESS: LearningProgress = {
+  completedSceneIds: [],
+  learnedWordIds: [],
+  collectedCardIds: [],
+  lastSceneId: null,
+  lastStudiedAt: null,
+};
 
 export interface Order {
   id: string;
@@ -104,6 +122,17 @@ export async function updateUserProfile(
   const ref = doc(db, COLLECTIONS.USERS, uid);
   await updateDoc(ref, {
     ...data,
+    updatedAt: serverTimestamp(),
+  });
+}
+
+export async function updateLearningProgress(
+  uid: string,
+  progress: LearningProgress
+): Promise<void> {
+  const ref = doc(db, COLLECTIONS.USERS, uid);
+  await updateDoc(ref, {
+    learningProgress: progress,
     updatedAt: serverTimestamp(),
   });
 }

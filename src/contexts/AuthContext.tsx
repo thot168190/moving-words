@@ -27,13 +27,24 @@ import {
   type User,
 } from 'firebase/auth';
 import { auth } from '../lib/firebase';
-import { createUserProfile, getUserProfile, deleteUserProfile, type UserProfile } from '../lib/firestore';
+import {
+  createUserProfile,
+  getUserProfile,
+  deleteUserProfile,
+  updateLearningProgress,
+  EMPTY_LEARNING_PROGRESS,
+  type LearningProgress,
+  type UserProfile,
+} from '../lib/firestore';
+
+const LOCAL_PROGRESS_KEY = 'inkword_learning_progress';
 
 // ── Context type ──
 
 interface AuthContextType {
   user: User | null;
   profile: UserProfile | null;
+  learningProgress: LearningProgress;
   loading: boolean;
   error: string | null;
 
@@ -46,6 +57,7 @@ interface AuthContextType {
   deleteAccount: () => Promise<void>;
   signOut: () => Promise<void>;
   clearError: () => void;
+  recordSceneCompletion: (sceneId: string, wordIds?: string[]) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -55,6 +67,7 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [learningProgress, setLearningProgress] = useState<LearningProgress>(EMPTY_LEARNING_PROGRESS);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -76,6 +89,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             userProfile = await getUserProfile(firebaseUser.uid);
           }
           setProfile(userProfile);
+
+          // 비로그인 체험 기록이 있으면 로그인 즉시 계정 기록에 병합합니다.
+          let localProgress: LearningProgress | null = null;
+          try {
+            const raw = localStorage.getItem(LOCAL_PROGRESS_KEY);
+            localProgress = raw ? JSON.parse(raw) : null;
+          } catch {
+            localProgress = null;
+          }
+
+          const saved = userProfile?.learningProgress || EMPTY_LEARNING_PROGRESS;
+          const merged: LearningProgress = {
+            completedSceneIds: [...new Set([...(saved.completedSceneIds || []), ...(localProgress?.completedSceneIds || [])])],
+            learnedWordIds: [...new Set([...(saved.learnedWordIds || []), ...(localProgress?.learnedWordIds || [])])],
+            collectedCardIds: [...new Set([...(saved.collectedCardIds || []), ...(localProgress?.collectedCardIds || [])])],
+            lastSceneId: localProgress?.lastSceneId || saved.lastSceneId || null,
+            lastStudiedAt: localProgress?.lastStudiedAt || saved.lastStudiedAt || null,
+          };
+          setLearningProgress(merged);
+          localStorage.setItem(LOCAL_PROGRESS_KEY, JSON.stringify(merged));
+          if (localProgress) await updateLearningProgress(firebaseUser.uid, merged);
         } catch (err: any) {
           console.error('Failed to fetch user profile:', err);
           setError('데이터베이스(Firestore) 연결에 실패했습니다. Firebase 콘솔에서 Firestore Database 활성화 및 보안 규칙을 확인해 주세요.');
@@ -83,6 +117,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       } else {
         setProfile(null);
+        try {
+          const raw = localStorage.getItem(LOCAL_PROGRESS_KEY);
+          setLearningProgress(raw ? JSON.parse(raw) : EMPTY_LEARNING_PROGRESS);
+        } catch {
+          setLearningProgress(EMPTY_LEARNING_PROGRESS);
+        }
       }
 
       setLoading(false);
@@ -193,11 +233,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const clearError = () => setError(null);
 
+  const recordSceneCompletion = async (sceneId: string, wordIds: string[] = []) => {
+    const next: LearningProgress = {
+      completedSceneIds: [...new Set([...learningProgress.completedSceneIds, sceneId])],
+      learnedWordIds: [...new Set([...learningProgress.learnedWordIds, ...wordIds])],
+      collectedCardIds: [...new Set([...learningProgress.collectedCardIds, sceneId])],
+      lastSceneId: sceneId,
+      lastStudiedAt: new Date().toISOString(),
+    };
+    setLearningProgress(next);
+    localStorage.setItem(LOCAL_PROGRESS_KEY, JSON.stringify(next));
+    if (user) await updateLearningProgress(user.uid, next);
+  };
+
   return (
     <AuthContext.Provider
       value={{
         user,
         profile,
+        learningProgress,
         loading,
         error,
         signInWithGoogle,
@@ -208,6 +262,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         deleteAccount,
         signOut,
         clearError,
+        recordSceneCompletion,
       }}
     >
       {children}

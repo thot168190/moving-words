@@ -12,9 +12,11 @@ import { useAuth } from '../contexts/AuthContext';
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
+  // 로그인 뒤 실제 학습장처럼 특정 화면으로 이어갈 때 사용합니다.
+  onSuccess?: () => void;
 }
 
-export function AuthModal({ isOpen, onClose }: AuthModalProps) {
+export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
   const { signInWithGoogle, signInWithApple, signInWithEmail, signUpWithEmail, sendPasswordReset, error, clearError } =
     useAuth();
   const [mode, setMode] = useState<'login' | 'signup' | 'reset-password'>('login');
@@ -30,9 +32,11 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     try {
       if (mode === 'login') {
         await signInWithEmail(email, password);
+        onSuccess?.();
         onClose();
       } else if (mode === 'signup') {
         await signUpWithEmail(email, password);
+        onSuccess?.();
         onClose();
       } else {
         await sendPasswordReset(email);
@@ -48,6 +52,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const handleGoogle = async () => {
     try {
       await signInWithGoogle();
+      onSuccess?.();
       onClose();
     } catch {
       // error handled in context
@@ -57,6 +62,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const handleApple = async () => {
     try {
       await signInWithApple();
+      onSuccess?.();
       onClose();
     } catch {
       // error handled in context

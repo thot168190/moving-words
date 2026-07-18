@@ -12,29 +12,15 @@ interface NavbarProps {
 
 export function Navbar({ entranceComplete }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [downloadHovered, setDownloadHovered] = useState(false);
   const [aboutHovered, setAboutHovered] = useState(false);
   const [metricsHovered, setMetricsHovered] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
-  const { user, signOut, deleteAccount } = useAuth();
+  const [progressOpen, setProgressOpen] = useState(false);
+  const { user, signOut, learningProgress } = useAuth();
 
-  const handleDeleteAccount = async () => {
-    const isConfirmed = window.confirm(
-      '정말로 회원 탈퇴를 진행하시겠습니까?\n탈퇴 시 즉시 모든 학습 기록과 계정 정보가 영구 삭제되며, 이 작업은 복구할 수 없습니다.'
-    );
-    if (!isConfirmed) return;
-
-    try {
-      await deleteAccount();
-      alert('회원 탈퇴가 완료되었습니다. 그동안 서비스를 이용해 주셔서 감사합니다.');
-      window.location.reload();
-    } catch (err: any) {
-      alert(err.message || '회원 탈퇴 처리 중 오류가 발생했습니다. 다시 시도해 주세요.');
-    }
-  };
-
-  const scrollTo = (y: number) => {
-    window.scrollTo({ top: y, behavior: 'smooth' });
+  // 메뉴 문구와 실제 화면 위치를 직접 연결해 사용자가 길을 잃지 않게 합니다.
+  const scrollToSection = (selector: string) => {
+    document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
   };
 
@@ -58,8 +44,8 @@ export function Navbar({ entranceComplete }: NavbarProps) {
               whileHover={{ scale: 1.02, backgroundColor: 'rgba(20,20,20,0.08)' }}
               whileTap={{ scale: 0.98 }}
             >
-              <ConnectAILabLogo size={18} className="text-[#141414]" />
-              <span className="nav-logo-text text-[17px] text-[#141414]">
+              <ConnectAILabLogo size={18} className="text-[#07533f]" />
+              <span className="nav-logo-text text-[17px] text-[#07533f]">
                 보는 단어장
               </span>
             </motion.div>
@@ -67,7 +53,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
             {/* Expanding menu pill */}
             <motion.div
               className="h-12 rounded-[14px] bg-[#141414]/5 backdrop-blur-md flex items-center overflow-hidden"
-              animate={{ width: menuOpen ? 290 : 48 }}
+              animate={{ width: menuOpen ? 380 : 48 }}
               transition={{ type: 'spring', stiffness: 350, damping: 28 }}
             >
               {/* Hamburger button */}
@@ -90,27 +76,33 @@ export function Navbar({ entranceComplete }: NavbarProps) {
               <AnimatePresence>
                 {menuOpen && (
                   <motion.div
-                    className="flex items-center gap-6 ml-4 whitespace-nowrap"
+                    className="flex items-center gap-5 ml-4 whitespace-nowrap"
                     initial={{ opacity: 0, x: 15 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 15 }}
                     transition={{ duration: 0.25 }}
                   >
                     <button
-                      className="text-[16px] font-normal text-[#141414]/85 hover:text-[#141414] transition-colors cursor-pointer bg-transparent border-none"
+                      className="text-[15px] font-bold text-[#07533f]/85 hover:text-[#07533f] transition-colors cursor-pointer bg-transparent border-none"
                       onMouseEnter={() => setAboutHovered(true)}
                       onMouseLeave={() => setAboutHovered(false)}
-                      onClick={() => scrollTo(window.innerHeight)}
+                      onClick={() => scrollToSection('#intro')}
                     >
-                      <ScrambleText text="About" isHovered={aboutHovered} />
+                      <ScrambleText text="서비스 소개" isHovered={aboutHovered} />
                     </button>
                     <button
-                      className="text-[16px] font-normal text-[#141414]/85 hover:text-[#141414] transition-colors cursor-pointer bg-transparent border-none"
+                      className="text-[15px] font-bold text-[#07533f]/85 hover:text-[#07533f] transition-colors cursor-pointer bg-transparent border-none"
                       onMouseEnter={() => setMetricsHovered(true)}
                       onMouseLeave={() => setMetricsHovered(false)}
-                      onClick={() => scrollTo(window.innerHeight * 2)}
+                      onClick={() => scrollToSection('#course')}
                     >
-                      <ScrambleText text="Metrics" isHovered={metricsHovered} />
+                      <ScrambleText text="학습 방법" isHovered={metricsHovered} />
+                    </button>
+                    <button
+                      className="text-[15px] font-bold text-[#07533f]/85 hover:text-[#07533f] transition-colors cursor-pointer bg-transparent border-none"
+                      onClick={() => scrollToSection('#pricing')}
+                    >
+                      이용 요금
                     </button>
                   </motion.div>
                 )}
@@ -120,9 +112,16 @@ export function Navbar({ entranceComplete }: NavbarProps) {
 
           {/* Right buttons */}
           <div className="flex items-center gap-2">
-            {/* Sign In / User button */}
+            {/* 로그인한 경우에만 학습 기록과 사용자 정보를 표시합니다. */}
             {user ? (
               <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setProgressOpen(true)}
+                  className="h-12 px-5 rounded-[14px] bg-[#07533f] text-white text-[14px] font-black border-none cursor-pointer hover:bg-[#0b684f] transition-colors"
+                >
+                  내 학습
+                </button>
                 <div className="h-12 px-5 bg-[#141414]/5 backdrop-blur-md rounded-[14px] flex items-center gap-3">
                   {user.photoURL ? (
                     <img
@@ -146,30 +145,20 @@ export function Navbar({ entranceComplete }: NavbarProps) {
                   </button>
                 </div>
               </div>
-            ) : (
+            ) : null}
+
+            {/* 본문의 '학습 시작'과 겹치지 않도록 상단에는 로그인만 둡니다. */}
+            {!user && (
               <motion.button
-                className="h-12 px-5 bg-[#141414]/5 backdrop-blur-md rounded-[14px] flex items-center gap-2 cursor-pointer border-none text-[#141414]/85 text-[15px] font-medium hover:bg-[#141414]/10 transition-colors"
+                type="button"
+                className="h-11 px-5 bg-[#07533f] rounded-full cursor-pointer border-none text-white text-[15px] font-bold"
+                whileHover={{ scale: 1.03, backgroundColor: '#0b684f' }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setAuthOpen(true)}
               >
-                Sign In
+                로그인
               </motion.button>
             )}
-
-            {/* Download button */}
-            <motion.a
-              href="#course"
-              className="h-12 px-6 bg-[#141414] rounded-full flex items-center gap-2.5 cursor-pointer border-none no-underline"
-              whileHover={{ scale: 1.03, backgroundColor: '#3a3a3a' }}
-              whileTap={{ scale: 0.97 }}
-              onMouseEnter={() => setDownloadHovered(true)}
-              onMouseLeave={() => setDownloadHovered(false)}
-            >
-              <span className="text-white text-[16px]">✏️</span>
-              <span className="text-white text-[16px] font-medium">
-                <ScrambleText text="학습 시작" isHovered={downloadHovered} />
-              </span>
-            </motion.a>
           </div>
         </div>
 
@@ -183,8 +172,8 @@ export function Navbar({ entranceComplete }: NavbarProps) {
               animate={{ width: menuOpen ? 0 : 'auto', opacity: menuOpen ? 0 : 1, paddingLeft: menuOpen ? 0 : 12, paddingRight: menuOpen ? 0 : 12 }}
               transition={{ type: 'spring', stiffness: 350, damping: 28 }}
             >
-              <ConnectAILabLogo size={14} className="text-[#141414] shrink-0" />
-              <span className="text-[13px] font-medium tracking-tight text-[#141414] whitespace-nowrap">
+              <ConnectAILabLogo size={14} className="text-[#07533f] shrink-0" />
+              <span className="text-[13px] font-medium tracking-tight text-[#07533f] whitespace-nowrap">
                 보는 단어장
               </span>
             </motion.div>
@@ -212,23 +201,29 @@ export function Navbar({ entranceComplete }: NavbarProps) {
               <AnimatePresence>
                 {menuOpen && (
                   <motion.div
-                    className="flex items-center gap-4 ml-3 whitespace-nowrap"
+                    className="flex items-center gap-3 ml-3 whitespace-nowrap"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 10 }}
                     transition={{ duration: 0.2 }}
                   >
                     <button
-                      className="text-[13px] font-normal text-[#141414]/85 cursor-pointer bg-transparent border-none"
-                      onClick={() => scrollTo(window.innerHeight)}
+                      className="text-[12px] font-bold text-[#07533f]/85 cursor-pointer bg-transparent border-none"
+                      onClick={() => scrollToSection('#intro')}
                     >
-                      About
+                      소개
                     </button>
                     <button
-                      className="text-[13px] font-normal text-[#141414]/85 cursor-pointer bg-transparent border-none"
-                      onClick={() => scrollTo(window.innerHeight * 2)}
+                      className="text-[12px] font-bold text-[#07533f]/85 cursor-pointer bg-transparent border-none"
+                      onClick={() => scrollToSection('#course')}
                     >
-                      Metrics
+                      학습 방법
+                    </button>
+                    <button
+                      className="text-[12px] font-bold text-[#07533f]/85 cursor-pointer bg-transparent border-none"
+                      onClick={() => scrollToSection('#pricing')}
+                    >
+                      이용 요금
                     </button>
                   </motion.div>
                 )}
@@ -238,22 +233,12 @@ export function Navbar({ entranceComplete }: NavbarProps) {
 
           {/* Right buttons */}
           <div className="flex items-center gap-1.5 ml-2">
-            {/* Sign In / Avatar */}
+            {/* 로그인한 경우 학습 기록으로 이동 */}
             {user ? (
               <motion.button
                 className="h-9 w-9 rounded-full bg-[#141414]/5 backdrop-blur-md flex items-center justify-center cursor-pointer border-none overflow-hidden"
                 whileTap={{ scale: 0.9 }}
-                onClick={() => {
-                  const isSignOut = window.confirm('로그아웃 하시겠습니까?\n(회원 탈퇴를 진행하시려면 [취소]를 누르고 다음 안내창에서 진행해 주세요.)');
-                  if (isSignOut) {
-                    signOut();
-                  } else {
-                    const isDelete = window.confirm('정말 회원 탈퇴를 진행하시겠습니까?\n모든 정보가 영구 파괴됩니다.');
-                    if (isDelete) {
-                      handleDeleteAccount();
-                    }
-                  }
-                }}
+                onClick={() => setProgressOpen(true)}
               >
                 {user.photoURL ? (
                   <img src={user.photoURL} alt="" className="w-full h-full object-cover" />
@@ -263,23 +248,62 @@ export function Navbar({ entranceComplete }: NavbarProps) {
                   </span>
                 )}
               </motion.button>
-            ) : (
+            ) : null}
+
+            {!user && (
               <motion.button
-                className="h-9 px-3 bg-[#141414]/5 backdrop-blur-md rounded-[10px] flex items-center cursor-pointer border-none text-[#141414]/85 text-[12px] font-medium"
+                type="button"
+                className="h-9 px-3.5 bg-[#07533f] rounded-full cursor-pointer border-none text-white text-[12px] font-bold whitespace-nowrap"
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setAuthOpen(true)}
               >
-                Sign In
+                로그인
               </motion.button>
             )}
-
-
           </div>
         </div>
       </motion.nav>
 
       {/* Auth Modal */}
-      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
+      <AuthModal
+        isOpen={authOpen}
+        onClose={() => setAuthOpen(false)}
+        onSuccess={() => { window.location.hash = 'learn'; }}
+      />
+
+      <AnimatePresence>
+        {progressOpen && user && (
+          <motion.div
+            className="fixed inset-0 z-[80] bg-black/35 backdrop-blur-sm flex items-center justify-center p-5"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setProgressOpen(false)}
+          >
+            <motion.section
+              className="w-full max-w-[520px] rounded-[26px] bg-white p-7 sm:p-9 shadow-2xl text-[#07533f]"
+              initial={{ opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10 }}
+              onClick={(event) => event.stopPropagation()}
+              aria-label="나의 학습 기록"
+            >
+              <div className="flex items-start justify-between gap-5 mb-8">
+                <div><p className="text-[12px] tracking-[0.18em] font-black text-[#4f927b] mb-2">MY LEARNING</p><h2 className="text-[30px] font-black tracking-tight">나의 학습 기록</h2></div>
+                <button type="button" onClick={() => setProgressOpen(false)} className="text-2xl bg-transparent border-none cursor-pointer text-[#07533f]">×</button>
+              </div>
+              <div className="grid grid-cols-3 border-y border-[#dcebe5]">
+                <div className="py-6 text-center"><strong className="block text-[28px]">{learningProgress.completedSceneIds.length}</strong><span className="text-[13px] text-[#555]">완료 장면</span></div>
+                <div className="py-6 text-center border-x border-[#dcebe5]"><strong className="block text-[28px]">{learningProgress.learnedWordIds.length}</strong><span className="text-[13px] text-[#555]">배운 단어</span></div>
+                <div className="py-6 text-center"><strong className="block text-[28px]">{learningProgress.collectedCardIds.length}</strong><span className="text-[13px] text-[#555]">수집 카드</span></div>
+              </div>
+              <p className="mt-6 text-[14px] text-[#4a4a46]">
+                {learningProgress.lastSceneId ? `마지막 학습: ${learningProgress.lastSceneId}` : '아직 저장된 학습이 없어요. 첫 장면을 시작해보세요.'}
+              </p>
+              <div className="flex gap-3 mt-7">
+                <a href="/#learn" className="flex-1 rounded-xl bg-[#07533f] text-white text-center py-4 font-black no-underline">학습 계속</a>
+                <button type="button" onClick={signOut} className="rounded-xl border border-[#b9d2c9] bg-white px-5 font-bold text-[#4a4a46] cursor-pointer">로그아웃</button>
+              </div>
+            </motion.section>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

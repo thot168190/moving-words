@@ -109,9 +109,9 @@ const TossCheckoutButton: React.FC<TossCheckoutButtonProps> = ({
         flex items-center justify-center gap-2
         transition-all duration-200 shadow-sm hover:shadow-md
         ${processing
-          ? 'bg-blue-300 cursor-wait'
+          ? 'bg-[#8BB7A7] cursor-wait'
           : sdkLoaded
-            ? 'bg-[#3182f6] hover:bg-[#1b64da] active:scale-[0.97] cursor-pointer'
+            ? 'bg-[#07533F] hover:bg-[#0B684F] active:bg-[#064534] active:scale-[0.97] cursor-pointer'
             : 'bg-neutral-400 cursor-not-allowed'
         }
         text-white border-none

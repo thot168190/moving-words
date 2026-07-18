@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>보는 단어장 · 단어 학습</title>
+  <style>
+    @font-face{font-family:Pretendard;src:url('fonts/Pretendard-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+    @font-face{font-family:Pretendard;src:url('fonts/Pretendard-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+    @font-face{font-family:Pretendard;src:url('fonts/Pretendard-ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap}
+    @font-face{font-family:WantedSans;src:url('fonts/WantedSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+    @font-face{font-family:WantedSans;src:url('fonts/WantedSans-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+    @font-face{font-family:WantedSans;src:url('fonts/WantedSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+    :root{
+      --white:#fff;--ivory:#fbfdfb;--ink:#07523d;--sub:#4f7868;
+      --line:#dcebe4;--teal:#086047;--teal-pale:#e6f5ee;--gold:#278365;
+      --sage:#eaf6ef;--mist:#edf8f4;--fern:#f3faf6;--forest:#064a38;
+      --max:1320px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--white);color:var(--ink);font-family:WantedSans,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.018em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    button{font:inherit;color:inherit} button:focus-visible{outline:3px solid rgba(21,94,89,.22);outline-offset:4px}
+    h1,h2,.brand{font-weight:800!important}h3{font-weight:700!important}.accent{color:#d79a00;font-weight:800}
+    .topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);position:sticky;top:0;z-index:20}
+    .topbar-inner{width:min(var(--max),calc(100% - 48px));margin:auto;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:Pretendard,sans-serif;font-weight:700;font-size:21px;letter-spacing:-.035em;color:var(--forest)}
+    .nav{display:flex;gap:4px}.nav button{border:0;background:transparent;padding:10px 13px;border-radius:99px;color:var(--forest);cursor:pointer;white-space:nowrap;font-weight:700}.nav .active{background:#3f8a6b;color:#fff}
+    .account{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--sub)}
+    .account-mark{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--teal);font-weight:700}
+    main{width:min(var(--max),calc(100% - 48px));margin:auto;padding:58px 0 100px}
+    .home-view>.welcome,.home-view>.viewer-layout{position:relative}
+    .welcome{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}
+    .welcome small{display:block;color:var(--teal);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px}
+    .welcome h1{font-family:Pretendard,sans-serif;font-size:clamp(38px,4.5vw,62px);letter-spacing:-.052em;line-height:1.08;margin:0;font-weight:800}
+    .brief-progress{min-width:190px;text-align:right;color:var(--sub);font-size:13px}.progress-link{border:0;background:transparent;padding:0;color:var(--ink);font-weight:800;font-size:17px;cursor:pointer}.progress-link b{display:inline-grid;place-items:center;width:25px;height:25px;margin-left:7px;border-radius:50%;background:var(--teal);color:#fff;font-size:14px}.bar{height:3px;background:#ecebe6;margin-top:10px}.bar i{display:block;width:12.5%;height:100%;background:var(--teal)}
+    .viewer-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:34px;align-items:stretch}
+    .viewer{position:relative;aspect-ratio:16/9;background:var(--ivory);overflow:hidden;border:1px solid var(--line)}
+    .viewer video,.viewer img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
+    .viewer img{transition:opacity .35s}.viewer.playing img{opacity:0;pointer-events:none}
+    /* 화면 아래 단어도 재생바에 가려지지 않고 눌리도록 단어 층을 가장 위에 둡니다. */
+    .word-overlay{position:absolute;inset:0;z-index:4;pointer-events:none}
+    .scene-word{position:absolute;transform:translate(-50%,-50%) translateY(7px);border:0;background:transparent;padding:8px;color:var(--forest);font-family:Pretendard,sans-serif;font-size:clamp(25px,2.55vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.05;white-space:nowrap;cursor:pointer;pointer-events:auto;opacity:0;transition:opacity .28s,transform .28s,color .18s;paint-order:stroke fill;-webkit-text-stroke:6px rgba(255,255,255,.96);text-shadow:0 2px 7px rgba(255,255,255,1)}
+    .scene-word.long-word{font-size:clamp(18px,1.65vw,27px);-webkit-text-stroke:5px rgba(255,255,255,.97)}
+    .scene-word.very-long-word{font-size:clamp(15px,1.35vw,22px);-webkit-text-stroke:4px rgba(255,255,255,.98)}
+    .scene-word.visible{opacity:1;transform:translate(-50%,-50%) translateY(0)}
+    .scene-word:hover,.scene-word.speaking{color:#b97800;transform:translate(-50%,-50%) scale(1.05)}
+    .scene-word span{position:static!important;display:block;margin:-1px 0 0;padding:0!important;transform:none!important;background:transparent!important;color:var(--forest)!important;font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:16px;font-weight:600;letter-spacing:-.015em;line-height:1.05;white-space:nowrap;opacity:.9!important;pointer-events:none;paint-order:stroke fill;-webkit-text-stroke:3px rgba(255,255,255,.98);text-shadow:0 1px 4px #fff;border:0!important;border-radius:0!important}
+    .scene-word:hover span,.scene-word:focus-visible span,.scene-word.speaking span{opacity:1!important;color:#9c6700!important}
+    .viewer-controls{position:absolute;inset:auto 0 0 0;padding:70px 24px 20px;background:linear-gradient(transparent,rgba(18,25,23,.65));display:flex;align-items:center;gap:16px;color:#fff;opacity:0;transition:.25s;z-index:3}.viewer:hover .viewer-controls,.viewer:focus-within .viewer-controls{opacity:1}
+    .round-control{width:42px;height:42px;border:1px solid rgba(255,255,255,.65);border-radius:50%;background:rgba(0,0,0,.18);color:#fff;cursor:pointer}.timeline{height:3px;background:rgba(255,255,255,.4);flex:1}.timeline i{height:100%;width:0;background:#fff;display:block}.time{font-size:12px;font-variant-numeric:tabular-nums}
+    .speed-control{min-width:54px;height:36px;border:1px solid rgba(255,255,255,.7);border-radius:99px;background:rgba(0,0,0,.2);color:#fff;font-family:Pretendard,sans-serif;font-size:13px;font-weight:700;cursor:pointer}.speed-control:hover{background:rgba(255,255,255,.18)}
+    .now{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0;display:flex;flex-direction:column}
+    .now-label{font-size:13px;letter-spacing:.13em;color:var(--gold);font-weight:800;text-transform:uppercase}.now h2{font-family:Pretendard,sans-serif;font-size:34px;margin:12px 0 10px;letter-spacing:-.04em;line-height:1.2}.now p{margin:0;color:var(--sub);font-size:17px;line-height:1.7}.resume{border:0;background:var(--teal);color:#fff;padding:17px 20px;width:100%;font-size:16px;font-weight:700;cursor:pointer;transition:.22s}.resume:hover{background:#104b47}.settings{border:0;background:transparent;color:var(--sub);font-size:14px;padding:15px 0 0;cursor:pointer;text-align:left}
+    .level-switch{display:flex;gap:22px;margin-top:22px;border-bottom:1px solid var(--line)}.level-switch button{border:0;border-bottom:3px solid transparent;background:transparent;padding:0 0 9px;color:var(--sub);font-family:Pretendard,sans-serif;font-size:14px;font-weight:800;letter-spacing:.06em;cursor:pointer}.level-switch button.active{border-bottom-color:var(--teal);color:var(--forest)}
+    .now-actions{margin-top:auto}.vocab-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}.vocab-head{margin-bottom:10px}.vocab-head h3{font-family:Pretendard,sans-serif;font-size:17px;margin:0}.vocab-head p{display:none}.word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px}.word{border:0;background:transparent;padding:4px 0;color:var(--forest);cursor:pointer;text-align:left;white-space:nowrap}.word strong{font-family:Pretendard,sans-serif;font-size:17px;font-weight:700}.word em{display:block;margin:1px 0 0;color:var(--sub);font-size:12px;font-style:normal}.word b{display:none}.word:hover,.word.speaking{color:#b97800}
+    .chapter{margin-top:76px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.section-head h2{font-family:Pretendard,sans-serif;font-size:38px;margin:0 0 8px;letter-spacing:-.04em}.section-head p{margin:0;color:var(--sub);font-size:16px}.all{border:0;background:transparent;color:var(--teal);cursor:pointer;padding:8px 0;font-size:15px}
+    .shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 18px}.work{border:0;background:transparent;padding:0;text-align:left;cursor:pointer;min-width:0}.poster{aspect-ratio:16/9;border:1px solid var(--line);background:var(--ivory);position:relative;overflow:hidden}.poster img,.poster video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;transition:.35s}.poster video{opacity:0}.work:hover .poster video{opacity:1}.work:hover .poster img{opacity:0}.poster .state{position:absolute;left:10px;top:10px;z-index:2;background:rgba(255,255,255,.9);border:1px solid var(--line);padding:6px 8px;font-size:10px;color:var(--sub)}
+    .work.current .poster{border-color:var(--teal);box-shadow:inset 0 -3px var(--teal)}.meta{padding-top:12px}.meta small{color:var(--gold);font-size:10px;letter-spacing:.12em}.meta h3{font-family:Pretendard,sans-serif;font-size:18px;margin:5px 0 3px}.meta p{margin:0;color:var(--sub);font-size:12px}.locked .poster:after{content:"다음 여정";position:absolute;inset:0;display:grid;place-items:center;background:rgba(250,249,245,.78);color:var(--gold);font-family:Pretendard,sans-serif;letter-spacing:.04em;z-index:4}.locked:hover .poster img{opacity:1}.locked:hover .poster video{opacity:0}
+    .tip{margin-top:80px;border-top:1px solid var(--line);padding-top:30px;display:flex;align-items:center;justify-content:space-between;color:var(--sub);font-size:15px}.tip strong{font-family:Pretendard,sans-serif;color:var(--ink);font-size:22px;font-weight:700}.toggle{display:flex;align-items:center;gap:10px;font-size:15px}.switch{width:42px;height:24px;background:var(--teal);border:0;border-radius:99px;padding:3px;cursor:pointer}.switch i{display:block;width:18px;height:18px;background:white;border-radius:50%;margin-left:18px;transition:.2s}.switch.off{background:#c7cbc8}.switch.off i{margin-left:0}
+    .map{margin-top:82px;padding:42px 38px 38px;background:#f8fcfb;border:1px solid #d9e8e4}.map .section-head{margin-bottom:24px}.chapter-grid{position:relative;aspect-ratio:16/9;background:url('assets/chapter-world-map-v1.png') center/cover no-repeat;overflow:hidden;box-shadow:inset 0 0 40px rgba(255,255,255,.5)}.chapter-card{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:0;background:transparent;padding:0;text-align:center;color:#073f34;cursor:pointer;transition:.22s;z-index:2;filter:drop-shadow(0 1px 1px #fff) drop-shadow(0 0 7px #fff)}.chapter-card:hover{transform:translate(-50%,-50%) scale(1.08)}.chapter-card small{display:block;font-family:Pretendard,sans-serif;font-size:9px;letter-spacing:.14em;font-weight:800;color:#8a6200;text-shadow:0 1px 4px #fff}.chapter-card h3{font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:clamp(13px,1.25vw,19px);font-weight:800;margin:3px 0 0;letter-spacing:-.03em;white-space:nowrap;paint-order:stroke fill;-webkit-text-stroke:4px rgba(255,255,255,.92)}.chapter-card p,.chapter-card .enter{display:none}.chapter-card.open{color:#063f31}.chapter-card.open:before{content:"";position:absolute;left:50%;top:50%;width:62px;height:62px;border:2px solid #d9ef78;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 10px 3px rgba(203,244,103,.85),inset 0 0 8px rgba(255,255,255,.9);z-index:-1}.chapter-card.locked-chapter{opacity:.78}.chapter-card.locked-chapter:hover{opacity:1}.key{position:absolute;left:50%;top:-17px;width:11px;height:11px;border:1.5px solid #315f52;border-radius:50%;transform:translateX(-50%);filter:drop-shadow(0 0 3px #fff)}.key:before{content:"";position:absolute;width:9px;height:1.5px;background:#315f52;left:7px;top:8px;transform:rotate(38deg);transform-origin:left}.key:after{content:"";position:absolute;width:4px;height:5px;border-right:1.5px solid #315f52;left:13px;top:9px;transform:rotate(38deg)}
+    .back{border:0;background:transparent;padding:0 0 26px;color:var(--teal);font-weight:700;cursor:pointer}.detail-view{display:none;background:var(--mist);padding:36px;border:1px solid #dde9e5}.detail-view.active{display:block}.detail-view .viewer,.detail-view .poster{background:#fff}.home-view.hidden{display:none}
+    .worlds{margin-top:28px;padding:48px 38px 42px;background:var(--fern);border:1px solid #deeee5}.worlds-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:40px;margin-bottom:38px}.worlds-head h2{font-family:Pretendard,sans-serif;font-size:31px;letter-spacing:-.035em;margin:0}.worlds-head p{margin:0;color:var(--sub);line-height:1.7;max-width:570px}.world-list{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #d5e9df}.world{border:0;border-right:1px solid #d5e9df;background:rgba(255,255,255,.76);text-align:left;padding:28px 26px 30px;cursor:pointer;min-height:180px;transition:.25s}.world:last-child{border-right:0}.world:hover{background:#fff;box-shadow:inset 0 3px #4b9f7d}.world small{color:#2d8968;font-size:10px;letter-spacing:.14em}.world h3{font-family:Pretendard,sans-serif;font-size:22px;margin:24px 0 7px}.world p{margin:0;color:var(--sub);font-size:13px;line-height:1.6}.world span{display:block;margin-top:20px;color:var(--teal);font-size:13px;font-weight:700}
+    /* 정보량을 줄인 갤러리형 구조: 색면보다 여백과 선으로 섹션을 구분합니다. */
+    .map{padding:50px 0 22px;background:transparent;border:0;border-top:1px solid var(--line)}
+    .chapter-grid{gap:0;border-top:1px solid #cfe2d8}
+    .chapter-card{min-height:126px;padding:20px 18px;border:0;border-bottom:1px solid #dcebe4;background:transparent}
+    .chapter-card:hover{transform:none;background:#f5faf7;box-shadow:none}
+    .chapter-card.open{background:#e7f4ed;color:var(--forest);border:0;border-bottom:2px solid #2f7f5f}
+    .chapter-card.open small{color:#278365}.chapter-card.open p{color:var(--sub)}
+    .chapter-card h3{font-size:19px;margin:24px 0 0}.chapter-card p{display:none}.chapter-card .enter{margin-top:10px;font-size:11px;color:#28795d}
+    .key{width:20px;height:20px;right:17px;top:18px}.key:before{width:15px;left:-10px;top:15px}.key:after{left:-7px;top:18px}
+    .worlds{margin-top:70px;padding:44px 0 10px;background:transparent;border:0;border-top:1px solid var(--line)}
+    .worlds-head{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:30px}.worlds-head h2{font-size:44px;line-height:1.14}.worlds-head p{max-width:470px;font-size:16px}
+    .world-list{border:0;border-top:1px solid #cfe2d8;border-bottom:1px solid #cfe2d8}
+    .world{min-height:122px;padding:24px 22px;background:transparent}.world:hover{background:#f5faf7;box-shadow:none}
+    .world small{font-size:12px}.world h3{font-size:27px;margin:18px 0 0}.world p{display:none}.world span{display:none}
+    .feature-view{display:none}.feature-view.active{display:block}.feature-intro{display:flex;justify-content:space-between;align-items:end;margin:20px 0 34px}.feature-intro h1{font-family:Pretendard,sans-serif;font-size:46px;margin:0}.feature-intro p{margin:0;color:var(--sub);font-size:15px}
+    /* 이전 시안에서 대표님이 선택한 박물관 액자형 카드 */
+    .museum-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+    .museum-card{aspect-ratio:3/4;position:relative;overflow:hidden;border:1px solid #dce2dd;background:#fff;padding:12px;display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(18,66,52,.07)}
+    .museum-card img{width:100%;min-height:0;flex:1;object-fit:contain;background:#fbfaf6;border:1px solid #eee9df}
+    .museum-card h3{font-family:Pretendard,sans-serif;font-size:18px;margin:14px 4px 2px;color:var(--ink)}
+    .museum-card p{margin:0 4px 2px;color:var(--sub);font-size:12px}
+    .museum-card.back{padding:12px;background:#fff;color:#d7ba78;display:flex;align-items:stretch;justify-content:stretch}
+    .museum-seal{position:relative;flex:1;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#073f31,#155d48);color:#d7ba78}
+    .museum-seal:before,.museum-seal:after{content:"";position:absolute;inset:15px;border:1px solid rgba(215,186,120,.6);pointer-events:none}
+    .museum-seal:after{inset:31px;border-radius:50%}
+    .museum-seal b{position:relative;z-index:1;font-family:Georgia,serif;font-size:38px;font-weight:400;letter-spacing:.08em}
+    .museum-card.back p{position:absolute;left:16px;right:16px;bottom:20px;z-index:2;text-align:center;color:rgba(255,248,225,.72);font-size:11px;letter-spacing:.04em}
+    .studio-layout{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:34px}.generate-preview{position:relative;aspect-ratio:1/1;border:1px solid var(--line);background:#fbfdfb;display:grid;place-items:center;overflow:hidden}.generate-preview img{width:100%;height:100%;object-fit:contain;background:#fff}.generated-caption{position:absolute;left:22px;right:22px;bottom:20px;display:flex;align-items:baseline;gap:10px;padding:12px 16px;background:rgba(255,255,255,.9);border-left:4px solid var(--teal);backdrop-filter:blur(8px)}.generated-caption strong{font-family:Pretendard;font-size:26px;color:var(--teal)}.generated-caption span{font-size:15px;color:var(--sub)}.generate-empty{text-align:center;color:var(--sub);line-height:1.7;padding:28px}.generate-empty strong{display:block;font-family:Pretendard;font-size:24px;color:var(--ink);margin-bottom:8px}.studio-side{border-top:1px solid var(--line);padding-top:22px}.studio-side label{display:block;font-size:12px;font-weight:700;margin:0 0 8px}.word-input{width:100%;border:0;border-bottom:2px solid var(--teal);padding:12px 2px;font-family:Pretendard;font-size:28px;color:var(--ink);outline:0}.studio-side textarea.word-input{min-height:104px;resize:vertical;border:1px solid var(--line);border-bottom:2px solid var(--teal);padding:12px;font-size:15px;line-height:1.65;margin-bottom:4px}.word-input.meaning{font-size:20px;margin-top:12px}.style-label{margin-top:28px!important}.style-options{display:flex;flex-wrap:wrap;gap:8px}.style-option{border:1px solid var(--line);background:#fff;padding:9px 12px;cursor:pointer}.style-option.selected{background:var(--teal);border-color:var(--teal);color:#fff}.studio-actions{display:flex;gap:8px;margin-top:28px}.studio-actions button{border:1px solid var(--line);background:#fff;padding:13px 16px;cursor:pointer}.studio-actions button:disabled{opacity:.55;cursor:wait}.studio-actions .primary{background:var(--teal);color:#fff;border-color:var(--teal);flex:1}.save-generated{display:none;width:100%;margin-top:10px;border:1px solid var(--teal);background:#fff;color:var(--teal);padding:12px;cursor:pointer}.save-generated.show{display:block}.studio-note,.studio-status,.studio-quota,.studio-connection{font-size:12px;line-height:1.55;color:var(--sub)}.studio-note{margin:18px 0 0}.studio-status{min-height:38px;margin:12px 0 0}.studio-quota{margin:10px 0 2px;font-weight:700;color:var(--teal)}.studio-connection{display:inline-flex;align-items:center;gap:7px;margin:3px 0 0}.studio-connection:before{content:'';width:7px;height:7px;border-radius:50%;background:#b48438}.studio-connection.connected:before{background:#23845f}.custom-museum-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding:0 0 12px;margin-top:10px}.custom-museum-head h2{font-size:24px;margin:0}.custom-museum-head p{font-size:12px;color:var(--sub);margin:0}.museum-card.custom{border-color:#bcd8cc}.museum-delete{position:absolute;right:18px;top:18px;z-index:3;border:0;background:rgba(255,255,255,.9);color:#6d756f;padding:6px 8px;cursor:pointer}.quiz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.quiz-choice{border:1px solid var(--line);background:#fff;padding:0;cursor:pointer;text-align:left}.quiz-choice img,.quiz-choice video{width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff;display:block}.quiz-choice span{display:block;padding:15px;font-family:Pretendard;font-weight:700}.quiz-choice.correct{outline:3px solid #42a77e}.quiz-question{font-family:Pretendard;font-size:28px;margin:0 0 25px}
+    .memory-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:34px;align-items:start}.memory-stage{position:relative;aspect-ratio:16/9;border:1px solid var(--line);overflow:hidden;background:#fff}.memory-stage img{width:100%;height:100%;object-fit:contain;display:block}.memory-hole{position:absolute;left:2.5%;top:31%;width:25%;height:42%;border:2px dashed transparent;background:#fff;border-radius:52% 46% 48% 55%;display:grid;place-items:center;color:var(--forest);font-family:Pretendard,sans-serif;font-size:52px;font-weight:800;box-shadow:0 0 22px 14px #fff;transition:opacity .5s,transform .5s,border-color .2s,background .2s}.memory-hole.drop-ready{border-color:#2e8d6b;background:#eef9f3}.memory-hole.restored{opacity:0;transform:scale(.82);pointer-events:none}.memory-answer{position:absolute;left:16%;top:34%;transform:translate(-50%,-50%) translateY(7px);font-family:Pretendard,sans-serif;font-size:clamp(25px,2.55vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.05;color:var(--forest);paint-order:stroke fill;-webkit-text-stroke:6px rgba(255,255,255,.96);text-shadow:0 2px 7px rgba(255,255,255,1);opacity:0;transition:opacity .28s,transform .28s}.memory-answer.show{opacity:1;transform:translate(-50%,-50%)}.memory-side{border-top:1px solid var(--line);padding-top:20px}.memory-side h2{font-size:29px;margin:0 0 8px}.memory-side p{margin:0 0 24px;color:var(--sub);line-height:1.6}.memory-choices{display:grid;grid-template-columns:1fr 1fr;gap:9px}.memory-choice{border:1px solid var(--line);background:#fff;padding:15px 10px;font-family:Pretendard,sans-serif;font-size:18px;font-weight:700;cursor:grab;touch-action:none;user-select:none}.memory-choice:hover,.memory-choice.dragging{border-color:var(--teal);background:#f3faf6}.memory-choice.dragging{opacity:.65;cursor:grabbing;transform:scale(.97)}.memory-choice.correct{background:var(--teal);border-color:var(--teal);color:#fff}.memory-choice.wrong{border-color:#c88b7d;color:#9b4a3c}.memory-retry{display:none;margin-top:16px;border:0;background:transparent;color:var(--teal);font-weight:700;cursor:pointer}.memory-retry.show{display:block}
+    .notice{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 18px;font-size:13px;opacity:0;transition:.25s;z-index:50}.notice.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:1050px){.nav button[data-secondary="true"]{display:none}}
+    /* 데스크톱 학습 화면: 한 화면에 제목·영상·학습 안내가 부담 없이 들어오도록 압축 */
+    @media(min-width:901px){
+      main{padding-top:36px}
+      .welcome,.viewer-layout{width:min(1180px,100%);margin-left:auto;margin-right:auto}
+      .welcome{margin-bottom:18px}
+      .welcome h1{font-size:clamp(32px,3vw,46px);line-height:1.06}
+      .viewer-layout{grid-template-columns:minmax(0,1fr) 280px;gap:26px}
+      .scene-word{font-size:clamp(22px,1.9vw,33px);-webkit-text-stroke:5px rgba(255,255,255,.96)}
+      .scene-word.long-word{font-size:clamp(20px,1.7vw,29px)}
+      .scene-word.very-long-word{font-size:clamp(17px,1.45vw,24px)}
+      .scene-word span{font-size:15px}
+      .viewer-controls{padding:48px 18px 14px}
+      .now{padding:18px 0}
+      .now h2{font-size:27px;margin:9px 0 7px}
+      .now p{font-size:15px;line-height:1.55}
+      .resume{padding:14px 16px;font-size:15px}
+    }
+    @media(max-width:900px){.account span{display:none}.viewer-layout{grid-template-columns:1fr}.now{display:grid;grid-template-columns:1fr 210px;gap:20px;align-items:center}.now-actions{align-self:center}.shelf{grid-template-columns:repeat(2,1fr)}.chapter-grid{grid-template-columns:repeat(3,1fr)}.word-list{grid-template-columns:repeat(2,1fr)}.museum-grid{grid-template-columns:repeat(2,1fr)}.studio-layout,.memory-layout{grid-template-columns:1fr}.quiz-grid{grid-template-columns:1fr}.worlds-head{grid-template-columns:1fr}.world-list{grid-template-columns:1fr}.world{border-right:0;border-bottom:1px solid var(--line);min-height:auto}.world:last-child{border-bottom:0}}
+    @media(max-width:620px){.topbar{height:66px}.topbar-inner,main{width:calc(100% - 32px)}.brand{font-size:18px}.nav button{padding:8px 10px;font-size:13px}.nav button:not(.active):not(#mapNav){display:none}.account{display:none}main{padding-top:32px}.welcome{align-items:start}.brief-progress{display:none}.welcome h1{font-size:34px}.viewer-layout{gap:15px}.viewer-controls{opacity:1;padding:45px 13px 12px}.round-control{width:38px;height:38px}.scene-word{font-size:clamp(17px,5vw,23px);padding:4px;-webkit-text-stroke:4px rgba(255,255,255,.98)}.scene-word span{font-size:11px}.now{display:block;padding:20px 0}.now h2{font-size:28px}.now p{font-size:16px}.now-actions{margin-top:18px}.vocab-head{display:block}.vocab-head p{margin-top:6px}.word strong{font-size:18px}.chapter{margin-top:30px}.shelf{grid-template-columns:1fr;gap:27px}.map,.worlds,.detail-view{padding:28px 18px}.chapter-grid{grid-template-columns:repeat(2,1fr);gap:10px}.chapter-card{min-height:150px;padding:17px}.chapter-card h3{font-size:18px;margin-top:31px}.section-head{align-items:start}.all{display:none}.tip{display:block;line-height:1.7}.toggle{margin-top:15px}.poster video{display:none}.worlds{margin-top:18px}.detail-view .welcome{margin-top:8px}}
+    /* 지도 이미지를 갱신해도 브라우저가 이전 버전을 캐시하지 않도록 버전을 붙입니다. */
+    .map{padding-left:0;padding-right:0;background:transparent;border:0}.map .section-head{padding:0 6px}.chapter-grid{width:92%;margin:0 auto;border:0;background-image:url('assets/chapter-world-map-v1.png?v=4');box-shadow:none;mask-image:radial-gradient(ellipse 78% 76% at center,#000 72%,rgba(0,0,0,.78) 86%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 78% 76% at center,#000 72%,rgba(0,0,0,.78) 86%,transparent 100%)}
+    /* 탐험 지도는 카드 목록이 아니라 지도 위의 작은 지명 표식으로만 보여줍니다. */
+    .chapter-grid .chapter-card{position:absolute;left:var(--x);top:var(--y);width:auto;min-height:0;transform:translate(-50%,-50%);border:0;background:transparent;padding:5px 7px;color:#073f34;filter:drop-shadow(0 1px 2px #fff) drop-shadow(0 0 7px rgba(255,255,255,.98))}
+    .chapter-grid .chapter-card:hover{transform:translate(-50%,-50%) scale(1.05);background:transparent;color:#006a50;box-shadow:none}
+    .chapter-grid .chapter-card.open{background:transparent;border:0;color:#063f31}
+    .chapter-grid .chapter-card.open:before{width:42px;height:42px;border-width:1px;background:rgba(238,255,203,.18)}
+    .chapter-grid .chapter-card small{font-size:9px;letter-spacing:.1em}
+    .chapter-grid .chapter-card h3{font-size:clamp(12px,1vw,16px);margin:2px 0 0;-webkit-text-stroke:3px rgba(255,255,255,.96)}
+    .chapter-grid .chapter-note{display:none}
+    .chapter-grid .key{left:50%;right:auto;top:-10px;width:8px;height:8px;transform:translateX(-50%)}
+    .chapter-grid .key:before{width:7px;height:1px;left:5px;top:6px}
+    .chapter-grid .key:after{width:3px;height:4px;left:9px;top:7px}
+    @media(max-width:620px){.section-head h2{font-size:31px}.worlds-head{display:block}.worlds-head h2{font-size:35px}.worlds-head p{margin-top:12px}.world h3{font-size:23px}.map,.worlds{padding-left:0;padding-right:0}.word strong{font-size:18px}.chapter-grid{display:block;gap:0}.chapter-card{min-height:0;padding:0}.chapter-card h3{font-size:10px;margin:2px 0 0;-webkit-text-stroke:3px rgba(255,255,255,.96)}.chapter-card small{font-size:6px}.chapter-note{display:none}.chapter-card.open:before{width:34px;height:34px}.key{top:-12px;transform:translateX(-50%) scale(.78)}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.poster video{display:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">보는 단어장</div>
+      <nav class="nav" aria-label="주 메뉴"><button class="active" id="learnNav">학습하기</button><button id="mapNav">탐험 지도</button><button id="museumNav">박물관</button><button id="playNav" data-secondary="true">놀이</button><button id="studioNav" data-secondary="true">내가 만드는 그림 단어</button></nav>
+      <div class="account"><span>이미현 님</span><div class="account-mark">I</div></div>
+    </div>
+  </header>
+
+  <main>
+   <div class="home-view" id="homeView">
+    <div id="homePlayerAnchor"></div>
+    <section class="welcome">
+      <div><small>LEARNING IN PROGRESS</small><h1>그림이 그려지는 동안 단어를 익혀보세요.</h1></div>
+      <div class="brief-progress"><button class="progress-link" id="progressEnter">챕터 1 · 1/8 학습 <b>→</b></button><div class="bar"><i></i></div></div>
+    </section>
+
+    <section class="viewer-layout" aria-label="오늘의 단어 학습">
+      <div class="viewer" id="viewer">
+        <video id="mainVideo" muted playsinline preload="metadata" src="챕터1_완성동영상/scene-ch1-01.mp4"></video>
+        <img id="mainPoster" src="챕터1_완성동영상/scene-ch1-01-poster.jpg" alt="고래와 깊은 바다 학습 영상 대표 화면">
+        <div class="word-overlay" id="wordOverlay" aria-label="그림 위 핵심 단어"></div>
+        <div class="viewer-controls"><button class="round-control" id="playBtn" aria-label="재생">▶</button><div class="timeline"><i id="timelineFill"></i></div><span class="time" id="timeText">00:00</span><button class="speed-control" id="speedBtn" type="button" aria-label="재생 속도 1배">1×</button></div>
+      </div>
+      <aside class="now">
+        <div><div class="now-label" id="nowLabel">LEARNING · 01</div><h2 id="mainTitle">고래와 깊은 바다</h2><p id="mainSub">같은 장면을 두 단계 단어로 익힙니다.</p><div class="level-switch" aria-label="단어 난이도"><button class="active" type="button" data-level="1">LEVEL 1</button><button type="button" data-level="2">LEVEL 2</button></div>
+          <section class="vocab-panel" aria-label="선택한 레벨의 단어">
+            <div class="word-list" id="wordList"></div>
+          </section>
+        </div>
+        <div class="now-actions"><button class="resume" id="resumeBtn">학습 시작</button><button class="settings" id="soundBtn">첫 단어 발음 듣기</button></div>
+      </aside>
+    </section>
+
+    <section class="map" id="chapterMap">
+      <div class="section-head"><div><h2><span class="accent">12개</span>의 챕터</h2><p>하나를 마치면 다음 열쇠가 열립니다.</p></div><button class="all" id="courseBtn">전체 챕터</button></div>
+      <div class="chapter-grid" id="chapterGrid"></div>
+    </section>
+
+    <section class="worlds" id="worlds">
+      <div class="worlds-head"><h2>오늘 배운 단어를<br><span class="accent">기억</span>해볼까요?</h2><p>수집하고, 퀴즈로 확인하고, 나만의 카드도 만듭니다.</p></div>
+      <div class="world-list">
+        <button class="world" data-world="museum"><small>COLLECTION</small><h3>나의 박물관</h3></button>
+        <button class="world" data-world="play"><small>MEMORY PLAY</small><h3>거꾸로 놀이</h3></button>
+        <button class="world" data-world="studio"><small>MY CARD LAB</small><h3>내가 만드는 그림 단어</h3></button>
+      </div>
+    </section>
+
+    <section class="tip">
+      <div><strong>그려지는 순서를 본 뒤 단어를 눌러보세요.</strong><br>영상 학습 → 발음 듣기 → 기억 확인 순서로 진행합니다.</div>
+      <div class="toggle"><span>미리보기 자동재생</span><button class="switch" id="previewToggle" aria-label="미리보기 자동재생 켜짐"><i></i></button></div>
+    </section>
+   </div>
+
+   <section class="detail-view" id="chapterDetail" aria-label="챕터 1 상세">
+    <button class="back" id="backBtn">← 12개 챕터로 돌아가기</button>
+    <div class="section-head"><div><h2>챕터 1 · 세상을 발견하는 순간</h2><p>그려지는 과정과 함께 장면별 핵심 단어 8개를 학습합니다.</p></div><button class="all" id="allBtn">8개 학습</button></div>
+    <div class="shelf" id="shelf"></div>
+   </section>
+   <section class="feature-view" id="featureView" aria-label="놀이 상세">
+    <button class="back" id="featureBack">← 학습 홈으로 돌아가기</button>
+    <div id="featureContent"></div>
+   </section>
+  </main>
+  <div class="notice" id="notice"></div>
+
+  <script src="image-lab-config.js"></script>
+  <script>
+    const works=[
+      {n:'01',title:'고래와 깊은 바다',sub:'광대한 바다의 고래',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',current:true,hasHand:true,words:[['depth','깊이'],['beneath','아래에'],['surface','표면'],['vast','광대한'],['gentle','부드러운'],['emerge','나타나다'],['breathe','숨 쉬다'],['wonder','경이']]},
+      {n:'02',title:'빛을 보내는 등대',sub:'해안을 비추는 길잡이',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',words:[['guide','안내하다'],['distant','먼'],['beam','광선'],['coast','해안'],['direction','방향'],['remain','남아 있다'],['reach','도달하다'],['signal','신호']]},
+      {n:'03',title:'바람을 타는 범선',sub:'수평선을 향한 항해',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['voyage','항해'],['sail','항해하다'],['horizon','수평선'],['current','해류'],['navigate','항해하다'],['aboard','탑승하여'],['beyond','너머'],['journey','여정']]},
+      {n:'04',title:'시간을 품은 콜로세움',sub:'세월이 남긴 건축물',video:'챕터1_완성동영상/scene-ch1-04.mp4',img:'챕터1_완성동영상/scene-ch1-04-poster.jpg',words:[['ancient','고대의'],['structure','구조물'],['remain','남아 있다'],['history','역사'],['civilization','문명'],['preserve','보존하다'],['monument','기념물'],['century','세기']]},
+      {n:'05',title:'밤하늘의 별자리',sub:'별들이 만드는 형태',video:'챕터1_완성동영상/scene-ch1-05.mp4',img:'챕터1_완성동영상/scene-ch1-05-poster.jpg',words:[['constellation','별자리'],['observe','관찰하다'],['universe','우주'],['pattern','형태'],['connect','연결하다'],['shine','빛나다'],['distant','먼'],['imagine','상상하다']]},
+      {n:'06',title:'하늘을 물들이는 오로라',sub:'대기에 펼쳐지는 빛',video:'챕터1_완성동영상/scene-ch1-06.mp4',img:'챕터1_완성동영상/scene-ch1-06-poster.jpg',words:[['aurora','오로라'],['atmosphere','대기'],['glow','빛나다'],['northern','북쪽의'],['appear','나타나다'],['wave','물결치다'],['brilliant','찬란한'],['phenomenon','현상']]},
+      {n:'07',title:'구름 위의 열기구',sub:'높이 오르며 보는 풍경',video:'챕터1_완성동영상/scene-ch1-07.mp4',img:'챕터1_완성동영상/scene-ch1-07-poster.jpg',words:[['ascend','상승하다'],['altitude','고도'],['float','떠다니다'],['landscape','풍경'],['perspective','관점'],['drift','표류하다'],['expand','확장하다'],['overlook','내려다보다']]},
+      {n:'08',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 심해의 생태계',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['coral','산호'],['ecosystem','생태계'],['creature','생물'],['shelter','피난처'],['fragile','연약한'],['underwater','수중의'],['surround','둘러싸다'],['protect','보호하다']]}
+    ];
+    const chapters=[
+      '세상을 발견하는 순간','숲과 생명','우리 집','학교생활','도시와 교통','음식과 건강',
+      '몸과 감정','운동과 도전','여행과 세계','지구와 날씨','우주와 과학','밤과 꿈'
+    ];
+    const chapterNotes=[
+      '바다에서 시작하는 첫 발견','생명이 이어지는 숲의 질서','일상과 관계가 머무는 곳','배우고 성장하는 하루',
+      '이동하며 만나는 도시','몸을 돌보는 건강한 선택','감정을 이해하는 연습','한계를 넘어서는 도전',
+      '더 넓은 세계로 떠나는 길','변하는 지구와 날씨','질문으로 열어보는 우주','상상과 꿈이 깊어지는 밤'
+    ];
+    // 양피지 지도 속 열두 목적지 좌표입니다. 지도 원화의 금빛 경로 표식과 맞춥니다.
+    const chapterSpots=[[15,24],[26,28],[45,26],[62,28],[84,30],[23,54],[45,56],[62,56],[85,63],[17,87],[45,89],[70,90]];
+    const chapterGrid=document.getElementById('chapterGrid');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${i===0?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>${String(i+1).padStart(2,'0')}</small>${i===0?'':'<i class="key" aria-hidden="true"></i>'}<h3>${name}</h3></button>`).join('');
+    const shelf=document.getElementById('shelf');
+    shelf.innerHTML=works.map((w,i)=>`<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${i}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · 8 WORDS</small><h3>${w.title}</h3><p>${w.sub}</p></div></button>`).join('');
+
+
+    const viewer=document.getElementById('viewer'),mainVideo=document.getElementById('mainVideo'),mainPoster=document.getElementById('mainPoster'),playBtn=document.getElementById('playBtn'),speedBtn=document.getElementById('speedBtn'),resumeBtn=document.getElementById('resumeBtn'),soundBtn=document.getElementById('soundBtn'),fill=document.getElementById('timelineFill'),timeText=document.getElementById('timeText'),wordList=document.getElementById('wordList'),wordOverlay=document.getElementById('wordOverlay');
+    // 그림에서 직접 가리킬 수 있는 단어만 화면 위에 둡니다.
+    // 나머지는 문맥이 필요한 관련어이므로 그림 아래에서 별도로 설명합니다.
+    const labelIndexes=[[0,2,5,6],[2,3,4,7],[1,2,3,4],[0,1,6,7],[0,2,3,6],[0,1,6,7],[0,1,3,4],[0,1,2,3]];
+    // 같은 영상으로 두 난이도를 제공합니다. LEVEL 1은 장면을 바로 읽는 구체어,
+    // LEVEL 2는 현재 선별한 중등형 확장 어휘입니다.
+    const levelOneWords=[
+      [['whale','고래'],['ocean','바다'],['surface','수면'],['tail','꼬리'],['fin','지느러미'],['swim','헤엄치다'],['breathe','숨 쉬다'],['deep','깊은']],
+      [['lighthouse','등대'],['light','빛'],['beam','광선'],['coast','해안'],['rock','바위'],['sea','바다'],['guide','안내하다'],['signal','신호']],
+      [['ship','배'],['sail','돛'],['mast','돛대'],['anchor','닻'],['wave','파도'],['wind','바람'],['ocean','바다'],['voyage','항해']],
+      [['colosseum','콜로세움'],['arch','아치'],['stone','돌'],['wall','벽'],['building','건축물'],['ancient','고대의'],['history','역사'],['Rome','로마']],
+      [['telescope','망원경'],['star','별'],['moon','달'],['sky','하늘'],['night','밤'],['constellation','별자리'],['observe','관찰하다'],['distant','먼']],
+      [['aurora','오로라'],['sky','하늘'],['light','빛'],['forest','숲'],['snow','눈'],['northern','북쪽의'],['glow','빛나다'],['wave','물결치다']],
+      [['balloon','열기구'],['basket','바구니'],['cloud','구름'],['sky','하늘'],['rise','오르다'],['float','떠다니다'],['wind','바람'],['landscape','풍경']],
+      [['coral','산호'],['ocean','바다'],['reef','암초'],['creature','생물'],['shelter','피난처'],['underwater','수중의'],['deep','깊은'],['protect','보호하다']]
+    ];
+    // 사용자가 직접 만든 카드는 브라우저에 보관합니다. 시연 단계에서는 서버 비용 없이
+    // 계정당 최대 10장 흐름을 확인하고, 추후 로그인 DB 저장으로 교체할 수 있습니다.
+    const CUSTOM_CARD_KEY='inkword-custom-cards-v1';
+    const CUSTOM_CARD_LIMIT=10;
+    let currentGeneratedCard=null;
+    function readCustomCards(){
+      try{return JSON.parse(localStorage.getItem(CUSTOM_CARD_KEY)||'[]')}catch{return []}
+    }
+    function writeCustomCards(cards){localStorage.setItem(CUSTOM_CARD_KEY,JSON.stringify(cards))}
+    function escapeHtml(value=''){return String(value).replace(/[&<>"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]))}
+    function findKnownWord(rawWord){
+      const query=rawWord.trim().toLowerCase();
+      for(let i=0;i<works.length;i+=1){
+        const match=[...(levelOneWords[i]||[]),...(works[i].words||[])].find(([word])=>word.toLowerCase()===query);
+        if(match)return{work:works[i],word:match[0].toLowerCase(),meaning:match[1]};
+      }
+      return null;
+    }
+    function extractGeneratedImage(result){
+      const item=result?.data?.[0];
+      if(typeof item==='string')return item;
+      return item?.url||item?.path||item?.image?.url||'';
+    }
+    function renderMuseumContent(){
+      const customCards=readCustomCards();
+      const customSection=customCards.length
+        ?`<section class="custom-museum"><div class="custom-museum-head"><h2>내가 만든 그림 단어</h2><span>${customCards.length} / ${CUSTOM_CARD_LIMIT}</span></div><div class="museum-grid">${customCards.map(card=>`<article class="museum-card custom-card"><img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.word)} 학습 카드"><h3>${escapeHtml(card.word)}</h3><p>${escapeHtml(card.meaning||card.style)}</p><button class="delete-card" type="button" data-card-id="${escapeHtml(card.id)}">삭제</button></article>`).join('')}</div></section>`
+        :`<section class="custom-museum empty"><div class="custom-museum-head"><h2>내가 만든 그림 단어</h2><span>0 / ${CUSTOM_CARD_LIMIT}</span></div><p>단어를 직접 만들어 저장하면 이곳에 전시됩니다.</p></section>`;
+      const learnedCards=works.map((work,index)=>index<completedSceneCount
+        ?`<article class="museum-card"><img src="${work.img}" alt="${work.title}"><h3>${work.title}</h3><p>${work.sub}</p></article>`
+        :`<article class="museum-card back" aria-label="아직 수집하지 않은 ${index+1}번 카드"><div class="museum-seal"><b>${['I','II','III','IV','V','VI','VII','VIII'][index]}</b></div><p>학습하면 열리는 카드</p></article>`).join('');
+      return `<div class="feature-intro"><h1>나의 박물관</h1><p>학습한 카드와 직접 만든 카드를 한곳에 모아요.</p></div>${customSection}<section class="learned-museum"><div class="custom-museum-head"><h2>챕터 1 학습 카드</h2><span>${completedSceneCount} / 8</span></div><div class="museum-grid">${learnedCards}</div></section>`;
+    }
+    function setupMuseum(){
+      document.querySelectorAll('.delete-card').forEach(button=>button.onclick=()=>{
+        writeCustomCards(readCustomCards().filter(card=>card.id!==button.dataset.cardId));
+        featureContent.innerHTML=renderMuseumContent();setupMuseum();notify('카드를 박물관에서 꺼냈습니다.');
+      });
+    }
+    // LEVEL 2: 긴 확장어가 서로 붙거나 화면 밖으로 잘리지 않도록 흰 여백에 분산했습니다.
+    const sceneSpots=[
+      [[18,78],[51,13],[82,27],[61,57]],
+      [[19,27],[18,78],[77,45],[84,24]],
+      [[50,18],[78,56],[18,75],[54,70]],
+      [[25,17],[39,47],[78,76],[77,34]],
+      [[50,16],[76,19],[78,62],[21,25]],
+      [[50,15],[18,26],[76,35],[82,75]],
+      [[50,14],[50,67],[18,71],[79,68]],
+      [[17,71],[51,76],[77,25],[77,72]]
+    ];
+    // LEVEL 1은 단어가 가리키는 대상 가까이의 흰 여백을 사용합니다.
+    // 특히 고래의 tail은 꼬리 옆, surface는 수면 위에 고정합니다.
+    const levelOneSpots=[
+      [[65,43],[79,79],[51,12],[15,43]],
+      [[55,40],[49,15],[18,27],[19,79]],
+      [[49,48],[66,19],[38,29],[76,58]],
+      [[48,15],[38,48],[20,78],[76,40]],
+      [[42,51],[25,17],[75,22],[84,61]],
+      [[50,15],[84,14],[72,38],[50,79]],
+      [[50,24],[49,72],[17,60],[84,18]],
+      [[16,70],[83,14],[78,72],[53,32]]
+    ];
+    // 랜딩의 콜로세움 단어와 동일한 음성 규칙입니다.
+    // 브라우저 내장 음성을 사용하므로 별도 TTS API 비용은 들지 않습니다.
+    const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    let speechUnlocked=false,lastSpokenWord='',lastSpokenAt=0;
+    function unlockTTS(){
+      if(speechUnlocked||!('speechSynthesis' in window))return;
+      speechSynthesis.speak(new SpeechSynthesisUtterance(''));
+      speechUnlocked=true;
+      window.removeEventListener('pointerdown',unlockTTS);
+      window.removeEventListener('touchstart',unlockTTS);
+    }
+    window.addEventListener('pointerdown',unlockTTS,{passive:true});
+    window.addEventListener('touchstart',unlockTTS,{passive:true});
+    if('speechSynthesis' in window){
+      speechSynthesis.getVoices();
+      speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
+    }
+    function getBestVoice(){
+      const voices=speechSynthesis.getVoices();
+      return voices.find(v=>v.name.includes('Samantha'))
+        ||voices.find(v=>v.name.includes('Google US English'))
+        ||voices.find(v=>v.name.includes('Aria'))
+        ||voices.find(v=>v.lang==='en-US')
+        ||voices.find(v=>v.lang.startsWith('en'))
+        ||null;
+    }
+    function speakWord(word,button){
+      if(!('speechSynthesis' in window)){notify('이 브라우저에서는 음성 재생을 지원하지 않습니다.');return}
+      const now=Date.now();
+      if(word===lastSpokenWord&&now-lastSpokenAt<450)return;
+      lastSpokenWord=word;lastSpokenAt=now;
+      document.querySelectorAll('.scene-word,.word').forEach(x=>x.classList.remove('speaking'));
+      const utterance=new SpeechSynthesisUtterance(word);
+      utterance.lang='en-US';utterance.rate=1;utterance.pitch=1.05;utterance.voice=getBestVoice();
+      button.classList.add('speaking');
+      utterance.onend=utterance.onerror=()=>button.classList.remove('speaking');
+      // iOS만 취소 후 짧게 기다립니다. 다른 기기에서는 cancel/speak 충돌로 음성이 사라질 수 있습니다.
+      if(isIOS){speechSynthesis.cancel();setTimeout(()=>speechSynthesis.speak(utterance),50)}
+      else speechSynthesis.speak(utterance);
+    }
+    let wordLevel=1;
+    function currentWords(work){const i=works.indexOf(work);return wordLevel===1?levelOneWords[i]:work.words}
+    function renderWords(work){
+      const sceneIndex=works.indexOf(work),allWords=currentWords(work);
+      const indexes=wordLevel===1?[0,1,2,3]:labelIndexes[sceneIndex];
+      const spots=wordLevel===1?levelOneSpots[sceneIndex]:sceneSpots[sceneIndex];
+      wordOverlay.innerHTML=indexes.map((wordIndex,i)=>{
+        const [en,ko]=allWords[wordIndex];
+        // 긴 영단어는 자동 축소해 이웃 단어와 합쳐 보이거나 화면 밖으로 잘리는 것을 막습니다.
+        const lengthClass=en.length>=12?'very-long-word':en.length>=9?'long-word':'';
+        return `<button class="scene-word visible ${lengthClass}" type="button" data-word="${en}" data-reveal="${i}" style="left:${spots[i][0]}%;top:${spots[i][1]}%" aria-label="${en}, ${ko}, 발음 듣기">${en}<span>${ko}</span></button>`
+      }).join('');
+      wordOverlay.querySelectorAll('.scene-word').forEach(button=>{
+        button.onclick=()=>speakWord(button.dataset.word,button);
+        // PC에서는 콜로세움처럼 마우스를 올리기만 해도 발음을 들려줍니다.
+        button.onmouseenter=()=>{if(matchMedia('(hover:hover)').matches)speakWord(button.dataset.word,button)};
+      });
+      // 선택한 LEVEL의 전체 단어를 탭 바로 아래에 표시합니다.
+      wordList.innerHTML=allWords.map(([en,ko])=>`<button class="word" type="button" data-word="${en}" aria-label="${en}, ${ko}, 발음 듣기"><strong>${en}</strong><em>${ko}</em></button>`).join('');
+      wordList.querySelectorAll('.word').forEach(button=>{button.onclick=()=>speakWord(button.dataset.word,button);button.onmouseenter=()=>{if(matchMedia('(hover:hover)').matches)speakWord(button.dataset.word,button)}});
+    }
+    let activeWork=works[0];renderWords(activeWork);
+    const playbackRates=[1,1.5,2];let playbackRateIndex=0;
+    speedBtn.onclick=()=>{
+      playbackRateIndex=(playbackRateIndex+1)%playbackRates.length;
+      const rate=playbackRates[playbackRateIndex];
+      mainVideo.playbackRate=rate;
+      speedBtn.textContent=`${rate}×`;
+      speedBtn.setAttribute('aria-label',`재생 속도 ${rate}배`);
+      notify(`재생 속도를 ${rate}배로 바꿨습니다.`);
+    };
+    document.querySelectorAll('.level-switch button').forEach(button=>button.onclick=()=>{
+      wordLevel=Number(button.dataset.level);
+      document.querySelectorAll('.level-switch button').forEach(x=>x.classList.toggle('active',x===button));
+      document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';
+      renderWords(activeWork);
+    });
+    function playMain(){viewer.classList.add('playing');wordOverlay.querySelectorAll('.scene-word').forEach(x=>x.classList.remove('visible'));mainVideo.play();playBtn.textContent='Ⅱ';resumeBtn.textContent='잠시 멈추기'}
+    function pauseMain(){mainVideo.pause();playBtn.textContent='▶';resumeBtn.textContent='학습 시작'}
+    function toggleMain(){mainVideo.paused?playMain():pauseMain()}
+    playBtn.onclick=toggleMain;resumeBtn.onclick=toggleMain;mainVideo.onclick=toggleMain;
+    mainVideo.ontimeupdate=()=>{const d=mainVideo.duration||1,p=mainVideo.currentTime/d*100;fill.style.width=p+'%';const s=Math.floor(mainVideo.currentTime);timeText.textContent='00:'+String(s).padStart(2,'0');const reveal=Math.max(0,Math.min(4,Math.floor((p-48)/11)+1));wordOverlay.querySelectorAll('.scene-word').forEach((x,i)=>x.classList.toggle('visible',i<reveal))};
+    mainVideo.onended=()=>{
+      viewer.classList.remove('playing');
+      wordOverlay.querySelectorAll('.scene-word').forEach(x=>x.classList.add('visible'));
+      pauseMain();
+      // 실제 로그인 계정에 장면 완료와 현재 단계 단어를 기록합니다.
+      const sceneId=`ch1-${String(activeWork.n).padStart(2,'0')}`;
+      const wordIds=currentWords(activeWork).map(([word])=>`${sceneId}-${word.toLowerCase()}`);
+      window.parent.postMessage({type:'inkword:scene-complete',sceneId,wordIds},location.origin);
+    };
+    soundBtn.onclick=()=>{const firstButton=wordOverlay.querySelector('.scene-word');if(firstButton)speakWord(firstButton.dataset.word,firstButton)};
+
+    let previews=true;
+    // 로그인 계정에서 불러온 챕터 1 완료 장면 수입니다.
+    let completedSceneCount=0;
+    document.querySelectorAll('.work').forEach(el=>{
+      const w=works[Number(el.dataset.index)],pv=el.querySelector('video');
+      el.onmouseenter=()=>{if(previews&&!w.locked&&matchMedia('(hover:hover)').matches)pv.play().catch(()=>{})};
+      el.onmouseleave=()=>{pv.pause();pv.currentTime=0};
+      el.onclick=()=>{if(w.locked){notify('앞 챕터를 완주하면 학습할 수 있습니다.');return}document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));el.classList.add('current');activeWork=w;mainVideo.pause();mainVideo.src=w.video;mainVideo.load();mainVideo.playbackRate=playbackRates[playbackRateIndex];mainPoster.src=w.img;mainPoster.alt=`${w.title} 학습 영상 대표 화면`;document.getElementById('nowLabel').textContent=`LEARNING · ${w.n}`;document.getElementById('mainTitle').textContent=w.title;document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';renderWords(w);viewer.classList.remove('playing');pauseMain();scrollTo({top:80,behavior:'smooth'})};
+    });
+    document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.currentTarget.classList.toggle('off',!previews);e.currentTarget.setAttribute('aria-label',`미리보기 자동재생 ${previews?'켜짐':'꺼짐'}`);notify(`미리보기 자동재생을 ${previews?'켰습니다.':'껐습니다.'}`)};
+    const homeView=document.getElementById('homeView'),chapterDetail=document.getElementById('chapterDetail');
+    const welcomeEl=document.querySelector('.welcome'),viewerLayout=document.querySelector('.viewer-layout'),homePlayerAnchor=document.getElementById('homePlayerAnchor');
+    const navButtons=[...document.querySelectorAll('.nav button')];
+    function activateNav(id){navButtons.forEach(button=>button.classList.toggle('active',button.id===id))}
+    function showLearningHome(){
+      featureView.classList.remove('active');
+      if(chapterDetail.classList.contains('active'))leaveChapter();
+      homeView.classList.remove('hidden');activateNav('learnNav');scrollTo({top:0,behavior:'smooth'});
+    }
+    function enterChapter(){activateNav('learnNav');homeView.classList.add('hidden');chapterDetail.classList.add('active');chapterDetail.insertBefore(viewerLayout,chapterDetail.children[1]);chapterDetail.insertBefore(welcomeEl,viewerLayout);scrollTo({top:0,behavior:'smooth'})}
+    function leaveChapter(){homePlayerAnchor.after(welcomeEl,viewerLayout);chapterDetail.classList.remove('active');homeView.classList.remove('hidden');setTimeout(()=>document.getElementById('chapterMap').scrollIntoView({behavior:'smooth'}),20)}
+    document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{Number(card.dataset.chapter)===1?enterChapter():notify(`${card.querySelector('h3').textContent} 챕터는 아직 열쇠가 필요합니다.`)});
+    document.getElementById('progressEnter').onclick=enterChapter;
+    document.getElementById('backBtn').onclick=leaveChapter;
+    document.getElementById('learnNav').onclick=showLearningHome;
+    document.getElementById('mapNav').onclick=()=>{featureView.classList.remove('active');if(chapterDetail.classList.contains('active'))leaveChapter();homeView.classList.remove('hidden');activateNav('mapNav');setTimeout(()=>document.getElementById('chapterMap').scrollIntoView({behavior:'smooth'}),20)};
+    const featureView=document.getElementById('featureView'),featureContent=document.getElementById('featureContent');
+    function openFeature(type){
+      if(chapterDetail.classList.contains('active'))leaveChapter();
+      homeView.classList.add('hidden');featureView.classList.add('active');
+      activateNav(type==='museum'?'museumNav':type==='studio'?'studioNav':'playNav');
+      if(type==='museum')featureContent.innerHTML=renderMuseumContent();
+      if(type==='studio')featureContent.innerHTML=`<div class="feature-intro"><h1>내가 만드는 그림 단어</h1><p>떠올린 장면을 적어 나만의 학습 카드로 만듭니다.</p></div><div class="studio-layout"><div class="generate-preview" id="generatePreview"><div class="generate-empty"><strong>어떤 장면을 만들까요?</strong>단어와 원하는 장면을 적으면<br>새 그림을 직접 생성합니다.</div></div><aside class="studio-side"><label for="generateWord">영어 단어</label><input class="word-input" id="generateWord" value="whale" placeholder="예: whale"><label for="generateMeaning">한글 뜻</label><input class="word-input meaning-input" id="generateMeaning" value="고래" placeholder="예: 고래"><label for="generateScene">만들고 싶은 장면</label><textarea class="word-input" id="generateScene" rows="4" placeholder="예: 달빛이 비치는 깊은 바다를 유영하는 고래. 주변에는 작은 기포와 멀리 산호 협곡이 보이게."></textarea><label class="style-label">그림 스타일</label><div class="style-options"><button class="style-option selected">세밀 수채화</button><button class="style-option">잉크 드로잉</button><button class="style-option">빈티지 도감</button><button class="style-option">밝은 파스텔</button></div><p class="studio-quota" id="studioQuota"></p><p class="studio-connection" id="studioConnection"></p><div class="studio-actions"><button class="primary" id="generateBtn">새 그림 만들기</button></div><button class="save-generated" id="saveGenerated" disabled>박물관에 저장</button><p class="studio-status" id="studioStatus" aria-live="polite"></p><p class="studio-note">같은 단어도 장면 설명에 따라 전혀 다른 카드가 만들어집니다.</p></aside></div>`;
+      if(type==='play')featureContent.innerHTML=`<div class="feature-intro"><h1>거꾸로 놀이</h1><p>사라진 그림을 단어로 되찾아보세요.</p></div><div class="memory-layout"><div class="memory-stage" id="memoryStage"><img src="${works[0].img}" alt="네 부분이 가려진 고래 그림"></div><aside class="memory-side"><div class="now-label" id="memoryRound">0 / 4</div><h2>네 단어를 모두 돌려놓으세요.</h2><p>단어 카드를 그림 속 알맞은 물음표로 끌어다 놓으세요.</p><div class="memory-choices" id="memoryChoices"></div><button class="memory-retry" id="memoryRetry" type="button">처음부터 다시</button></aside></div>`;
+      scrollTo({top:0,behavior:'smooth'});if(type==='museum')setupMuseum();if(type==='studio')setupGenerator();if(type==='play')setupQuiz();
+    }
+    function closeFeature(){featureView.classList.remove('active');homeView.classList.remove('hidden');activateNav('learnNav');scrollTo({top:document.getElementById('worlds').offsetTop-80,behavior:'smooth'})}
+    function setupQuiz(){
+      const targets=[
+        {word:'tail',ko:'꼬리',box:[2.5,31,25,42],answer:[16,34]},
+        {word:'fin',ko:'지느러미',box:[39,52,24,31],answer:[51,57]},
+        // 학습 화면에서 보았던 단어 위치와 퀴즈의 정답 위치를 똑같이 유지합니다.
+        {word:'eye',ko:'눈',box:[70,19,16,17],answer:[78,17]},
+        {word:'blowhole',ko:'숨구멍',box:[80,34,10,16],answer:[85,31]}
+      ];
+      const stage=document.getElementById('memoryStage'),choiceBox=document.getElementById('memoryChoices'),roundText=document.getElementById('memoryRound'),reset=document.getElementById('memoryRetry');let completed=0,selectedButton=null;
+      stage.insertAdjacentHTML('beforeend',targets.map((target,i)=>`<div class="memory-hole" data-target="${target.word}" id="memoryHole${i}" aria-label="${target.ko} 단어를 놓는 자리" style="left:${target.box[0]}%;top:${target.box[1]}%;width:${target.box[2]}%;height:${target.box[3]}%">?</div><div class="memory-answer" id="memoryAnswer${i}" style="left:${target.answer[0]}%;top:${target.answer[1]}%">${target.word}</div>`).join(''));
+      choiceBox.innerHTML=targets.map(target=>`<button class="memory-choice" type="button" draggable="true" data-word="${target.word}">${target.word.toUpperCase()}</button>`).join('');
+      const holes=[...stage.querySelectorAll('.memory-hole')],buttons=[...choiceBox.querySelectorAll('.memory-choice')];
+      function placeWord(button,hole){
+        if(!button||!hole||button.disabled)return;
+        if(button.dataset.word!==hole.dataset.target){button.classList.add('wrong');setTimeout(()=>button.classList.remove('wrong'),600);notify('다른 자리예요. 그림을 다시 살펴보세요.');return}
+        const index=targets.findIndex(target=>target.word===button.dataset.word);button.disabled=true;button.classList.add('correct');hole.classList.add('restored');document.getElementById(`memoryAnswer${index}`).classList.add('show');completed+=1;roundText.textContent=`${completed} / ${targets.length}`;speakWord(button.dataset.word,button);notify(`${button.dataset.word}을 제자리에 돌려놓았어요.`);selectedButton=null;
+        if(completed===targets.length){reset.classList.add('show');notify('네 단어를 모두 되찾았습니다!')}
+      }
+      holes.forEach(hole=>{
+        hole.ondragover=e=>{e.preventDefault();hole.classList.add('drop-ready')};hole.ondragleave=()=>hole.classList.remove('drop-ready');
+        hole.ondrop=e=>{e.preventDefault();hole.classList.remove('drop-ready');placeWord(choiceBox.querySelector(`[data-word="${e.dataTransfer.getData('text/plain')}"]`),hole)};
+        hole.onclick=()=>{if(selectedButton)placeWord(selectedButton,hole)};
+      });
+      buttons.forEach(button=>{
+        button.onclick=()=>{selectedButton=button;buttons.forEach(x=>x.classList.toggle('dragging',x===button));notify('이제 그림 속 물음표를 눌러보세요.')};
+        button.ondragstart=e=>{e.dataTransfer.setData('text/plain',button.dataset.word);button.classList.add('dragging')};button.ondragend=()=>{button.classList.remove('dragging');holes.forEach(hole=>hole.classList.remove('drop-ready'))};
+        button.onpointerdown=e=>{button.classList.add('dragging');button.dataset.startX=e.clientX;button.dataset.startY=e.clientY;button.setPointerCapture?.(e.pointerId)};
+        button.onpointermove=e=>{if(!button.classList.contains('dragging'))return;button.style.transform=`translate(${e.clientX-Number(button.dataset.startX)}px,${e.clientY-Number(button.dataset.startY)}px) scale(.97)`};
+        button.onpointerup=e=>{button.classList.remove('dragging');button.style.transform='';const hole=holes.find(target=>{const rect=target.getBoundingClientRect();return e.clientX>=rect.left&&e.clientX<=rect.right&&e.clientY>=rect.top&&e.clientY<=rect.bottom});if(hole)placeWord(button,hole)};
+      });
+      reset.onclick=()=>setupQuizReset();
+      function setupQuizReset(){openFeature('play')}
+    }
+    function setupGenerator(){
+      let style='세밀 수채화';currentGeneratedCard=null;
+      const preview=document.getElementById('generatePreview'),generateButton=document.getElementById('generateBtn'),saveButton=document.getElementById('saveGenerated'),wordInput=document.getElementById('generateWord'),meaningInput=document.getElementById('generateMeaning'),sceneInput=document.getElementById('generateScene'),status=document.getElementById('studioStatus'),quota=document.getElementById('studioQuota'),connection=document.getElementById('studioConnection');
+      const config=window.INKWORD_IMAGE_LAB||{};
+      const monthKey=new Date().toISOString().slice(0,7),usageKey=`inkword.imageLab.${monthKey}`;
+      const readUsage=()=>Number(localStorage.getItem(usageKey)||0);
+      const updateQuota=()=>{quota.textContent=`이번 달 생성 ${readUsage()} / ${CUSTOM_CARD_LIMIT}장 · 박물관 저장 ${readCustomCards().length}장`;connection.textContent=config.space?'이미지 연구실 연결됨':'이미지 연구실 연결 대기';connection.classList.toggle('connected',Boolean(config.space))};updateQuota();
+      document.querySelectorAll('.style-option').forEach(button=>button.onclick=()=>{document.querySelectorAll('.style-option').forEach(item=>item.classList.remove('selected'));button.classList.add('selected');style=button.textContent});
+      wordInput.oninput=()=>{const known=findKnownWord(wordInput.value);if(known)meaningInput.value=known.meaning};
+      generateButton.onclick=async()=>{
+        const word=wordInput.value.trim().toLowerCase(),known=findKnownWord(word),scene=sceneInput.value.trim();
+        // 챕터에 등록된 단어는 사용자가 뜻을 지웠더라도 검증된 뜻을 다시 채웁니다.
+        // 영어 단어와 엉뚱한 한글 뜻이 한 카드에 저장되는 실수를 막기 위한 안전장치입니다.
+        let meaning=meaningInput.value.trim();
+        if(known){meaning=known.meaning;meaningInput.value=known.meaning}
+        if(!word){notify('학습할 영어 단어를 입력해주세요.');wordInput.focus();return}
+        if(!scene){notify('만들고 싶은 장면을 한 문장으로 적어주세요.');sceneInput.focus();return}
+        if(readUsage()>=CUSTOM_CARD_LIMIT){notify('이번 달 새 그림 10장을 모두 만들었습니다.');return}
+        currentGeneratedCard=null;saveButton.disabled=true;saveButton.classList.remove('show');generateButton.disabled=true;generateButton.textContent='학습 카드를 만드는 중…';status.textContent='';preview.innerHTML='<div class="generate-empty"><strong>카드를 준비하고 있어요…</strong>잠시만 기다려주세요.</div>';
+        if(!config.space){
+          preview.innerHTML='<div class="generate-empty"><strong>화면 준비는 끝났습니다.</strong>자체 이미지 연구실 주소를 연결하면<br>이 장면으로 새 그림이 만들어집니다.</div>';generateButton.disabled=false;generateButton.textContent='새 그림 만들기';status.textContent='기존 그림을 대신 보여주지 않습니다. 생성 서버 연결이 필요합니다.';return;
+        }
+        try{
+          const {Client}=await import('https://cdn.jsdelivr.net/npm/@gradio/client/+esm');
+          const client=await Client.connect(config.space);let result;
+          try{result=await client.predict(config.apiName||'/generate_card',{word,meaning,scene,style})}catch{result=await client.predict(config.apiName||'/generate_card',[word,meaning,scene,style])}
+          const image=extractGeneratedImage(result);if(!image)throw new Error('생성 결과에 이미지가 없습니다.');
+          localStorage.setItem(usageKey,String(readUsage()+1));updateQuota();currentGeneratedCard={id:`card-${Date.now()}`,word,meaning,scene,style,image,createdAt:new Date().toISOString()};preview.innerHTML=`<img src="${escapeHtml(image)}" alt="${escapeHtml(word)} 학습 카드"><div class="generated-caption"><strong>${escapeHtml(word)}</strong><span>${escapeHtml(meaning)}</span></div>`;saveButton.disabled=false;saveButton.classList.add('show');status.textContent='원하는 장면으로 새 그림 단어를 만들었습니다.';
+        }catch(error){preview.innerHTML='<div class="generate-empty"><strong>지금은 이미지를 만들 수 없습니다.</strong>잠시 후 다시 시도해주세요.</div>';status.textContent=`이미지 연구실 연결 오류: ${error.message}`}
+        finally{generateButton.disabled=false;generateButton.textContent='다시 만들기'}
+      };
+      saveButton.onclick=()=>{
+        if(!currentGeneratedCard)return;const cards=readCustomCards(),sameIndex=cards.findIndex(card=>card.word===currentGeneratedCard.word);
+        if(sameIndex<0&&cards.length>=CUSTOM_CARD_LIMIT){notify('박물관에는 최대 10장까지 저장할 수 있어요.');return}
+        if(sameIndex>=0)cards.splice(sameIndex,1);cards.unshift(currentGeneratedCard);writeCustomCards(cards.slice(0,CUSTOM_CARD_LIMIT));updateQuota();saveButton.disabled=true;status.textContent='나의 박물관에 저장했습니다.';notify(`${currentGeneratedCard.word} 카드를 박물관에 저장했습니다.`);
+      };
+    }
+    document.getElementById('featureBack').onclick=closeFeature;
+    document.getElementById('museumNav').onclick=()=>openFeature('museum');
+    document.getElementById('studioNav').onclick=()=>openFeature('studio');
+    document.getElementById('playNav').onclick=()=>openFeature('play');
+    document.querySelectorAll('[data-world]').forEach(b=>b.onclick=()=>openFeature(b.dataset.world));
+    document.getElementById('allBtn').onclick=()=>notify('챕터 1에는 8개의 단어 학습이 있습니다.');
+    document.getElementById('courseBtn').onclick=()=>notify('12개 챕터를 순서대로 학습합니다.');
+
+    // 부모 React 앱에서 로그인 계정과 실제 학습 기록을 받아 화면에 반영합니다.
+    window.addEventListener('message',event=>{
+      if(event.origin!==location.origin||event.data?.type!=='inkword:init')return;
+      const user=event.data.user||{},progress=event.data.progress||{};
+      const accountName=user.displayName||user.email?.split('@')[0]||'학습자';
+      const accountText=document.querySelector('.account span');
+      const accountMark=document.querySelector('.account-mark');
+      if(accountText)accountText.textContent=`${accountName} 님`;
+      if(accountMark)accountMark.textContent=accountName.slice(0,1).toUpperCase();
+
+      const completedIds=Array.isArray(progress.completedSceneIds)?progress.completedSceneIds:[];
+      completedSceneCount=Math.min(8,completedIds.filter(id=>String(id).startsWith('ch1-')).length);
+      const progressButton=document.getElementById('progressEnter');
+      const progressBar=document.querySelector('.brief-progress .bar i');
+      if(progressButton)progressButton.innerHTML=`챕터 1 · ${completedSceneCount}/8 학습 <b>→</b>`;
+      if(progressBar)progressBar.style.width=`${completedSceneCount/8*100}%`;
+    });
+    function notify(msg){const n=document.getElementById('notice');n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),1900)}
+  </script>
+</body>
+</html>
