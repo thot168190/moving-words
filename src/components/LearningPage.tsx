@@ -66,10 +66,12 @@ export default function LearningPage() {
   }
 
   return (
+    // 정적 학습장 파일을 수정했을 때 브라우저의 이전 캐시가 남지 않도록
+    // 화면 버전을 주소에 함께 표시합니다. 배포 후 즉시 최신 지도를 불러옵니다.
     <iframe
       ref={frameRef}
       title="보는 단어장 실제 학습장"
-      src="/learning/index.html"
+      src="/learning/index.html?v=20260719-2"
       onLoad={sendAccountState}
       className="fixed inset-0 w-full h-full border-0 bg-white"
       allow="autoplay; microphone"
