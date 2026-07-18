@@ -224,7 +224,7 @@
       '더 넓은 세계로 떠나는 길','변하는 지구와 날씨','질문으로 열어보는 우주','상상과 꿈이 깊어지는 밤'
     ];
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
-    const chapterSpots=[[21,22],[12,40],[30,40],[22,59],[46,22],[44,37],[58,42],[50,59],[77,21],[72,37],[86,47],[77,59]];
+    const chapterSpots=[[24.3,25.4],[13.4,44.7],[31.2,44.4],[26.1,70.3],[48.4,22.6],[45.3,41.7],[59.8,48.3],[52.4,70.6],[77.8,20.9],[73.6,38.2],[86.8,50.3],[78.6,70.4]];
     const chapterGrid=document.getElementById('chapterGrid');
     chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${i===0?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${i===0?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
     const shelf=document.getElementById('shelf');
