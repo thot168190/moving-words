@@ -1,7 +1,3 @@
-import gradio as gr
-import torch
-from diffusers import AutoPipelineForText2Image
-
 try:
     import spaces
 except ImportError:
@@ -12,6 +8,10 @@ except ImportError:
             if args and callable(args[0]):
                 return args[0]
             return lambda func: func
+
+import gradio as gr
+import torch
+from diffusers import AutoPipelineForText2Image
 
 
 # 외부 Inference Provider를 다시 호출하지 않고 Space에 배정된 무료 GPU에서 직접 생성합니다.
