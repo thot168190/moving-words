@@ -42,8 +42,8 @@ export const SITE_CONFIG = {
     subtitle: '숫자로 보는 보는 단어장',
     items: [
       { value: '83%', label: '그림 1만 장을 보고도\n기억해낸 비율', note: 'Standing, 1973 —\n그림 기억은 쉽게 지워지지 않습니다' },
-      { value: '12주 완성', label: '교육부 기본 어휘 바탕\n그림으로 그리는 핵심 단어 선별', note: '장면 연상 기법으로\n어휘가 이야기째 장기 기억 각인' },
-      { value: '12주 코스', label: '완성형 월드 코스\n매주 열리는 새로운 챕터', note: '아이의 페이스에 맞춘\n순차 학습 구성' },
+      { value: '평생 소장', label: '교육부 기본 어휘 바탕\n그림으로 그리는 핵심 단어 선별', note: '장면 연상 기법으로\n어휘가 이야기째 장기 기억 각인' },
+      { value: '완성형 코스', label: '완성형 월드 코스\n매 단계 열리는 새로운 챕터', note: '아이의 페이스에 맞춘\n순차 학습 구성' },
     ],
   },
 
@@ -97,6 +97,6 @@ export const SITE_CONFIG = {
       { label: '소개', scrollMultiplier: 1 },
       { label: '외워지는 이유', scrollMultiplier: 2 },
     ],
-    downloadLabel: '12주 코스 신청',
+    downloadLabel: '완성 코스 신청',
   },
 };

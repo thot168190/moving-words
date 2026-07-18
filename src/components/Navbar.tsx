@@ -167,7 +167,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
             >
               <span className="text-white text-[16px]">✏️</span>
               <span className="text-white text-[16px] font-medium">
-                <ScrambleText text="12주 코스 신청" isHovered={downloadHovered} />
+                <ScrambleText text="완성 코스 신청" isHovered={downloadHovered} />
               </span>
             </motion.a>
           </div>

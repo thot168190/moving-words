@@ -105,7 +105,7 @@ export default function App() {
             initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            ✏️ 12주 코스 신청하기 →
+            ✏️ 완성 코스 신청하기 →
           </motion.a>
         </div>
 
@@ -143,7 +143,7 @@ export default function App() {
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            ✏️ 12주 코스 신청하기 →
+            ✏️ 완성 코스 신청하기 →
           </motion.a>
         </motion.div>
       </section>
@@ -169,9 +169,20 @@ export default function App() {
         <style>{`.sw-crawl{transform-origin:50% 100%;animation:sw-crawl 30s linear infinite}@keyframes sw-crawl{0%{transform:rotateX(22deg) translateY(95vh)}100%{transform:rotateX(22deg) translateY(-170%)}}`}</style>
       </section>
 
-      {/* ════════════════ SECTION 3: METRICS ════════════════ */}
+      {/* ════════════════ SECTION 3: INTERACTIVE DEMO & METRICS ════════════════ */}
       <section className="relative overflow-hidden bg-white py-24 sm:py-28">
         <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-center text-[#141414] mb-8" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
+            화면을 직접 터치해 보세요. 단어의 첫 장면이 그려집니다.
+          </h2>
+          <div className="relative mx-auto mt-6 md:mt-10 w-full max-w-[840px] mb-16">
+            <iframe
+              src="/demo.html?embed=true"
+              className="w-full min-h-[290px] xs:min-h-[380px] sm:min-h-[520px] border-3 border-[#1c1c1c] rounded-[18px] shadow-[6px_6px_0_#1c1c1c] transition-all"
+              style={{ background: '#fdfcf7' }}
+              title="실시간 드로잉 단어 학습 시연"
+            />
+          </div>
           <h2 className="text-center text-[#141414] mb-16" style={{ fontFamily: PRET, fontWeight: 800, fontSize: 'clamp(24px, 3.2vw, 36px)', letterSpacing: '-0.01em' }}>
             {metrics.subtitle}
           </h2>
@@ -440,12 +451,12 @@ export default function App() {
               <div className="flex flex-col items-start mb-6">
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-[36px] sm:text-[42px] font-black tracking-tight text-white leading-none">₩9,900</span>
-                  <span className="text-white/70 text-[13px] sm:text-[14px] font-bold">/ 12주 · 매주 새 챕터 · 구독 아님</span>
+                  <span className="text-white/70 text-[13px] sm:text-[14px] font-bold">/ 평생 소장 · 매주 새 챕터 · 구독 아님</span>
                 </div>
               </div>
 
               <h3 className="text-white font-gmarket font-black text-[22px] mb-4">
-                12주 그림 단어 완성 코스
+                그림 단어 완성 코스
               </h3>
               
               <ul className="flex flex-col gap-4 mb-10 flex-1">
@@ -455,7 +466,7 @@ export default function App() {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
-                  <span>12개 챕터 월드 맵과 테마별 장면 제공</span>
+                  <span>전체 챕터 월드 맵과 테마별 장면 제공</span>
                 </li>
                 <li className="flex items-start text-white text-[14px] font-bold">
                   <span className="flex-shrink-0 w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center mr-3 mt-0.5">
