@@ -415,7 +415,7 @@ function LandingPage() {
           <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-4 font-black">More than a wordbook</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10 sm:mb-14">
             <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18]" style={{ fontSize: 'clamp(34px, 5vw, 64px)' }}>
-              보고 끝나는 단어장이<br />아닙니다.
+              배운 단어, 다양한 활동으로<br />더 오래 기억합니다.
             </h2>
             <p className="max-w-md text-[#45665d] text-[18px] sm:text-[21px] font-bold leading-relaxed">
               그림으로 배우고, 게임으로 확인하고,<br className="hidden sm:block" /> 원하는 단어는 AI로 직접 만드세요.
@@ -424,10 +424,10 @@ function LandingPage() {
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
             {[
-              ['01', '움직이는 그림 학습', '그림이 완성되는 과정을 보며 단어의 위치와 장면을 함께 기억합니다.', 'LEARN', '/learning/챕터1_완성동영상/scene-ch1-03-poster.jpg'],
-              ['02', '거꾸로 퀴즈', '사라진 영어 단어를 그림 속 제자리로 돌려놓으며 기억을 게임처럼 확인합니다.', 'PLAY', '/learning/챕터1_완성동영상/scene-ch1-04-poster.jpg'],
-              ['03', '내 단어 AI 그림 생성', '제시된 단어만 배우지 않습니다. 원하는 영어 단어와 장면을 직접 그림 카드로 만듭니다.', 'CREATE', '/learning/챕터1_완성동영상/scene-ch1-05-poster.jpg'],
-              ['04', '나만의 단어 박물관', '배운 카드와 직접 만든 그림 단어를 한곳에 모아 언제든 다시 꺼내봅니다.', 'COLLECT', '/learning/챕터1_완성동영상/scene-ch1-06-poster.jpg'],
+              ['01', '움직이는 그림 학습', '그림이 완성되는 과정을 보며 단어의 위치와 장면을 함께 기억합니다.', 'LEARN', '/feature-cards/sailing.webp'],
+              ['02', '거꾸로 퀴즈', '사라진 영어 단어를 그림 속 제자리로 돌려놓으며 기억을 게임처럼 확인합니다.', 'PLAY', '/feature-cards/treasure.webp'],
+              ['03', '내 단어 AI 그림 생성', '제시된 단어만 배우지 않습니다. 원하는 영어 단어와 장면을 직접 그림 카드로 만듭니다.', 'CREATE', '/feature-cards/fishing.webp'],
+              ['04', '나만의 단어 박물관', '배운 카드와 직접 만든 그림 단어를 한곳에 모아 언제든 다시 꺼내봅니다.', 'COLLECT', '/feature-cards/storm.webp'],
             ].map(([num, title, desc, label, image], index) => (
               <motion.article
                 key={num}
@@ -438,31 +438,31 @@ function LandingPage() {
                 viewport={{ once: true, amount: 0.2 }}
               >
                 <div className="relative aspect-[16/8.5] overflow-hidden bg-[#edf5f1]">
-                  <img src={image} alt={`${title} 실제 화면`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <img src={image} alt={`${title} 실제 화면`} className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#062f26]/45 via-transparent to-transparent" />
                   {index === 0 && (
                     <div className="absolute inset-0">
                       <span className="absolute left-[13%] top-[28%] text-[#07533f] text-[20px] sm:text-[28px] font-black [text-shadow:0_2px_8px_white]">sail</span>
-                      <span className="absolute right-[13%] bottom-[22%] text-[#07533f] text-[18px] sm:text-[25px] font-black [text-shadow:0_2px_8px_white]">voyage</span>
+                      <span className="absolute right-[13%] bottom-[22%] text-[#07533f] text-[18px] sm:text-[25px] font-black [text-shadow:0_2px_8px_white]">anchor</span>
                     </div>
                   )}
                   {index === 1 && (
                     <div className="absolute inset-0">
                       <span className="absolute left-[16%] top-[35%] grid h-12 w-12 place-items-center rounded-full bg-white text-[#07533f] text-2xl font-black shadow-lg">?</span>
                       <div className="absolute inset-x-4 bottom-4 flex gap-2">
-                        {['arch', 'stone', 'arena'].map((word) => <span key={word} className="rounded-full bg-white px-3 py-1.5 text-[13px] sm:text-[15px] font-black text-[#07533f] shadow">{word}</span>)}
+                        {['treasure', 'coin', 'key'].map((word) => <span key={word} className="rounded-full bg-white px-3 py-1.5 text-[13px] sm:text-[15px] font-black text-[#07533f] shadow">{word}</span>)}
                       </div>
                     </div>
                   )}
                   {index === 2 && (
                     <div className="absolute inset-x-5 bottom-4 rounded-xl bg-white/95 p-3 shadow-lg backdrop-blur">
-                      <span className="block text-[#07533f] text-[18px] sm:text-[22px] font-black">constellation · 별자리</span>
+                      <span className="block text-[#07533f] text-[18px] sm:text-[22px] font-black">fishing · 낚시</span>
                       <span className="text-[#527067] text-[12px] sm:text-[14px] font-bold">내가 원하는 장면으로 AI 그림 생성 중…</span>
                     </div>
                   )}
                   {index === 3 && (
                     <div className="absolute inset-x-4 bottom-4 grid grid-cols-3 gap-2">
-                      {['aurora', 'forest', 'winter'].map((word) => <span key={word} className="rounded-lg border border-white/60 bg-white/95 px-2 py-3 text-center text-[13px] sm:text-[16px] font-black text-[#07533f] shadow">{word}</span>)}
+                      {['storm', 'wave', 'lightning'].map((word) => <span key={word} className="rounded-lg border border-white/60 bg-white/95 px-2 py-3 text-center text-[13px] sm:text-[16px] font-black text-[#07533f] shadow">{word}</span>)}
                     </div>
                   )}
                 </div>
