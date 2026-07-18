@@ -71,7 +71,7 @@ export default function LearningPage() {
     <iframe
       ref={frameRef}
       title="보는 단어장 실제 학습장"
-      src="/learning/index.html?v=20260719-6"
+      src="/learning/index.html?v=20260719-7"
       onLoad={sendAccountState}
       className="fixed inset-0 w-full h-full border-0 bg-white"
       allow="autoplay; microphone"
