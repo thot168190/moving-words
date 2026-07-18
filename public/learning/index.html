@@ -103,8 +103,9 @@
       .welcome>*{min-width:0}
       .welcome{margin-bottom:18px}
       .welcome h1{font-size:clamp(32px,3vw,46px);line-height:1.06}
-      .viewer-layout{grid-template-columns:minmax(0,1fr) minmax(300px,340px);gap:clamp(18px,2vw,26px)}
-      .viewer,.now{min-width:0}
+      .viewer-layout{grid-template-columns:minmax(0,calc(100% - 366px)) 340px;gap:26px;isolation:isolate}
+      .viewer{width:100%;max-width:100%;min-width:0;z-index:0}
+      .now{position:relative;width:100%;min-width:0;padding-left:18px!important;background:#fff;z-index:5}
       .scene-word{font-size:clamp(22px,1.9vw,33px);-webkit-text-stroke:5px rgba(255,255,255,.96)}
       .scene-word.long-word{font-size:clamp(20px,1.7vw,29px)}
       .scene-word.very-long-word{font-size:clamp(17px,1.45vw,24px)}
