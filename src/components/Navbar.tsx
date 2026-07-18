@@ -273,15 +273,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
               </motion.button>
             )}
 
-            {/* Download button */}
-            <motion.a
-              href="/demo.html"
-              className="h-9 px-3.5 bg-white rounded-full flex items-center gap-1.5 cursor-pointer border-none shrink-0 no-underline"
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-black text-[13px]">✏️</span>
-              <span className="text-black text-[13px] font-medium">데모 체험</span>
-            </motion.a>
+
           </div>
         </div>
       </motion.nav>

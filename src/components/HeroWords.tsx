@@ -66,15 +66,15 @@ export default function HeroWords() {
           animation: hw-pop .35s cubic-bezier(.2,1.6,.4,1) forwards; }
         
         /* 100% Guaranteed Sizes */
-        .hw-main-en { font-size: 36px; }
-        .hw-main-ko { font-size: 16px; }
-        .hw-sub-en { font-size: 24px; }
-        .hw-sub-ko { font-size: 14px; }
+        .hw-main-en { font-size: 48px; }
+        .hw-main-ko { font-size: 20px; }
+        .hw-sub-en { font-size: 32px; }
+        .hw-sub-ko { font-size: 16px; }
         @media (min-width: 768px) {
-          .hw-main-en { font-size: 56px; }
-          .hw-main-ko { font-size: 24px; }
-          .hw-sub-en { font-size: 36px; }
-          .hw-sub-ko { font-size: 18px; }
+          .hw-main-en { font-size: 72px; }
+          .hw-main-ko { font-size: 30px; }
+          .hw-sub-en { font-size: 48px; }
+          .hw-sub-ko { font-size: 22px; }
         }
       `}</style>
       {WORDS.map((w) => (
@@ -88,7 +88,7 @@ export default function HeroWords() {
                    ['--rot' as string]: `${w.rot}deg` }}
         >
           <div className={w.type === 'main' ? 'hw-main-en' : 'hw-sub-en'}
-               style={{ fontFamily: '"Space Mono", monospace', fontWeight: 900,
+               style={{ fontFamily: "'Pretendard Variable', Pretendard, -apple-system, sans-serif", fontWeight: 900,
                         color: '#111', lineHeight: 1,
                         textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 0 8px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.8)' }}>
             {[...w.en].map((c, i) => (

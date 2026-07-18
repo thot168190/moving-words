@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>보는 단어장 — 챕터1 제작 대시보드</title>
+<style>
+body{margin:0;padding:24px;background:#f7f5ef;font-family:Pretendard,-apple-system,sans-serif;color:#1a1a1a}
+h1{font-size:22px;margin:0 0 4px} .sub{color:#6b7684;font-size:13px;margin:0 0 20px}
+.grid{background:#fff;border-radius:14px;padding:8px 16px 16px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:20px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th{font-size:12px;color:#6b7684;font-weight:600;padding:10px 6px;text-align:center;border-bottom:1px solid #eee}
+td{padding:8px 6px;text-align:center;border-bottom:1px solid #f4f2ec;font-size:14px}
+td.name{text-align:left;font-weight:700;white-space:nowrap}
+td.name small{color:#6b7684;font-weight:400;margin-left:6px}
+.cb{width:22px;height:22px;border-radius:6px;border:2px solid #d5d2c8;display:inline-block;cursor:pointer;vertical-align:middle}
+.cb.on{background:#2f8f83;border-color:#2f8f83;position:relative}
+.cb.on:after{content:"✓";color:#fff;font-size:14px;font-weight:700;position:absolute;inset:0;line-height:22px}
+#prog{font-size:14px;font-weight:700;color:#c2410c;margin:0 0 12px}
+.todo{background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.todo h2{font-size:16px;margin:0 0 10px}
+.todo label{display:flex;gap:10px;align-items:center;padding:7px 4px;font-size:14px;cursor:pointer;border-bottom:1px solid #f4f2ec}
+.todo label:last-child{border-bottom:0}
+.tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:#f1efe8;color:#6b7684}
+.reset{margin-top:14px;font-size:12px;color:#6b7684;background:none;border:1px solid #ddd;border-radius:8px;padding:6px 12px;cursor:pointer}
+</style></head><body>
+<h1>챕터 1 「바다와 모험」 제작 대시보드</h1>
+<p class="sub">공법: 텍스트→비디오 (영상마스터골격_t2v.md) · 검수: 요소/순백/무붓/무디졸브 · 체크는 이 브라우저에 자동 저장</p>
+<p id="prog"></p>
+<div class="grid"><table id="tb">
+<thead><tr><th style="text-align:left">장면</th><th>영상 생성</th><th>검수 합격</th><th>카드 추출</th><th>좌표/JSON</th><th>플레이어 투입</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<div class="todo"><h2>품평회 체크리스트</h2><div id="misc"></div>
+<button class="reset" onclick="if(confirm('전체 초기화?')){localStorage.removeItem(KEY);render()}">전체 초기화</button></div>
+<script>
+const KEY='ch1_dash_v1';
+const SCENES=[["1 고래","WHALE"],["2 등대","LIGHTHOUSE"],["3 돛단배","SHIP"],["4 해변","BEACH"],["5 섬","ISLAND"],["6 낚시","FISHING"],["7 폭풍","STORM"],["8 보물","TREASURE"]];
+const STAGES=["gen","qc","card","json","live"];
+const MISC=[
+ ["긴급: 라이브 데모 엔진 장면 철수 (코다리)","코다리"],
+ ["카피 교체 배포 — 영포자 좌표 (코다리)","코다리"],
+ ["가격 개편 배포 — 코스 ₩9,900 (코다리)","코다리"],
+ ["페이플 가입 신청 (대표님)","대표님"],
+ ["본페이지 플레이어 뼈대 (코다리)","코다리"],
+ ["박물관 카드 개봉 연출 (코다리)","코다리"],
+ ["단어 공방 Phase 0 시연 페이지 (코다리)","코다리"],
+ ["통합 리허설 — 폰으로 전체 흐름 (전원)","D-1 밤"]];
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}}
+function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
+function render(){
+ const s=load();
+ const tb=document.querySelector('#tb tbody'); tb.innerHTML='';
+ let done=0,total=SCENES.length*STAGES.length;
+ SCENES.forEach((sc,i)=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td class="name">'+sc[0]+'<small>'+sc[1]+'</small></td>'+
+   STAGES.map(st=>{const k='s'+i+'_'+st;const on=s[k]?' on':'';if(s[k])done++;
+    return '<td><span class="cb'+on+'" data-k="'+k+'"></span></td>';}).join('');
+  tb.appendChild(tr);
+ });
+ const misc=document.getElementById('misc'); misc.innerHTML='';
+ MISC.forEach((m,i)=>{
+  const k='m'+i; const on=s[k]?' on':'';
+  const l=document.createElement('label');
+  l.innerHTML='<span class="cb'+on+'" data-k="'+k+'"></span> '+m[0]+' <span class="tag">'+m[1]+'</span>';
+  misc.appendChild(l);
+ });
+ document.getElementById('prog').textContent='장면 공정 진행률: '+done+' / '+total+' ('+Math.round(done/total*100)+'%)';
+ document.querySelectorAll('.cb').forEach(c=>c.onclick=()=>{const st=load();st[c.dataset.k]=!st[c.dataset.k];save(st);render();});
+}
+render();
+</script></body></html>
