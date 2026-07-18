@@ -440,6 +440,31 @@ function LandingPage() {
                 <div className={`feature-card-art feature-${effect} relative aspect-square overflow-hidden bg-white`}>
                   <img src={image} alt={`${title} 실제 화면`} className="feature-card-image h-full w-full object-contain" />
                   <span className="feature-card-effect" aria-hidden="true" />
+                  {effect === 'sailing' && (
+                    <div className="feature-demo feature-demo-learn" aria-hidden="true">
+                      <span className="demo-word demo-word-sail"><b>sail</b><em>돛</em></span>
+                      <span className="demo-word demo-word-anchor"><b>anchor</b><em>닻</em></span>
+                    </div>
+                  )}
+                  {effect === 'treasure' && (
+                    <div className="feature-demo feature-demo-quiz" aria-hidden="true">
+                      <span className="demo-question">?</span>
+                      <div className="demo-choices"><span>treasure</span><span>coin</span><span>key</span></div>
+                    </div>
+                  )}
+                  {effect === 'fishing' && (
+                    <div className="feature-demo feature-demo-create" aria-hidden="true">
+                      <span className="demo-prompt"><b>fishing</b><em>낚시</em></span>
+                      <span className="demo-draw-status">AI 그림을 만드는 중</span>
+                      <i className="demo-draw-line" />
+                    </div>
+                  )}
+                  {effect === 'storm' && (
+                    <div className="feature-demo feature-demo-collect" aria-hidden="true">
+                      <span className="demo-museum-card"><b>storm</b><em>폭풍</em></span>
+                      <span className="demo-museum-count">나의 박물관 <b>3 → 4</b></span>
+                    </div>
+                  )}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.72)] to-[#052f26] px-7 pb-7 pt-28 text-white sm:px-9 sm:pb-9 sm:pt-36">
                     <div className="mb-1.5 flex items-center justify-between">
                       <span className="text-[#ff9f86] text-[14px] font-black tracking-[0.14em]">{num}</span>
