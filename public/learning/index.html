@@ -29,6 +29,9 @@
     .account-mark{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--teal);font-weight:700}
     main{width:min(var(--max),calc(100% - 48px));margin:auto;padding:58px 0 100px}
     .home-view>.welcome,.home-view>.viewer-layout{position:relative}
+    /* 학습 첫 화면은 영상이 아니라 나의 진행 상황을 먼저 보여줍니다. */
+    .home-view>.welcome,.home-view>.viewer-layout{display:none}
+    .learning-dashboard{width:min(1180px,100%);margin:0 auto 54px}.dashboard-kicker{margin:0 0 12px;color:#c94f3d;font-size:14px;font-weight:900;letter-spacing:.16em}.dashboard-hero{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:28px;align-items:end;padding:42px;border-radius:28px;background:linear-gradient(135deg,#eef8f3 0%,#fffaf4 100%);border:1px solid #d9e9e1}.dashboard-hero h1{margin:0;font-size:clamp(40px,5vw,66px);line-height:1.05;letter-spacing:-.055em}.dashboard-hero p{margin:18px 0 0;color:var(--sub);font-size:19px;line-height:1.65}.dashboard-continue{width:100%;min-height:62px;border:0;border-radius:16px;background:var(--teal);color:#fff;font:900 19px Pretendard,sans-serif;cursor:pointer}.dashboard-continue:hover{background:#064535}.dashboard-progress{margin-top:16px}.dashboard-progress-head{display:flex;justify-content:space-between;gap:20px;font-size:15px;font-weight:800}.dashboard-progress-track{height:10px;margin-top:10px;border-radius:99px;background:#e4e9e5;overflow:hidden}.dashboard-progress-track i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#d65a43,#f18b61);transition:width .4s}.dashboard-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.dashboard-stat{min-height:150px;padding:25px;border:1px solid var(--line);border-radius:20px;background:#fff}.dashboard-stat span{display:block;color:var(--sub);font-size:15px}.dashboard-stat strong{display:block;margin-top:14px;color:var(--forest);font-size:40px;letter-spacing:-.04em}.dashboard-stat small{display:block;margin-top:5px;color:var(--sub);font-size:14px}.dashboard-next{margin-top:18px;padding:25px 28px;border-radius:20px;background:#103f35;color:#fff}.dashboard-next span{color:#9fd3bd;font-size:13px;font-weight:900;letter-spacing:.12em}.dashboard-next h2{margin:8px 0 5px;font-size:28px}.dashboard-next p{margin:0;color:#cfe4db;font-size:16px}
     .welcome{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}
     .welcome small{display:block;color:var(--teal);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px}
     .welcome h1{font-family:Pretendard,sans-serif;font-size:clamp(38px,4.5vw,62px);letter-spacing:-.052em;line-height:1.08;margin:0;font-weight:800}
@@ -119,7 +122,9 @@
       .resume{padding:14px 16px;font-size:15px}
     }
     @media(max-width:900px){.account span{display:none}.viewer-layout{grid-template-columns:1fr}.now{display:grid;grid-template-columns:1fr 210px;gap:20px;align-items:center}.now-actions{align-self:center}.shelf{grid-template-columns:repeat(2,1fr)}.chapter-grid{grid-template-columns:repeat(3,1fr)}.word-list{grid-template-columns:repeat(2,1fr)}.museum-grid{grid-template-columns:repeat(2,1fr)}.studio-layout,.memory-layout{grid-template-columns:1fr}.studio-layout{max-width:620px}.generate-preview{max-width:520px;margin:0 auto}.feature-intro{display:block;max-width:620px}.feature-intro p{margin-top:10px}.quiz-grid{grid-template-columns:1fr}.worlds-head{grid-template-columns:1fr}.world-list{grid-template-columns:1fr}.world{border-right:0;border-bottom:1px solid var(--line);min-height:auto}.world:last-child{border-bottom:0}}
+    @media(max-width:900px){.dashboard-hero{grid-template-columns:1fr;align-items:start}.dashboard-continue{max-width:320px}.dashboard-stats{grid-template-columns:1fr 1fr}.dashboard-stat:last-child{grid-column:1/-1}}
     @media(max-width:620px){.topbar{height:66px}.topbar-inner,main{width:calc(100% - 32px)}.brand{font-size:18px}.nav button{padding:8px 10px;font-size:13px}.nav button:not(.active):not(#mapNav){display:none}.account{display:none}main{padding-top:32px}.welcome{align-items:start}.brief-progress{display:none}.welcome h1{font-size:34px}.viewer-layout{gap:15px}.viewer-controls{opacity:1;padding:45px 13px 12px}.round-control{width:38px;height:38px}.scene-word{font-size:clamp(19px,5.8vw,26px);padding:4px;-webkit-text-stroke:4px rgba(255,255,255,.98)}.scene-word.long-word{font-size:clamp(17px,5vw,23px)}.scene-word.very-long-word{font-size:clamp(15px,4.4vw,21px)}.scene-word span{font-size:16px;font-weight:800}.now{display:block;padding:20px 0}.now h2{font-size:28px}.now p{font-size:16px}.now-actions{margin-top:18px}.vocab-head{display:block}.vocab-head p{margin-top:6px}.word strong{font-size:20px}.word em{font-size:16px}.chapter{margin-top:30px}.shelf{grid-template-columns:1fr;gap:27px}.map,.worlds,.detail-view{padding:28px 18px}.chapter-grid{grid-template-columns:repeat(2,1fr);gap:10px}.chapter-card{min-height:150px;padding:17px}.chapter-card h3{font-size:18px;margin-top:31px}.section-head{align-items:start}.all{display:none}.tip{display:block;line-height:1.7}.toggle{margin-top:15px}.poster video{display:none}.worlds{margin-top:18px}.detail-view .welcome{margin-top:8px}}
+    @media(max-width:620px){.learning-dashboard{margin-bottom:38px}.dashboard-hero{padding:25px 20px;border-radius:20px}.dashboard-hero h1{font-size:39px}.dashboard-hero p{font-size:16px}.dashboard-continue{max-width:none;font-size:17px}.dashboard-stats{grid-template-columns:1fr;gap:10px}.dashboard-stat,.dashboard-stat:last-child{grid-column:auto;min-height:116px;padding:20px}.dashboard-stat strong{font-size:34px}.dashboard-next{padding:22px}.dashboard-next h2{font-size:24px}}
     /* 지도 이미지를 갱신해도 브라우저가 이전 버전을 캐시하지 않도록 버전을 붙입니다. */
     .map{padding-left:0;padding-right:0;background:transparent;border:0}.map .section-head{padding:0 6px}.chapter-grid{width:100%;margin:0 auto;border:0;border-radius:0;background-image:url('assets/chapter-adventure-map-v4.png?v=1');box-shadow:none;mask-image:none;-webkit-mask-image:none}
     /* 탐험 지도는 카드 목록이 아니라 지도 위의 작은 지명 표식으로만 보여줍니다. */
@@ -156,6 +161,26 @@
   <main>
    <div class="home-view" id="homeView">
     <div id="homePlayerAnchor"></div>
+    <section class="learning-dashboard" aria-labelledby="dashboardTitle">
+      <p class="dashboard-kicker">MY LEARNING</p>
+      <div class="dashboard-hero">
+        <div>
+          <h1 id="dashboardTitle">내 학습 현황</h1>
+          <p><strong id="dashboardName">이미현 님</strong>, 오늘도 그림 한 장으로<br>단어를 오래 기억해볼까요?</p>
+          <div class="dashboard-progress">
+            <div class="dashboard-progress-head"><span>챕터 1 진행률</span><strong id="dashboardProgressText">0 / 8 장면</strong></div>
+            <div class="dashboard-progress-track"><i id="dashboardProgressBar"></i></div>
+          </div>
+        </div>
+        <button class="dashboard-continue" id="dashboardContinue" type="button">이어 학습하기 →</button>
+      </div>
+      <div class="dashboard-stats">
+        <article class="dashboard-stat"><span>완료한 장면</span><strong id="dashboardScenes">0</strong><small>총 8장면 중</small></article>
+        <article class="dashboard-stat"><span>익힌 단어</span><strong id="dashboardWords">0</strong><small>그림으로 만난 단어</small></article>
+        <article class="dashboard-stat"><span>나의 박물관</span><strong id="dashboardCards">0</strong><small>모은 그림 카드</small></article>
+      </div>
+      <article class="dashboard-next"><span>NEXT SCENE</span><h2 id="dashboardNextTitle">01 · 고래와 깊은 바다</h2><p id="dashboardNextCopy">첫 장면부터 천천히 시작해보세요.</p></article>
+    </section>
     <section class="welcome">
       <div><small>LEARNING IN PROGRESS</small><h1>그림이 그려지는 동안 단어를 익혀보세요.</h1></div>
       <div class="brief-progress"><button class="progress-link" id="progressEnter">챕터 1 · 1/8 학습 <b>→</b></button><div class="bar"><i></i></div></div>
@@ -458,6 +483,7 @@
     function enterChapter(){activateNav('learnNav');homeView.classList.add('hidden');chapterDetail.classList.add('active');chapterDetail.insertBefore(viewerLayout,chapterDetail.children[1]);chapterDetail.insertBefore(welcomeEl,viewerLayout);scrollTo({top:0,behavior:'smooth'})}
     function leaveChapter(){homePlayerAnchor.after(welcomeEl,viewerLayout);chapterDetail.classList.remove('active');homeView.classList.remove('hidden');setTimeout(()=>document.getElementById('chapterMap').scrollIntoView({behavior:'smooth'}),20)}
     document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{Number(card.dataset.chapter)===1?enterChapter():notify(`${card.querySelector('h3').textContent} 챕터는 아직 열쇠가 필요합니다.`)});
+    document.getElementById('dashboardContinue').onclick=enterChapter;
     document.getElementById('progressEnter').onclick=enterChapter;
     document.getElementById('backBtn').onclick=leaveChapter;
     document.getElementById('learnNav').onclick=showLearningHome;
@@ -615,10 +641,22 @@
 
       const completedIds=Array.isArray(progress.completedSceneIds)?progress.completedSceneIds:[];
       completedSceneCount=Math.min(8,completedIds.filter(id=>String(id).startsWith('ch1-')).length);
+      const learnedWordIds=Array.isArray(progress.learnedWordIds)?progress.learnedWordIds:[];
+      const collectedCardIds=Array.isArray(progress.collectedCardIds)?progress.collectedCardIds:[];
       const progressButton=document.getElementById('progressEnter');
       const progressBar=document.querySelector('.brief-progress .bar i');
       if(progressButton)progressButton.innerHTML=`챕터 1 · ${completedSceneCount}/8 학습 <b>→</b>`;
       if(progressBar)progressBar.style.width=`${completedSceneCount/8*100}%`;
+      const nextWork=works[Math.min(completedSceneCount,works.length-1)];
+      document.getElementById('dashboardName').textContent=`${accountName} 님`;
+      document.getElementById('dashboardProgressText').textContent=`${completedSceneCount} / 8 장면`;
+      document.getElementById('dashboardProgressBar').style.width=`${completedSceneCount/8*100}%`;
+      document.getElementById('dashboardScenes').textContent=String(completedSceneCount);
+      document.getElementById('dashboardWords').textContent=String(learnedWordIds.length);
+      document.getElementById('dashboardCards').textContent=String(new Set([...collectedCardIds,...readCustomCards().map(card=>card.id)]).size);
+      document.getElementById('dashboardNextTitle').textContent=`${nextWork.n} · ${nextWork.title}`;
+      document.getElementById('dashboardNextCopy').textContent=completedSceneCount?'지난 학습 다음 장면부터 이어서 시작합니다.':'첫 장면부터 천천히 시작해보세요.';
+      document.getElementById('dashboardContinue').textContent=completedSceneCount?'이어서 학습하기 →':'첫 학습 시작하기 →';
     });
     function notify(msg){const n=document.getElementById('notice');n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),1900)}
   </script>
