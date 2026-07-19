@@ -157,11 +157,15 @@
   </style>
 </head>
 <body>
+  <script>
+    // 정적 학습장 주소를 직접 열어 로그인 확인을 우회하지 못하도록 앱의 학습 진입점으로 보냅니다.
+    if(window===window.top)window.location.replace('/#learn');
+  </script>
   <header class="topbar">
     <div class="topbar-inner">
       <button class="brand" id="learningBrand" type="button" aria-label="학습 홈으로 이동">보는 단어장</button>
       <nav class="nav" aria-label="주 메뉴"><button class="active" id="learnNav">그림 학습</button><button id="mapNav">단어 탐험</button><button id="museumNav">나의 박물관</button><button id="playNav" data-secondary="true">거꾸로 퀴즈</button><button id="studioNav" data-secondary="true">내가 만드는 그림 카드</button></nav>
-      <div class="account"><button class="account-button" id="accountButton" type="button" aria-expanded="false" aria-controls="accountMenu"><span>이미현 님</span><span class="account-mark">I</span></button><div class="account-menu" id="accountMenu"><a href="/" target="_top">홈으로</a><button id="accountLearningHome" type="button">학습 처음으로</button><button class="logout" id="accountLogout" type="button">로그아웃</button></div></div>
+      <div class="account"><button class="account-button" id="accountButton" type="button" aria-expanded="false" aria-controls="accountMenu"><span>로그인 확인 중</span><span class="account-mark">·</span></button><div class="account-menu" id="accountMenu"><a href="/" target="_top">홈으로</a><button id="accountLearningHome" type="button">학습 처음으로</button><button class="logout" id="accountLogout" type="button">로그아웃</button></div></div>
     </div>
   </header>
 
@@ -173,7 +177,7 @@
       <div class="dashboard-hero">
         <div>
           <h1 id="dashboardTitle">내 학습 현황</h1>
-          <p><strong id="dashboardName">이미현 님</strong>, 오늘도 그림 한 장으로<br>단어를 오래 기억해볼까요?</p>
+          <p><strong id="dashboardName">학습자 님</strong>, 오늘도 그림 한 장으로<br>단어를 오래 기억해볼까요?</p>
           <div class="dashboard-progress">
             <div class="dashboard-progress-head"><span>챕터 1 진행률</span><strong id="dashboardProgressText">0 / 8 장면</strong></div>
             <div class="dashboard-progress-track"><i id="dashboardProgressBar"></i></div>
@@ -293,13 +297,15 @@
     ];
     // 사용자가 직접 만든 카드는 브라우저에 보관합니다. 시연 단계에서는 서버 비용 없이
     // 계정당 최대 10장 흐름을 확인하고, 추후 로그인 DB 저장으로 교체할 수 있습니다.
-    const CUSTOM_CARD_KEY='inkword-custom-cards-v1';
+    // 같은 기기에서 계정을 바꿔도 서로의 카드가 섞이지 않도록 로그인 계정별로 분리합니다.
+    let currentAccountKey='guest';
+    const customCardKey=()=>`inkword-custom-cards-v2:${currentAccountKey}`;
     const CUSTOM_CARD_LIMIT=10;
     let currentGeneratedCard=null;
     function readCustomCards(){
-      try{return JSON.parse(localStorage.getItem(CUSTOM_CARD_KEY)||'[]')}catch{return []}
+      try{return JSON.parse(localStorage.getItem(customCardKey())||'[]')}catch{return []}
     }
-    function writeCustomCards(cards){localStorage.setItem(CUSTOM_CARD_KEY,JSON.stringify(cards))}
+    function writeCustomCards(cards){localStorage.setItem(customCardKey(),JSON.stringify(cards))}
     function escapeHtml(value=''){return String(value).replace(/[&<>"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]))}
     function findKnownWord(rawWord){
       const query=rawWord.trim().toLowerCase();
@@ -547,7 +553,7 @@
       let style='세밀 수채화';currentGeneratedCard=null;
       const preview=document.getElementById('generatePreview'),generateButton=document.getElementById('generateBtn'),saveButton=document.getElementById('saveGenerated'),wordInput=document.getElementById('generateWord'),meaningInput=document.getElementById('generateMeaning'),sceneInput=document.getElementById('generateScene'),status=document.getElementById('studioStatus'),quota=document.getElementById('studioQuota'),connection=document.getElementById('studioConnection'),meaningStep=document.getElementById('meaningStep'),sceneStep=document.getElementById('sceneStep'),mentorFinish=document.getElementById('mentorFinish'),mentorReady=document.getElementById('mentorReady'),roadmapSteps=[...document.querySelectorAll('#mentorRoadmap span')];
       const config=window.INKWORD_IMAGE_LAB||{};
-      const monthKey=new Date().toISOString().slice(0,7),usageKey=`inkword.imageLab.${monthKey}`;
+      const monthKey=new Date().toISOString().slice(0,7),usageKey=`inkword.imageLab.${currentAccountKey}.${monthKey}`;
       const readUsage=()=>Number(localStorage.getItem(usageKey)||0);
       const updateQuota=()=>{quota.textContent=`이번 달 생성 ${readUsage()} / ${CUSTOM_CARD_LIMIT}장 · 박물관 저장 ${readCustomCards().length}장`;connection.textContent=config.space?'이미지 연구실 연결됨':'이미지 연구실 연결 대기';connection.classList.toggle('connected',Boolean(config.space))};updateQuota();
       document.querySelectorAll('.style-option').forEach(button=>button.onclick=()=>{document.querySelectorAll('.style-option').forEach(item=>item.classList.remove('selected'));button.classList.add('selected');style=button.textContent});
@@ -643,6 +649,7 @@
     window.addEventListener('message',event=>{
       if(event.origin!==location.origin||event.data?.type!=='inkword:init')return;
       const user=event.data.user||{},progress=event.data.progress||{};
+      currentAccountKey=String(user.uid||user.email||'guest').replace(/[^a-zA-Z0-9@._-]/g,'_');
       const accountName=user.displayName||user.email?.split('@')[0]||'학습자';
       const accountText=document.querySelector('.account span');
       const accountMark=document.querySelector('.account-mark');
