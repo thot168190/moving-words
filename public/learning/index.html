@@ -55,7 +55,7 @@
     .now{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0;display:flex;flex-direction:column}
     .now-label{font-size:13px;letter-spacing:.13em;color:var(--gold);font-weight:800;text-transform:uppercase}.now h2{font-family:Pretendard,sans-serif;font-size:34px;margin:12px 0 10px;letter-spacing:-.04em;line-height:1.2}.now p{margin:0;color:var(--sub);font-size:17px;line-height:1.7}.resume{border:0;background:var(--teal);color:#fff;padding:17px 20px;width:100%;font-size:16px;font-weight:700;cursor:pointer;transition:.22s}.resume:hover{background:#104b47}.settings{border:0;background:transparent;color:var(--sub);font-size:14px;padding:15px 0 0;cursor:pointer;text-align:left}
     .level-switch{display:flex;gap:22px;margin-top:22px;border-bottom:1px solid var(--line)}.level-switch button{border:0;border-bottom:3px solid transparent;background:transparent;padding:0 0 9px;color:var(--sub);font-family:Pretendard,sans-serif;font-size:14px;font-weight:800;letter-spacing:.06em;cursor:pointer}.level-switch button.active{border-bottom-color:var(--teal);color:var(--forest)}
-    .now-actions{margin-top:auto}.vocab-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}.vocab-head{margin-bottom:10px}.vocab-head h3{font-family:Pretendard,sans-serif;font-size:19px;margin:0}.vocab-head p{display:none}.word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;min-width:0}.word{min-width:0;border:0;background:transparent;padding:6px 0;color:var(--forest);cursor:pointer;text-align:left;white-space:normal}.word strong{display:block;overflow-wrap:anywhere;font-family:Pretendard,sans-serif;font-size:25px;line-height:1.05;font-weight:900}.word em{display:block;margin:5px 0 0;color:#315f54;font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:20px;line-height:1.15;font-weight:800;font-style:normal}.word b{display:none}.word:hover,.word.speaking{color:#b97800}
+    .now-actions{margin-top:auto}.vocab-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}.vocab-head{margin-bottom:10px}.vocab-head h3{font-family:Pretendard,sans-serif;font-size:19px;margin:0}.vocab-head p{display:none}.word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}.word{position:relative;min-width:0;border:1px solid #cfe1d9;border-radius:14px;background:#fff;padding:13px 42px 13px 14px;color:var(--forest);cursor:pointer;text-align:left;white-space:normal;transition:transform .16s,border-color .16s,background .16s}.word:after{content:'🔊';position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:18px;filter:grayscale(1);opacity:.68}.word strong{display:block;overflow-wrap:anywhere;font-family:Pretendard,sans-serif;font-size:24px;line-height:1.05;font-weight:900}.word em{display:block;margin:5px 0 0;color:#315f54;font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:18px;line-height:1.15;font-weight:800;font-style:normal}.word b{display:none}.word:hover,.word.speaking{color:#9c4c36;border-color:#d96a51;background:#fff7f3;transform:translateY(-2px)}.word.speaking:after{filter:none;opacity:1}
     .chapter{margin-top:76px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.section-head h2{font-family:Pretendard,sans-serif;font-size:38px;margin:0 0 8px;letter-spacing:-.04em}.section-head p{margin:0;color:var(--sub);font-size:16px}.all{border:0;background:transparent;color:var(--teal);cursor:pointer;padding:8px 0;font-size:15px}
     .shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 18px}.work{border:0;background:transparent;padding:0;text-align:left;cursor:pointer;min-width:0}.poster{aspect-ratio:16/9;border:1px solid var(--line);background:var(--ivory);position:relative;overflow:hidden}.poster img,.poster video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;transition:.35s}.poster video{opacity:0}.work:hover .poster video{opacity:1}.work:hover .poster img{opacity:0}.poster .state{position:absolute;left:10px;top:10px;z-index:2;background:rgba(255,255,255,.9);border:1px solid var(--line);padding:6px 8px;font-size:10px;color:var(--sub)}
     .work.current .poster{border-color:var(--teal);box-shadow:inset 0 -3px var(--teal)}.meta{padding-top:12px}.meta small{color:var(--gold);font-size:10px;letter-spacing:.12em}.meta h3{font-family:Pretendard,sans-serif;font-size:18px;margin:5px 0 3px}.meta p{margin:0;color:var(--sub);font-size:12px}.locked .poster:after{content:"다음 여정";position:absolute;inset:0;display:grid;place-items:center;background:rgba(250,249,245,.78);color:var(--gold);font-family:Pretendard,sans-serif;letter-spacing:.04em;z-index:4}.locked:hover .poster img{opacity:1}.locked:hover .poster video{opacity:0}
@@ -210,7 +210,7 @@
             <div class="word-list" id="wordList"></div>
           </section>
         </div>
-        <div class="now-actions"><button class="resume" id="resumeBtn">학습 시작</button><button class="settings" id="soundBtn">첫 단어 발음 듣기</button></div>
+        <div class="now-actions"><button class="resume" id="resumeBtn">학습 시작</button><button class="settings" id="soundBtn">🔊 전체 단어 듣기</button></div>
       </aside>
     </section>
 
@@ -282,7 +282,6 @@
     const viewer=document.getElementById('viewer'),mainVideo=document.getElementById('mainVideo'),mainPoster=document.getElementById('mainPoster'),playBtn=document.getElementById('playBtn'),speedBtn=document.getElementById('speedBtn'),resumeBtn=document.getElementById('resumeBtn'),soundBtn=document.getElementById('soundBtn'),fill=document.getElementById('timelineFill'),timeText=document.getElementById('timeText'),wordList=document.getElementById('wordList'),wordOverlay=document.getElementById('wordOverlay');
     // 그림에서 직접 가리킬 수 있는 단어만 화면 위에 둡니다.
     // LEVEL 2도 그림에서 직접 찾을 수 있는 구체적인 사물과 부분만 표시합니다.
-    const labelIndexes=[[2,3,1,6],[0,1,5,7],[0,2,3,5],[1,2,3,7],[0,1,2,3],[0,1,2,3],[0,1,2,4],[0,1,2,6]];
     // 같은 영상으로 두 난이도를 제공합니다. LEVEL 1은 장면을 바로 읽는 구체어,
     // LEVEL 2는 난도는 높이되 그림 속에서 직접 확인 가능한 어휘로 구성합니다.
     const levelOneWords=[
@@ -294,6 +293,18 @@
       [['aurora','오로라'],['sky','하늘'],['light','빛'],['forest','숲'],['snow','눈'],['northern','북쪽의'],['glow','빛나다'],['wave','물결치다']],
       [['balloon','열기구'],['basket','바구니'],['cloud','구름'],['sky','하늘'],['rise','오르다'],['float','떠다니다'],['wind','바람'],['landscape','풍경']],
       [['coral','산호'],['ocean','바다'],['reef','암초'],['creature','생물'],['shelter','피난처'],['underwater','수중의'],['deep','깊은'],['protect','보호하다']]
+    ];
+    // LEVEL 2도 그림에서 정확히 가리킬 수 있는 네 단어만 사용합니다.
+    // 목록과 그림 위 라벨이 서로 달라지는 문제를 막기 위해 별도 목록으로 고정합니다.
+    const levelTwoWords=[
+      [['blowhole','숨구멍'],['spout','물기둥'],['flipper','가슴지느러미'],['wave','파도']],
+      [['tower','탑'],['beacon','등대 불빛'],['rock','바위'],['wave','파도']],
+      [['hull','선체'],['rigging','밧줄 장치'],['bow','뱃머리'],['flag','깃발']],
+      [['archway','아치형 통로'],['column','기둥'],['tier','층'],['window','창문']],
+      [['telescope','망원경'],['lens','렌즈'],['tripod','삼각대'],['crescent','초승달']],
+      [['aurora','오로라'],['light ribbon','빛의 띠'],['snowfield','설원'],['pine','소나무']],
+      [['envelope','기낭'],['burner','버너'],['basket','바구니'],['cloud','구름']],
+      [['manta ray','쥐가오리'],['coral','산호'],['canyon','협곡'],['surface','수면']]
     ];
     // 사용자가 직접 만든 카드는 브라우저에 보관합니다. 시연 단계에서는 서버 비용 없이
     // 계정당 최대 10장 흐름을 확인하고, 추후 로그인 DB 저장으로 교체할 수 있습니다.
@@ -310,7 +321,7 @@
     function findKnownWord(rawWord){
       const query=rawWord.trim().toLowerCase();
       for(let i=0;i<works.length;i+=1){
-        const match=[...(levelOneWords[i]||[]),...(works[i].words||[])].find(([word])=>word.toLowerCase()===query);
+        const match=[...(levelOneWords[i]||[]),...(levelTwoWords[i]||[])].find(([word])=>word.toLowerCase()===query);
         if(match)return{work:works[i],word:match[0].toLowerCase(),meaning:match[1]};
       }
       return null;
@@ -420,12 +431,30 @@
       if(isIOS){speechSynthesis.cancel();setTimeout(()=>speechSynthesis.speak(utterance),50)}
       else speechSynthesis.speak(utterance);
     }
+    function speakAllWords(){
+      if(!('speechSynthesis' in window)){notify('이 브라우저에서는 음성 재생을 지원하지 않습니다.');return}
+      const buttons=[...wordList.querySelectorAll('.word')];
+      if(!buttons.length)return;
+      speechSynthesis.cancel();
+      let index=0;
+      const playNext=()=>{
+        document.querySelectorAll('.scene-word,.word').forEach(x=>x.classList.remove('speaking'));
+        if(index>=buttons.length){soundBtn.textContent='🔊 전체 단어 듣기';return}
+        const button=buttons[index++],utterance=new SpeechSynthesisUtterance(button.dataset.word);
+        utterance.lang='en-US';utterance.rate=.92;utterance.pitch=1.05;utterance.voice=getBestVoice();
+        button.classList.add('speaking');soundBtn.textContent=`🔊 ${index} / ${buttons.length}`;
+        utterance.onend=()=>{button.classList.remove('speaking');setTimeout(playNext,140)};
+        utterance.onerror=()=>{button.classList.remove('speaking');playNext()};
+        speechSynthesis.speak(utterance);
+      };
+      playNext();
+    }
     let wordLevel=1;
     // LEVEL 1은 한 장면에 핵심 4개만 노출하고, LEVEL 2에서 확장 어휘를 보여줍니다.
-    function currentWords(work){const i=works.indexOf(work);return wordLevel===1?levelOneWords[i].slice(0,4):work.words}
+    function currentWords(work){const i=works.indexOf(work);return wordLevel===1?levelOneWords[i].slice(0,4):levelTwoWords[i]}
     function renderWords(work){
       const sceneIndex=works.indexOf(work),allWords=currentWords(work);
-      const indexes=wordLevel===1?[0,1,2,3]:labelIndexes[sceneIndex];
+      const indexes=[0,1,2,3];
       const spots=wordLevel===1?levelOneSpots[sceneIndex]:sceneSpots[sceneIndex];
       wordOverlay.innerHTML=indexes.map((wordIndex,i)=>{
         const [en,ko]=allWords[wordIndex];
@@ -472,7 +501,7 @@
       const wordIds=currentWords(activeWork).map(([word])=>`${sceneId}-${word.toLowerCase()}`);
       window.parent.postMessage({type:'inkword:scene-complete',sceneId,wordIds},location.origin);
     };
-    soundBtn.onclick=()=>{const firstButton=wordOverlay.querySelector('.scene-word');if(firstButton)speakWord(firstButton.dataset.word,firstButton)};
+    soundBtn.onclick=speakAllWords;
 
     let previews=true;
     // 로그인 계정에서 불러온 챕터 1 완료 장면 수입니다.
