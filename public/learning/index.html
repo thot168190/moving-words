@@ -417,20 +417,19 @@
         ||voices.find(v=>v.lang.startsWith('en'))
         ||null;
     }
+    let currentSpeakTimer=null;
     function speakWord(word,button){
       if(!('speechSynthesis' in window)){notify('이 브라우저에서는 음성 재생을 지원하지 않습니다.');return}
-      const now=Date.now();
-      if(word===lastSpokenWord&&now-lastSpokenAt<450)return;
-      lastSpokenWord=word;lastSpokenAt=now;
+      if(currentSpeakTimer){clearTimeout(currentSpeakTimer);currentSpeakTimer=null;}
+      speechSynthesis.cancel();
       document.querySelectorAll('.scene-word,.word').forEach(x=>x.classList.remove('speaking'));
+      if(button){button.classList.add('speaking');}
       const utterance=new SpeechSynthesisUtterance(word);
       utterance.lang='en-US';utterance.rate=1;utterance.pitch=1.05;utterance.voice=getBestVoice();
-      button.classList.add('speaking');
-      utterance.onend=utterance.onerror=()=>button.classList.remove('speaking');
-      // 큐에 쌓이지 않도록 항상 이전 발음을 취소하고 현재 단어 하나만 재생합니다.
-      speechSynthesis.cancel();
-      if(isIOS){setTimeout(()=>speechSynthesis.speak(utterance),50)}
-      else speechSynthesis.speak(utterance);
+      utterance.onend=utterance.onerror=()=>{if(button)button.classList.remove('speaking');};
+      currentSpeakTimer=setTimeout(()=>{
+        speechSynthesis.speak(utterance);
+      },30);
     }
     function speakAllWords(){
       if(!('speechSynthesis' in window)){notify('이 브라우저에서는 음성 재생을 지원하지 않습니다.');return}
