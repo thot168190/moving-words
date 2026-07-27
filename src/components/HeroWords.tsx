@@ -8,8 +8,8 @@ import { useEffect, useState } from 'react';
 const WORDS = [
   { en: 'COLOSSEUM', ko: '콜로세움', top: '45%', left: '50%', type: 'main', rot: -3, delay: 3.2 },
   { en: 'SKY', ko: '하늘', top: '15%', left: '15%', type: 'sub', rot: 2, delay: 4.6 },
-  { en: 'ARCH', ko: '아치', top: '65%', left: '35%', type: 'sub', rot: -2, delay: 5.6 },
-  { en: 'WALL', ko: '외벽', top: '35%', left: '75%', type: 'sub', rot: 3, delay: 6.6 },
+  { en: 'ARCH', ko: '아치', top: '66%', left: '36%', type: 'sub', rot: -2, delay: 5.6 },
+  { en: 'WALL', ko: '외벽', top: '65%', left: '86%', type: 'sub', rot: 3, delay: 6.6 },
   { en: 'GROUND', ko: '바닥', top: '80%', left: '20%', type: 'sub', rot: -2, delay: 7.6 },
 ];
 
@@ -17,7 +17,7 @@ const CYCLE_MS = 11000;
 
 export default function HeroWords() {
   const [cycle, setCycle] = useState(0);
-  
+
   useEffect(() => {
     const t = setInterval(() => setCycle((c) => c + 1), CYCLE_MS);
     return () => clearInterval(t);
@@ -29,16 +29,16 @@ export default function HeroWords() {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
       utterance.rate = 1.0;
-      
+
       const voices = window.speechSynthesis.getVoices();
       const bestVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Samantha')) ||
                         voices.find(v => v.lang.startsWith('en') && v.name.includes('Google US English')) ||
                         voices.find(v => v.lang.startsWith('en') && v.name.includes('Aria')) ||
                         voices.find(v => v.lang === 'en-US');
       if (bestVoice) utterance.voice = bestVoice;
-      
+
       // iOS는 cancel() 버그 방지를 위해 50ms 딜레이를 주고, 안드로이드/PC는 동기식으로 즉시 실행하여 user gesture 블로킹 방지
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       if (isIOS) {
         setTimeout(() => {
@@ -59,17 +59,21 @@ export default function HeroWords() {
           100% { opacity: 1; transform: translateY(0) rotate(var(--rot)) scale(1); }
         }
         @keyframes hw-out { to { opacity: 0; } }
+        /* left/top을 요소의 '중심' 기준으로 만든다.
+           transform은 키프레임이 점유하고 있으므로 독립 속성 translate를 쓴다. */
         .hw-word { position: absolute; opacity: 0; white-space: nowrap;
+          translate: -50% -50%;
+          max-width: 92vw; text-align: center;
           animation: hw-pop .5s cubic-bezier(.2,1.6,.4,1) forwards,
                      hw-out .6s ease forwards 9.8s; }
         .hw-letter { display: inline-block; opacity: 0;
           animation: hw-pop .35s cubic-bezier(.2,1.6,.4,1) forwards; }
-        
-        /* 100% Guaranteed Sizes */
-        .hw-main-en { font-size: 48px; }
-        .hw-main-ko { font-size: 20px; }
-        .hw-sub-en { font-size: 32px; }
-        .hw-sub-ko { font-size: 16px; }
+
+        /* 모바일에서 뷰포트를 넘지 않도록 clamp. 데스크톱 값은 아래 미디어쿼리가 덮는다. */
+        .hw-main-en { font-size: clamp(26px, 8.5vw, 48px); }
+        .hw-main-ko { font-size: clamp(14px, 4vw, 20px); }
+        .hw-sub-en { font-size: clamp(18px, 5.5vw, 32px); }
+        .hw-sub-ko { font-size: clamp(12px, 3.2vw, 16px); }
         @media (min-width: 768px) {
           .hw-main-en { font-size: 72px; }
           .hw-main-ko { font-size: 30px; }

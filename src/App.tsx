@@ -169,7 +169,7 @@ function LandingPage() {
             initial={{ opacity: 0, y: 15 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            학습 시작 →
+            가입하고 시작하기 →
           </motion.a>
         </div>
 
@@ -208,7 +208,7 @@ function LandingPage() {
             initial={{ opacity: 0, y: 25 }} animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35 }}
           >
-            학습 시작 →
+            가입하고 시작하기 →
           </motion.a>
         </motion.div>
       </section>
@@ -359,7 +359,9 @@ function LandingPage() {
 
         <div className="relative z-20 px-8 sm:px-12 md:px-16">
           <div className="text-center mt-6 mb-14 sm:mt-8 sm:mb-16">
-            <h2 style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(28px, 7vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1.3, color: '#07533f', wordBreak: 'keep-all' }}>그림이 그려지는 과정을 보고 있으면<br />어느새 외워진다.</h2>
+            <h2 style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(24px, 5.5vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1.35, color: '#07533f', wordBreak: 'keep-all' }}>
+              그림이 그려지는 과정을<br className="block sm:hidden" /> 보고 있으면<br className="hidden sm:block" /><br className="block sm:hidden" />어느새 외워진다.
+            </h2>
           </div>
 
           <motion.div
@@ -524,7 +526,7 @@ function LandingPage() {
             <div className="bg-white rounded-2xl p-5 border border-neutral-200/60 shadow-sm">
               <h3 className="font-bold text-[#666666] text-lg mb-3">클래스카드</h3>
               <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">단어장 반복 암기</span></p>
-              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>출시 기념가 ₩9,900</span></p>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>무료+유료</span></p>
               <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">성실한 반복 암기가 체질인 분</span></p>
             </div>
             {/* 보는 단어장 */}

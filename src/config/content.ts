@@ -97,6 +97,6 @@ export const SITE_CONFIG = {
       { label: '소개', scrollMultiplier: 1 },
       { label: '외워지는 이유', scrollMultiplier: 2 },
     ],
-    downloadLabel: '학습 시작',
+    downloadLabel: '가입하고 시작하기',
   },
 };

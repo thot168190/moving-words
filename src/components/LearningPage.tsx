@@ -61,9 +61,9 @@ export default function LearningPage() {
         <section className="w-full max-w-[560px] text-center">
           <a href="/" className="inline-block text-[18px] font-black text-[#07533f] no-underline mb-14">보는 단어장</a>
           <p className="text-[13px] font-bold tracking-[0.18em] text-[#3d8f73] mb-4">MY LEARNING</p>
-          <h1 className="text-[clamp(36px,7vw,62px)] leading-[1.12] font-black tracking-[-0.05em] mb-6">내 학습장으로<br />이어갈게요.</h1>
-          <p className="text-[#3d4541] text-[17px] leading-7 mb-10">로그인하면 학습한 장면과 모은 단어 카드가<br className="hidden sm:block" /> 계정에 계속 기록됩니다.</p>
-          <button onClick={() => setAuthOpen(true)} className="h-14 px-10 rounded-full border-0 bg-[#07533f] text-white text-[17px] font-black cursor-pointer">로그인하고 학습하기</button>
+          <h1 className="text-[clamp(36px,7vw,62px)] leading-[1.12] font-black tracking-[-0.05em] mb-6">12개 챕터,<br />지금 시작합니다.</h1>
+          <p className="text-[#3d4541] text-[17px] leading-7 mb-10">계정을 만들면 학습한 장면과 모은 단어 카드가<br className="hidden sm:block" /> 그대로 저장됩니다.</p>
+          <button onClick={() => setAuthOpen(true)} className="h-14 px-10 rounded-full border-0 bg-[#07533f] text-white text-[17px] font-black cursor-pointer">가입하고 시작하기</button>
         </section>
         <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
       </main>
