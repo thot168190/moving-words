@@ -508,7 +508,7 @@
       const w=works[Number(el.dataset.index)],pv=el.querySelector('video');
       el.addEventListener('mouseenter',()=>{if(previews&&!w.locked&&matchMedia('(hover:hover)').matches)pv.play().catch(()=>{})});
       el.onmouseleave=()=>{pv.pause();pv.currentTime=0};
-      el.onclick=()=>{if(w.locked){notify('앞 챕터를 완주하면 학습할 수 있습니다.');return}document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));el.classList.add('current');activeWork=w;mainVideo.pause();mainVideo.src=w.video;mainVideo.load();mainVideo.playbackRate=playbackRates[playbackRateIndex];mainPoster.src=w.img;mainPoster.alt=`${w.title} 학습 영상 대표 화면`;document.getElementById('nowLabel').textContent=`LEARNING · ${w.n}`;document.getElementById('mainTitle').textContent=w.title;document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';renderWords(w);viewer.classList.remove('playing');pauseMain();scrollTo({top:80,behavior:'smooth'})};
+      el.onclick=()=>{if(w.locked){notify(w.needsPurchase?'이용권을 구매하면 나머지 장면이 모두 열립니다.':'앞 챕터를 완주하면 학습할 수 있습니다.');if(w.needsPurchase)window.parent.postMessage({type:'inkword:need-purchase'},location.origin);return}document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));el.classList.add('current');activeWork=w;mainVideo.pause();mainVideo.src=w.video;mainVideo.load();mainVideo.playbackRate=playbackRates[playbackRateIndex];mainPoster.src=w.img;mainPoster.alt=`${w.title} 학습 영상 대표 화면`;document.getElementById('nowLabel').textContent=`LEARNING · ${w.n}`;document.getElementById('mainTitle').textContent=w.title;document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';renderWords(w);viewer.classList.remove('playing');pauseMain();scrollTo({top:80,behavior:'smooth'})};
     });
     document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.currentTarget.classList.toggle('off',!previews);e.currentTarget.setAttribute('aria-label',`미리보기 자동재생 ${previews?'켜짐':'꺼짐'}`);notify(`미리보기 자동재생을 ${previews?'켰습니다.':'껐습니다.'}`)};
     const homeView=document.getElementById('homeView'),chapterDetail=document.getElementById('chapterDetail');
@@ -683,6 +683,13 @@
       if(accountText)accountText.textContent=`${accountName} 님`;
       if(accountMark)accountMark.textContent=accountName.slice(0,1).toUpperCase();
 
+      // ── 결제 게이팅 ── 미구매 계정은 무료 장면 이후를 잠근다
+      const paid=event.data.paid===true;
+      const FREE_SCENES=3;
+      works.forEach((w,i)=>{const lock=!paid&&i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock});
+      document.querySelectorAll('.work').forEach(el=>{const w=works[Number(el.dataset.index)];el.classList.toggle('locked',!!w.locked)});
+      const gateBadge=document.getElementById('gateBadge');
+      if(gateBadge)gateBadge.style.display=paid?'none':'';
       const completedIds=Array.isArray(progress.completedSceneIds)?progress.completedSceneIds:[];
       completedSceneCount=Math.min(8,completedIds.filter(id=>String(id).startsWith('ch1-')).length);
       const learnedWordIds=Array.isArray(progress.learnedWordIds)?progress.learnedWordIds:[];

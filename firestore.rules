@@ -5,7 +5,19 @@ service cloud.firestore {
     // 1. 사용자 프로필 (Users) 보안 규칙
     // - 로그인한 본인만 자신의 프로필을 읽고 쓸 수 있습니다. (타인 프로필 조회/조작 차단)
     match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read: if request.auth != null && request.auth.uid == userId;
+
+      // 생성 시 purchase 필드를 넣을 수 없습니다.
+      allow create: if request.auth != null && request.auth.uid == userId
+                    && !('purchase' in request.resource.data);
+
+      // 수정 시 purchase 필드를 건드릴 수 없습니다.
+      // 결제 승인 서버(Admin SDK)만 이 필드를 씁니다.
+      allow update: if request.auth != null && request.auth.uid == userId
+                    && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['purchase']);
+
+      // 회원 탈퇴용
+      allow delete: if request.auth != null && request.auth.uid == userId;
     }
     
     // 2. 주문서 (Orders) 보안 규칙

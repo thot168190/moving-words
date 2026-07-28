@@ -679,7 +679,7 @@ function LandingPage() {
           <div className="text-[#333333] text-[14px] sm:text-[15px] leading-6 font-bold">
             <p className="font-bold text-[#07533f] mb-1">매또컴퍼니 | 대표: 이미현</p>
             <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 면제 (부가가치세법상 간이과세자)</p>
-            <p className="mb-1">주소: 경기도 양주시 고읍로 11-7</p>
+            <p className="mb-1">주소: (11481) 경기 양주시 고읍로 11-7, 105동 603호</p>
             <p className="mb-1">대표전화: 010-2058-9900 | 전자우편: thot168190@gmail.com</p>
             <p className="mb-3">호스팅 제공: GitHub, Inc.</p>
             <p className="mt-3.5">

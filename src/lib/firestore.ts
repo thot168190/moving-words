@@ -41,6 +41,16 @@ export interface UserProfile {
   updatedAt: Timestamp;
   // 학습 진행률은 사용자 문서에 함께 저장해 계정별로 불러옵니다.
   learningProgress?: LearningProgress;
+  // ── 구매 기록 ──
+  // 결제 승인 서버만 기록합니다. 클라이언트 쓰기는 보안 규칙으로 차단됩니다.
+  purchase?: {
+    productId: string;
+    orderId: string;
+    amount: number;
+    provider: string;
+    paymentId: string;
+    paidAt: Timestamp;
+  };
   subscription?: {
     planId: string;
     status: 'active' | 'cancelled' | 'expired';

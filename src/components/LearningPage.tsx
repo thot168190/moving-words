@@ -3,7 +3,7 @@ import { AuthModal } from './AuthModal';
 import { useAuth } from '../contexts/AuthContext';
 
 type SceneCompleteMessage = {
-  type: 'inkword:scene-complete' | 'inkword:logout';
+  type: 'inkword:scene-complete' | 'inkword:logout' | 'inkword:need-purchase';
   sceneId?: string;
   wordIds?: string[];
 };
@@ -14,7 +14,7 @@ type SceneCompleteMessage = {
  * 완료 기록만 안전한 메시지로 React/Firebase에 전달합니다.
  */
 export default function LearningPage() {
-  const { user, loading, learningProgress, recordSceneCompletion, signOut } = useAuth();
+  const { user, loading, isPaid, learningProgress, recordSceneCompletion, signOut } = useAuth();
   const [authOpen, setAuthOpen] = useState(false);
   const frameRef = useRef<HTMLIFrameElement>(null);
 
@@ -30,6 +30,7 @@ export default function LearningPage() {
           photoURL: user.photoURL,
         },
         progress: learningProgress,
+        paid: isPaid,
       },
       window.location.origin,
     );
@@ -42,6 +43,11 @@ export default function LearningPage() {
         void signOut();
         return;
       }
+      // 잠긴 장면을 눌렀을 때 — 랜딩의 가격 섹션으로 보냅니다.
+      if (event.data?.type === 'inkword:need-purchase') {
+        window.location.href = '/#pricing';
+        return;
+      }
       if (event.data?.type !== 'inkword:scene-complete' || !event.data.sceneId) return;
       void recordSceneCompletion(event.data.sceneId, event.data.wordIds || []);
     };
@@ -49,7 +55,7 @@ export default function LearningPage() {
     return () => window.removeEventListener('message', receiveLearningEvent);
   }, [recordSceneCompletion, signOut]);
 
-  useEffect(sendAccountState, [user, learningProgress]);
+  useEffect(sendAccountState, [user, learningProgress, isPaid]);
 
   if (loading) {
     return <div className="min-h-screen bg-white" aria-label="학습장 불러오는 중" />;
@@ -76,7 +82,7 @@ export default function LearningPage() {
     <iframe
       ref={frameRef}
       title="보는 단어장 실제 학습장"
-      src="/learning/index.html?v=20260719-29"
+      src="/learning/index.html?v=20260728-gate3"
       onLoad={sendAccountState}
       className="fixed inset-0 w-full h-full border-0 bg-white"
       allow="autoplay; microphone"

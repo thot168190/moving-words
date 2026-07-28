@@ -45,6 +45,7 @@ interface AuthContextType {
   user: User | null;
   profile: UserProfile | null;
   learningProgress: LearningProgress;
+  isPaid: boolean;
   loading: boolean;
   error: string | null;
 
@@ -252,6 +253,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         profile,
         learningProgress,
+        isPaid: Boolean(profile?.purchase),
         loading,
         error,
         signInWithGoogle,
