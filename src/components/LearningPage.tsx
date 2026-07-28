@@ -37,8 +37,12 @@ export default function LearningPage() {
   };
 
   useEffect(() => {
-    const receiveLearningEvent = (event: MessageEvent<SceneCompleteMessage>) => {
+    const receiveLearningEvent = (event: MessageEvent<SceneCompleteMessage | { type: 'inkword:ready' }>) => {
       if (event.origin !== window.location.origin) return;
+      if (event.data?.type === 'inkword:ready') {
+        sendAccountState();
+        return;
+      }
       if (event.data?.type === 'inkword:logout') {
         void signOut();
         return;
@@ -53,7 +57,7 @@ export default function LearningPage() {
     };
     window.addEventListener('message', receiveLearningEvent);
     return () => window.removeEventListener('message', receiveLearningEvent);
-  }, [recordSceneCompletion, signOut]);
+  }, [recordSceneCompletion, signOut, user, learningProgress, isPaid]);
 
   useEffect(sendAccountState, [user, learningProgress, isPaid]);
 
@@ -82,7 +86,7 @@ export default function LearningPage() {
     <iframe
       ref={frameRef}
       title="보는 단어장 실제 학습장"
-      src="/learning/index.html?v=20260728-gate3"
+      src="/learning/index.html?v=20260728-gate4"
       onLoad={sendAccountState}
       className="fixed inset-0 w-full h-full border-0 bg-white"
       allow="autoplay; microphone"
