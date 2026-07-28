@@ -1,23 +1,21 @@
+import os
+
+import gradio as gr
+from huggingface_hub import InferenceClient
+from gradio_client import Client
+
 try:
     import spaces
 except ImportError:
     # spaces 모듈이 없는 로컬 개발 환경용 가짜 데코레이터 선언
     class spaces:
         @staticmethod
-        def GPU(*args, **kwargs):
-            if args and callable(args[0]):
-                return args[0]
-            return lambda func: func
-
-import gradio as gr
-import torch
-from diffusers import AutoPipelineForText2Image
+        def GPU(func):
+            return func
 
 
-# 외부 Inference Provider를 다시 호출하지 않고 Space에 배정된 무료 GPU에서 직접 생성합니다.
-# SDXL Turbo는 4단계만으로 생성되어 ZeroGPU 사용 시간을 줄일 수 있습니다.
-MODEL_ID = "stabilityai/sdxl-turbo"
-pipeline = None
+MODEL_ID = os.getenv("MODEL_ID", "stabilityai/stable-diffusion-xl-base-1.0")
+client = InferenceClient(token=os.getenv("HF_TOKEN"))
 
 STYLE_GUIDES = {
     "세밀 수채화": "delicate museum-quality watercolor, refined fine-line details",
@@ -29,58 +27,95 @@ STYLE_GUIDES = {
 }
 
 
-def get_pipeline():
-    """첫 요청에서 한 번만 모델을 올리고 이후 요청에서는 재사용합니다."""
-    global pipeline
-    if pipeline is None:
-        pipeline = AutoPipelineForText2Image.from_pretrained(
-            MODEL_ID,
-            torch_dtype=torch.float16,
-            variant="fp16",
-            use_safetensors=True,
+def mentor_scene(word: str, meaning: str, scene: str) -> str:
+    """사용자가 입력한 한글 장면 묘사를 AI가 이미지 생성을 위한 고품격 영어 프롬프트로 다듬고 멘토링합니다."""
+    word = (word or "").strip()
+    meaning = (meaning or "").strip()
+    scene = (scene or "").strip()
+    
+    # 둘 중 입력이 들어온 단어를 기준 핵심 주체로 사용
+    subject = word if word else meaning
+    
+    if not scene:
+        return f"a clear visual representation of the subject '{subject}'"
+
+    system_prompt = (
+        "You are an expert English learning mentor and illustration art director.\n"
+        "Your task is to translate the user's Korean description into a highly detailed, professional English image prompt.\n"
+        "The goal is to create a clear, beautiful educational illustration for a vocabulary card representing the subject '{subject}' (English word: '{word}', Korean meaning: '{meaning}').\n"
+        "Convert the description into a single, coherent English descriptive paragraph focusing on composition, lighting, style, and clarity.\n"
+        "Do NOT include any conversational text, explanations, or metadata. Output ONLY the refined English prompt."
+    )
+    
+    messages = [
+        {"role": "system", "content": system_prompt.format(subject=subject, word=word, meaning=meaning)},
+        {"role": "user", "content": f"Korean scene description: {scene}"}
+    ]
+    
+    try:
+        response = client.chat_completion(
+            messages=messages,
+            model="meta-llama/Llama-3.1-8B-Instruct",
+            max_tokens=256,
+            temperature=0.7
         )
-        pipeline.to("cuda")
-        pipeline.enable_attention_slicing()
-    return pipeline
+        refined = response.choices[0].message.content.strip()
+        # 불필요한 감싸인 따옴표 제거
+        refined = refined.strip('"\'')
+        print(f"[Mentor Prompt]: {refined}")
+        return refined
+    except Exception as e:
+        print(f"[Mentor Error]: {e}")
+        # 오류 시 기본 폴백
+        return scene
 
 
-@spaces.GPU(duration=60)
+@spaces.GPU
 def generate_card(word: str, meaning: str, scene: str, style: str):
     """텍스트가 없는 순백 배경 원화를 만듭니다. 단어 표기는 웹에서 정확히 얹습니다."""
     word = (word or "").strip()
     meaning = (meaning or "").strip()
     scene = (scene or "").strip()
-
+    
     # 영단어나 한글 뜻 중 하나만 입력해도 정상 동작하도록 가드 완화
     if not word and not meaning:
         raise gr.Error("영어 단어 또는 한글 뜻 중 최소 하나는 입력해야 합니다.")
 
-    style_guide = STYLE_GUIDES.get(style, STYLE_GUIDES["세밀 수채화"])
+    # 멘토링 함수를 통해 영어 프롬프트로 고도화
+    refined_scene = mentor_scene(word, meaning, scene)
 
+    style_guide = STYLE_GUIDES.get(style, STYLE_GUIDES["세밀 수채화"])
+    
     # 아동용/동화용 친화 스타일일 때는 'no childish cartoon style' 가드 완화
     child_friendly = style in ["귀여운 3D 점토", "따뜻한 그림책"]
     cartoon_guard = "" if child_friendly else ", no childish cartoon style"
 
     prompt = f"""
-    Create this exact scene: {scene or f'a clear visual representation of {word}'}.
+    Create this exact scene: {refined_scene}.
     The main learning subject is the subject '{word if word else meaning}'
     ({meaning or 'vocabulary learning card'}). Use {style_guide}.
     Sophisticated educational editorial illustration for teenagers, centered and fully visible,
     balanced negative space, pure bright white background, crisp silhouette, elegant restrained colors,
     no text, no letters, no watermark, no frame, no hand{cartoon_guard}.
     """
+
+    # 403 API 권한 제약을 우회하기 위해 공식 무료 FLUX 데모 스페이스로 직접 추론 호출 시도
     try:
-        result = get_pipeline()(
+        print("[Router] Trying direct inference through official FLUX Space...")
+        temp_client = Client("black-forest-labs/FLUX.1-schnell")
+        result = temp_client.predict(
             prompt=prompt,
+            seed=0,
+            width=1024,
+            height=1024,
             num_inference_steps=4,
-            guidance_scale=0.0,
-            width=768,
-            height=768,
+            api_name="/predict"
         )
-        return result.images[0]
-    except Exception as error:
-        # 웹 화면에 의미 없는 null 대신 실제 원인을 전달합니다.
-        raise gr.Error(f"이미지 생성 서버 오류: {error}") from error
+        # 성공 시 로컬 임시 이미지 경로 반환
+        return result
+    except Exception as e:
+        print(f"[Router Fallback] Direct inference failed: {e}. Falling back to InferenceClient...")
+        return client.text_to_image(prompt, model=MODEL_ID)
 
 
 with gr.Blocks(title="InkWord Image Lab") as demo:

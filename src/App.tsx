@@ -653,6 +653,7 @@ function LandingPage() {
                   product={TOSS_PRODUCTS[0]}
                   onError={(err) => console.error('Toss error:', err)}
                 />
+                <p className="mt-4 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
               </div>
             </motion.div>
           </div>
@@ -678,10 +679,10 @@ function LandingPage() {
           <div className="text-[#333333] text-[14px] sm:text-[15px] leading-6 font-bold">
             <p className="font-bold text-[#07533f] mb-1">매또컴퍼니 | 대표: 이미현</p>
             <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 면제 (부가가치세법상 간이과세자)</p>
-            <p className="mb-3">주소: 경기도 양주시 고읍로 11-7</p>
+            <p className="mb-1">주소: 경기도 양주시 고읍로 11-7</p>
+            <p className="mb-1">대표전화: 010-2058-9900 | 전자우편: thot168190@gmail.com</p>
+            <p className="mb-3">호스팅 제공: GitHub, Inc.</p>
             <p className="mt-3.5">
-              <span>문의: thot168190@gmail.com</span>
-              <span className="mx-2.5 text-neutral-300">|</span>
               <a href="/terms.html" target="_blank" className="text-indigo-600 underline font-extrabold hover:text-indigo-800">이용약관</a>
               <span className="mx-2 text-neutral-300">·</span>
               <a href="/privacy.html" target="_blank" className="text-indigo-600 underline font-extrabold hover:text-indigo-800">개인정보처리방침</a>
