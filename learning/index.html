@@ -154,6 +154,26 @@
     @media(max-width:620px){.feature-view .back{font-size:14px;margin-bottom:18px}.feature-intro{margin:12px auto 22px}.feature-intro h1{font-size:32px;line-height:1.18;letter-spacing:-.04em}.feature-intro p{font-size:16px;line-height:1.55}.studio-layout{gap:14px;width:100%;max-width:none;padding:10px;border-radius:20px}.generate-preview{width:100%;max-width:none;border-radius:20px}.generate-empty{font-size:15px;padding:22px}.generate-empty:before{width:60px;height:60px;margin-bottom:15px;font-size:28px}.generate-empty strong{font-size:24px}.studio-side{padding:20px 16px;border-radius:20px}.studio-side label{font-size:16px}.word-input{font-size:30px;margin-bottom:16px;padding:11px 12px}.word-input.meaning{font-size:25px}.studio-side textarea.word-input{min-height:118px;font-size:17px}.meaning-options{grid-template-columns:1fr}.meaning-option{min-height:56px;font-size:18px}.style-options{gap:7px}.style-option{font-size:14px;padding:10px 11px}.studio-actions button{font-size:17px;min-height:54px}.studio-note,.studio-status,.studio-quota,.studio-connection{font-size:14px}.generated-caption{left:14px;right:14px;bottom:14px;padding:10px 12px}.generated-caption strong{font-size:24px}.generated-caption span{font-size:15px}}
     @media(max-width:620px){.quiz-scenes{width:calc(100vw - 28px);margin-bottom:16px}.quiz-scene{font-size:16px;padding:12px 15px}.memory-layout{width:calc(100vw - 28px);gap:16px}.memory-stage{width:100%}.memory-side{padding:22px 18px}.memory-side h2{font-size:30px}.memory-side p{font-size:17px;line-height:1.55}.memory-choice{font-size:19px;min-height:56px;padding:14px 8px}.memory-hole{font-size:30px}.memory-answer{font-size:clamp(22px,7vw,30px)}.memory-retry,.memory-next{font-size:17px;min-height:52px}.museum-card h3{font-size:22px}.museum-card p{font-size:17px}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.poster video{display:none}}
+  
+    .gate-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(16,40,34,.55);backdrop-filter:blur(3px)}
+    .gate-modal.show{display:flex}
+    .gate-card{width:min(420px,100%);background:#fff;border-radius:24px;padding:34px 30px 26px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.22);animation:gate-in .28s cubic-bezier(.2,1.2,.4,1)}
+    @keyframes gate-in{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+    .gate-lock{font-size:38px;line-height:1}
+    .gate-card h3{margin:14px 0 10px;font-size:23px;letter-spacing:-.03em;color:#07533f}
+    .gate-card p{margin:0;color:#5b6560;font-size:15px;line-height:1.7}
+    .gate-price{margin:22px 0 24px;padding:18px;border-radius:16px;background:#f4faf7;border:1px solid #dceae4}
+    .gate-price span{display:block;color:#34866b;font-size:12px;font-weight:900;letter-spacing:.14em}
+    .gate-price strong{display:block;margin:6px 0 4px;font-size:34px;color:#07533f;letter-spacing:-.03em}
+    .gate-price small{display:block;color:#7b847f;font-size:13px}
+    .gate-actions{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}
+    .gate-actions button{min-height:52px;border-radius:14px;font:900 15px Pretendard,sans-serif;cursor:pointer;border:0}
+    .gate-ghost{background:#eef2f0;color:#5b6560}
+    .gate-ghost:hover{background:#e3e9e6}
+    .gate-cta{background:#07533f;color:#fff}
+    .gate-cta:hover{background:#0a6b51}
+    @media(max-width:480px){.gate-card{padding:28px 22px 22px}.gate-actions{grid-template-columns:1fr}}
+
   </style>
 </head>
 <body>
@@ -244,6 +264,18 @@
     <div id="featureContent"></div>
    </section>
   </main>
+  <div class="gate-modal" id="gateModal" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="gate-card">
+      <div class="gate-lock">🔒</div>
+      <h3 id="gateTitle">여기부터는 이용권이 필요합니다</h3>
+      <p>앞의 <b>세 장면</b>은 자유롭게 학습하실 수 있습니다.<br>나머지 다섯 장면은 이용권을 구매하면 모두 열립니다.</p>
+      <div class="gate-price"><span>출시 기념가</span><strong>₩9,900</strong><small>한 번 결제로 계속 이용</small></div>
+      <div class="gate-actions">
+        <button class="gate-ghost" id="gateClose">계속 둘러보기</button>
+        <button class="gate-cta" id="gateBuy">이용권 보러 가기 →</button>
+      </div>
+    </div>
+  </div>
   <div class="notice" id="notice"></div>
 
   <script src="image-lab-config.js"></script>
@@ -510,7 +542,7 @@
       const w=works[Number(el.dataset.index)],pv=el.querySelector('video');
       el.addEventListener('mouseenter',()=>{if(previews&&!w.locked&&matchMedia('(hover:hover)').matches)pv.play().catch(()=>{})});
       el.onmouseleave=()=>{pv.pause();pv.currentTime=0};
-      el.onclick=()=>{if(w.locked){const msg=w.needsPurchase?'이용권을 구매하면 나머지 장면이 모두 열립니다.':'앞 챕터를 완주하면 학습할 수 있습니다.';notify(msg);alert(msg);if(w.needsPurchase){try{window.parent.postMessage({type:'inkword:need-purchase'},'*')}catch(e){}}return}document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));el.classList.add('current');activeWork=w;mainVideo.pause();mainVideo.src=w.video;mainVideo.load();mainVideo.playbackRate=playbackRates[playbackRateIndex];mainPoster.src=w.img;mainPoster.alt=`${w.title} 학습 영상 대표 화면`;document.getElementById('nowLabel').textContent=`LEARNING · ${w.n}`;document.getElementById('mainTitle').textContent=w.title;document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';renderWords(w);viewer.classList.remove('playing');pauseMain();scrollTo({top:80,behavior:'smooth'})};
+      el.onclick=()=>{if(w.locked){if(w.needsPurchase){openGate()}else{notify('앞 챕터를 완주하면 학습할 수 있습니다.')}return}document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));el.classList.add('current');activeWork=w;mainVideo.pause();mainVideo.src=w.video;mainVideo.load();mainVideo.playbackRate=playbackRates[playbackRateIndex];mainPoster.src=w.img;mainPoster.alt=`${w.title} 학습 영상 대표 화면`;document.getElementById('nowLabel').textContent=`LEARNING · ${w.n}`;document.getElementById('mainTitle').textContent=w.title;document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';renderWords(w);viewer.classList.remove('playing');pauseMain();scrollTo({top:80,behavior:'smooth'})};
     });
     document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.currentTarget.classList.toggle('off',!previews);e.currentTarget.setAttribute('aria-label',`미리보기 자동재생 ${previews?'켜짐':'꺼짐'}`);notify(`미리보기 자동재생을 ${previews?'켰습니다.':'껐습니다.'}`)};
     const homeView=document.getElementById('homeView'),chapterDetail=document.getElementById('chapterDetail');
@@ -711,6 +743,16 @@
       document.getElementById('dashboardNextCopy').textContent=completedSceneCount?'지난 학습 다음 장면부터 이어서 시작합니다.':'첫 장면부터 천천히 시작해보세요.';
       document.getElementById('dashboardContinue').textContent=completedSceneCount?'이어서 학습하기 →':'첫 학습 시작하기 →';
     });
+    // ── 구매 안내 모달 ──
+    function openGate(){const m=document.getElementById('gateModal');if(m)m.classList.add('show')}
+    function closeGate(){const m=document.getElementById('gateModal');if(m)m.classList.remove('show')}
+    (function(){
+      const close=document.getElementById('gateClose'),buy=document.getElementById('gateBuy'),modal=document.getElementById('gateModal');
+      if(close)close.onclick=closeGate;
+      if(buy)buy.onclick=()=>{closeGate();try{window.parent.postMessage({type:'inkword:need-purchase'},location.origin)}catch(e){}};
+      if(modal)modal.onclick=e=>{if(e.target===modal)closeGate()};
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeGate()});
+    })();
     function notify(msg){const n=document.getElementById('notice');n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),1900)}
     try{window.parent.postMessage({type:'inkword:ready'},'*');}catch(e){}
   </script>
