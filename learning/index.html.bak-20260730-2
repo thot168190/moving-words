@@ -283,9 +283,8 @@
     const works=[
       {n:'01',title:'빛을 보내는 등대',sub:'해안에서 보내는 첫 신호',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',current:true,words:[['tower','탑'],['island','섬'],['shine','빛나다'],['warn','경고하다'],['cliff','절벽'],['shore','물가'],['guide','길을 안내하다'],['flash','번쩍이다']]},
       {n:'02',title:'바람을 타는 범선',sub:'수평선을 향해 떠나다',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['sail','돛·항해하다'],['deck','갑판'],['rope','줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다'],['port','항구'],['navy','해군']]},
-      {n:'03',title:'돌고래가 따라오는 배',sub:'잔잔한 물에 비친 돛',video:'챕터1_완성동영상/scene-ch1-09.mp4',img:'챕터1_완성동영상/scene-ch1-09-poster.jpg',words:[['calm','잔잔한'],['distance','먼 거리'],['shadow','그림자'],['leap','뛰어오르다'],['follow','따라가다'],['float','뜨다'],['reflect','비치다'],['silver','은빛']]},
-      {n:'04',title:'고래와 깊은 바다',sub:'깊은 바다에서 만난 것',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',hasHand:true,words:[['whale','고래'],['wave','파도'],['rise','솟아오르다'],['surface','수면'],['ocean','대양'],['dive','잠수하다'],['spray','뿜어지다'],['bubble','물거품']]},
-      {n:'05',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 마지막 깊이',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['dolphin','돌고래류'],['shell','껍데기'],['seal','바다표범'],['tide','조수'],['current','물살'],['sink','가라앉다'],['cage','우리'],['stream','흐름']]}
+      {n:'03',title:'고래와 깊은 바다',sub:'깊은 바다에서 만난 것',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',hasHand:true,words:[['whale','고래'],['wave','파도'],['rise','솟아오르다'],['surface','수면'],['ocean','대양'],['dive','잠수하다'],['spray','뿜어지다'],['bubble','물거품']]},
+      {n:'04',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 마지막 깊이',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['dolphin','돌고래류'],['shell','껍데기'],['seal','바다표범'],['tide','조수'],['current','물살'],['sink','가라앉다'],['cage','우리'],['stream','흐름']]}
     ];
     const FREE_SCENES=3;
     works.forEach((w,i)=>{const lock=i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock;});

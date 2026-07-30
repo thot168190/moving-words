@@ -281,11 +281,14 @@
   <script src="image-lab-config.js"></script>
   <script>
     const works=[
-      {n:'01',title:'빛을 보내는 등대',sub:'해안에서 보내는 첫 신호',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',current:true,words:[['tower','탑'],['island','섬'],['shine','빛나다'],['warn','경고하다'],['cliff','절벽'],['shore','물가'],['guide','길을 안내하다'],['flash','번쩍이다']]},
-      {n:'02',title:'바람을 타는 범선',sub:'수평선을 향해 떠나다',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['sail','돛·항해하다'],['deck','갑판'],['rope','줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다'],['port','항구'],['navy','해군']]},
-      {n:'03',title:'돌고래가 따라오는 배',sub:'잔잔한 물에 비친 돛',video:'챕터1_완성동영상/scene-ch1-09.mp4',img:'챕터1_완성동영상/scene-ch1-09-poster.jpg',words:[['calm','잔잔한'],['distance','먼 거리'],['shadow','그림자'],['leap','뛰어오르다'],['follow','따라가다'],['float','뜨다'],['reflect','비치다'],['silver','은빛']]},
-      {n:'04',title:'고래와 깊은 바다',sub:'깊은 바다에서 만난 것',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',hasHand:true,words:[['whale','고래'],['wave','파도'],['rise','솟아오르다'],['surface','수면'],['ocean','대양'],['dive','잠수하다'],['spray','뿜어지다'],['bubble','물거품']]},
-      {n:'05',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 마지막 깊이',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['dolphin','돌고래류'],['shell','껍데기'],['seal','바다표범'],['tide','조수'],['current','물살'],['sink','가라앉다'],['cage','우리'],['stream','흐름']]}
+      {n:'01',title:'고래와 깊은 바다',sub:'광대한 바다의 고래',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',current:true,hasHand:true,words:[['humpback','혹등고래'],['flipper','가슴지느러미'],['blowhole','숨구멍'],['spout','물기둥'],['dorsal fin','등지느러미'],['foam','물거품'],['wave','파도'],['belly','배 부분']]},
+      {n:'02',title:'빛을 보내는 등대',sub:'해안을 비추는 길잡이',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',words:[['tower','탑'],['beacon','등대 불빛'],['lantern','등실'],['balcony','난간'],['doorway','출입구'],['rock','바위'],['surf','해안의 파도'],['wave','파도']]},
+      {n:'03',title:'바람을 타는 범선',sub:'수평선을 향한 항해',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['hull','선체'],['deck','갑판'],['rigging','삭구'],['bow','뱃머리'],['stern','고물'],['flag','깃발'],['porthole','현창'],['canvas','돛천']]},
+      {n:'04',title:'시간을 품은 콜로세움',sub:'세월이 남긴 건축물',video:'챕터1_완성동영상/scene-ch1-04.mp4',img:'챕터1_완성동영상/scene-ch1-04-poster.jpg',words:[['amphitheater','원형 경기장'],['archway','아치형 통로'],['column','기둥'],['tier','층'],['facade','건물 정면'],['ruin','유적'],['stonework','석조 부분'],['window','창문']]},
+      {n:'05',title:'밤하늘의 별자리',sub:'별들이 만드는 형태',video:'챕터1_완성동영상/scene-ch1-05.mp4',img:'챕터1_완성동영상/scene-ch1-05-poster.jpg',words:[['telescope','망원경'],['lens','렌즈'],['tripod','삼각대'],['crescent','초승달'],['constellation','별자리'],['starlight','별빛'],['star cluster','성단'],['night sky','밤하늘']]},
+      {n:'06',title:'하늘을 물들이는 오로라',sub:'대기에 펼쳐지는 빛',video:'챕터1_완성동영상/scene-ch1-06.mp4',img:'챕터1_완성동영상/scene-ch1-06-poster.jpg',words:[['aurora','오로라'],['light ribbon','빛의 띠'],['snowfield','설원'],['pine','소나무'],['starlight','별빛'],['horizon','지평선'],['glow','빛무리'],['forest','숲']]},
+      {n:'07',title:'구름 위의 열기구',sub:'높이 오르며 보는 풍경',video:'챕터1_완성동영상/scene-ch1-07.mp4',img:'챕터1_완성동영상/scene-ch1-07-poster.jpg',words:[['envelope','기낭'],['burner','버너'],['basket','바구니'],['rope','밧줄'],['cloud','구름'],['valley','골짜기'],['passenger','탑승객'],['stripe','줄무늬']]},
+      {n:'08',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 심해의 생태계',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['manta ray','쥐가오리'],['coral','산호'],['canyon','협곡'],['seabed','해저'],['branch coral','가지산호'],['reef','암초'],['surface','수면'],['bubble','기포']]}
     ];
     const FREE_SCENES=3;
     works.forEach((w,i)=>{const lock=i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock;});
