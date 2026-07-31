@@ -476,16 +476,16 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* 학습·게임·AI 생성·박물관까지 제품의 핵심 기능을 한눈에 소개합니다. */}
+      {/* 보는 단어장의 핵심인 '눈앞에서 그려지는 경험'을 기능 카드와 함께 소개합니다. */}
       <section id="course" className="bg-[#EFF5F1] border-t border-[#dcebe5] px-4 py-14 sm:px-6 sm:py-20">
         <div className="max-w-6xl mx-auto">
-          <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-4 font-black">More than a wordbook</p>
+          <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-4 font-black">INKWORD</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10 sm:mb-14">
             <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18]" style={{ fontSize: 'clamp(34px, 5vw, 64px)' }}>
-              배운 단어, 다양한 활동으로<br />더 오래 기억합니다.
+              외우지 말고, 보세요.
             </h2>
             <p className="max-w-md text-[#45665d] text-[18px] sm:text-[21px] font-bold leading-relaxed">
-              그림으로 배우고, 게임으로 확인하고,<br className="hidden sm:block" /> 원하는 단어는 AI로 직접 만드세요.
+              눈앞에서 그려지는 단어장.
             </p>
           </div>
 
@@ -660,7 +660,9 @@ function LandingPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-[#888888] text-[13px] sm:text-[14px] font-medium text-center mt-10">각 서비스 공식 페이지 기준 (2026-07 확인) · 정직한 비교를 지향합니다</p>
+          <p className="mt-10 text-center text-[15px] font-bold leading-relaxed text-[#5d665f] sm:text-[17px]">
+            가격·기능 정보는 각 서비스 공식 페이지 기준입니다. (2026년 7월 확인)
+          </p>
         </div>
       </section>
 
