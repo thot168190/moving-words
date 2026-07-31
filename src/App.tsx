@@ -663,7 +663,8 @@ function LandingPage() {
                   product={TOSS_PRODUCTS[0]}
                   onError={(error) => console.error('Toss payment error:', error)}
                 />
-                <p className="mt-6 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
+                <p className="mt-6 text-[13px] font-semibold leading-relaxed text-[#33403a]">서비스 제공 시기: 결제 완료 즉시 이용 가능</p>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
               </div>
             </motion.div>
           </div>
@@ -688,7 +689,7 @@ function LandingPage() {
 
           <div className="text-white/75 text-[14px] sm:text-[15px] leading-6 font-bold">
             <p className="font-bold text-white mb-1">매또컴퍼니 | 대표: 이미현</p>
-            <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 면제 (부가가치세법상 간이과세자)</p>
+            <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 제 2026-경기양주-2522 호</p>
             <p className="mb-1">주소: (11481) 경기 양주시 고읍로 11-7, 105동 603호</p>
             <p className="mb-1">대표전화: 010-2058-9900 | 전자우편: thot168190@gmail.com</p>
             <p className="mb-3">호스팅 제공: GitHub, Inc.</p>
