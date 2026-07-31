@@ -25,6 +25,14 @@ export function Navbar({ entranceComplete }: NavbarProps) {
     setMenuOpen(false);
   };
 
+  // 같은 홈 주소에 있어도 현재 스크롤 위치를 유지하지 않고 첫 화면으로 돌아갑니다.
+  const goHome = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.history.pushState(null, '', '/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMenuOpen(false);
+  };
+
   return (
     <>
       <motion.nav
@@ -41,6 +49,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
             <motion.a
               href="/"
               aria-label="보는 단어장 홈으로 가기"
+              onClick={goHome}
               className={`h-12 px-5 bg-[#141414]/5 backdrop-blur-md rounded-[14px] flex items-center gap-2.5 cursor-pointer ${
                 menuOpen ? 'hidden md:flex' : 'flex'
               } no-underline`}
@@ -173,6 +182,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
             <motion.a
               href="/"
               aria-label="보는 단어장 홈으로 가기"
+              onClick={goHome}
               className="h-9 px-3 bg-[#141414]/5 backdrop-blur-md rounded-[10px] flex items-center gap-2 overflow-hidden shrink-0 no-underline"
               animate={{ width: menuOpen ? 0 : 'auto', opacity: menuOpen ? 0 : 1, paddingLeft: menuOpen ? 0 : 12, paddingRight: menuOpen ? 0 : 12 }}
               transition={{ type: 'spring', stiffness: 350, damping: 28 }}
