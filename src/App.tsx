@@ -583,16 +583,16 @@ function LandingPage() {
             {/* 말해보카 */}
             <div className="bg-white rounded-2xl p-5 border border-neutral-200/60 shadow-sm">
               <h3 className="font-bold text-[#666666] text-lg mb-3">말해보카</h3>
-              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">AI 레벨 퀴즈</span></p>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">빈칸 퀴즈·자동 복습</span></p>
               <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>12개월 ₩119,000</span></p>
-              <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">스스로 퀴즈 푸는 것이 편한 분</span></p>
+              <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">퀴즈로 어휘를 반복하고 싶은 분</span></p>
             </div>
             {/* 클래스카드 */}
             <div className="bg-white rounded-2xl p-5 border border-neutral-200/60 shadow-sm">
               <h3 className="font-bold text-[#666666] text-lg mb-3">클래스카드</h3>
-              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">단어장 반복 암기</span></p>
+              <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">방식</span> <span className="word-break-keep">학습 세트·게임형 반복</span></p>
               <p className="text-[#777777] text-[15px] mb-2 flex"><span className="font-bold text-neutral-400 w-16 shrink-0">가격</span> <span>무료+유료</span></p>
-              <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">성실한 반복 암기가 체질인 분</span></p>
+              <p className="text-[#777777] text-[15px] flex"><span className="font-bold text-neutral-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">학습 세트를 반복 연습하고 싶은 분</span></p>
             </div>
             {/* 보는 단어장 */}
             <div className="bg-[#eef7f3] rounded-2xl p-5 border-2 border-[#2f9c75] shadow-md relative">
@@ -600,7 +600,7 @@ function LandingPage() {
                 <h3 className="font-black text-[#07533f] text-[20px]">보는 단어장</h3>
                 <span className="bg-rose-500 text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm animate-pulse">추천 ⭐</span>
               </div>
-              <p className="text-indigo-950 font-black text-[16px] mb-3 flex"><span className="font-bold text-indigo-400 w-16 shrink-0">방식</span> <span className="word-break-keep">그림→글자 변신 애니메이션</span></p>
+              <p className="text-indigo-950 font-black text-[16px] mb-3 flex"><span className="font-bold text-indigo-400 w-16 shrink-0">방식</span> <span className="word-break-keep">움직이는 장면 학습·거꾸로 퀴즈</span></p>
               <div className="text-indigo-950 font-black text-[16px] mb-3 flex items-center">
                 <span className="font-bold text-indigo-400 w-16 shrink-0">가격</span>
                 <span className="flex flex-col">
@@ -608,7 +608,7 @@ function LandingPage() {
                   <span className="text-[#087052] font-extrabold text-[18px]">출시 기념가 ₩9,900</span>
                 </span>
               </div>
-              <p className="text-indigo-700 font-black text-[15px] flex"><span className="font-bold text-indigo-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">지루한 암기가 힘들고 단어가 안 외워지는 분</span></p>
+              <p className="text-indigo-700 font-black text-[15px] flex"><span className="font-bold text-indigo-400 w-16 shrink-0">추천 대상</span> <span className="word-break-keep">단어 뜻을 장면으로 이해하고 기억하고 싶은 분</span></p>
             </div>
           </div>
 
@@ -627,17 +627,17 @@ function LandingPage() {
                 {/* ── 말해보카 (경쟁사 1 - 톤다운) ── */}
                 <tr className="bg-neutral-50/50 hover:bg-neutral-50 transition-colors duration-200">
                   <td className="py-5 pr-4 pl-5 font-bold text-[#666666] whitespace-nowrap first:rounded-l-2xl border-y border-l border-neutral-200/60">말해보카</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">AI 레벨 퀴즈</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">빈칸 퀴즈·자동 복습</td>
                   <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">12개월 ₩119,000</td>
-                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>스스로 퀴즈 푸는 것이 편한 분</td>
+                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>퀴즈로 어휘를 반복하고 싶은 분</td>
                 </tr>
 
                 {/* ── 클래스카드 (경쟁사 2 - 톤다운) ── */}
                 <tr className="bg-neutral-50/50 hover:bg-neutral-50 transition-colors duration-200">
                   <td className="py-5 pr-4 pl-5 font-bold text-[#666666] whitespace-nowrap first:rounded-l-2xl border-y border-l border-neutral-200/60">클래스카드</td>
-                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">단어장 반복 암기</td>
+                  <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">학습 세트·게임형 반복</td>
                   <td className="py-5 pr-4 text-[#777777] font-medium whitespace-nowrap border-y border-neutral-200/60">무료+유료</td>
-                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>성실한 반복 암기가 체질인 분</td>
+                  <td className="py-5 pl-4 pr-5 text-[#777777] font-medium last:rounded-r-2xl border-y border-r border-neutral-200/60" style={{ wordBreak: 'keep-all' }}>학습 세트를 반복 연습하고 싶은 분</td>
                 </tr>
 
                 {/* ── 보는 단어장 (자사 - 초강력 하이라이트 & 3D 입체) ── */}
@@ -648,14 +648,14 @@ function LandingPage() {
                       <span className="bg-[#4f927b] text-white text-[10px] font-black tracking-wide px-2 py-0.5 rounded-full shadow-sm">추천</span>
                     </div>
                   </td>
-                  <td className="py-8 pr-5 font-black text-[21px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">그림 학습·퀴즈·AI 이미지 생성</td>
+                  <td className="py-8 pr-5 font-black text-[21px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">움직이는 장면 학습·거꾸로 퀴즈</td>
                   <td className="py-8 pr-5 font-black text-[21px] text-[#163f34] whitespace-nowrap border-y border-[#4f927b]">
                     <div className="flex flex-col">
                       <span className="text-[#6f756f] text-[12px] sm:text-[13px] line-through">6개월 후 정상가 ₩19,800</span>
                       <span className="text-[#087052] font-extrabold text-[22px]">출시 기념가 ₩9,900</span>
                     </div>
                   </td>
-                  <td className="py-8 pl-6 pr-7 font-black text-[21px] text-[#07533f] last:rounded-r-2xl border-y border-r-2 border-[#4f927b]" style={{ wordBreak: 'keep-all' }}>지루한 암기가 힘들고 단어가 안 외워지는 분</td>
+                  <td className="py-8 pl-6 pr-7 font-black text-[21px] text-[#07533f] last:rounded-r-2xl border-y border-r-2 border-[#4f927b]" style={{ wordBreak: 'keep-all' }}>단어 뜻을 장면으로 이해하고 기억하고 싶은 분</td>
                 </tr>
               </tbody>
             </table>
