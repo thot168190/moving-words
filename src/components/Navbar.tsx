@@ -38,10 +38,12 @@ export function Navbar({ entranceComplete }: NavbarProps) {
           {/* Left group */}
           <div className="flex items-center gap-2">
             {/* Logo pill */}
-            <motion.div
+            <motion.a
+              href="/"
+              aria-label="보는 단어장 홈으로 가기"
               className={`h-12 px-5 bg-[#141414]/5 backdrop-blur-md rounded-[14px] flex items-center gap-2.5 cursor-pointer ${
                 menuOpen ? 'hidden md:flex' : 'flex'
-              }`}
+              } no-underline`}
               whileHover={{ scale: 1.02, backgroundColor: 'rgba(20,20,20,0.08)' }}
               whileTap={{ scale: 0.98 }}
             >
@@ -49,7 +51,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
               <span className="nav-logo-text text-[17px] text-[#07533f]">
                 보는 단어장
               </span>
-            </motion.div>
+            </motion.a>
 
             {/* Expanding menu pill */}
             <motion.div
@@ -168,8 +170,10 @@ export function Navbar({ entranceComplete }: NavbarProps) {
           {/* Left group */}
           <div className="flex items-center gap-1.5 flex-1 min-w-0">
             {/* Logo pill (collapses when menu open) */}
-            <motion.div
-              className="h-9 px-3 bg-[#141414]/5 backdrop-blur-md rounded-[10px] flex items-center gap-2 overflow-hidden shrink-0"
+            <motion.a
+              href="/"
+              aria-label="보는 단어장 홈으로 가기"
+              className="h-9 px-3 bg-[#141414]/5 backdrop-blur-md rounded-[10px] flex items-center gap-2 overflow-hidden shrink-0 no-underline"
               animate={{ width: menuOpen ? 0 : 'auto', opacity: menuOpen ? 0 : 1, paddingLeft: menuOpen ? 0 : 12, paddingRight: menuOpen ? 0 : 12 }}
               transition={{ type: 'spring', stiffness: 350, damping: 28 }}
             >
@@ -177,7 +181,7 @@ export function Navbar({ entranceComplete }: NavbarProps) {
               <span className="text-[13px] font-medium tracking-tight text-[#07533f] whitespace-nowrap">
                 보는 단어장
               </span>
-            </motion.div>
+            </motion.a>
 
             {/* Expanding menu capsule */}
             <motion.div
