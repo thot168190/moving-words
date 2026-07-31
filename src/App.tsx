@@ -652,7 +652,7 @@ function LandingPage() {
                 <div className="text-[46px] sm:text-[56px] font-black tracking-tight">₩9,900</div>
               </div>
               <ul className="divide-y divide-[#e2eee9] mb-7 flex-1">
-                {['총 12개 챕터 학습', '학습 어휘를 모으는 나만의 카드 박물관', '학습 내용을 확인하는 퀴즈', '수학·과학 전문 어휘와 중국어 어휘 학습 순차 공개'].map((item) => (
+                {['총 12개 챕터 학습', '학습 어휘를 모으는 나만의 카드 박물관', '학습 내용을 확인하는 퀴즈', '수학·과학·중국어 어휘 사전 순차 출시 예정 (별도 상품)'].map((item) => (
                   <li key={item} className="py-5 flex items-center gap-4 text-[#353532] text-[18px] sm:text-[20px] font-bold leading-relaxed">
                     <span className="text-[#2f9c75] text-2xl">✓</span>{item}
                   </li>
@@ -666,6 +666,7 @@ function LandingPage() {
                 <div className="mt-6 rounded-2xl border-2 border-[#2f9c75] bg-[#eef7f3] p-5 text-left text-[#07533f] shadow-sm sm:p-6">
                   <p className="text-[17px] font-black leading-relaxed sm:text-[19px]">서비스 제공 시기: 결제 완료 즉시 이용 가능</p>
                   <p className="mt-1 text-[17px] font-black leading-relaxed sm:text-[19px]">이용 기간: 구매 후 기간 제한 없이 이용</p>
+                  <p className="mt-1 text-[14px] leading-relaxed text-[#33403a]">이용 범위: 영어 단어 1200 · 12개 챕터 학습 콘텐츠 (이후 출시되는 신규 콘텐츠는 별도 상품)</p>
                 </div>
                 <p className="mt-2 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
               </div>
