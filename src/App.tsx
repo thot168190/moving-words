@@ -8,9 +8,7 @@ import { ConnectAILabLogo } from './components/ConnectAILabLogo';
 import HeroDoodle from './components/HeroDoodle';
 import HeroWords from './components/HeroWords';
 import FeatureDoodle from './components/FeatureDoodle';
-import TossCheckoutButton from './components/payment/TossCheckoutButton';
 import { useAuth } from './contexts/AuthContext';
-import { TOSS_PRODUCTS } from './lib/toss';
 import { VIDEO_URLS } from './config/videos';
 import { SITE_CONFIG } from './config/content';
 import { APP_ENTRY_URL } from './config/app';
@@ -46,6 +44,77 @@ const LEARNING_PREVIEW_VIDEOS = [
     ],
   },
 ];
+
+function PreRegistrationForm() {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim() || submitting) return;
+    setSubmitting(true);
+
+    const record = {
+      email: email.trim(),
+      createdAt: new Date().toISOString(),
+      source: 'web-pricing-prereg'
+    };
+
+    try {
+      const existing = JSON.parse(localStorage.getItem('inkword_preregistrations') || '[]');
+      existing.push(record);
+      localStorage.setItem('inkword_preregistrations', JSON.stringify(existing));
+    } catch (err) {}
+
+    try {
+      const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
+      const { db } = await import('./lib/firebase');
+      await addDoc(collection(db, 'preregistrations'), {
+        email: email.trim(),
+        source: 'web-pricing-prereg',
+        createdAt: serverTimestamp(),
+      });
+    } catch (err) {
+      console.log('Firestore prereg note:', err);
+    }
+
+    setSubmitting(false);
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="mt-6 text-left">
+      <p className="text-[#4a4a46] text-[16px] sm:text-[18px] font-semibold mb-5 leading-relaxed">
+        결제 오픈을 준비하고 있습니다. 이메일을 남겨주시면 오픈 즉시 알려드리고, 출시 기념가를 그대로 보장해 드립니다.
+      </p>
+
+      {submitted ? (
+        <div className="p-4 bg-[#eef7f3] text-[#07533f] font-bold text-[16px] rounded-xl text-center border border-[#2f9c75]">
+          신청되었습니다. 오픈 소식으로 찾아뵙겠습니다.
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="이메일 주소를 입력해 주세요"
+            required
+            className="flex-1 px-4 py-3.5 border-2 border-[#2f9c75] rounded-xl text-[16px] outline-none focus:ring-2 focus:ring-[#07533f]"
+          />
+          <button
+            type="submit"
+            disabled={submitting}
+            className="h-14 px-8 bg-[#07533f] hover:bg-[#053d2e] text-white font-black text-[17px] rounded-xl cursor-pointer transition-colors shadow-md whitespace-nowrap"
+          >
+            {submitting ? '신청 중...' : '알림 신청'}
+          </button>
+        </form>
+      )}
+    </div>
+  );
+}
 
 function LandingPage() {
   const [entranceComplete, setEntranceComplete] = useState(false);
@@ -649,11 +718,8 @@ function LandingPage() {
                 ))}
               </ul>
               <div className="mt-auto">
-                <TossCheckoutButton
-                  product={TOSS_PRODUCTS[0]}
-                  onError={(err) => console.error('Toss error:', err)}
-                />
-                <p className="mt-4 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
+                <PreRegistrationForm />
+                <p className="mt-6 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
               </div>
             </motion.div>
           </div>
