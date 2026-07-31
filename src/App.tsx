@@ -666,7 +666,7 @@ function LandingPage() {
                 <div className="mt-6 rounded-2xl border-2 border-[#2f9c75] bg-[#eef7f3] p-5 text-left text-[#07533f] shadow-sm sm:p-6">
                   <p className="text-[17px] font-black leading-relaxed sm:text-[19px]">서비스 제공 시기: 결제 완료 즉시 이용 가능</p>
                   <p className="mt-1 text-[17px] font-black leading-relaxed sm:text-[19px]">이용 기간: 구매 후 기간 제한 없이 이용</p>
-                  <p className="mt-1 text-[14px] leading-relaxed text-[#33403a]">이용 범위: 영어 단어 1200 · 12개 챕터 학습 콘텐츠 (이후 출시되는 신규 콘텐츠는 별도 상품)</p>
+                  <p className="mt-1 text-[17px] font-black leading-relaxed sm:text-[19px]">이용 범위: 영어 단어 1200 · 12개 챕터 학습 콘텐츠 (이후 출시되는 신규 콘텐츠는 별도 상품)</p>
                 </div>
                 <p className="mt-2 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
               </div>
