@@ -45,5 +45,18 @@ service cloud.firestore {
       allow read: if true;
       allow write: if false; 
     }
+
+    // 5. 이용권 오픈 사전신청
+    // 신청은 로그인 없이 저장하되, 이메일과 확정된 출처 외 필드는 받지 않습니다.
+    match /preregistrations/{registrationId} {
+      allow create: if request.resource.data.keys().hasOnly(['email', 'source', 'createdAt'])
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() > 3
+                    && request.resource.data.email.size() <= 254
+                    && request.resource.data.email.matches('^.+@.+\\..+$')
+                    && request.resource.data.source == 'web-pricing-prereg'
+                    && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
   }
 }

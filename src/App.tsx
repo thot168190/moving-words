@@ -55,18 +55,6 @@ function PreRegistrationForm() {
     if (!email.trim() || submitting) return;
     setSubmitting(true);
 
-    const record = {
-      email: email.trim(),
-      createdAt: new Date().toISOString(),
-      source: 'web-pricing-prereg'
-    };
-
-    try {
-      const existing = JSON.parse(localStorage.getItem('inkword_preregistrations') || '[]');
-      existing.push(record);
-      localStorage.setItem('inkword_preregistrations', JSON.stringify(existing));
-    } catch (err) {}
-
     try {
       const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
       const { db } = await import('./lib/firebase');
@@ -75,12 +63,12 @@ function PreRegistrationForm() {
         source: 'web-pricing-prereg',
         createdAt: serverTimestamp(),
       });
+      setSubmitted(true);
     } catch (err) {
-      console.log('Firestore prereg note:', err);
+      console.error('Firestore preregistration failed:', err);
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
-    setSubmitted(true);
   };
 
   return (
@@ -185,6 +173,14 @@ function LandingPage() {
     const timer = setTimeout(() => setEntranceComplete(true), 800);
     return () => clearTimeout(timer);
   }, []);
+
+  // /pricing으로 들어오면 확정된 이용권 안내 섹션에 바로 도달합니다.
+  useEffect(() => {
+    if (!entranceComplete || window.location.pathname !== '/pricing') return;
+    window.requestAnimationFrame(() => {
+      document.getElementById('pricing')?.scrollIntoView({ block: 'start' });
+    });
+  }, [entranceComplete]);
 
   /* ── iOS & 모바일 브라우저용 TTS(SpeechSynthesis) 잠금 해제 ── */
   useEffect(() => {

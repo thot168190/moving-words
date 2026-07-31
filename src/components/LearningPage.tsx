@@ -49,7 +49,7 @@ export default function LearningPage() {
       }
       // 잠긴 장면을 눌렀을 때 — 랜딩의 가격 섹션으로 보냅니다.
       if (event.data?.type === 'inkword:need-purchase') {
-        window.location.href = '/#pricing';
+        window.location.href = '/pricing';
         return;
       }
       if (event.data?.type !== 'inkword:scene-complete' || !event.data.sceneId) return;
