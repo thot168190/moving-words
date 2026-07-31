@@ -208,7 +208,7 @@ function LandingPage() {
   const { hero, cinematic, metrics, technology } = SITE_CONFIG; // brand name updated
 
   return (
-    <div style={{ fontFamily: PRET, overflowX: 'hidden' }}>
+    <div className="bg-white text-[#24332e]" style={{ fontFamily: PRET, overflowX: 'hidden' }}>
       <Navbar entranceComplete={entranceComplete} />
 
       {/* ════════════════ SECTION 1: HERO ════════════════ */}
@@ -477,7 +477,7 @@ function LandingPage() {
       </section>
 
       {/* 학습·게임·AI 생성·박물관까지 제품의 핵심 기능을 한눈에 소개합니다. */}
-      <section id="course" className="bg-[#f7fbf9] border-t border-[#dcebe5] px-6 py-16 sm:py-24">
+      <section id="course" className="bg-[#EFF5F1] border-t border-[#dcebe5] px-4 py-14 sm:px-6 sm:py-20">
         <div className="max-w-6xl mx-auto">
           <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-4 font-black">More than a wordbook</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10 sm:mb-14">
@@ -489,7 +489,7 @@ function LandingPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5">
             {[
               ['01', '움직이는 그림 학습', 'LEARN', '/feature-cards/sailing.webp', 'sailing'],
               ['02', '거꾸로 퀴즈', 'PLAY', '/feature-cards/treasure.webp', 'treasure'],
@@ -498,13 +498,13 @@ function LandingPage() {
             ].map(([num, title, label, image, effect], index) => (
               <motion.article
                 key={num}
-                className="group overflow-hidden rounded-[24px] border border-[#cfe2db] bg-white shadow-[0_10px_30px_rgba(7,83,63,0.05)] transition-all hover:-translate-y-1 hover:border-[#2f9c75] hover:shadow-[0_18px_38px_rgba(7,83,63,0.11)]"
+                className="group overflow-hidden rounded-[16px] border border-[#cfe2db] bg-white shadow-[0_8px_22px_rgba(7,83,63,0.05)] transition-all hover:-translate-y-1 hover:border-[#2f9c75] hover:shadow-[0_14px_30px_rgba(7,83,63,0.11)] sm:rounded-[20px]"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className={`feature-card-art feature-${effect} relative aspect-square overflow-hidden bg-white`}>
+                <div className={`feature-card-art feature-${effect} relative aspect-[4/3] max-h-[45vh] overflow-hidden bg-white`}>
                   <img src={image} alt={`${title} 실제 화면`} className="feature-card-image h-full w-full object-contain" />
                   {effect === 'sailing' && (
                     <video
@@ -551,12 +551,12 @@ function LandingPage() {
                       <span className="demo-museum-count">나의 박물관 <b>4장의 그림 카드</b></span>
                     </div>
                   )}
-                  <div className="absolute inset-x-0 bottom-0 z-[4] bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.72)] to-[#052f26] px-7 pb-7 pt-28 text-white sm:px-9 sm:pb-9 sm:pt-36">
-                    <div className="mb-1.5 flex items-center justify-between">
-                      <span className="text-[#ff9f86] text-[14px] font-black tracking-[0.14em]">{num}</span>
-                      <span className="rounded-full bg-white/15 px-3 py-1.5 text-[11px] font-black tracking-[0.14em] backdrop-blur">{label}</span>
+                  <div className="absolute inset-x-0 bottom-0 z-[4] bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.72)] to-[#052f26] px-3 pb-3 pt-12 text-white sm:px-6 sm:pb-5 sm:pt-20">
+                    <div className="mb-1 flex items-center justify-between gap-2">
+                      <span className="text-[#ff9f86] text-[10px] font-black tracking-[0.12em] sm:text-[12px]">{num}</span>
+                      <span className="rounded-full bg-white/15 px-2 py-1 text-[8px] font-black tracking-[0.1em] backdrop-blur sm:px-2.5 sm:text-[10px]">{label}</span>
                     </div>
-                    <h3 className="font-gmarket font-black text-[23px] sm:text-[28px] tracking-[-0.03em]">{title}</h3>
+                    <h3 className="font-gmarket font-black text-[14px] leading-[1.25] tracking-[-0.03em] sm:text-[22px]">{title}</h3>
                   </div>
                 </div>
               </motion.article>
@@ -572,7 +572,7 @@ function LandingPage() {
       </section>
 
       {/* ════════════════ SECTION 5.5: COMPARISON (GEO 비교 유닛) ════════════════ */}
-      <section className="bg-[#f8fbf9] py-24 px-6 border-t border-b border-[#dcebe5]">
+      <section className="bg-white py-24 px-6 border-t border-b border-[#dcebe5]">
         <div className="max-w-6xl mx-auto">
           <p className="text-[#34866b] text-[15px] tracking-[0.25em] uppercase mb-6 text-center font-black">Comparison</p>
           <h2 className="text-[#07533f] text-center mb-12" style={{ fontFamily: PRET, fontWeight: 900, fontSize: 'clamp(40px, 7vw, 80px)', lineHeight: 1.25, letterSpacing: '-0.035em', wordBreak: 'keep-all' }}>
@@ -723,31 +723,31 @@ function LandingPage() {
       </section>
 
       {/* ════════════════ FOOTER ════════════════ */}
-      <footer className="bg-[#f8fbf9] border-t border-[#dcebe5] py-16 px-6 sm:px-10">
+      <footer className="bg-[#052f26] border-t border-[#052f26] py-16 px-6 text-white sm:px-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-6">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <ConnectAILabLogo size={20} className="text-[#07533f]" />
-              <span className="text-[17px] font-black text-[#07533f] tracking-tight">
+              <ConnectAILabLogo size={20} className="text-white" />
+              <span className="text-[17px] font-black text-white tracking-tight">
                 {SITE_CONFIG.brandName}
               </span>
             </div>
-            <p className="text-[#454542] text-[17px] sm:text-[19px] leading-relaxed max-w-md font-extrabold">
+            <p className="text-white/85 text-[17px] sm:text-[19px] leading-relaxed max-w-md font-extrabold">
               외우게 하는 앱이 아니라, 보게 만드는 앱.<br />
               단어가 안 외워지는 분들의 첫 3분을 만듭니다.
             </p>
           </div>
 
-          <div className="text-[#333333] text-[14px] sm:text-[15px] leading-6 font-bold">
-            <p className="font-bold text-[#07533f] mb-1">매또컴퍼니 | 대표: 이미현</p>
+          <div className="text-white/75 text-[14px] sm:text-[15px] leading-6 font-bold">
+            <p className="font-bold text-white mb-1">매또컴퍼니 | 대표: 이미현</p>
             <p className="mb-1">사업자등록번호: 308-15-96097 | 통신판매업신고: 면제 (부가가치세법상 간이과세자)</p>
             <p className="mb-1">주소: (11481) 경기 양주시 고읍로 11-7, 105동 603호</p>
             <p className="mb-1">대표전화: 010-2058-9900 | 전자우편: thot168190@gmail.com</p>
             <p className="mb-3">호스팅 제공: GitHub, Inc.</p>
             <p className="mt-3.5">
-              <a href="/terms.html" target="_blank" className="text-indigo-600 underline font-extrabold hover:text-indigo-800">이용약관</a>
-              <span className="mx-2 text-neutral-300">·</span>
-              <a href="/privacy.html" target="_blank" className="text-indigo-600 underline font-extrabold hover:text-indigo-800">개인정보처리방침</a>
+              <a href="/terms.html" target="_blank" className="text-white underline font-extrabold hover:text-white/80">이용약관</a>
+              <span className="mx-2 text-white/35">·</span>
+              <a href="/privacy.html" target="_blank" className="text-white underline font-extrabold hover:text-white/80">개인정보처리방침</a>
               {user && (
                 <>
                   <span className="mx-2 text-neutral-300">·</span>
