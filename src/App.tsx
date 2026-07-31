@@ -551,12 +551,12 @@ function LandingPage() {
                       <span className="demo-museum-count">나의 박물관 <b>4장의 그림 카드</b></span>
                     </div>
                   )}
-                  <div className="absolute inset-x-0 bottom-0 z-[4] bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.72)] to-[#052f26] px-3 pb-3 pt-12 text-white sm:px-6 sm:pb-5 sm:pt-20">
-                    <div className="mb-1 flex items-center justify-between gap-2">
-                      <span className="text-[#ff9f86] text-[10px] font-black tracking-[0.12em] sm:text-[12px]">{num}</span>
-                      <span className="rounded-full bg-white/15 px-2 py-1 text-[8px] font-black tracking-[0.1em] backdrop-blur sm:px-2.5 sm:text-[10px]">{label}</span>
+                  <div className="absolute inset-x-0 bottom-0 z-[4] bg-gradient-to-b from-transparent via-[rgba(5,47,38,0.24)] to-[rgba(5,47,38,0.88)] px-3 pb-2 pt-8 text-white sm:px-6 sm:pb-4 sm:pt-14">
+                    <div className="flex items-end gap-1.5 sm:gap-3">
+                      <span className="shrink-0 text-[#ffb4a3] text-[9px] font-black tracking-[0.1em] sm:text-[11px]">{num}</span>
+                      <h3 className="min-w-0 flex-1 font-gmarket font-black text-[12px] leading-none tracking-[-0.04em] sm:text-[20px]">{title}</h3>
+                      <span className="shrink-0 rounded-full bg-white/15 px-1.5 py-0.5 text-[7px] font-black tracking-[0.08em] backdrop-blur sm:px-2.5 sm:py-1 sm:text-[9px]">{label}</span>
                     </div>
-                    <h3 className="font-gmarket font-black text-[14px] leading-[1.25] tracking-[-0.03em] sm:text-[22px]">{title}</h3>
                   </div>
                 </div>
               </motion.article>
