@@ -74,7 +74,7 @@ function PreRegistrationForm() {
   return (
     <div className="mt-6 text-left">
       <p className="text-[#4a4a46] text-[16px] sm:text-[18px] font-semibold mb-5 leading-relaxed">
-        결제 오픈을 준비하고 있습니다. 이메일을 남겨주시면 오픈 즉시 알려드리고, 출시 기념가를 그대로 보장해 드립니다.
+        결제 수단을 연결하고 있습니다. 이메일을 남겨주시면 결제 오픈 즉시 알려드리고, 출시 기념가 ₩9,900을 그대로 보장해 드립니다.
       </p>
 
       {submitted ? (
@@ -716,7 +716,15 @@ function LandingPage() {
                 ))}
               </ul>
               <div className="mt-auto">
-                <PreRegistrationForm />
+                <a
+                  href="#payment-opening-notice"
+                  className="flex min-h-16 w-full items-center justify-center rounded-xl bg-[#07533f] px-6 text-center text-[19px] font-black text-white shadow-[0_10px_24px_rgba(7,83,63,0.2)] transition-colors hover:bg-[#053d2e]"
+                >
+                  이용권 구매하기
+                </a>
+                <div id="payment-opening-notice" className="scroll-mt-24">
+                  <PreRegistrationForm />
+                </div>
                 <p className="mt-6 text-[13px] leading-relaxed text-[#6f756f]">결제 후 학습 콘텐츠를 열람하지 않은 상태라면 7일 이내 전액 환불이 가능합니다. 자세한 내용은 <a href="/terms.html" target="_blank" rel="noopener" className="underline">이용약관 제5조</a>를 확인해 주세요.</p>
               </div>
             </motion.div>
