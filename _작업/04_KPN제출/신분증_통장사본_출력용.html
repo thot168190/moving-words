@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KPN 제출용 - 신분증 & 통장 사본</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 15mm;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      padding: 15mm 18mm;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .header {
+      border-bottom: 2px solid #374151;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 20pt;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 10.5pt;
+      color: #4b5563;
+    }
+
+    .section {
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 10px;
+      padding-left: 8px;
+      border-left: 4px solid #2563eb;
+    }
+
+    .img-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 10px;
+      background-color: #fafafa;
+    }
+
+    .img-id {
+      max-width: 100%;
+      max-height: 85mm;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .img-bank {
+      max-width: 100%;
+      max-height: 120mm;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .footer {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 10px;
+      text-align: center;
+      font-size: 9.5pt;
+      color: #6b7280;
+    }
+
+    /* Print settings */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .page {
+        box-shadow: none;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div>
+      <div class="header">
+        <h1>[KPN 제출용] 대표자 신분증 &amp; 통장 사본</h1>
+        <p>제출처: 한국결제네트웍스 유한회사 (eComm영업팀)</p>
+      </div>
+
+      <!-- 1. 대표자 신분증 사본 -->
+      <div class="section">
+        <div class="section-title">1. 대표자 신분증 사본 (주민등록증)</div>
+        <div class="img-container">
+          <img src="주민등록증.jpeg" alt="주민등록증" class="img-id">
+        </div>
+      </div>
+
+      <!-- 2. 대표자 통장 사본 -->
+      <div class="section">
+        <div class="section-title">2. 대표자 통장 사본 (농협은행)</div>
+        <div class="img-container">
+          <img src="농협통장사본.jpeg" alt="농협통장사본" class="img-bank">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      ※ 본 서류는 KPN 전자결제 서비스 계약 가입 확인 제출 목적으로 작성되었습니다.
+    </div>
+  </div>
+
+</body>
+</html>

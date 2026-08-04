@@ -8,9 +8,8 @@ import { ConnectAILabLogo } from './components/ConnectAILabLogo';
 import HeroDoodle from './components/HeroDoodle';
 import HeroWords from './components/HeroWords';
 import FeatureDoodle from './components/FeatureDoodle';
-import TossCheckoutButton from './components/payment/TossCheckoutButton';
+import PortOneCheckoutButton from './components/payment/PortOneCheckoutButton';
 import { useAuth } from './contexts/AuthContext';
-import { TOSS_PRODUCTS } from './lib/toss';
 import { VIDEO_URLS } from './config/videos';
 import { SITE_CONFIG } from './config/content';
 import { APP_ENTRY_URL } from './config/app';
@@ -659,9 +658,12 @@ function LandingPage() {
                 ))}
               </ul>
               <div className="mt-auto">
-                <TossCheckoutButton
-                  product={TOSS_PRODUCTS[0]}
-                  onError={(error) => console.error('Toss payment error:', error)}
+                <PortOneCheckoutButton
+                  amount={9900}
+                  orderName="보는 단어장 출시 기념 이용권"
+                  customerEmail={user?.email || undefined}
+                  customerName={user?.displayName || undefined}
+                  onError={(error) => console.error('PortOne payment error:', error)}
                 />
                 <div className="mt-6 rounded-2xl border-2 border-[#2f9c75] bg-[#eef7f3] p-5 text-left text-[#07533f] shadow-sm sm:p-6">
                   <p className="text-[17px] font-black leading-relaxed sm:text-[19px]">서비스 제공 시기: 결제 완료 즉시 이용 가능</p>
@@ -689,8 +691,8 @@ function LandingPage() {
               </span>
             </div>
             <p className="text-white/85 text-[17px] sm:text-[19px] leading-relaxed max-w-md font-extrabold">
-              외우게 하는 앱이 아니라, 보게 만드는 앱.<br />
-              단어가 안 외워지는 분들의 첫 3분을 만듭니다.
+              외우게 하는 단어장이 아니라, 몰입하면 암기되는 앱<br />
+              안 외워지는 단어일수록, 8초만 지켜보세요.
             </p>
           </div>
 
