@@ -354,7 +354,7 @@ function LandingPage() {
       </section>
 
       {/* ════════════════ SECTION 4: TECHNOLOGY ════════════════ */}
-      <section className="relative overflow-hidden bg-white py-14 sm:py-16 pb-28">
+      <section className="relative overflow-hidden bg-white py-14 sm:py-16">
         {/* Background Dot Grid */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -419,10 +419,10 @@ function LandingPage() {
       </section>
 
       {/* 보는 단어장의 핵심인 '눈앞에서 그려지는 경험'을 기능 카드와 함께 소개합니다. */}
-      <section id="course" className="bg-[#EFF5F1] border-t border-[#dcebe5] px-4 py-14 sm:px-6 sm:py-20">
+      <section id="course" className="bg-[#EFF5F1] border-t border-[#dcebe5] px-4 py-8 sm:px-6 sm:py-12">
         <div className="max-w-6xl mx-auto">
           <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-4 font-black">INKWORD</p>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10 sm:mb-14">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6 sm:mb-8">
             <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18]" style={{ fontSize: 'clamp(34px, 5vw, 64px)' }}>
               외우지 말고, 보세요.
             </h2>
@@ -431,7 +431,7 @@ function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-5">
+          <div className="mx-auto grid max-w-3xl grid-cols-2 gap-3 sm:gap-4">
             {[
               ['01', '움직이는 그림 학습', 'LEARN', '/feature-cards/sailing.webp', 'sailing'],
               ['02', '거꾸로 퀴즈', 'PLAY', '/feature-cards/treasure.webp', 'treasure'],
@@ -446,8 +446,8 @@ function LandingPage() {
                 transition={{ duration: 0.55, delay: index * 0.08 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className={`feature-card-art feature-${effect} relative aspect-[4/3] max-h-[45vh] overflow-hidden bg-white`}>
-                  <img src={image} alt={`${title} 실제 화면`} className="feature-card-image h-full w-full object-contain" />
+                <div className={`feature-card-art feature-${effect} relative aspect-[16/7.5] overflow-hidden bg-white`}>
+                  <img src={image} alt={`${title} 실제 화면`} className="feature-card-image h-full w-full object-cover" />
                   {effect === 'sailing' && (
                     <video
                       className="feature-fast-video"
