@@ -265,7 +265,7 @@
    </section>
   </main>
   <div class="gate-modal" id="gateModal" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
-    <div class="gate-card" id="gateCardDefault">
+    <div class="gate-card">
       <div class="gate-lock">🔒</div>
       <h3 id="gateTitle">여기부터는 이용권이 필요합니다</h3>
       <p>앞의 <b>세 장면</b>은 자유롭게 학습하실 수 있습니다.<br>나머지 다섯 장면은 이용권을 구매하면 모두 열립니다.</p>
@@ -275,33 +275,17 @@
         <button class="gate-cta" id="gateBuy">이용권 보러 가기 →</button>
       </div>
     </div>
-    <div class="gate-card" id="gateCardPrereg" style="display:none;">
-      <div class="gate-lock">📩</div>
-      <h3>출시 기념 이용권 사전신청</h3>
-      <div class="gate-price"><span>출시 기념가</span><strong>₩9,900</strong><small>한 번 결제로 계속 이용</small></div>
-      <p style="margin-top:12px; font-size:15px; color:#4a4a46; line-height:1.5; text-align:left;">결제 오픈을 준비하고 있습니다. 이메일을 남겨주시면 오픈 즉시 알려드리고, 출시 기념가를 그대로 보장해 드립니다.</p>
-      <form id="preregForm" style="display:flex; flex-direction:column; gap:10px; width:100%; margin-top:16px;">
-        <input type="email" id="preregEmail" placeholder="이메일 주소를 입력하세요" required style="padding:12px 14px; border:1.5px solid #2f9c75; border-radius:10px; font-size:15px; width:100%; box-sizing:border-box; outline:none;" />
-        <button type="submit" id="preregBtn" class="gate-cta" style="width:100%; padding:14px; font-size:16px;">알림 신청</button>
-      </form>
-      <div id="preregDone" style="display:none; color:#07533f; font-weight:bold; font-size:15px; margin-top:16px; text-align:center; padding:12px; background:#eef7f3; border-radius:10px;">
-        신청되었습니다. 오픈 소식으로 찾아뵙겠습니다.
-      </div>
-      <div class="gate-actions" style="margin-top:16px;">
-        <button class="gate-ghost" id="preregClose">계속 둘러보기</button>
-      </div>
-    </div>
   </div>
   <div class="notice" id="notice"></div>
 
   <script src="image-lab-config.js"></script>
   <script>
     const works=[
-      {n:'01',title:'빛을 보내는 등대',sub:'해안에서 보내는 첫 신호',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',current:true,words:[['tower','탑'],['island','섬'],['shine','빛나다'],['warn','경고하다'],['cliff','절벽'],['shore','물가'],['guide','안내하다'],['flash','번쩍임']]},
-      {n:'02',title:'바람을 타는 범선',sub:'수평선을 향해 떠나다',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',words:[['sail','돛'],['deck','갑판'],['rope','밧줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다'],['port','항구'],['navy','해군']]},
-      {n:'03',title:'돌고래가 따라오는 배',sub:'은빛 바다 위 도약',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['dolphin','돌고래'],['follow','따라오다'],['leap','도약하다'],['calm','고요한'],['float','떠 있다'],['reflect','비추다'],['silver','은빛'],['distance','먼 거리']]},
-      {n:'04',title:'고래와 깊은 바다',sub:'깊은 바다에서 만난 것',video:'챕터1_완성동영상/scene-ch1-04.mp4',img:'챕터1_완성동영상/scene-ch1-04-poster.jpg',words:[['whale','고래'],['ocean','대양'],['wave','파도'],['surface','수면'],['rise','솟아오르다'],['dive','잠수하다'],['spray','물보라'],['bubble','거품']]},
-      {n:'05',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 마지막 깊이',video:'챕터1_완성동영상/scene-ch1-05.mp4',img:'챕터1_완성동영상/scene-ch1-05-poster.jpg',words:[['shell','조개껍데기'],['seal','물범'],['tide','조수'],['current','해류'],['stream','물줄기'],['sink','가라앉다'],['cage','케이지'],['shadow','그림자']]}
+      {n:'01',title:'빛을 보내는 등대',sub:'해안에서 보내는 첫 신호',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',current:true,words:[['tower','탑'],['island','섬'],['shine','빛나다'],['warn','경고하다'],['cliff','절벽'],['shore','물가'],['guide','안내하다'],['flash','번쩍임']]},
+      {n:'02',title:'바람을 타는 범선',sub:'수평선을 향해 떠나다',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['sail','돛'],['deck','갑판'],['rope','밧줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다'],['port','항구'],['navy','해군']]},
+      {n:'03',title:'돌고래가 따라오는 배',sub:'은빛 바다 위 도약',video:'챕터1_완성동영상/scene-ch1-09.mp4',img:'챕터1_완성동영상/scene-ch1-09-poster.jpg',words:[['dolphin','돌고래'],['follow','따라오다'],['leap','도약하다'],['calm','고요한'],['float','떠 있다'],['reflect','비추다'],['silver','은빛'],['distance','먼 거리']]},
+      {n:'04',title:'고래와 깊은 바다',sub:'깊은 바다에서 만난 것',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',hasHand:true,words:[['whale','고래'],['ocean','대양'],['wave','파도'],['surface','수면'],['rise','솟아오르다'],['dive','잠수하다'],['spray','물보라'],['bubble','거품']]},
+      {n:'05',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 마지막 깊이',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['shell','조개껍데기'],['seal','물범'],['tide','조수'],['current','해류'],['stream','물줄기'],['sink','가라앉다'],['cage','케이지'],['shadow','그림자']]}
     ];
     const FREE_SCENES=3;
     works.forEach((w,i)=>{const lock=i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock;});
@@ -743,50 +727,13 @@
       document.getElementById('dashboardNextCopy').textContent=completedSceneCount?'지난 학습 다음 장면부터 이어서 시작합니다.':'첫 장면부터 천천히 시작해보세요.';
       document.getElementById('dashboardContinue').textContent=completedSceneCount?'이어서 학습하기 →':'첫 학습 시작하기 →';
     });
-    // ── 구매 안내 / 사전신청 모달 ──
-    function openGate(){
-      const m=document.getElementById('gateModal'),cDef=document.getElementById('gateCardDefault'),cPre=document.getElementById('gateCardPrereg');
-      if(cDef)cDef.style.display='block';
-      if(cPre)cPre.style.display='none';
-      if(m)m.classList.add('show');
-    }
+    // ── 구매 안내 모달 ──
+    function openGate(){const m=document.getElementById('gateModal');if(m)m.classList.add('show')}
     function closeGate(){const m=document.getElementById('gateModal');if(m)m.classList.remove('show')}
     (function(){
-      const close=document.getElementById('gateClose'),
-            preregClose=document.getElementById('preregClose'),
-            buy=document.getElementById('gateBuy'),
-            modal=document.getElementById('gateModal'),
-            preregForm=document.getElementById('preregForm'),
-            preregEmail=document.getElementById('preregEmail'),
-            preregDone=document.getElementById('preregDone'),
-            cDef=document.getElementById('gateCardDefault'),
-            cPre=document.getElementById('gateCardPrereg');
-
+      const close=document.getElementById('gateClose'),buy=document.getElementById('gateBuy'),modal=document.getElementById('gateModal');
       if(close)close.onclick=closeGate;
-      if(preregClose)preregClose.onclick=closeGate;
-
-      if(buy)buy.onclick=()=>{
-        if(cDef)cDef.style.display='none';
-        if(cPre)cPre.style.display='block';
-        if(preregDone)preregDone.style.display='none';
-        if(preregForm)preregForm.style.display='flex';
-        try{window.parent.postMessage({type:'inkword:need-purchase'},location.origin)}catch(e){}
-      };
-
-      if(preregForm)preregForm.onsubmit=(e)=>{
-        e.preventDefault();
-        const email=(preregEmail?preregEmail.value:'').trim();
-        if(!email)return;
-        try{
-          const list=JSON.parse(localStorage.getItem('inkword-preregistrations')||'[]');
-          list.push({email, createdAt:new Date().toISOString(), source:'learning-gate'});
-          localStorage.setItem('inkword-preregistrations',JSON.stringify(list));
-        }catch(err){}
-        if(preregForm)preregForm.style.display='none';
-        if(preregDone)preregDone.style.display='block';
-        notify('사전신청이 완료되었습니다.');
-      };
-
+      if(buy)buy.onclick=()=>{closeGate();try{window.parent.postMessage({type:'inkword:need-purchase'},location.origin)}catch(e){}};
       if(modal)modal.onclick=e=>{if(e.target===modal)closeGate()};
       document.addEventListener('keydown',e=>{if(e.key==='Escape')closeGate()});
     })();
