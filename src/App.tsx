@@ -423,10 +423,10 @@ function LandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mx-auto max-w-3xl pt-8 pb-12 sm:pt-12 sm:pb-16">
             <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-3 font-black">INKWORD</p>
-            <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18] mb-3" style={{ fontSize: 'clamp(34px, 5vw, 60px)' }}>
+            <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18] mb-3" style={{ fontSize: 'clamp(34px, 5vw, 64px)' }}>
               외우지 말고, 보세요.
             </h2>
-            <p className="text-[#45665d] text-[18px] sm:text-[22px] font-bold leading-relaxed">
+            <p className="text-[#45665d] text-[18px] sm:text-[21px] font-bold leading-relaxed">
               눈앞에서 그려지는 단어장.
             </p>
           </div>
