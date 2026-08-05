@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>보는 단어장 · 장면 제작허브</title><style>
+:root{--bg:#f7f4ed;--card:#fff;--line:#ded8ca;--ink:#25231f;--muted:#777;--green:#246b3b;--lime:#a8d68d;--red:#b7443e}
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+.top{position:sticky;top:0;background:rgba(247,244,237,.97);padding:10px 16px 8px;z-index:10;border-bottom:1px solid #e5dfd2}
+.topin,main{max-width:900px;margin:auto}
+h1{font-size:1.3rem;margin:0 0 8px} h2{font-size:1.08rem;margin:8px 0}
+#bar{height:8px;background:#e9e7e1;border-radius:5px;overflow:hidden}#fill{height:100%;background:#4a90d9;width:0}
+input{width:100%;min-height:44px;padding:10px 12px;border:1px solid #d8d4ca;border-radius:9px;margin-top:8px;font-size:16px;background:#fff}
+main{padding:16px}
+#chapterIndex{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.chapter{position:relative;min-height:130px;padding:17px 18px 15px 25px;border:1px solid #d7cfbf;border-radius:5px 15px 15px 5px;text-align:left;background:#fffdf8;color:#332f27;cursor:pointer;box-shadow:0 3px 10px #3c32210d}
+.chapter:before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:9px;border-radius:0 5px 5px 0;background:var(--tab,#ae8c64)}
+.chapter.complete{border:2px solid #b89337;box-shadow:0 0 0 3px #ead38a55}.chapter h3{margin:0 0 12px;font-size:1.02rem}.chapter .mark{float:right;color:#9b771d}
+.stamps{display:grid;grid-template-columns:repeat(16,1fr);gap:3px}
+.stamp{aspect-ratio:1;border-radius:2px;background:#e7e4de;border:1px solid #ddd8cf}
+.stamp.ok{background:var(--green);border-color:var(--green)}.stamp.made{background:var(--lime);border-color:#83b768}.stamp.bad{position:relative;background:#f2dedb}
+.stamp.bad:after{content:"";position:absolute;width:55%;height:55%;border-radius:50%;background:var(--red);left:22%;top:22%}
+.stamp.dup{background:repeating-linear-gradient(135deg,#999 0 2px,#eee 2px 4px);border-color:#999}
+.dupnote{display:inline-block;margin-left:7px;padding:3px 7px;border-radius:999px;background:#e5e2dc;color:#5f5a52;font-size:.76rem;font-weight:800}
+#branchIndex,#detail{display:none}
+#branchGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.chip{min-height:76px;padding:11px;border:1px solid #d8d4ca;border-radius:12px;text-align:left;background:#ecebe7;color:#333;cursor:pointer;font-weight:700}
+.chip:hover{transform:translateY(-1px)}.chip small{display:block;margin-top:7px;font-size:.78rem;font-weight:700}
+.chip.doing{background:#fff0d5;border-color:#e8a63c}.chip.done{background:#dff2e1;border-color:#68a66d;color:#205d25}
+.nav{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.nav button,.btns button{min-height:44px;padding:8px 11px;border:1px solid #ccc;border-radius:8px;background:#fff;font-size:.88rem;cursor:pointer}
+.nav h2{flex:1;min-width:180px}.sc{background:#fff;border:1px solid var(--line);border-radius:9px;margin:7px 0;padding:2px 10px}
+summary{cursor:pointer;padding:10px 0;font-size:.95rem}.w{color:#888;font-size:.8rem}.st{font-size:.8rem;font-weight:700}
+pre{white-space:pre-wrap;background:#f6f4ef;padding:10px;border-radius:6px;font-size:.78rem;max-height:260px;overflow:auto}
+.btns{padding-bottom:5px}.empty{padding:28px;text-align:center;color:var(--muted)}
+@media(max-width:640px){#chapterIndex{grid-template-columns:1fr}#branchGrid{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:12px}.top{padding:9px 12px 7px}.chapter{min-height:112px}.stamps{grid-template-columns:repeat(20,1fr);gap:2px}.chip{min-height:72px}.nav button{flex:1}.nav h2{order:-1;flex-basis:100%}}
+</style></head><body>
+<div class="top"><div class="topin"><h1>🎬 장면 제작허브 <small id="cnt"></small></h1><div id="bar"><div id="fill"></div></div>
+<input id="q" placeholder="단어·장면 검색 (예: voyage, 등대)" oninput="flt()"></div></div>
+<main><div id="chapterIndex"></div>
+<div id="branchIndex"><div class="nav"><h2 id="chapterTitle"></h2><button onclick="showChapters()">← 뒤로</button></div><div id="branchGrid"></div></div>
+<div id="detail"><div class="nav"><h2 id="title"></h2>
+<button onclick="showBranches(activeChapter)">← 뒤로</button><button onclick="moveGroup(-1)">이전 갈래</button><button onclick="moveGroup(1)">다음 갈래</button></div>
+<div id="cards"></div></div></main>
+<script>
+const CHAPTERS=[{"name":"1장 자연의 세계","groups":[{"name":"바다와 항해·완성","scenes":[{"id":"완성-01-빛을 보내는","name":"빛을 보내는 등대","갈래":"바다와 항해·완성","words":["tower","island","shine","warn","cliff","shore","guide","flash"],"prompt":"","excluded":false},{"id":"완성-02-바람을 타는","name":"바람을 타는 범선","갈래":"바다와 항해·완성","words":["sail","deck","rope","flag","journey","row","port","navy"],"prompt":"","excluded":false},{"id":"완성-03-돌고래가 따","name":"돌고래가 따라오는 배","갈래":"바다와 항해·완성","words":["calm","distance","dolphin","leap","follow","float","reflect","silver"],"prompt":"","excluded":false},{"id":"완성-04-고래와 깊은","name":"고래와 깊은 바다","갈래":"바다와 항해·완성","words":["whale","wave","rise","surface","ocean","dive","spray","bubble"],"prompt":"","excluded":false},{"id":"완성-05-깊은 바다의","name":"깊은 바다의 산호 협곡","갈래":"바다와 항해·완성","words":["shadow","shell","seal","tide","current","sink","cage","stream"],"prompt":"","excluded":false},{"id":"완성-06-곶을 돌아 ","name":"곶을 돌아 열리는 만","갈래":"바다와 항해·완성","words":["adventure","bay","cape","channel","coast","flood","flow","pool"],"prompt":"Cinematic progressive pencil-and-ink line animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty white field. Static locked-off camera, one continuous 8-second take.\nThe subjects: one small white rowing boat, a jutting rocky cape cropped by the left edge of the frame, the open coast stretching to a far luminous horizon, one towering monumental white cumulus cloud in the upper distance, and a narrow channel between the cape and a small offshore rock, and a clear tide pool on the near shelf.\n0-3.5s: delicate light-graphite pencil strokes are traced visibly from endpoint to endpoint — soft, feather-light, barely pressed, like an artist's first gentle sketch, each line drawn once. No dense cross-hatching, no engraving-style shading; only airy contour lines.
+const K='hub_status';let S=JSON.parse(localStorage.getItem(K)||'{}');
+let activeChapter=-1,activeGroup=-1;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function save(){localStorage.setItem(K,JSON.stringify(S));paint()}
+function st(id,v){if(v)S[id]=v;else delete S[id];save()}
+function cp(id){const p=document.getElementById(id).querySelector('pre').textContent;navigator.clipboard.writeText(p).then(()=>{const b=document.getElementById(id).querySelector('button');b.textContent='✅ 복사됨';setTimeout(()=>b.textContent='📋 프롬프트 복사',1200)})}
+function card(s){const id=esc(s.id),badge=s.excluded?'<span class="dupnote">완성 · 이미 그림 있음</span>':'',actions=s.excluded?'':`<button onclick="st('${id}','생성완료')">🎬 생성완료</button><button onclick="st('${id}','합격')">✅ 합격</button><button onclick="st('${id}','불합격')">❌ 불합격</button><button onclick="st('${id}','')">↺</button>`;return `<details class="sc" id="${id}"><summary><b>${esc(s.name)}</b>${badge} <span class="w">${esc(s.words.join(' · '))}</span> <span class="st" data-id="${id}"></span></summary><pre>${esc(s.prompt)}</pre><div class="btns">${s.excluded?'<b style="color:#a06">⛔ 제작 금지 — 사이트에 이미 완성 영상 있음 (크레딧 낭비)</b>':`<button onclick="cp('${id}')">📋 프롬프트 복사</button>`}${actions}</div></details>`}
+const allScenes=()=>CHAPTERS.flatMap(c=>c.groups.flatMap(g=>g.scenes));
+const chapterScenes=c=>c.groups.flatMap(g=>g.scenes);
+const accepted=g=>g.scenes.filter(s=>S[s.id]==='합격').length;
+function hideViews(){document.getElementById('chapterIndex').style.display='none';document.getElementById('branchIndex').style.display='none';document.getElementById('detail').style.display='none'}
+function stampBoard(ss){return `<div class="stamps" aria-label="도장판">${ss.map(s=>{const v=S[s.id]||'',cl=s.excluded?'dup':v==='합격'?'ok':v==='생성완료'?'made':v==='불합격'?'bad':'';return `<i class="stamp ${cl}" title="${esc(s.name)}${s.excluded?' — 완성 · 이미 그림 있음':''}"></i>`}).join('')}</div>`}
+function renderChapters(){const colors=['#9b7653','#bc765d','#718d79','#8876a5','#b68b43','#678da2','#9a6f82','#688966','#7e7b6e','#a17a50'];document.getElementById('chapterIndex').innerHTML=CHAPTERS.map((c,i)=>{const ss=chapterScenes(c),done=ss.length>0&&ss.every(s=>S[s.id]==='합격');return `<button class="chapter ${done?'complete':''}" style="--tab:${colors[i%colors.length]}" onclick="showBranches(${i})"><h3>${esc(c.name)}${done?'<span class="mark">◆ 완성</span>':''}</h3>${stampBoard(ss)}</button>`}).join('')}
+function showChapters(){activeChapter=-1;activeGroup=-1;document.getElementById('q').value='';hideViews();document.getElementById('chapterIndex').style.display='grid';renderChapters();window.scrollTo(0,0)}
+function showBranches(ci){activeChapter=ci;activeGroup=-1;const c=CHAPTERS[ci];hideViews();document.getElementById('branchIndex').style.display='block';document.getElementById('chapterTitle').textContent=c.name;document.getElementById('branchGrid').innerHTML=c.groups.map((g,gi)=>{const work=g.scenes.filter(s=>!s.excluded),excluded=work.length===0,n=work.filter(s=>S[s.id]==='합격').length,all=work.length,cl=excluded?'':n===0?'':n===all?'done':'doing',note=excluded?'완성 · 이미 그림 있음':`합격 ${n} / ${all}`;return `<button class="chip ${cl}" onclick="showGroup(${ci},${gi})">${esc(g.name)}<small>${note}</small></button>`}).join('');window.scrollTo(0,0)}
+function showGroup(ci,gi,list=null,label=''){activeChapter=ci;activeGroup=gi;const g=CHAPTERS[ci].groups[gi];hideViews();document.getElementById('detail').style.display='block';document.getElementById('title').textContent=label||g.name+' ('+g.scenes.length+'장면)';document.getElementById('cards').innerHTML=(list||g.scenes).map(card).join('')||'<div class="empty">검색 결과가 없습니다.</div>';paint();window.scrollTo(0,0)}
+function moveGroup(d){if(activeChapter<0||activeGroup<0)return;const gs=CHAPTERS[activeChapter].groups;showGroup(activeChapter,(activeGroup+d+gs.length)%gs.length)}
+function flt(){const q=document.getElementById('q').value.trim().toLowerCase();if(!q){showChapters();return}const hits=allScenes().filter(s=>(s.name+' '+s.words.join(' ')+' '+s.prompt).toLowerCase().includes(q));activeChapter=-1;activeGroup=-1;hideViews();document.getElementById('detail').style.display='block';document.getElementById('title').textContent='전체 검색 결과 ('+hits.length+'장면)';document.getElementById('cards').innerHTML=hits.map(card).join('')||'<div class="empty">검색 결과가 없습니다.</div>';paint()}
+function paint(){const all=allScenes().filter(s=>!s.excluded),done=all.filter(s=>S[s.id]==='합격').length;document.getElementById('cnt').textContent=' 제작 대상 합격 '+done+' / '+all.length;document.getElementById('fill').style.width=(all.length?100*done/all.length:0)+'%';document.querySelectorAll('.sc').forEach(d=>{const v=S[d.id]||'',e=d.querySelector('.st');e.textContent=v?'['+v+']':'';e.style.color=v==='합격'?'#2e7d32':v==='불합격'?'#c62828':'#e08a00'});if(activeChapter<0&&!document.getElementById('q').value)renderChapters()}
+renderChapters();paint();
+</script></body></html>
