@@ -354,7 +354,7 @@ function LandingPage() {
       </section>
 
       {/* ════════════════ SECTION 4: TECHNOLOGY ════════════════ */}
-      <section className="relative overflow-hidden bg-white py-14 sm:py-16">
+      <section className="relative overflow-hidden bg-white py-14 sm:py-16 pb-28">
         {/* Background Dot Grid */}
         <div
           className="absolute inset-0 pointer-events-none"
