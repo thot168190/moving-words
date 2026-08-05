@@ -227,6 +227,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = async () => {
     try {
       await firebaseSignOut(auth);
+      // 로그아웃 후에는 항상 홈 맨 위로 (학습장 가드의 /#learn 튕김 방지)
+      window.location.assign('/');
     } catch (err: any) {
       setError(getFriendlyErrorMessage(err));
     }
