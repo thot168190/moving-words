@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>보는 단어장 — 장면 작업대</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+ background:#f6f5f1;color:#1d2b24;padding:0 0 60px}
+header{background:#12402c;color:#fff;padding:14px 18px;position:sticky;top:0;z-index:20;
+ display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header h1{font-size:16px;font-weight:800;letter-spacing:-.2px}
+header .sub{font-size:12px;opacity:.75}
+nav{display:flex;gap:2px;background:#0d3323;padding:0 8px;position:sticky;top:52px;z-index:19;overflow-x:auto}
+nav button{background:none;border:0;color:#a9c9ba;padding:11px 15px;font-size:13.5px;font-weight:700;
+ cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent}
+nav button.on{color:#fff;border-bottom-color:#7fd6a8}
+main{max-width:1100px;margin:0 auto;padding:18px}
+section{display:none}section.on{display:block}
+.card{background:#fff;border:1px solid #e2e0d8;border-radius:12px;padding:16px;margin-bottom:14px}
+.card h2{font-size:14px;font-weight:800;color:#12402c;margin-bottom:4px}
+.card .hint{font-size:12.5px;color:#6b7a72;margin-bottom:12px}
+label{display:block;font-size:12px;font-weight:700;color:#3d5449;margin:10px 0 4px}
+input[type=text],textarea,select{width:100%;padding:9px 11px;border:1px solid #d3d0c6;border-radius:8px;
+ font:14px inherit;background:#fdfdfb}
+textarea{resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.55}
+input:focus,textarea:focus,select:focus{outline:2px solid #7fd6a8;border-color:#12402c}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}}
+button.act{background:#12402c;color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:13.5px;
+ font-weight:700;cursor:pointer}
+button.act:hover{background:#1a5a3d}
+button.ghost{background:#fff;color:#12402c;border:1.5px solid #12402c}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+pre.out{background:#111c17;color:#d9efe3;padding:14px;border-radius:10px;overflow-x:auto;
+ font:12.5px/1.6 ui-monospace,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
+.qc{margin-top:12px}
+.qc .item{display:flex;gap:8px;font-size:12.5px;padding:3px 0;align-items:flex-start}
+.ok{color:#137a4d;font-weight:700}.no{color:#b3261e;font-weight:700}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11.5px;font-weight:800}
+.b-pass{background:#dcf3e6;color:#0f6b43}.b-fail{background:#fde7e5;color:#a01a10}
+.words{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;max-height:320px;overflow-y:auto;
+ padding:10px;background:#fbfaf7;border:1px solid #ece9e0;border-radius:8px}
+.w{border:1px solid #cfd8d3;background:#fff;border-radius:16px;padding:4px 11px;font-size:13px;cursor:pointer}
+.w:hover{border-color:#12402c}
+.w.pick{background:#12402c;color:#fff;border-color:#12402c}
+.w.used{background:#f0efe9;color:#a4a29a;border-style:dashed}
+.w.used::after{content:" ·1장";font-size:10px}
+.cart{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.cart .ci{background:#eef6f1;border:1px solid #b9d8c8;border-radius:8px;padding:6px 8px;display:flex;gap:6px;align-items:center}
+.cart .ci b{font-size:13px}
+.cart .ci input{width:110px;padding:3px 6px;font-size:12.5px;border:1px solid #cfd8d3;border-radius:5px}
+.cart .ci span{cursor:pointer;color:#b3261e;font-weight:800}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid #eceae2}
+th{font-size:11.5px;color:#6b7a72;text-transform:uppercase;letter-spacing:.4px}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.bar{height:6px;background:#ece9e0;border-radius:3px;overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;background:#7fd6a8}
+.locked{background:#f7f6f2;border-left:3px solid #12402c;padding:10px 12px;border-radius:0 8px 8px 0;
+ font:12px/1.65 ui-monospace,Menlo,monospace;color:#40544a;white-space:pre-wrap;margin:8px 0}
+.warn{background:#fff8e6;border:1px solid #f0dca8;border-radius:8px;padding:10px 12px;font-size:12.5px;color:#6b5518}
+.chk{display:flex;gap:9px;align-items:flex-start;padding:7px 0;font-size:13.5px;border-bottom:1px solid #f2f0e8}
+.chk input{width:17px;height:17px;margin-top:2px;flex:0 0 auto}
+.count{font-size:12px;color:#6b7a72;margin-left:6px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#12402c;color:#fff;
+ padding:10px 20px;border-radius:22px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;
+ transition:opacity .2s;z-index:99}
+.toast.on{opacity:1}
+</style></head><body>
+
+<header>
+  <h1>보는 단어장 · 장면 작업대</h1>
+  <span class="sub">골격 v3 고정 · 슬롯만 채운다 · 1200 안에서만 고른다</span>
+</header>
+<nav>
+  <button class="on" data-t="p">① 프롬프트 조립</button>
+  <button data-t="w">② 단어 담기</button>
+  <button data-t="s">③ 장면 코드</button>
+  <button data-t="j">④ 판정</button>
+  <button data-t="st">⑤ 현황</button>
+</nav>
+<main>
+
+<!-- ① 프롬프트 -->
+<section id="p" class="on">
+  <div class="card">
+    <h2>고정부 — 손대지 않는다</h2>
+    <div class="hint">이 문장들이 품질을 지킨다. 한 글자라도 바꾸면 v1·v2 실패로 돌아간다.</div>
+    <div class="locked">헤더 · 순백 배경 / 빈 첫 프레임 / 고정 카메라 / 원테이크
+드로잉 · 획마다 시작-끝 / 비대칭 구도 / 페이드 금지
+채색 · 선 안에서 / 원색 금지 / 빛 한 방향 + 그림자
+스타일 · 호기심 많은 십대를 위한 도감 (유치원 그림책 아님)
+Never · 글자 · 원색 · 수묵 무드 · 정중앙 구도 · 클리셰</div>
+  </div>
+
+  <div class="card">
+    <h2>슬롯 A — 피사체</h2>
+    <div class="hint">A2는 프레임 밖으로 잘려야 한다(비대칭). A4는 주역을 작게 보이게 한다(스케일 대비). 둘 다 없으면 그림이 화면 중앙 웅덩이가 된다.</div>
+    <div class="grid2">
+      <div><label>A1 주역 — 하나. 살아있거나 밝은 것</label><input type="text" id="a1" placeholder="one small white sailboat"></div>
+      <div><label>A2 잘리는 요소</label><input type="text" id="a2" placeholder="a rocky headland"></div>
+    </div>
+    <div class="grid3">
+      <div><label>A2 잘리는 방향</label><select id="a2d"><option>left</option><option>right</option><option>bottom</option><option>top</option></select></div>
+      <div><label>A3 광활한 배경</label><input type="text" id="a3" placeholder="the open sea"></div>
+      <div><label>A3 먼 끝</label><input type="text" id="a3h" placeholder="horizon"></div>
+    </div>
+    <div class="grid2">
+      <div><label>A4 스케일 대비 장치</label><input type="text" id="a4" placeholder="one towering monumental white cumulus cloud"></div>
+      <div><label>A5 살아있는 부속 / 입자</label><input type="text" id="a5" placeholder="two slender streamlined bottlenose dolphins with long pointed snouts and curved dorsal fins"></div>
+    </div>
+    <div class="grid3">
+      <div><label>먹선 1순 — A2의 결·구조</label><input type="text" id="d1" placeholder="The headland's rock strata"></div>
+      <div><label>먹선 2순 — 중간</label><input type="text" id="d2" placeholder="the long low horizon line"></div>
+      <div><label>주역 세부 2개</label><input type="text" id="d3" placeholder="mast and rigging ropes"></div>
+    </div>
+    <div><label>비대칭 문장의 공간</label><input type="text" id="d4" placeholder="water"></div>
+  </div>
+
+  <div class="card">
+    <h2>슬롯 B — 색</h2>
+    <div class="hint">색은 <b>대상에 붙여서</b> 명명한다. 「물에 파랑」이 아니라 「곶 발치에 golden sand」. 강한 색(burgundy)은 실제로 그 색인 대상에만 — 바위에 붙이면 분홍 바위가 나온다.</div>
+    <label>색 지정 4개 이상, 대상마다</label>
+    <textarea id="b1" rows="3" placeholder="clear cerulean and bright turquoise water full of light, warm golden sand at the headland's foot, fresh green on its crest, the towering cloud in soft white with warm grey undersides"></textarea>
+    <label>빛 방향</label><input type="text" id="b2" placeholder="the upper right">
+  </div>
+
+  <div class="card">
+    <h2>슬롯 C — 마지막 2.5초</h2>
+    <div class="hint">빛의 사건 1 + 주역 동작 1 + 살아있는 동작 1. 셋을 넘기지 않는다. 구동사 편이면 C2가 그 구동사의 동작 자체다.</div>
+    <label>C1 빛의 사건</label><input type="text" id="c1" placeholder="a long sparkling path of sunlight appears across the water toward the horizon">
+    <label>C2 주역의 느린 동작</label><input type="text" id="c2" placeholder="The sailboat glides slowly forward with one gentle tilt, leaving a thin white wake">
+    <label>C3 살아있는 동작</label><input type="text" id="c3" placeholder="two dolphins arc once out of the water near the boat in a graceful shallow leap, then slip back in">
+    <label>Never 개수 상한 — 필수. 없으면 요소가 폭주한다</label>
+    <input type="text" id="c4" placeholder="more than one sailboat, more than two dolphins">
+    <div class="row">
+      <button class="act" onclick="build()">조립 + 검증</button>
+      <button class="act ghost" onclick="fillSample()">합격 견본으로 채우기</button>
+      <button class="act ghost" onclick="clearP()">비우기</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>결과 <span id="verdict"></span></h2>
+    <pre class="out" id="prompt">위 슬롯을 채우고 「조립 + 검증」을 누르십시오.</pre>
+    <div class="row"><button class="act" onclick="copy('prompt')">프롬프트 복사</button>
+      <span class="count">Flow 설정은 UI에서 — 16:9 · 8초 · 소리 없음</span></div>
+    <div class="qc" id="qc"></div>
+  </div>
+</section>
+
+<!-- ② 단어 -->
+<section id="w">
+  <div class="card">
+    <h2>1200 안에서만 고른다</h2>
+    <div class="hint">회색 점선은 1장에서 이미 쓴 단어다. 다시 써도 된다 — 간격 복습이다. 다만 주 장면이 어디인지는 기억할 것.</div>
+    <div class="grid2">
+      <div><label>갈래</label><select id="cat"></select></div>
+      <div><label>단어 검색 (전체에서)</label><input type="text" id="q" placeholder="영어 단어 일부"></div>
+    </div>
+    <div class="words" id="wlist"></div>
+  </div>
+  <div class="card">
+    <h2>담은 단어 <span class="count" id="ccnt"></span></h2>
+    <div class="hint">뜻은 한글로. 비어 있으면 코드에 <code>뜻</code>이라고 들어가니 채워야 한다.</div>
+    <div class="cart" id="cart"></div>
+    <div class="row"><button class="act" onclick="genWords()">words 배열 만들기</button>
+      <button class="act ghost" onclick="CART=[];renderCart();gw()">전부 비우기</button></div>
+    <pre class="out" id="wout">담은 단어가 없습니다.</pre>
+    <div class="row"><button class="act" onclick="copy('wout')">복사</button></div>
+  </div>
+</section>
+
+<!-- ③ 장면 코드 -->
+<section id="s">
+  <div class="card">
+    <h2>works 배열 항목 만들기</h2>
+    <div class="hint">②에서 단어를 담은 뒤 여기서 제목·영상만 넣으면 붙여넣을 코드가 나온다. 영상 번호와 화면 순서는 달라도 된다 — 01 등대도 파일은 scene-ch1-02다.</div>
+    <div class="grid3">
+      <div><label>화면 순서 n</label><input type="text" id="sn" placeholder="06"></div>
+      <div><label>챕터 폴더</label><input type="text" id="sf" value="챕터1_완성동영상"></div>
+      <div><label>영상 파일명 (확장자 없이)</label><input type="text" id="sv" placeholder="scene-ch1-10"></div>
+    </div>
+    <div class="grid2">
+      <div><label>제목</label><input type="text" id="st" placeholder="물길이 열리는 만"></div>
+      <div><label>한 줄 설명</label><input type="text" id="ss" placeholder="곶을 돌아 안쪽으로"></div>
+    </div>
+    <div class="row"><button class="act" onclick="genScene()">코드 만들기</button></div>
+    <pre class="out" id="sout">—</pre>
+    <div class="row"><button class="act" onclick="copy('sout')">복사</button>
+      <span class="count">public/learning/index.html 의 const works 배열에 붙입니다</span></div>
+    <div class="warn" style="margin-top:12px">포스터(<code>-poster.jpg</code>)는 만들지 않아도 됩니다. mp4만 폴더에 넣고 저에게 말하면 마지막 프레임으로 뽑습니다.</div>
+  </div>
+</section>
+
+<!-- ④ 판정 -->
+<section id="j">
+  <div class="card">
+    <h2>Flow 결과 판정 — 5항목</h2>
+    <div class="hint">하나라도 빠지면 <b>골격을 고치지 말고 슬롯 문구만</b> 바꿔 다시 뽑는다. 2회 실패하면 저에게 넘기십시오.</div>
+    <div id="chks"></div>
+    <div class="row"><span id="jres" class="badge b-fail">0 / 5</span></div>
+  </div>
+  <div class="card">
+    <h2>실패 증상 → 원인 (실측 기록)</h2>
+    <table><thead><tr><th>증상</th><th>원인</th><th>고칠 슬롯</th></tr></thead><tbody>
+      <tr><td>크림색 종이 · 액자 테두리</td><td><code>paper</code>가 프롬프트에 있다. 부정문에 써도 소환된다 (성공본 0회 / 실패 2회 모두 존재)</td><td>배제 문장에서 매체어 삭제</td></tr>
+      <tr><td>우울하다 · 회색</td><td>주역이 어둡거나, 꼬리 주제어에 <code>storm</code> <code>fog</code> <code>night</code>가 있다</td><td>A1을 밝은 것으로 · 꼬리 주제어 교체</td></tr>
+      <tr><td>화면 중앙에 웅덩이처럼 뭉침</td><td>A2(잘리는 요소)가 없다</td><td>A2 + 잘리는 방향</td></tr>
+      <tr><td>납작하다 · 깊이 없다</td><td>근경 요소가 없어 층이 겹치지 않는다</td><td>A2를 근경으로, 주역을 그 뒤로</td></tr>
+      <tr><td>선이 판화처럼 촘촘</td><td><code>engraving</code> 또는 <code>texture</code>를 여러 번 썼다</td><td>텍스처 지시 1회로</td></tr>
+      <tr><td>동물이 통통하다</td><td>형태 지시가 없다</td><td>종명 + <code>slender</code> <code>pointed</code> 같은 형태어</td></tr>
+      <tr><td>조감도가 됐다</td><td><code>seen from above</code> 계열</td><td>시점 지시를 아예 쓰지 않는다</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<!-- ⑤ 현황 -->
+<section id="st">
+  <div class="card">
+    <h2>갈래별 소진 현황</h2>
+    <div class="hint">「쓴 단어」는 아래 목록 기준이다. 새 장면을 확정하면 목록에 추가하고 복사해 보관하십시오 — 이 페이지는 저장을 하지 않습니다.</div>
+    <label>쓴 단어 목록 (공백으로 구분)</label>
+    <textarea id="usedbox" rows="4"></textarea>
+    <div class="row"><button class="act" onclick="recalc()">다시 계산</button>
+      <button class="act ghost" onclick="copy('usedbox')">목록 복사</button></div>
+    <div id="sum" style="margin-top:14px"></div>
+  </div>
+  <div class="card">
+    <h2>장면당 단어 수 — 8개 고정은 폐기됐다</h2>
+    <div class="hint">실측: 65갈래 중 8로 딱 나눠지는 것은 3갈래뿐. 8개 고정이면 59장을 무관한 단어로 채워야 한다.</div>
+    <table><tbody>
+      <tr><td>8개 고정</td><td class="n">181장</td><td>그중 59장이 8개 미달 → 억지 채움</td></tr>
+      <tr><td><b>6~12 가변 (목표 9)</b></td><td class="n"><b>138장</b></td><td>억지 0. 균형은 챕터 합계에서 맞춘다</td></tr>
+    </tbody></table>
+    <div class="warn" style="margin-top:12px">암기송은 다르다 — <b>곡당 12~15단어 상한 고정</b>. 연구 근거값이라 취향으로 바꾸지 않는다. 노래에 넣을 단어만 챕터에서 골라낸다.</div>
+  </div>
+</section>
+
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = {"cats":{"바다와 항해":["adventure","bay","bubble","cape","channel","coast","current","deck","dive","dolphin","float","flood","flow","island","navy","ocean","pool","port","rise","row","sail","seal","shell","shore","sink","spray","stream","surface","tide","wave","whale"],"하늘과 날씨":["atmosphere","balloon","blow","climate","dawn","flame","flash","fog","freeze","heaven","melt","noon","planet","rainbow","shade","shadow","shine","silver","smoke","steam","storm","temperature"],"땅과 물길":["cliff","countryside","county","desert","dirt","district","dust","edge","highway","hole","lane","mount","mud","path","pile","pole","pollute","region","route","site","soil","spot","square","tower","valley"],"동물":["ant","bark","bug","cage","feed","frog","giraffe","lamb","nest","pet","rat","sheep","snake","species","wild","wing","zebra"],"식물과 나무":["bloom","branch","bush","fur","grace","lawn","leaf","log","oak","pine","plant","root","seed","trunk","wool"],"몸과 감각":["blind","brain","breast","breath","breathe","cell","cheek","chest","chew","cough","glance","hear","height","jaw","knee","muscle","nail","nerve","shoulder","sight","stare","stomach","swallow","tear","throat","toe","tongue"],"옷과 몸치장":["bare","blonde","cotton","curl","fit","glove","jeans","mask","pocket","scarf","shave","suit","sweater","uniform"],"기계와 도구":["automatic","battery","click","coal","code","disc","electric","element","glue","instrument","label","machine","metal","monitor","net","pump","screen","stamp","steel","switch","technology","tin","tool"],"일과 직업":["agent","boss","captain","career","chairman","chief","clerk","client","coach","dentist","employ","engineer","expert","factory","firm","guard","guest","hire","industry","lab","labor","laboratory","lawyer","manufacture","master","military","mill","officer","poet","profession","promote","secretary","soldier","volunteer"],"사람과 관계":["associate","attract","audience","bond","citizen","committee","community","contact","council","crowd","darling","depend","divorce","engage","fellow","female","folk","individual","involve","junior","male","mate","native","neighbor","person","relate","respect","senior","slave","society","twin"],"싸움과 지킴":["army","arrest","attack","battle","beat","bomb","conflict","crime","defense","enemy","escape","evil","force","gun","harm","oppose","protect","protest","punish","resist","rob","shelter","spy","steal","strike","struggle","survive","suspect","thief","threat","victim","violent","weapon"],"규칙과 사회":["accuse","civil","cop","discipline","duty","elect","empire","govern","guilt","innocent","judge","justice","law","legal","license","moral","policy","politics","principle","privacy","private","public","responsible","rule","standard","vote"],"기쁨과 슬픔":["admire","amuse","appreciate","calm","cheer","comfort","delight","entertain","excite","glory","honor","humor","joy","laugh","peace","pride","proud","relax","relief","satisfy"],"화와 두려움":["anger","annoy","anxious","bother","concern","cruel","disturb","fear","fright","frustrate","panic","rude","scare","shock","stress","tense","trouble","upset"],"부끄러움과 미움":["awkward","blame","disgust","embarrass","ignore","shame","silly"],"바람과 아쉬움":["bore","depress","desire","desperate","disappoint","hesitate","lack","pity","sore"],"놀람과 궁금함":["amaze","angel","brilliant","clue","curious","fancy","fantastic","fascinate","ghost","gorgeous","hell","impress","magic","marvel","mystery","puzzle","strange","surprise","trick","wonder"],"믿음과 의심":["belief","confirm","doubt","evidence","faith","prove","rely","trust","truth"],"생각하기":["analysis","assume","attention","attitude","concentrate","concept","confuse","consider","context","define","detect","determine","examine","imagine","inspect","investigate","method","notice","observe","opinion","reason","recognize","reflect","regard","remind","solve","strategy","suppose","tend","theory"],"글과 기록":["article","catalog","chart","comedy","copy","diary","dictionary","document","drama","edit","envelope","essay","graph","language","list","magazine","photo","photograph","poem","record","register","scene","spell","text","title","topic"],"배움과 가르침":["assess","attend","educate","experience","experiment","grade","knowledge","measure","practice","research","skill","subject","survey","technique"],"만들고 고치기":["arrange","attach","bend","bind","block","burst","combine","connect","crack","crash","create","damage","decorate","destroy","develop","direct","divide","establish","fold","found","invent","link","object","produce","remove","repair","replace","ruin","sew","smash","snap","spoil","stick"],"주고받기":["accept","allow","contribute","deliver","deserve","donate","exchange","gift","lend","offer","provide","receive","refuse","reserve","share","transfer"],"갖고 지니기":["belong","contain","gain","include","lose","maintain","own","possess"],"가고 오기":["advance","appear","approach","follow","leave","proceed","progress","reach","retire"],"고르고 정하기":["aim","appoint","assign","choice","order","prefer","prepare","schedule","select","settle","target"],"찾고 얻기":["identity","locate","resource","search","seek","source","trace"],"돕고 섬기기":["aid","assist","bless","cure","favor","forgive","lead","recover","serve","support","treat"],"하고 다루기":["apply","attempt","challenge","cope","dare","deal","effort","handle","manage","operate","perform","process","quit","react","repeat","risk"],"크기와 모양":["balance","blank","broad","empty","enormous","expand","extend","figure","flat","giant","grand","huge","loose","narrow","neat","pattern","plain","pure","rough","round","scale","shape","sharp","smooth","solid","super","thick","thin","tight","tiny","triangle","volume","wide"],"좋고 나쁨":["advantage","benefit","correct","fair","fault","fortunate","fortune","improve","increase","necessary","perfect","proper","quality","reduce","terrible"],"쉽고 어려움":["able","capable","complex","complicate","ease","practical","simple","tough"],"같고 다름":["adapt","adopt","alter","category","compare","definite","equal","familiar","match","odd","pair","real","regular","separate","shift","similar","single","sort","specific","stable","steady","unit","vary"],"많고 적음":["absolute","amount","average","bit","complete","entire","extra","extreme","few","intense","limit","lot","major","mass","maximum","minor","none","piece","plenty","prime","quite","range","rare","sample","several","slight","spare","stuff","sum","total"],"시간과 때":["annual","calendar","century","constant","continue","delay","due","event","forever","immediate","instant","minute","nowadays","occasion","once","past","pause","period","previous","rapid","recent","remain","soon","still","sudden","term","yet"],"수와 셈":["billion","calculate","count","degree","dozen","half","level","per","quarter","rate","series","thousand","weigh","zero"],"자리와 방향":["although","among","apart","aside","beneath","beyond","distance","forth","forward","internal","local","since","straight","surround","through","till","toward","unless","until","upon","upper","whether","while","within","without"],"몸과 마음의 상태":["alive","asleep","awake","aware","drug","emotion","exhaust","exist","faint","fever","health","hurt","ill","injure","medical","medicine","mental","mood","pain","patient","physical","poison","pregnant","presence","rest","self","sense","soul","spirit","suffer","weak","wound"],"일의 결과":["achieve","affect","cause","effect","expect","factor","function","happen","influence","intend","intent","matter","mission","obvious","occur","potential","purpose","result","role","succeed","success"],"드러남과 감춤":["demonstrate","detail","display","expose","feature","hide","illustrate","indicate","mark","secret","seem","sign"],"모임과 흩어짐":["bunch","gather","release","unite"],"세상 물정":["background","circumstance","domestic","fashion","foreign","modern","ordinary","popular","situate","social","stage","state","structure","system","tradition","version","view","vision"],"소리와 음악":["band","bang","boom","concert","loud","noise","pop","tone","tune","whistle"],"운동과 겨루기":["champion","contest","golf","league"],"색과 빛":["purple"],"성과 왕궁":["cast","castle","crown","flag","royal"],"사람 성격":["character","charm","cute","gentle","handsome","polite","serious","sex","smart","teenage","wise"],"사고와 위험":["accident","alarm","ambulance","avoid","crisis","prevent","secure","warn"],"알리고 밝히기":["accent","admit","announce","comment","describe","emphasize","explain","express","frankly","inform","mention","pronounce","quote","refer","remark","report","represent"],"따지고 다투기":["argue","claim","complain","convince","debate","deny","insist"],"묻고 부탁하기":["advice","advise","beg","excuse","greet","hint","pardon","promise","propose","recommend","request","require","suggest"],"소리내어 말하기":["aloud","chat","command","communicate","converse","instruct","interrupt","joke","message","paragraph","pray","pretend","reply","respond","scream","sentence","shout","speech","tale","tip","whisper","yell"],"이음말":["altogether","despite","either","even","except","instead","let","moreover","neither","nor","otherwise","ought","rather","shall","then","therefore","though","thus","which","whole","would"],"정도와 범위말":["access","account","affair","appeal","basis","brief","characteristic","common","conscious","content","each","else","especial","ever","exact","final","general","indeed","instance","interest","item","main","manner","maybe","mean","nowhere","other","overall","particular","perhaps","plus","possible","probable","section","session","somewhat","such","various"],"손으로 하는 것":["grab","knock","lift","load","pack","pitch","press","pull","punch","rub","scratch","stir","sweep","throw","tie","twist","wipe","wrap"],"몸 전체로 하는 것":["bite","bounce","bow","bump","chase","crawl","dig","drag","gesture","hug","lay","lean","leap","motion","raise","roll","rush","shake","shoot","slide","slip","spin","step","stretch","swing"],"닫고 파묻기":["bury","shut","spread","trap"],"먹을 것":["bacon","bean","bitter","chip","crisp","diet","honey","hunger","lemon","meal","melon","mushroom","nut","pear","pepper","pie","pork","powder","rice","snack","sour","strawberry","supper","sweet","toast"],"부엌과 조리":["alcohol","beer","boil","bowl","chop","cigarette","consume","dish","fry","grocery","menu","mix","pan","plate","pot","pour","recipe","sauce","tea"],"돈":["afford","budget","charge","coin","credit","debt","earn","economy","estimate","expense","fee","finance","fund","income","insure","loan","loss","price","profit","salary","spend","tax","value","wage","worth"],"사고팔기":["advertise","award","bet","brand","commerce","contract","demand","grant","guarantee","invest","prize","property","purchase","rent","sponsor","stock","supply","trade","waste"],"집의 구조":["brick","ceiling","cottage","fence","frame","garage","livingroom","roof","shelf","shower","stairs","toilet","villa"],"살림 도구":["bar","bench","bin","blanket","boot","cable","carpet","chain","clip","dump","furniture","iron","lamp","lid","lock","mess","microwave","mirror","oven","pin","pipe","rope","sheet","string","tank","tap","towel","tray","wire"],"도시의 건물":["capital","cinema","hall","hotel","museum","opera","palace","post","prison","pub","station","studio","theater","university","village"],"타고 가기":["airline","airport","brake","cart","cycle","engine","exit","flight","gate","gear","guide","helicopter","journey","motor","parade","picnic","plane","rail","ride","rocket","seat","tour","traffic","transport","van","vehicle","wheel"]},"used":["tower","island","shine","warn","cliff","shore","guide","flash","sail","deck","rope","flag","journey","row","port","navy","calm","distance","shadow","leap","follow","float","reflect","silver","whale","wave","rise","surface","ocean","dive","spray","bubble","dolphin","shell","seal","tide","current","sink","cage","stream"]};
+const CATS = DATA.cats;
+let USED = new Set(DATA.used);
+let CART = [];
+
+/* ---------- 탭 ---------- */
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('section').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); document.getElementById(b.dataset.t).classList.add('on');
+});
+
+/* ---------- 골격 ---------- */
+const HEAD = `Cinematic progressive ink-line animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty white field. Static locked-off camera, one continuous 8-second take.`;
+const STYLE = `Style: fine confident ink drawing with varied line weight and rich observational detail, fresh luminous watercolor, clear summer daylight, cinematic depth of foreground, middle ground and far horizon — the feel of a beautiful illustrated atlas for curious teenagers, never a kindergarten picture book. Museum-quality contemporary illustration.`;
+const NEVER_BASE = `Never: text, letters, primary crayon colors, muted grey or slate mood, sepia, ink-wash painting mood, fog, smiling sun, V-shaped birds, rainbows, dead-center composition, paint splatter, color outside the lines, camera movement, cuts, dissolve`;
+
+const REQ = [
+ ['헤더 순백 배경','solid pure bright white background (#FFFFFF)'],
+ ['빈 첫 프레임','entirely empty white field'],
+ ['고정 카메라','Static locked-off camera, one continuous 8-second take'],
+ ['획 추적','traced visibly from endpoint to endpoint'],
+ ['단번에 그은 획','each stroke confident, drawn once'],
+ ['비대칭 구도','The composition is asymmetric'],
+ ['페이드 금지','Built progressively, never fading in'],
+ ['선 안에서 채색','fills the shapes FROM INSIDE, staying within the ink lines'],
+ ['원색 금지','no primary crayon colors'],
+ ['빛 한 방향','One consistent light direction'],
+ ['그림자','soft believable shadows'],
+ ['나머지 정지','Everything else stays still'],
+ ['선 굵기 변화','varied line weight and rich observational detail'],
+ ['여름 광선','clear summer daylight'],
+ ['3층 깊이','cinematic depth of foreground'],
+ ['도감 앵커','beautiful illustrated atlas for curious teenagers'],
+ ['유치원 금지','never a kindergarten picture book'],
+ ['미술관 급','Museum-quality contemporary illustration'],
+];
+const BAN_ANY = ['paper','parchment','canvas','picture frame','border','watermark'];
+const BAN_ANY_WORD = ['hand','pen'];
+const BAN_BODY = ['sepia','ink-wash','muted grey','muted gray','slate mood','slate blue','storm','fog','mist',
+ 'smoke','fluffy','billowing','gloomy','somber','seen from above',"bird's-eye",'aerial','top-down',
+ 'vertical','horizontal','16:9','9:16','engraving','cartoon','anime','photoreal','uncluttered'];
+const CROP = ['cropped by the','off-center','running past the'];
+const SCALE = ['towering','monumental','vast','stretching to a far'];
+
+const V = id => (document.getElementById(id).value||'').trim();
+
+function build(){
+  const subj = `The subjects: ${V('a1')}, ${V('a2')} cropped by the ${V('a2d')} edge of the frame, ${V('a3')} stretching to a far luminous ${V('a3h')}, ${V('a4')} in the upper distance, and ${V('a5')}.`;
+  const draw = `0-3.5s: fine dark-charcoal ink strokes are traced visibly from endpoint to endpoint — each stroke confident, drawn once. ${V('d1')} first, with rich observational detail, then ${V('d2')}, then ${V('a1')} with its ${V('d3')} drawn in a few precise strokes. The composition is asymmetric — the ${V('a1').replace(/^one\s+|^a\s+/,'')} sits off-center, small against the vast open ${V('d4')}. Built progressively, never fading in.`;
+  const color = `3.5-5.5s: fresh transparent watercolor fills the shapes FROM INSIDE, staying within the ink lines — ${V('b1')}. Every color is bright yet softened as true watercolor — no primary crayon colors. One consistent light direction from ${V('b2')}, with soft believable shadows. The white background above stays clean.`;
+  const mot = `5.5-8s: ${V('c1')}, glittering. ${V('c2')} — and ${V('c3')}. Everything else stays still.`;
+  const nev = `${NEVER_BASE}, ${V('c4')}, round or plump bodies, blunt snouts.`;
+  const p = [HEAD, subj, draw, color, mot, STYLE, nev].join('\n');
+  document.getElementById('prompt').textContent = p;
+  qc(p);
+}
+
+function qc(p){
+  const one = p.replace(/\s+/g,' ');
+  const low = one.toLowerCase();
+  const body = low.split('never:')[0];
+  const nev  = low.split('never:')[1] || '';
+  const f = [];
+  REQ.forEach(([n,s])=>{ if(!one.toLowerCase().includes(s.toLowerCase())) f.push(['고정부 누락', n]); });
+  BAN_ANY.forEach(w=>{ if(low.includes(w)) f.push(['매체 소환어', `'${w}' — 부정문에 써도 소환된다`]); });
+  BAN_ANY_WORD.forEach(w=>{ if(new RegExp('\\b'+w+'\\b').test(low)) f.push(['매체 소환어', `'${w}'`]); });
+  const nFrame = (low.match(/\bframe\b/g)||[]).length;
+  const okFrame = (low.match(/first frame|of the frame/g)||[]).length;
+  if(nFrame>okFrame) f.push(['매체 소환어',`'frame' 허용 문맥 밖 ${nFrame-okFrame}회`]);
+  BAN_BODY.forEach(w=>{ if(body.includes(w)) f.push(['본문 금지어', `'${w}'`]); });
+  if(!CROP.some(x=>low.includes(x))) f.push(['슬롯 A','비대칭 장치 없음 — 잘리는 요소 필수']);
+  if(!SCALE.some(x=>low.includes(x))) f.push(['슬롯 A','스케일 대비 장치 없음']);
+  const nColor = (V('b1').match(/[a-z]+/gi)||[]).length;
+  if(nColor<8) f.push(['슬롯 B','색 지정이 너무 짧다 — 대상마다 색을 붙여 4개 이상']);
+  if(!nev.includes('more than')) f.push(['개수 상한',"Never에 'more than N ...' 없음 — 요소 폭주 방지"]);
+  ['a1','a2','a3','a4','a5','b1','b2','c1','c2','c3','c4','d1','d2','d3','d4'].forEach(id=>{
+    if(!V(id)) f.push(['빈 슬롯', id.toUpperCase()]);
+  });
+  const vd = document.getElementById('verdict');
+  vd.className = 'badge ' + (f.length ? 'b-fail':'b-pass');
+  vd.textContent = f.length ? `FAIL ${f.length}건` : 'PASS';
+  document.getElementById('qc').innerHTML = f.length
+    ? f.map(([k,v])=>`<div class="item"><span class="no">✕</span><span><b>${k}</b> · ${v}</span></div>`).join('')
+    : `<div class="item"><span class="ok">✓</span><span>고정부 18항목 충족 · 금지어 0 · 슬롯 A·B·C 충족. 이 프롬프트는 발사해도 된다.</span></div>`;
+}
+
+function fillSample(){
+  const S={a1:'one small white sailboat',a2:'a rocky headland',a2d:'left',a3:'the open sea',a3h:'horizon',
+   a4:'one towering monumental white cumulus cloud',
+   a5:'two slender streamlined bottlenose dolphins with long pointed snouts and curved dorsal fins',
+   d1:"The headland's rock strata",d2:'the long low horizon line',d3:'mast and rigging ropes',d4:'water',
+   b1:"clear cerulean and bright turquoise water full of light, warm golden sand at the headland's foot, fresh green on its crest, the towering cloud in soft white with warm grey undersides",
+   b2:'the upper right',
+   c1:'a long sparkling path of sunlight appears across the water toward the horizon',
+   c2:'The sailboat glides slowly forward with one gentle tilt, leaving a thin white wake',
+   c3:'two slender streamlined bottlenose dolphins, light silver-grey with long pointed snouts and curved dorsal fins, arc once out of the water near the boat in a graceful shallow leap, then slip back in',
+   c4:'more than one sailboat, more than two dolphins'};
+  for(const k in S){const e=document.getElementById(k); if(e) e.value=S[k];}
+  build();
+}
+function clearP(){['a1','a2','a3','a3h','a4','a5','b1','b2','c1','c2','c3','c4','d1','d2','d3','d4']
+  .forEach(id=>document.getElementById(id).value='');
+  document.getElementById('prompt').textContent='—';document.getElementById('qc').innerHTML='';
+  document.getElementById('verdict').textContent='';}
+
+/* ---------- 단어 ---------- */
+const catSel=document.getElementById('cat');
+Object.keys(CATS).sort().forEach(k=>{
+  const o=document.createElement('option'); o.value=k; o.textContent=`${k} (${CATS[k].length})`; catSel.appendChild(o);
+});
+function renderWords(){
+  const q=(document.getElementById('q').value||'').trim().toLowerCase();
+  let list;
+  if(q){ list=[]; for(const k in CATS) CATS[k].forEach(w=>{ if(w.includes(q)) list.push(w); }); list=[...new Set(list)]; }
+  else list = CATS[catSel.value]||[];
+  const box=document.getElementById('wlist');
+  box.innerHTML = list.length ? '' : '<span class="count">해당 단어가 없습니다.</span>';
+  list.forEach(w=>{
+    const s=document.createElement('span');
+    s.className='w'+(CART.find(c=>c.w===w)?' pick':'')+(USED.has(w)?' used':'');
+    s.textContent=w; s.onclick=()=>{
+      const i=CART.findIndex(c=>c.w===w);
+      if(i>=0) CART.splice(i,1); else CART.push({w:w,k:''});
+      renderWords(); renderCart();
+    };
+    box.appendChild(s);
+  });
+}
+function renderCart(){
+  const c=document.getElementById('cart');
+  c.innerHTML='';
+  CART.forEach((it,i)=>{
+    const d=document.createElement('div'); d.className='ci';
+    d.innerHTML=`<b>${it.w}</b>`;
+    const inp=document.createElement('input'); inp.placeholder='한글 뜻'; inp.value=it.k;
+    inp.oninput=e=>{CART[i].k=e.target.value};
+    const x=document.createElement('span'); x.textContent='×';
+    x.onclick=()=>{CART.splice(i,1);renderCart();renderWords()};
+    d.appendChild(inp); d.appendChild(x); c.appendChild(d);
+  });
+  document.getElementById('ccnt').textContent = CART.length ? `${CART.length}개` : '';
+  if(!CART.length) c.innerHTML='<span class="count">위에서 단어를 눌러 담으십시오.</span>';
+}
+function gw(){document.getElementById('wout').textContent='담은 단어가 없습니다.';}
+function genWords(){
+  if(!CART.length){gw();return}
+  const body=CART.map(c=>`['${c.w}','${c.k||'뜻'}']`).join(',');
+  document.getElementById('wout').textContent = `words:[${body}]`;
+  const empty=CART.filter(c=>!c.k).map(c=>c.w);
+  if(empty.length) toast(`뜻이 빈 단어 ${empty.length}개: ${empty.join(' ')}`);
+}
+catSel.onchange=renderWords;
+document.getElementById('q').oninput=renderWords;
+
+/* ---------- 장면 코드 ---------- */
+function genScene(){
+  const words = CART.length ? CART.map(c=>`['${c.w}','${c.k||'뜻'}']`).join(',') : '';
+  if(!words){ document.getElementById('sout').textContent='② 단어 담기에서 먼저 단어를 담으십시오.'; return; }
+  const f=V('sf'), v=V('sv');
+  const code = `{n:'${V('sn')}',title:'${V('st')}',sub:'${V('ss')}',video:'${f}/${v}.mp4',img:'${f}/${v}-poster.jpg',words:[${words}]},`;
+  document.getElementById('sout').textContent = code;
+}
+
+/* ---------- 판정 ---------- */
+const CHECKS=[
+ '요소 — A1~A5가 다 있고, 그 밖의 것이 안 끼어들었다',
+ '색 — 여름 채도이고 회색·우울하지 않다. 따뜻한 색이 눈에 보인다',
+ '구도 — 잘리는 요소가 프레임 밖으로 나가고, 주역이 정중앙이 아니다',
+ '동작 — 빛의 사건 + 주역 동작 + 살아있는 동작, 셋만 있다',
+ '격조 — 도감이다. 유치원 그림책도, 수묵화도 아니다',
+];
+const cb=document.getElementById('chks');
+CHECKS.forEach((t,i)=>{
+  const d=document.createElement('label'); d.className='chk';
+  d.innerHTML=`<input type="checkbox" data-i="${i}"><span>${t}</span>`;
+  cb.appendChild(d);
+});
+cb.addEventListener('change',()=>{
+  const n=[...cb.querySelectorAll('input')].filter(x=>x.checked).length;
+  const r=document.getElementById('jres');
+  r.textContent=`${n} / 5`; r.className='badge '+(n===5?'b-pass':'b-fail');
+  if(n===5) r.textContent='5 / 5 — 합격. 자산 등록';
+});
+
+/* ---------- 현황 ---------- */
+document.getElementById('usedbox').value = [...USED].join(' ');
+function recalc(){
+  USED = new Set((document.getElementById('usedbox').value||'').split(/\s+/).filter(Boolean));
+  const rows = Object.keys(CATS).map(k=>{
+    const tot=CATS[k].length, u=CATS[k].filter(w=>USED.has(w)).length;
+    return {k,tot,u,pct: tot?Math.round(u/tot*100):0};
+  }).sort((a,b)=>b.pct-a.pct||b.tot-a.tot);
+  const totAll=1200, uAll=[...USED].length;
+  document.getElementById('sum').innerHTML =
+   `<p style="font-size:13px;margin-bottom:10px"><b>${uAll} / ${totAll}</b> 소진 · 남은 <b>${totAll-uAll}</b>개 · 6~12 가변 기준 남은 장면 약 <b>${Math.ceil((totAll-uAll)/9)}</b>장</p>`
+   + `<table><thead><tr><th>갈래</th><th>쓴/전체</th><th></th></tr></thead><tbody>`
+   + rows.map(r=>`<tr><td>${r.k}</td><td class="n">${r.u}/${r.tot}</td>
+      <td><div class="bar"><i style="width:${r.pct}%"></i></div></td></tr>`).join('')
+   + `</tbody></table>`;
+  renderWords();
+}
+
+/* ---------- 유틸 ---------- */
+function copy(id){
+  const el=document.getElementById(id);
+  const t = el.tagName==='TEXTAREA' ? el.value : el.textContent;
+  navigator.clipboard.writeText(t).then(()=>toast('복사했습니다')).catch(()=>toast('복사 실패 — 직접 선택하십시오'));
+}
+let tt;
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');
+  clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200);}
+
+renderWords(); renderCart(); recalc();
+</script></body></html>

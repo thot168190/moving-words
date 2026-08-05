@@ -1,0 +1,125 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>장면 작업대 v2 — 단순판</title>
+<style>
+body{margin:0;background:#fdfcf9;color:#1a1a1a;font-family:Pretendard,-apple-system,sans-serif;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:28px 18px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.sub{font-size:13px;color:#6b7684;margin-bottom:22px}
+label{display:block;font-size:13px;font-weight:700;margin:18px 0 6px}
+label small{font-weight:400;color:#6b7684}
+input,textarea{width:100%;box-sizing:border-box;border:1.5px solid #e5e1d8;border-radius:12px;
+ padding:12px 14px;font:inherit;font-size:14px;background:#fff}
+textarea{min-height:74px;resize:vertical}
+.row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;padding:12px 18px;border-radius:12px;border:2px solid #1a1a1a;
+ background:#fff;cursor:pointer}
+button.pri{background:#1a1a1a;color:#fff}
+#out{white-space:pre-wrap;background:#fff;border:1.5px solid #e5e1d8;border-radius:12px;
+ padding:16px;font-size:12.5px;line-height:1.55;margin-top:16px;display:none}
+#qc{font-size:12.5px;margin-top:10px;color:#c2410c}
+.judge{margin-top:26px;background:#fff;border:1.5px solid #e5e1d8;border-radius:12px;padding:16px}
+.judge b{font-size:14px}
+.judge label{display:flex;align-items:center;gap:8px;font-weight:500;font-size:13.5px;margin:8px 0}
+.judge input{width:auto}
+#log{margin-top:14px;font-size:13px}
+#log div{padding:7px 0;border-top:1px solid #eee}
+details{margin-top:30px}
+summary{cursor:pointer;font-weight:700;font-size:14px;color:#6b7684}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#1a1a1a;color:#fff;
+ padding:10px 18px;border-radius:99px;font-size:13px;opacity:0;transition:opacity .3s}
+</style></head><body><div class="wrap">
+<h1>장면 작업대 <span style="color:#c2410c">v2</span></h1>
+<div class="sub">슬롯 3개 채우고 → 조립 → 복사 → Flow 발사 → 판정. 그게 전부입니다.
+&nbsp;·&nbsp;<a href="장면작업대_상세.html" style="color:#6b7684">상세 작업대(구버전)</a></div>
+
+<label>장면 이름 <small>예: 범선과 돌고래</small></label>
+<input id="name" placeholder="장면 이름">
+
+<label>슬롯 A — 피사체 목록 <small>3~5개. ①프레임에 잘리는 것 1개 ②스케일 대비(거대 구름·광활한 수평선 등) 1개 포함</small></label>
+<textarea id="sa" placeholder="one small white sailboat, a rocky headland cropped by the left edge of the frame, the open sea stretching to a far luminous horizon, one towering monumental white cumulus cloud in the upper distance, and two dolphins"></textarea>
+
+<label>슬롯 B — 색 3~4개 <small>구체 명명 (cerulean, golden sand 식)</small></label>
+<textarea id="sb" placeholder="clear cerulean and bright turquoise water full of light, warm golden sand, fresh green on the crest, soft white cloud with warm grey undersides"></textarea>
+
+<label>슬롯 C — 마지막 2.5초 <small>와 요소 1~2개, 또는 구동사의 동작 그 자체 (mid-action!)</small></label>
+<textarea id="sc" placeholder="a long sparkling path of sunlight appears across the water; the sailboat glides forward with one gentle tilt, and two dolphins arc once out of the water, mid-leap"></textarea>
+
+<div class="row">
+<button class="pri" onclick="build()">프롬프트 조립</button>
+<button onclick="copyOut()">복사</button>
+<button onclick="sample()">견본 불러오기 (범선)</button>
+</div>
+<div id="qc"></div>
+<div id="out"></div>
+
+<div class="judge"><b>Flow 결과 판정 — 5항목 전부 체크되면 합격</b>
+<label><input type="checkbox" class="j"> 요소: 피사체 전부 등장, 여분 없음</label>
+<label><input type="checkbox" class="j"> 색: 여름 채도, 선 밖 번짐 없음</label>
+<label><input type="checkbox" class="j"> 구도: 비대칭, 정중앙 아님</label>
+<label><input type="checkbox" class="j"> 동작: 마지막 2.5초가 '하는 중'</label>
+<label><input type="checkbox" class="j"> 격조: 유치하지 않고 수묵도 아님</label>
+<div class="row">
+<button class="pri" onclick="record(true)">합격 기록</button>
+<button onclick="record(false)">불합격 기록</button>
+</div>
+<div id="log"></div>
+</div>
+
+<details><summary>골격 전문 · 금지어 보기 (참고용 — 수정 금지)</summary><div id="ref" style="font-size:12px;white-space:pre-wrap;margin-top:10px;color:#555"></div></details>
+
+<div class="toast" id="toast"></div>
+<script>
+const HEAD=`Cinematic progressive pencil-and-ink line animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty white field. Static locked-off camera, one continuous 8-second take.`;
+const STYLE=`Style: delicate pencil-and-ink drawing with airy line weight and rich observational detail, fresh luminous watercolor, clear summer daylight, cinematic depth of foreground, middle ground and far horizon — the feel of a beautiful illustrated atlas for curious teenagers, never a kindergarten picture book. Museum-quality contemporary illustration.`;
+const NEVER=`Never: text, letters, numbers, hashtags, watermarks, a visible drawing hand, pen, pencil or brush in frame, primary crayon colors, muted grey or slate mood, sepia, ink-wash painting mood, fog, smiling sun, V-shaped birds, rainbows, dense cross-hatching, engraving-style shading, heavy dark outlines, dead-center composition, paint splatter, color outside the lines, paper texture, visible paper grain, window light streaks, ambient room shadows, vignette, camera movement, cuts, dissolve.`;
+const BAN=['sepia','ink-wash','muted grey','muted gray','slate','fog','mist','gloomy','somber','engraving','cartoon','anime','photoreal','hand','pen','paper','vertical','9:16'];
+document.getElementById('ref').textContent=HEAD+"\n\n"+STYLE+"\n\n"+NEVER+"\n\n금지어: "+BAN.join(', ');
+function V(id){return (document.getElementById(id).value||'').trim();}
+let last='';
+function build(){
+ if(!V('sa')||!V('sb')||!V('sc')){toast('슬롯 A·B·C를 채워주세요');return;}
+ const p=[HEAD,
+ `The subjects: ${V('sa')}.`,
+ `0-3.5s: delicate light-graphite pencil strokes are traced visibly from endpoint to endpoint — soft, feather-light, barely pressed, like an artist's first gentle sketch, each line drawn once. No dense cross-hatching, no engraving-style shading; only airy contour lines. The large landscape forms are drawn first with rich observational detail, the main subject last, in a few precise strokes. The composition is asymmetric — the main subject sits off-center. Built progressively, never fading in.`,
+ `3.5-5.5s: fresh transparent watercolor fills the shapes FROM INSIDE, staying within the ink lines — ${V('sb')}. Every color is bright yet softened as true watercolor — no primary crayon colors. One consistent light direction from the upper right, with soft believable shadows. The white background stays pure white. The sky, when present, stays essentially untouched white paper — only the palest breath of tint near the horizon and a few light pencil cloud outlines, never a fully painted sky.`,
+ `5.5-8s: ${V('sc')}. Everything else stays perfectly still.`,
+ STYLE, NEVER].join('\n\n');
+ // QC
+ const hits=BAN.filter(b=>{
+   const re=new RegExp('\\b'+b.replace(/[-\/\\^$*+?.()|[\]{}]/g,'\\$&')+'\\b','i');
+   return re.test(V('sa')+' '+V('sb')+' '+V('sc'));
+ });
+ document.getElementById('qc').textContent=hits.length?('⚠ 슬롯에 금지어: '+hits.join(', ')+' — 빼고 다시 조립'):'';
+ last=p;
+ const o=document.getElementById('out');o.style.display='block';o.textContent=p;
+ if(!hits.length) toast('조립 완료 — 복사 버튼');
+}
+function copyOut(){ if(!last){toast('먼저 조립하세요');return;}
+ navigator.clipboard.writeText(last).then(()=>toast('복사됨 — Flow에 붙여넣기')); }
+function sample(){
+ document.getElementById('name').value='범선과 돌고래';
+ document.getElementById('sa').value='one small white sailboat, a rocky headland cropped by the left edge of the frame, the open sea stretching to a far luminous horizon, one towering monumental white cumulus cloud in the upper distance, and two dolphins';
+ document.getElementById('sb').value='clear cerulean and bright turquoise water full of light, warm golden sand at the headland\u2019s foot, fresh green on its crest, the towering cloud in soft white with warm grey undersides';
+ document.getElementById('sc').value='a long sparkling path of sunlight appears across the water toward the horizon; the sailboat glides slowly forward with one gentle tilt, leaving a thin white wake — and two dolphins arc once out of the water near the boat, graceful, caught mid-leap, then slip back in';
+ toast('정본 견본 로드됨');
+}
+function record(pass){
+ const n=V('name')||'(이름 없음)';
+ const checked=[...document.querySelectorAll('.j')].filter(c=>c.checked).length;
+ const logs=JSON.parse(localStorage.getItem('bench_log')||'[]');
+ logs.unshift({n,pass,checked,d:new Date().toISOString().slice(5,10)});
+ localStorage.setItem('bench_log',JSON.stringify(logs.slice(0,40)));
+ renderLog(); toast(pass?'합격 기록됨 🎉':'불합격 기록됨');
+ document.querySelectorAll('.j').forEach(c=>c.checked=false);
+}
+function renderLog(){
+ const logs=JSON.parse(localStorage.getItem('bench_log')||'[]');
+ document.getElementById('log').innerHTML=logs.map(l=>
+  `<div>${l.pass?'✅':'❌'} ${l.n} <span style="color:#6b7684">· ${l.checked}/5 · ${l.d}</span></div>`).join('');
+}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.opacity=1;
+ setTimeout(()=>t.style.opacity=0,1800);}
+renderLog();
+</script>
+</div></body></html>

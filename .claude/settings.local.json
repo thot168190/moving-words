@@ -1,0 +1,52 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(echo:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Read(./**)",
+      "Write(./data/**)",
+      "Write(./scripts/**)",
+      "Write(./_작업/**)",
+      "Edit(./data/**)",
+      "Edit(./scripts/**)",
+      "Edit(./_작업/**)"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(rmdir:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(gh:*)",
+      "Bash(npm publish:*)",
+      "Bash(npx gh-pages:*)",
+      "Bash(netlify:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Write(./_to_delete/**)",
+      "Edit(./src/**)",
+      "Edit(./public/**)",
+      "Edit(./index.html)"
+    ]
+  }
+}

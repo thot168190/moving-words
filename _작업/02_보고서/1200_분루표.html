@@ -1,0 +1,521 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>보는 단어장 · 1200 분류표</title>
+<style>
+:root{--paper:#f4efe4;--ink:#16181a;--line:#ddd5c4;--ochre:#c08b3e;}
+*{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+ font-size:15px;line-height:1.5;}
+header{background:var(--ink);color:var(--paper);padding:16px;}
+h1{margin:0 0 4px;font-size:18px;font-weight:800;letter-spacing:-.3px;}
+.sub{font-size:13px;opacity:.75;line-height:1.6;}
+.kpi{display:flex;gap:18px;margin-top:11px;font-size:13px;font-weight:700;flex-wrap:wrap;}
+.kpi b{font-size:19px;} .kpi span{opacity:.9;}
+.how{margin:14px 16px 0;padding:12px 14px;background:#fff;border:1px solid var(--line);
+ border-radius:11px;font-size:13.5px;line-height:1.75;}
+.how b{color:#8a5a1e;}
+.blk{margin:22px 0 0;}
+.blk h2{margin:0;padding:11px 16px;font-size:15px;font-weight:800;display:flex;align-items:center;gap:9px;
+ background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+ position:sticky;top:0;z-index:5;}
+.blk h2 i{width:4px;height:17px;background:var(--bc);border-radius:2px;flex:none;}
+.bn{margin-left:auto;font-size:11.5px;font-weight:600;color:#9a927f;}
+.cat{padding:12px 16px;border-bottom:1px solid var(--line);}
+.ch{display:flex;align-items:center;gap:10px;}
+.cn{min-width:0;flex:1;}
+.cn b{font-size:15.5px;font-weight:800;}
+.cc{display:block;font-size:11.5px;color:#9a927f;margin-top:1px;}
+.ord{width:52px;flex:none;text-align:center;font-size:16px;font-weight:800;font-family:inherit;
+ padding:7px 4px;border:1.5px solid var(--line);border-radius:9px;background:#fff;}
+.ord:not(:placeholder-shown){border-color:var(--ochre);background:#fff8ea;}
+.ws{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px 5px;}
+.w{font-size:12.5px;padding:2px 7px;background:#fff;border:1px solid var(--line);
+ border-radius:6px;color:#3d4348;}
+footer{position:sticky;bottom:0;background:var(--ink);padding:11px 16px;display:flex;gap:9px;z-index:20;}
+footer button{flex:1;border:0;border-radius:11px;padding:13px;font-size:14.5px;font-weight:800;
+ cursor:pointer;font-family:inherit;background:var(--ochre);color:#1a1408;}
+#out{position:fixed;inset:16px;background:#fff;border-radius:14px;padding:16px;display:none;
+ z-index:40;flex-direction:column;box-shadow:0 10px 50px rgba(0,0,0,.4);}
+#out textarea{flex:1;width:100%;font-size:12.5px;font-family:ui-monospace,Menlo,monospace;
+ border:1px solid var(--line);border-radius:9px;padding:11px;resize:none;line-height:1.6;}
+#out .ob{display:flex;gap:8px;margin-top:11px;}
+#out .ob button{flex:1;padding:12px;border:0;border-radius:10px;font-weight:800;font-size:14px;
+ cursor:pointer;font-family:inherit;}
+#out .cl{background:#eee;} #out .cp{background:var(--ink);color:var(--paper);}
+@media print{header,footer,.how,.ord,#out{display:none;} body{background:#fff;}
+ .cat{break-inside:avoid;} .blk h2{position:static;}}
+</style></head><body>
+
+<header>
+  <h1>보는 단어장 · 1200 분류표</h1>
+  <div class="sub">한 그림에 8단어 &mdash; 그림을 모아 챕터를 짠다</div>
+  <div class="kpi">
+    <span>단어 <b>1200</b></span>
+    <span>갈래 <b>65</b></span>
+    <span>그림 <b>151</b>장</span>
+    <span>중복·누락 <b>0</b></span>
+  </div>
+</header>
+
+<div class="how">
+  각 갈래 오른쪽 칸에 <b>장 번호(1~12)</b>를 적으세요. 같은 번호를 여러 갈래에 적으면 한 장으로 묶입니다.<br>
+  다 적으신 뒤 아래 <b>「챕터 순서 뽑기」</b>를 누르고 로부장에게 붙여넣어 주세요.
+</div>
+
+<section class="blk" style="--bc:#5b7f96">
+  <h2><i></i>눈에 보이는 세계<span class="bn">318단어 · 17갈래</span></h2>
+  <div class="cat" data-cat="바다와 항해" data-n="31">
+  <div class="ch">
+    <div class="cn"><b>바다와 항해</b><span class="cc">31단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('바다와 항해',this.value)">
+  </div>
+  <div class="ws"><span class="w">adventure</span> <span class="w">bay</span> <span class="w">bubble</span> <span class="w">cape</span> <span class="w">channel</span> <span class="w">coast</span> <span class="w">current</span> <span class="w">deck</span> <span class="w">dive</span> <span class="w">dolphin</span> <span class="w">float</span> <span class="w">flood</span> <span class="w">flow</span> <span class="w">island</span> <span class="w">navy</span> <span class="w">ocean</span> <span class="w">pool</span> <span class="w">port</span> <span class="w">rise</span> <span class="w">row</span> <span class="w">sail</span> <span class="w">seal</span> <span class="w">shell</span> <span class="w">shore</span> <span class="w">sink</span> <span class="w">spray</span> <span class="w">stream</span> <span class="w">surface</span> <span class="w">tide</span> <span class="w">wave</span> <span class="w">whale</span></div>
+</div><div class="cat" data-cat="하늘과 날씨" data-n="22">
+  <div class="ch">
+    <div class="cn"><b>하늘과 날씨</b><span class="cc">22단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('하늘과 날씨',this.value)">
+  </div>
+  <div class="ws"><span class="w">atmosphere</span> <span class="w">balloon</span> <span class="w">blow</span> <span class="w">climate</span> <span class="w">dawn</span> <span class="w">flame</span> <span class="w">flash</span> <span class="w">fog</span> <span class="w">freeze</span> <span class="w">heaven</span> <span class="w">melt</span> <span class="w">noon</span> <span class="w">planet</span> <span class="w">rainbow</span> <span class="w">shade</span> <span class="w">shadow</span> <span class="w">shine</span> <span class="w">silver</span> <span class="w">smoke</span> <span class="w">steam</span> <span class="w">storm</span> <span class="w">temperature</span></div>
+</div><div class="cat" data-cat="땅과 물길" data-n="25">
+  <div class="ch">
+    <div class="cn"><b>땅과 물길</b><span class="cc">25단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('땅과 물길',this.value)">
+  </div>
+  <div class="ws"><span class="w">cliff</span> <span class="w">countryside</span> <span class="w">county</span> <span class="w">desert</span> <span class="w">dirt</span> <span class="w">district</span> <span class="w">dust</span> <span class="w">edge</span> <span class="w">highway</span> <span class="w">hole</span> <span class="w">lane</span> <span class="w">mount</span> <span class="w">mud</span> <span class="w">path</span> <span class="w">pile</span> <span class="w">pole</span> <span class="w">pollute</span> <span class="w">region</span> <span class="w">route</span> <span class="w">site</span> <span class="w">soil</span> <span class="w">spot</span> <span class="w">square</span> <span class="w">tower</span> <span class="w">valley</span></div>
+</div><div class="cat" data-cat="동물" data-n="17">
+  <div class="ch">
+    <div class="cn"><b>동물</b><span class="cc">17단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('동물',this.value)">
+  </div>
+  <div class="ws"><span class="w">ant</span> <span class="w">bark</span> <span class="w">bug</span> <span class="w">cage</span> <span class="w">feed</span> <span class="w">frog</span> <span class="w">giraffe</span> <span class="w">lamb</span> <span class="w">nest</span> <span class="w">pet</span> <span class="w">rat</span> <span class="w">sheep</span> <span class="w">snake</span> <span class="w">species</span> <span class="w">wild</span> <span class="w">wing</span> <span class="w">zebra</span></div>
+</div><div class="cat" data-cat="식물과 나무" data-n="15">
+  <div class="ch">
+    <div class="cn"><b>식물과 나무</b><span class="cc">15단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('식물과 나무',this.value)">
+  </div>
+  <div class="ws"><span class="w">bloom</span> <span class="w">branch</span> <span class="w">bush</span> <span class="w">fur</span> <span class="w">grace</span> <span class="w">lawn</span> <span class="w">leaf</span> <span class="w">log</span> <span class="w">oak</span> <span class="w">pine</span> <span class="w">plant</span> <span class="w">root</span> <span class="w">seed</span> <span class="w">trunk</span> <span class="w">wool</span></div>
+</div><div class="cat" data-cat="몸과 감각" data-n="27">
+  <div class="ch">
+    <div class="cn"><b>몸과 감각</b><span class="cc">27단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('몸과 감각',this.value)">
+  </div>
+  <div class="ws"><span class="w">blind</span> <span class="w">brain</span> <span class="w">breast</span> <span class="w">breath</span> <span class="w">breathe</span> <span class="w">cell</span> <span class="w">cheek</span> <span class="w">chest</span> <span class="w">chew</span> <span class="w">cough</span> <span class="w">glance</span> <span class="w">hear</span> <span class="w">height</span> <span class="w">jaw</span> <span class="w">knee</span> <span class="w">muscle</span> <span class="w">nail</span> <span class="w">nerve</span> <span class="w">shoulder</span> <span class="w">sight</span> <span class="w">stare</span> <span class="w">stomach</span> <span class="w">swallow</span> <span class="w">tear</span> <span class="w">throat</span> <span class="w">toe</span> <span class="w">tongue</span></div>
+</div><div class="cat" data-cat="집의 구조" data-n="13">
+  <div class="ch">
+    <div class="cn"><b>집의 구조</b><span class="cc">13단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('집의 구조',this.value)">
+  </div>
+  <div class="ws"><span class="w">brick</span> <span class="w">ceiling</span> <span class="w">cottage</span> <span class="w">fence</span> <span class="w">frame</span> <span class="w">garage</span> <span class="w">livingroom</span> <span class="w">roof</span> <span class="w">shelf</span> <span class="w">shower</span> <span class="w">stairs</span> <span class="w">toilet</span> <span class="w">villa</span></div>
+</div><div class="cat" data-cat="살림 도구" data-n="29">
+  <div class="ch">
+    <div class="cn"><b>살림 도구</b><span class="cc">29단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('살림 도구',this.value)">
+  </div>
+  <div class="ws"><span class="w">bar</span> <span class="w">bench</span> <span class="w">bin</span> <span class="w">blanket</span> <span class="w">boot</span> <span class="w">cable</span> <span class="w">carpet</span> <span class="w">chain</span> <span class="w">clip</span> <span class="w">dump</span> <span class="w">furniture</span> <span class="w">iron</span> <span class="w">lamp</span> <span class="w">lid</span> <span class="w">lock</span> <span class="w">mess</span> <span class="w">microwave</span> <span class="w">mirror</span> <span class="w">oven</span> <span class="w">pin</span> <span class="w">pipe</span> <span class="w">rope</span> <span class="w">sheet</span> <span class="w">string</span> <span class="w">tank</span> <span class="w">tap</span> <span class="w">towel</span> <span class="w">tray</span> <span class="w">wire</span></div>
+</div><div class="cat" data-cat="옷과 몸치장" data-n="14">
+  <div class="ch">
+    <div class="cn"><b>옷과 몸치장</b><span class="cc">14단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('옷과 몸치장',this.value)">
+  </div>
+  <div class="ws"><span class="w">bare</span> <span class="w">blonde</span> <span class="w">cotton</span> <span class="w">curl</span> <span class="w">fit</span> <span class="w">glove</span> <span class="w">jeans</span> <span class="w">mask</span> <span class="w">pocket</span> <span class="w">scarf</span> <span class="w">shave</span> <span class="w">suit</span> <span class="w">sweater</span> <span class="w">uniform</span></div>
+</div><div class="cat" data-cat="먹을 것" data-n="25">
+  <div class="ch">
+    <div class="cn"><b>먹을 것</b><span class="cc">25단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('먹을 것',this.value)">
+  </div>
+  <div class="ws"><span class="w">bacon</span> <span class="w">bean</span> <span class="w">bitter</span> <span class="w">chip</span> <span class="w">crisp</span> <span class="w">diet</span> <span class="w">honey</span> <span class="w">hunger</span> <span class="w">lemon</span> <span class="w">meal</span> <span class="w">melon</span> <span class="w">mushroom</span> <span class="w">nut</span> <span class="w">pear</span> <span class="w">pepper</span> <span class="w">pie</span> <span class="w">pork</span> <span class="w">powder</span> <span class="w">rice</span> <span class="w">snack</span> <span class="w">sour</span> <span class="w">strawberry</span> <span class="w">supper</span> <span class="w">sweet</span> <span class="w">toast</span></div>
+</div><div class="cat" data-cat="부엌과 조리" data-n="19">
+  <div class="ch">
+    <div class="cn"><b>부엌과 조리</b><span class="cc">19단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('부엌과 조리',this.value)">
+  </div>
+  <div class="ws"><span class="w">alcohol</span> <span class="w">beer</span> <span class="w">boil</span> <span class="w">bowl</span> <span class="w">chop</span> <span class="w">cigarette</span> <span class="w">consume</span> <span class="w">dish</span> <span class="w">fry</span> <span class="w">grocery</span> <span class="w">menu</span> <span class="w">mix</span> <span class="w">pan</span> <span class="w">plate</span> <span class="w">pot</span> <span class="w">pour</span> <span class="w">recipe</span> <span class="w">sauce</span> <span class="w">tea</span></div>
+</div><div class="cat" data-cat="도시의 건물" data-n="15">
+  <div class="ch">
+    <div class="cn"><b>도시의 건물</b><span class="cc">15단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('도시의 건물',this.value)">
+  </div>
+  <div class="ws"><span class="w">capital</span> <span class="w">cinema</span> <span class="w">hall</span> <span class="w">hotel</span> <span class="w">museum</span> <span class="w">opera</span> <span class="w">palace</span> <span class="w">post</span> <span class="w">prison</span> <span class="w">pub</span> <span class="w">station</span> <span class="w">studio</span> <span class="w">theater</span> <span class="w">university</span> <span class="w">village</span></div>
+</div><div class="cat" data-cat="타고 가기" data-n="27">
+  <div class="ch">
+    <div class="cn"><b>타고 가기</b><span class="cc">27단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('타고 가기',this.value)">
+  </div>
+  <div class="ws"><span class="w">airline</span> <span class="w">airport</span> <span class="w">brake</span> <span class="w">cart</span> <span class="w">cycle</span> <span class="w">engine</span> <span class="w">exit</span> <span class="w">flight</span> <span class="w">gate</span> <span class="w">gear</span> <span class="w">guide</span> <span class="w">helicopter</span> <span class="w">journey</span> <span class="w">motor</span> <span class="w">parade</span> <span class="w">picnic</span> <span class="w">plane</span> <span class="w">rail</span> <span class="w">ride</span> <span class="w">rocket</span> <span class="w">seat</span> <span class="w">tour</span> <span class="w">traffic</span> <span class="w">transport</span> <span class="w">van</span> <span class="w">vehicle</span> <span class="w">wheel</span></div>
+</div><div class="cat" data-cat="기계와 도구" data-n="23">
+  <div class="ch">
+    <div class="cn"><b>기계와 도구</b><span class="cc">23단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('기계와 도구',this.value)">
+  </div>
+  <div class="ws"><span class="w">automatic</span> <span class="w">battery</span> <span class="w">click</span> <span class="w">coal</span> <span class="w">code</span> <span class="w">disc</span> <span class="w">electric</span> <span class="w">element</span> <span class="w">glue</span> <span class="w">instrument</span> <span class="w">label</span> <span class="w">machine</span> <span class="w">metal</span> <span class="w">monitor</span> <span class="w">net</span> <span class="w">pump</span> <span class="w">screen</span> <span class="w">stamp</span> <span class="w">steel</span> <span class="w">switch</span> <span class="w">technology</span> <span class="w">tin</span> <span class="w">tool</span></div>
+</div><div class="cat" data-cat="소리와 음악" data-n="10">
+  <div class="ch">
+    <div class="cn"><b>소리와 음악</b><span class="cc">10단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('소리와 음악',this.value)">
+  </div>
+  <div class="ws"><span class="w">band</span> <span class="w">bang</span> <span class="w">boom</span> <span class="w">concert</span> <span class="w">loud</span> <span class="w">noise</span> <span class="w">pop</span> <span class="w">tone</span> <span class="w">tune</span> <span class="w">whistle</span></div>
+</div><div class="cat" data-cat="색과 빛" data-n="1">
+  <div class="ch">
+    <div class="cn"><b>색과 빛</b><span class="cc">1단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('색과 빛',this.value)">
+  </div>
+  <div class="ws"><span class="w">purple</span></div>
+</div><div class="cat" data-cat="성과 왕궁" data-n="5">
+  <div class="ch">
+    <div class="cn"><b>성과 왕궁</b><span class="cc">5단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('성과 왕궁',this.value)">
+  </div>
+  <div class="ws"><span class="w">cast</span> <span class="w">castle</span> <span class="w">crown</span> <span class="w">flag</span> <span class="w">royal</span></div>
+</div>
+</section><section class="blk" style="--bc:#7a6a4f">
+  <h2><i></i>사람과 사회<span class="bn">209단어 · 10갈래</span></h2>
+  <div class="cat" data-cat="일과 직업" data-n="34">
+  <div class="ch">
+    <div class="cn"><b>일과 직업</b><span class="cc">34단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('일과 직업',this.value)">
+  </div>
+  <div class="ws"><span class="w">agent</span> <span class="w">boss</span> <span class="w">captain</span> <span class="w">career</span> <span class="w">chairman</span> <span class="w">chief</span> <span class="w">clerk</span> <span class="w">client</span> <span class="w">coach</span> <span class="w">dentist</span> <span class="w">employ</span> <span class="w">engineer</span> <span class="w">expert</span> <span class="w">factory</span> <span class="w">firm</span> <span class="w">guard</span> <span class="w">guest</span> <span class="w">hire</span> <span class="w">industry</span> <span class="w">lab</span> <span class="w">labor</span> <span class="w">laboratory</span> <span class="w">lawyer</span> <span class="w">manufacture</span> <span class="w">master</span> <span class="w">military</span> <span class="w">mill</span> <span class="w">officer</span> <span class="w">poet</span> <span class="w">profession</span> <span class="w">promote</span> <span class="w">secretary</span> <span class="w">soldier</span> <span class="w">volunteer</span></div>
+</div><div class="cat" data-cat="사람과 관계" data-n="31">
+  <div class="ch">
+    <div class="cn"><b>사람과 관계</b><span class="cc">31단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('사람과 관계',this.value)">
+  </div>
+  <div class="ws"><span class="w">associate</span> <span class="w">attract</span> <span class="w">audience</span> <span class="w">bond</span> <span class="w">citizen</span> <span class="w">committee</span> <span class="w">community</span> <span class="w">contact</span> <span class="w">council</span> <span class="w">crowd</span> <span class="w">darling</span> <span class="w">depend</span> <span class="w">divorce</span> <span class="w">engage</span> <span class="w">fellow</span> <span class="w">female</span> <span class="w">folk</span> <span class="w">individual</span> <span class="w">involve</span> <span class="w">junior</span> <span class="w">male</span> <span class="w">mate</span> <span class="w">native</span> <span class="w">neighbor</span> <span class="w">person</span> <span class="w">relate</span> <span class="w">respect</span> <span class="w">senior</span> <span class="w">slave</span> <span class="w">society</span> <span class="w">twin</span></div>
+</div><div class="cat" data-cat="사람 성격" data-n="11">
+  <div class="ch">
+    <div class="cn"><b>사람 성격</b><span class="cc">11단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('사람 성격',this.value)">
+  </div>
+  <div class="ws"><span class="w">character</span> <span class="w">charm</span> <span class="w">cute</span> <span class="w">gentle</span> <span class="w">handsome</span> <span class="w">polite</span> <span class="w">serious</span> <span class="w">sex</span> <span class="w">smart</span> <span class="w">teenage</span> <span class="w">wise</span></div>
+</div><div class="cat" data-cat="돈" data-n="25">
+  <div class="ch">
+    <div class="cn"><b>돈</b><span class="cc">25단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('돈',this.value)">
+  </div>
+  <div class="ws"><span class="w">afford</span> <span class="w">budget</span> <span class="w">charge</span> <span class="w">coin</span> <span class="w">credit</span> <span class="w">debt</span> <span class="w">earn</span> <span class="w">economy</span> <span class="w">estimate</span> <span class="w">expense</span> <span class="w">fee</span> <span class="w">finance</span> <span class="w">fund</span> <span class="w">income</span> <span class="w">insure</span> <span class="w">loan</span> <span class="w">loss</span> <span class="w">price</span> <span class="w">profit</span> <span class="w">salary</span> <span class="w">spend</span> <span class="w">tax</span> <span class="w">value</span> <span class="w">wage</span> <span class="w">worth</span></div>
+</div><div class="cat" data-cat="사고팔기" data-n="19">
+  <div class="ch">
+    <div class="cn"><b>사고팔기</b><span class="cc">19단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('사고팔기',this.value)">
+  </div>
+  <div class="ws"><span class="w">advertise</span> <span class="w">award</span> <span class="w">bet</span> <span class="w">brand</span> <span class="w">commerce</span> <span class="w">contract</span> <span class="w">demand</span> <span class="w">grant</span> <span class="w">guarantee</span> <span class="w">invest</span> <span class="w">prize</span> <span class="w">property</span> <span class="w">purchase</span> <span class="w">rent</span> <span class="w">sponsor</span> <span class="w">stock</span> <span class="w">supply</span> <span class="w">trade</span> <span class="w">waste</span></div>
+</div><div class="cat" data-cat="싸움과 지킴" data-n="33">
+  <div class="ch">
+    <div class="cn"><b>싸움과 지킴</b><span class="cc">33단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('싸움과 지킴',this.value)">
+  </div>
+  <div class="ws"><span class="w">army</span> <span class="w">arrest</span> <span class="w">attack</span> <span class="w">battle</span> <span class="w">beat</span> <span class="w">bomb</span> <span class="w">conflict</span> <span class="w">crime</span> <span class="w">defense</span> <span class="w">enemy</span> <span class="w">escape</span> <span class="w">evil</span> <span class="w">force</span> <span class="w">gun</span> <span class="w">harm</span> <span class="w">oppose</span> <span class="w">protect</span> <span class="w">protest</span> <span class="w">punish</span> <span class="w">resist</span> <span class="w">rob</span> <span class="w">shelter</span> <span class="w">spy</span> <span class="w">steal</span> <span class="w">strike</span> <span class="w">struggle</span> <span class="w">survive</span> <span class="w">suspect</span> <span class="w">thief</span> <span class="w">threat</span> <span class="w">victim</span> <span class="w">violent</span> <span class="w">weapon</span></div>
+</div><div class="cat" data-cat="규칙과 사회" data-n="26">
+  <div class="ch">
+    <div class="cn"><b>규칙과 사회</b><span class="cc">26단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('규칙과 사회',this.value)">
+  </div>
+  <div class="ws"><span class="w">accuse</span> <span class="w">civil</span> <span class="w">cop</span> <span class="w">discipline</span> <span class="w">duty</span> <span class="w">elect</span> <span class="w">empire</span> <span class="w">govern</span> <span class="w">guilt</span> <span class="w">innocent</span> <span class="w">judge</span> <span class="w">justice</span> <span class="w">law</span> <span class="w">legal</span> <span class="w">license</span> <span class="w">moral</span> <span class="w">policy</span> <span class="w">politics</span> <span class="w">principle</span> <span class="w">privacy</span> <span class="w">private</span> <span class="w">public</span> <span class="w">responsible</span> <span class="w">rule</span> <span class="w">standard</span> <span class="w">vote</span></div>
+</div><div class="cat" data-cat="사고와 위험" data-n="8">
+  <div class="ch">
+    <div class="cn"><b>사고와 위험</b><span class="cc">8단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('사고와 위험',this.value)">
+  </div>
+  <div class="ws"><span class="w">accident</span> <span class="w">alarm</span> <span class="w">ambulance</span> <span class="w">avoid</span> <span class="w">crisis</span> <span class="w">prevent</span> <span class="w">secure</span> <span class="w">warn</span></div>
+</div><div class="cat" data-cat="운동과 겨루기" data-n="4">
+  <div class="ch">
+    <div class="cn"><b>운동과 겨루기</b><span class="cc">4단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('운동과 겨루기',this.value)">
+  </div>
+  <div class="ws"><span class="w">champion</span> <span class="w">contest</span> <span class="w">golf</span> <span class="w">league</span></div>
+</div><div class="cat" data-cat="세상 물정" data-n="18">
+  <div class="ch">
+    <div class="cn"><b>세상 물정</b><span class="cc">18단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('세상 물정',this.value)">
+  </div>
+  <div class="ws"><span class="w">background</span> <span class="w">circumstance</span> <span class="w">domestic</span> <span class="w">fashion</span> <span class="w">foreign</span> <span class="w">modern</span> <span class="w">ordinary</span> <span class="w">popular</span> <span class="w">situate</span> <span class="w">social</span> <span class="w">stage</span> <span class="w">state</span> <span class="w">structure</span> <span class="w">system</span> <span class="w">tradition</span> <span class="w">version</span> <span class="w">view</span> <span class="w">vision</span></div>
+</div>
+</section><section class="blk" style="--bc:#c1553a">
+  <h2><i></i>마음<span class="bn">115단어 · 7갈래</span></h2>
+  <div class="cat" data-cat="기쁨과 슬픔" data-n="20">
+  <div class="ch">
+    <div class="cn"><b>기쁨과 슬픔</b><span class="cc">20단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('기쁨과 슬픔',this.value)">
+  </div>
+  <div class="ws"><span class="w">admire</span> <span class="w">amuse</span> <span class="w">appreciate</span> <span class="w">calm</span> <span class="w">cheer</span> <span class="w">comfort</span> <span class="w">delight</span> <span class="w">entertain</span> <span class="w">excite</span> <span class="w">glory</span> <span class="w">honor</span> <span class="w">humor</span> <span class="w">joy</span> <span class="w">laugh</span> <span class="w">peace</span> <span class="w">pride</span> <span class="w">proud</span> <span class="w">relax</span> <span class="w">relief</span> <span class="w">satisfy</span></div>
+</div><div class="cat" data-cat="화와 두려움" data-n="18">
+  <div class="ch">
+    <div class="cn"><b>화와 두려움</b><span class="cc">18단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('화와 두려움',this.value)">
+  </div>
+  <div class="ws"><span class="w">anger</span> <span class="w">annoy</span> <span class="w">anxious</span> <span class="w">bother</span> <span class="w">concern</span> <span class="w">cruel</span> <span class="w">disturb</span> <span class="w">fear</span> <span class="w">fright</span> <span class="w">frustrate</span> <span class="w">panic</span> <span class="w">rude</span> <span class="w">scare</span> <span class="w">shock</span> <span class="w">stress</span> <span class="w">tense</span> <span class="w">trouble</span> <span class="w">upset</span></div>
+</div><div class="cat" data-cat="부끄러움과 미움" data-n="7">
+  <div class="ch">
+    <div class="cn"><b>부끄러움과 미움</b><span class="cc">7단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('부끄러움과 미움',this.value)">
+  </div>
+  <div class="ws"><span class="w">awkward</span> <span class="w">blame</span> <span class="w">disgust</span> <span class="w">embarrass</span> <span class="w">ignore</span> <span class="w">shame</span> <span class="w">silly</span></div>
+</div><div class="cat" data-cat="바람과 아쉬움" data-n="9">
+  <div class="ch">
+    <div class="cn"><b>바람과 아쉬움</b><span class="cc">9단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('바람과 아쉬움',this.value)">
+  </div>
+  <div class="ws"><span class="w">bore</span> <span class="w">depress</span> <span class="w">desire</span> <span class="w">desperate</span> <span class="w">disappoint</span> <span class="w">hesitate</span> <span class="w">lack</span> <span class="w">pity</span> <span class="w">sore</span></div>
+</div><div class="cat" data-cat="놀람과 궁금함" data-n="20">
+  <div class="ch">
+    <div class="cn"><b>놀람과 궁금함</b><span class="cc">20단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('놀람과 궁금함',this.value)">
+  </div>
+  <div class="ws"><span class="w">amaze</span> <span class="w">angel</span> <span class="w">brilliant</span> <span class="w">clue</span> <span class="w">curious</span> <span class="w">fancy</span> <span class="w">fantastic</span> <span class="w">fascinate</span> <span class="w">ghost</span> <span class="w">gorgeous</span> <span class="w">hell</span> <span class="w">impress</span> <span class="w">magic</span> <span class="w">marvel</span> <span class="w">mystery</span> <span class="w">puzzle</span> <span class="w">strange</span> <span class="w">surprise</span> <span class="w">trick</span> <span class="w">wonder</span></div>
+</div><div class="cat" data-cat="믿음과 의심" data-n="9">
+  <div class="ch">
+    <div class="cn"><b>믿음과 의심</b><span class="cc">9단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('믿음과 의심',this.value)">
+  </div>
+  <div class="ws"><span class="w">belief</span> <span class="w">confirm</span> <span class="w">doubt</span> <span class="w">evidence</span> <span class="w">faith</span> <span class="w">prove</span> <span class="w">rely</span> <span class="w">trust</span> <span class="w">truth</span></div>
+</div><div class="cat" data-cat="몸과 마음의 상태" data-n="32">
+  <div class="ch">
+    <div class="cn"><b>몸과 마음의 상태</b><span class="cc">32단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('몸과 마음의 상태',this.value)">
+  </div>
+  <div class="ws"><span class="w">alive</span> <span class="w">asleep</span> <span class="w">awake</span> <span class="w">aware</span> <span class="w">drug</span> <span class="w">emotion</span> <span class="w">exhaust</span> <span class="w">exist</span> <span class="w">faint</span> <span class="w">fever</span> <span class="w">health</span> <span class="w">hurt</span> <span class="w">ill</span> <span class="w">injure</span> <span class="w">medical</span> <span class="w">medicine</span> <span class="w">mental</span> <span class="w">mood</span> <span class="w">pain</span> <span class="w">patient</span> <span class="w">physical</span> <span class="w">poison</span> <span class="w">pregnant</span> <span class="w">presence</span> <span class="w">rest</span> <span class="w">self</span> <span class="w">sense</span> <span class="w">soul</span> <span class="w">spirit</span> <span class="w">suffer</span> <span class="w">weak</span> <span class="w">wound</span></div>
+</div>
+</section><section class="blk" style="--bc:#8a6a8e">
+  <h2><i></i>말과 생각<span class="bn">129단어 · 7갈래</span></h2>
+  <div class="cat" data-cat="알리고 밝히기" data-n="17">
+  <div class="ch">
+    <div class="cn"><b>알리고 밝히기</b><span class="cc">17단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('알리고 밝히기',this.value)">
+  </div>
+  <div class="ws"><span class="w">accent</span> <span class="w">admit</span> <span class="w">announce</span> <span class="w">comment</span> <span class="w">describe</span> <span class="w">emphasize</span> <span class="w">explain</span> <span class="w">express</span> <span class="w">frankly</span> <span class="w">inform</span> <span class="w">mention</span> <span class="w">pronounce</span> <span class="w">quote</span> <span class="w">refer</span> <span class="w">remark</span> <span class="w">report</span> <span class="w">represent</span></div>
+</div><div class="cat" data-cat="따지고 다투기" data-n="7">
+  <div class="ch">
+    <div class="cn"><b>따지고 다투기</b><span class="cc">7단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('따지고 다투기',this.value)">
+  </div>
+  <div class="ws"><span class="w">argue</span> <span class="w">claim</span> <span class="w">complain</span> <span class="w">convince</span> <span class="w">debate</span> <span class="w">deny</span> <span class="w">insist</span></div>
+</div><div class="cat" data-cat="묻고 부탁하기" data-n="13">
+  <div class="ch">
+    <div class="cn"><b>묻고 부탁하기</b><span class="cc">13단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('묻고 부탁하기',this.value)">
+  </div>
+  <div class="ws"><span class="w">advice</span> <span class="w">advise</span> <span class="w">beg</span> <span class="w">excuse</span> <span class="w">greet</span> <span class="w">hint</span> <span class="w">pardon</span> <span class="w">promise</span> <span class="w">propose</span> <span class="w">recommend</span> <span class="w">request</span> <span class="w">require</span> <span class="w">suggest</span></div>
+</div><div class="cat" data-cat="소리내어 말하기" data-n="22">
+  <div class="ch">
+    <div class="cn"><b>소리내어 말하기</b><span class="cc">22단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('소리내어 말하기',this.value)">
+  </div>
+  <div class="ws"><span class="w">aloud</span> <span class="w">chat</span> <span class="w">command</span> <span class="w">communicate</span> <span class="w">converse</span> <span class="w">instruct</span> <span class="w">interrupt</span> <span class="w">joke</span> <span class="w">message</span> <span class="w">paragraph</span> <span class="w">pray</span> <span class="w">pretend</span> <span class="w">reply</span> <span class="w">respond</span> <span class="w">scream</span> <span class="w">sentence</span> <span class="w">shout</span> <span class="w">speech</span> <span class="w">tale</span> <span class="w">tip</span> <span class="w">whisper</span> <span class="w">yell</span></div>
+</div><div class="cat" data-cat="생각하기" data-n="30">
+  <div class="ch">
+    <div class="cn"><b>생각하기</b><span class="cc">30단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('생각하기',this.value)">
+  </div>
+  <div class="ws"><span class="w">analysis</span> <span class="w">assume</span> <span class="w">attention</span> <span class="w">attitude</span> <span class="w">concentrate</span> <span class="w">concept</span> <span class="w">confuse</span> <span class="w">consider</span> <span class="w">context</span> <span class="w">define</span> <span class="w">detect</span> <span class="w">determine</span> <span class="w">examine</span> <span class="w">imagine</span> <span class="w">inspect</span> <span class="w">investigate</span> <span class="w">method</span> <span class="w">notice</span> <span class="w">observe</span> <span class="w">opinion</span> <span class="w">reason</span> <span class="w">recognize</span> <span class="w">reflect</span> <span class="w">regard</span> <span class="w">remind</span> <span class="w">solve</span> <span class="w">strategy</span> <span class="w">suppose</span> <span class="w">tend</span> <span class="w">theory</span></div>
+</div><div class="cat" data-cat="글과 기록" data-n="26">
+  <div class="ch">
+    <div class="cn"><b>글과 기록</b><span class="cc">26단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('글과 기록',this.value)">
+  </div>
+  <div class="ws"><span class="w">article</span> <span class="w">catalog</span> <span class="w">chart</span> <span class="w">comedy</span> <span class="w">copy</span> <span class="w">diary</span> <span class="w">dictionary</span> <span class="w">document</span> <span class="w">drama</span> <span class="w">edit</span> <span class="w">envelope</span> <span class="w">essay</span> <span class="w">graph</span> <span class="w">language</span> <span class="w">list</span> <span class="w">magazine</span> <span class="w">photo</span> <span class="w">photograph</span> <span class="w">poem</span> <span class="w">record</span> <span class="w">register</span> <span class="w">scene</span> <span class="w">spell</span> <span class="w">text</span> <span class="w">title</span> <span class="w">topic</span></div>
+</div><div class="cat" data-cat="배움과 가르침" data-n="14">
+  <div class="ch">
+    <div class="cn"><b>배움과 가르침</b><span class="cc">14단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('배움과 가르침',this.value)">
+  </div>
+  <div class="ws"><span class="w">assess</span> <span class="w">attend</span> <span class="w">educate</span> <span class="w">experience</span> <span class="w">experiment</span> <span class="w">grade</span> <span class="w">knowledge</span> <span class="w">measure</span> <span class="w">practice</span> <span class="w">research</span> <span class="w">skill</span> <span class="w">subject</span> <span class="w">survey</span> <span class="w">technique</span></div>
+</div>
+</section><section class="blk" style="--bc:#4e7a5c">
+  <h2><i></i>하는 일<span class="bn">195단어 · 14갈래</span></h2>
+  <div class="cat" data-cat="손으로 하는 것" data-n="18">
+  <div class="ch">
+    <div class="cn"><b>손으로 하는 것</b><span class="cc">18단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('손으로 하는 것',this.value)">
+  </div>
+  <div class="ws"><span class="w">grab</span> <span class="w">knock</span> <span class="w">lift</span> <span class="w">load</span> <span class="w">pack</span> <span class="w">pitch</span> <span class="w">press</span> <span class="w">pull</span> <span class="w">punch</span> <span class="w">rub</span> <span class="w">scratch</span> <span class="w">stir</span> <span class="w">sweep</span> <span class="w">throw</span> <span class="w">tie</span> <span class="w">twist</span> <span class="w">wipe</span> <span class="w">wrap</span></div>
+</div><div class="cat" data-cat="몸 전체로 하는 것" data-n="25">
+  <div class="ch">
+    <div class="cn"><b>몸 전체로 하는 것</b><span class="cc">25단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('몸 전체로 하는 것',this.value)">
+  </div>
+  <div class="ws"><span class="w">bite</span> <span class="w">bounce</span> <span class="w">bow</span> <span class="w">bump</span> <span class="w">chase</span> <span class="w">crawl</span> <span class="w">dig</span> <span class="w">drag</span> <span class="w">gesture</span> <span class="w">hug</span> <span class="w">lay</span> <span class="w">lean</span> <span class="w">leap</span> <span class="w">motion</span> <span class="w">raise</span> <span class="w">roll</span> <span class="w">rush</span> <span class="w">shake</span> <span class="w">shoot</span> <span class="w">slide</span> <span class="w">slip</span> <span class="w">spin</span> <span class="w">step</span> <span class="w">stretch</span> <span class="w">swing</span></div>
+</div><div class="cat" data-cat="닫고 파묻기" data-n="4">
+  <div class="ch">
+    <div class="cn"><b>닫고 파묻기</b><span class="cc">4단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('닫고 파묻기',this.value)">
+  </div>
+  <div class="ws"><span class="w">bury</span> <span class="w">shut</span> <span class="w">spread</span> <span class="w">trap</span></div>
+</div><div class="cat" data-cat="만들고 고치기" data-n="33">
+  <div class="ch">
+    <div class="cn"><b>만들고 고치기</b><span class="cc">33단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('만들고 고치기',this.value)">
+  </div>
+  <div class="ws"><span class="w">arrange</span> <span class="w">attach</span> <span class="w">bend</span> <span class="w">bind</span> <span class="w">block</span> <span class="w">burst</span> <span class="w">combine</span> <span class="w">connect</span> <span class="w">crack</span> <span class="w">crash</span> <span class="w">create</span> <span class="w">damage</span> <span class="w">decorate</span> <span class="w">destroy</span> <span class="w">develop</span> <span class="w">direct</span> <span class="w">divide</span> <span class="w">establish</span> <span class="w">fold</span> <span class="w">found</span> <span class="w">invent</span> <span class="w">link</span> <span class="w">object</span> <span class="w">produce</span> <span class="w">remove</span> <span class="w">repair</span> <span class="w">replace</span> <span class="w">ruin</span> <span class="w">sew</span> <span class="w">smash</span> <span class="w">snap</span> <span class="w">spoil</span> <span class="w">stick</span></div>
+</div><div class="cat" data-cat="주고받기" data-n="16">
+  <div class="ch">
+    <div class="cn"><b>주고받기</b><span class="cc">16단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('주고받기',this.value)">
+  </div>
+  <div class="ws"><span class="w">accept</span> <span class="w">allow</span> <span class="w">contribute</span> <span class="w">deliver</span> <span class="w">deserve</span> <span class="w">donate</span> <span class="w">exchange</span> <span class="w">gift</span> <span class="w">lend</span> <span class="w">offer</span> <span class="w">provide</span> <span class="w">receive</span> <span class="w">refuse</span> <span class="w">reserve</span> <span class="w">share</span> <span class="w">transfer</span></div>
+</div><div class="cat" data-cat="갖고 지니기" data-n="8">
+  <div class="ch">
+    <div class="cn"><b>갖고 지니기</b><span class="cc">8단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('갖고 지니기',this.value)">
+  </div>
+  <div class="ws"><span class="w">belong</span> <span class="w">contain</span> <span class="w">gain</span> <span class="w">include</span> <span class="w">lose</span> <span class="w">maintain</span> <span class="w">own</span> <span class="w">possess</span></div>
+</div><div class="cat" data-cat="가고 오기" data-n="9">
+  <div class="ch">
+    <div class="cn"><b>가고 오기</b><span class="cc">9단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('가고 오기',this.value)">
+  </div>
+  <div class="ws"><span class="w">advance</span> <span class="w">appear</span> <span class="w">approach</span> <span class="w">follow</span> <span class="w">leave</span> <span class="w">proceed</span> <span class="w">progress</span> <span class="w">reach</span> <span class="w">retire</span></div>
+</div><div class="cat" data-cat="고르고 정하기" data-n="11">
+  <div class="ch">
+    <div class="cn"><b>고르고 정하기</b><span class="cc">11단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('고르고 정하기',this.value)">
+  </div>
+  <div class="ws"><span class="w">aim</span> <span class="w">appoint</span> <span class="w">assign</span> <span class="w">choice</span> <span class="w">order</span> <span class="w">prefer</span> <span class="w">prepare</span> <span class="w">schedule</span> <span class="w">select</span> <span class="w">settle</span> <span class="w">target</span></div>
+</div><div class="cat" data-cat="찾고 얻기" data-n="7">
+  <div class="ch">
+    <div class="cn"><b>찾고 얻기</b><span class="cc">7단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('찾고 얻기',this.value)">
+  </div>
+  <div class="ws"><span class="w">identity</span> <span class="w">locate</span> <span class="w">resource</span> <span class="w">search</span> <span class="w">seek</span> <span class="w">source</span> <span class="w">trace</span></div>
+</div><div class="cat" data-cat="돕고 섬기기" data-n="11">
+  <div class="ch">
+    <div class="cn"><b>돕고 섬기기</b><span class="cc">11단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('돕고 섬기기',this.value)">
+  </div>
+  <div class="ws"><span class="w">aid</span> <span class="w">assist</span> <span class="w">bless</span> <span class="w">cure</span> <span class="w">favor</span> <span class="w">forgive</span> <span class="w">lead</span> <span class="w">recover</span> <span class="w">serve</span> <span class="w">support</span> <span class="w">treat</span></div>
+</div><div class="cat" data-cat="하고 다루기" data-n="16">
+  <div class="ch">
+    <div class="cn"><b>하고 다루기</b><span class="cc">16단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('하고 다루기',this.value)">
+  </div>
+  <div class="ws"><span class="w">apply</span> <span class="w">attempt</span> <span class="w">challenge</span> <span class="w">cope</span> <span class="w">dare</span> <span class="w">deal</span> <span class="w">effort</span> <span class="w">handle</span> <span class="w">manage</span> <span class="w">operate</span> <span class="w">perform</span> <span class="w">process</span> <span class="w">quit</span> <span class="w">react</span> <span class="w">repeat</span> <span class="w">risk</span></div>
+</div><div class="cat" data-cat="모임과 흩어짐" data-n="4">
+  <div class="ch">
+    <div class="cn"><b>모임과 흩어짐</b><span class="cc">4단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('모임과 흩어짐',this.value)">
+  </div>
+  <div class="ws"><span class="w">bunch</span> <span class="w">gather</span> <span class="w">release</span> <span class="w">unite</span></div>
+</div><div class="cat" data-cat="드러남과 감춤" data-n="12">
+  <div class="ch">
+    <div class="cn"><b>드러남과 감춤</b><span class="cc">12단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('드러남과 감춤',this.value)">
+  </div>
+  <div class="ws"><span class="w">demonstrate</span> <span class="w">detail</span> <span class="w">display</span> <span class="w">expose</span> <span class="w">feature</span> <span class="w">hide</span> <span class="w">illustrate</span> <span class="w">indicate</span> <span class="w">mark</span> <span class="w">secret</span> <span class="w">seem</span> <span class="w">sign</span></div>
+</div><div class="cat" data-cat="일의 결과" data-n="21">
+  <div class="ch">
+    <div class="cn"><b>일의 결과</b><span class="cc">21단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('일의 결과',this.value)">
+  </div>
+  <div class="ws"><span class="w">achieve</span> <span class="w">affect</span> <span class="w">cause</span> <span class="w">effect</span> <span class="w">expect</span> <span class="w">factor</span> <span class="w">function</span> <span class="w">happen</span> <span class="w">influence</span> <span class="w">intend</span> <span class="w">intent</span> <span class="w">matter</span> <span class="w">mission</span> <span class="w">obvious</span> <span class="w">occur</span> <span class="w">potential</span> <span class="w">purpose</span> <span class="w">result</span> <span class="w">role</span> <span class="w">succeed</span> <span class="w">success</span></div>
+</div>
+</section><section class="blk" style="--bc:#c08b3e">
+  <h2><i></i>성질과 정도<span class="bn">109단어 · 5갈래</span></h2>
+  <div class="cat" data-cat="크기와 모양" data-n="33">
+  <div class="ch">
+    <div class="cn"><b>크기와 모양</b><span class="cc">33단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('크기와 모양',this.value)">
+  </div>
+  <div class="ws"><span class="w">balance</span> <span class="w">blank</span> <span class="w">broad</span> <span class="w">empty</span> <span class="w">enormous</span> <span class="w">expand</span> <span class="w">extend</span> <span class="w">figure</span> <span class="w">flat</span> <span class="w">giant</span> <span class="w">grand</span> <span class="w">huge</span> <span class="w">loose</span> <span class="w">narrow</span> <span class="w">neat</span> <span class="w">pattern</span> <span class="w">plain</span> <span class="w">pure</span> <span class="w">rough</span> <span class="w">round</span> <span class="w">scale</span> <span class="w">shape</span> <span class="w">sharp</span> <span class="w">smooth</span> <span class="w">solid</span> <span class="w">super</span> <span class="w">thick</span> <span class="w">thin</span> <span class="w">tight</span> <span class="w">tiny</span> <span class="w">triangle</span> <span class="w">volume</span> <span class="w">wide</span></div>
+</div><div class="cat" data-cat="좋고 나쁨" data-n="15">
+  <div class="ch">
+    <div class="cn"><b>좋고 나쁨</b><span class="cc">15단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('좋고 나쁨',this.value)">
+  </div>
+  <div class="ws"><span class="w">advantage</span> <span class="w">benefit</span> <span class="w">correct</span> <span class="w">fair</span> <span class="w">fault</span> <span class="w">fortunate</span> <span class="w">fortune</span> <span class="w">improve</span> <span class="w">increase</span> <span class="w">necessary</span> <span class="w">perfect</span> <span class="w">proper</span> <span class="w">quality</span> <span class="w">reduce</span> <span class="w">terrible</span></div>
+</div><div class="cat" data-cat="쉽고 어려움" data-n="8">
+  <div class="ch">
+    <div class="cn"><b>쉽고 어려움</b><span class="cc">8단어 · 그림 1장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('쉽고 어려움',this.value)">
+  </div>
+  <div class="ws"><span class="w">able</span> <span class="w">capable</span> <span class="w">complex</span> <span class="w">complicate</span> <span class="w">ease</span> <span class="w">practical</span> <span class="w">simple</span> <span class="w">tough</span></div>
+</div><div class="cat" data-cat="같고 다름" data-n="23">
+  <div class="ch">
+    <div class="cn"><b>같고 다름</b><span class="cc">23단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('같고 다름',this.value)">
+  </div>
+  <div class="ws"><span class="w">adapt</span> <span class="w">adopt</span> <span class="w">alter</span> <span class="w">category</span> <span class="w">compare</span> <span class="w">definite</span> <span class="w">equal</span> <span class="w">familiar</span> <span class="w">match</span> <span class="w">odd</span> <span class="w">pair</span> <span class="w">real</span> <span class="w">regular</span> <span class="w">separate</span> <span class="w">shift</span> <span class="w">similar</span> <span class="w">single</span> <span class="w">sort</span> <span class="w">specific</span> <span class="w">stable</span> <span class="w">steady</span> <span class="w">unit</span> <span class="w">vary</span></div>
+</div><div class="cat" data-cat="많고 적음" data-n="30">
+  <div class="ch">
+    <div class="cn"><b>많고 적음</b><span class="cc">30단어 · 그림 4장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('많고 적음',this.value)">
+  </div>
+  <div class="ws"><span class="w">absolute</span> <span class="w">amount</span> <span class="w">average</span> <span class="w">bit</span> <span class="w">complete</span> <span class="w">entire</span> <span class="w">extra</span> <span class="w">extreme</span> <span class="w">few</span> <span class="w">intense</span> <span class="w">limit</span> <span class="w">lot</span> <span class="w">major</span> <span class="w">mass</span> <span class="w">maximum</span> <span class="w">minor</span> <span class="w">none</span> <span class="w">piece</span> <span class="w">plenty</span> <span class="w">prime</span> <span class="w">quite</span> <span class="w">range</span> <span class="w">rare</span> <span class="w">sample</span> <span class="w">several</span> <span class="w">slight</span> <span class="w">spare</span> <span class="w">stuff</span> <span class="w">sum</span> <span class="w">total</span></div>
+</div>
+</section><section class="blk" style="--bc:#6b6b6b">
+  <h2><i></i>시간과 수<span class="bn">41단어 · 2갈래</span></h2>
+  <div class="cat" data-cat="시간과 때" data-n="27">
+  <div class="ch">
+    <div class="cn"><b>시간과 때</b><span class="cc">27단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('시간과 때',this.value)">
+  </div>
+  <div class="ws"><span class="w">annual</span> <span class="w">calendar</span> <span class="w">century</span> <span class="w">constant</span> <span class="w">continue</span> <span class="w">delay</span> <span class="w">due</span> <span class="w">event</span> <span class="w">forever</span> <span class="w">immediate</span> <span class="w">instant</span> <span class="w">minute</span> <span class="w">nowadays</span> <span class="w">occasion</span> <span class="w">once</span> <span class="w">past</span> <span class="w">pause</span> <span class="w">period</span> <span class="w">previous</span> <span class="w">rapid</span> <span class="w">recent</span> <span class="w">remain</span> <span class="w">soon</span> <span class="w">still</span> <span class="w">sudden</span> <span class="w">term</span> <span class="w">yet</span></div>
+</div><div class="cat" data-cat="수와 셈" data-n="14">
+  <div class="ch">
+    <div class="cn"><b>수와 셈</b><span class="cc">14단어 · 그림 2장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('수와 셈',this.value)">
+  </div>
+  <div class="ws"><span class="w">billion</span> <span class="w">calculate</span> <span class="w">count</span> <span class="w">degree</span> <span class="w">dozen</span> <span class="w">half</span> <span class="w">level</span> <span class="w">per</span> <span class="w">quarter</span> <span class="w">rate</span> <span class="w">series</span> <span class="w">thousand</span> <span class="w">weigh</span> <span class="w">zero</span></div>
+</div>
+</section><section class="blk" style="--bc:#16181a">
+  <h2><i></i>자리와 방향 · 도식<span class="bn">84단어 · 3갈래</span></h2>
+  <div class="cat" data-cat="자리와 방향" data-n="25">
+  <div class="ch">
+    <div class="cn"><b>자리와 방향</b><span class="cc">25단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('자리와 방향',this.value)">
+  </div>
+  <div class="ws"><span class="w">although</span> <span class="w">among</span> <span class="w">apart</span> <span class="w">aside</span> <span class="w">beneath</span> <span class="w">beyond</span> <span class="w">distance</span> <span class="w">forth</span> <span class="w">forward</span> <span class="w">internal</span> <span class="w">local</span> <span class="w">since</span> <span class="w">straight</span> <span class="w">surround</span> <span class="w">through</span> <span class="w">till</span> <span class="w">toward</span> <span class="w">unless</span> <span class="w">until</span> <span class="w">upon</span> <span class="w">upper</span> <span class="w">whether</span> <span class="w">while</span> <span class="w">within</span> <span class="w">without</span></div>
+</div><div class="cat" data-cat="이음말" data-n="21">
+  <div class="ch">
+    <div class="cn"><b>이음말</b><span class="cc">21단어 · 그림 3장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('이음말',this.value)">
+  </div>
+  <div class="ws"><span class="w">altogether</span> <span class="w">despite</span> <span class="w">either</span> <span class="w">even</span> <span class="w">except</span> <span class="w">instead</span> <span class="w">let</span> <span class="w">moreover</span> <span class="w">neither</span> <span class="w">nor</span> <span class="w">otherwise</span> <span class="w">ought</span> <span class="w">rather</span> <span class="w">shall</span> <span class="w">then</span> <span class="w">therefore</span> <span class="w">though</span> <span class="w">thus</span> <span class="w">which</span> <span class="w">whole</span> <span class="w">would</span></div>
+</div><div class="cat" data-cat="정도와 범위말" data-n="38">
+  <div class="ch">
+    <div class="cn"><b>정도와 범위말</b><span class="cc">38단어 · 그림 5장</span></div>
+    <input class="ord" type="number" min="1" max="12" placeholder="장" oninput="setOrd('정도와 범위말',this.value)">
+  </div>
+  <div class="ws"><span class="w">access</span> <span class="w">account</span> <span class="w">affair</span> <span class="w">appeal</span> <span class="w">basis</span> <span class="w">brief</span> <span class="w">characteristic</span> <span class="w">common</span> <span class="w">conscious</span> <span class="w">content</span> <span class="w">each</span> <span class="w">else</span> <span class="w">especial</span> <span class="w">ever</span> <span class="w">exact</span> <span class="w">final</span> <span class="w">general</span> <span class="w">indeed</span> <span class="w">instance</span> <span class="w">interest</span> <span class="w">item</span> <span class="w">main</span> <span class="w">manner</span> <span class="w">maybe</span> <span class="w">mean</span> <span class="w">nowhere</span> <span class="w">other</span> <span class="w">overall</span> <span class="w">particular</span> <span class="w">perhaps</span> <span class="w">plus</span> <span class="w">possible</span> <span class="w">probable</span> <span class="w">section</span> <span class="w">session</span> <span class="w">somewhat</span> <span class="w">such</span> <span class="w">various</span></div>
+</div>
+</section>
+
+<footer><button onclick="mk()">챕터 순서 뽑기</button></footer>
+
+<div id="out">
+  <textarea id="ta" readonly></textarea>
+  <div class="ob">
+    <button class="cl" onclick="document.getElementById('out').style.display='none'">닫기</button>
+    <button class="cp" onclick="cp()">복사</button>
+  </div>
+</div>
+
+<script>
+var O={},N={"바다와 항해": 31, "하늘과 날씨": 22, "땅과 물길": 25, "동물": 17, "식물과 나무": 15, "몸과 감각": 27, "옷과 몸치장": 14, "기계와 도구": 23, "일과 직업": 34, "사람과 관계": 31, "싸움과 지킴": 33, "규칙과 사회": 26, "기쁨과 슬픔": 20, "화와 두려움": 18, "부끄러움과 미움": 7, "바람과 아쉬움": 9, "놀람과 궁금함": 20, "믿음과 의심": 9, "생각하기": 30, "글과 기록": 26, "배움과 가르침": 14, "만들고 고치기": 33, "주고받기": 16, "갖고 지니기": 8, "가고 오기": 9, "고르고 정하기": 11, "찾고 얻기": 7, "돕고 섬기기": 11, "하고 다루기": 16, "크기와 모양": 33, "좋고 나쁨": 15, "쉽고 어려움": 8, "같고 다름": 23, "많고 적음": 30, "시간과 때": 27, "수와 셈": 14, "자리와 방향": 25, "몸과 마음의 상태": 32, "일의 결과": 21, "드러남과 감춤": 12, "모임과 흩어짐": 4, "세상 물정": 18, "소리와 음악": 10, "운동과 겨루기": 4, "색과 빛": 1, "성과 왕궁": 5, "사람 성격": 11, "사고와 위험": 8, "알리고 밝히기": 17, "따지고 다투기": 7, "묻고 부탁하기": 13, "소리내어 말하기": 22, "이음말": 21, "정도와 범위말": 38, "손으로 하는 것": 18, "몸 전체로 하는 것": 25, "닫고 파묻기": 4, "먹을 것": 25, "부엌과 조리": 19, "돈": 25, "사고팔기": 19, "집의 구조": 13, "살림 도구": 29, "도시의 건물": 15, "타고 가기": 27};
+function setOrd(c,v){ if(v==='')delete O[c]; else O[c]=+v; }
+function mk(){
+  var by={};
+  for(var c in O){ (by[O[c]]=by[O[c]]||[]).push(c); }
+  var ks=Object.keys(by).map(Number).sort(function(a,b){return a-b});
+  var t='■ 대표님 챕터 순서\n\n';
+  if(!ks.length){ t+='  (아직 아무 갈래에도 장 번호를 안 적었습니다)\n'; }
+  ks.forEach(function(k){
+    var sum=by[k].reduce(function(s,c){return s+N[c]},0);
+    t+='【'+k+'장】  '+sum+'단어 · 그림 '+Math.max(1,Math.round(sum/8))+'장\n';
+    by[k].forEach(function(c){ t+='   · '+c+' ('+N[c]+')\n'; });
+    t+='\n';
+  });
+  var un=[]; for(var c in N) if(!O[c]) un.push(c+'('+N[c]+')');
+  if(un.length) t+='── 아직 장 미배정 '+un.length+'갈래 ──\n  '+un.join(', ')+'\n';
+  document.getElementById('ta').value=t;
+  document.getElementById('out').style.display='flex';
+}
+function cp(){
+  var ta=document.getElementById('ta');
+  ta.removeAttribute('readonly');ta.select();ta.setSelectionRange(0,99999);
+  try{document.execCommand('copy');}catch(e){}
+  ta.setAttribute('readonly','');
+  var b=event.target,o=b.textContent;b.textContent='복사됨';
+  setTimeout(function(){b.textContent=o},1200);
+}
+</script>
+</body></html>

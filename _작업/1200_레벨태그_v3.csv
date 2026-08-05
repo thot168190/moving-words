@@ -1,0 +1,1203 @@
+단어,갈래,레벨,CEFR근거
+adventure,바다와 항해,레벨1,A2
+bay,바다와 항해,레벨1,A2
+bubble,바다와 항해,레벨2,B1
+cape,바다와 항해,레벨2,미수록|로부장수기
+channel,바다와 항해,레벨2,B1
+coast,바다와 항해,레벨1,A2
+current,바다와 항해,레벨2,B1
+deck,바다와 항해,레벨2,B2
+dive,바다와 항해,레벨2,B1
+dolphin,바다와 항해,레벨2,B1
+float,바다와 항해,레벨1,A2
+flood,바다와 항해,레벨1,A2
+flow,바다와 항해,레벨2,B1
+island,바다와 항해,레벨1,A1
+navy,바다와 항해,레벨2,B2
+ocean,바다와 항해,레벨2,B1
+pool,바다와 항해,레벨1,A1
+port,바다와 항해,레벨2,B1
+rise,바다와 항해,레벨2,B1
+row,바다와 항해,레벨1,A1
+sail,바다와 항해,레벨2,B2
+seal,바다와 항해,레벨2,B2
+shell,바다와 항해,레벨1,A2
+shore,바다와 항해,레벨1,A2
+sink,바다와 항해,레벨1,A2
+spray,바다와 항해,레벨2,B2
+stream,바다와 항해,레벨2,B1
+surface,바다와 항해,레벨2,B1
+tide,바다와 항해,레벨2,B1
+wave,바다와 항해,레벨1,A2
+whale,바다와 항해,레벨2,B1
+atmosphere,하늘과 날씨,레벨2,B1
+balloon,하늘과 날씨,레벨1,A2
+blow,하늘과 날씨,레벨1,A1
+climate,하늘과 날씨,레벨2,B1
+dawn,하늘과 날씨,레벨2,B2
+flame,하늘과 날씨,레벨2,B2
+flash,하늘과 날씨,레벨2,B1
+fog,하늘과 날씨,레벨1,A2
+freeze,하늘과 날씨,레벨1,A2
+heaven,하늘과 날씨,레벨2,B1
+melt,하늘과 날씨,레벨2,B1
+noon,하늘과 날씨,레벨1,A2
+planet,하늘과 날씨,레벨1,A2
+rainbow,하늘과 날씨,레벨2,B2
+shade,하늘과 날씨,레벨1,A2
+shadow,하늘과 날씨,레벨1,A2
+shine,하늘과 날씨,레벨1,A2
+silver,하늘과 날씨,레벨1,A2
+smoke,하늘과 날씨,레벨1,A1
+steam,하늘과 날씨,레벨2,B1
+storm,하늘과 날씨,레벨1,A2
+temperature,하늘과 날씨,레벨1,A2
+cliff,땅과 물길,레벨2,B1
+countryside,땅과 물길,레벨1,A2
+county,땅과 물길,레벨2,B1
+desert,땅과 물길,레벨1,A2
+dirt,땅과 물길,레벨2,B1
+district,땅과 물길,레벨2,B1
+dust,땅과 물길,레벨1,A2
+edge,땅과 물길,레벨2,B1
+highway,땅과 물길,레벨1,A2
+hole,땅과 물길,레벨1,A1
+lane,땅과 물길,레벨1,A2
+mount,땅과 물길,레벨2,B1
+mud,땅과 물길,레벨2,B1
+path,땅과 물길,레벨1,A2
+pile,땅과 물길,레벨1,A2
+pole,땅과 물길,레벨2,B1
+pollute,땅과 물길,레벨1,A2
+region,땅과 물길,레벨2,B1
+route,땅과 물길,레벨2,B2
+site,땅과 물길,레벨1,A1
+soil,땅과 물길,레벨2,B1
+spot,땅과 물길,레벨1,A1
+square,땅과 물길,레벨1,A2
+tower,땅과 물길,레벨1,A1
+valley,땅과 물길,레벨1,A2
+ant,동물,레벨2,B1
+bark,동물,레벨2,B1
+bug,동물,레벨1,A2
+cage,동물,레벨2,B1
+feed,동물,레벨1,A1
+frog,동물,레벨1,A1
+giraffe,동물,레벨2,B1
+lamb,동물,레벨2,B1
+nest,동물,레벨1,미수록|로부장수기
+pet,동물,레벨1,A1
+rat,동물,레벨1,A1
+sheep,동물,레벨1,A1
+snake,동물,레벨1,A1
+species,동물,레벨2,B2
+wild,동물,레벨1,A2
+wing,동물,레벨2,B1
+zebra,동물,레벨2,B2
+bloom,식물과 나무,레벨1,A2
+branch,식물과 나무,레벨1,A2
+bush,식물과 나무,레벨1,A2
+fur,식물과 나무,레벨2,B1
+grace,식물과 나무,레벨1,A2
+lawn,식물과 나무,레벨2,B2
+leaf,식물과 나무,레벨1,A1
+log,식물과 나무,레벨2,B1
+oak,식물과 나무,레벨1,A2
+pine,식물과 나무,레벨2,B2
+plant,식물과 나무,레벨1,A2
+root,식물과 나무,레벨1,A2
+seed,식물과 나무,레벨1,A2
+trunk,식물과 나무,레벨2,B2
+wool,식물과 나무,레벨1,A2
+blind,몸과 감각,레벨2,B1
+brain,몸과 감각,레벨1,A1
+breast,몸과 감각,레벨2,B1
+breath,몸과 감각,레벨2,B1
+breathe,몸과 감각,레벨1,A1
+cell,몸과 감각,레벨2,B1
+cheek,몸과 감각,레벨1,A2
+chest,몸과 감각,레벨1,A2
+chew,몸과 감각,레벨2,B2
+cough,몸과 감각,레벨2,B1
+glance,몸과 감각,레벨2,B1
+hear,몸과 감각,레벨1,A1
+height,몸과 감각,레벨2,B1
+jaw,몸과 감각,레벨2,B2
+knee,몸과 감각,레벨1,A1
+muscle,몸과 감각,레벨2,B1
+nail,몸과 감각,레벨2,B1
+nerve,몸과 감각,레벨2,B2
+shoulder,몸과 감각,레벨1,A1
+sight,몸과 감각,레벨1,A1
+stare,몸과 감각,레벨2,B1
+stomach,몸과 감각,레벨1,A2
+swallow,몸과 감각,레벨1,A2
+tear,몸과 감각,레벨1,A2
+throat,몸과 감각,레벨2,B2
+toe,몸과 감각,레벨1,A2
+tongue,몸과 감각,레벨2,B1
+bare,옷과 몸치장,레벨2,B1
+blonde,옷과 몸치장,레벨1,A2
+cotton,옷과 몸치장,레벨2,B1
+curl,옷과 몸치장,레벨2,B2
+fit,옷과 몸치장,레벨1,A2
+glove,옷과 몸치장,레벨1,A2
+jeans,옷과 몸치장,레벨1,A1
+mask,옷과 몸치장,레벨2,B2
+pocket,옷과 몸치장,레벨1,A1
+scarf,옷과 몸치장,레벨1,A2
+shave,옷과 몸치장,레벨2,B1
+suit,옷과 몸치장,레벨1,A2
+sweater,옷과 몸치장,레벨1,A2
+uniform,옷과 몸치장,레벨1,A2
+automatic,기계와 도구,레벨1,A2
+battery,기계와 도구,레벨1,A2
+click,기계와 도구,레벨1,A2
+coal,기계와 도구,레벨2,B1
+code,기계와 도구,레벨1,A1
+disc,기계와 도구,레벨1,미수록|로부장수기
+electric,기계와 도구,레벨1,A2
+element,기계와 도구,레벨2,B1
+glue,기계와 도구,레벨1,미수록|로부장수기
+instrument,기계와 도구,레벨1,A2
+label,기계와 도구,레벨2,B2
+machine,기계와 도구,레벨1,A1
+metal,기계와 도구,레벨1,A2
+monitor,기계와 도구,레벨2,B1
+net,기계와 도구,레벨1,A2
+pump,기계와 도구,레벨2,B1
+screen,기계와 도구,레벨1,A2
+stamp,기계와 도구,레벨1,A2
+steel,기계와 도구,레벨2,B1
+switch,기계와 도구,레벨2,B1
+technology,기계와 도구,레벨1,A1
+tin,기계와 도구,레벨2,B1
+tool,기계와 도구,레벨1,A1
+agent,일과 직업,레벨1,A2
+boss,일과 직업,레벨1,A2
+captain,일과 직업,레벨1,A2
+career,일과 직업,레벨2,B1
+chairman,일과 직업,레벨1,A2
+chief,일과 직업,레벨2,B1
+clerk,일과 직업,레벨1,A2
+client,일과 직업,레벨2,B2
+coach,일과 직업,레벨1,A1
+dentist,일과 직업,레벨1,A2
+employ,일과 직업,레벨2,B2
+engineer,일과 직업,레벨1,A1
+expert,일과 직업,레벨1,A2
+factory,일과 직업,레벨1,A1
+firm,일과 직업,레벨2,B1
+guard,일과 직업,레벨1,A2
+guest,일과 직업,레벨1,A1
+hire,일과 직업,레벨2,B1
+industry,일과 직업,레벨2,B1
+lab,일과 직업,레벨2,B1
+labor,일과 직업,레벨2,미수록|로부장수기
+laboratory,일과 직업,레벨2,B1
+lawyer,일과 직업,레벨1,A2
+manufacture,일과 직업,레벨2,B2
+master,일과 직업,레벨2,B2
+military,일과 직업,레벨1,A2
+mill,일과 직업,레벨2,B2
+officer,일과 직업,레벨1,A1
+poet,일과 직업,레벨2,B1
+profession,일과 직업,레벨2,B1
+promote,일과 직업,레벨2,B1
+secretary,일과 직업,레벨1,A2
+soldier,일과 직업,레벨1,A2
+volunteer,일과 직업,레벨2,B1
+associate,사람과 관계,레벨2,B1
+attract,사람과 관계,레벨2,B1
+audience,사람과 관계,레벨1,A2
+bond,사람과 관계,레벨2,B1
+citizen,사람과 관계,레벨1,A2
+committee,사람과 관계,레벨1,A2
+community,사람과 관계,레벨2,B2
+contact,사람과 관계,레벨1,A2
+council,사람과 관계,레벨2,B1
+crowd,사람과 관계,레벨1,A2
+darling,사람과 관계,레벨2,B2
+depend,사람과 관계,레벨1,A2
+divorce,사람과 관계,레벨2,B2
+engage,사람과 관계,레벨2,B1
+fellow,사람과 관계,레벨2,B1
+female,사람과 관계,레벨1,A2
+folk,사람과 관계,레벨2,B1
+individual,사람과 관계,레벨2,B1
+involve,사람과 관계,레벨2,B1
+junior,사람과 관계,레벨1,A2
+male,사람과 관계,레벨1,A2
+mate,사람과 관계,레벨2,B2
+native,사람과 관계,레벨1,A2
+neighbor,사람과 관계,레벨1,미수록|로부장수기
+person,사람과 관계,레벨1,A1
+relate,사람과 관계,레벨2,B1
+respect,사람과 관계,레벨2,B1
+senior,사람과 관계,레벨1,A2
+slave,사람과 관계,레벨1,A2
+society,사람과 관계,레벨1,A2
+twin,사람과 관계,레벨2,B1
+army,싸움과 지킴,레벨2,B1
+arrest,싸움과 지킴,레벨2,B1
+attack,싸움과 지킴,레벨1,A2
+battle,싸움과 지킴,레벨2,B1
+beat,싸움과 지킴,레벨2,B1
+bomb,싸움과 지킴,레벨2,B1
+conflict,싸움과 지킴,레벨2,B1
+crime,싸움과 지킴,레벨1,A2
+defense,싸움과 지킴,레벨2,미수록|로부장수기
+enemy,싸움과 지킴,레벨2,B1
+escape,싸움과 지킴,레벨1,A2
+evil,싸움과 지킴,레벨2,B2
+force,싸움과 지킴,레벨1,A2
+gun,싸움과 지킴,레벨1,A2
+harm,싸움과 지킴,레벨1,A2
+oppose,싸움과 지킴,레벨1,A2
+protect,싸움과 지킴,레벨2,B1
+protest,싸움과 지킴,레벨2,B1
+punish,싸움과 지킴,레벨2,B1
+resist,싸움과 지킴,레벨2,B1
+rob,싸움과 지킴,레벨1,A2
+shelter,싸움과 지킴,레벨2,B1
+spy,싸움과 지킴,레벨1,A1
+steal,싸움과 지킴,레벨1,A2
+strike,싸움과 지킴,레벨1,A2
+struggle,싸움과 지킴,레벨2,B1
+survive,싸움과 지킴,레벨1,A2
+suspect,싸움과 지킴,레벨2,B1
+thief,싸움과 지킴,레벨1,A2
+threat,싸움과 지킴,레벨2,B1
+victim,싸움과 지킴,레벨2,B1
+violent,싸움과 지킴,레벨1,A2
+weapon,싸움과 지킴,레벨2,B1
+accuse,규칙과 사회,레벨2,B1
+civil,규칙과 사회,레벨2,B1
+cop,규칙과 사회,레벨1,A1
+discipline,규칙과 사회,레벨2,B2
+duty,규칙과 사회,레벨2,B1
+elect,규칙과 사회,레벨2,B2
+empire,규칙과 사회,레벨2,B1
+govern,규칙과 사회,레벨2,B1
+guilt,규칙과 사회,레벨2,B1
+innocent,규칙과 사회,레벨2,B1
+judge,규칙과 사회,레벨1,A1
+justice,규칙과 사회,레벨2,B1
+law,규칙과 사회,레벨1,A2
+legal,규칙과 사회,레벨2,B1
+license,규칙과 사회,레벨2,미수록|로부장수기
+moral,규칙과 사회,레벨2,B1
+policy,규칙과 사회,레벨2,B1
+politics,규칙과 사회,레벨2,B1
+principle,규칙과 사회,레벨2,B1
+privacy,규칙과 사회,레벨2,B1
+private,규칙과 사회,레벨1,A2
+public,규칙과 사회,레벨1,A2
+responsible,규칙과 사회,레벨2,B1
+rule,규칙과 사회,레벨1,A1
+standard,규칙과 사회,레벨2,B1
+vote,규칙과 사회,레벨1,A1
+admire,기쁨과 슬픔,레벨1,A2
+amuse,기쁨과 슬픔,레벨2,B2
+appreciate,기쁨과 슬픔,레벨1,A2
+calm,기쁨과 슬픔,레벨2,B1
+cheer,기쁨과 슬픔,레벨1,A2
+comfort,기쁨과 슬픔,레벨2,B1
+delight,기쁨과 슬픔,레벨2,B1
+entertain,기쁨과 슬픔,레벨2,B1
+excite,기쁨과 슬픔,레벨1,미수록|로부장수기
+glory,기쁨과 슬픔,레벨2,B1
+honor,기쁨과 슬픔,레벨2,미수록|로부장수기
+humor,기쁨과 슬픔,레벨2,미수록|로부장수기
+joy,기쁨과 슬픔,레벨1,A2
+laugh,기쁨과 슬픔,레벨1,A1
+peace,기쁨과 슬픔,레벨1,A1
+pride,기쁨과 슬픔,레벨1,A2
+proud,기쁨과 슬픔,레벨2,B1
+relax,기쁨과 슬픔,레벨1,A2
+relief,기쁨과 슬픔,레벨2,B2
+satisfy,기쁨과 슬픔,레벨1,A2
+anger,화와 두려움,레벨2,B1
+annoy,화와 두려움,레벨1,A2
+anxious,화와 두려움,레벨1,A2
+bother,화와 두려움,레벨1,A2
+concern,화와 두려움,레벨1,A2
+cruel,화와 두려움,레벨2,B1
+disturb,화와 두려움,레벨1,A2
+fear,화와 두려움,레벨1,A2
+fright,화와 두려움,레벨2,B1
+frustrate,화와 두려움,레벨2,미수록|로부장수기
+panic,화와 두려움,레벨1,A2
+rude,화와 두려움,레벨1,A1
+scare,화와 두려움,레벨2,B1
+shock,화와 두려움,레벨1,A2
+stress,화와 두려움,레벨2,B1
+tense,화와 두려움,레벨2,B1
+trouble,화와 두려움,레벨1,A2
+upset,화와 두려움,레벨1,A2
+awkward,부끄러움과 미움,레벨2,B1
+blame,부끄러움과 미움,레벨1,A2
+disgust,부끄러움과 미움,레벨2,미수록|로부장수기
+embarrass,부끄러움과 미움,레벨2,B1
+ignore,부끄러움과 미움,레벨2,B1
+shame,부끄러움과 미움,레벨2,B1
+silly,부끄러움과 미움,레벨1,A2
+bore,바람과 아쉬움,레벨2,B1
+depress,바람과 아쉬움,레벨2,미수록|로부장수기
+desire,바람과 아쉬움,레벨2,B1
+desperate,바람과 아쉬움,레벨2,B1
+disappoint,바람과 아쉬움,레벨2,B1
+hesitate,바람과 아쉬움,레벨2,B1
+lack,바람과 아쉬움,레벨1,A2
+pity,바람과 아쉬움,레벨1,A2
+sore,바람과 아쉬움,레벨2,B1
+amaze,놀람과 궁금함,레벨2,B2
+angel,놀람과 궁금함,레벨1,A2
+brilliant,놀람과 궁금함,레벨1,A2
+clue,놀람과 궁금함,레벨1,A2
+curious,놀람과 궁금함,레벨2,B1
+fancy,놀람과 궁금함,레벨1,A2
+fantastic,놀람과 궁금함,레벨1,A2
+fascinate,놀람과 궁금함,레벨2,B1
+ghost,놀람과 궁금함,레벨1,A1
+gorgeous,놀람과 궁금함,레벨2,B1
+hell,놀람과 궁금함,레벨2,B2
+impress,놀람과 궁금함,레벨1,A2
+magic,놀람과 궁금함,레벨1,A2
+marvel,놀람과 궁금함,레벨2,미수록|로부장수기
+mystery,놀람과 궁금함,레벨1,A2
+puzzle,놀람과 궁금함,레벨2,B1
+strange,놀람과 궁금함,레벨1,A1
+surprise,놀람과 궁금함,레벨1,A1
+trick,놀람과 궁금함,레벨1,A2
+wonder,놀람과 궁금함,레벨1,A2
+belief,믿음과 의심,레벨2,B1
+confirm,믿음과 의심,레벨2,B1
+doubt,믿음과 의심,레벨1,A2
+evidence,믿음과 의심,레벨1,A2
+faith,믿음과 의심,레벨2,B2
+prove,믿음과 의심,레벨2,B1
+rely,믿음과 의심,레벨2,B1
+trust,믿음과 의심,레벨1,A2
+truth,믿음과 의심,레벨1,A2
+analysis,생각하기,레벨2,B1
+assume,생각하기,레벨2,B1
+attention,생각하기,레벨1,A2
+attitude,생각하기,레벨1,A2
+concentrate,생각하기,레벨1,A2
+concept,생각하기,레벨2,B1
+confuse,생각하기,레벨1,A2
+consider,생각하기,레벨1,A2
+context,생각하기,레벨1,A2
+define,생각하기,레벨2,B1
+detect,생각하기,레벨2,B2
+determine,생각하기,레벨2,B1
+examine,생각하기,레벨2,B1
+imagine,생각하기,레벨1,A1
+inspect,생각하기,레벨2,B2
+investigate,생각하기,레벨2,B2
+method,생각하기,레벨1,A2
+notice,생각하기,레벨1,A2
+observe,생각하기,레벨2,B1
+opinion,생각하기,레벨1,A2
+reason,생각하기,레벨1,A1
+recognize,생각하기,레벨2,미수록|로부장수기
+reflect,생각하기,레벨1,A2
+regard,생각하기,레벨2,B1
+remind,생각하기,레벨1,A2
+solve,생각하기,레벨1,A1
+strategy,생각하기,레벨1,A2
+suppose,생각하기,레벨2,B1
+tend,생각하기,레벨2,B1
+theory,생각하기,레벨2,B1
+article,글과 기록,레벨1,A1
+catalog,글과 기록,레벨2,미수록|로부장수기
+chart,글과 기록,레벨1,A2
+comedy,글과 기록,레벨2,B1
+copy,글과 기록,레벨1,A1
+diary,글과 기록,레벨1,A2
+dictionary,글과 기록,레벨1,A1
+document,글과 기록,레벨2,B1
+drama,글과 기록,레벨1,A1
+edit,글과 기록,레벨2,B2
+envelope,글과 기록,레벨1,A2
+essay,글과 기록,레벨1,A2
+graph,글과 기록,레벨2,B1
+language,글과 기록,레벨1,A1
+list,글과 기록,레벨1,A1
+magazine,글과 기록,레벨1,A1
+photo,글과 기록,레벨1,A1
+photograph,글과 기록,레벨1,A2
+poem,글과 기록,레벨1,A1
+record,글과 기록,레벨1,A2
+register,글과 기록,레벨2,B1
+scene,글과 기록,레벨1,A2
+spell,글과 기록,레벨1,A1
+text,글과 기록,레벨1,A2
+title,글과 기록,레벨1,A2
+topic,글과 기록,레벨1,A1
+assess,배움과 가르침,레벨2,B2
+attend,배움과 가르침,레벨2,B1
+educate,배움과 가르침,레벨2,B1
+experience,배움과 가르침,레벨1,A2
+experiment,배움과 가르침,레벨2,B1
+grade,배움과 가르침,레벨1,A1
+knowledge,배움과 가르침,레벨1,A2
+measure,배움과 가르침,레벨2,B1
+practice,배움과 가르침,레벨1,A1
+research,배움과 가르침,레벨1,A2
+skill,배움과 가르침,레벨1,A1
+subject,배움과 가르침,레벨1,A1
+survey,배움과 가르침,레벨1,A1
+technique,배움과 가르침,레벨2,B1
+arrange,만들고 고치기,레벨2,B1
+attach,만들고 고치기,레벨2,B1
+bend,만들고 고치기,레벨1,A2
+bind,만들고 고치기,레벨2,B2
+block,만들고 고치기,레벨1,A1
+burst,만들고 고치기,레벨2,B1
+combine,만들고 고치기,레벨2,B1
+connect,만들고 고치기,레벨2,B1
+crack,만들고 고치기,레벨2,B2
+crash,만들고 고치기,레벨2,B1
+create,만들고 고치기,레벨1,A2
+damage,만들고 고치기,레벨2,B1
+decorate,만들고 고치기,레벨2,B2
+destroy,만들고 고치기,레벨1,A2
+develop,만들고 고치기,레벨1,A2
+direct,만들고 고치기,레벨1,A2
+divide,만들고 고치기,레벨1,A2
+establish,만들고 고치기,레벨1,A2
+fold,만들고 고치기,레벨2,B1
+found,만들고 고치기,레벨2,B2
+invent,만들고 고치기,레벨1,A2
+link,만들고 고치기,레벨2,B1
+object,만들고 고치기,레벨2,B1
+produce,만들고 고치기,레벨1,A2
+remove,만들고 고치기,레벨2,B1
+repair,만들고 고치기,레벨1,A2
+replace,만들고 고치기,레벨1,A2
+ruin,만들고 고치기,레벨1,A2
+sew,만들고 고치기,레벨1,A2
+smash,만들고 고치기,레벨2,B2
+snap,만들고 고치기,레벨2,B2
+spoil,만들고 고치기,레벨2,B1
+stick,만들고 고치기,레벨2,B1
+accept,주고받기,레벨1,A2
+allow,주고받기,레벨1,A2
+contribute,주고받기,레벨2,B1
+deliver,주고받기,레벨2,B1
+deserve,주고받기,레벨2,B1
+donate,주고받기,레벨2,B2
+exchange,주고받기,레벨1,A2
+gift,주고받기,레벨1,A1
+lend,주고받기,레벨1,A2
+offer,주고받기,레벨1,A2
+provide,주고받기,레벨1,A2
+receive,주고받기,레벨1,A2
+refuse,주고받기,레벨2,B1
+reserve,주고받기,레벨2,B1
+share,주고받기,레벨1,A1
+transfer,주고받기,레벨2,B1
+belong,갖고 지니기,레벨1,A2
+contain,갖고 지니기,레벨2,B1
+gain,갖고 지니기,레벨2,B1
+include,갖고 지니기,레벨1,A2
+lose,갖고 지니기,레벨1,A2
+maintain,갖고 지니기,레벨2,B1
+own,갖고 지니기,레벨1,A1
+possess,갖고 지니기,레벨2,B1
+advance,가고 오기,레벨2,B1
+appear,가고 오기,레벨1,A2
+approach,가고 오기,레벨2,B1
+follow,가고 오기,레벨1,A2
+leave,가고 오기,레벨1,A1
+proceed,가고 오기,레벨2,B1
+progress,가고 오기,레벨2,B1
+reach,가고 오기,레벨1,A2
+retire,가고 오기,레벨1,A2
+aim,고르고 정하기,레벨2,B1
+appoint,고르고 정하기,레벨2,B1
+assign,고르고 정하기,레벨2,B1
+choice,고르고 정하기,레벨1,A2
+order,고르고 정하기,레벨1,A1
+prefer,고르고 정하기,레벨1,A2
+prepare,고르고 정하기,레벨1,A2
+schedule,고르고 정하기,레벨1,A2
+select,고르고 정하기,레벨2,B1
+settle,고르고 정하기,레벨2,B1
+target,고르고 정하기,레벨1,A2
+identity,찾고 얻기,레벨2,B1
+locate,찾고 얻기,레벨2,B1
+resource,찾고 얻기,레벨2,B1
+search,찾고 얻기,레벨1,A2
+seek,찾고 얻기,레벨1,A2
+source,찾고 얻기,레벨1,A2
+trace,찾고 얻기,레벨2,B1
+aid,돕고 섬기기,레벨2,B1
+assist,돕고 섬기기,레벨2,B1
+bless,돕고 섬기기,레벨2,B1
+cure,돕고 섬기기,레벨2,B1
+favor,돕고 섬기기,레벨2,미수록|로부장수기
+forgive,돕고 섬기기,레벨2,B1
+lead,돕고 섬기기,레벨1,A2
+recover,돕고 섬기기,레벨2,B1
+serve,돕고 섬기기,레벨1,A2
+support,돕고 섬기기,레벨1,A2
+treat,돕고 섬기기,레벨2,B1
+apply,하고 다루기,레벨1,A2
+attempt,하고 다루기,레벨1,A2
+challenge,하고 다루기,레벨1,A2
+cope,하고 다루기,레벨2,B2
+dare,하고 다루기,레벨2,B1
+deal,하고 다루기,레벨1,A2
+effort,하고 다루기,레벨1,A2
+handle,하고 다루기,레벨1,A2
+manage,하고 다루기,레벨1,A2
+operate,하고 다루기,레벨1,A2
+perform,하고 다루기,레벨1,A2
+process,하고 다루기,레벨2,B1
+quit,하고 다루기,레벨1,A2
+react,하고 다루기,레벨2,B1
+repeat,하고 다루기,레벨1,A1
+risk,하고 다루기,레벨2,B1
+balance,크기와 모양,레벨2,B1
+blank,크기와 모양,레벨1,A1
+broad,크기와 모양,레벨2,B1
+empty,크기와 모양,레벨1,A2
+enormous,크기와 모양,레벨1,A2
+expand,크기와 모양,레벨2,B1
+extend,크기와 모양,레벨2,B1
+figure,크기와 모양,레벨1,A2
+flat,크기와 모양,레벨1,A1
+giant,크기와 모양,레벨2,B1
+grand,크기와 모양,레벨2,B2
+huge,크기와 모양,레벨2,B1
+loose,크기와 모양,레벨1,A2
+narrow,크기와 모양,레벨2,B1
+neat,크기와 모양,레벨2,B2
+pattern,크기와 모양,레벨2,B1
+plain,크기와 모양,레벨2,B1
+pure,크기와 모양,레벨2,B1
+rough,크기와 모양,레벨2,B1
+round,크기와 모양,레벨1,A2
+scale,크기와 모양,레벨1,A2
+shape,크기와 모양,레벨1,A2
+sharp,크기와 모양,레벨2,B1
+smooth,크기와 모양,레벨1,A2
+solid,크기와 모양,레벨2,B1
+super,크기와 모양,레벨1,A1
+thick,크기와 모양,레벨1,A1
+thin,크기와 모양,레벨1,A1
+tight,크기와 모양,레벨1,A1
+tiny,크기와 모양,레벨2,B1
+triangle,크기와 모양,레벨2,B2
+volume,크기와 모양,레벨2,B1
+wide,크기와 모양,레벨1,A2
+advantage,좋고 나쁨,레벨1,A2
+benefit,좋고 나쁨,레벨2,B1
+correct,좋고 나쁨,레벨1,A1
+fair,좋고 나쁨,레벨1,A1
+fault,좋고 나쁨,레벨1,A2
+fortunate,좋고 나쁨,레벨2,B1
+fortune,좋고 나쁨,레벨1,A2
+improve,좋고 나쁨,레벨1,A2
+increase,좋고 나쁨,레벨1,A2
+necessary,좋고 나쁨,레벨1,A2
+perfect,좋고 나쁨,레벨1,A2
+proper,좋고 나쁨,레벨1,A2
+quality,좋고 나쁨,레벨1,A2
+reduce,좋고 나쁨,레벨2,B1
+terrible,좋고 나쁨,레벨1,A1
+able,쉽고 어려움,레벨2,B1
+capable,쉽고 어려움,레벨2,B1
+complex,쉽고 어려움,레벨2,B1
+complicate,쉽고 어려움,레벨2,B1
+ease,쉽고 어려움,레벨2,B2
+practical,쉽고 어려움,레벨2,B1
+simple,쉽고 어려움,레벨1,A2
+tough,쉽고 어려움,레벨2,B2
+adapt,같고 다름,레벨2,B1
+adopt,같고 다름,레벨2,B1
+alter,같고 다름,레벨2,B2
+category,같고 다름,레벨2,B1
+compare,같고 다름,레벨1,A2
+definite,같고 다름,레벨2,B1
+equal,같고 다름,레벨2,B1
+familiar,같고 다름,레벨1,A2
+match,같고 다름,레벨1,A1
+odd,같고 다름,레벨2,B2
+pair,같고 다름,레벨1,A1
+real,같고 다름,레벨1,A1
+regular,같고 다름,레벨1,A2
+separate,같고 다름,레벨1,A2
+shift,같고 다름,레벨2,B1
+similar,같고 다름,레벨1,A2
+single,같고 다름,레벨1,A2
+sort,같고 다름,레벨2,B1
+specific,같고 다름,레벨1,A2
+stable,같고 다름,레벨2,B1
+steady,같고 다름,레벨2,B1
+unit,같고 다름,레벨1,A2
+vary,같고 다름,레벨2,B1
+absolute,많고 적음,레벨2,B1
+amount,많고 적음,레벨2,B1
+average,많고 적음,레벨1,A2
+bit,많고 적음,레벨1,A2
+complete,많고 적음,레벨1,A2
+entire,많고 적음,레벨2,B1
+extra,많고 적음,레벨1,A2
+extreme,많고 적음,레벨2,B1
+few,많고 적음,레벨1,A2
+intense,많고 적음,레벨2,B1
+limit,많고 적음,레벨2,B1
+lot,많고 적음,레벨1,A1
+major,많고 적음,레벨1,A2
+mass,많고 적음,레벨2,B1
+maximum,많고 적음,레벨2,B1
+minor,많고 적음,레벨2,B1
+none,많고 적음,레벨2,B1
+piece,많고 적음,레벨1,A1
+plenty,많고 적음,레벨1,A2
+prime,많고 적음,레벨2,B2
+quite,많고 적음,레벨1,A2
+range,많고 적음,레벨1,A2
+rare,많고 적음,레벨2,B1
+sample,많고 적음,레벨1,A2
+several,많고 적음,레벨1,A2
+slight,많고 적음,레벨2,B1
+spare,많고 적음,레벨2,B2
+stuff,많고 적음,레벨1,A2
+sum,많고 적음,레벨1,A1
+total,많고 적음,레벨2,B1
+annual,시간과 때,레벨2,B1
+calendar,시간과 때,레벨1,A2
+century,시간과 때,레벨1,A2
+constant,시간과 때,레벨2,B2
+continue,시간과 때,레벨1,A2
+delay,시간과 때,레벨1,A2
+due,시간과 때,레벨1,A1
+event,시간과 때,레벨1,A1
+forever,시간과 때,레벨1,A2
+immediate,시간과 때,레벨2,B1
+instant,시간과 때,레벨1,A2
+minute,시간과 때,레벨1,A1
+nowadays,시간과 때,레벨1,A2
+occasion,시간과 때,레벨2,B1
+once,시간과 때,레벨1,A1
+past,시간과 때,레벨1,A1
+pause,시간과 때,레벨2,B1
+period,시간과 때,레벨1,A1
+previous,시간과 때,레벨2,B1
+rapid,시간과 때,레벨2,B1
+recent,시간과 때,레벨1,A2
+remain,시간과 때,레벨1,A2
+soon,시간과 때,레벨1,A1
+still,시간과 때,레벨1,A1
+sudden,시간과 때,레벨1,A2
+term,시간과 때,레벨2,B1
+yet,시간과 때,레벨1,A1
+billion,수와 셈,레벨2,B2
+calculate,수와 셈,레벨2,B1
+count,수와 셈,레벨1,A2
+degree,수와 셈,레벨1,A2
+dozen,수와 셈,레벨2,B1
+half,수와 셈,레벨1,A1
+level,수와 셈,레벨1,A2
+per,수와 셈,레벨2,B1
+quarter,수와 셈,레벨1,A1
+rate,수와 셈,레벨1,A2
+series,수와 셈,레벨2,B1
+thousand,수와 셈,레벨1,A2
+weigh,수와 셈,레벨1,A2
+zero,수와 셈,레벨1,미수록|로부장수기
+although,자리와 방향,레벨1,A2
+among,자리와 방향,레벨1,A2
+apart,자리와 방향,레벨1,A2
+aside,자리와 방향,레벨2,B1
+beneath,자리와 방향,레벨2,B1
+beyond,자리와 방향,레벨1,A2
+distance,자리와 방향,레벨2,B1
+forth,자리와 방향,레벨2,B1
+forward,자리와 방향,레벨1,A2
+internal,자리와 방향,레벨2,B1
+local,자리와 방향,레벨1,A2
+since,자리와 방향,레벨1,A2
+straight,자리와 방향,레벨1,A1
+surround,자리와 방향,레벨2,B1
+through,자리와 방향,레벨1,A1
+till,자리와 방향,레벨1,A2
+toward,자리와 방향,레벨1,미수록|로부장수기
+unless,자리와 방향,레벨2,B1
+until,자리와 방향,레벨1,A1
+upon,자리와 방향,레벨1,A2
+upper,자리와 방향,레벨2,B1
+whether,자리와 방향,레벨2,B1
+while,자리와 방향,레벨1,A2
+within,자리와 방향,레벨1,A2
+without,자리와 방향,레벨1,A2
+alive,몸과 마음의 상태,레벨1,A2
+asleep,몸과 마음의 상태,레벨1,A2
+awake,몸과 마음의 상태,레벨1,A1
+aware,몸과 마음의 상태,레벨2,B1
+drug,몸과 마음의 상태,레벨1,A2
+emotion,몸과 마음의 상태,레벨2,B1
+exhaust,몸과 마음의 상태,레벨2,B2
+exist,몸과 마음의 상태,레벨1,A2
+faint,몸과 마음의 상태,레벨2,B1
+fever,몸과 마음의 상태,레벨1,A1
+health,몸과 마음의 상태,레벨1,A1
+hurt,몸과 마음의 상태,레벨1,A1
+ill,몸과 마음의 상태,레벨1,A2
+injure,몸과 마음의 상태,레벨1,A2
+medical,몸과 마음의 상태,레벨1,A2
+medicine,몸과 마음의 상태,레벨1,A1
+mental,몸과 마음의 상태,레벨2,B1
+mood,몸과 마음의 상태,레벨1,A2
+pain,몸과 마음의 상태,레벨2,B1
+patient,몸과 마음의 상태,레벨1,A2
+physical,몸과 마음의 상태,레벨1,A2
+poison,몸과 마음의 상태,레벨2,B1
+pregnant,몸과 마음의 상태,레벨2,B1
+presence,몸과 마음의 상태,레벨2,B1
+rest,몸과 마음의 상태,레벨2,B1
+self,몸과 마음의 상태,레벨1,A1
+sense,몸과 마음의 상태,레벨1,A2
+soul,몸과 마음의 상태,레벨2,B1
+spirit,몸과 마음의 상태,레벨2,B1
+suffer,몸과 마음의 상태,레벨2,B1
+weak,몸과 마음의 상태,레벨1,A2
+wound,몸과 마음의 상태,레벨2,B1
+achieve,일의 결과,레벨1,A2
+affect,일의 결과,레벨2,B1
+cause,일의 결과,레벨1,A2
+effect,일의 결과,레벨1,A2
+expect,일의 결과,레벨1,A2
+factor,일의 결과,레벨2,B2
+function,일의 결과,레벨1,A2
+happen,일의 결과,레벨1,A1
+influence,일의 결과,레벨1,A2
+intend,일의 결과,레벨2,B1
+intent,일의 결과,레벨2,B2
+matter,일의 결과,레벨1,A1
+mission,일의 결과,레벨2,B1
+obvious,일의 결과,레벨2,B1
+occur,일의 결과,레벨2,B1
+potential,일의 결과,레벨2,B1
+purpose,일의 결과,레벨1,A2
+result,일의 결과,레벨1,A1
+role,일의 결과,레벨1,A1
+succeed,일의 결과,레벨1,A2
+success,일의 결과,레벨1,A2
+demonstrate,드러남과 감춤,레벨2,B1
+detail,드러남과 감춤,레벨1,A2
+display,드러남과 감춤,레벨1,A2
+expose,드러남과 감춤,레벨2,B1
+feature,드러남과 감춤,레벨1,A2
+hide,드러남과 감춤,레벨1,A1
+illustrate,드러남과 감춤,레벨2,B2
+indicate,드러남과 감춤,레벨1,A2
+mark,드러남과 감춤,레벨1,A2
+secret,드러남과 감춤,레벨1,A2
+seem,드러남과 감춤,레벨1,A2
+sign,드러남과 감춤,레벨1,A1
+bunch,모임과 흩어짐,레벨2,B1
+gather,모임과 흩어짐,레벨1,A2
+release,모임과 흩어짐,레벨1,A2
+unite,모임과 흩어짐,레벨2,B1
+background,세상 물정,레벨1,A2
+circumstance,세상 물정,레벨2,B2
+domestic,세상 물정,레벨2,B2
+fashion,세상 물정,레벨1,A2
+foreign,세상 물정,레벨1,A1
+modern,세상 물정,레벨1,A2
+ordinary,세상 물정,레벨2,B1
+popular,세상 물정,레벨1,A2
+situate,세상 물정,레벨2,미수록|로부장수기
+social,세상 물정,레벨1,A1
+stage,세상 물정,레벨1,A1
+state,세상 물정,레벨1,A2
+structure,세상 물정,레벨1,A2
+system,세상 물정,레벨1,A2
+tradition,세상 물정,레벨1,A2
+version,세상 물정,레벨2,B2
+view,세상 물정,레벨1,A2
+vision,세상 물정,레벨2,B1
+band,소리와 음악,레벨1,A1
+bang,소리와 음악,레벨2,B1
+boom,소리와 음악,레벨2,B1
+concert,소리와 음악,레벨1,A1
+loud,소리와 음악,레벨2,B1
+noise,소리와 음악,레벨1,A1
+pop,소리와 음악,레벨1,A1
+tone,소리와 음악,레벨1,A2
+tune,소리와 음악,레벨1,A2
+whistle,소리와 음악,레벨2,B1
+champion,운동과 겨루기,레벨2,B1
+contest,운동과 겨루기,레벨1,A1
+golf,운동과 겨루기,레벨1,A2
+league,운동과 겨루기,레벨2,B1
+purple,색과 빛,레벨1,A1
+cast,성과 왕궁,레벨2,B2
+castle,성과 왕궁,레벨1,A2
+crown,성과 왕궁,레벨1,A2
+flag,성과 왕궁,레벨1,A1
+royal,성과 왕궁,레벨1,A2
+character,사람 성격,레벨1,A1
+charm,사람 성격,레벨2,B1
+cute,사람 성격,레벨1,A1
+gentle,사람 성격,레벨1,A2
+handsome,사람 성격,레벨1,A1
+polite,사람 성격,레벨1,A2
+serious,사람 성격,레벨2,B1
+sex,사람 성격,레벨2,B1
+smart,사람 성격,레벨1,A1
+teenage,사람 성격,레벨1,A2
+wise,사람 성격,레벨1,A2
+accident,사고와 위험,레벨1,A2
+alarm,사고와 위험,레벨1,A2
+ambulance,사고와 위험,레벨2,B1
+avoid,사고와 위험,레벨1,A2
+crisis,사고와 위험,레벨2,B1
+prevent,사고와 위험,레벨1,A2
+secure,사고와 위험,레벨2,B1
+warn,사고와 위험,레벨2,B1
+accent,알리고 밝히기,레벨2,B1
+admit,알리고 밝히기,레벨1,A2
+announce,알리고 밝히기,레벨2,B1
+comment,알리고 밝히기,레벨2,B1
+describe,알리고 밝히기,레벨1,A1
+emphasize,알리고 밝히기,레벨2,미수록|로부장수기
+explain,알리고 밝히기,레벨1,A2
+express,알리고 밝히기,레벨1,A2
+frankly,알리고 밝히기,레벨2,B2
+inform,알리고 밝히기,레벨2,B1
+mention,알리고 밝히기,레벨1,A2
+pronounce,알리고 밝히기,레벨1,A2
+quote,알리고 밝히기,레벨2,B2
+refer,알리고 밝히기,레벨1,A2
+remark,알리고 밝히기,레벨2,B1
+report,알리고 밝히기,레벨1,A2
+represent,알리고 밝히기,레벨1,A2
+argue,따지고 다투기,레벨1,A2
+claim,따지고 다투기,레벨1,A2
+complain,따지고 다투기,레벨1,A2
+convince,따지고 다투기,레벨2,B1
+debate,따지고 다투기,레벨1,A2
+deny,따지고 다투기,레벨2,B1
+insist,따지고 다투기,레벨2,B1
+advice,묻고 부탁하기,레벨1,A2
+advise,묻고 부탁하기,레벨1,A2
+beg,묻고 부탁하기,레벨1,A2
+excuse,묻고 부탁하기,레벨1,A1
+greet,묻고 부탁하기,레벨1,A1
+hint,묻고 부탁하기,레벨2,B2
+pardon,묻고 부탁하기,레벨1,A1
+promise,묻고 부탁하기,레벨1,A2
+propose,묻고 부탁하기,레벨2,B1
+recommend,묻고 부탁하기,레벨2,B1
+request,묻고 부탁하기,레벨1,A2
+require,묻고 부탁하기,레벨2,B1
+suggest,묻고 부탁하기,레벨1,A2
+aloud,소리내어 말하기,레벨2,B1
+chat,소리내어 말하기,레벨1,A2
+command,소리내어 말하기,레벨2,B1
+communicate,소리내어 말하기,레벨1,A2
+converse,소리내어 말하기,레벨2,B2
+instruct,소리내어 말하기,레벨2,B2
+interrupt,소리내어 말하기,레벨2,B1
+joke,소리내어 말하기,레벨1,A2
+message,소리내어 말하기,레벨1,A1
+paragraph,소리내어 말하기,레벨1,A1
+pray,소리내어 말하기,레벨1,A1
+pretend,소리내어 말하기,레벨1,A2
+reply,소리내어 말하기,레벨1,A2
+respond,소리내어 말하기,레벨2,B1
+scream,소리내어 말하기,레벨1,A2
+sentence,소리내어 말하기,레벨1,A1
+shout,소리내어 말하기,레벨1,A2
+speech,소리내어 말하기,레벨1,A1
+tale,소리내어 말하기,레벨2,B1
+tip,소리내어 말하기,레벨1,A2
+whisper,소리내어 말하기,레벨2,B1
+yell,소리내어 말하기,레벨2,B1
+altogether,이음말,레벨2,B1
+despite,이음말,레벨2,B1
+either,이음말,레벨1,A1
+even,이음말,레벨1,A2
+except,이음말,레벨1,A2
+instead,이음말,레벨1,A2
+let,이음말,레벨1,A1
+moreover,이음말,레벨2,B1
+neither,이음말,레벨2,B2
+nor,이음말,레벨2,B1
+otherwise,이음말,레벨2,B1
+ought,이음말,레벨2,미수록|로부장수기
+rather,이음말,레벨1,A2
+shall,이음말,레벨1,A2
+then,이음말,레벨1,A1
+therefore,이음말,레벨1,A2
+though,이음말,레벨1,A2
+thus,이음말,레벨2,B1
+which,이음말,레벨1,A1
+whole,이음말,레벨1,A2
+would,이음말,레벨1,A1
+access,정도와 범위말,레벨2,B1
+account,정도와 범위말,레벨1,A2
+affair,정도와 범위말,레벨1,A2
+appeal,정도와 범위말,레벨2,B1
+basis,정도와 범위말,레벨2,B1
+brief,정도와 범위말,레벨2,B1
+characteristic,정도와 범위말,레벨2,B1
+common,정도와 범위말,레벨1,A2
+conscious,정도와 범위말,레벨2,B1
+content,정도와 범위말,레벨2,B1
+each,정도와 범위말,레벨1,A1
+else,정도와 범위말,레벨1,A1
+especial,정도와 범위말,레벨2,미수록|로부장수기
+ever,정도와 범위말,레벨1,A2
+exact,정도와 범위말,레벨2,B1
+final,정도와 범위말,레벨1,A2
+general,정도와 범위말,레벨2,B1
+indeed,정도와 범위말,레벨1,A2
+instance,정도와 범위말,레벨2,B1
+interest,정도와 범위말,레벨1,A2
+item,정도와 범위말,레벨1,A1
+main,정도와 범위말,레벨2,B1
+manner,정도와 범위말,레벨1,A2
+maybe,정도와 범위말,레벨1,A1
+mean,정도와 범위말,레벨1,A1
+nowhere,정도와 범위말,레벨2,B1
+other,정도와 범위말,레벨1,A1
+overall,정도와 범위말,레벨2,B2
+particular,정도와 범위말,레벨2,B2
+perhaps,정도와 범위말,레벨1,A2
+plus,정도와 범위말,레벨1,A2
+possible,정도와 범위말,레벨1,A2
+probable,정도와 범위말,레벨2,B2
+section,정도와 범위말,레벨1,A1
+session,정도와 범위말,레벨2,B1
+somewhat,정도와 범위말,레벨2,B2
+such,정도와 범위말,레벨1,A2
+various,정도와 범위말,레벨2,B1
+grab,손으로 하는 것,레벨2,B1
+knock,손으로 하는 것,레벨1,A2
+lift,손으로 하는 것,레벨2,B1
+load,손으로 하는 것,레벨1,A2
+pack,손으로 하는 것,레벨1,A2
+pitch,손으로 하는 것,레벨2,B2
+press,손으로 하는 것,레벨2,B1
+pull,손으로 하는 것,레벨1,A2
+punch,손으로 하는 것,레벨2,B2
+rub,손으로 하는 것,레벨2,B2
+scratch,손으로 하는 것,레벨2,B1
+stir,손으로 하는 것,레벨2,B1
+sweep,손으로 하는 것,레벨2,B2
+throw,손으로 하는 것,레벨1,A1
+tie,손으로 하는 것,레벨1,A2
+twist,손으로 하는 것,레벨2,B1
+wipe,손으로 하는 것,레벨2,B2
+wrap,손으로 하는 것,레벨2,B1
+bite,몸 전체로 하는 것,레벨1,A2
+bounce,몸 전체로 하는 것,레벨2,B1
+bow,몸 전체로 하는 것,레벨2,B1
+bump,몸 전체로 하는 것,레벨2,B1
+chase,몸 전체로 하는 것,레벨2,B1
+crawl,몸 전체로 하는 것,레벨2,B2
+dig,몸 전체로 하는 것,레벨1,A1
+drag,몸 전체로 하는 것,레벨2,B1
+gesture,몸 전체로 하는 것,레벨2,B1
+hug,몸 전체로 하는 것,레벨1,A2
+lay,몸 전체로 하는 것,레벨2,B1
+lean,몸 전체로 하는 것,레벨2,B1
+leap,몸 전체로 하는 것,레벨2,B1
+motion,몸 전체로 하는 것,레벨2,B2
+raise,몸 전체로 하는 것,레벨1,A2
+roll,몸 전체로 하는 것,레벨1,A2
+rush,몸 전체로 하는 것,레벨1,A2
+shake,몸 전체로 하는 것,레벨1,A1
+shoot,몸 전체로 하는 것,레벨1,A2
+slide,몸 전체로 하는 것,레벨1,A2
+slip,몸 전체로 하는 것,레벨2,B1
+spin,몸 전체로 하는 것,레벨2,B2
+step,몸 전체로 하는 것,레벨1,A1
+stretch,몸 전체로 하는 것,레벨2,B1
+swing,몸 전체로 하는 것,레벨2,B2
+bury,닫고 파묻기,레벨1,A2
+shut,닫고 파묻기,레벨1,A2
+spread,닫고 파묻기,레벨1,A2
+trap,닫고 파묻기,레벨1,A2
+bacon,먹을 것,레벨2,B1
+bean,먹을 것,레벨1,A1
+bitter,먹을 것,레벨2,B1
+chip,먹을 것,레벨2,B2
+crisp,먹을 것,레벨1,A2
+diet,먹을 것,레벨1,A2
+honey,먹을 것,레벨1,A2
+hunger,먹을 것,레벨2,B1
+lemon,먹을 것,레벨1,A2
+meal,먹을 것,레벨1,A1
+melon,먹을 것,레벨1,A2
+mushroom,먹을 것,레벨1,A2
+nut,먹을 것,레벨2,B2
+pear,먹을 것,레벨1,A2
+pepper,먹을 것,레벨1,A2
+pie,먹을 것,레벨2,B1
+pork,먹을 것,레벨2,B1
+powder,먹을 것,레벨2,B1
+rice,먹을 것,레벨1,A1
+snack,먹을 것,레벨1,A2
+sour,먹을 것,레벨2,B1
+strawberry,먹을 것,레벨2,B1
+supper,먹을 것,레벨1,A2
+sweet,먹을 것,레벨1,A1
+toast,먹을 것,레벨1,A2
+alcohol,부엌과 조리,레벨2,B1
+beer,부엌과 조리,레벨1,A2
+boil,부엌과 조리,레벨1,A2
+bowl,부엌과 조리,레벨1,A1
+chop,부엌과 조리,레벨2,B2
+cigarette,부엌과 조리,레벨1,A2
+consume,부엌과 조리,레벨2,B1
+dish,부엌과 조리,레벨1,A1
+fry,부엌과 조리,레벨1,A2
+grocery,부엌과 조리,레벨1,미수록|로부장수기
+menu,부엌과 조리,레벨1,A2
+mix,부엌과 조리,레벨1,A2
+pan,부엌과 조리,레벨1,A2
+plate,부엌과 조리,레벨1,A2
+pot,부엌과 조리,레벨2,B1
+pour,부엌과 조리,레벨1,A2
+recipe,부엌과 조리,레벨2,B2
+sauce,부엌과 조리,레벨1,A2
+tea,부엌과 조리,레벨1,A1
+afford,돈,레벨2,B1
+budget,돈,레벨1,A2
+charge,돈,레벨2,B1
+coin,돈,레벨1,A2
+credit,돈,레벨1,A2
+debt,돈,레벨2,B1
+earn,돈,레벨1,A2
+economy,돈,레벨2,B1
+estimate,돈,레벨2,B1
+expense,돈,레벨2,B1
+fee,돈,레벨1,A2
+finance,돈,레벨2,B1
+fund,돈,레벨2,B1
+income,돈,레벨2,B1
+insure,돈,레벨2,B1
+loan,돈,레벨2,B2
+loss,돈,레벨2,B1
+price,돈,레벨1,A1
+profit,돈,레벨2,B2
+salary,돈,레벨2,B2
+spend,돈,레벨1,A1
+tax,돈,레벨2,B1
+value,돈,레벨1,A2
+wage,돈,레벨2,B2
+worth,돈,레벨2,B1
+advertise,사고팔기,레벨2,B1
+award,사고팔기,레벨1,A2
+bet,사고팔기,레벨2,B1
+brand,사고팔기,레벨1,A2
+commerce,사고팔기,레벨2,B2
+contract,사고팔기,레벨2,B2
+demand,사고팔기,레벨2,B1
+grant,사고팔기,레벨2,B1
+guarantee,사고팔기,레벨2,B1
+invest,사고팔기,레벨2,B1
+prize,사고팔기,레벨2,B1
+property,사고팔기,레벨2,B1
+purchase,사고팔기,레벨2,B2
+rent,사고팔기,레벨1,A2
+sponsor,사고팔기,레벨2,B1
+stock,사고팔기,레벨2,B2
+supply,사고팔기,레벨2,B1
+trade,사고팔기,레벨1,A2
+waste,사고팔기,레벨2,B1
+brick,집의 구조,레벨2,B1
+ceiling,집의 구조,레벨2,B2
+cottage,집의 구조,레벨2,B2
+fence,집의 구조,레벨1,A2
+frame,집의 구조,레벨1,A2
+garage,집의 구조,레벨1,A2
+livingroom,집의 구조,레벨1,미수록|로부장수기
+roof,집의 구조,레벨1,A2
+shelf,집의 구조,레벨1,A1
+shower,집의 구조,레벨1,A1
+stairs,집의 구조,레벨1,미수록|로부장수기
+toilet,집의 구조,레벨1,A1
+villa,집의 구조,레벨2,B2
+bar,살림 도구,레벨1,A1
+bench,살림 도구,레벨1,A2
+bin,살림 도구,레벨2,B1
+blanket,살림 도구,레벨1,A2
+boot,살림 도구,레벨2,B1
+cable,살림 도구,레벨2,B2
+carpet,살림 도구,레벨2,B1
+chain,살림 도구,레벨1,A2
+clip,살림 도구,레벨2,B1
+dump,살림 도구,레벨2,B1
+furniture,살림 도구,레벨1,A2
+iron,살림 도구,레벨2,B1
+lamp,살림 도구,레벨1,A2
+lid,살림 도구,레벨2,B2
+lock,살림 도구,레벨1,A2
+mess,살림 도구,레벨2,B1
+microwave,살림 도구,레벨2,B2
+mirror,살림 도구,레벨1,A2
+oven,살림 도구,레벨1,A2
+pin,살림 도구,레벨2,B1
+pipe,살림 도구,레벨2,B1
+rope,살림 도구,레벨1,A2
+sheet,살림 도구,레벨2,B1
+string,살림 도구,레벨1,A2
+tank,살림 도구,레벨2,B1
+tap,살림 도구,레벨1,A2
+towel,살림 도구,레벨1,A1
+tray,살림 도구,레벨2,B2
+wire,살림 도구,레벨2,B1
+capital,도시의 건물,레벨1,A2
+cinema,도시의 건물,레벨1,A1
+hall,도시의 건물,레벨1,A1
+hotel,도시의 건물,레벨1,A1
+museum,도시의 건물,레벨1,A2
+opera,도시의 건물,레벨1,A1
+palace,도시의 건물,레벨1,A1
+post,도시의 건물,레벨1,A1
+prison,도시의 건물,레벨2,B1
+pub,도시의 건물,레벨2,B1
+station,도시의 건물,레벨1,A1
+studio,도시의 건물,레벨2,B1
+theater,도시의 건물,레벨1,미수록|로부장수기
+university,도시의 건물,레벨1,A2
+village,도시의 건물,레벨1,A2
+airline,타고 가기,레벨2,B1
+airport,타고 가기,레벨1,A1
+brake,타고 가기,레벨1,A2
+cart,타고 가기,레벨1,미수록|로부장수기
+cycle,타고 가기,레벨2,B1
+engine,타고 가기,레벨2,B1
+exit,타고 가기,레벨2,B1
+flight,타고 가기,레벨1,A2
+gate,타고 가기,레벨1,A2
+gear,타고 가기,레벨2,B2
+guide,타고 가기,레벨2,B1
+helicopter,타고 가기,레벨2,B2
+journey,타고 가기,레벨1,A2
+motor,타고 가기,레벨2,B1
+parade,타고 가기,레벨2,B2
+picnic,타고 가기,레벨1,A1
+plane,타고 가기,레벨1,A1
+rail,타고 가기,레벨2,B1
+ride,타고 가기,레벨1,A1
+rocket,타고 가기,레벨2,B2
+seat,타고 가기,레벨1,A1
+tour,타고 가기,레벨1,A2
+traffic,타고 가기,레벨1,A2
+transport,타고 가기,레벨2,B1
+van,타고 가기,레벨2,B1
+vehicle,타고 가기,레벨2,B1
+wheel,타고 가기,레벨1,A1
+kettle,부엌과 조리,레벨1,수기|로부장 (cigarette 대체 2026-08-01 대표님 지시)
+confident,사람 성격,레벨2,수기|로부장 (sex 대체 2026-08-01 대표님 지시)
