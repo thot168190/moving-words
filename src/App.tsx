@@ -419,19 +419,19 @@ function LandingPage() {
       </section>
 
       {/* 보는 단어장의 핵심인 '눈앞에서 그려지는 경험'을 기능 카드와 함께 소개합니다. */}
-      <section id="course" className="bg-[#EFF5F1] border-t border-[#dcebe5] px-4 py-8 sm:px-6 sm:py-12">
+      <section id="course" className="bg-[#FFFFFF] border-t border-[#eaf2ee] px-6 py-20 sm:py-24">
         <div className="max-w-6xl mx-auto">
-          <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-4 font-black">INKWORD</p>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6 sm:mb-8">
-            <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18]" style={{ fontSize: 'clamp(34px, 5vw, 64px)' }}>
+          <div className="text-center mx-auto max-w-3xl pt-8 pb-12 sm:pt-12 sm:pb-16">
+            <p className="text-[#c94f3d] text-[13px] tracking-[0.2em] uppercase mb-3 font-black">INKWORD</p>
+            <h2 className="text-[#07533f] font-gmarket font-black tracking-[-0.035em] leading-[1.18] mb-3" style={{ fontSize: 'clamp(34px, 5vw, 60px)' }}>
               외우지 말고, 보세요.
             </h2>
-            <p className="max-w-md text-[#45665d] text-[18px] sm:text-[21px] font-bold leading-relaxed">
+            <p className="text-[#45665d] text-[18px] sm:text-[22px] font-bold leading-relaxed">
               눈앞에서 그려지는 단어장.
             </p>
           </div>
 
-          <div className="mx-auto grid max-w-3xl grid-cols-2 gap-3 sm:gap-4">
+          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-3 sm:gap-6">
             {[
               ['01', '움직이는 그림 학습', 'LEARN', '/feature-cards/sailing.webp', 'sailing'],
               ['02', '거꾸로 퀴즈', 'PLAY', '/feature-cards/treasure.webp', 'treasure'],
@@ -446,7 +446,7 @@ function LandingPage() {
                 transition={{ duration: 0.55, delay: index * 0.08 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className={`feature-card-art feature-${effect} relative aspect-[16/7.5] overflow-hidden bg-white`}>
+                <div className={`feature-card-art feature-${effect} relative aspect-[3/2] overflow-hidden bg-white`}>
                   <img src={image} alt={`${title} 실제 화면`} className="feature-card-image h-full w-full object-cover" />
                   {effect === 'sailing' && (
                     <video
