@@ -301,7 +301,8 @@
 
   <script src="image-lab-config.js"></script>
   <script>
-        let currentChapterId = 1;
+    let isPaid = false;
+    let currentChapterId = 1;
     let works = [];
     let levelOneWords = [];
     let levelTwoWords = [];
@@ -432,7 +433,15 @@
       levelOneSpots = data.levelOneSpots;
       
       const FREE_SCENES=3;
-      works.forEach((w,i)=>{const lock=i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock;});
+      works.forEach((w,i)=>{
+        let lock = false;
+        if (!isPaid) {
+          if (currentChapterId === 1) lock = i >= FREE_SCENES;
+          else lock = true;
+        }
+        w.locked=lock;
+        w.needsPurchase=lock;
+      });
       
       setupWorks();
       activeWork = works[0];
@@ -464,7 +473,7 @@
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
     const chapterSpots=[[24.3,25.4],[13.4,44.7],[31.2,44.4],[26.1,70.3],[48.4,22.6],[45.3,41.7],[59.8,48.3],[52.4,70.6],[77.8,20.9],[73.6,38.2],[86.8,50.3],[78.6,70.4]];
     const chapterGrid=document.getElementById('chapterGrid');
-    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${[0,2,3].includes(i)?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${[0,2,3].includes(i)?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${[0].includes(i)?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${[0].includes(i)?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
     const shelf=document.getElementById('shelf');
 
 
@@ -664,7 +673,7 @@
     function leaveChapter(){homePlayerAnchor.after(welcomeEl,viewerLayout);chapterDetail.classList.remove('active');homeView.classList.remove('hidden');setTimeout(()=>document.getElementById('chapterMap').scrollIntoView({behavior:'smooth'}),20)}
     document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{
       const ch = Number(card.dataset.chapter);
-      if([1,2,3,4].includes(ch)){
+      if([1,2,3].includes(ch)){
         loadChapter(ch);
         const chapterTitle = chapters[ch-1]; document.getElementById('chapterDetail').querySelector('.section-head h2').textContent = `챕터 ${ch} · ${chapterTitle}`;
         enterChapter();
@@ -833,10 +842,36 @@
       if(accountMark)accountMark.textContent=accountName.slice(0,1).toUpperCase();
 
       // ── 결제 게이팅 ── 미구매 계정은 무료 장면 이후를 잠근다
-      const paid=event.data.paid===true;
+      isPaid=event.data.paid===true;
       const FREE_SCENES=3;
-      works.forEach((w,i)=>{const lock=!paid&&i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock});
+      works.forEach((w,i)=>{
+        let lock = false;
+        if (!isPaid) {
+          if (currentChapterId === 1) lock = i >= FREE_SCENES;
+          else lock = true;
+        }
+        w.locked=lock;
+        w.needsPurchase=lock;
+      });
       document.querySelectorAll('.work').forEach(el=>{const w=works[Number(el.dataset.index)];el.classList.toggle('locked',!!w.locked)});
+      
+      document.querySelectorAll('.chapter-card').forEach((card, i) => {
+        if (isPaid || i === 0) {
+          card.classList.remove('locked-chapter');
+          card.classList.add('open');
+          const key = card.querySelector('.key');
+          if(key) key.remove();
+        } else {
+          card.classList.add('locked-chapter');
+          card.classList.remove('open');
+          if(!card.querySelector('.key')) {
+            const key = document.createElement('i');
+            key.className = 'key';
+            key.setAttribute('aria-hidden', 'true');
+            card.insertBefore(key, card.querySelector('h3'));
+          }
+        }
+      });
       const gateBadge=document.getElementById('gateBadge');
       if(gateBadge)gateBadge.style.display=paid?'none':'';
       const completedIds=Array.isArray(progress.completedSceneIds)?progress.completedSceneIds:[];
