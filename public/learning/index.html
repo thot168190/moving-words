@@ -674,6 +674,10 @@
     document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{
       const ch = Number(card.dataset.chapter);
       if([1,2,3].includes(ch)){
+        if (!isPaid && ch !== 1) {
+          openGate();
+          return;
+        }
         loadChapter(ch);
         const chapterTitle = chapters[ch-1]; document.getElementById('chapterDetail').querySelector('.section-head h2').textContent = `챕터 ${ch} · ${chapterTitle}`;
         enterChapter();
