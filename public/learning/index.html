@@ -604,7 +604,7 @@
       wordList.innerHTML=allWords.map(([en,ko])=>`<button class="word" type="button" data-word="${en}" aria-label="${en}, ${ko}, 발음 듣기"><strong>${en}</strong><em>${ko}</em></button>`).join('');
       wordList.querySelectorAll('.word').forEach(button=>{button.onclick=()=>speakWord(button.dataset.word,button)});
     }
-    let activeWork=works[0];renderWords(activeWork);
+    let activeWork; loadChapter(1);
     const playbackRates=[1,1.5,2];let playbackRateIndex=0;
     speedBtn.onclick=()=>{
       playbackRateIndex=(playbackRateIndex+1)%playbackRates.length;
