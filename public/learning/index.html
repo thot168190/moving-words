@@ -426,7 +426,7 @@
       sceneSpots = data.sceneSpots;
       levelOneSpots = data.levelOneSpots;
       
-      const FREE_SCENES=3;
+      const FREE_SCENES=5;
       works.forEach((w,i)=>{const lock=i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock;});
       
       setupWorks();
@@ -461,7 +461,6 @@
     const chapterGrid=document.getElementById('chapterGrid');
     chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${[0,2,3].includes(i)?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${[0,2,3].includes(i)?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
     const shelf=document.getElementById('shelf');
-    shelf.innerHTML=works.map((w,i)=>`<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${i}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · 8 WORDS</small><h3>${w.title}</h3><p>${w.sub}</p></div></button>`).join('');
 
 
     const viewer=document.getElementById('viewer'),mainVideo=document.getElementById('mainVideo'),mainPoster=document.getElementById('mainPoster'),playBtn=document.getElementById('playBtn'),speedBtn=document.getElementById('speedBtn'),resumeBtn=document.getElementById('resumeBtn'),soundBtn=document.getElementById('soundBtn'),fill=document.getElementById('timelineFill'),timeText=document.getElementById('timeText'),wordList=document.getElementById('wordList'),wordOverlay=document.getElementById('wordOverlay');
@@ -640,7 +639,7 @@
     let previews=true;
     // 로그인 계정에서 불러온 챕터 1 완료 장면 수입니다.
     let completedSceneCount=0;
-    function setupWorks() { document.querySelectorAll('.work').forEach(el=>{
+    function setupWorks() { shelf.innerHTML=works.map((w,i)=>`<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${i}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · 8 WORDS</small><h3>${w.title}</h3><p>${w.sub}</p></div></button>`).join(''); document.querySelectorAll('.work').forEach(el=>{
       const w=works[Number(el.dataset.index)],pv=el.querySelector('video');
       el.addEventListener('mouseenter',()=>{if(previews&&!w.locked&&matchMedia('(hover:hover)').matches)pv.play().catch(()=>{})});
       el.onmouseleave=()=>{pv.pause();pv.currentTime=0};
@@ -830,7 +829,7 @@
 
       // ── 결제 게이팅 ── 미구매 계정은 무료 장면 이후를 잠근다
       const paid=event.data.paid===true;
-      const FREE_SCENES=3;
+      const FREE_SCENES=5;
       works.forEach((w,i)=>{const lock=!paid&&i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock});
       document.querySelectorAll('.work').forEach(el=>{const w=works[Number(el.dataset.index)];el.classList.toggle('locked',!!w.locked)});
       const gateBadge=document.getElementById('gateBadge');
