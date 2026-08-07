@@ -301,15 +301,144 @@
 
   <script src="image-lab-config.js"></script>
   <script>
-    const works=[
-      {n:'01',title:'빛을 보내는 등대',sub:'해안에서 보내는 첫 신호',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',current:true,words:[['tower','탑'],['island','섬'],['shine','빛나다'],['warn','경고하다'],['cliff','절벽'],['shore','물가'],['guide','안내하다'],['flash','번쩍임']]},
-      {n:'02',title:'바람을 타는 범선',sub:'수평선을 향해 떠나다',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['sail','돛'],['deck','갑판'],['rope','밧줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다'],['port','항구'],['navy','해군']]},
-      {n:'03',title:'돌고래가 따라오는 배',sub:'은빛 바다 위 도약',video:'챕터1_완성동영상/scene-ch1-09.mp4',img:'챕터1_완성동영상/scene-ch1-09-poster.jpg',words:[['dolphin','돌고래'],['follow','따라오다'],['leap','도약하다'],['calm','고요한'],['float','떠 있다'],['reflect','비추다'],['silver','은빛'],['distance','먼 거리']]},
-      {n:'04',title:'고래와 깊은 바다',sub:'깊은 바다에서 만난 것',video:'챕터1_완성동영상/scene-ch1-09.mp4',img:'챕터1_완성동영상/scene-ch1-09-poster.jpg',words:[['whale','고래'],['ocean','대양'],['wave','파도'],['surface','수면'],['rise','솟아오르다'],['dive','잠수하다'],['spray','물보라'],['bubble','거품']]},
-      {n:'05',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 마지막 깊이',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['shell','조개껍데기'],['seal','물범'],['tide','조수'],['current','해류'],['stream','물줄기'],['sink','가라앉다'],['cage','케이지'],['shadow','그림자']]}
-    ];
-    const FREE_SCENES=3;
-    works.forEach((w,i)=>{const lock=i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock;});
+        let currentChapterId = 1;
+    let works = [];
+    let levelOneWords = [];
+    let levelTwoWords = [];
+    let sceneSpots = [];
+    let levelOneSpots = [];
+    
+    const chapterData = {
+      2: {
+        works: [
+          {n:'01',title:'참나무 아래 초원',sub:'생명이 시작되는 곳',video:'챕터2_완성동영상/Oak_tree_in_meadow_202608061427.mp4',img:'',current:true,words:[['tree','나무'],['leaf','나뭇잎'],['grass','풀'],['root','뿌리'],['branch','나뭇가지'],['seed','씨앗'],['soil','흙'],['bark','나무껍질']]},
+          {n:'02',title:'평원의 기린과 얼룩말',sub:'더불어 사는 동물들',video:'챕터2_완성동영상/Giraffe_and_zebras_on_plain_202608061431.mp4',img:'',words:[['animal','동물'],['herd','무리'],['tail','꼬리'],['neck','목'],['spot','점'],['stripe','줄무늬'],['plain','평원'],['graze','풀을 뜯다']]},
+          {n:'03',title:'진흙 속 개구리',sub:'비 온 뒤의 풍경',video:'챕터2_완성동영상/Frog_leaps_from_mud_bank_202608061507.mp4',img:'',words:[['frog','개구리'],['jump','뛰다'],['mud','진흙'],['bank','둑'],['pond','연못'],['insect','곤충'],['catch','잡다'],['hide','숨다']]}
+        ],
+        levelOneWords: [
+          [['tree','나무'],['leaf','나뭇잎'],['grass','풀'],['root','뿌리']],
+          [['animal','동물'],['herd','무리'],['tail','꼬리'],['neck','목']],
+          [['frog','개구리'],['jump','뛰다'],['mud','진흙'],['bank','둑']]
+        ],
+        levelTwoWords: [
+          [['branch','나뭇가지'],['seed','씨앗'],['soil','흙'],['bark','나무껍질']],
+          [['spot','점'],['stripe','줄무늬'],['plain','평원'],['graze','풀을 뜯다']],
+          [['pond','연못'],['insect','곤충'],['catch','잡다'],['hide','숨다']]
+        ],
+        sceneSpots: [
+          [[30,30],[70,30],[30,70],[70,70]],[[30,30],[70,30],[30,70],[70,70]],[[30,30],[70,30],[30,70],[70,70]]
+        ],
+        levelOneSpots: [
+          [[20,20],[80,20],[20,80],[80,80]],[[20,20],[80,20],[20,80],[80,80]],[[20,20],[80,20],[20,80],[80,80]]
+        ]
+      },
+      1: {
+        works: [
+          {n:'01',title:'빛을 보내는 등대',sub:'해안에서 보내는 첫 신호',video:'챕터1_완성동영상/scene-ch1-02.mp4',img:'챕터1_완성동영상/scene-ch1-02-poster.jpg',current:true,words:[['tower','탑'],['island','섬'],['shine','빛나다'],['warn','경고하다'],['cliff','절벽'],['shore','물가'],['guide','안내하다'],['flash','번쩍임']]},
+          {n:'02',title:'바람을 타는 범선',sub:'수평선을 향해 떠나다',video:'챕터1_완성동영상/scene-ch1-03.mp4',img:'챕터1_완성동영상/scene-ch1-03-poster.jpg',words:[['sail','돛'],['deck','갑판'],['rope','밧줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다'],['port','항구'],['navy','해군']]},
+          {n:'03',title:'고래와 깊은 바다',sub:'깊은 바다에서 만난 것',video:'챕터1_완성동영상/scene-ch1-01.mp4',img:'챕터1_완성동영상/scene-ch1-01-poster.jpg',hasHand:true,words:[['whale','고래'],['ocean','대양'],['wave','파도'],['surface','수면'],['rise','솟아오르다'],['dive','잠수하다'],['spray','물보라'],['bubble','거품']]},
+          {n:'04',title:'깊은 바다의 산호 협곡',sub:'빛이 닿는 마지막 깊이',video:'챕터1_완성동영상/scene-ch1-08.mp4',img:'챕터1_완성동영상/scene-ch1-08-poster.jpg',words:[['dolphin','돌고래'],['shell','조개껍데기'],['seal','물범'],['tide','조수'],['current','해류'],['stream','물줄기'],['sink','가라앉다'],['cage','케이지'],['shadow','그림자']]}
+        ],
+        levelOneWords: [
+          [['tower','탑'],['island','섬'],['shine','빛나다'],['shore','물가']],
+          [['rope','밧줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다']],
+          [['wave','파도']],
+          [['shell','조개껍데기'],['sink','가라앉다'],['shadow','그림자']]
+        ],
+        levelTwoWords: [
+          [['warn','경고하다'],['cliff','절벽'],['guide','안내하다'],['flash','번쩍임']],
+          [['sail','돛'],['deck','갑판'],['port','항구'],['navy','해군']],
+          [['whale','고래'],['ocean','대양'],['surface','수면'],['rise','솟아오르다'],['dive','잠수하다'],['spray','물보라'],['bubble','거품']],
+          [['seal','물범'],['tide','조수'],['current','해류'],['stream','물줄기'],['cage','케이지']]
+        ],
+        sceneSpots: [
+          [[67,36],[52,18],[57,66],[17,82]],
+          [[51,43],[50,14],[25,77],[82,79]],
+          [[53,68],[47,49],[50,29],[72,26]],
+          [[40,48],[28,42],[42,77],[72,25]]
+        ],
+        levelOneSpots: [
+          [[65,43],[79,79],[51,12],[15,43]],
+          [[55,40],[49,15],[18,27],[19,79]],
+          [[48,15],[38,48],[20,78],[76,40]],
+          [[42,51],[25,17],[75,22],[84,61]]
+        ]
+      },
+      3: {
+        works: [
+          {n:'01',title:'놀이공원 대관람차',sub:'빙글빙글 돌아가는 풍경',video:'챕터3_완성동영상/Ferris_wheel_animation_202608061947.mp4',img:'',current:true,words:[['wheel','바퀴'],['ride','타다'],['park','공원'],['spin','돌다'],['high','높은'],['view','전망'],['sky','하늘'],['fun','재미']]},
+          {n:'02',title:'물보라 롤러코스터',sub:'아찔한 스피드',video:'챕터3_완성동영상/Rollercoaster_drawing_with_water…_202608061527.mp4',img:'',words:[['track','트랙'],['speed','속도'],['scream','비명'],['drop','떨어지다'],['water','물'],['splash','물보라'],['fast','빠른'],['thrill','스릴']]},
+          {n:'03',title:'범퍼카 타는 아이들',sub:'쾅쾅 부딪히는 재미',video:'챕터3_완성동영상/Boy_and_girl_in_bumper_202608062001.mp4',img:'',words:[['car','자동차'],['bump','부딪히다'],['drive','운전하다'],['laugh','웃다'],['seat','좌석'],['steer','조종하다'],['crash','충돌'],['play','놀다']]}
+        ],
+        levelOneWords: [
+          [['wheel','바퀴'],['ride','타다'],['park','공원'],['spin','돌다']],
+          [['track','트랙'],['speed','속도'],['scream','비명'],['drop','떨어지다']],
+          [['car','자동차'],['bump','부딪히다'],['drive','운전하다'],['laugh','웃다']]
+        ],
+        levelTwoWords: [
+          [['high','높은'],['view','전망'],['sky','하늘'],['fun','재미']],
+          [['water','물'],['splash','물보라'],['fast','빠른'],['thrill','스릴']],
+          [['seat','좌석'],['steer','조종하다'],['crash','충돌'],['play','놀다']]
+        ],
+        sceneSpots: [
+          [[30,30],[70,30],[30,70],[70,70]],[[30,30],[70,30],[30,70],[70,70]],[[30,30],[70,30],[30,70],[70,70]]
+        ],
+        levelOneSpots: [
+          [[20,20],[80,20],[20,80],[80,80]],[[20,20],[80,20],[20,80],[80,80]],[[20,20],[80,20],[20,80],[80,80]]
+        ]
+      },
+      4: {
+        works: [
+          {n:'01',title:'자료실의 분류벽 (카드 목록장)',sub:'학교의 모든 기록',video:'챕터4_완성동영상/Pencil_drawing_of_library_cabinet_202608071752.mp4',img:'',current:true,words:[['catalog','목록'],['arrange','정리하다'],['list','명단'],['article','기사'],['chart','도표'],['graph','그래프'],['magazine','잡지'],['clip','클립']]},
+          {n:'02',title:'무대 원고 편집실 (타자기)',sub:'이야기가 시작되는 곳',video:'챕터4_완성동영상/Mechanical_typewriter_drawing_on…_202608071752.mp4',img:'',words:[['edit','편집하다'],['text','글자'],['spell','철자'],['language','언어'],['poem','시'],['comedy','희극'],['drama','드라마'],['scene','장면']]},
+          {n:'03',title:'여행기록 보존대 (양장본)',sub:'먼 곳의 기억들',video:'챕터4_완성동영상/Archival_sorting_table_drawing_a…_202608071752.mp4',img:'',words:[['diary','일기장'],['document','문서'],['record','기록하다'],['photograph','사진'],['dictionary','사전'],['essay','수필'],['envelope','봉투'],['object','사물']]}
+        ],
+        levelOneWords: [
+          [['catalog','목록'],['arrange','정리하다'],['list','명단'],['article','기사']],
+          [['edit','편집하다'],['text','글자'],['spell','철자'],['language','언어']],
+          [['diary','일기장'],['document','문서'],['record','기록하다'],['photograph','사진']]
+        ],
+        levelTwoWords: [
+          [['chart','도표'],['graph','그래프'],['magazine','잡지'],['clip','클립']],
+          [['poem','시'],['comedy','희극'],['drama','드라마'],['scene','장면']],
+          [['dictionary','사전'],['essay','수필'],['envelope','봉투'],['object','사물']]
+        ],
+        sceneSpots: [
+          [[30,30],[70,30],[30,70],[70,70]],[[30,30],[70,30],[30,70],[70,70]],[[30,30],[70,30],[30,70],[70,70]]
+        ],
+        levelOneSpots: [
+          [[20,20],[80,20],[20,80],[80,80]],[[20,20],[80,20],[20,80],[80,80]],[[20,20],[80,20],[20,80],[80,80]]
+        ]
+      }
+    };
+    
+    function loadChapter(chapterNum) {
+      currentChapterId = chapterNum;
+      const data = chapterData[chapterNum] || chapterData[1];
+      works = data.works;
+      levelOneWords = data.levelOneWords;
+      levelTwoWords = data.levelTwoWords;
+      sceneSpots = data.sceneSpots;
+      levelOneSpots = data.levelOneSpots;
+      
+      const FREE_SCENES=3;
+      works.forEach((w,i)=>{const lock=i>=FREE_SCENES;w.locked=lock;w.needsPurchase=lock;});
+      
+      loadChapter(1);
+      setupWorks();
+      activeWork = works[0];
+      if(activeWork) {
+        document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));
+        const firstWork = document.querySelector('.work');
+        if(firstWork) firstWork.classList.add('current');
+        mainVideo.src=activeWork.video;
+        mainVideo.load();
+        mainPoster.src=activeWork.img;
+        document.getElementById('nowLabel').textContent=`LEARNING · ${activeWork.n}`;
+        document.getElementById('mainTitle').textContent=activeWork.title;
+        renderWords(activeWork);
+      }
+    }
     const chapters=[
       '세상을 발견하는 순간','숲과 생명','우리 집','학교생활','도시와 교통','음식과 건강',
       '몸과 감정','운동과 도전','여행과 세계','지구와 날씨','우주와 과학','밤과 꿈'
@@ -326,27 +455,13 @@
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
     const chapterSpots=[[24.3,25.4],[13.4,44.7],[31.2,44.4],[26.1,70.3],[48.4,22.6],[45.3,41.7],[59.8,48.3],[52.4,70.6],[77.8,20.9],[73.6,38.2],[86.8,50.3],[78.6,70.4]];
     const chapterGrid=document.getElementById('chapterGrid');
-    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${i===0?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${i===0?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${[0,2,3].includes(i)?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${name}, ${chapterEnglish[i]}, ${chapterNotes[i]}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${[0,2,3].includes(i)?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-ko" lang="ko">${name}</span><span class="label-en" lang="en">${chapterEnglish[i]}</span></h3></button>`).join('');
     const shelf=document.getElementById('shelf');
     shelf.innerHTML=works.map((w,i)=>`<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${i}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · 8 WORDS</small><h3>${w.title}</h3><p>${w.sub}</p></div></button>`).join('');
 
 
     const viewer=document.getElementById('viewer'),mainVideo=document.getElementById('mainVideo'),mainPoster=document.getElementById('mainPoster'),playBtn=document.getElementById('playBtn'),speedBtn=document.getElementById('speedBtn'),resumeBtn=document.getElementById('resumeBtn'),soundBtn=document.getElementById('soundBtn'),fill=document.getElementById('timelineFill'),timeText=document.getElementById('timeText'),wordList=document.getElementById('wordList'),wordOverlay=document.getElementById('wordOverlay');
-    // LEVEL 1/2 레벨태그 csv와 지시서 표 기준 매핑
-    const levelOneWords=[
-      [['tower','탑'],['island','섬'],['shine','빛나다'],['shore','물가']],
-      [['rope','밧줄'],['flag','깃발'],['journey','여정'],['row','노를 젓다']],
-      [['follow','따라오다'],['float','떠 있다'],['reflect','비추다'],['silver','은빛']],
-      [['wave','파도']],
-      [['shell','조개껍데기'],['sink','가라앉다'],['shadow','그림자']]
-    ];
-    const levelTwoWords=[
-      [['warn','경고하다'],['cliff','절벽'],['guide','안내하다'],['flash','번쩍임']],
-      [['sail','돛'],['deck','갑판'],['port','항구'],['navy','해군']],
-      [['dolphin','돌고래'],['leap','도약하다'],['calm','고요한'],['distance','먼 거리']],
-      [['whale','고래'],['ocean','대양'],['surface','수면'],['rise','솟아오르다'],['dive','잠수하다'],['spray','물보라'],['bubble','거품']],
-      [['seal','물범'],['tide','조수'],['current','해류'],['stream','물줄기'],['cage','케이지']]
-    ];
+    // LEVEL 1/2 words are loaded from chapterData
     // 사용자가 직접 만든 카드는 브라우저에 보관합니다. 시연 단계에서는 서버 비용 없이
     // 계정당 최대 10장 흐름을 확인하고, 추후 로그인 DB 저장으로 교체할 수 있습니다.
     // 같은 기기에서 계정을 바꿔도 서로의 카드가 섞이지 않도록 로그인 계정별로 분리합니다.
@@ -409,29 +524,7 @@
         featureContent.innerHTML=renderMuseumContent();setupMuseum();notify('카드를 박물관에서 꺼냈습니다.');
       });
     }
-    // LEVEL 2: 실제 대상 가까이에 네 개의 대표 단어를 배치합니다.
-    const sceneSpots=[
-      [[67,36],[52,18],[57,66],[17,82]],
-      [[51,43],[50,14],[25,77],[82,79]],
-      [[50,68],[48,36],[76,55],[50,8]],
-      [[53,68],[47,49],[50,29],[72,26]],
-      [[40,48],[28,42],[42,77],[72,25]],
-      [[49,20],[73,34],[24,79],[76,72]],
-      [[50,24],[50,60],[50,72],[76,48]],
-      [[52,34],[20,66],[50,68],[50,8]]
-    ];
-    // LEVEL 1은 단어가 가리키는 대상 가까이의 흰 여백을 사용합니다.
-    // 특히 고래의 tail은 꼬리 옆, surface는 수면 위에 고정합니다.
-    const levelOneSpots=[
-      [[65,43],[79,79],[51,12],[15,43]],
-      [[55,40],[49,15],[18,27],[19,79]],
-      [[49,48],[66,19],[38,29],[76,58]],
-      [[48,15],[38,48],[20,78],[76,40]],
-      [[42,51],[25,17],[75,22],[84,61]],
-      [[50,15],[84,14],[72,38],[50,79]],
-      [[50,24],[49,72],[17,60],[84,18]],
-      [[16,70],[83,14],[78,72],[53,32]]
-    ];
+    // Spots are loaded from chapterData
     // 랜딩의 콜로세움 단어와 동일한 음성 규칙입니다.
     // 브라우저 내장 음성을 사용하므로 별도 TTS API 비용은 들지 않습니다.
     const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
@@ -543,12 +636,12 @@
     let previews=true;
     // 로그인 계정에서 불러온 챕터 1 완료 장면 수입니다.
     let completedSceneCount=0;
-    document.querySelectorAll('.work').forEach(el=>{
+    function setupWorks() { document.querySelectorAll('.work').forEach(el=>{
       const w=works[Number(el.dataset.index)],pv=el.querySelector('video');
       el.addEventListener('mouseenter',()=>{if(previews&&!w.locked&&matchMedia('(hover:hover)').matches)pv.play().catch(()=>{})});
       el.onmouseleave=()=>{pv.pause();pv.currentTime=0};
       el.onclick=()=>{if(w.locked){if(w.needsPurchase){openGate()}else{notify('앞 챕터를 완주하면 학습할 수 있습니다.')}return}document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));el.classList.add('current');activeWork=w;mainVideo.pause();mainVideo.src=w.video;mainVideo.load();mainVideo.playbackRate=playbackRates[playbackRateIndex];mainPoster.src=w.img;mainPoster.alt=`${w.title} 학습 영상 대표 화면`;document.getElementById('nowLabel').textContent=`LEARNING · ${w.n}`;document.getElementById('mainTitle').textContent=w.title;document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';renderWords(w);viewer.classList.remove('playing');pauseMain();scrollTo({top:80,behavior:'smooth'})};
-    });
+    }); }
     document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.currentTarget.classList.toggle('off',!previews);e.currentTarget.setAttribute('aria-label',`미리보기 자동재생 ${previews?'켜짐':'꺼짐'}`);notify(`미리보기 자동재생을 ${previews?'켰습니다.':'껐습니다.'}`)};
     const homeView=document.getElementById('homeView'),chapterDetail=document.getElementById('chapterDetail');
     const welcomeEl=document.querySelector('.welcome'),viewerLayout=document.querySelector('.viewer-layout'),homePlayerAnchor=document.getElementById('homePlayerAnchor');
@@ -561,7 +654,16 @@
     }
     function enterChapter(){activateNav('learnNav');homeView.classList.add('hidden');chapterDetail.classList.add('active');chapterDetail.insertBefore(viewerLayout,chapterDetail.children[1]);chapterDetail.insertBefore(welcomeEl,viewerLayout);scrollTo({top:0,behavior:'smooth'})}
     function leaveChapter(){homePlayerAnchor.after(welcomeEl,viewerLayout);chapterDetail.classList.remove('active');homeView.classList.remove('hidden');setTimeout(()=>document.getElementById('chapterMap').scrollIntoView({behavior:'smooth'}),20)}
-    document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{Number(card.dataset.chapter)===1?enterChapter():notify(`${card.querySelector('h3').textContent} 챕터는 아직 열쇠가 필요합니다.`)});
+    document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{
+      const ch = Number(card.dataset.chapter);
+      if([1,2,3,4].includes(ch)){
+        loadChapter(ch);
+        const chapterTitle = chapters[ch-1]; document.getElementById('chapterDetail').querySelector('.section-head h2').textContent = `챕터 ${ch} · ${chapterTitle}`;
+        enterChapter();
+      } else {
+        notify(`${card.querySelector('h3').textContent} 챕터는 아직 준비중입니다.`);
+      }
+    });
     document.getElementById('dashboardContinue').onclick=enterChapter;
     document.getElementById('progressEnter').onclick=enterChapter;
     document.getElementById('backBtn').onclick=leaveChapter;
