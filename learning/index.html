@@ -6278,12 +6278,13 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
           openGate();
           return;
         }
-        if(!chapterData[ch] || !(chapterData[ch].works||[]).length){ return; }
+        if(!chapterData[ch] || !(chapterData[ch].works||[]).length){
+          notify(`${card.querySelector('h3').textContent} 챕터는 아직 준비중입니다.`);
+          return;
+        }
         loadChapter(ch);
         const chapterTitle = chapters[ch-1]; document.getElementById('chapterDetail').querySelector('.section-head h2').textContent = `챕터 ${ch} · ${chapterTitle}`;
         enterChapter();
-      } else {
-        notify(`${card.querySelector('h3').textContent} 챕터는 아직 준비중입니다.`);
       }
     });
     document.getElementById('dashboardContinue').onclick=enterChapter;
