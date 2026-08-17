@@ -623,37 +623,37 @@ function LandingPage() {
             </p>
             <h2
               className="text-[#07533f] font-gmarket font-black leading-[1.15] tracking-[-0.02em] mb-5"
-              style={{ fontSize: 'clamp(26px, 4vw, 40px)' }}
+              style={{ fontSize: 'clamp(24px, 3.2vw, 32px)' }}
             >
               출시 기념가로 시작하세요.
             </h2>
-            <p className="text-[#4a4a46] text-[16px] sm:text-[18px] leading-relaxed max-w-xl mx-auto font-semibold">
+            <p className="text-[#4a4a46] text-[15px] sm:text-[16px] leading-relaxed max-w-xl mx-auto font-semibold">
               한 번의 결제로 보는 단어장의 모든 학습 기능을 이용하세요.
             </p>
           </motion.div>
 
-          <div className="max-w-xl mx-auto">
+          <div className="max-w-lg mx-auto">
             {/* 출시 기념 이용권: 현재 공개된 콘텐츠와 이후 완성되는 챕터를 이용합니다. */}
             <motion.div
-              className="border-2 border-[#2f9c75] rounded-[24px] p-7 sm:p-9 flex flex-col relative bg-[#fbfefc] shadow-[0_12px_28px_rgba(7,83,63,0.08)]"
+              className="border-2 border-[#2f9c75] rounded-[24px] p-6 sm:p-8 flex flex-col relative bg-[#fbfefc] shadow-[0_12px_28px_rgba(7,83,63,0.08)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.08 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <span className="absolute right-7 top-0 -translate-y-1/2 bg-[#d7f580] text-[#07533f] text-[13px] font-black tracking-[0.08em] px-5 py-2.5 rounded-full">출시 기념가</span>
-              <h3 className="font-gmarket font-black text-[34px] sm:text-[40px] mb-3">
+              <span className="absolute right-6 top-0 -translate-y-1/2 bg-[#d7f580] text-[#07533f] text-[12px] font-black tracking-[0.08em] px-4 py-2 rounded-full">출시 기념가</span>
+              <h3 className="font-gmarket font-black text-[26px] sm:text-[30px] mb-2 text-center">
                 출시 기념 이용권
               </h3>
-              <p className="text-[#4a4a46] text-[18px] sm:text-[20px] font-semibold mb-7">12개 챕터의 학습 콘텐츠를 이용합니다.</p>
-              <div className="mb-5">
-                <div className="text-[#6f756f] text-[17px] sm:text-[19px] font-semibold line-through mb-2">6개월 후 정상가 ₩19,800</div>
-                <div className="text-[46px] sm:text-[56px] font-black tracking-tight">₩9,900</div>
+              <p className="text-[#4a4a46] text-[15px] sm:text-[16px] font-semibold mb-6 text-center">12개 챕터의 학습 콘텐츠를 이용합니다.</p>
+              <div className="mb-6 text-center">
+                <div className="text-[#6f756f] text-[14px] sm:text-[15px] font-semibold line-through mb-1">6개월 후 정상가 ₩19,800</div>
+                <div className="text-[38px] sm:text-[44px] font-black tracking-tight">₩9,900</div>
               </div>
-              <ul className="divide-y divide-[#e2eee9] mb-7 flex-1">
+              <ul className="divide-y divide-[#e2eee9] mb-6 flex-1">
                 {['총 12개 챕터 학습', '학습 어휘를 모으는 나만의 카드 박물관', '학습 내용을 확인하는 퀴즈', '수학·과학·중국어 어휘 사전 순차 출시 예정 (별도 상품)'].map((item) => (
-                  <li key={item} className="py-5 flex items-center gap-4 text-[#353532] text-[18px] sm:text-[20px] font-bold leading-relaxed">
-                    <span className="text-[#2f9c75] text-2xl">✓</span>{item}
+                  <li key={item} className="py-3.5 flex items-center gap-3 text-[#353532] text-[15px] sm:text-[16px] font-bold leading-relaxed">
+                    <span className="text-[#2f9c75] text-lg">✓</span>{item}
                   </li>
                 ))}
               </ul>
@@ -665,10 +665,11 @@ function LandingPage() {
                   customerName={user?.displayName || undefined}
                   onError={(error) => console.error('PortOne payment error:', error)}
                 />
-                <div className="mt-6 rounded-2xl border-2 border-[#2f9c75] bg-[#eef7f3] p-5 text-left text-[#07533f] shadow-sm sm:p-6">
-                  <p className="text-[17px] font-black leading-relaxed sm:text-[19px]">서비스 제공 시기: 결제 완료 즉시 이용 가능</p>
-                  <p className="mt-1 text-[17px] font-black leading-relaxed sm:text-[19px]">이용 기간: 구매 후 기간 제한 없이 이용</p>
-                  <p className="mt-1 text-[17px] font-black leading-relaxed sm:text-[19px]">
+                <div className="mt-5 rounded-2xl border-2 border-[#2f9c75] bg-[#eef7f3] p-4 text-left text-[#07533f] shadow-sm sm:p-5">
+                  <p className="text-[14px] font-black leading-relaxed sm:text-[15px]">서비스 제공 시기: 결제 완료 즉시 (서비스 제공 소요기간 0일)</p>
+                  <p className="mt-1 text-[14px] font-black leading-relaxed sm:text-[15px]">제공 방식: 구매 즉시 전체 콘텐츠 열람 권한 부여 (별도 배송·제공 절차 없음)</p>
+                  <p className="mt-1 text-[14px] font-black leading-relaxed sm:text-[15px]">이용 기간: 결제일로부터 12개월 (1년)</p>
+                  <p className="mt-1 text-[14px] font-black leading-relaxed sm:text-[15px]">
                     이용 범위: 영어 단어 1200 · 12개 챕터 학습 콘텐츠
                     <span className="block">(이후 출시되는 신규 콘텐츠는 별도 상품)</span>
                   </p>
