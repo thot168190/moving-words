@@ -42,7 +42,7 @@
     .viewer img{transition:opacity .35s}.viewer.playing img{opacity:0;pointer-events:none}
     /* 화면 아래 단어도 재생바에 가려지지 않고 눌리도록 단어 층을 가장 위에 둡니다. */
     .word-overlay{position:absolute;inset:0;z-index:4;pointer-events:none}
-    .scene-word{position:absolute;transform:translate(-50%,-50%) translateY(7px);border:0;background:transparent;padding:8px;color:var(--forest);font-family:Pretendard,sans-serif;font-size:clamp(25px,2.55vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.05;white-space:nowrap;cursor:pointer;pointer-events:auto;opacity:0;transition:opacity .28s,transform .28s,color .18s;paint-order:stroke fill;-webkit-text-stroke:6px rgba(255,255,255,.96);text-shadow:0 2px 7px rgba(255,255,255,1)}
+    .scene-word{position:absolute;transform:translate(-50%,-50%) translateY(7px);border:0;background:transparent;padding:4px;color:var(--forest);font-family:Pretendard,sans-serif;font-size:clamp(17px,1.7vw,25px);font-weight:800;letter-spacing:-.025em;line-height:1.05;white-space:nowrap;cursor:pointer;pointer-events:auto;opacity:0;transition:opacity .28s,transform .28s,color .18s;paint-order:stroke fill;-webkit-text-stroke:6px rgba(255,255,255,.96);text-shadow:0 2px 7px rgba(255,255,255,1)}
     .scene-word.long-word{font-size:clamp(23px,2vw,32px);-webkit-text-stroke:5px rgba(255,255,255,.97)}
     .scene-word.very-long-word{font-size:clamp(20px,1.7vw,28px);-webkit-text-stroke:5px rgba(255,255,255,.98)}
     .scene-word.visible{opacity:1;transform:translate(-50%,-50%) translateY(0)}
@@ -55,12 +55,12 @@
     .now{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0;display:flex;flex-direction:column}
     .now-label{font-size:13px;letter-spacing:.13em;color:var(--gold);font-weight:800;text-transform:uppercase}.now h2{font-family:Pretendard,sans-serif;font-size:34px;margin:12px 0 10px;letter-spacing:-.04em;line-height:1.2}.now p{margin:0;color:var(--sub);font-size:17px;line-height:1.7}.resume{border:0;border-radius:16px;background:var(--teal);color:#fff;padding:17px 20px;width:100%;font-size:16px;font-weight:700;cursor:pointer;transition:.22s}.resume:hover{background:#104b47}.settings{border:0;background:transparent;color:var(--sub);font-size:14px;padding:15px 0 0;cursor:pointer;text-align:left}
     .level-switch{display:flex;gap:22px;margin-top:22px;border-bottom:1px solid var(--line)}.level-switch button{border:0;border-bottom:3px solid transparent;background:transparent;padding:0 0 9px;color:var(--sub);font-family:Pretendard,sans-serif;font-size:14px;font-weight:800;letter-spacing:.06em;cursor:pointer}.level-switch button.active{border-bottom-color:var(--teal);color:var(--forest)}
-    .now-actions{margin-top:auto}.vocab-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}.vocab-head{margin-bottom:10px}.vocab-head h3{font-family:Pretendard,sans-serif;font-size:19px;margin:0}.vocab-head p{display:none}.word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}.word{position:relative;min-width:0;border:2px solid #cfe5db;border-radius:18px;background:#ffffff;padding:14px 44px 14px 16px;color:var(--forest);cursor:pointer;text-align:left;white-space:normal;box-shadow:0 2px 6px rgba(7,82,61,0.05);transition:all .18s cubic-bezier(0.16,1,0.3,1);user-select:none}.word:after{content:'🔊';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:17px;opacity:.55;transition:all .18s}.word strong{display:block;overflow-wrap:anywhere;font-family:Pretendard,sans-serif;font-size:24px;line-height:1.05;font-weight:900}.word em{display:block;margin:5px 0 0;color:#315f54;font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:18px;line-height:1.15;font-weight:800;font-style:normal}.word b{display:none}.word:hover{border-color:#086047;background:#f2faf6;transform:translateY(-2px);box-shadow:0 6px 16px rgba(8,96,71,0.12)}.word:hover:after{opacity:1;transform:translateY(-50%) scale(1.15)}.word:active{transform:scale(0.97) translateY(0);box-shadow:0 1px 3px rgba(7,82,61,0.1)}.word.speaking{color:#086047;border-color:#086047;background:#e6f5ee;box-shadow:0 0 0 3px rgba(8,96,71,0.2);transform:translateY(-1px)}.word.speaking:after{opacity:1;transform:translateY(-50%) scale(1.2)}
+    .now-actions{margin-top:auto}.vocab-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}.vocab-head{margin-bottom:10px}.vocab-head h3{font-family:Pretendard,sans-serif;font-size:19px;margin:0}.vocab-head p{display:none}.word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}.word{position:relative;min-width:0;border:2px solid #cfe5db;border-radius:18px;background:#ffffff;padding:14px 44px 14px 16px;color:var(--forest);cursor:pointer;text-align:left;white-space:normal;box-shadow:0 2px 6px rgba(7,82,61,0.05);transition:all .18s cubic-bezier(0.16,1,0.3,1);user-select:none}.word:after{content:'🔊';position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:17px;opacity:.55;transition:all .18s}.word.w-lg strong{font-size:19px!important}.word.w-xl strong{font-size:16px!important}.word strong{display:block;overflow-wrap:normal;word-break:keep-all;white-space:nowrap;font-family:Pretendard,sans-serif;font-size:24px;line-height:1.05;font-weight:900}.word em{display:block;margin:5px 0 0;color:#315f54;font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:18px;line-height:1.15;font-weight:800;font-style:normal}.word b{display:none}.word:hover{border-color:#086047;background:#f2faf6;transform:translateY(-2px);box-shadow:0 6px 16px rgba(8,96,71,0.12)}.word:hover:after{opacity:1;transform:translateY(-50%) scale(1.15)}.word:active{transform:scale(0.97) translateY(0);box-shadow:0 1px 3px rgba(7,82,61,0.1)}.word.speaking{color:#086047;border-color:#086047;background:#e6f5ee;box-shadow:0 0 0 3px rgba(8,96,71,0.2);transform:translateY(-1px)}.word.speaking:after{opacity:1;transform:translateY(-50%) scale(1.2)}
     .chapter{margin-top:76px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.section-head h2{font-family:Pretendard,sans-serif;font-size:38px;margin:0 0 8px;letter-spacing:-.04em}.section-head p{margin:0;color:var(--sub);font-size:16px}.all{border:0;background:transparent;color:var(--teal);cursor:pointer;padding:8px 0;font-size:15px}
     .shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 18px}.work{border:0;background:transparent;padding:0;text-align:left;cursor:pointer;min-width:0}.poster{aspect-ratio:16/9;border:1px solid #e5eee9;border-radius:20px;background:var(--ivory);position:relative;overflow:hidden}.poster img,.poster video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;transition:.35s}.poster video{opacity:0}.work:hover .poster video{opacity:1}.work:hover .poster img{opacity:0}.poster .state{position:absolute;left:10px;top:10px;z-index:2;background:rgba(255,255,255,.9);border:1px solid #e5eee9;border-radius:999px;padding:6px 8px;font-size:10px;color:var(--sub)}
     .work.current .poster{border-color:var(--teal);box-shadow:inset 0 -3px var(--teal)}.meta{padding-top:12px}.meta small{color:var(--gold);font-size:10px;letter-spacing:.12em}.meta h3{font-family:Pretendard,sans-serif;font-size:18px;margin:5px 0 3px}.meta p{margin:0;color:var(--sub);font-size:12px}.locked .poster:after{content:"다음 여정";position:absolute;inset:0;display:grid;place-items:center;background:rgba(250,249,245,.78);color:var(--gold);font-family:Pretendard,sans-serif;letter-spacing:.04em;z-index:4}.locked:hover .poster img{opacity:1}.locked:hover .poster video{opacity:0}
     .tip{margin-top:80px;border-top:1px solid var(--line);padding-top:30px;display:flex;align-items:center;justify-content:space-between;color:var(--sub);font-size:15px}.tip strong{font-family:Pretendard,sans-serif;color:var(--ink);font-size:22px;font-weight:700}.toggle{display:flex;align-items:center;gap:10px;font-size:15px}.switch{width:42px;height:24px;background:var(--teal);border:0;border-radius:99px;padding:3px;cursor:pointer}.switch i{display:block;width:18px;height:18px;background:white;border-radius:50%;margin-left:18px;transition:.2s}.switch.off{background:#c7cbc8}.switch.off i{margin-left:0}
-    .map{margin-top:82px;padding:42px 38px 38px;background:#f8fcfb;border:1px solid #d9e8e4}.map .section-head{margin-bottom:24px}.chapter-grid{position:relative;aspect-ratio:16/9;background:url('assets/chapter-world-map-v1.png') center/cover no-repeat;overflow:hidden;box-shadow:inset 0 0 40px rgba(255,255,255,.5)}.chapter-card{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:0;background:transparent;padding:0;text-align:center;color:#073f34;cursor:pointer;transition:.22s;z-index:2;filter:drop-shadow(0 1px 1px #fff) drop-shadow(0 0 7px #fff)}.chapter-card:hover{transform:translate(-50%,-50%) scale(1.08)}.chapter-card small{display:block;font-family:Pretendard,sans-serif;font-size:9px;letter-spacing:.14em;font-weight:800;color:#8a6200;text-shadow:0 1px 4px #fff}.chapter-card h3{font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:clamp(13px,1.25vw,19px);font-weight:800;margin:3px 0 0;letter-spacing:-.03em;white-space:nowrap;paint-order:stroke fill;-webkit-text-stroke:4px rgba(255,255,255,.92)}.chapter-card p,.chapter-card .enter{display:none}.chapter-card.open{color:#063f31}.chapter-card.open:before{content:"";position:absolute;left:50%;top:50%;width:62px;height:62px;border:2px solid #d9ef78;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 10px 3px rgba(203,244,103,.85),inset 0 0 8px rgba(255,255,255,.9);z-index:-1}.chapter-card.locked-chapter{opacity:.78}.chapter-card.locked-chapter:hover{opacity:1}.key{position:absolute;left:50%;top:-17px;width:11px;height:11px;border:1.5px solid #315f52;border-radius:50%;transform:translateX(-50%);filter:drop-shadow(0 0 3px #fff)}.key:before{content:"";position:absolute;width:9px;height:1.5px;background:#315f52;left:7px;top:8px;transform:rotate(38deg);transform-origin:left}.key:after{content:"";position:absolute;width:4px;height:5px;border-right:1.5px solid #315f52;left:13px;top:9px;transform:rotate(38deg)}
+    .map{margin-top:82px;padding:42px 38px 38px;background:#f8fcfb;border:1px solid #d9e8e4}.map .section-head{margin-bottom:24px}.chapter-grid{position:relative;aspect-ratio:16/9;background:url('assets/chapter-world-map-v1.png') center/cover no-repeat;overflow:hidden;box-shadow:inset 0 0 40px rgba(255,255,255,.5)}.chapter-card{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:0;background:transparent;padding:0;text-align:center;color:#073f34;cursor:pointer;transition:.22s;z-index:2;filter:drop-shadow(0 1px 1px #fff) drop-shadow(0 0 7px #fff)}.chapter-card:hover{transform:translate(-50%,-50%) scale(1.08)}.chapter-card small{display:block;font-family:Pretendard,sans-serif;font-size:9px;letter-spacing:.14em;font-weight:800;color:#8a6200;text-shadow:0 1px 4px #fff}.chapter-card h3{font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:clamp(13px,1.25vw,19px);font-weight:800;margin:3px 0 0;letter-spacing:-.03em;white-space:nowrap;paint-order:stroke fill;-webkit-text-stroke:4px rgba(255,255,255,.92)}.chapter-card p,.chapter-card .enter{display:none}.chapter-card .ch-count{display:block;margin-top:5px;font-family:Pretendard,sans-serif;font-size:11px;font-weight:700;font-style:normal;letter-spacing:.02em;color:#0a6b51;paint-order:stroke fill;-webkit-text-stroke:3px rgba(255,255,255,.92)}.chapter-card.locked-chapter .ch-count{color:#b9c4bf}.chapter-card.open{color:#063f31}.chapter-card.open:before{content:"";position:absolute;left:50%;top:50%;width:62px;height:62px;border:2px solid #d9ef78;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 10px 3px rgba(203,244,103,.85),inset 0 0 8px rgba(255,255,255,.9);z-index:-1}.chapter-card.locked-chapter{opacity:.78}.chapter-card.locked-chapter:hover{opacity:1}.key{position:absolute;left:50%;top:-17px;width:11px;height:11px;border:1.5px solid #315f52;border-radius:50%;transform:translateX(-50%);filter:drop-shadow(0 0 3px #fff)}.key:before{content:"";position:absolute;width:9px;height:1.5px;background:#315f52;left:7px;top:8px;transform:rotate(38deg);transform-origin:left}.key:after{content:"";position:absolute;width:4px;height:5px;border-right:1.5px solid #315f52;left:13px;top:9px;transform:rotate(38deg)}
     .back{position:sticky;top:90px;z-index:40;border:0;background:var(--teal);color:#fff;padding:12px 24px;border-radius:999px;font-size:16px;font-weight:800;cursor:pointer;margin-bottom:26px;display:inline-flex;align-items:center;box-shadow:0 4px 12px rgba(8,96,71,.2);transition:transform .2s,box-shadow .2s}.back:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(8,96,71,.3);background:#064a38}.detail-view{display:none;background:var(--mist);padding:36px;border:1px solid #e5eee9;border-radius:20px}.detail-view.active{display:block}.detail-view .viewer,.detail-view .poster{background:#fff}.home-view.hidden{display:none}
     .worlds{margin-top:28px;padding:48px 38px 42px;background:var(--fern);border:1px solid #deeee5}.worlds-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:40px;margin-bottom:38px}.worlds-head h2{font-family:Pretendard,sans-serif;font-size:31px;letter-spacing:-.035em;margin:0}.worlds-head p{margin:0;color:var(--sub);line-height:1.7;max-width:570px}.world-list{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #d5e9df}.world{border:0;border-right:1px solid #d5e9df;background:rgba(255,255,255,.76);text-align:left;padding:28px 26px 30px;cursor:pointer;min-height:180px;transition:.25s}.world:last-child{border-right:0}.world:hover{background:#fff;box-shadow:inset 0 3px #4b9f7d}.world small{color:#2d8968;font-size:10px;letter-spacing:.14em}.world h3{font-family:Pretendard,sans-serif;font-size:22px;margin:24px 0 7px}.world p{margin:0;color:var(--sub);font-size:13px;line-height:1.6}.world span{display:block;margin-top:20px;color:var(--teal);font-size:13px;font-weight:700}
     /* 정보량을 줄인 갤러리형 구조: 색면보다 여백과 선으로 섹션을 구분합니다. */
@@ -121,7 +121,7 @@
       .scene-word{font-size:clamp(22px,1.9vw,33px);-webkit-text-stroke:5px rgba(255,255,255,.96)}
       .scene-word.long-word{font-size:clamp(20px,1.7vw,29px)}
       .scene-word.very-long-word{font-size:clamp(17px,1.45vw,24px)}
-      .scene-word span{font-size:24px;font-weight:900}
+      .scene-word span{font-size:16px;font-weight:800}
       .viewer-controls{padding:48px 18px 14px}
       .now{padding:18px 0}
       .now h2{font-size:27px;margin:9px 0 7px}
@@ -222,8 +222,8 @@
 
     <section class="viewer-layout" aria-label="오늘의 단어 학습">
       <div class="viewer" id="viewer">
-        <video id="mainVideo" muted playsinline preload="metadata" src="챕터1_완성동영상/scene-ch1-01.mp4"></video>
-        <img id="mainPoster" src="챕터1_완성동영상/scene-ch1-01-poster.jpg" alt="고래와 깊은 바다 학습 영상 대표 화면">
+        <video id="mainVideo" muted playsinline preload="metadata" src="ch1/scene-ch1-01.mp4"></video>
+        <img id="mainPoster" src="ch1/scene-ch1-01-poster.jpg" alt="고래와 깊은 바다 학습 영상 대표 화면">
         <div class="word-overlay" id="wordOverlay" aria-label="그림 위 핵심 단어"></div>
         <div class="viewer-controls"><button class="round-control" id="playBtn" aria-label="재생">▶</button><div class="timeline"><i id="timelineFill"></i></div><span class="time" id="timeText">00:00</span><button class="speed-control" id="speedBtn" type="button" aria-label="재생 속도 1배">1×</button></div>
       </div>
@@ -314,8 +314,8 @@
         "n": "01",
         "title": "빛을 보내는 등대",
         "sub": "해안에서 보내는 첫 신호",
-        "video": "챕터1_완성동영상/scene-ch1-02.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-02-poster.jpg",
+        "video": "ch1/scene-ch1-02.mp4",
+        "img": "ch1/scene-ch1-02-poster.jpg",
         "current": true,
         "words": [
           [
@@ -356,8 +356,8 @@
         "n": "02",
         "title": "바람을 타는 범선",
         "sub": "수평선을 향해 떠나다",
-        "video": "챕터1_완성동영상/scene-ch1-03.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-03-poster.jpg",
+        "video": "ch1/scene-ch1-03.mp4",
+        "img": "ch1/scene-ch1-03-poster.jpg",
         "words": [
           [
             "sail",
@@ -397,8 +397,8 @@
         "n": "03",
         "title": "돌고래가 따라오는 배",
         "sub": "은빛 바다 위 도약",
-        "video": "챕터1_완성동영상/scene-ch1-09.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-09-poster.jpg",
+        "video": "ch1/scene-ch1-09.mp4",
+        "img": "ch1/scene-ch1-09-poster.jpg",
         "words": [
           [
             "dolphin",
@@ -438,8 +438,8 @@
         "n": "04",
         "title": "고래와 깊은 바다",
         "sub": "깊은 바다에서 만난 것",
-        "video": "챕터1_완성동영상/scene-ch1-01.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-01-poster.jpg",
+        "video": "ch1/scene-ch1-01.mp4",
+        "img": "ch1/scene-ch1-01-poster.jpg",
         "hasHand": true,
         "words": [
           [
@@ -480,8 +480,8 @@
         "n": "05",
         "title": "깊은 바다의 산호 협곡",
         "sub": "빛이 닿는 마지막 깊이",
-        "video": "챕터1_완성동영상/scene-ch1-08.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-08-poster.jpg",
+        "video": "ch1/scene-ch1-08.mp4",
+        "img": "ch1/scene-ch1-08-poster.jpg",
         "words": [
           [
             "sink",
@@ -521,8 +521,8 @@
         "n": "06",
         "title": "곶을 돌아 열리는 만",
         "sub": "미지의 풍경",
-        "video": "챕터1_완성동영상/scene-ch1-10.mp4?v=4",
-        "img": "챕터1_완성동영상/scene-ch1-10-poster.jpg?v=4",
+        "video": "ch1/scene-ch1-10.mp4?v=4",
+        "img": "ch1/scene-ch1-10-poster.jpg?v=4",
         "words": [
           [
             "adventure",
@@ -562,8 +562,8 @@
         "n": "07",
         "title": "고대의 원형 경기장",
         "sub": "돌로 쌓아 올린 거대한 구조",
-        "video": "챕터1_완성동영상/scene-ch1-04.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-04-poster.jpg",
+        "video": "ch1/scene-ch1-04.mp4",
+        "img": "ch1/scene-ch1-04-poster.jpg",
         "words": [
           [
             "ruin",
@@ -603,8 +603,8 @@
         "n": "08",
         "title": "별을 보는 망원경",
         "sub": "밤하늘을 향해 세운 눈",
-        "video": "챕터1_완성동영상/scene-ch1-05.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-05-poster.jpg",
+        "video": "ch1/scene-ch1-05.mp4",
+        "img": "ch1/scene-ch1-05-poster.jpg",
         "words": [
           [
             "aim",
@@ -644,8 +644,8 @@
         "n": "09",
         "title": "눈 덮인 숲의 오로라",
         "sub": "겨울 하늘이 흔들리는 밤",
-        "video": "챕터1_완성동영상/scene-ch1-06.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-06-poster.jpg",
+        "video": "ch1/scene-ch1-06.mp4",
+        "img": "ch1/scene-ch1-06-poster.jpg",
         "words": [
           [
             "freeze",
@@ -685,8 +685,8 @@
         "n": "10",
         "title": "하늘을 나는 열기구",
         "sub": "구름 사이로 떠오르다",
-        "video": "챕터1_완성동영상/scene-ch1-07.mp4",
-        "img": "챕터1_완성동영상/scene-ch1-07-poster.jpg",
+        "video": "ch1/scene-ch1-07.mp4",
+        "img": "ch1/scene-ch1-07-poster.jpg",
         "words": [
           [
             "balloon",
@@ -1163,11 +1163,11 @@
       [
         [
           40,
-          48
+          52
         ],
         [
           28,
-          42
+          38
         ],
         [
           42,
@@ -1458,8 +1458,8 @@
         "n": "01",
         "title": "참나무 아래 초원",
         "sub": "생명이 시작되는 곳",
-        "video": "챕터2_완성동영상/scene-ch2-02.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-02-poster.jpg",
+        "video": "ch2/scene-ch2-02.mp4",
+        "img": "ch2/scene-ch2-02-poster.jpg",
         "current": true,
         "words": [
           [
@@ -1500,8 +1500,8 @@
         "n": "02",
         "title": "평원의 기린과 얼룩말",
         "sub": "더불어 사는 동물들",
-        "video": "챕터2_완성동영상/scene-ch2-03.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-03-poster.jpg",
+        "video": "ch2/scene-ch2-03.mp4",
+        "img": "ch2/scene-ch2-03-poster.jpg",
         "words": [
           [
             "animal",
@@ -1541,8 +1541,8 @@
         "n": "03",
         "title": "진흙 속 개구리",
         "sub": "비 온 뒤의 풍경",
-        "video": "챕터2_완성동영상/scene-ch2-05.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-05-poster.jpg",
+        "video": "ch2/scene-ch2-05.mp4",
+        "img": "ch2/scene-ch2-05-poster.jpg",
         "words": [
           [
             "frog",
@@ -1582,8 +1582,8 @@
         "n": "04",
         "title": "언덕을 오르는 양떼",
         "sub": "줄지어 걷는 초원의 아침",
-        "video": "챕터2_완성동영상/scene-ch2-01.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-01-poster.jpg",
+        "video": "ch2/scene-ch2-01.mp4",
+        "img": "ch2/scene-ch2-01-poster.jpg",
         "words": [
           [
             "sheep",
@@ -1623,9 +1623,8 @@
         "n": "05",
         "title": "둥지에 돌아온 새",
         "sub": "작은 것을 지키는 자리",
-        "video": "챕터2_완성동영상/scene-ch2-04.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-04-poster.jpg",
-        "current": false,
+        "video": "ch2/scene-ch2-04.mp4",
+        "img": "ch2/scene-ch2-04-poster.jpg",
         "words": [
           [
             "nest",
@@ -1665,9 +1664,8 @@
         "n": "06",
         "title": "통나무 아래의 딱정벌레",
         "sub": "쓰러진 나무가 품은 것",
-        "video": "챕터2_완성동영상/scene-ch2-06.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-06-poster.jpg",
-        "current": false,
+        "video": "ch2/scene-ch2-06.mp4",
+        "img": "ch2/scene-ch2-06-poster.jpg",
         "words": [
           [
             "log",
@@ -1707,9 +1705,8 @@
         "n": "07",
         "title": "풀숲을 가르는 뱀",
         "sub": "매끄럽게 흐르는 몸",
-        "video": "챕터2_완성동영상/scene-ch2-07.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-07-poster.jpg",
-        "current": false,
+        "video": "ch2/scene-ch2-07.mp4",
+        "img": "ch2/scene-ch2-07-poster.jpg",
         "words": [
           [
             "snake",
@@ -1749,9 +1746,8 @@
         "n": "08",
         "title": "솔방울이 여는 씨앗집",
         "sub": "열려야 퍼진다",
-        "video": "챕터2_완성동영상/scene-ch2-08.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-08-poster.jpg",
-        "current": false,
+        "video": "ch2/scene-ch2-08.mp4",
+        "img": "ch2/scene-ch2-08-poster.jpg",
         "words": [
           [
             "pine",
@@ -1791,9 +1787,8 @@
         "n": "09",
         "title": "개미의 긴 줄",
         "sub": "함께 옮기는 길",
-        "video": "챕터2_완성동영상/scene-ch2-09.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-09-poster.jpg",
-        "current": false,
+        "video": "ch2/scene-ch2-09.mp4",
+        "img": "ch2/scene-ch2-09-poster.jpg",
         "words": [
           [
             "ant",
@@ -1833,9 +1828,8 @@
         "n": "10",
         "title": "새장 문이 열린 날",
         "sub": "열려 있는 문",
-        "video": "챕터2_완성동영상/scene-ch2-10.mp4",
-        "img": "챕터2_완성동영상/scene-ch2-10-poster.jpg",
-        "current": false,
+        "video": "ch2/scene-ch2-10.mp4",
+        "img": "ch2/scene-ch2-10-poster.jpg",
         "words": [
           [
             "cage",
@@ -1868,6 +1862,129 @@
           [
             "within",
             "안에"
+          ]
+        ]
+      },
+      {
+        "n": "11",
+        "title": "숲길을 걷는 여우",
+        "sub": "낙엽 위에 남는 발자국",
+        "video": "ch4/Red_fox_walking_on_path_202608101458.mp4",
+        "img": "ch4/Red_fox_walking_on_path_202608101458-poster.jpg",
+        "words": [
+          [
+            "log",
+            "통나무"
+          ],
+          [
+            "trunk",
+            "줄기"
+          ],
+          [
+            "bark",
+            "나무껍질"
+          ],
+          [
+            "branch",
+            "가지"
+          ],
+          [
+            "leaf",
+            "잎"
+          ],
+          [
+            "path",
+            "오솔길"
+          ],
+          [
+            "bush",
+            "덤불"
+          ],
+          [
+            "trace",
+            "자취"
+          ]
+        ]
+      },
+      {
+        "n": "12",
+        "title": "바람 뒤의 거미줄",
+        "sub": "끊어진 줄을 다시 잇다",
+        "video": "ch4/Spider_drawing_on_white_background_202608101458.mp4",
+        "img": "ch4/Spider_drawing_on_white_background_202608101458-poster.jpg",
+        "words": [
+          [
+            "string",
+            "줄"
+          ],
+          [
+            "net",
+            "그물"
+          ],
+          [
+            "thin",
+            "가느다란"
+          ],
+          [
+            "connect",
+            "잇다"
+          ],
+          [
+            "attach",
+            "붙이다"
+          ],
+          [
+            "pattern",
+            "무늬"
+          ],
+          [
+            "trap",
+            "덫"
+          ],
+          [
+            "tight",
+            "팽팽한"
+          ]
+        ]
+      },
+      {
+        "n": "13",
+        "title": "잎 사이의 위장자",
+        "sub": "보이지 않던 것을 알아보다",
+        "video": "ch4/Leaf_insect_on_twig_202608101458.mp4",
+        "img": "ch4/Leaf_insect_on_twig_202608101458-poster.jpg",
+        "words": [
+          [
+            "bug",
+            "벌레"
+          ],
+          [
+            "leaf",
+            "잎"
+          ],
+          [
+            "branch",
+            "가지"
+          ],
+          [
+            "rest",
+            "머물다"
+          ],
+          [
+            "stick",
+            "달라붙다"
+          ],
+          [
+            "sharp",
+            "뾰족한"
+          ],
+          [
+            "nut",
+            "열매"
+          ],
+          [
+            "similar",
+            "비슷한"
           ]
         ]
       }
@@ -2052,6 +2169,60 @@
           "release",
           "놓아주다"
         ]
+      ],
+      [
+        [
+          "branch",
+          "가지"
+        ],
+        [
+          "leaf",
+          "잎"
+        ],
+        [
+          "path",
+          "오솔길"
+        ],
+        [
+          "bush",
+          "덤불"
+        ]
+      ],
+      [
+        [
+          "string",
+          "줄"
+        ],
+        [
+          "net",
+          "그물"
+        ],
+        [
+          "thin",
+          "가느다란"
+        ],
+        [
+          "connect",
+          "잇다"
+        ]
+      ],
+      [
+        [
+          "bug",
+          "벌레"
+        ],
+        [
+          "leaf",
+          "잎"
+        ],
+        [
+          "branch",
+          "가지"
+        ],
+        [
+          "rest",
+          "머물다"
+        ]
       ]
     ],
     "levelTwoWords": [
@@ -2234,6 +2405,60 @@
           "within",
           "안에"
         ]
+      ],
+      [
+        [
+          "log",
+          "통나무"
+        ],
+        [
+          "trunk",
+          "줄기"
+        ],
+        [
+          "bark",
+          "나무껍질"
+        ],
+        [
+          "trace",
+          "자취"
+        ]
+      ],
+      [
+        [
+          "attach",
+          "붙이다"
+        ],
+        [
+          "pattern",
+          "무늬"
+        ],
+        [
+          "trap",
+          "덫"
+        ],
+        [
+          "tight",
+          "팽팽한"
+        ]
+      ],
+      [
+        [
+          "stick",
+          "달라붙다"
+        ],
+        [
+          "sharp",
+          "뾰족한"
+        ],
+        [
+          "nut",
+          "열매"
+        ],
+        [
+          "similar",
+          "비슷한"
+        ]
       ]
     ],
     "sceneSpots": [
@@ -2316,7 +2541,7 @@
         ],
         [
           50,
-          52
+          48
         ],
         [
           78,
@@ -2324,13 +2549,13 @@
         ],
         [
           47,
-          58
+          62
         ]
       ],
       [
         [
           40,
-          40
+          32
         ],
         [
           62,
@@ -2338,11 +2563,11 @@
         ],
         [
           52,
-          45
+          49
         ],
         [
           70,
-          72
+          76
         ]
       ],
       [
@@ -2352,7 +2577,7 @@
         ],
         [
           30,
-          52
+          48
         ],
         [
           76,
@@ -2360,7 +2585,7 @@
         ],
         [
           22,
-          58
+          62
         ]
       ],
       [
@@ -2370,7 +2595,7 @@
         ],
         [
           48,
-          48
+          52
         ],
         [
           70,
@@ -2378,13 +2603,13 @@
         ],
         [
           58,
-          38
+          34
         ]
       ],
       [
         [
           46,
-          46
+          42
         ],
         [
           68,
@@ -2392,7 +2617,7 @@
         ],
         [
           34,
-          54
+          58
         ],
         [
           52,
@@ -2402,11 +2627,11 @@
       [
         [
           52,
-          34
+          38
         ],
         [
           62,
-          30
+          26
         ],
         [
           72,
@@ -2415,6 +2640,60 @@
         [
           36,
           52
+        ]
+      ],
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
+        ]
+      ],
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
+        ]
+      ],
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
         ]
       ]
     ],
@@ -2512,7 +2791,7 @@
       [
         [
           40,
-          40
+          36
         ],
         [
           62,
@@ -2520,7 +2799,7 @@
         ],
         [
           52,
-          45
+          49
         ],
         [
           30,
@@ -2566,7 +2845,7 @@
       [
         [
           46,
-          46
+          42
         ],
         [
           68,
@@ -2578,17 +2857,17 @@
         ],
         [
           24,
-          62
+          66
         ]
       ],
       [
         [
           52,
-          34
+          38
         ],
         [
           62,
-          30
+          26
         ],
         [
           72,
@@ -2598,6 +2877,60 @@
           36,
           52
         ]
+      ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
       ]
     ]
   },
@@ -2605,10 +2938,1192 @@
     "works": [
       {
         "n": "01",
+        "title": "옷걸이의 옷",
+        "sub": "스웨터와 청바지",
+        "video": "ch3/scene-ch3-06.mp4",
+        "img": "ch3/scene-ch3-06-poster.jpg",
+        "words": [
+          [
+            "sweater",
+            "스웨터"
+          ],
+          [
+            "jeans",
+            "청바지"
+          ],
+          [
+            "scarf",
+            "목도리"
+          ],
+          [
+            "glove",
+            "장갑"
+          ],
+          [
+            "pocket",
+            "주머니"
+          ]
+        ]
+      },
+      {
+        "n": "02",
+        "title": "맑은 욕실",
+        "sub": "수건과 거울",
+        "video": "ch3/scene-ch3-07.mp4",
+        "img": "ch3/scene-ch3-07-poster.jpg",
+        "words": [
+          [
+            "shower",
+            "샤워기"
+          ],
+          [
+            "toilet",
+            "변기"
+          ],
+          [
+            "tap",
+            "수도꼭지"
+          ],
+          [
+            "towel",
+            "수건"
+          ],
+          [
+            "mirror",
+            "거울"
+          ]
+        ]
+      },
+      {
+        "n": "03",
+        "title": "계단 옆 거실",
+        "sub": "선반과 거실",
+        "video": "ch3/scene-ch3-08.mp4",
+        "img": "ch3/scene-ch3-08-poster.jpg",
+        "words": [
+          [
+            "stairs",
+            "계단"
+          ],
+          [
+            "shelf",
+            "선반"
+          ],
+          [
+            "livingroom",
+            "거실"
+          ],
+          [
+            "ceiling",
+            "천장"
+          ],
+          [
+            "sheet",
+            "얇은 판"
+          ]
+        ]
+      },
+      {
+        "n": "04",
+        "title": "램프 곁의 담요",
+        "sub": "벤치와 담요",
+        "video": "ch3/scene-ch3-09.mp4",
+        "img": "ch3/scene-ch3-09-poster.jpg",
+        "words": [
+          [
+            "furniture",
+            "가구"
+          ],
+          [
+            "bench",
+            "벤치"
+          ],
+          [
+            "lamp",
+            "램프"
+          ],
+          [
+            "blanket",
+            "담요"
+          ],
+          [
+            "carpet",
+            "카펫"
+          ]
+        ]
+      },
+      {
+        "n": "05",
+        "title": "조용한 부엌",
+        "sub": "전자레인지와 오븐",
+        "video": "ch3/scene-ch3-10.mp4",
+        "img": "ch3/scene-ch3-10-poster.jpg",
+        "words": [
+          [
+            "oven",
+            "오븐"
+          ],
+          [
+            "microwave",
+            "전자레인지"
+          ],
+          [
+            "lid",
+            "뚜껑"
+          ],
+          [
+            "tray",
+            "쟁반"
+          ],
+          [
+            "bin",
+            "쓰레기통"
+          ]
+        ]
+      },
+      {
+        "n": "06",
+        "title": "벽돌집과 지붕",
+        "sub": "시골집과 차고",
+        "video": "ch3/scene-ch3-11.mp4",
+        "img": "ch3/scene-ch3-11-poster.jpg",
+        "words": [
+          [
+            "roof",
+            "지붕"
+          ],
+          [
+            "garage",
+            "차고"
+          ],
+          [
+            "cottage",
+            "시골집"
+          ],
+          [
+            "brick",
+            "벽돌"
+          ],
+          [
+            "villa",
+            "별장"
+          ]
+        ]
+      },
+      {
+        "n": "07",
+        "title": "창고 벽의 연장",
+        "sub": "선반과 연장들",
+        "video": "ch3/scene-ch3-12.mp4",
+        "img": "ch3/scene-ch3-12-poster.jpg",
+        "words": [
+          [
+            "rope",
+            "밧줄"
+          ],
+          [
+            "chain",
+            "사슬"
+          ],
+          [
+            "lock",
+            "자물쇠"
+          ],
+          [
+            "wire",
+            "철사"
+          ],
+          [
+            "pipe",
+            "파이프"
+          ],
+          [
+            "iron",
+            "다리미"
+          ]
+        ]
+      },
+      {
+        "n": "08",
+        "title": "빨랫줄과 집게",
+        "sub": "바람에 날리는 천",
+        "video": "ch3/scene-ch3-13.mp4",
+        "img": "ch3/scene-ch3-13-poster.jpg",
+        "words": [
+          [
+            "string",
+            "끈"
+          ],
+          [
+            "bar",
+            "막대"
+          ],
+          [
+            "clip",
+            "집게"
+          ],
+          [
+            "pin",
+            "핀"
+          ],
+          [
+            "cotton",
+            "면"
+          ],
+          [
+            "tank",
+            "탱크"
+          ]
+        ]
+      },
+      {
+        "n": "09",
+        "title": "현관 구석의 잡동사니",
+        "sub": "어질러진 물건들",
+        "video": "ch3/scene-ch3-14.mp4",
+        "img": "ch3/scene-ch3-14-poster.jpg",
+        "words": [
+          [
+            "fit",
+            "맞다"
+          ],
+          [
+            "boot",
+            "부츠"
+          ],
+          [
+            "mess",
+            "엉망"
+          ],
+          [
+            "cable",
+            "케이블"
+          ],
+          [
+            "dump",
+            "버리다"
+          ],
+          [
+            "curl",
+            "감기다"
+          ]
+        ]
+      },
+      {
+        "n": "10",
+        "title": "거울 앞 선반",
+        "sub": "몸단장 도구들",
+        "video": "ch3/scene-ch3-15.mp4",
+        "img": "ch3/scene-ch3-15-poster.jpg",
+        "words": [
+          [
+            "blonde",
+            "금발"
+          ],
+          [
+            "uniform",
+            "제복"
+          ],
+          [
+            "suit",
+            "정장"
+          ],
+          [
+            "mask",
+            "마스크"
+          ],
+          [
+            "shave",
+            "면도하다"
+          ],
+          [
+            "bare",
+            "드러난"
+          ]
+        ]
+      }
+    ],
+    "levelOneWords": [
+      [
+        [
+          "sweater",
+          "스웨터"
+        ],
+        [
+          "jeans",
+          "청바지"
+        ],
+        [
+          "scarf",
+          "목도리"
+        ]
+      ],
+      [
+        [
+          "shower",
+          "샤워기"
+        ],
+        [
+          "toilet",
+          "변기"
+        ],
+        [
+          "tap",
+          "수도꼭지"
+        ]
+      ],
+      [
+        [
+          "stairs",
+          "계단"
+        ],
+        [
+          "shelf",
+          "선반"
+        ],
+        [
+          "livingroom",
+          "거실"
+        ]
+      ],
+      [
+        [
+          "furniture",
+          "가구"
+        ],
+        [
+          "bench",
+          "벤치"
+        ],
+        [
+          "lamp",
+          "램프"
+        ]
+      ],
+      [
+        [
+          "oven",
+          "오븐"
+        ],
+        [
+          "microwave",
+          "전자레인지"
+        ],
+        [
+          "lid",
+          "뚜껑"
+        ]
+      ],
+      [
+        [
+          "roof",
+          "지붕"
+        ],
+        [
+          "garage",
+          "차고"
+        ],
+        [
+          "cottage",
+          "시골집"
+        ]
+      ],
+      [
+        [
+          "rope",
+          "밧줄"
+        ],
+        [
+          "chain",
+          "사슬"
+        ],
+        [
+          "lock",
+          "자물쇠"
+        ]
+      ],
+      [
+        [
+          "string",
+          "끈"
+        ],
+        [
+          "bar",
+          "막대"
+        ],
+        [
+          "clip",
+          "집게"
+        ]
+      ],
+      [
+        [
+          "fit",
+          "맞다"
+        ],
+        [
+          "boot",
+          "부츠"
+        ],
+        [
+          "mess",
+          "엉망"
+        ]
+      ],
+      [
+        [
+          "blonde",
+          "금발"
+        ],
+        [
+          "uniform",
+          "제복"
+        ],
+        [
+          "suit",
+          "정장"
+        ]
+      ]
+    ],
+    "levelTwoWords": [
+      [
+        [
+          "glove",
+          "장갑"
+        ],
+        [
+          "pocket",
+          "주머니"
+        ]
+      ],
+      [
+        [
+          "towel",
+          "수건"
+        ],
+        [
+          "mirror",
+          "거울"
+        ]
+      ],
+      [
+        [
+          "ceiling",
+          "천장"
+        ],
+        [
+          "sheet",
+          "얇은 판"
+        ]
+      ],
+      [
+        [
+          "blanket",
+          "담요"
+        ],
+        [
+          "carpet",
+          "카펫"
+        ]
+      ],
+      [
+        [
+          "tray",
+          "쟁반"
+        ],
+        [
+          "bin",
+          "쓰레기통"
+        ]
+      ],
+      [
+        [
+          "brick",
+          "벽돌"
+        ],
+        [
+          "villa",
+          "별장"
+        ]
+      ],
+      [
+        [
+          "wire",
+          "철사"
+        ],
+        [
+          "pipe",
+          "파이프"
+        ],
+        [
+          "iron",
+          "다리미"
+        ]
+      ],
+      [
+        [
+          "pin",
+          "핀"
+        ],
+        [
+          "cotton",
+          "면"
+        ],
+        [
+          "tank",
+          "탱크"
+        ]
+      ],
+      [
+        [
+          "cable",
+          "케이블"
+        ],
+        [
+          "dump",
+          "버리다"
+        ],
+        [
+          "curl",
+          "감기다"
+        ]
+      ],
+      [
+        [
+          "mask",
+          "마스크"
+        ],
+        [
+          "shave",
+          "면도하다"
+        ],
+        [
+          "bare",
+          "드러난"
+        ]
+      ]
+    ],
+    "levelOneSpots": [
+      [
+        [
+          48,
+          40
+        ],
+        [
+          46,
+          78
+        ],
+        [
+          21,
+          45
+        ]
+      ],
+      [
+        [
+          71,
+          15
+        ],
+        [
+          17,
+          65
+        ],
+        [
+          45,
+          52
+        ]
+      ],
+      [
+        [
+          25,
+          55
+        ],
+        [
+          55,
+          60
+        ],
+        [
+          30,
+          35
+        ]
+      ],
+      [
+        [
+          55,
+          46
+        ],
+        [
+          40,
+          67
+        ],
+        [
+          58,
+          25
+        ]
+      ],
+      [
+        [
+          26,
+          72
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          63,
+          48
+        ]
+      ],
+      [
+        [
+          32,
+          28
+        ],
+        [
+          65,
+          62
+        ],
+        [
+          31,
+          52
+        ]
+      ],
+      [
+        [
+          46,
+          46
+        ],
+        [
+          75,
+          28
+        ],
+        [
+          74,
+          52
+        ]
+      ],
+      [
+        [
+          45,
+          29
+        ],
+        [
+          15,
+          59
+        ],
+        [
+          30,
+          39
+        ]
+      ],
+      [
+        [
+          39,
+          58
+        ],
+        [
+          26,
+          45
+        ],
+        [
+          53,
+          35
+        ]
+      ],
+      [
+        [
+          18,
+          28
+        ],
+        [
+          46,
+          48
+        ],
+        [
+          70,
+          48
+        ]
+      ]
+    ],
+    "sceneSpots": [
+      [
+        [
+          65,
+          70
+        ],
+        [
+          41,
+          55
+        ]
+      ],
+      [
+        [
+          68,
+          55
+        ],
+        [
+          43,
+          28
+        ]
+      ],
+      [
+        [
+          35,
+          15
+        ],
+        [
+          38,
+          70
+        ]
+      ],
+      [
+        [
+          22,
+          48
+        ],
+        [
+          35,
+          78
+        ]
+      ],
+      [
+        [
+          47,
+          52
+        ],
+        [
+          60,
+          80
+        ]
+      ],
+      [
+        [
+          11,
+          60
+        ],
+        [
+          50,
+          40
+        ]
+      ],
+      [
+        [
+          60,
+          36
+        ],
+        [
+          50,
+          16
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      [
+        [
+          61,
+          41
+        ],
+        [
+          43,
+          56
+        ],
+        [
+          65,
+          72
+        ]
+      ],
+      [
+        [
+          45,
+          82
+        ],
+        [
+          56,
+          55
+        ],
+        [
+          74,
+          60
+        ]
+      ],
+      [
+        [
+          28,
+          53
+        ],
+        [
+          42,
+          73
+        ],
+        [
+          16,
+          78
+        ]
+      ]
+    ]
+  },
+  "4": {
+    "works": [
+      {
+        "n": "01",
+        "title": "자료실의 분류벽 (카드 목록장)",
+        "sub": "학교의 모든 기록",
+        "video": "ch4/Pencil_drawing_of_library_cabinet_202608071752.mp4",
+        "img": "ch4/Pencil_drawing_of_library_cabinet_202608071752-poster.jpg",
+        "current": true,
+        "words": [
+          [
+            "catalog",
+            "목록"
+          ],
+          [
+            "arrange",
+            "정리하다"
+          ],
+          [
+            "list",
+            "명단"
+          ],
+          [
+            "article",
+            "기사"
+          ],
+          [
+            "chart",
+            "도표"
+          ],
+          [
+            "graph",
+            "그래프"
+          ],
+          [
+            "magazine",
+            "잡지"
+          ],
+          [
+            "clip",
+            "클립"
+          ]
+        ]
+      },
+      {
+        "n": "02",
+        "title": "무대 원고 편집실 (타자기)",
+        "sub": "이야기가 시작되는 곳",
+        "video": "ch4/Mechanical_typewriter_202608071752.mp4",
+        "img": "ch4/Mechanical_typewriter_202608071752-poster.jpg",
+        "words": [
+          [
+            "edit",
+            "편집하다"
+          ],
+          [
+            "text",
+            "글자"
+          ],
+          [
+            "spell",
+            "철자"
+          ],
+          [
+            "language",
+            "언어"
+          ],
+          [
+            "poem",
+            "시"
+          ],
+          [
+            "comedy",
+            "희극"
+          ],
+          [
+            "drama",
+            "드라마"
+          ],
+          [
+            "scene",
+            "장면"
+          ]
+        ]
+      },
+      {
+        "n": "03",
+        "title": "여행기록 보존대 (양장본)",
+        "sub": "먼 곳의 기억들",
+        "video": "ch4/Archival_sorting_table_202608071752.mp4",
+        "img": "ch4/Archival_sorting_table_202608071752-poster.jpg",
+        "words": [
+          [
+            "diary",
+            "일기장"
+          ],
+          [
+            "document",
+            "문서"
+          ],
+          [
+            "record",
+            "기록하다"
+          ],
+          [
+            "photograph",
+            "사진"
+          ],
+          [
+            "dictionary",
+            "사전"
+          ],
+          [
+            "essay",
+            "수필"
+          ],
+          [
+            "envelope",
+            "봉투"
+          ],
+          [
+            "object",
+            "사물"
+          ]
+        ]
+      }
+    ],
+    "levelOneWords": [
+      [
+        [
+          "catalog",
+          "목록"
+        ],
+        [
+          "arrange",
+          "정리하다"
+        ],
+        [
+          "list",
+          "명단"
+        ],
+        [
+          "article",
+          "기사"
+        ]
+      ],
+      [
+        [
+          "edit",
+          "편집하다"
+        ],
+        [
+          "text",
+          "글자"
+        ],
+        [
+          "spell",
+          "철자"
+        ],
+        [
+          "language",
+          "언어"
+        ]
+      ],
+      [
+        [
+          "diary",
+          "일기장"
+        ],
+        [
+          "document",
+          "문서"
+        ],
+        [
+          "record",
+          "기록하다"
+        ],
+        [
+          "photograph",
+          "사진"
+        ]
+      ]
+    ],
+    "levelTwoWords": [
+      [
+        [
+          "chart",
+          "도표"
+        ],
+        [
+          "graph",
+          "그래프"
+        ],
+        [
+          "magazine",
+          "잡지"
+        ],
+        [
+          "clip",
+          "클립"
+        ]
+      ],
+      [
+        [
+          "poem",
+          "시"
+        ],
+        [
+          "comedy",
+          "희극"
+        ],
+        [
+          "drama",
+          "드라마"
+        ],
+        [
+          "scene",
+          "장면"
+        ]
+      ],
+      [
+        [
+          "dictionary",
+          "사전"
+        ],
+        [
+          "essay",
+          "수필"
+        ],
+        [
+          "envelope",
+          "봉투"
+        ],
+        [
+          "object",
+          "사물"
+        ]
+      ]
+    ],
+    "sceneSpots": [
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
+        ]
+      ],
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
+        ]
+      ],
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
+        ]
+      ]
+    ],
+    "levelOneSpots": [
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ]
+    ]
+  },
+  "5": {
+    "works": [
+      {
+        "n": "01",
         "title": "놀이공원 대관람차",
         "sub": "빙글빙글 돌아가는 풍경",
-        "video": "챕터3_완성동영상/scene-ch3-01.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-01-poster.jpg",
+        "video": "ch3/scene-ch3-01.mp4",
+        "img": "ch3/scene-ch3-01-poster.jpg",
         "current": true,
         "words": [
           [
@@ -2649,8 +4164,8 @@
         "n": "02",
         "title": "물보라 롤러코스터",
         "sub": "아찔한 스피드",
-        "video": "챕터3_완성동영상/scene-ch3-02.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-02-poster.jpg",
+        "video": "ch3/scene-ch3-02.mp4",
+        "img": "ch3/scene-ch3-02-poster.jpg",
         "words": [
           [
             "track",
@@ -2690,8 +4205,8 @@
         "n": "03",
         "title": "범퍼카 타는 아이들",
         "sub": "쾅쾅 부딪히는 재미",
-        "video": "챕터3_완성동영상/scene-ch3-03.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-03-poster.jpg",
+        "video": "ch3/scene-ch3-03.mp4",
+        "img": "ch3/scene-ch3-03-poster.jpg",
         "words": [
           [
             "car",
@@ -2731,8 +4246,8 @@
         "n": "04",
         "title": "드롭타워 꼭대기",
         "sub": "떨어지기 직전의 순간",
-        "video": "챕터3_완성동영상/Riders_on_drop_tower_summit_202608062009.mp4",
-        "img": "챕터3_완성동영상/Riders_on_drop_tower_summit_202608062009-poster.jpg",
+        "video": "ch3/Riders_on_drop_tower_summit_202608062009.mp4",
+        "img": "ch3/Riders_on_drop_tower_summit_202608062009-poster.jpg",
         "words": [
           [
             "tower",
@@ -2772,8 +4287,8 @@
         "n": "05",
         "title": "곰인형을 뽑다",
         "sub": "고리를 던져 얻은 상",
-        "video": "챕터3_완성동영상/Girl_lifts_won_teddy_bear_202608061648.mp4",
-        "img": "챕터3_완성동영상/Girl_lifts_won_teddy_bear_202608061648-poster.jpg",
+        "video": "ch3/Girl_lifts_won_teddy_bear_202608061648.mp4",
+        "img": "ch3/Girl_lifts_won_teddy_bear_202608061648-poster.jpg",
         "words": [
           [
             "prize",
@@ -2806,570 +4321,6 @@
           [
             "joy",
             "기쁨"
-          ]
-        ]
-      },
-      {
-        "n": "06",
-        "title": "옷걸이의 옷",
-        "sub": "스웨터와 청바지",
-        "video": "챕터3_완성동영상/scene-ch3-06.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-06-poster.jpg",
-        "words": [
-          [
-            "sweater",
-            "스웨터"
-          ],
-          [
-            "jeans",
-            "청바지"
-          ],
-          [
-            "scarf",
-            "목도리"
-          ],
-          [
-            "glove",
-            "장갑"
-          ],
-          [
-            "pocket",
-            "주머니"
-          ]
-        ]
-      },
-      {
-        "n": "07",
-        "title": "맑은 욕실",
-        "sub": "수건과 거울",
-        "video": "챕터3_완성동영상/scene-ch3-07.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-07-poster.jpg",
-        "words": [
-          [
-            "shower",
-            "샤워기"
-          ],
-          [
-            "toilet",
-            "변기"
-          ],
-          [
-            "tap",
-            "수도꼭지"
-          ],
-          [
-            "towel",
-            "수건"
-          ],
-          [
-            "mirror",
-            "거울"
-          ]
-        ]
-      },
-      {
-        "n": "08",
-        "title": "계단 옆 거실",
-        "sub": "선반과 거실",
-        "video": "챕터3_완성동영상/scene-ch3-08.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-08-poster.jpg",
-        "words": [
-          [
-            "stairs",
-            "계단"
-          ],
-          [
-            "shelf",
-            "선반"
-          ],
-          [
-            "livingroom",
-            "거실"
-          ],
-          [
-            "ceiling",
-            "천장"
-          ],
-          [
-            "sheet",
-            "얇은 판"
-          ]
-        ]
-      },
-      {
-        "n": "09",
-        "title": "램프 곁의 담요",
-        "sub": "벤치와 담요",
-        "video": "챕터3_완성동영상/scene-ch3-09.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-09-poster.jpg",
-        "words": [
-          [
-            "furniture",
-            "가구"
-          ],
-          [
-            "bench",
-            "벤치"
-          ],
-          [
-            "lamp",
-            "램프"
-          ],
-          [
-            "blanket",
-            "담요"
-          ],
-          [
-            "carpet",
-            "카펫"
-          ]
-        ]
-      },
-      {
-        "n": "10",
-        "title": "조용한 부엌",
-        "sub": "전자레인지와 오븐",
-        "video": "챕터3_완성동영상/scene-ch3-10.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-10-poster.jpg",
-        "words": [
-          [
-            "oven",
-            "오븐"
-          ],
-          [
-            "microwave",
-            "전자레인지"
-          ],
-          [
-            "lid",
-            "뚜껑"
-          ],
-          [
-            "tray",
-            "쟁반"
-          ],
-          [
-            "bin",
-            "쓰레기통"
-          ]
-        ]
-      },
-      {
-        "n": "11",
-        "title": "벽돌집과 지붕",
-        "sub": "시골집과 차고",
-        "video": "챕터3_완성동영상/scene-ch3-11.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-11-poster.jpg",
-        "words": [
-          [
-            "roof",
-            "지붕"
-          ],
-          [
-            "garage",
-            "차고"
-          ],
-          [
-            "cottage",
-            "시골집"
-          ],
-          [
-            "brick",
-            "벽돌"
-          ],
-          [
-            "villa",
-            "별장"
-          ]
-        ]
-      },
-      {
-        "n": "12",
-        "title": "창고 벽의 연장",
-        "sub": "선반과 연장들",
-        "video": "챕터3_완성동영상/scene-ch3-12.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-12-poster.jpg",
-        "words": [
-          [
-            "rope",
-            "밧줄"
-          ],
-          [
-            "chain",
-            "사슬"
-          ],
-          [
-            "lock",
-            "자물쇠"
-          ],
-          [
-            "wire",
-            "철사"
-          ],
-          [
-            "pipe",
-            "파이프"
-          ],
-          [
-            "iron",
-            "다리미"
-          ]
-        ]
-      },
-      {
-        "n": "13",
-        "title": "빨랫줄과 집게",
-        "sub": "바람에 날리는 천",
-        "video": "챕터3_완성동영상/scene-ch3-13.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-13-poster.jpg",
-        "words": [
-          [
-            "string",
-            "끈"
-          ],
-          [
-            "bar",
-            "막대"
-          ],
-          [
-            "clip",
-            "집게"
-          ],
-          [
-            "pin",
-            "핀"
-          ],
-          [
-            "cotton",
-            "면"
-          ],
-          [
-            "tank",
-            "탱크"
-          ]
-        ]
-      },
-      {
-        "n": "14",
-        "title": "현관 구석의 잡동사니",
-        "sub": "어질러진 물건들",
-        "video": "챕터3_완성동영상/scene-ch3-14.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-14-poster.jpg",
-        "words": [
-          [
-            "fit",
-            "맞다"
-          ],
-          [
-            "boot",
-            "부츠"
-          ],
-          [
-            "mess",
-            "엉망"
-          ],
-          [
-            "cable",
-            "케이블"
-          ],
-          [
-            "dump",
-            "버리다"
-          ],
-          [
-            "curl",
-            "감기다"
-          ]
-        ]
-      },
-      {
-        "n": "15",
-        "title": "거울 앞 선반",
-        "sub": "몸단장 도구들",
-        "video": "챕터3_완성동영상/scene-ch3-15.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-15-poster.jpg",
-        "words": [
-          [
-            "blonde",
-            "금발"
-          ],
-          [
-            "uniform",
-            "제복"
-          ],
-          [
-            "suit",
-            "정장"
-          ],
-          [
-            "mask",
-            "마스크"
-          ],
-          [
-            "shave",
-            "면도하다"
-          ],
-          [
-            "bare",
-            "드러난"
-          ]
-        ]
-      },
-      {
-        "n": "16",
-        "title": "가지런한 아침상",
-        "sub": "정갈하게 차려진 식사",
-        "video": "챕터3_완성동영상/scene-ch3-16.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-16-poster.jpg",
-        "words": [
-          [
-            "rice",
-            "밥"
-          ],
-          [
-            "toast",
-            "토스트"
-          ],
-          [
-            "tea",
-            "차"
-          ],
-          [
-            "meal",
-            "식사"
-          ],
-          [
-            "lay",
-            "놓이다"
-          ],
-          [
-            "neat",
-            "정갈한"
-          ],
-          [
-            "total",
-            "전체"
-          ],
-          [
-            "pure",
-            "순수한"
-          ]
-        ]
-      },
-      {
-        "n": "17",
-        "title": "과일 접시",
-        "sub": "신선한 과일의 색감",
-        "video": "챕터3_완성동영상/scene-ch3-17.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-17-poster.jpg",
-        "words": [
-          [
-            "pear",
-            "배"
-          ],
-          [
-            "melon",
-            "멜론"
-          ],
-          [
-            "lemon",
-            "레몬"
-          ],
-          [
-            "plate",
-            "접시"
-          ],
-          [
-            "strawberry",
-            "딸기"
-          ],
-          [
-            "sour",
-            "신 맛의"
-          ],
-          [
-            "sort",
-            "종류"
-          ],
-          [
-            "amount",
-            "양"
-          ],
-          [
-            "spare",
-            "여분의"
-          ]
-        ]
-      },
-      {
-        "n": "18",
-        "title": "끓는 냄비와 주전자",
-        "sub": "부엌의 온기",
-        "video": "챕터3_완성동영상/scene-ch3-18.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-18-poster.jpg",
-        "words": [
-          [
-            "boil",
-            "끓이다"
-          ],
-          [
-            "kettle",
-            "주전자"
-          ],
-          [
-            "pour",
-            "따르다"
-          ],
-          [
-            "sauce",
-            "소스"
-          ],
-          [
-            "pot",
-            "냄비"
-          ],
-          [
-            "stir",
-            "젓다"
-          ],
-          [
-            "crack",
-            "깨뜨리다"
-          ],
-          [
-            "tin",
-            "통조림 깡통"
-          ]
-        ]
-      },
-      {
-        "n": "19",
-        "title": "도마 위에서 다듬기",
-        "sub": "요리 준비의 순간",
-        "video": "챕터3_완성동영상/scene-ch3-19.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-19-poster.jpg",
-        "words": [
-          [
-            "bowl",
-            "볼 그릇"
-          ],
-          [
-            "mix",
-            "섞다"
-          ],
-          [
-            "pepper",
-            "후추"
-          ],
-          [
-            "mushroom",
-            "버섯"
-          ],
-          [
-            "chop",
-            "다지다"
-          ],
-          [
-            "powder",
-            "가루"
-          ],
-          [
-            "press",
-            "누르다"
-          ],
-          [
-            "rub",
-            "문지르다"
-          ],
-          [
-            "wipe",
-            "닦다"
-          ]
-        ]
-      },
-      {
-        "n": "20",
-        "title": "프라이팬의 고기",
-        "sub": "지글지글 익어가는 고기",
-        "video": "챕터3_완성동영상/scene-ch3-20.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-20-poster.jpg",
-        "words": [
-          [
-            "fry",
-            "튀기다"
-          ],
-          [
-            "pan",
-            "프라이팬"
-          ],
-          [
-            "dish",
-            "접시"
-          ],
-          [
-            "crisp",
-            "바삭바삭한"
-          ],
-          [
-            "bacon",
-            "베이컨"
-          ],
-          [
-            "pork",
-            "돼지고기"
-          ],
-          [
-            "chip",
-            "조각"
-          ],
-          [
-            "wrap",
-            "싸다"
-          ]
-        ]
-      },
-      {
-        "n": "21",
-        "title": "장 보고 온 저녁",
-        "sub": "풍성한 저녁 식탁",
-        "video": "챕터3_완성동영상/scene-ch3-21.mp4",
-        "img": "챕터3_완성동영상/scene-ch3-21-poster.jpg",
-        "words": [
-          [
-            "grocery",
-            "식료품"
-          ],
-          [
-            "supper",
-            "저녁 식사"
-          ],
-          [
-            "honey",
-            "꿀"
-          ],
-          [
-            "snack",
-            "간식"
-          ],
-          [
-            "sweet",
-            "달콤한"
-          ],
-          [
-            "pie",
-            "파이"
-          ],
-          [
-            "bitter",
-            "쓴"
-          ],
-          [
-            "hunger",
-            "배고픔"
-          ],
-          [
-            "consume",
-            "소비하다"
           ]
         ]
       }
@@ -3464,143 +4415,543 @@
           "proud",
           "자랑스러운"
         ]
-      ],
+      ]
+    ],
+    "levelTwoWords": [
       [
         [
-          "sweater",
-          "스웨터"
+          "high",
+          "높은"
         ],
         [
-          "jeans",
-          "청바지"
+          "view",
+          "전망"
         ],
         [
-          "scarf",
-          "목도리"
+          "sky",
+          "하늘"
         ],
         [
-          "glove",
-          "장갑"
-        ],
-        [
-          "pocket",
-          "주머니"
+          "fun",
+          "재미"
         ]
       ],
       [
         [
-          "shower",
-          "샤워기"
+          "water",
+          "물"
         ],
         [
-          "toilet",
-          "변기"
+          "splash",
+          "물보라"
         ],
         [
-          "tap",
-          "수도꼭지"
+          "fast",
+          "빠른"
         ],
         [
-          "towel",
-          "수건"
-        ],
-        [
-          "mirror",
-          "거울"
+          "thrill",
+          "스릴"
         ]
       ],
       [
         [
-          "stairs",
-          "계단"
+          "seat",
+          "좌석"
         ],
         [
-          "shelf",
-          "선반"
+          "steer",
+          "조종하다"
         ],
         [
-          "livingroom",
-          "거실"
+          "crash",
+          "충돌"
+        ],
+        [
+          "play",
+          "놀다"
         ]
       ],
       [
         [
-          "furniture",
-          "가구"
+          "fear",
+          "두려움"
         ],
         [
-          "bench",
-          "벤치"
+          "scream",
+          "비명"
         ],
         [
-          "lamp",
-          "램프"
+          "grab",
+          "붙잡다"
         ],
         [
-          "blanket",
-          "담요"
+          "tight",
+          "꽉"
         ]
       ],
       [
         [
-          "oven",
-          "오븐"
+          "lift",
+          "들어올리다"
+        ],
+        [
+          "reach",
+          "닿다"
+        ],
+        [
+          "cheer",
+          "환호하다"
+        ],
+        [
+          "joy",
+          "기쁨"
+        ]
+      ]
+    ],
+    "sceneSpots": [
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
         ]
       ],
       [
         [
-          "roof",
-          "지붕"
+          30,
+          30
         ],
         [
-          "garage",
-          "차고"
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
         ]
       ],
       [
         [
-          "rope",
-          "밧줄"
+          30,
+          30
         ],
         [
-          "chain",
-          "사슬"
+          70,
+          30
         ],
         [
-          "lock",
-          "자물쇠"
+          30,
+          70
+        ],
+        [
+          70,
+          70
         ]
       ],
       [
         [
-          "string",
-          "끈"
+          30,
+          30
         ],
         [
-          "bar",
-          "막대"
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
         ]
       ],
       [
         [
-          "fit",
-          "맞다"
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
+        ]
+      ]
+    ],
+    "levelOneSpots": [
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
         ]
       ],
       [
         [
-          "blonde",
-          "금발"
+          20,
+          20
         ],
         [
-          "uniform",
-          "제복"
+          80,
+          20
         ],
         [
-          "suit",
-          "정장"
+          20,
+          80
+        ],
+        [
+          80,
+          80
         ]
       ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ],
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ]
+    ]
+  },
+  "6": {
+    "works": [
+      {
+        "n": "01",
+        "title": "가지런한 아침상",
+        "sub": "정갈하게 차려진 식사",
+        "video": "ch3/scene-ch3-16.mp4",
+        "img": "ch3/scene-ch3-16-poster.jpg",
+        "words": [
+          [
+            "rice",
+            "밥"
+          ],
+          [
+            "toast",
+            "토스트"
+          ],
+          [
+            "tea",
+            "차"
+          ],
+          [
+            "meal",
+            "식사"
+          ],
+          [
+            "lay",
+            "놓이다"
+          ],
+          [
+            "neat",
+            "정갈한"
+          ],
+          [
+            "total",
+            "전체"
+          ],
+          [
+            "pure",
+            "순수한"
+          ]
+        ]
+      },
+      {
+        "n": "02",
+        "title": "과일 접시",
+        "sub": "신선한 과일의 색감",
+        "video": "ch3/scene-ch3-17.mp4",
+        "img": "ch3/scene-ch3-17-poster.jpg",
+        "words": [
+          [
+            "pear",
+            "배"
+          ],
+          [
+            "melon",
+            "멜론"
+          ],
+          [
+            "lemon",
+            "레몬"
+          ],
+          [
+            "plate",
+            "접시"
+          ],
+          [
+            "strawberry",
+            "딸기"
+          ],
+          [
+            "sour",
+            "신 맛의"
+          ],
+          [
+            "sort",
+            "종류"
+          ],
+          [
+            "amount",
+            "양"
+          ],
+          [
+            "spare",
+            "여분의"
+          ]
+        ]
+      },
+      {
+        "n": "03",
+        "title": "끓는 냄비와 주전자",
+        "sub": "부엌의 온기",
+        "video": "ch3/scene-ch3-18.mp4",
+        "img": "ch3/scene-ch3-18-poster.jpg",
+        "words": [
+          [
+            "boil",
+            "끓이다"
+          ],
+          [
+            "kettle",
+            "주전자"
+          ],
+          [
+            "pour",
+            "따르다"
+          ],
+          [
+            "sauce",
+            "소스"
+          ],
+          [
+            "pot",
+            "냄비"
+          ],
+          [
+            "stir",
+            "젓다"
+          ],
+          [
+            "crack",
+            "깨뜨리다"
+          ],
+          [
+            "tin",
+            "통조림 깡통"
+          ]
+        ]
+      },
+      {
+        "n": "04",
+        "title": "도마 위에서 다듬기",
+        "sub": "요리 준비의 순간",
+        "video": "ch3/scene-ch3-19.mp4",
+        "img": "ch3/scene-ch3-19-poster.jpg",
+        "words": [
+          [
+            "bowl",
+            "볼 그릇"
+          ],
+          [
+            "mix",
+            "섞다"
+          ],
+          [
+            "pepper",
+            "후추"
+          ],
+          [
+            "mushroom",
+            "버섯"
+          ],
+          [
+            "chop",
+            "다지다"
+          ],
+          [
+            "powder",
+            "가루"
+          ],
+          [
+            "press",
+            "누르다"
+          ],
+          [
+            "rub",
+            "문지르다"
+          ],
+          [
+            "wipe",
+            "닦다"
+          ]
+        ]
+      },
+      {
+        "n": "05",
+        "title": "프라이팬의 고기",
+        "sub": "지글지글 익어가는 고기",
+        "video": "ch3/scene-ch3-20.mp4",
+        "img": "ch3/scene-ch3-20-poster.jpg",
+        "words": [
+          [
+            "fry",
+            "튀기다"
+          ],
+          [
+            "pan",
+            "프라이팬"
+          ],
+          [
+            "dish",
+            "접시"
+          ],
+          [
+            "crisp",
+            "바삭바삭한"
+          ],
+          [
+            "bacon",
+            "베이컨"
+          ],
+          [
+            "pork",
+            "돼지고기"
+          ],
+          [
+            "chip",
+            "조각"
+          ],
+          [
+            "wrap",
+            "싸다"
+          ]
+        ]
+      },
+      {
+        "n": "06",
+        "title": "장 보고 온 저녁",
+        "sub": "풍성한 저녁 식탁",
+        "video": "ch3/scene-ch3-21.mp4",
+        "img": "ch3/scene-ch3-21-poster.jpg",
+        "words": [
+          [
+            "grocery",
+            "식료품"
+          ],
+          [
+            "supper",
+            "저녁 식사"
+          ],
+          [
+            "honey",
+            "꿀"
+          ],
+          [
+            "snack",
+            "간식"
+          ],
+          [
+            "sweet",
+            "달콤한"
+          ],
+          [
+            "pie",
+            "파이"
+          ],
+          [
+            "hunger",
+            "배고픔"
+          ],
+          [
+            "consume",
+            "소비하다"
+          ]
+        ]
+      }
+    ],
+    "levelOneWords": [
       [
         [
           "rice",
@@ -3717,214 +5068,6 @@
     "levelTwoWords": [
       [
         [
-          "high",
-          "높은"
-        ],
-        [
-          "view",
-          "전망"
-        ],
-        [
-          "sky",
-          "하늘"
-        ],
-        [
-          "fun",
-          "재미"
-        ]
-      ],
-      [
-        [
-          "water",
-          "물"
-        ],
-        [
-          "splash",
-          "물보라"
-        ],
-        [
-          "fast",
-          "빠른"
-        ],
-        [
-          "thrill",
-          "스릴"
-        ]
-      ],
-      [
-        [
-          "seat",
-          "좌석"
-        ],
-        [
-          "steer",
-          "조종하다"
-        ],
-        [
-          "crash",
-          "충돌"
-        ],
-        [
-          "play",
-          "놀다"
-        ]
-      ],
-      [
-        [
-          "fear",
-          "두려움"
-        ],
-        [
-          "scream",
-          "비명"
-        ],
-        [
-          "grab",
-          "붙잡다"
-        ],
-        [
-          "tight",
-          "꽉"
-        ]
-      ],
-      [
-        [
-          "lift",
-          "들어올리다"
-        ],
-        [
-          "reach",
-          "닿다"
-        ],
-        [
-          "cheer",
-          "환호하다"
-        ],
-        [
-          "joy",
-          "기쁨"
-        ]
-      ],
-      [],
-      [],
-      [
-        [
-          "ceiling",
-          "천장"
-        ],
-        [
-          "sheet",
-          "얇은 판"
-        ]
-      ],
-      [
-        [
-          "carpet",
-          "카펫"
-        ]
-      ],
-      [
-        [
-          "microwave",
-          "전자레인지"
-        ],
-        [
-          "lid",
-          "뚜껑"
-        ],
-        [
-          "tray",
-          "쟁반"
-        ],
-        [
-          "bin",
-          "쓰레기통"
-        ]
-      ],
-      [
-        [
-          "cottage",
-          "시골집"
-        ],
-        [
-          "brick",
-          "벽돌"
-        ],
-        [
-          "villa",
-          "별장"
-        ]
-      ],
-      [
-        [
-          "wire",
-          "철사"
-        ],
-        [
-          "pipe",
-          "파이프"
-        ],
-        [
-          "iron",
-          "다리미"
-        ]
-      ],
-      [
-        [
-          "clip",
-          "집게"
-        ],
-        [
-          "pin",
-          "핀"
-        ],
-        [
-          "cotton",
-          "면"
-        ],
-        [
-          "tank",
-          "탱크"
-        ]
-      ],
-      [
-        [
-          "boot",
-          "부츠"
-        ],
-        [
-          "mess",
-          "엉망"
-        ],
-        [
-          "cable",
-          "케이블"
-        ],
-        [
-          "dump",
-          "버리다"
-        ],
-        [
-          "curl",
-          "감기다"
-        ]
-      ],
-      [
-        [
-          "mask",
-          "마스크"
-        ],
-        [
-          "shave",
-          "면도하다"
-        ],
-        [
-          "bare",
-          "드러난"
-        ]
-      ],
-      [
-        [
           "lay",
           "놓이다"
         ],
@@ -4027,10 +5170,6 @@
           "파이"
         ],
         [
-          "bitter",
-          "쓴"
-        ],
-        [
           "hunger",
           "배고픔"
         ],
@@ -4040,559 +5179,11 @@
         ]
       ]
     ],
-    "levelOneSpots": [
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          48,
-          40
-        ],
-        [
-          46,
-          78
-        ],
-        [
-          21,
-          45
-        ],
-        [
-          65,
-          70
-        ],
-        [
-          41,
-          55
-        ]
-      ],
-      [
-        [
-          71,
-          15
-        ],
-        [
-          17,
-          65
-        ],
-        [
-          45,
-          52
-        ],
-        [
-          68,
-          55
-        ],
-        [
-          43,
-          28
-        ]
-      ],
-      [
-        [
-          25,
-          55
-        ],
-        [
-          55,
-          60
-        ],
-        [
-          30,
-          35
-        ]
-      ],
-      [
-        [
-          55,
-          55
-        ],
-        [
-          40,
-          58
-        ],
-        [
-          58,
-          25
-        ],
-        [
-          22,
-          48
-        ]
-      ],
-      [
-        [
-          26,
-          72
-        ]
-      ],
-      [
-        [
-          32,
-          28
-        ],
-        [
-          65,
-          62
-        ]
-      ],
-      [
-        [
-          46,
-          46
-        ],
-        [
-          75,
-          28
-        ],
-        [
-          74,
-          52
-        ]
-      ],
-      [
-        [
-          45,
-          38
-        ],
-        [
-          15,
-          50
-        ]
-      ],
-      [
-        [
-          39,
-          58
-        ]
-      ],
-      [
-        [
-          18,
-          28
-        ],
-        [
-          46,
-          48
-        ],
-        [
-          70,
-          48
-        ]
-      ],
-      [
-        [
-          29,
-          52
-        ],
-        [
-          58,
-          55
-        ],
-        [
-          44,
-          33
-        ],
-        [
-          73,
-          50
-        ]
-      ],
-      [
-        [
-          18,
-          45
-        ],
-        [
-          44,
-          34
-        ],
-        [
-          51,
-          64
-        ],
-        [
-          73,
-          51
-        ]
-      ],
-      [
-        [
-          20,
-          58
-        ],
-        [
-          51,
-          48
-        ],
-        [
-          35,
-          62
-        ],
-        [
-          35,
-          46
-        ]
-      ],
-      [
-        [
-          17,
-          52
-        ],
-        [
-          33,
-          81
-        ],
-        [
-          63,
-          38
-        ],
-        [
-          20,
-          38
-        ]
-      ],
-      [
-        [
-          22,
-          42
-        ],
-        [
-          22,
-          62
-        ],
-        [
-          58,
-          62
-        ],
-        [
-          60,
-          46
-        ]
-      ],
-      [
-        [
-          16,
-          42
-        ],
-        [
-          50,
-          78
-        ],
-        [
-          21,
-          64
-        ],
-        [
-          39,
-          52
-        ],
-        [
-          44,
-          73
-        ]
-      ]
-    ],
     "sceneSpots": [
       [
         [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [],
-      [],
-      [
-        [
-          35,
-          15
-        ],
-        [
-          38,
-          70
-        ]
-      ],
-      [
-        [
-          35,
-          78
-        ]
-      ],
-      [
-        [
-          24,
-          40
-        ],
-        [
-          63,
-          48
-        ],
-        [
-          47,
-          52
-        ],
-        [
-          60,
-          80
-        ]
-      ],
-      [
-        [
-          31,
-          52
-        ],
-        [
-          11,
-          60
-        ],
-        [
-          50,
-          40
-        ]
-      ],
-      [
-        [
-          60,
-          36
-        ],
-        [
-          50,
-          16
-        ],
-        [
-          24,
-          48
-        ]
-      ],
-      [
-        [
-          30,
-          39
-        ],
-        [
-          61,
-          41
-        ],
-        [
-          43,
-          56
-        ],
-        [
-          65,
-          72
-        ]
-      ],
-      [
-        [
-          26,
-          45
-        ],
-        [
-          53,
-          35
-        ],
-        [
-          45,
-          82
-        ],
-        [
-          56,
-          55
-        ],
-        [
-          74,
-          60
-        ]
-      ],
-      [
-        [
-          28,
-          62
-        ],
-        [
-          42,
-          64
-        ],
-        [
-          16,
-          78
-        ]
-      ],
-      [
-        [
           44,
-          60
+          64
         ],
         [
           18,
@@ -4600,11 +5191,11 @@
         ],
         [
           50,
-          42
+          47
         ],
         [
           59,
-          37
+          28
         ]
       ],
       [
@@ -4662,21 +5253,21 @@
         ],
         [
           60,
-          62
+          53
         ],
         [
           68,
-          72
+          81
         ]
       ],
       [
         [
           28,
-          54
+          63
         ],
         [
           17,
-          52
+          43
         ],
         [
           52,
@@ -4693,234 +5284,138 @@
           62
         ],
         [
-          52,
-          70
+          73,
+          47
         ],
         [
           73,
-          56
+          77
+        ]
+      ]
+    ],
+    "levelOneSpots": [
+      [
+        [
+          29,
+          52
+        ],
+        [
+          58,
+          64
+        ],
+        [
+          44,
+          33
         ],
         [
           73,
-          68
+          41
+        ]
+      ],
+      [
+        [
+          18,
+          45
+        ],
+        [
+          44,
+          34
+        ],
+        [
+          51,
+          64
+        ],
+        [
+          73,
+          51
+        ]
+      ],
+      [
+        [
+          20,
+          58
+        ],
+        [
+          51,
+          48
+        ],
+        [
+          35,
+          71
+        ],
+        [
+          35,
+          37
+        ]
+      ],
+      [
+        [
+          17,
+          61
+        ],
+        [
+          33,
+          81
+        ],
+        [
+          63,
+          38
+        ],
+        [
+          20,
+          29
+        ]
+      ],
+      [
+        [
+          22,
+          42
+        ],
+        [
+          22,
+          62
+        ],
+        [
+          58,
+          62
+        ],
+        [
+          60,
+          46
+        ]
+      ],
+      [
+        [
+          16,
+          42
+        ],
+        [
+          50,
+          84
+        ],
+        [
+          21,
+          64
+        ],
+        [
+          39,
+          43
+        ],
+        [
+          44,
+          69
         ]
       ]
     ]
   },
-  "4": {
+  "9": {
     "works": [
       {
         "n": "01",
-        "title": "자료실의 분류벽 (카드 목록장)",
-        "sub": "학교의 모든 기록",
-        "video": "챕터4_완성동영상/Pencil_drawing_of_library_cabinet_202608071752.mp4",
-        "img": "챕터4_완성동영상/Pencil_drawing_of_library_cabinet_202608071752-poster.jpg",
-        "current": true,
-        "words": [
-          [
-            "catalog",
-            "목록"
-          ],
-          [
-            "arrange",
-            "정리하다"
-          ],
-          [
-            "list",
-            "명단"
-          ],
-          [
-            "article",
-            "기사"
-          ],
-          [
-            "chart",
-            "도표"
-          ],
-          [
-            "graph",
-            "그래프"
-          ],
-          [
-            "magazine",
-            "잡지"
-          ],
-          [
-            "clip",
-            "클립"
-          ]
-        ]
-      },
-      {
-        "n": "02",
-        "title": "무대 원고 편집실 (타자기)",
-        "sub": "이야기가 시작되는 곳",
-        "video": "챕터4_완성동영상/Mechanical_typewriter_drawing_on…_202608071752.mp4",
-        "img": "챕터4_완성동영상/Mechanical_typewriter_drawing_on…_202608071752-poster.jpg",
-        "words": [
-          [
-            "edit",
-            "편집하다"
-          ],
-          [
-            "text",
-            "글자"
-          ],
-          [
-            "spell",
-            "철자"
-          ],
-          [
-            "language",
-            "언어"
-          ],
-          [
-            "poem",
-            "시"
-          ],
-          [
-            "comedy",
-            "희극"
-          ],
-          [
-            "drama",
-            "드라마"
-          ],
-          [
-            "scene",
-            "장면"
-          ]
-        ]
-      },
-      {
-        "n": "03",
-        "title": "여행기록 보존대 (양장본)",
-        "sub": "먼 곳의 기억들",
-        "video": "챕터4_완성동영상/Archival_sorting_table_drawing_a…_202608071752.mp4",
-        "img": "챕터4_완성동영상/Archival_sorting_table_drawing_a…_202608071752-poster.jpg",
-        "words": [
-          [
-            "diary",
-            "일기장"
-          ],
-          [
-            "document",
-            "문서"
-          ],
-          [
-            "record",
-            "기록하다"
-          ],
-          [
-            "photograph",
-            "사진"
-          ],
-          [
-            "dictionary",
-            "사전"
-          ],
-          [
-            "essay",
-            "수필"
-          ],
-          [
-            "envelope",
-            "봉투"
-          ],
-          [
-            "object",
-            "사물"
-          ]
-        ]
-      },
-      {
-        "n": "04",
-        "title": "사막의 혼천의",
-        "sub": "별자리를 재는 황동 고리",
-        "video": "챕터4_완성동영상/Armillary_sphere_ring_rotating_202608071553.mp4",
-        "img": "챕터4_완성동영상/Armillary_sphere_ring_rotating_202608071553-poster.jpg",
-        "words": [
-          [
-            "desert",
-            "사막"
-          ],
-          [
-            "site",
-            "유적터"
-          ],
-          [
-            "region",
-            "지역"
-          ],
-          [
-            "pole",
-            "기둥"
-          ],
-          [
-            "round",
-            "둥근"
-          ],
-          [
-            "scale",
-            "크기"
-          ],
-          [
-            "broad",
-            "드넓은"
-          ],
-          [
-            "pile",
-            "더미"
-          ]
-        ]
-      },
-      {
-        "n": "05",
-        "title": "황동 현미경과 광물",
-        "sub": "작은 것을 크게 보는 눈",
-        "video": "챕터4_완성동영상/Brass_microscope_drawing_on_paper_202608071553.mp4",
-        "img": "챕터4_완성동영상/Brass_microscope_drawing_on_paper_202608071553-poster.jpg",
-        "words": [
-          [
-            "instrument",
-            "기구"
-          ],
-          [
-            "examine",
-            "살펴보다"
-          ],
-          [
-            "inspect",
-            "검사하다"
-          ],
-          [
-            "detail",
-            "세부"
-          ],
-          [
-            "sample",
-            "표본"
-          ],
-          [
-            "element",
-            "원소"
-          ],
-          [
-            "metal",
-            "금속"
-          ],
-          [
-            "tiny",
-            "아주 작은"
-          ]
-        ]
-      },
-      {
-        "n": "06",
         "title": "바다를 보는 석상",
         "sub": "풀언덕에 선 거대한 형상",
-        "video": "챕터4_완성동영상/Moai_statues_standing_on_grass_202608071553.mp4",
-        "img": "챕터4_완성동영상/Moai_statues_standing_on_grass_202608071553-poster.jpg",
+        "video": "ch4/Moai_statues_standing_on_grass_202608071553.mp4",
+        "img": "ch4/Moai_statues_standing_on_grass_202608071553-poster.jpg",
         "words": [
           [
             "coast",
@@ -4955,177 +5450,97 @@
             "풀밭"
           ]
         ]
-      },
-      {
-        "n": "07",
-        "title": "측량기와 곧은 길",
-        "sub": "땅을 재어 길을 놓다",
-        "video": "챕터4_완성동영상/Surveyor_instrument_drawing_anim…_202608071553.mp4",
-        "img": "챕터4_완성동영상/Surveyor_instrument_drawing_anim…_202608071553-poster.jpg",
-        "words": [
-          [
-            "measure",
-            "재다"
-          ],
-          [
-            "survey",
-            "측량하다"
-          ],
-          [
-            "technique",
-            "기술"
-          ],
-          [
-            "skill",
-            "솜씨"
-          ],
-          [
-            "route",
-            "길"
-          ],
-          [
-            "flat",
-            "평평한"
-          ],
-          [
-            "straight",
-            "곧은"
-          ],
-          [
-            "level",
-            "수평"
-          ]
+      }
+    ],
+    "levelOneWords": [
+      [
+        [
+          "coast",
+          "해안"
+        ],
+        [
+          "ocean",
+          "바다"
+        ],
+        [
+          "shore",
+          "물가"
+        ],
+        [
+          "stare",
+          "응시하다"
         ]
-      },
-      {
-        "n": "08",
-        "title": "숲길을 걷는 여우",
-        "sub": "낙엽 위에 남는 발자국",
-        "video": "챕터4_완성동영상/Red_fox_walking_on_path_202608101458.mp4",
-        "img": "챕터4_완성동영상/Red_fox_walking_on_path_202608101458-poster.jpg",
-        "words": [
-          [
-            "log",
-            "통나무"
-          ],
-          [
-            "trunk",
-            "줄기"
-          ],
-          [
-            "bark",
-            "나무껍질"
-          ],
-          [
-            "branch",
-            "가지"
-          ],
-          [
-            "leaf",
-            "잎"
-          ],
-          [
-            "path",
-            "오솔길"
-          ],
-          [
-            "bush",
-            "덤불"
-          ],
-          [
-            "trace",
-            "자취"
-          ]
+      ]
+    ],
+    "levelTwoWords": [
+      [
+        [
+          "giant",
+          "거대한"
+        ],
+        [
+          "figure",
+          "형상"
+        ],
+        [
+          "edge",
+          "가장자리"
+        ],
+        [
+          "lawn",
+          "풀밭"
         ]
-      },
-      {
-        "n": "09",
-        "title": "바람 뒤의 거미줄",
-        "sub": "끊어진 줄을 다시 잇다",
-        "video": "챕터4_완성동영상/Spider_drawing_on_white_background_202608101458.mp4",
-        "img": "챕터4_완성동영상/Spider_drawing_on_white_background_202608101458-poster.jpg",
-        "words": [
-          [
-            "string",
-            "줄"
-          ],
-          [
-            "net",
-            "그물"
-          ],
-          [
-            "thin",
-            "가느다란"
-          ],
-          [
-            "connect",
-            "잇다"
-          ],
-          [
-            "attach",
-            "붙이다"
-          ],
-          [
-            "pattern",
-            "무늬"
-          ],
-          [
-            "trap",
-            "덫"
-          ],
-          [
-            "tight",
-            "팽팽한"
-          ]
+      ]
+    ],
+    "sceneSpots": [
+      [
+        [
+          30,
+          30
+        ],
+        [
+          70,
+          30
+        ],
+        [
+          30,
+          70
+        ],
+        [
+          70,
+          70
         ]
-      },
-      {
-        "n": "10",
-        "title": "잎 사이의 위장자",
-        "sub": "보이지 않던 것을 알아보다",
-        "video": "챕터4_완성동영상/Leaf_insect_on_twig_202608101458.mp4",
-        "img": "챕터4_완성동영상/Leaf_insect_on_twig_202608101458-poster.jpg",
-        "words": [
-          [
-            "bug",
-            "벌레"
-          ],
-          [
-            "leaf",
-            "잎"
-          ],
-          [
-            "branch",
-            "가지"
-          ],
-          [
-            "rest",
-            "머물다"
-          ],
-          [
-            "stick",
-            "달라붙다"
-          ],
-          [
-            "sharp",
-            "뾰족한"
-          ],
-          [
-            "nut",
-            "열매"
-          ],
-          [
-            "similar",
-            "비슷한"
-          ]
+      ]
+    ],
+    "levelOneSpots": [
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
         ]
-      },
+      ]
+    ]
+  },
+  "10": {
+    "works": [
       {
-        "n": "11",
+        "n": "01",
         "title": "구름을 보는 두 시선",
         "sub": "같은 것을 다르게 보다",
-        "video": "챕터4_완성동영상/Cloud_and_framed_panels_animation_202608101458.mp4",
-        "img": "챕터4_완성동영상/Cloud_and_framed_panels_animation_202608101458-poster.jpg",
+        "video": "ch4/Cloud_and_framed_panels_animation_202608101458.mp4",
+        "img": "ch4/Cloud_and_framed_panels_animation_202608101458-poster.jpg",
         "words": [
           [
             "frame",
@@ -5165,58 +5580,211 @@
     "levelOneWords": [
       [
         [
-          "catalog",
-          "목록"
+          "frame",
+          "액자"
         ],
         [
-          "arrange",
-          "정리하다"
+          "shape",
+          "모양"
         ],
         [
-          "list",
-          "명단"
+          "vision",
+          "환영"
         ],
         [
-          "article",
-          "기사"
+          "imagine",
+          "상상하다"
         ]
-      ],
+      ]
+    ],
+    "levelTwoWords": [
       [
         [
-          "edit",
-          "편집하다"
+          "view",
+          "시선"
         ],
         [
-          "text",
-          "글자"
+          "compare",
+          "견주다"
         ],
         [
-          "spell",
-          "철자"
+          "wing",
+          "날개"
         ],
         [
-          "language",
-          "언어"
+          "curl",
+          "말리다"
         ]
-      ],
+      ]
+    ],
+    "sceneSpots": [
       [
         [
-          "diary",
-          "일기장"
+          30,
+          30
         ],
         [
-          "document",
-          "문서"
+          70,
+          30
         ],
         [
-          "record",
-          "기록하다"
+          30,
+          70
         ],
         [
-          "photograph",
-          "사진"
+          70,
+          70
         ]
-      ],
+      ]
+    ],
+    "levelOneSpots": [
+      [
+        [
+          20,
+          20
+        ],
+        [
+          80,
+          20
+        ],
+        [
+          20,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ]
+    ]
+  },
+  "11": {
+    "works": [
+      {
+        "n": "01",
+        "title": "사막의 혼천의",
+        "sub": "별자리를 재는 황동 고리",
+        "video": "ch4/Armillary_sphere_ring_rotating_202608071553.mp4",
+        "img": "ch4/Armillary_sphere_ring_rotating_202608071553-poster.jpg",
+        "words": [
+          [
+            "desert",
+            "사막"
+          ],
+          [
+            "site",
+            "유적터"
+          ],
+          [
+            "region",
+            "지역"
+          ],
+          [
+            "pole",
+            "기둥"
+          ],
+          [
+            "round",
+            "둥근"
+          ],
+          [
+            "scale",
+            "크기"
+          ],
+          [
+            "broad",
+            "드넓은"
+          ],
+          [
+            "pile",
+            "더미"
+          ]
+        ]
+      },
+      {
+        "n": "02",
+        "title": "황동 현미경과 광물",
+        "sub": "작은 것을 크게 보는 눈",
+        "video": "ch4/Brass_microscope_drawing_on_paper_202608071553.mp4",
+        "img": "ch4/Brass_microscope_drawing_on_paper_202608071553-poster.jpg",
+        "words": [
+          [
+            "instrument",
+            "기구"
+          ],
+          [
+            "examine",
+            "살펴보다"
+          ],
+          [
+            "inspect",
+            "검사하다"
+          ],
+          [
+            "detail",
+            "세부"
+          ],
+          [
+            "sample",
+            "표본"
+          ],
+          [
+            "element",
+            "원소"
+          ],
+          [
+            "metal",
+            "금속"
+          ],
+          [
+            "tiny",
+            "아주 작은"
+          ]
+        ]
+      },
+      {
+        "n": "03",
+        "title": "측량기와 곧은 길",
+        "sub": "땅을 재어 길을 놓다",
+        "video": "ch4/Surveyor_instrument_202608071553.mp4",
+        "img": "ch4/Surveyor_instrument_202608071553-poster.jpg",
+        "words": [
+          [
+            "measure",
+            "재다"
+          ],
+          [
+            "survey",
+            "측량하다"
+          ],
+          [
+            "technique",
+            "기술"
+          ],
+          [
+            "skill",
+            "솜씨"
+          ],
+          [
+            "route",
+            "길"
+          ],
+          [
+            "flat",
+            "평평한"
+          ],
+          [
+            "straight",
+            "곧은"
+          ],
+          [
+            "level",
+            "수평"
+          ]
+        ]
+      }
+    ],
+    "levelOneWords": [
       [
         [
           "desert",
@@ -5255,24 +5823,6 @@
       ],
       [
         [
-          "coast",
-          "해안"
-        ],
-        [
-          "ocean",
-          "바다"
-        ],
-        [
-          "shore",
-          "물가"
-        ],
-        [
-          "stare",
-          "응시하다"
-        ]
-      ],
-      [
-        [
           "measure",
           "재다"
         ],
@@ -5288,135 +5838,9 @@
           "skill",
           "솜씨"
         ]
-      ],
-      [
-        [
-          "branch",
-          "가지"
-        ],
-        [
-          "leaf",
-          "잎"
-        ],
-        [
-          "path",
-          "오솔길"
-        ],
-        [
-          "bush",
-          "덤불"
-        ]
-      ],
-      [
-        [
-          "string",
-          "줄"
-        ],
-        [
-          "net",
-          "그물"
-        ],
-        [
-          "thin",
-          "가느다란"
-        ],
-        [
-          "connect",
-          "잇다"
-        ]
-      ],
-      [
-        [
-          "bug",
-          "벌레"
-        ],
-        [
-          "leaf",
-          "잎"
-        ],
-        [
-          "branch",
-          "가지"
-        ],
-        [
-          "rest",
-          "머물다"
-        ]
-      ],
-      [
-        [
-          "frame",
-          "액자"
-        ],
-        [
-          "shape",
-          "모양"
-        ],
-        [
-          "vision",
-          "환영"
-        ],
-        [
-          "imagine",
-          "상상하다"
-        ]
       ]
     ],
     "levelTwoWords": [
-      [
-        [
-          "chart",
-          "도표"
-        ],
-        [
-          "graph",
-          "그래프"
-        ],
-        [
-          "magazine",
-          "잡지"
-        ],
-        [
-          "clip",
-          "클립"
-        ]
-      ],
-      [
-        [
-          "poem",
-          "시"
-        ],
-        [
-          "comedy",
-          "희극"
-        ],
-        [
-          "drama",
-          "드라마"
-        ],
-        [
-          "scene",
-          "장면"
-        ]
-      ],
-      [
-        [
-          "dictionary",
-          "사전"
-        ],
-        [
-          "essay",
-          "수필"
-        ],
-        [
-          "envelope",
-          "봉투"
-        ],
-        [
-          "object",
-          "사물"
-        ]
-      ],
       [
         [
           "round",
@@ -5455,24 +5879,6 @@
       ],
       [
         [
-          "giant",
-          "거대한"
-        ],
-        [
-          "figure",
-          "형상"
-        ],
-        [
-          "edge",
-          "가장자리"
-        ],
-        [
-          "lawn",
-          "풀밭"
-        ]
-      ],
-      [
-        [
           "route",
           "길"
         ],
@@ -5487,78 +5893,6 @@
         [
           "level",
           "수평"
-        ]
-      ],
-      [
-        [
-          "log",
-          "통나무"
-        ],
-        [
-          "trunk",
-          "줄기"
-        ],
-        [
-          "bark",
-          "나무껍질"
-        ],
-        [
-          "trace",
-          "자취"
-        ]
-      ],
-      [
-        [
-          "attach",
-          "붙이다"
-        ],
-        [
-          "pattern",
-          "무늬"
-        ],
-        [
-          "trap",
-          "덫"
-        ],
-        [
-          "tight",
-          "팽팽한"
-        ]
-      ],
-      [
-        [
-          "stick",
-          "달라붙다"
-        ],
-        [
-          "sharp",
-          "뾰족한"
-        ],
-        [
-          "nut",
-          "열매"
-        ],
-        [
-          "similar",
-          "비슷한"
-        ]
-      ],
-      [
-        [
-          "view",
-          "시선"
-        ],
-        [
-          "compare",
-          "견주다"
-        ],
-        [
-          "wing",
-          "날개"
-        ],
-        [
-          "curl",
-          "말리다"
         ]
       ]
     ],
@@ -5616,297 +5950,9 @@
           70,
           70
         ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
-      ],
-      [
-        [
-          30,
-          30
-        ],
-        [
-          70,
-          30
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
-        ]
       ]
     ],
     "levelOneSpots": [
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
-      [
-        [
-          20,
-          20
-        ],
-        [
-          80,
-          20
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
-        ]
-      ],
       [
         [
           20,
@@ -5978,7 +6024,7 @@
       works.forEach((w,i)=>{
         let lock = false;
         if (!isPaid) {
-          if (currentChapterId === 1 || currentChapterId === 2 || currentChapterId === 3) lock = false;
+          if (currentChapterId === 1) lock = false;
           else lock = true;
         }
         w.locked=lock;
@@ -6014,7 +6060,7 @@
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
     const chapterSpots=[[24.3,25.4],[13.4,44.7],[31.2,44.4],[26.1,70.3],[48.4,22.6],[45.3,41.7],[59.8,48.3],[52.4,70.6],[77.8,20.9],[73.6,38.2],[86.8,50.3],[78.6,70.4]];
     const chapterGrid=document.getElementById('chapterGrid');
-    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${[0,1,2].includes(i)?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${chapterLatin[i]}, ${chapterGuide[i].replace(' · ', ', ')}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${[0,1,2].includes(i)?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-latin" lang="la">${chapterLatin[i]}</span><span class="label-guide" lang="ko">${chapterGuide[i]}</span></h3></button>`).join('');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${((chapterData[i+1]||{}).works||[]).length?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${chapterLatin[i]}, ${chapterGuide[i].replace(' · ', ', ')}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${((chapterData[i+1]||{}).works||[]).length?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-latin" lang="la">${chapterLatin[i]}</span><span class="label-guide" lang="ko">${chapterGuide[i]}</span></h3><em class="ch-count">${((chapterData[i+1]||{}).works||[]).length ? ((chapterData[i+1].works.length)+"편") : ""}</em></button>`).join('');
     const shelf=document.getElementById('shelf');
 
 
@@ -6156,7 +6202,7 @@
       wordOverlay.querySelectorAll('.scene-word').forEach(button=>{
         button.onclick=()=>speakWord(button.dataset.word,button);
       });
-      wordList.innerHTML=allWords.map(([en,ko])=>`<button class="word" type="button" data-word="${en}" aria-label="${en}, ${ko}, 발음 듣기"><strong>${en}</strong><em>${ko}</em></button>`).join('');
+      wordList.innerHTML=allWords.map(([en,ko])=>`<button class="word ${en.length>=10?'w-xl':en.length>=8?'w-lg':''}" type="button" data-word="${en}" aria-label="${en}, ${ko}, 발음 듣기"><strong>${en}</strong><em>${ko}</em></button>`).join('');
       wordList.querySelectorAll('.word').forEach(button=>{button.onclick=()=>speakWord(button.dataset.word,button)});
     }
     let activeWork; loadChapter(1);
@@ -6226,17 +6272,19 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
     function leaveChapter(){homePlayerAnchor.after(welcomeEl,viewerLayout);chapterDetail.classList.remove('active');homeView.classList.remove('hidden');setTimeout(()=>document.getElementById('chapterMap').scrollIntoView({behavior:'smooth'}),20)}
     document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{
       const ch = Number(card.dataset.chapter);
-      if([1,2,3].includes(ch)){
+      {
         const isPreviewQuery = location.search.includes('preview=1') || location.search.includes('ch=3') || location.search.includes('paid=1');
-        if (!isPaid && ch > 3 && !isPreviewQuery) {
+        if (!isPaid && ch > 1 && !isPreviewQuery) {
           openGate();
+          return;
+        }
+        if(!chapterData[ch] || !(chapterData[ch].works||[]).length){
+          notify(`${card.querySelector('h3').textContent} 챕터는 아직 준비중입니다.`);
           return;
         }
         loadChapter(ch);
         const chapterTitle = chapters[ch-1]; document.getElementById('chapterDetail').querySelector('.section-head h2').textContent = `챕터 ${ch} · ${chapterTitle}`;
         enterChapter();
-      } else {
-        notify(`${card.querySelector('h3').textContent} 챕터는 아직 준비중입니다.`);
       }
     });
     document.getElementById('dashboardContinue').onclick=enterChapter;
@@ -6405,7 +6453,7 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
       works.forEach((w,i)=>{
         let lock = false;
         if (!isPaid) {
-          if (currentChapterId === 1 || currentChapterId === 2 || currentChapterId === 3) lock = false;
+          if (currentChapterId === 1) lock = false;
           else lock = true;
         }
         w.locked=lock;
@@ -6414,7 +6462,7 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
       document.querySelectorAll('.work').forEach(el=>{const w=works[Number(el.dataset.index)];el.classList.toggle('locked',!!w.locked)});
       
       document.querySelectorAll('.chapter-card').forEach((card, i) => {
-        if (isPaid || i <= 1) {
+        if (isPaid || i === 0) {
           card.classList.remove('locked-chapter');
           card.classList.add('open');
           const key = card.querySelector('.key');
