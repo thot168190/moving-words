@@ -227,10 +227,10 @@ function LandingPage() {
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
         
         {/* 스타워즈 크롤 (Pretendard 서체) */}
-        <div className="absolute inset-0 flex justify-center overflow-hidden z-[5] pointer-events-none" style={{ perspective: '340px' }}>
+        <div className="absolute inset-0 flex justify-center overflow-hidden z-[5] pointer-events-none" style={{ perspective: '900px' }}>
           <div
             className="sw-crawl text-center font-black text-[#07533f] text-[26px] sm:text-[48px] md:text-[64px] leading-[1.8] w-full px-6"
-            style={{ whiteSpace: 'pre', fontFamily: 'Pretendard, sans-serif', fontSize: 'clamp(14px, 3.6vw, 64px)', paddingLeft: '10px', paddingRight: '10px' }}
+            style={{ whiteSpace: 'pre-wrap', fontFamily: 'Pretendard, sans-serif', fontSize: 'clamp(22px, 6vw, 64px)', paddingLeft: '10px', paddingRight: '10px' }}
           >
             {cinematic.text}
           </div>
