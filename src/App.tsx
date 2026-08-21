@@ -230,12 +230,12 @@ function LandingPage() {
         <div className="absolute inset-0 flex justify-center overflow-hidden z-[5] pointer-events-none" style={{ perspective: '340px' }}>
           <div
             className="sw-crawl text-center font-black text-[#07533f] text-[26px] sm:text-[48px] md:text-[64px] leading-[1.8] w-full px-6"
-            style={{ whiteSpace: 'pre', fontFamily: 'Pretendard, sans-serif' }}
+            style={{ whiteSpace: 'pre', fontFamily: 'Pretendard, sans-serif', fontSize: 'clamp(14px, 3.6vw, 64px)', paddingLeft: '10px', paddingRight: '10px' }}
           >
             {cinematic.text}
           </div>
         </div>
-        <style>{`.sw-crawl{transform-origin:50% 100%;animation:sw-crawl 30s linear infinite}@keyframes sw-crawl{0%{transform:rotateX(22deg) translateY(95vh)}100%{transform:rotateX(22deg) translateY(-170%)}}`}</style>
+        <style>{`.sw-crawl{transform-origin:50% 100%;animation:sw-crawl 30s linear infinite}@keyframes sw-crawl{0%{transform:rotateX(22deg) translateY(95dvh)}100%{transform:rotateX(22deg) translateY(-170%)}}`}</style>
       </section>
 
       {/* ════════════════ SECTION 3: INTERACTIVE DEMO & METRICS ════════════════ */}
