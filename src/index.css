@@ -195,9 +195,43 @@ body {
 @keyframes demo-card-stream { from { transform: translateX(75%); } to { transform: translateX(-82%); } }
 @keyframes demo-count { 0%,56% { opacity: 0; transform: translateY(6px); } 66%,92% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; } }
 
-@media (hover: none), (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   .group:hover .feature-card-image,
   .group:hover .feature-card-effect,
   .group:hover .feature-demo * { animation: none !important; }
   .feature-card-effect,.feature-demo,.feature-fast-video { display: none; }
+}
+
+/* ────────────────────────────────────────────────────────────
+   전체 화면 밀도 조정 (2026-08-10)
+   데스크톱에서 글자·여백이 전반적으로 커서 정보가 적게 들어오는 문제를
+   한 번에 잡습니다. 태블릿 이하(768px 미만)는 가독성을 위해 원래대로 둡니다.
+   되돌리려면 이 블록만 지우면 됩니다.
+   ──────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  body { zoom: 0.85; }
+}
+
+/* 터치 기기(폰·태블릿)에서는 hover가 없으므로 카드 데모를 자동 재생한다 (2026-08-21) */
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .group .feature-fast-video { opacity: 1; }
+  .group .feature-demo { opacity: 1; }
+  .group .demo-word-sail { animation: demo-pop 3.2s .25s ease infinite; }
+  .group .demo-word-anchor { animation: demo-pop 3.2s 1.05s ease infinite; }
+  .group .demo-question { animation: demo-question 3.2s ease infinite; }
+  .group .demo-choices span:first-child { animation: demo-answer 3.2s ease infinite; }
+  .group .demo-recording-frame { animation: demo-recording 3.6s ease infinite; }
+  .group .demo-draw-status { animation: demo-status 3.2s ease infinite; }
+  .group .demo-draw-line { animation: demo-draw 3.2s ease infinite; }
+  .group .demo-museum-strip { animation: demo-card-stream 4.2s linear infinite; }
+  .group .demo-museum-count { animation: demo-count 4.2s ease infinite; }
+  .group .feature-card-effect { opacity: 1; }
+  .group .feature-sailing .feature-card-image { animation: feature-sail 2.8s ease-in-out infinite alternate; }
+  .group .feature-treasure .feature-card-image { animation: feature-treasure 1.8s ease-in-out infinite alternate; }
+  .group .feature-fishing .feature-card-image { animation: feature-float 2.4s ease-in-out infinite alternate; }
+  .group .feature-storm .feature-card-image { animation: feature-storm 2.2s ease-in-out infinite alternate; }
+  .group .feature-sailing .feature-card-effect { animation: feature-sweep 2.8s ease-in-out infinite; }
+  .group .feature-treasure .feature-card-effect { animation: feature-glow 1.6s ease-in-out infinite alternate; }
+  .group .feature-fishing .feature-card-effect { animation: feature-ripple 2.2s ease-out infinite; }
+  .group .feature-storm .feature-card-effect { animation: feature-lightning 2.6s linear infinite; }
 }

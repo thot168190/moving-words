@@ -230,7 +230,7 @@ function LandingPage() {
         <div className="absolute inset-0 flex justify-center overflow-hidden z-[5] pointer-events-none" style={{ perspective: '900px' }}>
           <div
             className="sw-crawl text-center font-black text-[#07533f] text-[26px] sm:text-[48px] md:text-[64px] leading-[1.8] w-full px-6"
-            style={{ whiteSpace: 'pre-wrap', fontFamily: 'Pretendard, sans-serif', fontSize: 'clamp(22px, 6vw, 64px)', paddingLeft: '10px', paddingRight: '10px' }}
+            style={{ whiteSpace: 'pre-wrap', wordBreak: 'keep-all', fontFamily: 'Pretendard, sans-serif', fontSize: 'clamp(17px, 4.5vw, 64px)', paddingLeft: '6px', paddingRight: '6px' }}
           >
             {cinematic.text}
           </div>
