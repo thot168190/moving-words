@@ -8861,7 +8861,7 @@
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
     const chapterSpots=[[24.3,25.4],[13.4,44.7],[31.2,44.4],[26.1,70.3],[48.4,22.6],[45.3,41.7],[59.8,48.3],[52.4,70.6],[77.8,20.9],[73.6,38.2],[86.8,50.3],[78.6,70.4]];
     const chapterGrid=document.getElementById('chapterGrid');
-    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${((chapterData[i+1]||{}).works||[]).length?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${chapterLatin[i]}, ${chapterGuide[i].replace(' · ', ', ')}${i===0?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${((chapterData[i+1]||{}).works||[]).length?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-latin" lang="la">${chapterLatin[i]}</span><span class="label-guide" lang="ko">${chapterGuide[i]}</span></h3><em class="ch-count">${((chapterData[i+1]||{}).works||[]).length ? ((chapterData[i+1].works.length)+"편") : ""}</em></button>`).join('');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${((chapterData[i+1]||{}).works||[]).length?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${chapterLatin[i]}, ${chapterGuide[i].replace(' · ', ', ')}${i<=1?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${((chapterData[i+1]||{}).works||[]).length?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-latin" lang="la">${chapterLatin[i]}</span><span class="label-guide" lang="ko">${chapterGuide[i]}</span></h3><em class="ch-count">${((chapterData[i+1]||{}).works||[]).length ? ((chapterData[i+1].works.length)+"편") : ""}</em></button>`).join('');
     const shelf=document.getElementById('shelf');
 
 
@@ -9301,7 +9301,7 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
       document.querySelectorAll('.work').forEach(el=>{const w=works[Number(el.dataset.index)];el.classList.toggle('locked',!!w.locked)});
       
       document.querySelectorAll('.chapter-card').forEach((card, i) => {
-        if (isPaid || i === 0) {
+        if (isPaid || i <= 1) {
           card.classList.remove('locked-chapter');
           card.classList.add('open');
           const key = card.querySelector('.key');
