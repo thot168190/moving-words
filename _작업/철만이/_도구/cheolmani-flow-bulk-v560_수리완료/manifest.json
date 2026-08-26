@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Flow 벌크 복구본 v5.6.3",
+  "version": "5.6.3",
+  "description": "긴 프롬프트 보존 + 8초·16:9·1개 고정 + 중단 후 재개",
+  "permissions": [
+    "activeTab",
+    "debugger",
+    "sidePanel",
+    "scripting",
+    "storage",
+    "tabs",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://labs.google/*",
+    "https://labs.google.com/*"
+  ],
+  "action": {
+    "default_title": "Flow 벌크 복구본 v5.6.3 열기"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://labs.google/*",
+        "https://labs.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

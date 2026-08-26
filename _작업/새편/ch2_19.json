@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "19",
+  "title": "풍성한 수확",
+  "sub": "바구니에 담긴 가을 열매",
+  "video": "ch2/ch2_19.mp4",
+  "img": "ch2/ch2_19-poster.jpg",
+  "levelOne": [
+    [
+      "advance",
+      "advance",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "bunch",
+      "수확 다발",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "advantage",
+      "advantage",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "mass",
+      "묵직한 덩어리",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "advertise",
+      "advertise",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "advice",
+      "advice",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "period",
+      "수확의 계절",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "plenty",
+      "풍부함",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

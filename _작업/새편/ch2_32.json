@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "32",
+  "title": "둥지 속 새알",
+  "sub": "나뭇가지로 엮은 아늑한 둥지",
+  "video": "ch2/ch2_32.mp4",
+  "img": "ch2/ch2_32-poster.jpg",
+  "levelOne": [
+    [
+      "count",
+      "알의 개수",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "bond",
+      "bond",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "boom",
+      "boom",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "bore",
+      "bore",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "boss",
+      "boss",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "bother",
+      "bother",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "bounce",
+      "bounce",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "brain",
+      "brain",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

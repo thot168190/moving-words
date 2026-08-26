@@ -1,0 +1,295 @@
+:root {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #101114;
+  color: #f2f3f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 360px;
+  background: #101114;
+}
+
+.app {
+  padding: 14px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+p {
+  margin: 4px 0 0;
+  color: #a8adb7;
+  font-size: 12px;
+}
+
+.version {
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #252934;
+  color: #cbd5e1;
+  font-size: 11px;
+}
+
+.section {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #252934;
+  border-radius: 8px;
+  background: #17191f;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.label {
+  display: block;
+  margin: 0 0 6px;
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+textarea,
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  border: 1px solid #343946;
+  border-radius: 7px;
+  background: #0f1117;
+  color: #f2f3f5;
+  font: inherit;
+  font-size: 13px;
+  padding: 9px;
+  outline: none;
+}
+
+textarea:focus,
+input:focus {
+  border-color: #6ea8fe;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.fileButton,
+.button {
+  border: 0;
+  border-radius: 7px;
+  padding: 9px 12px;
+  background: #2b3140;
+  color: #f2f3f5;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fileButton input {
+  display: none;
+}
+
+.dropZone {
+  display: grid;
+  gap: 4px;
+  place-items: center;
+  min-height: 96px;
+  border: 2px dashed #3d4555;
+  border-radius: 8px;
+  background: #0f1117;
+  color: #dbe3ef;
+  text-align: center;
+  cursor: copy;
+  outline: none;
+}
+
+.dropZone span {
+  color: #8f98a8;
+  font-size: 12px;
+}
+
+.dropZone.active,
+.dropZone:focus {
+  border-color: #6ea8fe;
+  background: #121a2a;
+}
+
+.fileList {
+  margin-top: 8px;
+  border-radius: 7px;
+  background: #0f1117;
+  padding: 8px;
+  color: #cbd5e1;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.fileList div + div {
+  margin-top: 3px;
+}
+
+.fileSummary {
+  color: #86efac;
+  font-weight: 700;
+}
+
+.thumbGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.thumbCard {
+  overflow: hidden;
+  border: 1px solid #252934;
+  border-radius: 7px;
+  background: #17191f;
+}
+
+.thumbCard img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #0f1117;
+}
+
+.thumbName,
+.thumbSize {
+  overflow: hidden;
+  padding: 5px 6px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thumbName {
+  color: #dbe3ef;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.thumbSize {
+  padding-bottom: 6px;
+  color: #8f98a8;
+  font-size: 10px;
+}
+
+.button.primary {
+  background: #2563eb;
+}
+
+.button.danger {
+  background: #b4232d;
+}
+
+.button.ghost {
+  background: transparent;
+  border: 1px solid #343946;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.hint {
+  min-height: 18px;
+}
+
+.hint.strong {
+  color: #86efac;
+  font-weight: 700;
+}
+
+.check {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 7px 0;
+  color: #d6d9df;
+  font-size: 13px;
+}
+
+summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.progressHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+progress {
+  width: 100%;
+  height: 10px;
+  accent-color: #2563eb;
+}
+
+.log {
+  margin-top: 10px;
+  max-height: 220px;
+  overflow: auto;
+  border-radius: 7px;
+  background: #0f1117;
+  padding: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.log div {
+  padding: 2px 0;
+  color: #cbd5e1;
+}
+
+.log .success {
+  color: #86efac;
+}
+
+.log .warn {
+  color: #fde68a;
+}
+
+.log .error {
+  color: #fca5a5;
+}

@@ -1,0 +1,126 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>코다리 지시서 · 약관 수정 배포</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf8f3;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;color:#1c1a17;padding:18px;max-width:920px;margin:0 auto}
+h1{font-size:19px;margin:0 0 6px}h1 small{color:#b4472e;font-size:13px;font-weight:600;margin-left:8px}
+.warn{background:#fdf4f1;border:1px solid #e8c4b8;border-radius:10px;padding:12px 14px;font-size:13.2px;line-height:1.75;margin:12px 0;color:#7a3524}
+.warn b{color:#a8442c}
+.card{background:#fff;border:1px solid #e5ded0;border-radius:12px;padding:14px;margin-top:14px}
+textarea{width:100%;height:460px;font-family:ui-monospace,Menlo,monospace;font-size:12.2px;line-height:1.6;padding:12px;border:1px solid #e5ded0;border-radius:8px;background:#fcfbf8;resize:vertical;color:#2a2620}
+button{border:1px solid #1c1a17;background:#1c1a17;color:#fff;border-radius:8px;padding:12px 24px;font-size:15px;cursor:pointer;font-weight:700;margin-top:10px}
+button.done{background:#4a7c59;border-color:#4a7c59}
+</style></head><body>
+<h1>📋 코다리 지시서 <small>약관·방침 결함 수정 배포</small></h1>
+<div class="warn">
+<b>핵심 — 빌드를 돌리면 안 됩니다.</b> 이번 변경은 정적 HTML 2개뿐입니다. <code>npm run build</code>나 <code>npm run deploy</code>를 쓰면 <code>predeploy</code>가 빌드를 돌려 <b>심사 중인 결제 번들이 재생성</b>됩니다. 지시서에 <code>npx gh-pages -d dist</code>만 쓰도록 못 박아 두었습니다.<br>
+배포 전·후 검증 숫자를 표로 보고하게 했고, <b>번들 파일명 <code>index-CyIRZEHC.js</code>가 바뀌면 즉시 보고</b>하도록 했습니다.
+</div>
+<div class="card">
+<textarea readonly id="t"># 코다리 지시서 — inkword.site 약관·방침 결함 수정 배포 (2026-08-10)
+
+## 0. 배경
+
+PG(KPN) 심사 진행 중이다. 실사이트 점검에서 결함 3건이 확인되어 정적 파일 2개만 수정했다.
+**결제 코드·JS 번들·가격·결제 경로는 한 글자도 바뀌지 않았다.** 이번 배포는 그것을 유지해야 한다.
+
+## 1. 이미 완료된 것 (다시 하지 말 것)
+
+로부장이 아래 4개 파일을 이미 수정해서 저장해 두었다.
+
+```
+public/terms.html     6205 bytes
+public/privacy.html   6144 bytes
+dist/terms.html       6205 bytes   (public과 동일 내용)
+dist/privacy.html     6144 bytes   (public과 동일 내용)
+```
+
+수정 내용은 3가지뿐이다.
+1. 이용약관 조문 번호 정정 — `&lt;/div&gt;` 밖에 떠 있던 `&lt;h3&gt;제10조&lt;/h3&gt;` 블록을 본문 안으로 옮기고 `제 7 조 (서비스의 변경 및 종료)`로, 기존 제7조를 `제 8 조 (준거법 및 재판관할)`로 번호 변경. **조문 본문은 한 글자도 삭제/수정하지 않았다.**
+2. 사업자 주소를 푸터와 통일 — `(11481) 경기 양주시 고읍로 11-7, 105동 603호`
+3. `통신판매업신고: 제 2026-경기양주-2522 호` 한 줄 추가 (약관·방침 양쪽)
+
+## 2. ⛔ 절대 하지 말 것
+
+- **`npm run build` 금지.** JS 번들 해시가 바뀌면 심사 중인 결제 코드가 재빌드된다. 이번 변경은 정적 HTML 2개뿐이라 빌드가 필요 없다.
+- **`npm run deploy` / `predeploy` 금지.** 위와 같은 이유로 `predeploy`가 build를 돌린다.
+- `.env` 열람·수정 금지.
+- `src/` 아래 어떤 파일도 수정 금지.
+- Netlify 배포 금지. **gh-pages 브랜치가 정본이다.**
+- `_to_delete/` 안의 파일 삭제 금지.
+
+## 3. 할 일 — gh-pages 브랜치에 파일 2개만 반영
+
+빌드를 거치지 않고 `dist/`의 현재 상태를 그대로 gh-pages에 올린다.
+
+```bash
+# 프로젝트 루트에서
+npx gh-pages -d dist -m &quot;fix: 약관 조문 번호 정정 및 사업자정보 보강 (빌드 없음)&quot;
+```
+
+`gh-pages -d dist`는 현재 dist 폴더를 그대로 gh-pages 브랜치에 push한다. **build를 돌리지 않는다.**
+
+## 4. 배포 전 필수 확인 (숫자로 보고)
+
+배포하기 **전에** 아래를 세어서 보고할 것. 하나라도 안 맞으면 **중단하고 보고**한다.
+
+```bash
+grep -c &quot;통신판매업신고&quot; dist/terms.html          # 기대 1
+grep -c &quot;통신판매업신고&quot; dist/privacy.html        # 기대 1
+grep -c &quot;105동 603호&quot; dist/terms.html             # 기대 1
+grep -c &quot;105동 603호&quot; dist/privacy.html           # 기대 1
+grep -c &quot;&lt;h3&gt;제10조&quot; dist/terms.html              # 기대 0
+grep -o &quot;제 [0-9] 조 (&quot; dist/terms.html | wc -l   # 기대 8
+grep -c &quot;tosspayments&quot; dist/assets/*.js           # 기대 0
+grep -c &quot;test_ck_&quot; dist/assets/*.js               # 기대 0
+grep -o &quot;channel-key-647f8da4-88ae-499a-b478-1a9e9b874946&quot; dist/assets/*.js | wc -l   # 기대 1 이상
+ls dist/assets/                                    # index-CyIRZEHC.js 가 그대로 있어야 함
+```
+
+## 5. 배포 후 확인 (숫자로 보고)
+
+배포 후 2~3분 기다린 뒤 실제 사이트에서 확인한다.
+
+```bash
+curl -s https://inkword.site/terms.html | grep -c &quot;통신판매업신고&quot;      # 기대 1
+curl -s https://inkword.site/terms.html | grep -o &quot;제 [0-9] 조 (&quot; | wc -l  # 기대 8
+curl -s https://inkword.site/terms.html | grep -c &quot;&lt;h3&gt;제10조&quot;          # 기대 0
+curl -s https://inkword.site/privacy.html | grep -c &quot;105동 603호&quot;       # 기대 1
+curl -s https://inkword.site/ | grep -c &quot;index-CyIRZEHC.js&quot;             # 기대 1 (번들 안 바뀜)
+```
+
+**`index-CyIRZEHC.js` 파일명이 바뀌었다면 빌드가 돌아간 것이다. 즉시 보고할 것.**
+
+## 6. 완료 보고 형식
+
+아래 표를 **실제로 센 숫자로** 채워서 보고한다. 추정치나 &quot;완료&quot;라는 말만으로는 인정하지 않는다.
+
+```
+[배포 전]
+dist/terms.html   통신판매업신고 __ / 105동 603호 __ / &lt;h3&gt;제10조 __ / 조문 수 __
+dist/privacy.html 통신판매업신고 __ / 105동 603호 __
+dist/assets/*.js  tosspayments __ / test_ck_ __ / KPN 채널키 __
+번들 파일명        ______________________
+
+[배포 명령]
+실행한 명령: ____________________
+빌드 실행 여부: 예 / 아니오   ← 반드시 &quot;아니오&quot; 여야 함
+
+[배포 후 · 실사이트]
+terms.html   통신판매업신고 __ / 조문 수 __ / &lt;h3&gt;제10조 __
+privacy.html 105동 603호 __
+index.html   index-CyIRZEHC.js __
+```
+
+## 7. 실패 시
+
+- gh-pages push가 권한 오류로 실패하면 **재시도하지 말고 그대로 보고**한다.
+- 배포 후 사이트가 깨지면 즉시 보고. 롤백은 대표님 판단이다.
+</textarea>
+<button id="b" onclick="cp()">📋 지시서 복사</button>
+</div>
+<script>
+function cp(){const t=document.getElementById('t'),b=document.getElementById('b');
+const d=()=>{b.textContent='✓ 복사됨';b.classList.add('done');setTimeout(()=>{b.textContent='📋 지시서 복사';b.classList.remove('done')},1500)};
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t.value).then(d).catch(()=>{t.select();document.execCommand('copy');d()})}
+else{t.removeAttribute('readonly');t.select();t.setSelectionRange(0,999999);document.execCommand('copy');t.setAttribute('readonly','');window.getSelection().removeAllRanges();d()}}
+</script></body></html>

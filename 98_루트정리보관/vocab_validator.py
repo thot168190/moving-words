@@ -15,7 +15,7 @@ VERIFICATION_XLSX_PATH = "/Users/mihyunlee/Desktop/코덱스/움직이는그림�
 
 OUT_HTML_PATH = "/Users/mihyunlee/Desktop/코덱스/움직이는그림사전/_대표님확인/중등핵심1200_어휘검증보고서.html"
 OUT_XLSX_PATH = "/Users/mihyunlee/Desktop/코덱스/움직이는그림사전/_대표님확인/중등핵심1200_어휘검증표.xlsx"
-OUT_JSON_PATH = "/Users/mihyunlee/나는 1인기업 대표/코부장 프로젝트/움직이는그림사전/data/중등핵심1200_확정후보.json"
+OUT_JSON_PATH = "/Users/mihyunlee/workspace/움직이는그림사전/data/중등핵심1200_확정후보.json"
 
 # data 디렉토리 생성
 os.makedirs(os.path.dirname(OUT_JSON_PATH), exist_ok=True)

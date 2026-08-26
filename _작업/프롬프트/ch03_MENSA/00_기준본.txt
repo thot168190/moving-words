@@ -1,0 +1,49 @@
+# MENSA 기준본 — 2026-08-12 대표님 확정
+# 아침상 편에서 검증. 이 문장을 한 글자도 고치지 않는다.
+# 슬롯은 [A] 피사체목록 / [B] 그리는순서 / [C] 색 / [D] 마지막동작 / [E] 요약 만 교체.
+
+Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take.
+
+[A] The only visible subjects are one simple broad breakfast tray, one bowl of rice on the left, one small dish with exactly two slices of toast on the right, one teacup beside one small teapot, one pair of dining utensils, one spoon, and one clear glass of water near the upper center. These are the only objects present. The tray contains nothing else. No people, hands, animals, signs or drawing tools appear.
+
+0-4s: soft pale graphite strokes appear progressively from the empty white field, each drawn once in a single pass and never gone over again, so that the weight of every line varies naturally along its length - firmer where it begins and fading almost to nothing where it ends. Some lines stop just short of meeting and some run a little past the corner. nothing is measured, repeated or evenly spaced. The illustration draws itself. Each pale graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. [B] Draw the tray outline first, then the rice bowl, the toast dish with exactly two slices, the teapot and teacup, the water glass, and finally the dining utensils and spoon. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering.
+
+4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. [C] Use only a faint warm tan on the tray rim, a very pale wheat-gold tint on the two toast slices, and the faintest cool blue tint inside the water glass. Rice, teacup, teapot, dining utensils and spoon remain almost entirely white with only the lightest suggestion of color. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn.
+
+7-8s: [D] the tray makes one barely perceptible settling movement and then stops. No other subject moves, disappears, changes shape or is relocated.
+
+The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as [E] a simple illustrated breakfast tray: rice, two pieces of toast, tea, clear water and utensils. It must remain a delicate drawing, not a photograph or realistic still life.
+
+Style: delicate fine-line editorial illustration for young learners, loose pale graphite strokes of uneven weight, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon.
+
+Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum.
+
+Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the tray, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.
+
+
+# ── 이 기준본이 앞 판본과 다른 점 (사고 이력) ────────────────
+# 1. Never에 실사 차단 6종 추가
+#    photorealistic rendering / realistic still-life photography / CGI /
+#    3D render / glossy surfaces / saturated colors
+#    → 도감 세밀화로 흘러가던 것을 여기서 끊었다
+# 2. Style에서 'natural-history atlas' 삭제 → 'editorial illustration for young learners'
+#    'master-level / natural hand variation / museum-quality' 정밀도 강조어 전량 삭제
+#    끝에 'illustrated rather than realistic, never photorealistic' 못박음
+# 3. 0-4s에서 'its advancing tip' 삭제
+#    → 'no object, tool, tip, hand or instrument is ever visible'로 교체 (화살촉 소환 차단)
+# 4. [C]는 색을 세 곳에만 준다. 나머지는 'remain almost entirely white' 명시
+#    → 색을 적게 쓸수록 그 색이 선명하게 보인다 (구름편에서 확인)
+# 5. 마무리에 'It must remain a delicate drawing, not a photograph' 추가
+#
+# ── 2026-08-12 긴급 수정 (프라이팬·저녁상 편에서 피사체 전량 소실) ──
+# 7-8s 의 'No other subject moves, disappears, changes shape or is relocated.'
+#   → 'No other subject moves, disappears, changes shape or is relocated.' 로 환원
+#   사유: Never 앞 긍정문에 leaves/disappears/duplicates 를 나열하면 그대로 소환된다
+# 마무리 문단에 'The finished composition still contains every subject listed above
+#   and nothing more' 를 복원. 이 한 문장이 46편을 지켜온 안전장치였다.
+#
+# ── 아직 안 잡힌 것 ─────────────────────────────────────
+# 선이 연필이 아니라 펜처럼 균일하다. pale silver-grey graphite가 균일한 잉크선으로 나온다.
+# 다음 판에서 시험해볼 한 줄 (Style의 contours 뒤에 붙인다):
+#   soft graphite pencil lines that vary in weight, darker where the hand presses
+#   and fading almost away where it lifts, never a uniform ink line

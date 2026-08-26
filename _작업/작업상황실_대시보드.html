@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대표님 전용 작업상황판 — 움직이는 그림사전 17편</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      padding: 32px 24px 80px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 상단 헤더 전광판 */
+    .header-board {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+      padding: 36px 40px;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .header-left h1 {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-left p {
+      font-size: 16px;
+      color: #94a3b8;
+    }
+    .kpi-badge-group {
+      display: flex;
+      gap: 16px;
+    }
+    .kpi-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 16px 28px;
+      border-radius: 18px;
+      text-align: center;
+    }
+    .kpi-label {
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .kpi-val {
+      font-size: 36px;
+      font-weight: 900;
+      color: #10b981;
+    }
+
+    /* 프로그레스 바 */
+    .progress-wrap {
+      background: #ffffff;
+      padding: 24px 32px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+    .progress-bar-bg {
+      height: 20px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #059669);
+      width: 53%;
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    /* 메인 2단 레이아웃 */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* 4대 챕터 목록 (좌측) */
+    .chapter-section {
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cut-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cut-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 2px solid #e2e8f0;
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cut-card:hover {
+      border-color: #3b82f6;
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
+    .cut-card.active {
+      border-color: #3b82f6;
+      background: #eff6ff;
+    }
+    .cut-card.is-ok {
+      border-color: #10b981;
+      background: #f0fdf4;
+    }
+    .cut-card.is-ok:hover {
+      border-color: #059669;
+      background: #dcfce7;
+    }
+    .cut-info-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .cut-info-sub {
+      font-size: 13px;
+      color: #64748b;
+    }
+    .status-tag {
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .status-tag.ok {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .status-tag.wait {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #cbd5e1;
+    }
+    .status-tag.target {
+      background: #f59e0b;
+      color: #ffffff;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* 우측 워크벤치 (프롬프트 복사 창) */
+    .workbench {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 24px;
+      border: 2px solid #3b82f6;
+      box-shadow: 0 10px 25px -5px rgba(59,130,246,0.1);
+      position: sticky;
+      top: 24px;
+    }
+    .wb-header {
+      margin-bottom: 20px;
+    }
+    .wb-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    .wb-words {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 10px;
+    }
+    .wb-textarea {
+      width: 100%;
+      height: 320px;
+      font-family: ui-monospace, Menlo, Monaco, monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 18px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      resize: vertical;
+      margin-bottom: 20px;
+    }
+    .wb-btn-row {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-copy-big {
+      flex: 2;
+      background: #3b82f6;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 16px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-copy-big:hover {
+      background: #2563eb;
+    }
+    .btn-ok-toggle {
+      flex: 1;
+      background: #10b981;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 16px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .notes-box {
+      margin-top: 20px;
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 14px;
+      color: #92400e;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- 상단 대시보드 전광판 -->
+    <header class="header-board">
+      <div class="header-left">
+        <h1>📊 대표님 전용 실시간 상황판</h1>
+        <p>17개 전체 컷의 완료 상태를 확인하고, 원클릭으로 다음 프롬프트를 복사하세요.</p>
+      </div>
+      <div class="kpi-badge-group">
+        <div class="kpi-box">
+          <div class="kpi-label">생성 완료</div>
+          <div class="kpi-val" id="kpi-count">11 / 17</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">달성률</div>
+          <div class="kpi-val" id="kpi-percent">65%</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 프로그레스 바 -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span>전체 진척도 (65% 달성!)</span>
+        <span style="color:#10b981;">남은 컷: 6개</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="main-progress-bar" style="width: 65%;"></div>
+      </div>
+    </div>
+
+    <!-- 메인 2단 뷰 -->
+    <div class="main-grid">
+      
+      <!-- 좌측: 17개 컷 리스트 -->
+      <div class="chapter-section">
+        <div class="section-title">
+          <span>📑 17개 컷 목록 (클릭하면 우측에 프롬프트 표시)</span>
+        </div>
+
+        <div class="cut-list" id="cut-list-container">
+          <!-- JS로 자동 렌더링 -->
+        </div>
+      </div>
+
+      <!-- 우측: 선택된 프롬프트 워크벤치 -->
+      <div class="workbench">
+        <div class="wb-header">
+          <div class="wb-title" id="wb-title">MOTUS 4편 · 궁전 근위병과 보초 초소</div>
+          <div class="wb-words" id="wb-words">배정 단어: soldier · guard · army · weapon · officer · uniform · post · duty</div>
+        </div>
+
+        <textarea class="wb-textarea" id="wb-prompt" readonly></textarea>
+
+        <div class="wb-btn-row">
+          <button class="btn-copy-big" id="btn-copy" onclick="copyCurrentPrompt()">
+            📋 프롬프트 1초 복사하기
+          </button>
+          <button class="btn-ok-toggle" id="btn-ok-toggle" onclick="toggleOkCurrent()">
+            ✓ 생성 OK 완료
+          </button>
+        </div>
+
+        <div class="notes-box" id="wb-notes">
+          💡 안내: 위 복사 버튼을 눌러 플로우에 붙여넣으신 후, 성공하면 '생성 OK 완료'를 눌러주세요!
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const CUTS_DATA = [
+      // TERRA 챕터 (4/4 완료)
+      { id: 'terra-1', ch: 'TERRA 1편', title: '새벽 안개 시골길', words: 'fog · dawn · countryside · dirt · dust · frost', isOk: true, notes: '✓ 대표님 승인 완료 (시골길 풍경)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one quiet country stone road, a low rustic stone wall, sparse roadside grass with faint morning frost, and soft distant countryside tree contours. There are no vehicles, animals, people or drawing tools anywhere in the scene.
+
+0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. The stone road and low wall form first through clean, delicate pencil lines. Distant trees and roadside grass appear next sequentially. All lines remain completely still.
+
+4-8s: an extremely pale transparent watercolor wash develops gently. Soft warm-grey on the stone road, pale sage-green on the grass, and a whisper of lavender mist in the air. The morning fog drifts softly across the road.
+
+Style: master-level fine-line illustration, luminous transparent watercolor, generous untouched white space.` },
+      { id: 'terra-2', ch: 'TERRA 2편', title: '폭풍우와 물결 (물개와 바위섬)', words: 'storm · tide · wave · current · stream · seal', isOk: true, notes: '✓ 대표님 승인 완료 (바위섬과 물개)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one smooth coastal boulder rock, gentle sea wave lines, and one calm seal resting on the rock. There are no people, ships or drawing tools.
+
+0-4s: ultra-fine pale graphite linework appears progressively. The coastal boulder rock forms first, followed by sea wave contour lines and the calm seal resting on the rock. Every line appears sequentially.
+
+4-8s: extremely pale transparent watercolor settles gently. Pale slate-grey on the seal, muted soft-blue on the wave edges, and warm-grey on the rock. One gentle wave washes softly over the base of the rock.
+
+Style: master-level fine-line editorial illustration, luminous transparent watercolor, generous white space.` },
+      { id: 'terra-3', ch: 'TERRA 3편', title: '무지개와 한낮', words: 'rainbow · noon · heaven · shade · shadow · shine', isOk: true, notes: '✓ 대표님 승인 완료 (맑은 무지개)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static camera, 8-second take.
+
+The only visible subjects throughout the sequence are a gentle rolling meadow hill, one rustic wooden fence, a delicate pale rainbow arc in the sky, and subtle soft sunbeam contours.
+
+0-4s: ultra-fine pale graphite linework appears progressively. The meadow line and wooden fence form first, followed by the delicate arch of the rainbow and subtle sunbeam contours.
+
+4-8s: extremely pale transparent pastel watercolor develops. Soft pale-green on the meadow, faint yellow-amber on the fence, and whisper-light pastel spectrum tints along the rainbow arc.
+
+Style: master-level fine-line editorial illustration, luminous transparent watercolor, generous white space.` },
+      { id: 'terra-4', ch: 'TERRA 4편', title: '녹는 얼음과 김', words: 'freeze · melt · steam · smoke · temperature', isOk: true, notes: '✓ 대표님 승인 완료 (얼음과 찻잔 김)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static camera, 8-second take.
+
+The only visible subjects are one clear glass holding melting ice cubes and one ceramic tea mug with a soft curl of gentle steam rising, resting on a clean wooden table.
+
+0-4s: ultra-fine pale graphite linework appears progressively. The tabletop line, glass with ice cubes, and ceramic mug are drawn sequentially through thin, delicate pencil contours.
+
+4-8s: extremely pale watercolor develops. Pale ice-blue wash on the melting ice, warm honey-tan on the mug, and faint steam curls rising gently into the air.
+
+Style: master-level fine-line editorial illustration, luminous transparent watercolor, generous white space.` },
+
+      // MOTUS 챕터 (3/4 완료)
+      { id: 'motus-1', ch: 'MOTUS 1편', title: '공항과 비행기', words: 'airline · airport · exit · flight · gate · plane · seat · tour', isOk: true, notes: '✓ 대표님 승인 완료 (공항 활주로와 비행기)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one illustrated passenger airplane on an airport tarmac apron, clean painted ground taxiway lines, and faint distant control tower outlines. There are no people, hands, luggage carts or drawing tools anywhere in the scene.
+
+0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. Every outline is exceptionally thin, soft and light, never black or dark charcoal. The level taxiway ground lines are drawn first. The passenger airplane forms cleanly from the ground upward: landing gear, streamlined fuselage, wings, jet engines and tail fin. Every detail becomes visible sequentially.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. The tarmac remains untouched pure white paper with graphite lines only. Color blooms only as a refined whisper of pale dusty-blue on the airplane tail fin accent and a faint warm-amber on the cockpit window tint. The airplane makes one slow, elegant taxi forward along the ground line for a short distance and pauses.
+
+Style: delicate master-level fine-line editorial illustration, exceptionally sparse pale-graphite contours, soft silver-grey pencil lines, luminous transparent watercolor, generous untouched white space.
+
+Never: 3D render, photorealism, dark charcoal lines, heavy shadows, human figures, hands, visible drawing tools, camera movement.` },
+      { id: 'motus-2', ch: 'MOTUS 2편', title: '자전거와 수레', words: 'cycle · cart · picnic · motor · vehicle', isOk: true, notes: '✓ 대표님 승인 완료 (독립 배치 자전거와 카트)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one illustrated classic two-wheeled bicycle parked in the center, one small rustic wooden hand-cart standing neatly on the grass beside it, and a quiet country garden path. The bicycle and the cart are two completely separate, independent objects standing side by side without touching. There are no people, hands, cars, trains or drawing tools anywhere in the scene.
+
+0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. Every outline is exceptionally thin, soft and light, never black or dark charcoal. The level garden path is drawn first. The classic bicycle is drawn cleanly in the center with exactly two standard wheels, normal frame, handlebar with one woven basket, seat and pedal gear. Next, the standalone wooden hand-cart with its two small wheels and picnic blanket is drawn clearly on the grass beside the bicycle.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains whisper-light, low-saturation and transparent, with pure white paper showing clearly through every wash. Color blooms only as a delicate pale-coral line accent on the bicycle frame, faint warm-amber on the leather seat, honey-tan on the wooden cart, and a soft watery mist of pale spring green along the grass edge.
+
+Style: master-level fine-line editorial illustration, exceptionally sparse pale-graphite contours, luminous transparent watercolor, generous untouched white space.` },
+      { id: 'motus-3', ch: 'MOTUS 3편', title: '공원 벤치와 피크닉 배낭', words: 'pack · bench · blanket · tie · pocket · lawn · branch', isOk: true, notes: '✓ 대표님 승인 완료 (공원 벤치와 컴팩트 배낭)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one classic wooden park bench, one compact neatly-sized canvas backpack resting quietly on the left side of the bench, a small rolled blanket tied with leather straps on the backpack, and faint delicate branch and leaf outlines in the distant background. There are no people, hands, cars or drawing tools anywhere in the scene.
+
+0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. Every outline is exceptionally thin, soft and light, never black or dark charcoal. The level lawn line, garden bench, and sparse delicate tree branch contours are drawn first. The compact backpack forms cleanly on the wooden bench with neat front pockets and the small tied blanket. Every detail appears sequentially, completely stable and unmoving.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains whisper-light, low-saturation and transparent, with pure white paper showing clearly through every wash. No area becomes dark or heavily filled. Color blooms only as a very faint watery honey-tan on the compact backpack, faint warm-amber on the bench slats, and a soft watery mist of pale spring green along the branch leaves. The scene remains completely still, airy and surrounded by generous untouched white space.
+
+Style: master-level fine-line editorial illustration, exceptionally sparse pale-graphite contours, soft silver-grey pencil lines, luminous transparent watercolor, restrained tonal contrast, generous untouched white space, clear natural daylight, sophisticated museum-quality illustrated atlas for thoughtful young learners. Pure, airy and understated—never a dark painting and never dense color fills.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: oversized backpack, large luggage, human figures, hands, 3D render, photorealism, dark charcoal lines, black outlines, heavy graphite pressure, dark watercolor, dense color fills, saturated greens, paint blooms, fully painted surfaces, camera movement, cuts.` },
+      { id: 'motus-4', ch: 'MOTUS 4편', title: '궁전 근위병과 보초 초소', words: 'soldier · guard · army · weapon · officer · uniform · post · duty', isOk: true, notes: '✓ 대표님 승인 완료 (영국 궁전 근위병과 목재 초소)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one neatly illustrated ceremonial royal palace guard standing at a classic wooden sentry post, holding a traditional ceremonial staff in a dignified posture, and a quiet paved palace courtyard. There are no modern firearms, violence, battlefield gear, extra soldiers, other people or drawing tools anywhere in the scene.
+
+0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. Every outline is exceptionally thin, soft and light, never black or dark charcoal. The level courtyard ground line and small classic wooden sentry post are drawn first. The ceremonial guard is drawn cleanly in an elegant traditional dress uniform with clean symmetrical contours, ceremonial tall hat, and staff. Every line appears sequentially, completely stable and unmoving.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. The courtyard paving remains untouched pure white paper. Color blooms only as a refined scarlet-red accent on the guard uniform coat, soft navy on the trousers, and warm gold on the sentry trim. The guard performs one crisp ceremonial change-of-stance salute and returns to a dignified standing posture. All fine lines remain crisp and stable within generous untouched white space.
+
+Style: master-level fine-line editorial illustration, exceptionally sparse pale-graphite contours, soft silver-grey pencil lines, luminous transparent watercolor, restrained tonal contrast, generous untouched white space, clear natural daylight, sophisticated museum-quality illustrated atlas for thoughtful young learners.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: modern firearms, guns, violent weapons, battlefield, blood, scary expressions, dark charcoal outlines, black lines, heavy graphite pressure, dark watercolor, dense color fills, saturated colors, human hands holding pens, camera movement, cuts.` },
+
+      // SENSUS 챕터
+      { id: 'sensus-1a', ch: 'SENSUS 1A편', title: '몸의 위치 (전신)', words: 'chest · shoulder · knee · toe · nail', isOk: true, notes: '✓ 1차 통과 확보', prompt: `Cinematic progressive fine-line educational animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static locked-off camera, one continuous 8-second take.
+
+The only visible subject is one calm Korean school-age child with natural straight dark hair, standing naturally in a relaxed three-quarter pose. The chest, both shoulders, both knees and the toes are all plainly readable.
+
+0-4s: ultra-fine pale warm-grey graphite linework appears progressively. Reveal head, shoulders, shirt across the chest, relaxed hand showing clean nail, shorts, knees, sandals, and toes.
+
+4-8s: extremely pale transparent watercolor settles gently. Soft dusty-blue on shirt, soft navy on shorts, and pale skin tone. Child takes one slow breath at the chest and relaxes shoulders.` },
+      { id: 'sensus-1b', ch: 'SENSUS 1B편', title: '손거울과 맑은 시선', words: 'cheek · jaw · glance · stare · sight', isOk: true, notes: '✓ 대표님 승인 완료 (핀터레스트 단선 드로잉과 손거울)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one stylish modern youth character drawn in a clean minimalist lifestyle line-art style seated by a small cafe table, holding a sleek round hand-mirror, and a small ceramic cup. There are no webtoon idols, photorealism, heavy rooms or drawing tools anywhere in the scene.
+
+0-1.5s: clean, smooth, medium-grey single-stroke line-art contours (30% grey) appear progressively from the empty white field. Every line is exceptionally crisp, clean and confident, with zero cross-hatching or sketchy lines. The minimalist cafe table and round hand-mirror are drawn first in the center.
+
+1.5-3.0s: the stylish modern youth character forms with clean, elegant, single-stroke outline contours inspired by contemporary Japanese and Korean lifestyle book illustrations. The relaxed posture, casual loose-fit shirt, jawline, and natural hand holding the mirror are drawn effortlessly.
+
+3.0-4.5s: charming minimal dot eyes and a subtle gentle mouth line looking at the mirror reflection appear sequentially to complete the line drawing. The face is iconic and minimal. Every line remains crisp, completely stable and unmoving.
+
+4.5-7.2s: an extremely pale, water-heavy transparent watercolor wash develops gently. Pure white paper remains visible through every wash. Color blooms softly as a subtle peach-coral blush on the cheek, warm pale-honey on the shirt, and soft sky-blue in the mirror reflection. All surrounding space remains untouched pure white.
+
+7.2-8.0s: the character gives one subtle, pleasant gentle glance into the mirror with a quiet peaceful smile, and the scene rests in complete stillness, surrounded by generous untouched white space.
+
+Style: minimalist contemporary lifestyle line-art illustration, Noritake and Yu Nagaba inspired clean graphic line drawing, iconic simplified facial features, luminous transparent watercolor tint, generous untouched white space. Pure, stylish, chic, airy and modern—never webtoon, never anime, and never a realistic portrait.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: webtoon, manhwa, anime, K-pop idol faces, realistic shaded eyelashes, detailed lips, shaded hair strands, facial muscle shading, cross-hatching, 3D render, photorealism, text, labels, dark heavy watercolor, cuts.
+
+Preserve the existing left-side character, chair, mirror, hand, face, clothing, linework and watercolor colors exactly. Do not redraw or redesign the left side.
+
+Only repair the right half of the existing composition: naturally extend the café tabletop and its supporting leg farther toward the right, keeping the same line weight and perspective. Move the ceramic cup slightly toward the center-right on the extended tabletop so the right half contains visible illustrated content. Keep the existing white background and watercolor style unchanged.
+
+Remove the large empty right-side void and any vertical page edge or panel boundary. Do not add a plant, books, new people, room background, text, numbers or labels. Do not crop, zoom, mirror or alter the existing character. This is a localized right-side composition repair only.` },
+      { id: 'sensus-2', ch: 'SENSUS 2편', title: '아픈 사람과 약', words: 'fever · pain · medicine · patient · weak · pill · rest', isOk: true, notes: '✓ 대표님 승인 완료', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static camera, 8 seconds take.
+
+The only visible subjects are one patient resting comfortably in a clean clinic bed, a small bedside table holding a medicine bottle and a glass of water.
+
+0-4s: ultra-fine pale graphite linework appears progressively. Bed frame, bedside table, resting patient, and medicine bottle appear sequentially.
+
+4-8s: pale transparent watercolor develops. Soft mint-green on blanket, pale amber on medicine bottle. The patient drinks a small sip of water and rests peacefully.` },
+      { id: 'sensus-3', ch: 'SENSUS 3편', title: '헤드폰과 따뜻한 머그잔', words: 'amaze · cheer · delight · excite · joy · laugh · peace · relax · comfort', isOk: true, notes: '✓ 대표님 승인 완료 (핀터레스트 헤드폰과 머그잔 휴식)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one stylish modern youth character drawn in a clean minimalist lifestyle line-art style seated by a small cafe table, wearing sleek minimal headphones, holding a warm steaming ceramic mug with both hands, and a small notepad with a pencil. There are no webtoon idols, photorealism, heavy rooms or drawing tools anywhere in the scene.
+
+0-1.5s: clean, smooth, medium-grey single-stroke line-art contours (30% grey) appear progressively from the empty white field. Every line is exceptionally crisp, clean and confident, with zero cross-hatching or sketchy lines. The minimalist cafe table, small notepad, and steaming ceramic mug are drawn first in the center.
+
+1.5-3.0s: the stylish modern youth character forms with clean, elegant, single-stroke outline contours inspired by contemporary Japanese and Korean lifestyle book illustrations. The relaxed posture, casual loose-fit sweater, sleek minimal headphones, and hands holding the warm mug are drawn effortlessly.
+
+3.0-4.5s: charming minimal curved-line smiling eyes and a subtle gentle mouth line with a peaceful happy smile, and a tiny rising curl of steam appear sequentially to complete the line drawing. The face is iconic and minimal. Every line remains crisp, completely stable and unmoving.
+
+4.5-7.2s: an extremely pale, water-heavy transparent watercolor wash develops gently. Pure white paper remains visible through every wash. Color blooms softly as a subtle peach-coral blush on the cheek, warm pale-honey on the sweater, soft sage-green on the ceramic mug, and a whisper of sky-blue on the headphones. All surrounding space remains untouched pure white.
+
+7.2-8.0s: the character gives one slow, gentle relaxed breath with a blissful, peaceful smile while listening to music, and the scene rests in complete stillness, surrounded by generous untouched white space.
+
+Style: minimalist contemporary lifestyle line-art illustration, Noritake and Yu Nagaba inspired clean graphic line drawing, iconic simplified facial features, luminous transparent watercolor tint, generous untouched white space. Pure, stylish, chic, airy and modern—never webtoon, never anime, and never a realistic portrait.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+      { id: 'sensus-4', ch: 'SENSUS 4편', title: '화와 걱정의 표정', words: 'anger · annoy · anxious · fear · panic · shock · trouble · upset · bother', isOk: true, notes: '✓ 대표님 최종 승인 완료 (오른쪽 컷 확정: 알람시계와 맑은 측면 단선 드로잉)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one stylish modern youth character drawn in a clean minimalist lifestyle line-art style seated in side-profile by a small cafe table, looking at a small vintage ringing alarm clock, and a coffee cup. There are no frontal portraits, staring faces, dark skin renders, webtoon idols or drawing tools anywhere in the scene.
+
+0-1.5s: clean, smooth, medium-grey single-stroke line-art contours (30% grey) appear progressively from the empty white field. Every line is exceptionally crisp, clean and confident, with zero cross-hatching or sketchy lines. The minimalist cafe table, coffee cup, and round vintage alarm clock are drawn first in the center.
+
+1.5-3.0s: the stylish modern youth character forms in side-profile with clean, elegant, single-stroke outline contours inspired by contemporary Japanese and Korean lifestyle book illustrations. The relaxed seated side-posture, casual loose-fit shirt, jawline, and natural hand are drawn effortlessly.
+
+3.0-4.5s: charming minimal round dot eyes looking at the alarm clock with a cute surprised, anxious glance, and tiny motion vibration lines on the ringing alarm clock appear sequentially to complete the line drawing. The face is iconic and minimal. Every line remains crisp, completely stable and unmoving.
+
+4.5-7.2s: an extremely pale, water-heavy transparent watercolor wash develops gently. Pure white paper remains visible through every wash. Color blooms softly as a subtle peach-coral blush on the cheek, warm pale-honey on the shirt, soft slate-blue on the alarm clock, and pale amber in the coffee cup. All surrounding space remains untouched pure white.
+
+7.2-8.0s: the character gives one cute, subtle flustered blink at the clock with a tiny anxious sigh, and the scene rests in complete stillness, surrounded by generous untouched white space.
+
+Style: minimalist contemporary lifestyle line-art illustration, Noritake and Yu Nagaba inspired clean graphic line drawing, iconic simplified facial features, luminous transparent watercolor tint, generous untouched white space. Pure, stylish, chic, airy and modern—never a frontal portrait, never webtoon, and never a realistic face.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: frontal portrait, direct camera stare, realistic face, realistic eyes, realistic lips, shaded hair strands, dark skin tones, facial muscle shading, cross-hatching, 3D render, photorealism, text, labels, dark heavy watercolor, cuts.` },
+
+      // SOMNIUM 챕터
+      { id: 'somnium-1', ch: 'SOMNIUM 1편', title: '밤의 텐트와 모닥불', words: 'tale · magic · ghost · angel · mystery · dream · shadow', isOk: true, notes: '✓ 대표님 승인 완료 (밤하늘 별자리와 캠핑 텐트)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one cozy canvas camping tent under a crescent moon, a small gentle campfire with soft embers, one open storybook resting on a log stool, and a few faint constellation lines in the upper sky. There are no monsters, spooky shadows, people or drawing tools anywhere in the scene.
+
+0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. Every outline is exceptionally thin, soft and light, never black or dark charcoal. The ground horizon line and open storybook on the log stool are drawn first. The canvas tent outline, small campfire and delicate crescent moon appear next with sparse, elegant contours. Every line is crisp, completely stable and unmoving.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains whisper-light, low-saturation and transparent, with pure white paper showing clearly through every wash. Color blooms only as a soft warm-amber glow on the tent canvas, pale silver-blue on the crescent moon, and faint coral on the campfire embers. The campfire gives one tiny, peaceful ember flicker while the surroundings remain perfectly quiet. The final composition remains centered, readable and surrounded by generous untouched white space.
+
+Style: master-level fine-line editorial illustration, exceptionally sparse pale-graphite contours, soft silver-grey pencil lines, luminous transparent watercolor, restrained nocturnal palette, generous untouched white space, sophisticated museum-quality illustrated atlas for thoughtful young learners.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: human figures, monsters, ghosts, scary shadows, dark black backgrounds, 3D render, photorealism, dark charcoal lines, black outlines, heavy graphite pressure, dark watercolor, dense color fills, saturated blues, paint blooms, camera movement, cuts.` },
+      { id: 'somnium-2', ch: 'SOMNIUM 2편', title: '밤의 서재와 동화 퍼즐', words: 'fancy · fantastic · marvel · wonder · brilliant · puzzle', isOk: true, notes: '✓ 대표님 승인 완료 (밤의 창가 서재와 동화 퍼즐)', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one classic wooden study desk by a quiet arched window, one open illustrated fairy-tale book, one small neatly fitted wooden puzzle, a gentle small candle lamp, and faint crescent moon outlines outside the window. There are no people, hands, magical floating monsters or drawing tools anywhere in the scene.
+
+0-1.5s: ultra-fine pale warm-grey graphite lines appear progressively from the completely empty white field. The level floor line and delicate arched window frame are drawn first with clean minimal pencil contours.
+
+1.5-3.0s: the wooden study desk forms cleanly in the center from the ground upward, followed by the fine contours of the open storybook resting on top.
+
+3.0-4.5s: the small wooden puzzle, the delicate candle lamp and the slender crescent moon outside the window appear sequentially to complete the pencil drawing. Every revealed line remains completely still, crisp and stable.
+
+4.5-7.2s: an extremely pale, water-heavy watercolor wash develops gently across the scene. Color blooms only as soft honey-tan on the wooden desk, faint warm-amber glow around the tiny candle flame, pale silver-blue on the crescent moon, and a soft pastel-coral tint on the open book page.
+
+7.2-8.0s: the tiny candle flame gives one peaceful, gentle flicker and the entire scene rests completely still, surrounded by generous untouched white space.
+
+Style: master-level fine-line editorial illustration, exceptionally sparse pale-graphite contours, soft silver-grey pencil lines, luminous transparent watercolor, restrained nocturnal palette, generous untouched white space, clear natural daylight, sophisticated museum-quality illustrated atlas for thoughtful young learners. Pure, airy and understated—never a 3D render and never a dark painting.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: pop-in, instant appearance, full scene fade-in, flatlay top-down view, 3D render, photorealism, dark charcoal lines, black outlines, heavy graphite pressure, dark watercolor, dense color fills, human figures, hands, camera movement, cuts.` },
+      { id: 'somnium-3', ch: 'SOMNIUM 3편', title: '책 속의 비밀 미로와 단서', words: 'trick · puzzle · clue · match · secret · sign', isOk: false, isTarget: true, notes: '👉 [현재 출격 타깃] 2D 양장본 동화책 속 미로와 나침반 도감', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one open vintage illustrated storybook showing an intricate circular labyrinth maze drawn on the left page, and one delicate compass direction sign with faint treasure clue markings drawn on the right page. There are no loose physical metal keys, toy boards, 3D objects, people, hands, rooms or drawing tools anywhere in the scene.
+
+0-1.5s: ultra-fine pale warm-grey graphite pencil lines (maximum 20% grey) appear progressively from the empty white field. The clean contours of the open vintage storybook and its curved paper pages are sketched first in the center.
+
+1.5-3.0s: delicate concentric circular labyrinth maze pathways form smoothly on the left page through sparse, clean pencil lines.
+
+3.0-4.5s: the slender compass direction sign (N, E, S, W) and tiny whimsical star clue markings are drawn cleanly on the right page to complete the full pencil drawing. Every revealed pencil line is delicate, crisp, stable and unmoving.
+
+4.5-7.2s: an extremely pale, water-heavy transparent watercolor wash develops gently in whisper-light pastel touches. The pure white paper remains clearly visible through every wash. Color blooms only as soft parchment-cream on the open pages, a whisper of soft sage-green along the maze path lines, and pale warm-amber on the compass star center. All surrounding space remains untouched pure white.
+
+7.2-8.0s: the compass needle gives one tiny, gentle alignment turn toward north, and the entire scene rests peacefully, surrounded by generous untouched white space.
+
+Style: master-level fine-line pencil editorial illustration, exceptionally sparse pale-graphite contours, soft silver-grey pencil lines, luminous transparent watercolor, restrained nocturnal palette, generous untouched white space, clear natural daylight, sophisticated museum-quality illustrated atlas for thoughtful young learners. Pure, airy and understated—never a 3D render and never a photograph.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: physical metal keys, brass objects, ribbons, loose tabletop objects, wooden toy maze boards, flatlay product photo, harsh drop shadows, 3D render, photorealism, photograph, dark charcoal lines, black outlines, heavy graphite pressure, dark watercolor, dense color fills, human figures, hands, camera movement, cuts.` },
+      { id: 'somnium-4', ch: 'SOMNIUM 4편', title: '천사와 꿈의 깃털', words: 'angel · heaven · soul · spirit · presence · faith', isOk: false, notes: '• 고요한 조각 날개와 깃펜 정물 도감', prompt: `Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one classical illustrated marble angel wing sculpture on a pedestal, an open poetic journal with faint sunbeam lines, and a delicate white feather resting beside the page. There are no rooms, people, religious symbols, dark backgrounds, 3D renders or drawing tools anywhere in the scene.
+
+0-1.5s: ultra-fine pale warm-grey graphite pencil lines (maximum 20% grey) appear progressively from the empty white field. The clean pedestal and gentle arched curves of the angel wing sculpture are sketched first.
+
+1.5-3.0s: the open journal contours and delicate white feather form cleanly through sparse, elegant pencil line art.
+
+3.0-4.5s: slender radiating sunbeam lines and tiny sparkling dust motes appear in the upper air to complete the pencil drawing. Every revealed pencil line is delicate, crisp, stable and unmoving.
+
+4.5-7.2s: an extremely pale, water-heavy transparent watercolor wash develops gently in light luminous layers. Pure white paper remains visible through every wash. Color blooms only as a warm morning sunlight glow on the marble wing, soft parchment on the journal, and whisper-light sky-blue along the feather tip. All surrounding space remains untouched pure white.
+
+7.2-8.0s: the delicate feather gives one tiny, gentle buoyant flutter in the calm air and rests peacefully. The scene remains airy, sacred and surrounded by generous untouched white space.
+
+Style: master-level fine-line pencil editorial illustration, exceptionally sparse pale-graphite contours, soft silver-grey pencil lines, luminous transparent watercolor, restrained tonal contrast, generous untouched white space, clear natural daylight, sophisticated museum-quality illustrated atlas for thoughtful young learners.
+
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+
+Never: religious figures, faces, churches, dark backgrounds, heavy statues, 3D render, photorealism, dark charcoal lines, black outlines, heavy graphite pressure, dark watercolor, dense color fills, human figures, hands, camera movement, cuts.` }
+    ];
+
+    let currentCutId = 'motus-4';
+
+    function renderCutList() {
+      const container = document.getElementById('cut-list-container');
+      container.innerHTML = '';
+
+      CUTS_DATA.forEach(cut => {
+        const card = document.createElement('div');
+        card.className = `cut-card ${cut.isOk ? 'is-ok' : ''} ${cut.id === currentCutId ? 'active' : ''}`;
+        card.onclick = () => selectCut(cut.id);
+
+        let tagHtml = '';
+        if (cut.isOk) {
+          tagHtml = '<span class="status-tag ok">✓ 완료 OK</span>';
+        } else if (cut.isTarget) {
+          tagHtml = '<span class="status-tag target">👉 다음 출격</span>';
+        } else {
+          tagHtml = '<span class="status-tag wait">대기</span>';
+        }
+
+        card.innerHTML = `
+          <div>
+            <div class="cut-info-title">${cut.ch} · ${cut.title}</div>
+            <div class="cut-info-sub">${cut.words}</div>
+          </div>
+          <div>${tagHtml}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function selectCut(id) {
+      currentCutId = id;
+      const cut = CUTS_DATA.find(c => c.id === id);
+      if (!cut) return;
+
+      document.getElementById('wb-title').textContent = `${cut.ch} · ${cut.title}`;
+      document.getElementById('wb-words').textContent = `배정 단어: ${cut.words}`;
+      document.getElementById('wb-prompt').value = cut.prompt;
+      document.getElementById('wb-notes').textContent = cut.notes || '안내: 복사 버튼을 눌러 플로우에 넣어주세요!';
+
+      const btnOk = document.getElementById('btn-ok-toggle');
+      if (cut.isOk) {
+        btnOk.textContent = '✓ 완료됨 (취소하기)';
+        btnOk.style.background = '#64748b';
+      } else {
+        btnOk.textContent = '✓ 생성 OK 완료';
+        btnOk.style.background = '#10b981';
+      }
+
+      renderCutList();
+    }
+
+    function copyCurrentPrompt() {
+      const textarea = document.getElementById('wb-prompt');
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value);
+
+      const btn = document.getElementById('btn-copy');
+      const origText = btn.innerHTML;
+      btn.innerHTML = '✅ 복사 완료! 플로우에 붙여넣으세요!';
+      btn.style.background = '#10b981';
+      setTimeout(() => {
+        btn.innerHTML = origText;
+        btn.style.background = '#3b82f6';
+      }, 2000);
+    }
+
+    function toggleOkCurrent() {
+      const cut = CUTS_DATA.find(c => c.id === currentCutId);
+      if (!cut) return;
+      cut.isOk = !cut.isOk;
+      
+      // KPI 업데이트
+      const okCount = CUTS_DATA.filter(c => c.isOk).length;
+      const percent = Math.round((okCount / CUTS_DATA.length) * 100);
+      document.getElementById('kpi-count').textContent = `${okCount} / ${CUTS_DATA.length}`;
+      document.getElementById('kpi-percent').textContent = `${percent}%`;
+      document.getElementById('main-progress-bar').style.width = `${percent}%`;
+
+      selectCut(currentCutId);
+    }
+
+    // 초기 실행
+    window.onload = () => {
+      selectCut('somnium-2');
+    };
+  </script>
+
+</body>
+</html>

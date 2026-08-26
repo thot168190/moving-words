@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "철만이 Flow 벌크 오퍼레이터 v5.0.4 (코다리 에디션)",
+  "version": "5.0.4",
+  "description": "Google Labs Flow 자동화 벌크 생성 오퍼레이터 도구 (타임아웃 방지 & React 키보드 엔터 완벽 지원)",
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://labs.google/*"
+  ],
+  "action": {},
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://labs.google/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

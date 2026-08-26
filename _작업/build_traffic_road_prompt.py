@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+"""
+대표님 지시 반영: '차가 도로에 완벽하게 안착하여 신호 대기하는 정석 구도'
+- 중앙: 수평 도로 위에 바퀴를 딛고 정차한 2D 노란 스쿨버스 (Yellow School Van)
+- 우측: 횡단보도 정지선 앞의 슬림한 교통 신호등 (Traffic Signal Pole)
+- 좌측: 가로등 기둥 (Street Lamp Post)
+- 손/연필 100% 원천 차단 + 순백(#FFFFFF) 보존
+"""
+
+prompt_traffic_road = """Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The visual weight is divided evenly across the left and right halves, with a small subject anchor in each outer third. The horizon and camera axis are perfectly level: no Dutch angle, no tilted angle, no composition leaning to either side. Static locked-off camera, one continuous 8-second take. The only visible subjects throughout the sequence are a compact yellow school van resting cleanly on a level road baseline at the optical center, a slender street lamp post balancing the left, one continuous level road surface line extending across both outer thirds, and a tall pedestrian traffic signal pole with zebra crosswalk stripes balancing the right. 0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. Every outline is very thin, soft and light, never black or dark charcoal; there are no bold contours, heavy edge lines or dense hatch marks. Begin with one perfectly level straight road baseline across the bottom. Draw the side-profile school van chassis, wheels resting squarely on the road, windows and roof next, keeping the combined silhouette horizontal and grounded. Extend the clean road baseline equally toward the left and right outer thirds. Add a slender lamp post at left and a signal pole with zebra stop markings at right. There is no visible human, driver, pedestrians, pencil tip, drawing implement, asphalt darkness, city buildings or heavy traffic anywhere. Keep all mechanical outlines sparse, pale and softly broken, never darker than 15% grey and never filled as solid outlined blobs. Every detail becomes visible sequentially, never all at once. Previously revealed lines remain delicate and completely stable. 4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. Use distinct, believable colors for different materials. Restraint means low saturation, not fewer colors or shared hues. The restrained palette is a soft sunny butter-yellow on the school van body, sheer cool slate on the wheels and road baseline, luminous mint-green in the signal lamp, and delicate warm ivory on the lamp post. The signal lamp glows softly once in pale green; all road lines, wheels and structures remain crisp and still. All other elements remain still. The final composition remains centered, readable and surrounded by generous untouched white space. Style: master-level fine-line illustration with exceptionally thin, pale warm-grey graphite strokes and sophisticated control, maximum line value 25% grey, luminous transparent watercolor, restrained tonal contrast, sophisticated contemporary editorial illustration for thoughtful young learners, generous untouched white space."""
+
+clean_prompt = " ".join(prompt_traffic_road.split())
+
+with open("_작업/prompt_traffic_road.txt", "w", encoding="utf-8") as f:
+    f.write(clean_prompt)
+
+import subprocess
+res = subprocess.run(["python3", "_작업/verify_prompt.py", "_작업/prompt_traffic_road.txt"], capture_output=True, text=True)
+print(res.stdout)
+

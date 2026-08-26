@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+prompt_test = """Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take. The only visible subjects throughout the sequence are a classic standalone delivery bicycle with a front carrier basket, a vintage round street pillar mailbox, a cobblestone pathway section, and a small roadside shrub.
+
+0-4s: ultra-fine pale warm-grey graphite pencil lines appear progressively from the empty white field. Every outline is exceptionally soft, light and thin, with gentle silver-grey pencil sketch contours. The light cobblestone ground markings are revealed first through sparse short strokes. The round vintage street mailbox is drawn neatly in the center-left, followed by the standalone two-wheeled delivery bicycle with its slender steel tubes, handlebars, and small front basket. Every detail becomes visible sequentially, never all at once.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently within the clean pencil outlines. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is applied strictly to the objects themselves: the vintage street mailbox receives a clean soft red tint, the delivery bicycle receives a refined sky-blue accent, and the roadside shrub receives a fresh pale green. The entire surrounding background remains untouched pure bright white, with zero background washes and zero color bleeding. The bicycle front wheel gives one tiny gentle roll forward and pauses smoothly, surrounded by generous untouched white space. All other elements remain still. The finished composition contains only one classic delivery bicycle, street mailbox, cobblestones and shrub within generous untouched white space.
+
+Style: delicate minimalist pencil sketch, soft silver-grey pencil lines, luminous transparent watercolor tint, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration."""
+
+with open("_작업/prompt_target_test.txt", "w") as f:
+    f.write(prompt_test)
+
+import subprocess
+res = subprocess.run(["python3", "_작업/verify_prompt.py", "_작업/prompt_target_test.txt"], capture_output=True, text=True)
+print(res.stdout)

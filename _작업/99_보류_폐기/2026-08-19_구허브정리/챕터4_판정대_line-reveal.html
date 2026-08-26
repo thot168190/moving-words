@@ -1,0 +1,485 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>챕터4 판정대 v4</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#faf8f3;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;color:#1c1a17}
+header{position:sticky;top:0;z-index:9;background:#faf8f3;border-bottom:2px solid #e5ded0;padding:14px 18px}
+h1{margin:0;font-size:19px}h1 small{font-weight:600;color:#b4472e;font-size:13px;margin-left:8px}
+.cnt{font-size:14px;color:#5c554a;margin-top:6px}.cnt b{color:#1c1a17;font-size:16px}
+.bar{height:6px;background:#e8e2d6;border-radius:3px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:#4a7c59;width:0;transition:.3s}
+.filters{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.filters button{border:1px solid #d6cebb;background:#fff;border-radius:14px;padding:5px 12px;font-size:12.5px;cursor:pointer;color:#4a4237}
+.filters button.on{background:#1c1a17;color:#fff;border-color:#1c1a17}
+main{padding:16px;max-width:1000px;margin:0 auto}
+.card{background:#fff;border:1px solid #e5ded0;border-radius:12px;padding:14px;margin-bottom:14px}
+.card.pass{border-color:#4a7c59;background:#f5faf6}
+.card.fail{border-color:#c0553c;background:#fdf6f4;opacity:.72}
+.card[data-ref="1"]{border-color:#c8a951;background:#fffdf5}
+.hd{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.no{font-variant-numeric:tabular-nums;font-weight:700;color:#8b8272;min-width:22px;font-size:14px}
+.nm{font-weight:700;font-size:15.5px}
+.b{font-size:11.5px;padding:2px 8px;border-radius:9px;font-weight:600}
+.b.ok{background:#e6f0e8;color:#2f5c3c}.b.conf{background:#1c1a17;color:#fff}.card.conf{border-color:#1c1a17;border-width:2px}.b.ref{background:#f6eccd;color:#7a6320}
+.qc{font-size:11.5px;padding:2px 8px;border-radius:9px;font-weight:700}
+.qc.p{background:#e6f0e8;color:#2f5c3c}.qc.f{background:#fbe4e0;color:#a8442c}
+.st{font-size:12.5px;font-weight:700;margin-left:auto}
+textarea{width:100%;height:158px;font-family:ui-monospace,Menlo,monospace;font-size:12.3px;line-height:1.62;padding:11px;border:1px solid #e5ded0;border-radius:8px;background:#fcfbf8;resize:vertical;color:#2a2620}
+.btns{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap}
+.btns button{border:1px solid #d6cebb;background:#fff;border-radius:8px;padding:10px 17px;font-size:14px;cursor:pointer;font-weight:600;color:#2a2620}
+.btns .cp{background:#1c1a17;color:#fff;border-color:#1c1a17}
+.btns .cp.done{background:#4a7c59;border-color:#4a7c59}
+.note{background:#fffdf5;border:1px solid #e8dcb5;border-radius:10px;padding:12px 14px;font-size:13.2px;line-height:1.76;margin-bottom:16px;color:#3d382e}
+.note b{color:#1c1a17}.note code{background:#f2ece0;padding:1px 5px;border-radius:4px;font-size:12.2px}
+.qcbox{margin-top:8px;font-size:12.2px;color:#a8442c;line-height:1.6}
+.hide{display:none}
+@media(max-width:600px){textarea{height:200px;font-size:11.8px}h1{font-size:16.5px}}
+</style></head><body>
+<header>
+  <h1>🎬 챕터4 판정대 <small>v10 · 확정 골격</small></h1>
+  <div class="cnt">검문 <b id="nq">–</b>/19 통과 · 합격 <b id="np">0</b> · 불합격 <b id="nf">0</b> · 미판정 <b id="nu">19</b></div>
+  <div class="bar"><i id="fill"></i></div>
+  <div class="filters">
+    <button class="on" data-f="all">전체</button><button data-f="todo">미판정</button>
+    <button data-f="pass">합격</button><button data-f="fail">불합격</button><button data-f="qcfail">검문 반려</button>
+  </div>
+</header>
+<main>
+<div class="note">
+<b>v10 — 대표님이 "압승"이라 하신 1번을 확정 골격으로 봉인하고, 나머지 18편을 여기에 맞췄습니다.</b><br>
+<b>확정 골격 구성</b> — 헤더(구도 문장 <code>central three-quarters</code> + 좌우 균등 여백 포함) · <code>hair-thin pale graphite linework</code> · 손차단 긍정문 · 펜 추적 조항(<code>its advancing tip clearly visible</code> 포함) · <code>The finished composition contains only</code> · Style(<code>adult natural-history atlas</code>)<br>
+<b>구름 편(4번)은 확정본 그대로</b>입니다 — 겹침 연출 한 문장만 뺀 상태. 검은 테두리로 표시했습니다.<br>
+<b>19/19 일치</b> — 고정부 6항목 전수 확인 · 금지어 <code>hand</code> <code>pen</code> <code>figure</code> <code>leader</code> <code>child</code> <code>charcoal</code> <code>easel</code> 전부 0/19 · 검문 19/19 통과<br>
+섬 골격은 폐기했습니다 — 색감·선·이젤 표현이 확정본보다 못했습니다.
+</div>
+
+<div class="card" data-id="REF_망원경" data-ref="1">
+  <div class="hd"><span class="no">★</span><span class="nm">⭐ 성공 견본 · 망원경</span><span class="b ref">기준</span><span class="qc" id="q-0"></span><span class="st" id="st-0"></span></div>
+  <textarea readonly id="t0">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static locked-off camera, one continuous 8-second take. The only visible subjects throughout the sequence are the illustrated telescope, stars, constellation lines, crescent moon and restrained watercolor.
+
+0-4s: fine dark-charcoal linework appears progressively from an empty white field. A small elegant telescope and tripod are revealed first through many clean short line segments. Individual stars then appear one by one above it, followed by slender constellation lines and one slim crescent moon. Every detail becomes visible sequentially, never all at once.
+
+4-8s: a highly diluted watercolor wash develops gently behind the constellation in several light transparent layers. Begin with pale powder blue, add a restrained muted indigo near the center, and finish with a faint lavender-gray edge. The white surface remains clearly visible through every wash, with generous untouched white space surrounding the illustration. The stars remain luminous white; the moon receives a delicate silver-blue tint; the telescope receives a subtle cool-gray wash. The color remains airy, translucent and quiet throughout the final frame. Previously revealed lines stay crisp and completely stable. The finished composition contains only one telescope on a tripod, a refined constellation, one crescent moon and a small softly feathered watercolor sky.
+
+Style: delicate fine-line engraving, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(0)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(0,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(0,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(0,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_01_숲길의단서" data-ref="0">
+  <div class="hd"><span class="no">1</span><span class="nm">숲길의단서</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-1"></span><span class="st" id="st-1"></span></div>
+  <textarea readonly id="t1">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one centered natural-history field study: a forest path crossing the composition, three finely observed sets of tracks pressed into soil, one snapped twig, one tuft of fur caught on bark, and three slender plaster track casts arranged on a narrow field tray. The tracks and casts are rendered only with precise contour and texture lines, using unfilled contour and texture lines.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The winding path is drawn first, sweeping gently across the central composition from left to right through many clean short lines. One set of tracks appears step by step, followed by the snapped twig and the tuft of fur. The three plaster casts and their subtle surface textures are drawn last, separately and clearly. Every detail becomes visible sequentially, never all at once.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale leaf green along the path, warm earth brown beneath the tracks, and a restrained russet tint on the fur. The clues remain crisp and stable. One plaster cast slides slowly from the field tray and settles directly over the matching track, registering every pad and claw mark exactly. The other two casts remain on the tray. The finished study stays centered and balanced within the frame. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(1)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(1,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(1,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(1,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_02_잎의숨은무늬" data-ref="0">
+  <div class="hd"><span class="no">2</span><span class="nm">잎의숨은무늬</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-2"></span><span class="st" id="st-2"></span></div>
+  <textarea readonly id="t2">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are five fresh leaves arranged in a loose row, one simple circular magnifying lens on a slim stand, and one tiny cluster of pale insect eggs hidden beneath a leaf.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The five leaf outlines grow one vein at a time. The slim stand and circular lens are drawn next through clean short segments. The hidden underside of one leaf is revealed last inside the lens, still without color. Every line appears sequentially and remains stable.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale spring green on the leaves, a faint cool blue on the lens edge, and soft pearl white on the tiny eggs. The lens moves slowly across the leaves, passing ordinary veins until it reaches the different leaf. The tiny egg pattern becomes clear inside the lens, and that leaf shifts slightly away from the row. Everything else stays still within generous untouched white space. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(2)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(2,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(2,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(2,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_03_로봇의탈출경로" data-ref="0">
+  <div class="hd"><span class="no">3</span><span class="nm">로봇의탈출경로</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-3"></span><span class="st" id="st-3"></span></div>
+  <textarea readonly id="t3">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one small exploration robot, a compact three-route maze, one puddle blocking the first route, one high step blocking the second, and one clear curved route leading to a small open gate.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The robot is drawn first from wheels to antenna. The three routes extend outward one line at a time. The puddle, high step and open gate appear last, making the three choices easy to compare. Nothing fades in.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale turquoise in the puddle, restrained amber on the high step, soft coral on the robot, and fresh green beside the safe route. Two blocked routes receive small grey end marks. The robot pauses, turns toward the clear route, and travels along it to the open gate. Previously revealed lines stay crisp and stable. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(3)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(3,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(3,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(3,'')">↺</button>
+  </div>
+</div>
+
+<div class="card conf" data-id="ch4_draft_04_같은구름다른그림" data-ref="0">
+  <div class="hd"><span class="no">4</span><span class="nm">같은구름다른그림</span><span class="b conf">✔ 확정본</span><span class="qc" id="q-4"></span><span class="st" id="st-4"></span></div>
+  <textarea readonly id="t4">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one large airy cloud, exactly two small framed picture panels standing upright far apart on a low grassy ridge beneath it, one whale-shaped outline printed inside the left panel, and one spaceship-shaped outline printed inside the right panel. Each shape stays entirely inside its own panel and never extends past the edge of that panel. There are only two framed panels and nothing else on the ridge; the ridge is otherwise completely empty and no drawing equipment of any kind is present.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The low ridge is drawn first through many clean short line segments, followed by the two framed panels facing slightly inward. The cloud grows from many soft contour segments above them, drawn only as thin open outlines. The whale and spaceship outlines appear last, each on its own panel. Every detail becomes visible sequentially, never all at once.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The cloud stays almost entirely unpainted, holding only the faintest breath of blue-grey at its edges. The restrained palette is pale meadow green along the ridge and one faint warm ochre wash inside the left panel only; every other surface stays white. A light breeze reshapes the cloud slowly. All other elements remain still. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(4)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(4,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(4,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(4,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_05_생각의모양" data-ref="0">
+  <div class="hd"><span class="no">5</span><span class="nm">생각의모양</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-5"></span><span class="st" id="st-5"></span></div>
+  <textarea readonly id="t5">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are a loose cluster of simple geometric parts, three clearly unsuitable pieces set nearby, and one small playground climbing-frame model waiting to be completed.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. Scattered circles, bars, arches and triangles are drawn one by one. The incomplete climbing frame appears next, leaving obvious empty joints. The three unsuitable pieces are drawn last. Every piece remains separate and readable.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale cobalt, coral, citron and leaf green. The useful pieces slide one at a time into the empty joints. The unsuitable pieces stay outside. As the final arch locks into place, the confused pile becomes one clearly bounded climbing-frame model. Previously revealed lines remain crisp and completely stable. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(5)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(5,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(5,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(5,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_06_투명카드분류대" data-ref="0">
+  <div class="hd"><span class="no">6</span><span class="nm">투명카드분류대</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-6"></span><span class="st" id="st-6"></span></div>
+  <textarea readonly id="t6">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are twelve small picture cards showing animals, plants and weather, three clear acrylic sorting pockets marked only by simple picture icons, and one slim index strip made of matching thumbnail shapes.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The three transparent pockets are drawn first. The twelve picture cards appear one by one in a loose spread. The slim index strip and its tiny matching thumbnails are drawn last.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is fresh green for plant cards, pale amber for animal cards, and powder blue for weather cards. The cards glide into their matching clear pockets one at a time. The final weather card enters its pocket, then its matching thumbnail on the index strip moves forward slightly, making the stored card easy to locate. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(6)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(6,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(6,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(6,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_07_우리반데이터벽" data-ref="0">
+  <div class="hd"><span class="no">7</span><span class="nm">우리반데이터벽</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-7"></span><span class="st" id="st-7"></span></div>
+  <textarea readonly id="t7">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are four simple picture icons for swimming, cycling, football and climbing, and twenty small round choice tokens arranged below them.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The four activity icons are drawn first through clean short lines. The round tokens appear one by one below, initially scattered. Four faint vertical guide lines are drawn last.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. Each activity receives one restrained color. The tokens rise and stack above their matching icons, forming four clear columns. The final token joins the climbing column; all columns settle, and the tallest column lifts one fraction higher. The chart remains simple and readable with generous untouched white space. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(7)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(7,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(7,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(7,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_08_시간상자속기록" data-ref="0">
+  <div class="hd"><span class="no">8</span><span class="nm">시간상자속기록</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-8"></span><span class="st" id="st-8"></span></div>
+  <textarea readonly id="t8">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one open modern archive box, a travel diary, a folded magazine article, one essay page represented by neat line patterns, a document, a sealed envelope, and two photographs.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The archive box is drawn first. The diary, article, document and envelope appear one at a time around it. The two photographs and the neat essay lines are drawn last. Every object remains clearly separated.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is warm sand, pale teal, muted coral and soft sky blue. The document and article slide into the box, followed by the envelope. One photograph settles into an empty corner of the diary, then the diary closes and the archive box lid lowers softly. Previously revealed lines stay crisp. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(8)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(8,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(8,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(8,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_09_팔초영화편집실" data-ref="0">
+  <div class="hd"><span class="no">9</span><span class="nm">팔초영화편집실</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-9"></span><span class="st" id="st-9"></span></div>
+  <textarea readonly id="t9">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one clean tablet-shaped editing surface, six illustrated scene cards, a smiling theatre mask icon, a serious theatre mask icon, one title bar made only of blank lines, and one subtitle strip made only of short line patterns.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The tablet outline and empty timeline are drawn first. Six scene cards appear separately, followed by the two mask icons, blank title bar and subtitle strip. Two scene cards are visibly out of sequence.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale cobalt, coral, citron and violet. The comic cards gather beneath the smiling icon and the serious cards beneath the other. The two misplaced scene cards exchange positions. The blank title bar settles above the sequence and a small play marker travels once across the completed timeline. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(9)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(9,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(9,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(9,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_10_색이변하는과학대" data-ref="0">
+  <div class="hd"><span class="no">10</span><span class="nm">색이변하는과학대</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-10"></span><span class="st" id="st-10"></span></div>
+  <textarea readonly id="t10">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are three transparent experiment cups, three small droppers resting upright, a sequence of four picture-only method cards, and three shallow result levels.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The cups are drawn first, followed by the droppers and four method cards. The three result levels appear last as simple ascending shelves. Every object is revealed line by line.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale blue in one cup, soft yellow in another and clear water in the third. One drop falls into each cup. Only the predicted cup changes to a fresh transparent green. That cup slides onto the matching result level while the method cards remain in order. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(10)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(10,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(10,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(10,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_11_한번더빚는그릇" data-ref="0">
+  <div class="hd"><span class="no">11</span><span class="nm">한번더빚는그릇</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-11"></span><span class="st" id="st-11"></span></div>
+  <textarea readonly id="t11">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one simple pottery wheel and four clay bowls arranged from uneven to increasingly balanced.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The pottery wheel is drawn first through clean circular lines. The four bowls appear one at a time from left to right: the first lopsided, the second steadier, the third nearly even, and the final bowl centered on the wheel.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale terracotta, warm sand and a restrained blue-grey shadow. A thin wet sheen travels around the final bowl. The wheel turns slowly once; the final rim remains perfectly level while the earlier practice bowls stay still in their progression. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(11)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(11,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(11,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(11,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_12_강을재는탐사드론" data-ref="0">
+  <div class="hd"><span class="no">12</span><span class="nm">강을재는탐사드론</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-12"></span><span class="st" id="st-12"></span></div>
+  <textarea readonly id="t12">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one small survey drone, a winding river, three simple measuring buoys, and a thin outline map of the riverbank.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The riverbanks extend gradually from left to right. The three buoys are drawn next at different widths of the river. The drone appears last above the first buoy, followed by the unfinished outline map.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is transparent turquoise in the river, pale green on the banks and soft coral on the drone. The drone moves slowly over all three buoys. At each point a thin measuring line spans the water. As the drone passes the last buoy, the river outline map completes its final curve. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(12)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(12,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(12,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(12,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_13_화산의정직한경보" data-ref="0">
+  <div class="hd"><span class="no">13</span><span class="nm">화산의정직한경보</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-13"></span><span class="st" id="st-13"></span></div>
+  <textarea readonly id="t13">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one cutaway volcano model, three observation sensors, one visibly cracked failed sensor placed beside a sound sensor, one picture-only report strip, and three small warning lamps.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The volcano layers are drawn first. The three sensors appear one by one, including the cracked sensor in full view. The report strip and warning lamps are drawn last. Nothing is hidden behind a person or desk.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale mineral orange, cool blue-grey and restrained red. A new signal travels from the sound sensor through the picture report strip. The three warning lamps illuminate in sequence. The cracked sensor stays openly visible beside the working one while the new result reaches every lamp. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(13)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(13,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(13,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(13,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_14_목소리표본실" data-ref="0">
+  <div class="hd"><span class="no">14</span><span class="nm">목소리표본실</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-14"></span><span class="st" id="st-14"></span></div>
+  <textarea readonly id="t14">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are four distinct voice-wave ribbons, four simple source pictures, one circular replay button, and one clear reference line connecting a selected wave to its original picture.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. Four source pictures are drawn first. Their voice waves grow outward one at a time, each with a different rhythm and emphasis. The replay button and the still-empty reference line appear last.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. Each source and wave receives one restrained matching color. One wave is replayed and shifts beside its source picture. The reference line completes between them, then the matching shape inside the wave and picture glows softly. The other samples remain still. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(14)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(14,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(14,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(14,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_15_두로봇의구조토론" data-ref="0">
+  <div class="hd"><span class="no">15</span><span class="nm">두로봇의구조토론</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-15"></span><span class="st" id="st-15"></span></div>
+  <textarea readonly id="t15">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are two small debate robots facing one another, two different tower models, one equal test weight, and one tray holding a cracked spare part.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The two robots are drawn first with clearly different pointing poses. Their tower models appear next, followed by the equal weight and cracked spare part. Each side remains easy to compare.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is soft teal for one robot and tower, warm coral for the other, and pale cool grey on the weight. The weight lowers across both models. The first tower bends while the second stays straight. The first robot lowers its pointing arm and turns toward the stable result; the second robot rolls the stable model to the center. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(15)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(15,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(15,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(15,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_16_끊어진산길의요청" data-ref="0">
+  <div class="hd"><span class="no">16</span><span class="nm">끊어진산길의요청</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-16"></span><span class="st" id="st-16"></span></div>
+  <textarea readonly id="t16">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one broken mountain path with a wide gap at its center, one emergency reflector propped on a rock at the near side, one radio unit resting beside it, one coil of climbing rope with two clipped anchors, and three route stones marking a safe detour on the far side. The path is empty in both directions.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The broken path and two ridges are drawn first. The stranded shape and reflector appear next, followed by the far signal marker, radio, climbing gear and route stones. Every element appears sequentially.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale mountain green, warm stone ochre, soft coral and rescue orange. The reflector flashes once toward the ridge. The radio light answers. the far signal marker points along the three route stones, and a thin safe-path line connects them around the break. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(16)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(16,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(16,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(16,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_17_메이커실의제안" data-ref="0">
+  <div class="hd"><span class="no">17</span><span class="nm">메이커실의제안</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-17"></span><span class="st" id="st-17"></span></div>
+  <textarea readonly id="t17">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one skateboard lying on a workbench with one cracked wheel removed, three different replacement wheels laid out in a row beside it, one small blank delivery tag on a hook, and one clean wheel already fitted to the front axle. The workbench is otherwise bare.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The skateboard and broken wheel are drawn first. The two shape appear next in simple natural poses. Three replacement wheels and the blank delivery tag are drawn last, clearly separated for comparison.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is fresh teal, coral, citron and pale wood brown. One shape presents the three wheels. The other selects the wheel whose tread matches the board. It moves into place, and the repaired skateboard rolls forward in one straight line. The shape turn toward each other in a small greeting. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(17)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(17,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(17,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(17,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_18_두무전기의대화" data-ref="0">
+  <div class="hd"><span class="no">18</span><span class="nm">두무전기의대화</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-18"></span><span class="st" id="st-18"></span></div>
+  <textarea readonly id="t18">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are two portable radios on two separate rocky platforms, one small quiet speech wave, one broad loud speech wave, one burst of static, and three picture-only instruction cards.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The two platforms and radios are drawn first. The small wave travels partway between them. Three instruction cards appear next, followed by the unformed broad wave and a compact static burst.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale sea blue, warm amber and muted coral. Static interrupts the small wave. A broad clear wave leaves the first radio and crosses the gap. The second radio light turns on, then its matching picture instruction card tilts forward in reply. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(18)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(18,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(18,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(18,'')">↺</button>
+  </div>
+</div>
+
+<div class="card" data-id="ch4_draft_19_그림자극의한장면" data-ref="0">
+  <div class="hd"><span class="no">19</span><span class="nm">그림자극의한장면</span><span class="b ok">확정 골격 적용</span><span class="qc" id="q-19"></span><span class="st" id="st-19"></span></div>
+  <textarea readonly id="t19">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one small shadow-play screen, one hero puppet, one monster puppet, four picture cards arranged as a short tale, and curved speech waves moving between the puppets.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The screen is drawn first, followed by the four picture cards in sequence. The hero and monster puppets appear from many clean short lines. Their separate speech waves are drawn last, one answering the other.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The restrained palette is pale violet, soft coral, moon blue and warm amber. The monster shadow grows suddenly larger and the hero puppet jerks back as a sharp wave expands. The hero then sends back one bold wave. The monster shrinks to its playful size, and both puppets bow together beneath the completed four-card tale. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+  <div class="btns">
+    <button class="cp" onclick="cp(19)">📋 프롬프트 복사</button>
+    <button class="ok" onclick="mk(19,'합격')">✅ 합격</button>
+    <button class="ng" onclick="mk(19,'불합격')">❌ 불합격</button>
+    <button class="rs" onclick="mk(19,'')">↺</button>
+  </div>
+</div></main>
+<script>
+const BAN=[["\bpens?\b", "펜 소환"], ["\bpencils?\b", "연필 소환"], ["\bbrush(es)?\b", "붓 소환"], ["\bhands?\b", "손 소환"], ["\bfingers?\b", "손 소환"], ["\bartists?\b", "작가 소환"], ["\btools?\b", "도구 소환"], ["\bstylus\b", "도구 소환"], ["\bchild(ren)?\b", "유아체 소환"], ["\bkindergarten\b", "유아체 소환"], ["\bnursery\b", "유아체 소환"], ["\bcartoons?\b", "만화체 소환"], ["\bengraving\b", "판화(잉크) 소환"], ["\bcharcoal\b", "목탄(진한선) 소환"], ["\beasels?\b", "화가장비→도구 소환"], ["draws itself", "그리는 주체 소환"], ["\bleaders?\b", "인물 소환"], ["\bfigures?\b", "인물 소환"], ["\bconservator\b", "인물 소환"], ["\barchivist\b", "인물 소환"], ["\bcurator\b", "인물 소환"], ["\bscientists?\b", "인물 소환"], ["\beditors?\b", "인물 소환"], ["\bpapers?\b", "종이결 소환"], ["\bteenagers?\b", "인물 소환"], ["\bpeople\b", "인물 소환"], ["for (thoughtful )?young learners", "유아체 앵커"], ["natural Korean features", "얼굴 렌더 유발"]], MUST=[["Throughout the whole sequence the frame contains only the flat white surface", "손 차단(긍정문)"], ["hair-thin pale graphite linework", "세필"], ["central three-quarters of the frame", "구도(좌우 균형)"], ["adult natural-history atlas", "격조 앵커"], ["exceptionally thin, precise pale graphite strokes", "세필(Style)"], ["its advancing tip clearly visible", "펜 추적"], ["one line at a time", "펜 추적"], ["every line extends from its own tip", "스스륵 금지"], ["The finished composition contains only", "마지막 화면 고정"], ["equal narrow breathing margins on the left and right", "좌우 균형"], ["The only visible subjects throughout the sequence are", "피사체 한정"], ["water-heavy watercolor wash", "옅은 채색"], ["museum-quality", "격조 앵커"]];
+const K='ch4_lr_verdict_v1';
+let S=JSON.parse(localStorage.getItem(K)||'{}');
+const cards=[...document.querySelectorAll('.card')];
+function qcRun(i){
+  const p=document.getElementById('t'+i).value, out=[];
+  BAN.forEach(([pat,why])=>{const m=p.match(new RegExp(pat,'gi'));if(m)out.push('금지어 '+m[0]+' ×'+m.length+' — '+why);});
+  MUST.forEach(([s,why])=>{if(p.indexOf(s)<0)out.push('누락 「'+s.slice(0,38)+'」 — '+why);});
+  return out;
+}
+function cp(i){
+  const t=document.getElementById('t'+i);
+  const done=()=>{const b=cards[i].querySelector('.cp');b.textContent='✓ 복사됨';b.classList.add('done');
+    setTimeout(()=>{b.textContent='📋 프롬프트 복사';b.classList.remove('done')},1400);};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t.value).then(done).catch(()=>{t.select();document.execCommand('copy');done()});}
+  else{t.removeAttribute('readonly');t.select();t.setSelectionRange(0,999999);document.execCommand('copy');t.setAttribute('readonly','');window.getSelection().removeAllRanges();done();}
+}
+function mk(i,v){const id=cards[i].dataset.id;if(v)S[id]=v;else delete S[id];localStorage.setItem(K,JSON.stringify(S));render();}
+function render(){
+  let p=0,f=0,tot=0,qp=0;
+  cards.forEach((c,i)=>{
+    const bad=qcRun(i), q=document.getElementById('q-'+i);
+    q.className='qc '+(bad.length?'f':'p');
+    q.textContent=bad.length?('검문 반려 '+bad.length):'검문 OK';
+    c.dataset.qc=bad.length?'0':'1';
+    let box=c.querySelector('.qcbox'); if(box)box.remove();
+    if(bad.length){const d=document.createElement('div');d.className='qcbox';d.innerHTML='· '+bad.join('<br>· ');c.appendChild(d);}
+    if(c.dataset.ref==='1')return;
+    tot++; if(!bad.length)qp++;
+    const v=S[c.dataset.id]||'';
+    c.classList.toggle('pass',v==='합격');c.classList.toggle('fail',v==='불합격');
+    const st=document.getElementById('st-'+i);
+    st.textContent=v?(v==='합격'?'✅ 합격':'❌ 불합격'):'';
+    st.style.color=v==='합격'?'#2f5c3c':'#a8442c';
+    if(v==='합격')p++;if(v==='불합격')f++;
+  });
+  document.getElementById('nq').textContent=qp;
+  document.getElementById('np').textContent=p;document.getElementById('nf').textContent=f;
+  document.getElementById('nu').textContent=tot-p-f;
+  document.getElementById('fill').style.width=(tot?100*p/tot:0)+'%';applyFilter();
+}
+let F='all';
+function applyFilter(){cards.forEach(c=>{if(c.dataset.ref==='1'){c.classList.remove('hide');return}
+  const v=S[c.dataset.id]||'';let show=true;
+  if(F==='todo')show=!v;else if(F==='pass')show=v==='합격';
+  else if(F==='fail')show=v==='불합격';else if(F==='qcfail')show=c.dataset.qc==='0';
+  c.classList.toggle('hide',!show);});}
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');F=b.dataset.f;applyFilter();});
+render();
+</script></body></html>

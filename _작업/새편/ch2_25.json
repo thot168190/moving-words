@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "25",
+  "title": "풀잎 위 무당벌레",
+  "sub": "동글동글 점박이 딱정벌레",
+  "video": "ch2/ch2_25.mp4",
+  "img": "ch2/ch2_25-poster.jpg",
+  "levelOne": [
+    [
+      "apart",
+      "apart",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "appeal",
+      "appeal",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "appear",
+      "appear",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "apply",
+      "apply",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "appoint",
+      "appoint",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "odd",
+      "독특한 무늬",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "appreciate",
+      "appreciate",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "approach",
+      "approach",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

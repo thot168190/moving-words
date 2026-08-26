@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+정면 뷰(Frontal View) + 정본 헌법 14대 필수문 & 세필 수채화 문법 100% 결합:
+- 구도: 버스 정면(Front View) + 버스 앞을 완벽히 가로막은 수평 차단봉 + 수평 철길
+- 문법: 정본 14 필수문 100% 통과 + 지뢰어 0개 + 물 95% 연한 파스텔 틴트 + 순백(#FFFFFF)
+"""
+
+prompt_frontal = """Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The visual weight is divided evenly across the left and right halves, with a small subject anchor in each outer third. The horizon and camera axis are perfectly level: no Dutch angle, no tilted angle, no composition leaning to either side. Static locked-off camera, one continuous 8-second take. The only visible subjects throughout the sequence are a symmetrical front-view yellow school bus stopped behind a white stop line at the optical center, a straight roadway line extending from foreground, one lowered red-and-white horizontal crossing gate bar directly before the bus bumper, and two small red warning lamps on a crossing post balancing the right. 0-4s: ultra-fine pale warm-grey graphite linework appears progressively from the empty white field. Every outline is very thin, soft and light, never black or dark charcoal; there are no bold contours, heavy edge lines or dense hatch marks. Begin with one perfectly level horizontal road baseline. Draw the horizontal railway tracks and crossing post at right next, with the lowered horizontal crossing bar extending across the roadway. Draw the symmetrical front-view school bus hood, windshield and round headlights squarely behind the lowered bar. There is strictly zero person, driver, student, live action element, asphalt darkness, city buildings or moving train anywhere. Keep all outline contours sparse, pale and softly broken, never darker than 15% grey and never filled as solid outlined blobs. Every detail becomes visible sequentially, never all at once. Previously revealed lines remain delicate and completely stable. 4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. Use distinct, believable colors for different materials. Restraint means low saturation, not fewer colors or shared hues. The restrained palette is an ultra-diluted whisper of sheer pastel butter-yellow on the front bus hood, faint cool slate on the bumper and road line, and a tiny translucent coral dot in the warning lamps. There is strictly zero color wash on the road, zero paint bleeding, and zero background tint. The entire surrounding background remains untouched pure bright white #FFFFFF. Two small red warning lamps pulse softly once; all other structural lines remain crisp and still. All other elements remain still. The final composition remains centered, readable and surrounded by generous untouched white space. Style: master-level fine-line illustration with exceptionally thin, pale warm-grey graphite strokes and sophisticated control, maximum line value 25% grey, luminous transparent watercolor, restrained tonal contrast, sophisticated contemporary editorial illustration for thoughtful young learners, generous untouched white space."""
+
+clean_prompt = " ".join(prompt_frontal.split())
+
+with open("_작업/prompt_frontal_bus.txt", "w", encoding="utf-8") as f:
+    f.write(clean_prompt)
+
+import subprocess
+res = subprocess.run(["python3", "_작업/verify_prompt.py", "_작업/prompt_frontal_bus.txt"], capture_output=True, text=True)
+print(res.stdout)
+

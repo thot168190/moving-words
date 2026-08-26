@@ -1,0 +1,309 @@
+<!doctype html><html lang=ko><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>이관서 — 움직이는그림사전</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f1115;color:#e6e8ec;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;line-height:1.7}
+header{position:sticky;top:0;background:#161a21;border-bottom:1px solid #262b34;padding:14px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;z-index:9}
+h1{font-size:16px;margin:0;font-weight:700;letter-spacing:-.3px}
+.sub{font-size:12px;color:#8b93a1}
+button{margin-left:auto;background:#2b7a5b;color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:700;cursor:pointer}
+button:active{transform:translateY(1px)}
+button.done{background:#1f4d3c}
+main{padding:18px;max-width:900px;margin:0 auto}
+pre{white-space:pre-wrap;word-break:break-word;font-family:"SF Mono",Menlo,monospace;font-size:13px;background:#151922;border:1px solid #232833;border-radius:10px;padding:18px;overflow-x:auto}
+</style></head><body>
+<header><div><h1>이관서 — 움직이는그림사전</h1>
+<div class=sub>2026-08-26 · 다음 AI에게 통째로 붙여넣으십시오</div></div>
+<button id=b>전체 복사</button></header>
+<main><pre id=t># 이관서 — 움직이는그림사전
+작성 2026-08-26 · 인계자: 로부장(Claude) · 수계자: 다음 AI
+
+---
+
+## 0. 이 문서를 읽는 AI에게 — 먼저 읽고 시작할 것
+
+**판은 이미 확정돼 있다. 다시 짜지 마라.**
+
+인계자(로부장)의 가장 큰 잘못은 확정된 설계를 스스로 의심하고 뒤집은 것이다.
+대표님은 같은 결정을 세 번 네 번 다시 하셨고, 그때마다 작업이 멈췄다.
+
+**지켜야 할 태도**
+1. 아래 §1 「확정 사항」은 대표님이 이미 판정하신 것이다. 근거 없이 재검토하지 마라.
+2. 문제를 발견하면 **판을 흔들지 말고, 그 자리만 고쳐라.**
+3. 보고할 때는 **전수로 세고 나서** 보고하라. 물어보신 것만 검사하면 다음 질문 때 새 문제가 나오고, 대표님은 그걸 &quot;말이 또 바뀐다&quot;고 느끼신다. **실제로 그게 말이 바뀐 것이 맞다.**
+4. 판정(합격/불합격, 구조 변경, 뜻 확정)은 **대표님만** 한다. AI는 선택지를 내지 말고 **사실과 숫자**를 내라.
+
+---
+
+## 1. 확정 사항 — 변경 금지
+
+### 1-1. 제품
+- 8초짜리 line-reveal(선이 스스로 그려지는) 영상 위에 영어 단어를 점으로 얹은 그림사전
+- 무료: **챕터1, 챕터2**. 챕터3부터 유료
+- 결제 심사(카카오페이/포트원) 진행 중 → **자리가 비어 보이면 안 된다**
+
+### 1-2. 추상어 처리 방침 ★가장 중요
+&gt; **추상어는 그림에 직접 보이게 그리지 않는다. 장면에 스토리를 붙여서 푼다.**
+
+이것이 원래 합의이고 확정 사항이다.
+`district`를 「새집 구역」으로 푸는 것은 **설계대로 한 것이지 억지가 아니다.**
+
+인계자는 2026-08-25에 이 방침을 &quot;그림에 안 보이니 억지&quot;라고 뒤집었다. **그 판단은 철회한다.**
+다음 AI는 이 방침을 다시 의심하지 마라.
+
+레벨 구분:
+```
+레벨1 (편당 4개 고정) : 그림에 눈으로 보이는 것
+레벨2 (편당 4개)      : 같은 장면에서 스토리로 확장되는 말 (추상어가 여기 온다)
+```
+UI 문구도 &quot;같은 장면에서 한 단계 깊은 어휘로 확장합니다&quot;로 이미 그렇게 돼 있다.
+
+### 1-3. 뜻 쓰는 규칙
+- **뜻이 영어 단어보다 어려우면 안 된다** (한자어·음차 금지)
+  - `marvel` = 경이(X) → 놀라운 것(O)
+  - `comfort` = 위안(X) → 편안함(O)
+- 뜻은 **단어의 본뜻**을 쓴다. 그림 설명을 뜻 자리에 넣지 마라.
+  - `district` = 새집 구역(X) → 구역(O) ※그림은 예시일 뿐
+- 뜻이 서로 겹치면 안 된다 (`joy`와 `delight`를 둘 다 「기쁨」으로 쓴 사고가 있었다)
+
+### 1-4. 정본 골격 2계열 — 창작 금지, 슬롯만 채운다
+```
+WOW  (와)  _작업/01_지시서/프롬프트_공식_잠금.md §2   산호협곡 · 3막(0-3.5 / 3.5-5.5 / 5.5-8)
+CALM (쉼)  _작업/성공문법_정본_line-reveal_20260809.md §1   망원경 · 2막(0-4 / 4-8)
+```
+
+### 1-5. 좌표 규칙
+- x, y는 8~92 (가장자리 잘림 방지)
+- 같은 레벨 안에서 서로 18 이상 떨어질 것
+- **좌우대칭(x1+x2=100) 금지, 격자 금지** — 그림 안 보고 찍었다는 증거다
+- 최종 기준(대표님 말): **&quot;정상적으로 보이느냐가 기준이야&quot;**
+
+### 1-6. 절대 금지
+- `npm run build` **금지** — 심사 중이라 번들 해시가 바뀌면 검증 경로가 다 깨진다.
+  고칠 게 있으면 `dist/assets/index-*.js` 문자열을 직접 치환하고 해시명만 바꿔 캐시를 무효화한다.
+- Netlify 배포 금지 · `--no-history` 금지
+- 프롬프트를 대화창에 쓰지 마라. **복사 버튼이 있는 HTML**로 낸다
+- 배포는 대표님 확인 뒤에
+
+---
+
+## 2. 지금 상태 (2026-08-26 실측)
+
+```
+탑재 편수      76편
+탑재 단어      578개  (편당 7.6개)
+정본 소화      486 / 1200   → 남은 714개
+좌표 무결성    PASS (기본값·대칭·격자 잔존 0편)
+뜻 빈칸        0칸
+```
+
+### 챕터별 실제 탑재 — ★불균형이 심하다
+```
+ch1   9편      ch2  10편(무료·상한)    ch3  31편 ←몰려있음
+ch4  10편      ch5   0편               ch6   0편
+ch7   4편      ch8   4편               ch9   0편
+ch10  3편      ch11  0편               ch12  4편
+```
+`_작업/91편_그림목록.csv`와 `_작업/141편_대장.csv`에 **91편을 ch2·ch4·ch5·ch8·ch9·ch10·ch11로 재배정하는 계획**이 이미 짜여 있으나, **실제 index.html 반영은 ch3 10편만 됐다.** 나머지 81편은 계획 단계.
+
+### 미커밋 상태
+`public/learning/index.html`이 233,831바이트로 워킹트리에 있고 **마지막 커밋(e145e4f) 이후 미커밋**이다.
+= 코다리의 ch3 10편 매칭 작업이 아직 커밋되지 않았다. **먼저 대표님 확인 후 커밋할 것.**
+
+---
+
+## 3. 남은 714개의 진짜 성격 — 대표님 질문에 대한 답
+
+대표님 질문: *&quot;처음부터 안 되는 일이었나? 남은 단어들이 뭔지, 상황 설명으로 안 되는 건지&quot;*
+
+**답: 안 되는 일이 아니다. 다만 지금 그리는 그림의 종류로는 안 된다.**
+
+어느 챕터에도 배정 안 된 갈래 186개의 실제 내역:
+```
+사람과 관계  31개   citizen, community, crowd, neighbor, twin, female, male ...
+돈           25개   coin, price, spend, earn, budget, tax, salary, debt ...
+일의 결과    21개   cause, effect, result, succeed, purpose, happen ...
+이음말       21개   despite, either, neither, nor, otherwise, thus, though ...
+좋고 나쁨    15개   advantage, benefit, correct, fair, improve, perfect ...
+묻고 부탁    13개   advice, beg, excuse, promise, request, suggest ...
+사람 성격    12개   character, charm, gentle, polite, wise, smart ...
+돕고 섬기기  11개   aid, assist, cure, forgive, serve, support ...
+소리와 음악  10개   band, bang, concert, loud, noise, tone, whistle ...
+바람과 아쉬움 9개   bore, desire, disappoint, hesitate, lack, pity ...
+부끄러움/미움 7개   awkward, blame, embarrass, ignore, shame, silly ...
+따지고 다투기 7개   argue, claim, complain, debate, deny, insist ...
+운동과 겨루기 4개   champion, contest, golf, league
+```
+
+### 진단 — 이게 진짜 병목이다
+
+**「돈」25개는 그림으로 된다.** 가게 계산대 장면 한 편이면 `coin` `price` `spend` `earn` `fee`가 한 화면에 다 들어간다. 아직 안 그렸을 뿐이다.
+
+**「소리와 음악」10개도 된다.** ch9(음악)이 지금 0편이다. 악기 장면을 그리면 끝난다.
+
+**「사람과 관계」31개, 「사람 성격」12개, 「부끄러움과 미움」7개, 「따지고 다투기」7개 — 이게 막힌 이유는 하나다.**
+프롬프트 공식이 **&quot;손이 나오면 안 된다&quot;**에 묶여 있어서 **사람을 아예 못 그리게 돼 있다.**
+`neighbor` `crowd` `argue` `embarrass`는 사람 없이는 그릴 수가 없다.
+→ **손 금지 규칙은 &quot;그리는 손&quot;(연필 든 손)을 막으려던 것이지 &quot;등장인물&quot;을 막으려던 것이 아니다.** 이 둘을 분리하는 프롬프트 공식이 필요하다. **이것이 남은 작업 중 가장 값어치가 크다. (약 57개 단어가 여기 걸려 있다)**
+
+**「이음말」21개(despite, either, neither, nor, otherwise, thus...)는 그림으로 안 된다.** 이건 문법어라 장면화 대상이 아니다.
+→ 그림 매칭에서 빼고 **문장 카드/예문 형태의 별도 코너**로 처리해야 한다. 억지로 그림에 붙이지 마라.
+
+### 요약
+```
+714개 중
+  약 640개  → 된다. 장면 종류를 넓히면 된다 (가게·사람·음악·다툼 장면)
+  약  74개  → 그림으로 안 된다 (이음말 21개 + 순수 문법어). 별도 코너로 뺀다
+```
+**&quot;처음부터 안 되는 일&quot;이 아니었다. 그릴 장면의 폭이 사물 정물에 갇혀 있었던 것이다.**
+
+---
+
+## 4. 다음 작업 순서
+
+### 즉시 (심사 대응)
+1. `public/learning/index.html` 미커밋분을 대표님 확인 후 커밋
+2. ch3에 31편이 몰려 있으므로 `_작업/141편_대장.csv` 재배정 계획대로 **81편을 ch5·ch9·ch11 등 빈 챕터로 탑재**
+   - 도구: `python3 _작업/scene_tool.py add &lt;json&gt;` (5배열 자동 처리)
+   - 검증: `python3 _작업/scene_tool.py verify`
+
+### 그 다음 (막힌 곳 뚫기)
+3. **사람이 나오되 「그리는 손」은 안 나오는 프롬프트 공식 확립** ← 최우선 값어치
+   - 지금 공식은 `The only visible subjects throughout the sequence are {요소1}...{요소5}.` 로 요소를 한정해 손을 막는다
+   - 사람을 요소에 넣되 연필·붓·도구를 요소에서 뺀다
+   - 「사람과 관계」31 + 「사람 성격」12 + 「부끄러움」7 + 「다툼」7 = **57개가 풀린다**
+4. 가게/시장 장면 → 「돈」25개
+5. 악기 장면(ch9) → 「소리와 음악」10개
+6. 「이음말」21개는 그림 매칭에서 제외 → 별도 코너 기획을 대표님께 올림
+
+### 정리 작업
+7. 뜻을 그림 설명으로 쓴 자리 되돌리기 (`basis`=화분 밑바닥 → 바탕, `cell`=식물 세포 → 세포, `grace`=고상한 자태 → 우아함, `district`=새집 구역 → 구역)
+8. 겹치는 뜻 4쌍 정리: shadow/shade, enormous/huge, soil/dirt, plate/dish
+9. 판정 대기 2편: `ch10_03`(무지개), `ch7_01`(신체 8부위)
+10. 제작허브 프롬프트 4곳 수정 권고분
+11. 대표님 작업장(라이브와 동일한 미리보기) 구축 ← 대표님이 여러 번 요청하셨다. 우선순위 높음
+
+---
+
+## 5. 프롬프트 지뢰 — 검증된 목록 (반드시 지킬 것)
+
+이 단어들은 **부정문으로 써도** 그 물건을 소환한다. 모델이 부정어를 흘리고 명사만 가져간다.
+
+| 쓰면 안 되는 말 | 나오는 것 |
+|---|---|
+| `hand` `pen` `pencil` `brush` `tool` (부정문 포함) | 손 |
+| `never two hands` / `There are no ... drawing tools` | 손 |
+| `draws itself` `by itself` | 손 |
+| `spreading` | 붓·손·종이질감 |
+| `whiteboard` | 흰 카드 액자 |
+| `graphite` | 연필 든 손 + 힘없는 선 |
+| `paper` `cream` `parchment` | 액자·종이질감 |
+| `Never:` 목록 | **거기 적은 명사가 오히려 소환된다** |
+| `for thoughtful young learners` | 유치한 톤 (챕터4 BAN 명시) |
+
+**손을 막는 유일한 방법은 언급 자체를 없애고 요소를 한정하는 것이다:**
+```
+The only visible subjects throughout the sequence are {요소1}, {요소2}, {요소3}, {요소4}, {요소5}.
+```
+
+---
+
+## 6. 데이터 구조
+
+```js
+chapterData[N] = { works[], levelOneWords[], levelTwoWords[], sceneSpots[], levelOneSpots[] }
+```
+- **5개 배열의 길이가 반드시 같아야 한다**
+- `levelOneWords` → `levelOneSpots` / `levelTwoWords` → `sceneSpots` (짝이 어긋나기 쉬우니 주의)
+- 퀴즈는 `levelOneWords[sceneIndex].slice(0,4)` → **레벨1은 4개 고정**
+- `style=&quot;left:${spots[i][0]}%;top:${spots[i][1]}%&quot;` → **좌표가 단어보다 적으면 그 편이 통째로 안 열린다**
+- `scenes.json`은 **존재하지 않는다.** 모든 데이터는 `public/learning/index.html` 안의 `const chapterData = {` 에 있다
+
+### 포스터는 반드시 마지막 프레임
+line-reveal은 8초에 걸쳐 그려지므로 **첫 프레임은 빈 화면**이다. 포스터가 첫 프레임이면 매칭 작업자가 볼 게 없다.
+```bash
+ffmpeg -y -sseof -0.5 -i &quot;$f&quot; -vframes 1 -q:v 2 &quot;${f%.mp4}-poster.jpg&quot;
+```
+
+### 매칭 순서 — 거꾸로 하면 틀린다
+```
+(X) 챕터 정하기 → 그 챕터 단어에서 고르기
+(O) 그림 보기 → 맞는 단어 찾기 → 챕터 정하기
+```
+`ch11_04`가 「우주와 과학」에 배정돼 있는데 실제 그림은 나무다리와 시냇물이었다. 위의 (X) 방식으로 한 결과다.
+
+---
+
+## 7. 도구
+
+```bash
+python3 _작업/scene_tool.py remain &lt;ch&gt;   # 그 챕터에 남은 단어를 갈래별로
+python3 _작업/scene_tool.py free          # 어느 챕터에도 안 든 갈래
+python3 _작업/scene_tool.py check &lt;json&gt;  # 넣기 전 필수 검사
+python3 _작업/scene_tool.py add &lt;json&gt;    # 주입 (5배열 자동)
+python3 _작업/scene_tool.py verify        # 전체 무결성
+
+python3 _작업/verify_spots.py             # 좌표 전수 검사 (대칭·격자 탐지 포함)
+python3 _작업/verify_prompt.py            # 프롬프트 정본 검증 (WOW/CALM 자동판별)
+```
+
+주입 JSON — **좌표를 단어에 붙여 쓴다** (순서 어긋남 방지):
+```json
+{&quot;chapter&quot;:3,&quot;n&quot;:&quot;11&quot;,&quot;title&quot;:&quot;화분 속 새싹&quot;,&quot;sub&quot;:&quot;...&quot;,
+ &quot;video&quot;:&quot;ch3/ch3_11.mp4&quot;,&quot;img&quot;:&quot;ch3/ch3_11-poster.jpg&quot;,
+ &quot;levelOne&quot;:[[&quot;shape&quot;,&quot;모양새&quot;,[35,30]], [&quot;root&quot;,&quot;뿌리&quot;,[62,71]]],
+ &quot;levelTwo&quot;:[[&quot;alive&quot;,&quot;살아있는&quot;,[48,15]]]}
+```
+
+### 주요 파일
+```
+public/learning/index.html        데이터 본체 (chapterData)
+dist/assets/index-*.js            번들 — 직접 패치 (빌드 금지)
+dist/assets/index-*.css           스타일 — 직접 패치
+_작업/141편_대장.csv               91편 재배정 계획
+_작업/91편_그림목록.csv            그림 내용 목록
+_작업/01_지시서/                   지시서 전량
+_작업/제작허브.html                프롬프트 벌크 복사판
+```
+
+---
+
+## 8. 인계자가 틀렸던 것 — 같은 실수 반복 방지용
+
+다음 AI는 이 목록을 보고 **같은 함정을 피하라.** 대표님을 지치게 한 것은 작업량이 아니라 **말이 바뀐 것**이다.
+
+| # | 틀린 것 | 원인 | 교훈 |
+|---|---|---|---|
+| 1 | 뜻 빈칸을 62개라 보고 → 실제 124칸 | 같은 단어가 `works`와 `levelWords`에 두 번 존재 | 전수로 세라 |
+| 2 | `joy`와 `delight`를 둘 다 「기쁨」으로 | 검증 범위를 &quot;내가 채운 것끼리&quot;로 한정 | 전체와 대조하라 |
+| 3 | 좌표 문제를 39편이라 보고 → 실제 47편 | 기본값과 **정확히** 일치하는 것만 탐지 | 변종을 잡는 규칙을 써라 |
+| 4 | &quot;좌표 다 고쳤다&quot;고 보고했는데 안 고쳐짐 | 8/12 커밋은 「겹침」만 고쳤고 기본값 25편은 손도 안 댐 | 보고 전에 검증기를 돌려라 |
+| 5 | 편당 12개 → 8개로 번복 | 근거 없이 재검토 | 확정된 건 흔들지 마라 |
+| 6 | &quot;52편이면 13일 걸린다&quot; | 편수를 일감으로 계산. **대표님은 크롬 확장 벌크 유료를 쓰신다. 편수는 병목이 아니다** | 대표님 작업 속도를 임의로 추정하지 마라 |
+| 7 | 포스터로 매칭 지시 → 매칭 실패 | 포스터가 첫 프레임(빈 화면)이었다 | 지시 전에 산출물을 직접 열어봐라 |
+| 8 | **추상어 방침을 뒤집음** | 원래 합의(상황+스토리)를 잊고 &quot;그림에 안 보이니 억지&quot;라 판정 | §1-2를 다시 읽어라 |
+| 9 | ch2(무료)에 10편 과다 배정 | 무료/유료 구조를 고려 안 함 | ch1·ch2는 무료다 |
+
+---
+
+## 9. 대표님에 대해
+
+- 호칭: **대표님**
+- 1인 기업. 결정은 대표님이 하신다. AI는 사실과 숫자를 올린다
+- 유튜브 채널: https://www.youtube.com/@cheolmani_diary
+- **어설픈 추측 금지.** 모르면 모른다고 하고 확인하라
+- 선택지를 여러 개 늘어놓는 것을 싫어하신다. **팩트 → 권고 하나**로 압축하라
+- 크레딧이 넉넉하지 않다. 같은 것을 두 번 조사하지 마라
+
+</pre></main>
+<script>
+const b=document.getElementById('b');
+b.onclick=async()=>{
+  try{await navigator.clipboard.writeText(document.getElementById('t').textContent);}
+  catch(e){const r=document.createRange();r.selectNode(document.getElementById('t'));
+    getSelection().removeAllRanges();getSelection().addRange(r);document.execCommand('copy');getSelection().removeAllRanges();}
+  b.textContent='복사됨 ✓';b.classList.add('done');
+  setTimeout(()=>{b.textContent='전체 복사';b.classList.remove('done')},1800);
+};
+</script></body></html>

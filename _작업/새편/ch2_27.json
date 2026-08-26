@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "27",
+  "title": "숲속 도토리",
+  "sub": "모자를 쓴 참나무 열매",
+  "video": "ch2/ch2_27.mp4",
+  "img": "ch2/ch2_27-poster.jpg",
+  "levelOne": [
+    [
+      "associate",
+      "associate",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "assume",
+      "assume",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "attack",
+      "attack",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "attempt",
+      "attempt",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "attend",
+      "attend",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "attention",
+      "attention",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "attitude",
+      "attitude",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "attract",
+      "attract",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

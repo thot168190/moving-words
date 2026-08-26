@@ -177,6 +177,16 @@
     main { padding-bottom: 90px !important; }
     .viewer-layout { padding-bottom: 60px !important; }
     .quiz-grid, .museum-grid { padding-bottom: 80px !important; }
+  
+    .sub-chapter-tabs{display:flex;gap:8px;margin:12px 0 20px;flex-wrap:wrap}
+    .sub-tab-btn{padding:8px 16px;border-radius:999px;border:1px solid #c7dcd5;background:#fff;font-family:Pretendard,sans-serif;font-size:14px;font-weight:700;color:#355f52;cursor:pointer;transition:.18s}
+    .sub-tab-btn:hover{background:#edf6f3;border-color:#173f34}
+    .sub-tab-btn.active{background:#173f34;color:#fff;border-color:#173f34}
+    .sub-tab-btn .badge-free{display:inline-block;padding:2px 6px;margin-left:4px;border-radius:6px;background:#e2f4ea;color:#0b7348;font-size:11px;font-weight:800}
+    .sub-tab-btn.active .badge-free{background:#2a594b;color:#a8f0cf}
+    .sub-tab-btn .badge-pro{display:inline-block;padding:2px 6px;margin-left:4px;border-radius:6px;background:#fef0e6;color:#bc4c12;font-size:11px;font-weight:800}
+    .sub-tab-btn.active .badge-pro{background:#4d2c1d;color:#ffc49e}
+
   </style>
 </head>
 <body>
@@ -260,6 +270,7 @@
    <section class="detail-view" id="chapterDetail" aria-label="챕터 1 상세">
     <button class="back" id="backBtn">← 12개 챕터로 돌아가기</button>
     <div class="section-head"><div><h2>챕터 1 · 세상을 발견하는 순간</h2><p>장면이 그려지는 동안 단어를 익힙니다.</p></div><button class="all" id="allBtn">8개 학습</button></div>
+        <div class="sub-chapter-tabs" id="subChapterTabs" style="display:none"></div>
     <div class="shelf" id="shelf"></div>
    </section>
    <section class="feature-view" id="featureView" aria-label="놀이 상세">
@@ -521,8 +532,8 @@
         "n": "06",
         "title": "곶을 돌아 열리는 만",
         "sub": "미지의 풍경",
-        "video": "ch1/scene-ch1-10.mp4?v=4",
-        "img": "ch1/scene-ch1-10-poster.jpg?v=4",
+        "video": "ch1/scene-ch1-10.mp4",
+        "img": "ch1/scene-ch1-10-poster.jpg",
         "words": [
           [
             "adventure",
@@ -615,14 +626,6 @@
             "하늘"
           ],
           [
-            "shine",
-            "빛나다"
-          ],
-          [
-            "silver",
-            "은빛"
-          ],
-          [
             "instrument",
             "기구"
           ],
@@ -633,10 +636,6 @@
           [
             "sight",
             "시야"
-          ],
-          [
-            "distance",
-            "거리"
           ]
         ]
       },
@@ -693,32 +692,12 @@
             "열기구"
           ],
           [
-            "rise",
-            "떠오르다"
-          ],
-          [
-            "float",
-            "떠다니다"
-          ],
-          [
-            "atmosphere",
-            "대기"
+            "tour",
+            "여행"
           ],
           [
             "height",
             "높이"
-          ],
-          [
-            "journey",
-            "여정"
-          ],
-          [
-            "adventure",
-            "모험"
-          ],
-          [
-            "tour",
-            "여행"
           ]
         ]
       }
@@ -858,14 +837,6 @@
         [
           "heaven",
           "하늘"
-        ],
-        [
-          "shine",
-          "빛나다"
-        ],
-        [
-          "silver",
-          "은빛"
         ]
       ],
       [
@@ -890,18 +861,6 @@
         [
           "balloon",
           "열기구"
-        ],
-        [
-          "float",
-          "떠다니다"
-        ],
-        [
-          "journey",
-          "여정"
-        ],
-        [
-          "adventure",
-          "모험"
         ]
       ]
     ],
@@ -1044,10 +1003,6 @@
         [
           "sight",
           "시야"
-        ],
-        [
-          "distance",
-          "거리"
         ]
       ],
       [
@@ -1072,14 +1027,6 @@
         [
           "tour",
           "여행"
-        ],
-        [
-          "rise",
-          "떠오르다"
-        ],
-        [
-          "atmosphere",
-          "대기"
         ],
         [
           "height",
@@ -1226,10 +1173,6 @@
         [
           58,
           26
-        ],
-        [
-          78,
-          72
         ]
       ],
       [
@@ -1254,14 +1197,6 @@
         [
           24,
           48
-        ],
-        [
-          72,
-          38
-        ],
-        [
-          52,
-          16
         ],
         [
           75,
@@ -1404,14 +1339,6 @@
         [
           72,
           18
-        ],
-        [
-          82,
-          38
-        ],
-        [
-          24,
-          75
         ]
       ],
       [
@@ -1436,18 +1363,6 @@
         [
           48,
           32
-        ],
-        [
-          22,
-          22
-        ],
-        [
-          78,
-          68
-        ],
-        [
-          28,
-          75
         ]
       ]
     ]
@@ -1692,10 +1607,6 @@
             "아래에"
           ],
           [
-            "hide",
-            "숨다"
-          ],
-          [
             "dirt",
             "흙"
           ]
@@ -1873,30 +1784,6 @@
         "img": "ch4/Red_fox_walking_on_path_202608101458-poster.jpg",
         "words": [
           [
-            "log",
-            "통나무"
-          ],
-          [
-            "trunk",
-            "줄기"
-          ],
-          [
-            "bark",
-            "나무껍질"
-          ],
-          [
-            "branch",
-            "가지"
-          ],
-          [
-            "leaf",
-            "잎"
-          ],
-          [
-            "path",
-            "오솔길"
-          ],
-          [
             "bush",
             "덤불"
           ],
@@ -1942,8 +1829,8 @@
             "덫"
           ],
           [
-            "tight",
-            "팽팽한"
+            "stable",
+            "안정된 구조"
           ]
         ]
       },
@@ -1955,36 +1842,286 @@
         "img": "ch4/Leaf_insect_on_twig_202608101458-poster.jpg",
         "words": [
           [
-            "bug",
-            "벌레"
+            "unit",
+            "생물 개체"
           ],
           [
-            "leaf",
-            "잎"
+            "specific",
+            "특이한 모습"
           ],
           [
-            "branch",
-            "가지"
+            "seem",
+            "~처럼 보이다"
           ],
           [
-            "rest",
-            "머물다"
+            "demonstrate",
+            "나뭇잎처럼 보이다"
+          ]
+        ]
+      },
+      {
+        "n": "14",
+        "title": "나뭇가지 위 푸른 박새",
+        "sub": "청아하게 지저귀는 작은 새",
+        "video": "ch2/ch2_14.mp4",
+        "img": "ch2/ch2_14-poster.jpg",
+        "words": [
+          [
+            "breast",
+            "가슴 깃털"
           ],
           [
-            "stick",
-            "달라붙다"
+            "gorgeous",
+            "고운 빛깔"
           ],
           [
-            "sharp",
-            "뾰족한"
+            "awake",
+            "잠에서 깨어나다"
           ],
           [
-            "nut",
-            "열매"
+            "hear",
+            "소리에 귀 기울이다"
           ],
           [
-            "similar",
-            "비슷한"
+            "lean",
+            "가지에 앉다"
+          ]
+        ]
+      },
+      {
+        "n": "15",
+        "title": "잎사귀 위 무당벌레",
+        "sub": "풀잎을 기어가는 점박이",
+        "video": "ch2/ch2_15.mp4",
+        "img": "ch2/ch2_15-poster.jpg",
+        "words": [
+          [
+            "cell",
+            "등껍질 조직"
+          ],
+          [
+            "nail",
+            "발톱 끝"
+          ],
+          [
+            "bite",
+            "잎을 갉아먹다"
+          ],
+          [
+            "poison",
+            "독성 분비물"
+          ],
+          [
+            "sense",
+            "더듬이 감각"
+          ],
+          [
+            "slip",
+            "미끄러지다"
+          ]
+        ]
+      },
+      {
+        "n": "16",
+        "title": "호랑나비의 날갯짓",
+        "sub": "화려한 대칭 날개",
+        "video": "ch2/ch2_16.mp4",
+        "img": "ch2/ch2_16-poster.jpg",
+        "words": [
+          [
+            "equal",
+            "대칭인 날개"
+          ],
+          [
+            "odd",
+            "특이한 무늬"
+          ],
+          [
+            "amaze",
+            "놀라운 자태"
+          ],
+          [
+            "adapt",
+            "자연에 적응하다"
+          ],
+          [
+            "vary",
+            "다채롭다"
+          ],
+          [
+            "gesture",
+            "날갯짓"
+          ]
+        ]
+      },
+      {
+        "n": "17",
+        "title": "숲속의 도토리",
+        "sub": "단단한 깍지를 쓴 열매",
+        "video": "ch2/ch2_17.mp4",
+        "img": "ch2/ch2_17-poster.jpg",
+        "words": [
+          [
+            "link",
+            "꼭지 연결부"
+          ],
+          [
+            "definite",
+            "단단한 껍질"
+          ],
+          [
+            "develop",
+            "열매가 여물다"
+          ],
+          [
+            "separate",
+            "가지에서 떨어지다"
+          ],
+          [
+            "defense",
+            "씨앗 방어"
+          ]
+        ]
+      },
+      {
+        "n": "18",
+        "title": "줄무늬 깃털",
+        "sub": "바람에 날아든 새의 깃",
+        "video": "ch2/ch2_18.mp4",
+        "img": "ch2/ch2_18-poster.jpg",
+        "words": [
+          [
+            "fur",
+            "부드러운 솜털"
+          ],
+          [
+            "mark",
+            "깃털 무늬 자국"
+          ],
+          [
+            "gentle",
+            "부드러운"
+          ],
+          [
+            "swallow",
+            "하늘로 날아가다"
+          ]
+        ]
+      },
+      {
+        "n": "19",
+        "title": "물가의 푸른 잠자리",
+        "sub": "투명한 날개로 날다",
+        "video": "ch2/ch2_19.mp4",
+        "img": "ch2/ch2_19-poster.jpg",
+        "words": [
+          [
+            "nerve",
+            "그물망 날개맥"
+          ],
+          [
+            "chest",
+            "단단한 가슴"
+          ],
+          [
+            "rush",
+            "빠르게 날다"
+          ],
+          [
+            "chase",
+            "먹이를 쫓다"
+          ],
+          [
+            "bounce",
+            "공중에서 튕기다"
+          ],
+          [
+            "muscle",
+            "꼬리 마디"
+          ]
+        ]
+      },
+      {
+        "n": "20",
+        "title": "날개 달린 단풍 씨앗",
+        "sub": "바람 타고 흩날리는 씨앗",
+        "video": "ch2/ch2_20.mp4",
+        "img": "ch2/ch2_20-poster.jpg",
+        "words": [
+          [
+            "balance",
+            "공중 비행 균형"
+          ],
+          [
+            "feature",
+            "날개 모양 특징"
+          ],
+          [
+            "progress",
+            "멀리 나아가다"
+          ]
+        ]
+      },
+      {
+        "n": "21",
+        "title": "정원의 돌 모이그릇",
+        "sub": "새들이 모여드는 그릇",
+        "video": "ch2/ch2_21.mp4",
+        "img": "ch2/ch2_21-poster.jpg",
+        "words": [
+          [
+            "source",
+            "먹이의 원천"
+          ],
+          [
+            "district",
+            "모이통 구역"
+          ],
+          [
+            "chew",
+            "곡식을 씹다"
+          ],
+          [
+            "approach",
+            "새들이 다가오다"
+          ]
+        ]
+      },
+      {
+        "n": "22",
+        "title": "둥지 속 푸른 새알",
+        "sub": "따뜻하게 품은 새 생명",
+        "video": "ch2/ch2_22.mp4",
+        "img": "ch2/ch2_22-poster.jpg",
+        "words": [
+          [
+            "pregnant",
+            "생명을 품은"
+          ],
+          [
+            "health",
+            "건강히 자라다"
+          ],
+          [
+            "bury",
+            "포근히 묻어두다"
+          ]
+        ]
+      },
+      {
+        "n": "23",
+        "title": "나선형 껍질의 달팽이",
+        "sub": "천천히 기어가는 여정",
+        "video": "ch2/ch2_23.mp4",
+        "img": "ch2/ch2_23-poster.jpg",
+        "words": [
+          [
+            "toe",
+            "배다리 발끝"
+          ],
+          [
+            "wound",
+            "상처를 조심하다"
           ]
         ]
       }
@@ -2172,18 +2309,6 @@
       ],
       [
         [
-          "branch",
-          "가지"
-        ],
-        [
-          "leaf",
-          "잎"
-        ],
-        [
-          "path",
-          "오솔길"
-        ],
-        [
           "bush",
           "덤불"
         ]
@@ -2208,20 +2333,104 @@
       ],
       [
         [
-          "bug",
-          "벌레"
+          "unit",
+          "생물 개체"
         ],
         [
-          "leaf",
-          "잎"
+          "specific",
+          "특이한 모습"
+        ]
+      ],
+      [
+        [
+          "breast",
+          "가슴 깃털"
         ],
         [
-          "branch",
-          "가지"
+          "gorgeous",
+          "고운 빛깔"
+        ]
+      ],
+      [
+        [
+          "cell",
+          "등껍질 조직"
         ],
         [
-          "rest",
-          "머물다"
+          "nail",
+          "발톱 끝"
+        ]
+      ],
+      [
+        [
+          "equal",
+          "대칭인 날개"
+        ],
+        [
+          "odd",
+          "특이한 무늬"
+        ]
+      ],
+      [
+        [
+          "link",
+          "꼭지 연결부"
+        ],
+        [
+          "definite",
+          "단단한 껍질"
+        ]
+      ],
+      [
+        [
+          "fur",
+          "부드러운 솜털"
+        ],
+        [
+          "mark",
+          "깃털 무늬 자국"
+        ]
+      ],
+      [
+        [
+          "nerve",
+          "그물망 날개맥"
+        ],
+        [
+          "chest",
+          "단단한 가슴"
+        ]
+      ],
+      [
+        [
+          "balance",
+          "공중 비행 균형"
+        ],
+        [
+          "feature",
+          "날개 모양 특징"
+        ]
+      ],
+      [
+        [
+          "source",
+          "먹이의 원천"
+        ],
+        [
+          "district",
+          "모이통 구역"
+        ]
+      ],
+      [
+        [
+          "pregnant",
+          "생명을 품은"
+        ]
+      ],
+      [
+        [
+          "toe",
+          "배다리 발끝"
         ]
       ]
     ],
@@ -2326,10 +2535,6 @@
           "아래에"
         ],
         [
-          "hide",
-          "숨다"
-        ],
-        [
           "dirt",
           "흙"
         ]
@@ -2408,18 +2613,6 @@
       ],
       [
         [
-          "log",
-          "통나무"
-        ],
-        [
-          "trunk",
-          "줄기"
-        ],
-        [
-          "bark",
-          "나무껍질"
-        ],
-        [
           "trace",
           "자취"
         ]
@@ -2438,26 +2631,142 @@
           "덫"
         ],
         [
-          "tight",
-          "팽팽한"
+          "stable",
+          "안정된 구조"
         ]
       ],
       [
         [
-          "stick",
-          "달라붙다"
+          "seem",
+          "~처럼 보이다"
         ],
         [
-          "sharp",
-          "뾰족한"
+          "demonstrate",
+          "나뭇잎처럼 보이다"
+        ]
+      ],
+      [
+        [
+          "awake",
+          "잠에서 깨어나다"
         ],
         [
-          "nut",
-          "열매"
+          "hear",
+          "소리에 귀 기울이다"
         ],
         [
-          "similar",
-          "비슷한"
+          "lean",
+          "가지에 앉다"
+        ]
+      ],
+      [
+        [
+          "bite",
+          "잎을 갉아먹다"
+        ],
+        [
+          "poison",
+          "독성 분비물"
+        ],
+        [
+          "sense",
+          "더듬이 감각"
+        ],
+        [
+          "slip",
+          "미끄러지다"
+        ]
+      ],
+      [
+        [
+          "amaze",
+          "놀라운 자태"
+        ],
+        [
+          "adapt",
+          "자연에 적응하다"
+        ],
+        [
+          "vary",
+          "다채롭다"
+        ],
+        [
+          "gesture",
+          "날갯짓"
+        ]
+      ],
+      [
+        [
+          "develop",
+          "열매가 여물다"
+        ],
+        [
+          "separate",
+          "가지에서 떨어지다"
+        ],
+        [
+          "defense",
+          "씨앗 방어"
+        ]
+      ],
+      [
+        [
+          "gentle",
+          "부드러운"
+        ],
+        [
+          "swallow",
+          "하늘로 날아가다"
+        ]
+      ],
+      [
+        [
+          "rush",
+          "빠르게 날다"
+        ],
+        [
+          "chase",
+          "먹이를 쫓다"
+        ],
+        [
+          "bounce",
+          "공중에서 튕기다"
+        ],
+        [
+          "muscle",
+          "꼬리 마디"
+        ]
+      ],
+      [
+        [
+          "progress",
+          "멀리 나아가다"
+        ]
+      ],
+      [
+        [
+          "chew",
+          "곡식을 씹다"
+        ],
+        [
+          "approach",
+          "새들이 다가오다"
+        ]
+      ],
+      [
+        [
+          "health",
+          "건강히 자라다"
+        ],
+        [
+          "bury",
+          "포근히 묻어두다"
+        ]
+      ],
+      [
+        [
+          "wound",
+          "상처를 조심하다"
         ]
       ]
     ],
@@ -2562,10 +2871,6 @@
           68
         ],
         [
-          75,
-          75
-        ],
-        [
           22,
           65
         ]
@@ -2644,18 +2949,6 @@
       ],
       [
         [
-          22,
-          68
-        ],
-        [
-          32,
-          45
-        ],
-        [
-          24,
-          88
-        ],
-        [
           58,
           85
         ]
@@ -2680,20 +2973,136 @@
       ],
       [
         [
-          22,
-          68
-        ],
-        [
-          42,
-          22
+          30,
+          50
         ],
         [
           68,
+          65
+        ]
+      ],
+      [
+        [
+          38,
+          28
+        ],
+        [
+          65,
           58
         ],
         [
-          40,
-          82
+          45,
+          72
+        ]
+      ],
+      [
+        [
+          65,
+          35
+        ],
+        [
+          52,
+          68
+        ],
+        [
+          35,
+          25
+        ],
+        [
+          75,
+          58
+        ]
+      ],
+      [
+        [
+          30,
+          25
+        ],
+        [
+          72,
+          70
+        ],
+        [
+          25,
+          70
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      [
+        [
+          35,
+          45
+        ],
+        [
+          62,
+          45
+        ],
+        [
+          48,
+          75
+        ]
+      ],
+      [
+        [
+          55,
+          48
+        ],
+        [
+          48,
+          20
+        ]
+      ],
+      [
+        [
+          68,
+          35
+        ],
+        [
+          68,
+          55
+        ],
+        [
+          30,
+          55
+        ],
+        [
+          48,
+          72
+        ]
+      ],
+      [
+        [
+          28,
+          60
+        ]
+      ],
+      [
+        [
+          58,
+          45
+        ],
+        [
+          48,
+          75
+        ]
+      ],
+      [
+        [
+          32,
+          45
+        ],
+        [
+          62,
+          45
+        ]
+      ],
+      [
+        [
+          38,
+          55
         ]
       ]
     ],
@@ -2880,18 +3289,6 @@
       ],
       [
         [
-          28,
-          25
-        ],
-        [
-          72,
-          28
-        ],
-        [
-          48,
-          78
-        ],
-        [
           78,
           65
         ]
@@ -2916,19 +3313,103 @@
       ],
       [
         [
+          50,
+          50
+        ],
+        [
+          50,
+          30
+        ]
+      ],
+      [
+        [
+          42,
+          50
+        ],
+        [
           48,
-          48
-        ],
-        [
-          28,
           32
+        ]
+      ],
+      [
+        [
+          46,
+          50
         ],
         [
-          72,
+          25,
+          68
+        ]
+      ],
+      [
+        [
+          48,
+          45
+        ],
+        [
+          65,
+          30
+        ]
+      ],
+      [
+        [
+          48,
+          22
+        ],
+        [
+          48,
+          55
+        ]
+      ],
+      [
+        [
+          45,
+          78
+        ],
+        [
+          48,
+          35
+        ]
+      ],
+      [
+        [
+          30,
           35
         ],
         [
-          78,
+          48,
+          38
+        ]
+      ],
+      [
+        [
+          48,
+          45
+        ],
+        [
+          68,
+          35
+        ]
+      ],
+      [
+        [
+          48,
+          32
+        ],
+        [
+          48,
+          50
+        ]
+      ],
+      [
+        [
+          48,
+          25
+        ]
+      ],
+      [
+        [
+          35,
           72
         ]
       ]
@@ -3241,6 +3722,304 @@
             "드러난"
           ]
         ]
+      },
+      {
+        "n": "11",
+        "title": "화분 속 새싹",
+        "sub": "흙에서 자라나는 초록 잎",
+        "video": "ch3/ch3_11.mp4",
+        "img": "ch3/ch3_11-poster.jpg",
+        "words": [
+          [
+            "shape",
+            "모양새"
+          ],
+          [
+            "single",
+            "한 포기"
+          ],
+          [
+            "extend",
+            "뻗어나가다"
+          ],
+          [
+            "contain",
+            "담고 있다"
+          ],
+          [
+            "alive",
+            "살아 있는"
+          ],
+          [
+            "breathe",
+            "숨 쉬다"
+          ],
+          [
+            "develop",
+            "자라나다"
+          ]
+        ]
+      },
+      {
+        "n": "12",
+        "title": "물뿌리개와 모종삽",
+        "sub": "흙을 고르는 두 연장",
+        "video": "ch3/ch3_12.mp4",
+        "img": "ch3/ch3_12-poster.jpg",
+        "words": [
+          [
+            "tool",
+            "연장"
+          ],
+          [
+            "handle",
+            "손잡이"
+          ],
+          [
+            "dig",
+            "파다"
+          ],
+          [
+            "operate",
+            "다루다"
+          ]
+        ]
+      },
+      {
+        "n": "13",
+        "title": "유리 온실 병",
+        "sub": "유리 안에 담긴 작은 뜰",
+        "video": "ch3/ch3_13.mp4",
+        "img": "ch3/ch3_13-poster.jpg",
+        "words": [
+          [
+            "triangle",
+            "세모"
+          ],
+          [
+            "volume",
+            "부피"
+          ],
+          [
+            "empty",
+            "비어 있는"
+          ],
+          [
+            "include",
+            "함께 들어 있다"
+          ],
+          [
+            "remain",
+            "그대로 있다"
+          ]
+        ]
+      },
+      {
+        "n": "14",
+        "title": "꽃가위와 라벤더",
+        "sub": "한 줄기를 골라 자르다",
+        "video": "ch3/ch3_14.mp4",
+        "img": "ch3/ch3_14-poster.jpg",
+        "words": [
+          [
+            "pair",
+            "한 쌍"
+          ],
+          [
+            "piece",
+            "조각"
+          ],
+          [
+            "divide",
+            "가르다"
+          ],
+          [
+            "snap",
+            "싹둑 자르다"
+          ],
+          [
+            "remove",
+            "쳐내다"
+          ],
+          [
+            "bend",
+            "휘다"
+          ]
+        ]
+      },
+      {
+        "n": "15",
+        "title": "그루터기 위 새집",
+        "sub": "나무 밑동에 앉은 작은 집",
+        "video": "ch3/ch3_15.mp4",
+        "img": "ch3/ch3_15-poster.jpg",
+        "words": [
+          [
+            "frame",
+            "뼈대"
+          ],
+          [
+            "block",
+            "토막"
+          ],
+          [
+            "settle",
+            "자리 잡다"
+          ],
+          [
+            "survive",
+            "견디어 내다"
+          ]
+        ]
+      },
+      {
+        "n": "16",
+        "title": "바구니에 담은 가을",
+        "sub": "호박과 보리 이삭",
+        "video": "ch3/ch3_16.mp4",
+        "img": "ch3/ch3_16-poster.jpg",
+        "words": [
+          [
+            "bunch",
+            "다발"
+          ],
+          [
+            "mass",
+            "덩어리"
+          ],
+          [
+            "plenty",
+            "넉넉함"
+          ],
+          [
+            "several",
+            "여럿의"
+          ],
+          [
+            "gain",
+            "거두다"
+          ]
+        ]
+      },
+      {
+        "n": "17",
+        "title": "꽃을 누르는 나무틀",
+        "sub": "네 귀를 조여 말리다",
+        "video": "ch3/ch3_17.mp4",
+        "img": "ch3/ch3_17-poster.jpg",
+        "words": [
+          [
+            "square",
+            "네모"
+          ],
+          [
+            "link",
+            "잇는 쇠"
+          ],
+          [
+            "shut",
+            "꽉 닫다"
+          ],
+          [
+            "bind",
+            "묶어 두다"
+          ],
+          [
+            "constant",
+            "변함없는"
+          ],
+          [
+            "maintain",
+            "그대로 지키다"
+          ]
+        ]
+      },
+      {
+        "n": "18",
+        "title": "외발 손수레",
+        "sub": "바퀴 하나로 나르다",
+        "video": "ch3/ch3_18.mp4",
+        "img": "ch3/ch3_18-poster.jpg",
+        "words": [
+          [
+            "wide",
+            "넓은"
+          ],
+          [
+            "step",
+            "발판"
+          ],
+          [
+            "roll",
+            "구르다"
+          ],
+          [
+            "drag",
+            "끌다"
+          ],
+          [
+            "force",
+            "밀어붙이는 힘"
+          ],
+          [
+            "shift",
+            "옮기다"
+          ]
+        ]
+      },
+      {
+        "n": "19",
+        "title": "유리로 지은 온실",
+        "sub": "빛을 들이는 집",
+        "video": "ch3/ch3_19.mp4",
+        "img": "ch3/ch3_19-poster.jpg",
+        "words": [
+          [
+            "grand",
+            "웅장한"
+          ],
+          [
+            "upper",
+            "위쪽의"
+          ],
+          [
+            "internal",
+            "안쪽의"
+          ],
+          [
+            "raise",
+            "높이다"
+          ]
+        ]
+      },
+      {
+        "n": "20",
+        "title": "울타리 앞 해바라기",
+        "sub": "고르게 늘어선 씨앗",
+        "video": "ch3/ch3_20.mp4",
+        "img": "ch3/ch3_20-poster.jpg",
+        "words": [
+          [
+            "regular",
+            "고르게 늘어선"
+          ],
+          [
+            "combine",
+            "엇갈려 짜이다"
+          ],
+          [
+            "gorgeous",
+            "눈부신"
+          ],
+          [
+            "super",
+            "아주 큰"
+          ],
+          [
+            "continue",
+            "계속 자라다"
+          ]
+        ]
       }
     ],
     "levelOneWords": [
@@ -3383,6 +4162,178 @@
           "suit",
           "정장"
         ]
+      ],
+      [
+        [
+          "shape",
+          "모양새"
+        ],
+        [
+          "single",
+          "한 포기"
+        ],
+        [
+          "extend",
+          "뻗어나가다"
+        ],
+        [
+          "contain",
+          "담고 있다"
+        ]
+      ],
+      [
+        [
+          "tool",
+          "연장"
+        ],
+        [
+          "handle",
+          "손잡이"
+        ],
+        [
+          "dig",
+          "파다"
+        ],
+        [
+          "operate",
+          "다루다"
+        ]
+      ],
+      [
+        [
+          "triangle",
+          "세모"
+        ],
+        [
+          "volume",
+          "부피"
+        ],
+        [
+          "empty",
+          "비어 있는"
+        ],
+        [
+          "include",
+          "함께 들어 있다"
+        ]
+      ],
+      [
+        [
+          "pair",
+          "한 쌍"
+        ],
+        [
+          "piece",
+          "조각"
+        ],
+        [
+          "divide",
+          "가르다"
+        ],
+        [
+          "snap",
+          "싹둑 자르다"
+        ]
+      ],
+      [
+        [
+          "frame",
+          "뼈대"
+        ],
+        [
+          "block",
+          "토막"
+        ],
+        [
+          "settle",
+          "자리 잡다"
+        ]
+      ],
+      [
+        [
+          "bunch",
+          "다발"
+        ],
+        [
+          "mass",
+          "덩어리"
+        ],
+        [
+          "plenty",
+          "넉넉함"
+        ],
+        [
+          "several",
+          "여럿의"
+        ]
+      ],
+      [
+        [
+          "square",
+          "네모"
+        ],
+        [
+          "link",
+          "잇는 쇠"
+        ],
+        [
+          "shut",
+          "꽉 닫다"
+        ],
+        [
+          "bind",
+          "묶어 두다"
+        ]
+      ],
+      [
+        [
+          "wide",
+          "넓은"
+        ],
+        [
+          "step",
+          "발판"
+        ],
+        [
+          "roll",
+          "구르다"
+        ],
+        [
+          "drag",
+          "끌다"
+        ]
+      ],
+      [
+        [
+          "grand",
+          "웅장한"
+        ],
+        [
+          "upper",
+          "위쪽의"
+        ],
+        [
+          "internal",
+          "안쪽의"
+        ]
+      ],
+      [
+        [
+          "regular",
+          "고르게 늘어선"
+        ],
+        [
+          "combine",
+          "엇갈려 짜이다"
+        ],
+        [
+          "gorgeous",
+          "눈부신"
+        ],
+        [
+          "super",
+          "아주 큰"
+        ]
       ]
     ],
     "levelTwoWords": [
@@ -3500,6 +4451,81 @@
         [
           "bare",
           "드러난"
+        ]
+      ],
+      [
+        [
+          "alive",
+          "살아 있는"
+        ],
+        [
+          "breathe",
+          "숨 쉬다"
+        ],
+        [
+          "develop",
+          "자라나다"
+        ]
+      ],
+      [],
+      [
+        [
+          "remain",
+          "그대로 있다"
+        ]
+      ],
+      [
+        [
+          "remove",
+          "쳐내다"
+        ],
+        [
+          "bend",
+          "휘다"
+        ]
+      ],
+      [
+        [
+          "survive",
+          "견디어 내다"
+        ]
+      ],
+      [
+        [
+          "gain",
+          "거두다"
+        ]
+      ],
+      [
+        [
+          "constant",
+          "변함없는"
+        ],
+        [
+          "maintain",
+          "그대로 지키다"
+        ]
+      ],
+      [
+        [
+          "force",
+          "밀어붙이는 힘"
+        ],
+        [
+          "shift",
+          "옮기다"
+        ]
+      ],
+      [
+        [
+          "raise",
+          "높이다"
+        ]
+      ],
+      [
+        [
+          "continue",
+          "계속 자라다"
         ]
       ]
     ],
@@ -3643,6 +4669,178 @@
           70,
           48
         ]
+      ],
+      [
+        [
+          38,
+          62
+        ],
+        [
+          37,
+          22
+        ],
+        [
+          60,
+          35
+        ],
+        [
+          33,
+          44
+        ]
+      ],
+      [
+        [
+          33,
+          55
+        ],
+        [
+          68,
+          72
+        ],
+        [
+          69,
+          45
+        ],
+        [
+          32,
+          25
+        ]
+      ],
+      [
+        [
+          47,
+          17
+        ],
+        [
+          67,
+          40
+        ],
+        [
+          31,
+          30
+        ],
+        [
+          50,
+          75
+        ]
+      ],
+      [
+        [
+          30,
+          28
+        ],
+        [
+          65,
+          32
+        ],
+        [
+          64,
+          62
+        ],
+        [
+          29,
+          50
+        ]
+      ],
+      [
+        [
+          30,
+          60
+        ],
+        [
+          47,
+          82
+        ],
+        [
+          46,
+          46
+        ]
+      ],
+      [
+        [
+          67,
+          28
+        ],
+        [
+          60,
+          70
+        ],
+        [
+          33,
+          68
+        ],
+        [
+          82,
+          44
+        ]
+      ],
+      [
+        [
+          38,
+          84
+        ],
+        [
+          61,
+          17
+        ],
+        [
+          61,
+          75
+        ],
+        [
+          24,
+          17
+        ]
+      ],
+      [
+        [
+          47,
+          33
+        ],
+        [
+          36,
+          72
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          12,
+          26
+        ]
+      ],
+      [
+        [
+          30,
+          40
+        ],
+        [
+          44,
+          19
+        ],
+        [
+          50,
+          47
+        ]
+      ],
+      [
+        [
+          44,
+          42
+        ],
+        [
+          30,
+          72
+        ],
+        [
+          45,
+          13
+        ],
+        [
+          28,
+          30
+        ]
       ]
     ],
     "sceneSpots": [
@@ -3760,6 +4958,81 @@
         [
           16,
           78
+        ]
+      ],
+      [
+        [
+          39,
+          12
+        ],
+        [
+          51,
+          30
+        ],
+        [
+          56,
+          55
+        ]
+      ],
+      [],
+      [
+        [
+          45,
+          50
+        ]
+      ],
+      [
+        [
+          50,
+          72
+        ],
+        [
+          50,
+          22
+        ]
+      ],
+      [
+        [
+          45,
+          25
+        ]
+      ],
+      [
+        [
+          36,
+          44
+        ]
+      ],
+      [
+        [
+          43,
+          47
+        ],
+        [
+          30,
+          62
+        ]
+      ],
+      [
+        [
+          25,
+          40
+        ],
+        [
+          50,
+          45
+        ]
+      ],
+      [
+        [
+          58,
+          25
+        ]
+      ],
+      [
+        [
+          44,
+          75
         ]
       ]
     ]
@@ -4254,10 +5527,6 @@
             "탑"
           ],
           [
-            "seat",
-            "좌석"
-          ],
-          [
             "rise",
             "솟아오르다"
           ],
@@ -4268,10 +5537,6 @@
           [
             "fear",
             "두려움"
-          ],
-          [
-            "scream",
-            "비명"
           ],
           [
             "grab",
@@ -4386,10 +5651,6 @@
           "탑"
         ],
         [
-          "seat",
-          "좌석"
-        ],
-        [
           "rise",
           "솟아오르다"
         ],
@@ -4476,10 +5737,6 @@
         [
           "fear",
           "두려움"
-        ],
-        [
-          "scream",
-          "비명"
         ],
         [
           "grab",
@@ -4570,10 +5827,6 @@
           42
         ],
         [
-          75,
-          58
-        ],
-        [
           32,
           25
         ],
@@ -4660,10 +5913,6 @@
         [
           48,
           48
-        ],
-        [
-          32,
-          68
         ],
         [
           68,
@@ -5290,10 +6539,6 @@
         [
           78,
           72
-        ],
-        [
-          32,
-          45
         ]
       ]
     ],
@@ -5332,10 +6577,6 @@
         [
           28,
           68
-        ],
-        [
-          74,
-          38
         ]
       ],
       [
@@ -5716,14 +6957,6 @@
         [
           72,
           62
-        ],
-        [
-          30,
-          70
-        ],
-        [
-          70,
-          70
         ]
       ],
       [
@@ -5798,10 +7031,6 @@
         [
           68,
           35
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -5816,10 +7045,6 @@
         [
           75,
           62
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -6272,10 +7497,6 @@
         [
           68,
           32
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -6740,10 +7961,6 @@
         [
           75,
           62
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -6758,10 +7975,6 @@
         [
           75,
           62
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -6772,14 +7985,6 @@
         [
           52,
           82
-        ],
-        [
-          20,
-          80
-        ],
-        [
-          80,
-          80
         ]
       ]
     ]
@@ -7553,10 +8758,6 @@
         [
           28,
           35
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -7571,10 +8772,6 @@
         [
           72,
           35
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -7589,10 +8786,6 @@
         [
           68,
           42
-        ],
-        [
-          20,
-          80
         ]
       ],
       [
@@ -7607,10 +8800,6 @@
         [
           72,
           38
-        ],
-        [
-          20,
-          80
         ]
       ]
     ]
@@ -7630,8 +8819,14 @@
       works.forEach((w,i)=>{
         let lock = false;
         if (!isPaid) {
-          if (currentChapterId === 1) lock = false;
-          else lock = true;
+          if (currentChapterId === 1) {
+            lock = false;
+          } else if (currentChapterId === 2) {
+            // 1~13편(숲속 동물과 곤충) 무료, 14~23편(새와 나무와 씨앗) 유료
+            lock = i >= 13;
+          } else {
+            lock = true;
+          }
         }
         w.locked=lock;
         w.needsPurchase=lock;
@@ -7846,7 +9041,39 @@
     let previews=true;
     // 로그인 계정에서 불러온 챕터 1 완료 장면 수입니다.
     let completedSceneCount=0;
-    function setupWorks() { shelf.innerHTML=works.map((w,i)=>`<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${i}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · ${w.words.length} WORDS</small><h3>${w.title}</h3><p>${w.words.slice(0,3).map(x=>x[0]).join(" · ")}</p></div></button>`).join(''); document.querySelectorAll('.work').forEach(el=>{
+    
+    let activeSubTab = "all";
+    function renderSubTabs() {
+      const tabContainer = document.getElementById("subChapterTabs");
+      if (!tabContainer) return;
+      if (currentChapterId === 2) {
+        tabContainer.style.display = "flex";
+        tabContainer.innerHTML = `
+          <button class="sub-tab-btn ${activeSubTab==="all"?"active":""}" onclick="setSubTab('all')">전체 (23편)</button>
+          <button class="sub-tab-btn ${activeSubTab==="animals"?"active":""}" onclick="setSubTab('animals')">🐾 숲속 동물과 곤충 (13편)<span class="badge-free">무료</span></button>
+          <button class="sub-tab-btn ${activeSubTab==="birds_plants"?"active":""}" onclick="setSubTab('birds_plants')">🕊️ 새와 나무와 씨앗 (10편)<span class="badge-pro">프리미엄</span></button>
+        `;
+      } else {
+        tabContainer.style.display = "none";
+      }
+    }
+    window.setSubTab = function(tab) {
+      activeSubTab = tab;
+      renderSubTabs();
+      setupWorks();
+    };
+
+    function setupWorks() {
+      renderSubTabs();
+      const filteredWorks = works.filter((w, i) => {
+        if (currentChapterId !== 2 || activeSubTab === 'all') return true;
+        if (activeSubTab === 'animals') return i < 13;
+        if (activeSubTab === 'birds_plants') return i >= 13;
+        return true;
+      });
+      shelf.innerHTML=filteredWorks.map((w,i)=>{
+        const originalIndex = works.indexOf(w);
+        return `<button class="work ${w.current?'current':''} ${w.locked?'locked':''}" data-index="${originalIndex}"><div class="poster"><span class="state">${w.current?'학습 중':w.locked?'잠김':'학습하기'}</span><video muted loop playsinline preload="metadata" src="${w.video}"></video><img src="${w.img}" alt="${w.title} 학습 영상 대표 화면"></div><div class="meta"><small>LESSON ${w.n} · ${w.words.length} WORDS</small><h3>${w.title}</h3><p>${w.words.slice(0,3).map(x=>x[0]).join(" · ")}</p></div></button>`;}).join(''); document.querySelectorAll('.work').forEach(el=>{
       const w=works[Number(el.dataset.index)],pv=el.querySelector('video');
       el.addEventListener('mouseenter',()=>{if(previews&&!w.locked&&matchMedia('(hover:hover)').matches)pv.play().catch(()=>{})});
       el.onmouseleave=()=>{pv.pause();pv.currentTime=0};
@@ -7880,7 +9107,7 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
       const ch = Number(card.dataset.chapter);
       {
         const isPreviewQuery = location.search.includes('preview=1') || location.search.includes('ch=3') || location.search.includes('paid=1');
-        if (!isPaid && ch > 1 && !isPreviewQuery) {
+        if (!isPaid && ch > 2 && !isPreviewQuery) {
           openGate();
           return;
         }
@@ -7924,7 +9151,7 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
       const targets=levelOneWords[sceneIndex].slice(0,4).map(([word,ko],index)=>({word,ko,answer:levelOneSpots[sceneIndex][index]}));
       const stage=document.getElementById('memoryStage'),choiceBox=document.getElementById('memoryChoices'),roundText=document.getElementById('memoryRound'),title=document.getElementById('memoryTitle'),reset=document.getElementById('memoryRetry'),next=document.getElementById('memoryNext');let completed=0,selectedButton=null;
       document.querySelectorAll('.quiz-scene').forEach(button=>{button.classList.toggle('active',Number(button.dataset.quizScene)===sceneIndex);button.onclick=()=>setupQuiz(Number(button.dataset.quizScene))});
-      title.textContent=`${work.n} · ${work.title}`;roundText.textContent='0 / 4';reset.classList.remove('show');next.classList.remove('show');
+      title.textContent=`${work.n} · ${work.title}`;roundText.textContent='0 / '+targets.length;reset.classList.remove('show');next.classList.remove('show');
       stage.innerHTML=`<img src="${work.img}" alt="${work.title} 거꾸로 퀴즈">${targets.map((target,i)=>`<div class="memory-hole" data-target="${target.word}" id="memoryHole${i}" aria-label="${target.ko} 단어를 놓는 자리" style="left:${target.answer[0]-7}%;top:${target.answer[1]-8}%;width:14%;height:16%">?</div><div class="memory-answer" id="memoryAnswer${i}" style="left:${target.answer[0]}%;top:${target.answer[1]}%">${target.word}</div>`).join('')}`;
       choiceBox.innerHTML=targets.map(target=>`<button class="memory-choice" type="button" draggable="true" data-word="${target.word}">${target.word.toLowerCase()}</button>`).join('');
       const holes=[...stage.querySelectorAll('.memory-hole')],buttons=[...choiceBox.querySelectorAll('.memory-choice')];
@@ -7932,7 +9159,7 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
         if(!button||!hole||button.disabled)return;
         if(button.dataset.word!==hole.dataset.target){button.classList.add('wrong');setTimeout(()=>button.classList.remove('wrong'),600);notify('다른 자리예요. 그림을 다시 살펴보세요.');return}
         const index=targets.findIndex(target=>target.word===button.dataset.word);button.disabled=true;button.classList.remove('selected');button.classList.add('correct');hole.classList.add('restored');document.getElementById(`memoryAnswer${index}`).classList.add('show');completed+=1;roundText.textContent=`${completed} / ${targets.length}`;speakWord(button.dataset.word,button);notify(`${button.dataset.word}을 제자리에 돌려놓았어요.`);selectedButton=null;
-        if(completed===targets.length){reset.classList.add('show');if(sceneIndex<works.length-1)next.classList.add('show');notify(`${work.title}의 네 단어를 모두 되찾았습니다!`)}
+        if(completed===targets.length){reset.classList.add('show');if(sceneIndex<works.length-1)next.classList.add('show');notify(`${work.title}의 단어를 모두 되찾았습니다!`)}
       }
       holes.forEach(hole=>{
         hole.ondragover=e=>{e.preventDefault();hole.classList.add('drop-ready')};hole.ondragleave=()=>hole.classList.remove('drop-ready');
@@ -8059,8 +9286,14 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
       works.forEach((w,i)=>{
         let lock = false;
         if (!isPaid) {
-          if (currentChapterId === 1) lock = false;
-          else lock = true;
+          if (currentChapterId === 1) {
+            lock = false;
+          } else if (currentChapterId === 2) {
+            // 1~13편(숲속 동물과 곤충) 무료, 14~23편(새와 나무와 씨앗) 유료
+            lock = i >= 13;
+          } else {
+            lock = true;
+          }
         }
         w.locked=lock;
         w.needsPurchase=lock;

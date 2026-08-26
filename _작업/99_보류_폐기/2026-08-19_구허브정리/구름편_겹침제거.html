@@ -1,0 +1,38 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>구름 편 · 겹침 연출 제거</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf8f3;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;color:#1c1a17;padding:18px}
+h1{font-size:18px;margin:0 0 4px}h1 small{color:#b4472e;font-size:13px;font-weight:600;margin-left:8px}
+.note{background:#fffdf5;border:1px solid #e8dcb5;border-radius:10px;padding:12px 14px;font-size:13.2px;line-height:1.75;margin:12px 0;color:#3d382e}
+.note code{background:#f2ece0;padding:1px 5px;border-radius:4px;font-size:12.2px}
+.note b{color:#1c1a17}
+.card{background:#fff;border:1px solid #e5ded0;border-radius:12px;padding:14px;max-width:1000px}
+textarea{width:100%;height:290px;font-family:ui-monospace,Menlo,monospace;font-size:12.4px;line-height:1.64;padding:12px;border:1px solid #e5ded0;border-radius:8px;background:#fcfbf8;resize:vertical;color:#2a2620}
+button{border:1px solid #d6cebb;background:#1c1a17;color:#fff;border-radius:8px;padding:12px 22px;font-size:15px;cursor:pointer;font-weight:700;margin-top:10px}
+button.done{background:#4a7c59;border-color:#4a7c59}
+</style></head><body>
+<h1>🎬 구름을 보는 두 시선 <small>겹침 연출만 제거</small></h1>
+<div class="note">
+대표님이 주신 기준본에서 <b>딱 한 문장만</b> 뺐습니다.<br>
+제거 → <code>For one brief moment the whale curve and the spaceship nose overlap within the same cloud.</code><br>
+<b>그 외에는 한 글자도 안 건드렸습니다.</b> <code>tip</code>도 <code>A light breeze reshapes the cloud slowly.</code>도 그대로입니다.<br>
+문자 수 3092 → 3001 (–91)
+</div>
+<div class="card">
+<textarea readonly id="t">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+The only visible subjects throughout the sequence are one large airy cloud, exactly two small framed picture panels standing upright far apart on a low grassy ridge beneath it, one whale-shaped outline printed inside the left panel, and one spaceship-shaped outline printed inside the right panel. Each shape stays entirely inside its own panel and never extends past the edge of that panel. There are only two framed panels and nothing else on the ridge; the ridge is otherwise completely empty and no drawing equipment of any kind is present.
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. The low ridge is drawn first through many clean short line segments, followed by the two framed panels facing slightly inward. The cloud grows from many soft contour segments above them, drawn only as thin open outlines. The whale and spaceship outlines appear last, each on its own panel. Every detail becomes visible sequentially, never all at once.
+
+4-8s: an extremely pale, water-heavy watercolor wash develops gently. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. The cloud stays almost entirely unpainted, holding only the faintest breath of blue-grey at its edges. The restrained palette is pale meadow green along the ridge and one faint warm ochre wash inside the left panel only; every other surface stays white. A light breeze reshapes the cloud slowly. All other elements remain still. The finished composition contains only the subjects listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.</textarea>
+<button id="b" onclick="cp()">📋 프롬프트 복사</button>
+</div>
+<script>
+function cp(){const t=document.getElementById('t'),b=document.getElementById('b');
+const d=()=>{b.textContent='✓ 복사됨';b.classList.add('done');setTimeout(()=>{b.textContent='📋 프롬프트 복사';b.classList.remove('done')},1500)};
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t.value).then(d).catch(()=>{t.select();document.execCommand('copy');d()})}
+else{t.removeAttribute('readonly');t.select();t.setSelectionRange(0,999999);document.execCommand('copy');t.setAttribute('readonly','');window.getSelection().removeAllRanges();d()}}
+</script></body></html>

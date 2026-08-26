@@ -1,0 +1,166 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>24챕터 재설계</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf8f3;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;color:#1c1a17;padding:20px;max-width:1080px;margin:0 auto;line-height:1.62}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px;padding-bottom:6px;border-bottom:2px solid #e5ded0}
+.lead{color:#5c554a;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:13.1px;margin:10px 0}
+th,td{border:1px solid #e0d8c6;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f4efe4;font-weight:700;white-space:nowrap}
+td.c{text-align:center;white-space:nowrap}
+.la{font-weight:700;letter-spacing:.4px}.ko{color:#8b8272;font-size:11.5px}
+.st{color:#c9a227;letter-spacing:-1px}
+.cat{display:inline-block;background:#f2ece0;padding:1px 7px;border-radius:8px;font-size:11.4px;margin:1px 2px 1px 0}
+.free{background:#e6f0e8;color:#2f5c3c;font-size:10.5px;padding:1px 6px;border-radius:8px;font-weight:700}
+.box{background:#fff;border:1px solid #e5ded0;border-radius:12px;padding:15px 17px;margin:13px 0}
+.box.grn{border-color:#b8d4be;background:#f5faf6}.box.red{border-color:#e0b4a6;background:#fdf6f4}
+.box h3{margin:0 0 7px;font-size:15.5px}
+.w{background:#f2ece0;padding:1px 6px;border-radius:4px;font-size:12.2px;font-family:ui-monospace,Menlo,monospace}
+.g1{background:#f4faf5}.g5{background:#fdf6f4}
+ul{margin:6px 0 0 18px}li{margin:4px 0}
+</style></head><body>
+<h1>🗂 챕터 재설계 — 12개 → <b>24개</b></h1>
+<p class="lead">"챕터가 부족하면 만들어라" 지시에 따라, <b>12개에 억지로 맞추지 않고</b> 주제가 자연스럽게 묶이는 만큼 나눴습니다.</p>
+
+<div class="box red">
+<h3>12개일 때 왜 억지가 생겼나</h3>
+1200단어를 12로 나누면 챕터당 100개입니다. 그러려면 <b>성격이 다른 갈래를 억지로 한 챕터에</b> 넣어야 합니다.<br>
+그래서 <span class="w">triangle</span>(삼각형)이 숲에, <span class="w">cage</span>(우리)가 바닷속에 들어갔습니다. <b>제 감이 아니라 구조가 만든 오류입니다.</b>
+</div>
+
+<div class="box grn">
+<h3>24개로 나누니 억지가 사라졌습니다</h3>
+<ul>
+<li><b>형용사도 자기 집이 생겼습니다</b> — <span class="w">triangle</span> <span class="w">volume</span> <span class="w">solid</span>는 이제 <b>FORMA(모양과 크기)</b> 챕터입니다. 숲에 얹을 필요가 없습니다</li>
+<li><b>챕터당 23~75단어</b>, 4~13장면. 하나를 며칠이면 끝냅니다</li>
+<li>사용자도 <b>진도가 빨리 나갑니다</b> — 17편짜리 12개보다 8편짜리 24개가 완주감이 좋습니다</li>
+</ul>
+</div>
+
+<h2>24챕터 — 쉬운 순서</h2>
+<table>
+<tr><th class="c">#</th><th>문패</th><th>담기는 갈래</th><th class="c">단어</th><th class="c">Lv2</th><th class="c">장면</th><th class="c">난이도</th></tr>
+<tr class="g1"><td class="c"><b>1</b></td><td><span class="la">DOMUS</span> <span class="free">무료</span><br><span class="ko">도무스 · 우리 집</span></td>
+<td><span class="cat">집의 구조 13</span><span class="cat">살림 도구 29</span><span class="cat">옷과 몸치장 14</span></td>
+<td class="c"><b>56</b></td><td class="c">45%</td><td class="c">10편</td>
+<td class="c"><span class="st">★</span></td></tr>
+<tr class="g1"><td class="c"><b>2</b></td><td><span class="la">URBS</span> <span class="free">무료</span><br><span class="ko">우르브스 · 도시와 탈것</span></td>
+<td><span class="cat">도시의 건물 15</span><span class="cat">성과 왕궁 5</span><span class="cat">타고 가기 27</span><span class="cat">가고 오기 9</span></td>
+<td class="c"><b>56</b></td><td class="c">39%</td><td class="c">10편</td>
+<td class="c"><span class="st">★</span></td></tr>
+<tr class="g1"><td class="c"><b>3</b></td><td><span class="la">MENSA</span><br><span class="ko">멘사 · 밥상과 부엌</span></td>
+<td><span class="cat">먹을 것 25</span><span class="cat">부엌과 조리 19</span></td>
+<td class="c"><b>44</b></td><td class="c">34%</td><td class="c">8편</td>
+<td class="c"><span class="st">★</span></td></tr>
+<tr class="g1"><td class="c"><b>4</b></td><td><span class="la">SILVA</span><br><span class="ko">실바 · 숲과 생명</span></td>
+<td><span class="cat">동물 17</span><span class="cat">식물과 나무 15</span></td>
+<td class="c"><b>32</b></td><td class="c">41%</td><td class="c">6편</td>
+<td class="c"><span class="st">★</span></td></tr>
+<tr class="g1"><td class="c"><b>5</b></td><td><span class="la">CAELUM</span><br><span class="ko">카엘룸 · 하늘과 날씨</span></td>
+<td><span class="cat">하늘과 날씨 22</span><span class="cat">색과 빛 1</span></td>
+<td class="c"><b>23</b></td><td class="c">39%</td><td class="c">4편</td>
+<td class="c"><span class="st">★</span></td></tr>
+<tr><td class="c"><b>6</b></td><td><span class="la">NUMMUS</span><br><span class="ko">눔무스 · 돈과 사고팔기</span></td>
+<td><span class="cat">돈 25</span><span class="cat">사고팔기 19</span><span class="cat">주고받기 16</span><span class="cat">갖고 지니기 8</span></td>
+<td class="c"><b>68</b></td><td class="c">63%</td><td class="c">12편</td>
+<td class="c"><span class="st">★★</span></td></tr>
+<tr><td class="c"><b>7</b></td><td><span class="la">CORPUS</span><br><span class="ko">코르푸스 · 몸과 감각</span></td>
+<td><span class="cat">몸과 감각 27</span><span class="cat">몸과 마음의 상태 32</span></td>
+<td class="c"><b>59</b></td><td class="c">49%</td><td class="c">10편</td>
+<td class="c"><span class="st">★★</span></td></tr>
+<tr><td class="c"><b>8</b></td><td><span class="la">MARE</span><br><span class="ko">마레 · 바다와 물길</span></td>
+<td><span class="cat">바다와 항해 31</span><span class="cat">땅과 물길 25</span></td>
+<td class="c"><b>56</b></td><td class="c">54%</td><td class="c">10편</td>
+<td class="c"><span class="st">★★</span></td></tr>
+<tr><td class="c"><b>9</b></td><td><span class="la">MACHINA</span><br><span class="ko">마키나 · 기계와 도구</span></td>
+<td><span class="cat">기계와 도구 23</span><span class="cat">만들고 고치기 33</span></td>
+<td class="c"><b>56</b></td><td class="c">48%</td><td class="c">10편</td>
+<td class="c"><span class="st">★★</span></td></tr>
+<tr><td class="c"><b>10</b></td><td><span class="la">MOTUS</span><br><span class="ko">모투스 · 손과 몸의 움직임</span></td>
+<td><span class="cat">손으로 하는 것 18</span><span class="cat">몸 전체로 하는 것 25</span><span class="cat">운동과 겨루기 4</span></td>
+<td class="c"><b>47</b></td><td class="c">62%</td><td class="c">8편</td>
+<td class="c"><span class="st">★★</span></td></tr>
+<tr><td class="c"><b>11</b></td><td><span class="la">FORMA</span><br><span class="ko">포르마 · 모양과 크기</span></td>
+<td><span class="cat">크기와 모양 33</span></td>
+<td class="c"><b>33</b></td><td class="c">55%</td><td class="c">6편</td>
+<td class="c"><span class="st">★★</span></td></tr>
+<tr><td class="c"><b>12</b></td><td><span class="la">TEMPUS</span><br><span class="ko">템푸스 · 때와 자리</span></td>
+<td><span class="cat">시간과 때 27</span><span class="cat">자리와 방향 25</span></td>
+<td class="c"><b>52</b></td><td class="c">33%</td><td class="c">9편</td>
+<td class="c"><span class="st">★★★</span></td></tr>
+<tr><td class="c"><b>13</b></td><td><span class="la">LITTERA</span><br><span class="ko">리테라 · 글과 소리</span></td>
+<td><span class="cat">글과 기록 26</span><span class="cat">배움과 가르침 14</span><span class="cat">소리와 음악 10</span></td>
+<td class="c"><b>50</b></td><td class="c">32%</td><td class="c">9편</td>
+<td class="c"><span class="st">★★★</span></td></tr>
+<tr><td class="c"><b>14</b></td><td><span class="la">LABOR</span><br><span class="ko">라보르 · 일과 직업</span></td>
+<td><span class="cat">일과 직업 34</span><span class="cat">돕고 섬기기 11</span></td>
+<td class="c"><b>45</b></td><td class="c">56%</td><td class="c">8편</td>
+<td class="c"><span class="st">★★★</span></td></tr>
+<tr><td class="c"><b>15</b></td><td><span class="la">NUMERUS</span><br><span class="ko">누메루스 · 수와 양</span></td>
+<td><span class="cat">수와 셈 14</span><span class="cat">많고 적음 30</span></td>
+<td class="c"><b>44</b></td><td class="c">45%</td><td class="c">8편</td>
+<td class="c"><span class="st">★★★</span></td></tr>
+<tr><td class="c"><b>16</b></td><td><span class="la">TUTELA</span><br><span class="ko">투텔라 · 지킴과 위험</span></td>
+<td><span class="cat">싸움과 지킴 33</span><span class="cat">사고와 위험 8</span></td>
+<td class="c"><b>41</b></td><td class="c">56%</td><td class="c">7편</td>
+<td class="c"><span class="st">★★★</span></td></tr>
+<tr><td class="c"><b>17</b></td><td><span class="la">ANIMUS</span><br><span class="ko">아니무스 · 마음의 날씨</span></td>
+<td><span class="cat">기쁨과 슬픔 20</span><span class="cat">화와 두려움 18</span><span class="cat">부끄러움과 미움 7</span><span class="cat">바람과 아쉬움 9</span><span class="cat">사람 성격 11</span></td>
+<td class="c"><b>65</b></td><td class="c">49%</td><td class="c">11편</td>
+<td class="c"><span class="st">★★★★</span></td></tr>
+<tr><td class="c"><b>18</b></td><td><span class="la">VOX</span><br><span class="ko">복스 · 말하기</span></td>
+<td><span class="cat">소리내어 말하기 22</span><span class="cat">알리고 밝히기 17</span><span class="cat">따지고 다투기 7</span><span class="cat">묻고 부탁하기 13</span></td>
+<td class="c"><b>59</b></td><td class="c">41%</td><td class="c">10편</td>
+<td class="c"><span class="st">★★★★</span></td></tr>
+<tr><td class="c"><b>19</b></td><td><span class="la">MODUS</span><br><span class="ko">모두스 · 같음과 다름</span></td>
+<td><span class="cat">같고 다름 23</span><span class="cat">좋고 나쁨 15</span><span class="cat">쉽고 어려움 8</span></td>
+<td class="c"><b>46</b></td><td class="c">48%</td><td class="c">8편</td>
+<td class="c"><span class="st">★★★★</span></td></tr>
+<tr><td class="c"><b>20</b></td><td><span class="la">OPUS</span><br><span class="ko">오푸스 · 모으고 다루기</span></td>
+<td><span class="cat">모임과 흩어짐 4</span><span class="cat">닫고 파묻기 4</span><span class="cat">하고 다루기 16</span><span class="cat">일의 결과 21</span></td>
+<td class="c"><b>45</b></td><td class="c">33%</td><td class="c">8편</td>
+<td class="c"><span class="st">★★★★</span></td></tr>
+<tr><td class="c"><b>21</b></td><td><span class="la">MIRUM</span><br><span class="ko">미룸 · 놀람과 호기심</span></td>
+<td><span class="cat">놀람과 궁금함 20</span><span class="cat">믿음과 의심 9</span><span class="cat">드러남과 감춤 12</span></td>
+<td class="c"><b>41</b></td><td class="c">37%</td><td class="c">7편</td>
+<td class="c"><span class="st">★★★★</span></td></tr>
+<tr class="g5"><td class="c"><b>22</b></td><td><span class="la">CIVITAS</span><br><span class="ko">키비타스 · 사람과 사회</span></td>
+<td><span class="cat">사람과 관계 31</span><span class="cat">규칙과 사회 26</span><span class="cat">세상 물정 18</span></td>
+<td class="c"><b>75</b></td><td class="c">55%</td><td class="c">13편</td>
+<td class="c"><span class="st">★★★★★</span></td></tr>
+<tr class="g5"><td class="c"><b>23</b></td><td><span class="la">NEXUS</span><br><span class="ko">넥수스 · 잇는 말</span></td>
+<td><span class="cat">이음말 21</span><span class="cat">정도와 범위말 38</span></td>
+<td class="c"><b>59</b></td><td class="c">46%</td><td class="c">10편</td>
+<td class="c"><span class="st">★★★★★</span></td></tr>
+<tr class="g5"><td class="c"><b>24</b></td><td><span class="la">MENS</span><br><span class="ko">멘스 · 생각하기</span></td>
+<td><span class="cat">생각하기 30</span><span class="cat">고르고 정하기 11</span><span class="cat">찾고 얻기 7</span></td>
+<td class="c"><b>48</b></td><td class="c">50%</td><td class="c">8편</td>
+<td class="c"><span class="st">★★★★★</span></td></tr>
+<tr><th colspan="3">합계</th><th class="c">1200</th><th></th><th class="c">210편</th><th></th></tr>
+</table>
+<p class="lead">미배정 갈래 <b>0개</b> · 중복 <b>0개</b> · 65갈래 전부 배치했습니다.</p>
+
+<h2>순서를 정한 기준</h2>
+<table>
+<tr><th class="c">구간</th><th>챕터</th><th>왜 여기인가</th></tr>
+<tr><td class="c"><b>1~5</b><br>★</td><td>DOMUS · URBS · MENSA · SILVA · CAELUM</td><td><b>전부 눈에 보이는 사물.</b> 집·건물·음식·동물·날씨. 그림이 바로 나옵니다. 무료 티어가 여기입니다</td></tr>
+<tr><td class="c"><b>6~11</b><br>★★</td><td>NUMMUS · CORPUS · MARE · MACHINA · MOTUS · FORMA</td><td>사물이되 조금 더 복잡하거나, <b>동작</b>이라 8초 영상에 유리합니다</td></tr>
+<tr><td class="c"><b>12~16</b><br>★★★</td><td>TEMPUS · LITTERA · LABOR · NUMERUS · TUTELA</td><td>절반은 사물, 절반은 개념</td></tr>
+<tr><td class="c"><b>17~21</b><br>★★★★</td><td>ANIMUS · VOX · MODUS · OPUS · MIRUM</td><td>감정과 말. 표현 방법을 찾아야 합니다</td></tr>
+<tr><td class="c"><b>22~24</b><br>★★★★★</td><td>CIVITAS · NEXUS · MENS</td><td>사회·접속사·사고. <b>가장 어렵습니다.</b> 앞에서 방법을 익힌 뒤 붙습니다</td></tr>
+</table>
+
+<h2>대표님 확인이 필요한 것</h2>
+<table>
+<tr><th class="c">#</th><th>항목</th><th>설명</th></tr>
+<tr><td class="c">1</td><td><b>24개가 맞습니까</b></td><td>더 쪼갤 수도, 합칠 수도 있습니다. 예: CIVITAS(75)를 둘로, CAELUM(23)을 SILVA와 합쳐 하나로</td></tr>
+<tr><td class="c">2</td><td><b>라틴 문패</b></td><td>새로 지은 것이 많습니다 — SILVA(숲) MARE(바다) MENSA(밥상) MACHINA(기계) FORMA(모양) NEXUS(이음) 등. 어색한 게 있으면 바꿉니다</td></tr>
+<tr><td class="c">3</td><td><b>지도</b></td><td>24개면 지도를 다시 그려야 합니다. 지금은 12자리입니다</td></tr>
+<tr><td class="c">4</td><td><b>암기송</b></td><td>곡당 12~15단어이므로 챕터 하나에 <b>2~5곡</b>이 됩니다. 판매 단위를 어떻게 할지 정해야 합니다</td></tr>
+</table>
+
+<div class="box">
+<h3>이 표가 확정되면 더 이상 "이건 왜 여기 있어?"가 안 나옵니다</h3>
+갈래가 <b>통째로</b> 챕터에 들어가므로, 단어 하나가 엉뚱한 곳에 끼는 일이 구조적으로 불가능해집니다. 지금까지는 12개에 맞추느라 갈래를 섞었고, 그래서 매번 이물질이 생겼습니다.
+</div>
+</body></html>

@@ -1,0 +1,116 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>챕터 순서 재설계</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf8f3;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;color:#1c1a17;padding:20px;max-width:1050px;margin:0 auto;line-height:1.62}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:30px 0 8px;padding-bottom:6px;border-bottom:2px solid #e5ded0}
+.lead{color:#5c554a;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:13.2px;margin:10px 0}
+th,td{border:1px solid #e0d8c6;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f4efe4;font-weight:700;white-space:nowrap}
+td.c{text-align:center;white-space:nowrap}
+.st{color:#c9a227;letter-spacing:-1px}
+.free{background:#e6f0e8;color:#2f5c3c;font-size:11px;padding:1px 7px;border-radius:9px;font-weight:700}
+.up{color:#2f5c3c;font-weight:700}.dn{color:#b03d24;font-weight:700}
+.box{background:#fff;border:1px solid #e5ded0;border-radius:12px;padding:15px 17px;margin:13px 0}
+.box.grn{border-color:#b8d4be;background:#f5faf6}.box.red{border-color:#e0b4a6;background:#fdf6f4}
+.box h3{margin:0 0 7px;font-size:15.5px}
+.w{background:#f2ece0;padding:1px 6px;border-radius:4px;font-size:12.3px;font-family:ui-monospace,Menlo,monospace}
+.big{font-size:15px;font-weight:700}
+.flow{background:#fff;border:1px solid #e5ded0;border-radius:12px;padding:16px;text-align:center;font-size:14.5px;line-height:2.1;margin:12px 0}
+.flow b{background:#1c1a17;color:#fff;padding:3px 10px;border-radius:6px;font-size:13px}
+ul{margin:6px 0 0 18px}li{margin:4px 0}
+</style></head><body>
+<h1>🔄 챕터 순서 재설계</h1>
+<p class="lead">순서는 우리가 정합니다. <b>제작 난이도 + 첫인상 + 학습 흐름</b> 세 가지를 동시에 만족하는 순서로 다시 짰습니다.</p>
+
+<div class="box red">
+<h3>지금 순서의 문제</h3>
+1번이 <b>INVENTIO(세상을 발견해요)</b>인데, 83단어가 <span class="w">amaze</span> <span class="w">curious</span> <span class="w">fascinate</span> <span class="w">wonder</span> <span class="w">mystery</span> 같은 <b>추상어 덩어리</b>입니다.<br>
+<b>가장 어렵고 그림이 안 예쁜 챕터가 무료 티어 첫 화면</b>입니다. 아이가 처음 보는 게 이겁니다.
+</div>
+
+<h2>1. 새 순서</h2>
+<table>
+<tr><th class="c">새</th><th>문패</th><th class="c">단어</th><th class="c">난이도</th><th>왜 이 자리인가</th><th class="c">기존</th><th class="c">이동</th></tr>
+<tr><td class="c big">1</td><td><b>VITA</b> <span class="free">무료</span><br><span style="color:#8b8272;font-size:12px">비타 · 숲과 생명</span></td>
+<td class="c big">73</td><td class="c"><span class="st">★</span><br><span style="font-size:11px">쉬움</span></td>
+<td style="font-size:12.6px">숲과 생명에서 시작 — 개구리·기린·둥지·나뭇잎. 가장 예쁘고 즉시 제작 가능</td><td class="c">2번</td><td class="c"><span class="up">▲1</span></td></tr>
+<tr><td class="c big">2</td><td><b>DOMUS</b> <span class="free">무료</span><br><span style="color:#8b8272;font-size:12px">도무스 · 우리 집</span></td>
+<td class="c big">95</td><td class="c"><span class="st">★</span><br><span style="font-size:11px">쉬움</span></td>
+<td style="font-size:12.6px">집 안으로 — 아이에게 가장 가까운 세계</td><td class="c">3번</td><td class="c"><span class="up">▲1</span></td></tr>
+<tr><td class="c big">3</td><td><b>SALUS</b><br><span style="color:#8b8272;font-size:12px">살루스 · 음식과 건강</span></td>
+<td class="c big">87</td><td class="c"><span class="st">★</span><br><span style="font-size:11px">쉬움</span></td>
+<td style="font-size:12.6px">밥상 위로 — 색이 선명하고 친숙</td><td class="c">6번</td><td class="c"><span class="up">▲3</span></td></tr>
+<tr><td class="c big">4</td><td><b>SENSUS</b><br><span style="color:#8b8272;font-size:12px">센수스 · 몸과 감정</span></td>
+<td class="c big">92</td><td class="c"><span class="st">★★★</span><br><span style="font-size:11px">중간</span></td>
+<td style="font-size:12.6px">내 몸과 마음으로</td><td class="c">7번</td><td class="c"><span class="up">▲3</span></td></tr>
+<tr><td class="c big">5</td><td><b>MOTUS</b><br><span style="color:#8b8272;font-size:12px">모투스 · 운동과 도전</span></td>
+<td class="c big">80</td><td class="c"><span class="st">★★</span><br><span style="font-size:11px">쉬움</span></td>
+<td style="font-size:12.6px">움직임 — 8초 영상이 가장 강한 영역</td><td class="c">8번</td><td class="c"><span class="up">▲3</span></td></tr>
+<tr><td class="c big">6</td><td><b>SCHOLA</b><br><span style="color:#8b8272;font-size:12px">스콜라 · 학교생활</span></td>
+<td class="c big">84</td><td class="c"><span class="st">★★★</span><br><span style="font-size:11px">중간</span></td>
+<td style="font-size:12.6px">학교로 — 생활 반경이 넓어짐</td><td class="c">4번</td><td class="c"><span class="dn">▼2</span></td></tr>
+<tr><td class="c big">7</td><td><b>URBS</b><br><span style="color:#8b8272;font-size:12px">우르브스 · 도시와 교통</span></td>
+<td class="c big">85</td><td class="c"><span class="st">★</span><br><span style="font-size:11px">쉬움</span></td>
+<td style="font-size:12.6px">도시로 — 건물과 탈것</td><td class="c">5번</td><td class="c"><span class="dn">▼2</span></td></tr>
+<tr><td class="c big">8</td><td><b>MUNDUS</b><br><span style="color:#8b8272;font-size:12px">문두스 · 여행과 세계</span></td>
+<td class="c big">143</td><td class="c"><span class="st">★★★</span><br><span style="font-size:11px">중간</span></td>
+<td style="font-size:12.6px">세계로 — 바다·여행·직업. 그림 6편 이미 있음</td><td class="c">9번</td><td class="c"><span class="up">▲1</span></td></tr>
+<tr><td class="c big">9</td><td><b>TERRA</b><br><span style="color:#8b8272;font-size:12px">테라 · 지구와 날씨</span></td>
+<td class="c big">99</td><td class="c"><span class="st">★★</span><br><span style="font-size:11px">쉬움</span></td>
+<td style="font-size:12.6px">지구 규모 — 날씨·지형. 오로라 1편 있음</td><td class="c">10번</td><td class="c"><span class="up">▲1</span></td></tr>
+<tr><td class="c big">10</td><td><b>COSMOS</b><br><span style="color:#8b8272;font-size:12px">코스모스 · 우주와 과학</span></td>
+<td class="c big">145</td><td class="c"><span class="st">★★★★</span><br><span style="font-size:11px">어려움</span></td>
+<td style="font-size:12.6px">우주 규모 — 기계·과학. 망원경 1편 있음</td><td class="c">11번</td><td class="c"><span class="up">▲1</span></td></tr>
+<tr><td class="c big">11</td><td><b>INVENTIO</b><br><span style="color:#8b8272;font-size:12px">인벤티오 · 세상을 발견해요</span></td>
+<td class="c big">83</td><td class="c"><span class="st">★★★★★</span><br><span style="font-size:11px">최난</span></td>
+<td style="font-size:12.6px">발견하는 눈 — 여기까지 온 아이가 세상을 다시 봄</td><td class="c">1번</td><td class="c"><span class="dn">▼10</span></td></tr>
+<tr><td class="c big">12</td><td><b>SOMNIUM</b><br><span style="color:#8b8272;font-size:12px">솜니움 · 밤과 꿈</span></td>
+<td class="c big">134</td><td class="c"><span class="st">★★★★</span><br><span style="font-size:11px">어려움</span></td>
+<td style="font-size:12.6px">밤과 꿈으로 마무리 — 소리·이야기·상상</td><td class="c">12번</td><td class="c">—</td></tr>
+</table>
+
+<h2>2. 학습 흐름 — 가까운 곳에서 먼 곳으로</h2>
+<div class="flow">
+<b>숲</b> → <b>집</b> → <b>밥상</b> → <b>내 몸</b> → <b>움직임</b> → <b>학교</b> → <b>도시</b><br>
+→ <b>세계</b> → <b>지구</b> → <b>우주</b> → <b>발견하는 눈</b> → <b>꿈</b>
+</div>
+<p class="lead">동심원처럼 넓어집니다. 그리고 <b>구체적인 것에서 추상적인 것으로</b> 자연스럽게 옮겨갑니다. 제작 난이도 순서와 학습 흐름이 정확히 일치합니다.</p>
+
+<div class="box grn">
+<h3>무료 티어가 강해집니다</h3>
+<b>1번 VITA</b> — 개구리 · 기린 · 얼룩말 · 둥지 · 나뭇잎 · 참나무<br>
+<b>2번 DOMUS</b> — 벽돌 · 지붕 · 선반 · 담요 · 거울 · 오븐<br><br>
+아이가 처음 보는 화면이 <b>동물과 우리 집</b>이 됩니다. 지금(추상 감정어)과 비교가 안 됩니다. 그리고 <b>둘 다 지금 바로 제작 가능</b>합니다.
+</div>
+
+<div class="box">
+<h3>마지막 두 챕터의 자리</h3>
+<b>11. INVENTIO</b> — "세상을 발견해요"가 <b>마지막에 오면 뜻이 살아납니다.</b> 열한 챕터를 지나온 아이가 세상을 다시 보는 눈을 얻는다는 마무리입니다. 1번에 있을 때는 그냥 어려운 추상어였습니다.<br><br>
+<b>12. SOMNIUM</b> — 밤과 꿈. <b>잠들며 끝나는</b> 정서적 마무리입니다.
+</div>
+
+<h2>3. 순서를 바꾸면 뭘 해야 하나</h2>
+<table>
+<tr><th class="c">#</th><th>할 일</th><th>누가</th><th class="c">난이도</th></tr>
+<tr><td class="c">1</td><td><code>learning/index.html</code>의 <code>chapters</code> · <code>chapterLatin</code> · <code>chapterGuide</code> 배열 <b>순서만 재정렬</b></td><td>로부장</td><td class="c">쉬움</td></tr>
+<tr><td class="c">2</td><td>지도의 <code>chapterSpots</code> 좌표는 <b>그대로 둡니다</b> — 자리는 같고 문패만 바뀝니다</td><td>로부장</td><td class="c">쉬움</td></tr>
+<tr><td class="c">3</td><td>사이트 메인의 챕터 지도 문패 순서 반영</td><td>로부장</td><td class="c">쉬움</td></tr>
+<tr><td class="c">4</td><td>현재 챕터1의 영상 10편을 <b>새 번호의 제 챕터로</b> 이동<br><span style="font-size:12.2px;color:#5c554a">바다 6편 → 8번 MUNDUS / 콜로세움 → 7번 URBS / 망원경 → 10번 COSMOS / 오로라 → 9번 TERRA / 열기구 → 8번 MUNDUS</span></td><td>로부장</td><td class="c">쉬움</td></tr>
+<tr><td class="c">5</td><td>잠금 로직 확인 — 무료 개방이 <b>1~2번</b>이면 VITA·DOMUS가 열립니다</td><td>로부장</td><td class="c">확인 필요</td></tr>
+<tr><td class="c">6</td><td>배포</td><td>코다리</td><td class="c">—</td></tr>
+</table>
+
+<div class="box red">
+<h3>지금이 마지막 기회입니다</h3>
+콘텐츠가 더 쌓이면 순서를 못 바꿉니다. <b>지금은 챕터1에 영상 10편뿐</b>이고 그중 4편만 연결돼 있습니다. 바꾸기에 가장 싼 시점입니다.
+</div>
+
+<h2>4. 순서 확정 후 첫 작업</h2>
+<div class="box grn">
+<h3>1번 VITA(숲과 생명) 73단어부터</h3>
+갈래는 <b>동물(17) · 식물과 나무(15) · 모임과 흩어짐(4) · 닫고 파묻기(4) · 크기와 모양(33)</b>입니다.<br>
+73단어 ÷ 6 = <b>13장면</b>. 동물 한 마리, 나무 한 그루가 곧 한 장면이라 <b>가장 빨리 채워집니다.</b><br><br>
+승인해 주시면 <b>73단어를 13장면으로 묶은 표</b>부터 만들겠습니다. 각 장면에 어떤 그림이 필요한지까지 명세해서 그대로 제작에 들어갈 수 있게 하겠습니다.
+</div>
+</body></html>

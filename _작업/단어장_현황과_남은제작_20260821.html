@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보는 단어장 현황</title>
+<style>
+:root{--ink:#07533f;--line:#e3ece9;--mut:#6b7f79;--warn:#a4551f;--ok:#0a7d5e}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#12211d;line-height:1.55;padding:18px 12px 60px;
+ font-family:-apple-system,BlinkMacSystemFont,'Pretendard','Apple SD Gothic Neo',sans-serif;-webkit-text-size-adjust:100%}
+h1{font-size:20px;margin:0 0 4px;color:var(--ink);letter-spacing:-.02em}
+.date{font-size:12.5px;color:var(--mut);margin:0 0 20px}
+h2{font-size:15.5px;margin:30px 0 10px;color:var(--ink);padding-bottom:6px;border-bottom:2px solid var(--ink);letter-spacing:-.01em}
+h3{font-size:14px;margin:20px 0 7px;color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:4px 0}
+th{text-align:left;font-size:11.5px;color:var(--mut);font-weight:600;padding:6px 5px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:7px 5px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.kpi{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0 4px}
+.kpi div{border:1.5px solid var(--line);border-radius:9px;padding:10px 11px}
+.kpi b{display:block;font-size:21px;color:var(--ink);line-height:1.2;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11.5px;color:var(--mut)}
+.note{margin-top:9px;font-size:12.5px;color:var(--mut);background:#f6faf8;border-left:3px solid var(--ink);padding:9px 11px;border-radius:0 6px 6px 0}
+.alert{background:#fdf6f0;border-left-color:var(--warn);color:#6b4526}
+.done{color:var(--ok);font-weight:700}
+.todo{color:var(--warn);font-weight:700}
+ul{padding-left:19px;margin:6px 0}
+li{margin:4px 0;font-size:13.5px}
+.bar{height:7px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:5px}
+.bar i{display:block;height:100%;background:var(--ink)}
+.foot{margin-top:32px;font-size:12px;color:var(--mut);border-top:1px solid var(--line);padding-top:12px}
+</style></head><body>
+
+<h1>보는 단어장 — 현황과 남은 제작</h1>
+<p class="date">2026-08-21 · inkword.site · 로부장 실측</p>
+
+<div class="kpi">
+  <div><b>66편</b><span>제작 완료 (라이브)</span></div>
+  <div><b>434개</b><span>실린 단어 (고유)</span></div>
+  <div><b>406 / 1200</b><span>정본 소화율 34%<div class="bar"><i style="width:34%"></i></div></span></div>
+  <div><b>794개</b><span>아직 안 실린 단어</span></div>
+</div>
+
+<div class="note">실린 단어 434개 중 <b>406개가 정본 1200</b>이고, 28개는 정본 밖 쉬운 말입니다(animal·car·sky·tree 등 ch1·2 초기 단어). 정본 진도에는 안 잡힙니다.</div>
+
+<h2>오늘 처리한 것</h2>
+<table>
+<tr><td>한국어 뜻 빈칸</td><td class="n">124칸 → <span class="done">0</span></td></tr>
+<tr><td>어려운 뜻 재조정</td><td class="n"><span class="done">12개</span></td></tr>
+<tr><td>같은 화면 뜻 중복 (joy·delight)</td><td class="n"><span class="done">해결</span></td></tr>
+<tr><td>단어 좌표가 그림과 무관하던 편</td><td class="n">47편 → <span class="done">0</span></td></tr>
+<tr><td>기존 편에 단어 추가</td><td class="n"><span class="done">22개</span></td></tr>
+<tr><td>모바일 크롤 잘림·위치·크기·줄바꿈</td><td class="n"><span class="done">4차까지 수정</span></td></tr>
+<tr><td>폰에서 학습 카드 안 움직이던 것</td><td class="n"><span class="done">켬</span></td></tr>
+</table>
+
+<h2>챕터별 현황</h2>
+<div class="wrap">
+<table>
+<tr><th>ch</th><th>이름</th><th class="n">편</th><th class="n">단어</th><th class="n">편당</th><th class="n">남은 단어</th></tr>
+<tr><td>1</td><td>INVENTIO 세상을 발견해요</td><td class="n">10</td><td class="n">80</td><td class="n">8.0</td><td class="n">129</td></tr>
+<tr><td>2</td><td>VITA 숲과 생명</td><td class="n">13</td><td class="n">104</td><td class="n">8.0</td><td class="n">144</td></tr>
+<tr><td>3</td><td>DOMUS 우리 집</td><td class="n">10</td><td class="n">54</td><td class="n">5.4</td><td class="n">1</td></tr>
+<tr><td>4</td><td>SCHOLA 학교생활</td><td class="n">3</td><td class="n">24</td><td class="n">8.0</td><td class="n">5</td></tr>
+<tr><td>5</td><td>URBS 도시와 교통</td><td class="n">5</td><td class="n">40</td><td class="n">8.0</td><td class="n">17</td></tr>
+<tr><td>6</td><td>SALUS 음식과 건강</td><td class="n">6</td><td class="n">50</td><td class="n">8.3</td><td class="n">40</td></tr>
+<tr><td>7</td><td>SENSUS 몸과 감정 <small>유료</small></td><td class="n">4</td><td class="n">29</td><td class="n">7.2</td><td class="n">61</td></tr>
+<tr><td>8</td><td>MOTUS 운동과 도전 <small>유료</small></td><td class="n">4</td><td class="n">31</td><td class="n">7.8</td><td class="n">51</td></tr>
+<tr><td>9</td><td>MUNDUS 여행과 세계</td><td class="n">1</td><td class="n">8</td><td class="n">8.0</td><td class="n">0</td></tr>
+<tr><td>10</td><td>TERRA 지구와 날씨</td><td class="n">3</td><td class="n">22</td><td class="n">7.3</td><td class="n">12</td></tr>
+<tr><td>11</td><td>COSMOS 우주와 과학</td><td class="n">3</td><td class="n">24</td><td class="n">8.0</td><td class="n">27</td></tr>
+<tr><td>12</td><td>SOMNIUM 밤과 꿈 <small>유료</small></td><td class="n">4</td><td class="n">32</td><td class="n">8.0</td><td class="n">36</td></tr>
+<tr><td colspan="2"><b>합계</b></td><td class="n"><b>66</b></td><td class="n"><b>498</b></td><td class="n"><b>7.5</b></td><td class="n"><b>523</b></td></tr>
+</table>
+</div>
+<div class="note"><b>ch9(여행과 세계)는 1편뿐인데 남은 단어가 0개입니다.</b> 그 갈래를 다른 챕터가 다 가져갔다는 뜻입니다. 챕터를 살리려면 갈래 재배정이 필요합니다.<br>
+<b>ch3(우리 집)</b>은 편당 5.4개로 가장 적습니다. 그림은 10편 있는데 단어를 덜 붙였습니다 — 여기가 공짜로 채울 수 있는 자리입니다.</div>
+
+<h2>★ 가장 큰 문제 — 갈 곳 없는 273개</h2>
+<div class="note alert"><b>남은 794개 중 273개(34%)가 12챕터 어디에도 안 들어갑니다.</b> 지금 챕터들이 쓰지 않는 18개 갈래이고, 대부분 <b>그림으로 그릴 수 없는 추상어</b>입니다.</div>
+
+<div class="wrap">
+<table>
+<tr><th>갈래</th><th class="n">개수</th><th>예시</th></tr>
+<tr><td>정도와 범위말</td><td class="n">38</td><td>access, account, appeal, basis</td></tr>
+<tr><td>사람과 관계</td><td class="n">31</td><td>associate, attract, audience, bond</td></tr>
+<tr><td>돈</td><td class="n">25</td><td>afford, budget, charge, credit</td></tr>
+<tr><td>일의 결과</td><td class="n">21</td><td>achieve, affect, cause, effect</td></tr>
+<tr><td>이음말</td><td class="n">21</td><td>altogether, despite, either, except</td></tr>
+<tr><td>알리고 밝히기</td><td class="n">17</td><td>announce, comment, describe</td></tr>
+<tr><td>주고받기</td><td class="n">16</td><td>accept, allow, contribute, deliver</td></tr>
+<tr><td>좋고 나쁨</td><td class="n">15</td><td>advantage, benefit, fault</td></tr>
+<tr><td>묻고 부탁하기</td><td class="n">13</td><td>advice, beg, excuse, greet</td></tr>
+<tr><td>사람 성격</td><td class="n">12</td><td>character, charm, gentle, handsome</td></tr>
+<tr><td>돕고 섬기기</td><td class="n">11</td><td>aid, assist, bless, cure</td></tr>
+<tr><td>소리와 음악</td><td class="n">10</td><td>band, bang, boom, concert</td></tr>
+<tr><td colspan="3" style="color:var(--mut);font-size:12px">외 6개 갈래 43개</td></tr>
+</table>
+</div>
+
+<div class="note alert"><b>「이음말」 21개가 특히 어렵습니다.</b> <code>altogether · despite · either · except</code> 같은 접속사·부사는 장면으로 그릴 수가 없습니다. <b>장면형이 아니라 다른 형식이 필요합니다.</b><br><br>
+<b>「돈」 25개, 「사람과 관계」 31개</b>는 장면으로 만들 수 있습니다 — 시장·가게·계산대 / 교실·가족·친구 같은 장면입니다. <b>새 챕터가 필요하다는 뜻입니다.</b></div>
+
+<h2>남은 제작량 — 세 가지 길</h2>
+<div class="wrap">
+<table>
+<tr><th>방식</th><th class="n">새 영상</th><th>설명</th></tr>
+<tr><td><b>A.</b> 새 영상만 만든다<br><small>편당 8단어</small></td><td class="n">약 <b>99편</b></td><td>지금 방식 그대로. 가장 오래 걸립니다</td></tr>
+<tr><td><b>B.</b> 새 영상만 만든다<br><small>편당 12단어</small></td><td class="n">약 <b>66편</b></td><td>편당 단어만 늘려도 3분의 1이 줄어듭니다</td></tr>
+<tr><td><b>C.</b> 기존 66편을 12개까지 채우고<br>나머지를 새로 만든다</td><td class="n">약 <b>42편</b></td><td><b>가장 적습니다.</b> 그림이 이미 있으니 단어·좌표만 넣으면 됩니다</td></tr>
+</table>
+</div>
+<div class="note"><b>C가 정답입니다.</b> 기존 66편에 <b>294개</b>를 더 넣을 수 있습니다(편당 12개 기준). 영상 한 편 뽑는 비용이 단어 5개나 12개나 같으니, 붙일 수 있는 만큼 붙이는 게 맞습니다.<br><br>
+다만 <b>단어를 추가하려면 좌표를 그림 보고 찍어야</b> 합니다. 영상 뽑기(프롬프트 조립 + 실패 재시도 + 판정)에 비하면 10분의 1 수준이지만 공짜는 아닙니다.</div>
+
+<h2>제작이 막혀 있는 진짜 이유</h2>
+<div class="note alert"><b>프롬프트가 손을 부르도록 감염돼 있습니다.</b> 벌크 303줄 전부에 <code>no artist, hand, pen or tool</code> · <code>draws itself</code> · <code>cartoon</code>이 들어 있습니다. 부정문이라도 모델은 명사만 가져가서 <b>손이 그대로 나옵니다.</b><br><br>
+지금 상태로 42편이든 66편이든 뽑으면 <b>편당 5회씩 실패</b>합니다. 이걸 먼저 고치면 그 뒤 제작이 한 번에 통과하기 시작합니다.</div>
+
+<h2>해야 할 순서</h2>
+<h3>1단계 — 문법 복구 <span class="todo">지금</span></h3>
+<ul>
+<li><b>고래 프롬프트 1편 뽑기</b> — 정본 골격이 살아있는지 판가름. 대표님 손이 필요합니다</li>
+<li>통과하면 <b>벌크 303줄 일괄 패치</b> — 로부장이 스크립트로 처리, 1시간</li>
+</ul>
+
+<h3>2단계 — 기존 편 채우기 <span class="todo">대기</span></h3>
+<ul>
+<li>66편에 단어 294개 추가 + 좌표 찍기 — 새 영상 0편으로 <b>단어 294개</b> 소화</li>
+<li>ch3(편당 5.4개)부터 — 여유가 가장 큽니다</li>
+</ul>
+
+<h3>3단계 — 챕터 구조 결정 <span class="todo">대표님 판단</span></h3>
+<ul>
+<li>갈 곳 없는 <b>273개</b>를 어떻게 할지 — 새 챕터를 만들지, 기존에 나눠 넣을지</li>
+<li>「이음말」 21개는 <b>장면형으로 불가</b> — 다른 형식이 필요합니다</li>
+<li>ch9(여행과 세계) 1편짜리 챕터 — 갈래 재배정 필요</li>
+</ul>
+
+<h3>4단계 — 새 영상 42편</h3>
+<ul>
+<li>1·2단계가 끝난 뒤. 문법이 고쳐져 있으면 실패율이 확 떨어집니다</li>
+</ul>
+
+<h2>대표님 판정 대기</h2>
+<table>
+<tr><td><b>고래 프롬프트</b></td><td>뽑아서 손 안 나오는지</td></tr>
+<tr><td><b>판정대기 2편</b></td><td><code>ch10_03</code> 무지개 · <code>ch7_01</code> 신체 8부위<br><small>_작업/신작영상/8월 20일 작업/_renamed/_판정대기/</small></td></tr>
+<tr><td><b>폰 확인</b></td><td>크롤 어절 끊김 · 학습 카드 움직임</td></tr>
+<tr><td><b>motor·vehicle</b></td><td>「자전거와 수레」 그림에 안 맞음 — 교체할지</td></tr>
+<tr><td><b>겹치는 뜻 4쌍</b></td><td>shadow/shade · enormous/huge · soil/dirt · plate/dish<br><small>다른 작품이라 같은 화면엔 안 뜸</small></td></tr>
+<tr><td><b>편당 단어 수</b></td><td>8개로 갈지 12개로 갈지 — 남은 편수가 99편↔42편으로 갈립니다</td></tr>
+</table>
+
+<div class="foot">
+출처 · <code>public/learning/index.html</code> chapterData 실측 · <code>_작업/all1200.txt</code> · <code>_작업/1200_레벨태그_v3.csv</code><br>
+검증 · 66편 498단어 / 고유 434 / 정본 소화 406 / 남은 794 (배정 523 + 미배정 273) · 좌표 문제 0편 · 뜻 빈칸 0
+</div>
+
+</body></html>

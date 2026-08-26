@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "24",
+  "title": "나뭇가지 위 박새",
+  "sub": "숲속 작은 깃털 새",
+  "video": "ch2/ch2_24.mp4",
+  "img": "ch2/ch2_24-poster.jpg",
+  "levelOne": [
+    [
+      "amaze",
+      "amaze",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "ambulance",
+      "ambulance",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "amuse",
+      "amuse",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "analysis",
+      "analysis",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "bow",
+      "고개를 숙이다",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "lean",
+      "몸을 기울이다",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "pause",
+      "잠시 멈칫하다",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "announce",
+      "announce",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

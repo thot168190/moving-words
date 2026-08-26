@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "29",
+  "title": "왕잠자리",
+  "sub": "맑고 투명한 네 장의 날개",
+  "video": "ch2/ch2_29.mp4",
+  "img": "ch2/ch2_29-poster.jpg",
+  "levelOne": [
+    [
+      "background",
+      "background",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "balance",
+      "balance",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "band",
+      "band",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "bang",
+      "bang",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "battery",
+      "battery",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "battle",
+      "battle",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "beat",
+      "beat",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "rush",
+      "쏜살같이 날다",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

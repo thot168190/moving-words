@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "28",
+  "title": "올빼미 깃털",
+  "sub": "바람에 날려온 부드러운 깃",
+  "video": "ch2/ch2_28.mp4",
+  "img": "ch2/ch2_28-poster.jpg",
+  "levelOne": [
+    [
+      "audience",
+      "audience",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "automatic",
+      "automatic",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "average",
+      "average",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "tip",
+      "깃털의 끝단",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "avoid",
+      "avoid",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "awake",
+      "awake",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "aware",
+      "aware",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "awkward",
+      "awkward",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

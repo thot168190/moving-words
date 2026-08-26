@@ -47,3 +47,14 @@
 - **먹을 탄 듯한 어두운 톤다운(Option D 등) 절대 금지.** 채도를 과하게 낮추거나 감마를 높이는 방식(`saturation=0.45:gamma=1.15`)은 그림이 탁해진다는 대표님의 확고한 피드백이 있었음.
 - 영상을 연하게 만들 때는 톤다운(어둡게)이 아니라 **흰색을 살짝 덮은 듯한 화사하고 연한 톤**(`eq=contrast=0.8:brightness=0.2` 등)을 사용해야 함.
 - FFmpeg 등으로 영상을 변환할 때는 **절대로 원본 파일을 덮어쓰거나 삭제하지 말 것**. 반드시 별도의 폴더에 백업하거나 덮어쓰기 전 원본을 안전한 곳에 보관할 것.
+
+## 🔒 단일 사물 세필 수채 최종합격 공식 (2026-08-25 대표님 확정 영구 잠금)
+- **더 이상 프롬프트 문법을 헤매거나 변형하지 않는다. 이후 모든 단일 사물 신규 생성 및 재생성은 100% 이 공식 골격만 사용한다.**
+- **골격 구조:**
+  1. `Progressive detailed fine-pencil construction, transparent watercolor and gentle object-motion animation on a solid pure bright white background (#FFFFFF), edge to edge.`
+  2. `0-3.5s: exceptionally fine pale-neutral 2H graphite strokes are visibly traced one by one across the empty white field. ... Each stroke has a clear beginning and endpoint. The illustration is built progressively rather than fading into view. Previously completed lines remain stable.`
+  3. `3.5-5.5s: clear transparent watercolor develops in layered color. ... with graphite details visible through every layer.`
+  4. `5.5-8s: [미세 동작 1회 후 정지]. All other elements remain fixed. All graphite construction lines and watercolor boundaries remain stable.`
+  5. `Style: intricate premium pencil-and-watercolor plate, numerous hair-thin pale graphite construction lines, accurate object anatomy, luminous layered transparent watercolor, sophisticated museum-quality illustrated-dictionary artwork, clearly hand-drawn and never photographic.`
+  6. `No dark outline, black ink, sepia ink, charcoal, thick contour, product photography, studio lighting, realistic reflection, glossy highlight, cast shadow, 3D, CGI, text, label, border, hand, artist or visible drawing tool. Completely silent.`
+

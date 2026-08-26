@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>보는 단어장 — 1단계: 최선본(Best Take) 선별 상황실</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif; background: #0f172a; color: #f8fafc; padding: 24px; }
+  header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 16px; margin-bottom: 24px; }
+  h1 { font-size: 24px; font-weight: 800; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
+  .badge { background: #0284c7; color: white; padding: 4px 10px; border-radius: 9999px; font-size: 13px; font-weight: 600; }
+  .stats-bar { display: flex; gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 16px 20px; flex: 1; }
+  .stat-card .num { font-size: 28px; font-weight: 800; color: #38bdf8; margin-top: 4px; }
+  
+  .set-container { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 24px; margin-bottom: 32px; }
+  .set-title { font-size: 20px; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  
+  .scene-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
+  .scene-card { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .scene-header { font-size: 15px; font-weight: 700; color: #94a3b8; display: flex; justify-content: space-between; }
+  
+  .video-preview { width: 100%; border-radius: 8px; background: #000; overflow: hidden; aspect-ratio: 16/9; }
+  video { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+  
+  .variant-selector { display: flex; gap: 8px; flex-wrap: wrap; }
+  .v-btn { background: #334155; border: 1px solid #475569; color: #cbd5e1; padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 600; }
+  .v-btn.active { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
+  .status-tag { font-size: 11px; padding: 2px 6px; border-radius: 4px; background: #065f46; color: #34d399; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎬 보는 단어장 — 1단계: 최선본(Best Take) 선별 상황실 <span class="badge">STAGE 1 ACTIVE</span></h1>
+  <div style="color: #94a3b8; font-size: 14px;">관리: 총괄부장 코다리 | 정본: inkword.site</div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat-card">
+    <div style="font-size: 13px; color: #94a3b8;">스캔 완료 세트</div>
+    <div class="num">9개 세트</div>
+  </div>
+  <div class="stat-card">
+    <div style="font-size: 13px; color: #94a3b8;">전체 확보 영상 파일</div>
+    <div class="num">141편</div>
+  </div>
+  <div class="stat-card">
+    <div style="font-size: 13px; color: #94a3b8;">1:1 매칭 준비 장면</div>
+    <div class="num">90개 씬</div>
+  </div>
+</div>
+
+
+<div class="set-container">
+  <div class="set-title">📁 1,2차완성본 <span class="badge">10개 씬 (20개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (1219KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s (2).mp4', this)">버전 2 (645KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 3 (2009KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (975KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s (2).mp4', this)">버전 2 (645KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 3 (1032KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (818KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s (2).mp4', this)">버전 2 (1200KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 3 (1239KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (1048KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s (2).mp4', this)">버전 2 (1098KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 3 (1295KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (1049KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (1189KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (1049KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_1,2차완성본_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (1555KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1306KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1218KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1961KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_1,2차완성본_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_1,2차완성본_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/1,2차완성본/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (936KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 11차완성본_Set12_음악소리 <span class="badge">10개 씬 (30개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/001_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/001_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (1123KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/001_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1075KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/001_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (918KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/002_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/002_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (625KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/002_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1178KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/002_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (961KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/003_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/003_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (1031KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/003_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1544KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/003_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (1101KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/004_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/004_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (885KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/004_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1380KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/004_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (840KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/005_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/005_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (647KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/005_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1352KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/005_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (933KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/006_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/006_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (704KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/006_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1530KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/006_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (899KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/007_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/007_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (1393KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/007_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1700KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/007_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (670KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/008_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/008_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (1416KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/008_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1504KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/008_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (1219KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/009_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/009_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (759KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/009_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (1669KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/009_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (1236KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_11차완성본_Set12_음악소리_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/010_Progressive-detailed-fine-pencil-construction-tran (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_11차완성본_Set12_음악소리_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/010_Progressive-detailed-fine-pencil-construction-tran (1).mp4', this)">버전 1 (736KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/010_Progressive-detailed-fine-pencil-construction-tran (2).mp4', this)">버전 2 (935KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_11차완성본_Set12_음악소리_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/11차완성본_Set12_음악소리/010_Progressive-detailed-fine-pencil-construction-tran.mp4', this)">버전 3 (1012KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 3차완성본 <span class="badge">10개 씬 (11개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s (3).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s (3).mp4', this)">버전 1 (1439KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_3차완성본_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/School_bus_line-reveal_animation_202608251239.mp4', this)">버전 2 (1208KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s (3).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s (3).mp4', this)">버전 1 (1688KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s (3).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s (3).mp4', this)">버전 1 (1584KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1655KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (746KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1317KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1445KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1405KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (987KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_3차완성본_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_3차완성본_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/3차완성본/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1146KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 4차완성본 <span class="badge">10개 씬 (20개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (404KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (966KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (821KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (1034KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (716KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (892KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (535KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (941KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (700KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (827KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (468KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (744KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/007_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/007_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (715KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (473KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/008_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/008_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (541KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (1087KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/009_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/009_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (476KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (795KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_4차완성본_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/010_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_4차완성본_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/010_Cinematic-progressive-line-reveal-animation-on-a-s (1).mp4', this)">버전 1 (665KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_4차완성본_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/4차완성본/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 2 (1217KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 5차완성본_Set06_정원원예 <span class="badge">10개 씬 (10개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (783KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (575KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (843KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (844KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1116KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1055KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1108KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1226KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1095KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_5차완성본_Set06_정원원예_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_5차완성본_Set06_정원원예_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/5차완성본_Set06_정원원예/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1115KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 6차완성본_Set07_미술공예 <span class="badge">10개 씬 (10개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (653KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (871KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1177KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (934KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1282KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (769KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (946KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1315KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1452KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_6차완성본_Set07_미술공예_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_6차완성본_Set07_미술공예_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/6차완성본_Set07_미술공예/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (807KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 7차완성본_Set08_사계절날씨 <span class="badge">10개 씬 (10개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (392KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1174KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (723KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (531KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (950KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (690KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (547KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (791KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (929KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_7차완성본_Set08_사계절날씨_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_7차완성본_Set08_사계절날씨_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/7차완성본_Set08_사계절날씨/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (672KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 8차완성본_Set09_조류곤충생태 <span class="badge">10개 씬 (10개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/001_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1282KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/002_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1399KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/003_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1421KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/004_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (800KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/005_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (454KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/006_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1087KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/007_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1239KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/008_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1329KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/009_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1643KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_8차완성본_Set09_조류곤충생태_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_8차완성본_Set09_조류곤충생태_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/8차완성본_Set09_조류곤충생태/010_Cinematic-progressive-line-reveal-animation-on-a-s.mp4', this)">버전 1 (1170KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="set-container">
+  <div class="set-title">📁 9차완성본_Set10_서재도구 <span class="badge">10개 씬 (20개 버전 보관)</span></div>
+  <div class="scene-grid">
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #001</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_001" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/001_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/001_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (354KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_001', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/001_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (544KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #002</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_002" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/002_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/002_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (467KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_002', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/002_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (437KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #003</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_003" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/003_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/003_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (398KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_003', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/003_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (331KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #004</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_004" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/004_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/004_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (485KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_004', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/004_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (548KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #005</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_005" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/005_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/005_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (498KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_005', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/005_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (460KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #006</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_006" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/006_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/006_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (609KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_006', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/006_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (569KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #007</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_007" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/007_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/007_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (467KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_007', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/007_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (596KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #008</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_008" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/008_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/008_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (407KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_008', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/008_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (423KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #009</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_009" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/009_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/009_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (547KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_009', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/009_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (480KB)</button>
+
+      </div>
+    </div>
+
+    <div class="scene-card">
+      <div class="scene-header">
+        <span>🎬 씬 #010</span>
+        <span class="status-tag">BEST TAKE 확정</span>
+      </div>
+      <div class="video-preview">
+        <video id="vid_9차완성본_Set10_서재도구_010" controls preload="metadata">
+          <source src="/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/010_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="variant-selector">
+
+        <button class="v-btn active" onclick="changeVideo('vid_9차완성본_Set10_서재도구_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/010_Progressive-hand-drawn-picture-dictionary-animatio (1).mp4', this)">버전 1 (512KB)</button>
+
+        <button class="v-btn " onclick="changeVideo('vid_9차완성본_Set10_서재도구_010', '/Users/mihyunlee/Desktop/현재작업다운로드/veo-folder-1/9차완성본_Set10_서재도구/010_Progressive-hand-drawn-picture-dictionary-animatio.mp4', this)">버전 2 (749KB)</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function changeVideo(vidId, videoPath, btn) {
+  const vid = document.getElementById(vidId);
+  vid.src = videoPath;
+  vid.play();
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.v-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

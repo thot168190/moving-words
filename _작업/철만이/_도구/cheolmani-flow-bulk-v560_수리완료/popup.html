@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>철만이 Flow 벌크</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <h1>붙여넣기 벌크</h1>
+        <p>긴 프롬프트는 그대로 유지합니다. 새 영상은 [컷번호]로 구분합니다.</p>
+      </div>
+      <span class="version">현재 버전 v5.6.3 · 단일 클릭·입력 교체</span>
+    </header>
+
+    <section class="section">
+      <label class="label" for="ingredientDropZone">인그리디언트</label>
+      <div id="ingredientDropZone" class="dropZone" tabindex="0">
+        <strong>여기에 이미지 붙여넣기</strong>
+        <span>최대 3개까지 가능 · Finder/브라우저 이미지 드래그 가능</span>
+      </div>
+      <div class="row">
+        <label class="fileButton">
+          선택은 보조
+          <input id="ingredientInput" type="file" accept="image/*" multiple>
+        </label>
+        <button id="ingredientClearButton" class="button ghost">이미지 비우기</button>
+      </div>
+      <div id="ingredientInfo" class="fileList">선택된 이미지 없음</div>
+      <p class="hint strong">인그리디언트는 최대 3개까지 사용합니다. 4개 이상 넣으면 앞의 3개만 적용됩니다.</p>
+      <p id="uploadHint" class="hint strong">이미지를 올리면 시작 시 Flow에 자동 업로드합니다. 이미지 없으면 Flow에 이미 세팅된 인그리디언트를 그대로 씁니다.</p>
+    </section>
+
+    <section class="section">
+      <label class="label" for="promptText">컷별 프롬프트</label>
+      <textarea id="promptText" rows="10" placeholder="[S1-01] 첫 번째 긴 프롬프트...&#10;Opening (0-3s): ...&#10;Mid (3-6s): ...&#10;&#10;[S1-02] 두 번째 긴 프롬프트..."></textarea>
+      <div class="row">
+        <button id="clearButton" class="button ghost">비우기</button>
+      </div>
+      <p id="queueInfo" class="hint">0개 대기</p>
+      <p class="hint strong">각 프롬프트는 [S1-01] 같은 새 컷번호에서 시작합니다. 내부 줄바꿈은 잘리지 않습니다.</p>
+      <p class="hint">영상 설정은 8초 · 16:9 · 1개로 자동 고정합니다.</p>
+    </section>
+
+    <section class="section grid">
+      <label>
+        <span class="label">컷 사이 최소 대기</span>
+        <input id="delayMin" type="number" min="5" max="300" value="35">
+      </label>
+      <label>
+        <span class="label">컷 사이 최대 대기</span>
+        <input id="delayMax" type="number" min="5" max="300" value="55">
+      </label>
+      <label>
+        <span class="label">생성 후 대기</span>
+        <input id="waitAfter" type="number" min="20" max="600" value="90">
+      </label>
+    </section>
+
+    <section class="section">
+      <label class="check">
+        <input id="pauseBeforeEach" type="checkbox">
+        <span>컷마다 인그리디언트를 바꿀 때만 멈춤</span>
+      </label>
+      <p id="pauseHint" class="hint">패널에 인그리디언트를 넣은 상태에서는 자동으로 꺼집니다.</p>
+      <label class="check">
+        <input id="dryRun" type="checkbox">
+        <span>드라이런: 입력/클릭 없이 감지만 테스트</span>
+      </label>
+    </section>
+
+    <details class="section">
+      <summary>고급 설정</summary>
+      <label class="label" for="promptSelector">프롬프트 입력창 CSS selector</label>
+      <input id="promptSelector" type="text" placeholder="비워두면 자동 감지">
+      <label class="label" for="generateSelector">생성 버튼 CSS selector</label>
+      <input id="generateSelector" type="text" placeholder="비워두면 자동 감지">
+    </details>
+
+    <section class="section actions">
+      <button id="startButton" class="button primary" disabled>시작</button>
+      <button id="resumeButton" class="button" disabled>이어서</button>
+      <button id="stopButton" class="button danger" disabled>정지</button>
+      <button id="continueButton" class="button" disabled>계속</button>
+      <button id="diagnoseButton" class="button ghost">진단</button>
+    </section>
+
+    <section class="section">
+      <div class="progressHead">
+        <strong id="statusText">대기</strong>
+        <span id="countText">0 / 0</span>
+      </div>
+      <progress id="progressBar" max="1" value="0"></progress>
+      <div id="logBox" class="log"></div>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

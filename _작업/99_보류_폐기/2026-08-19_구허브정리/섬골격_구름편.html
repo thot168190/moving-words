@@ -1,0 +1,64 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>섬 골격 · 구름 편 이식</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf8f3;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;color:#1c1a17;padding:18px;max-width:1020px;margin:0 auto}
+h1{font-size:19px;margin:0 0 10px}h1 small{color:#b4472e;font-size:13px;font-weight:600;margin-left:8px}
+.note{background:#fffdf5;border:1px solid #e8dcb5;border-radius:10px;padding:12px 14px;font-size:13.2px;line-height:1.78;margin:12px 0 18px;color:#3d382e}
+.note code{background:#f2ece0;padding:1px 5px;border-radius:4px;font-size:12.1px}.note b{color:#1c1a17}
+table{border-collapse:collapse;width:100%;font-size:12.6px;margin:10px 0}
+th,td{border:1px solid #e0d8c6;padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#f4efe4;font-weight:700}
+td.y{color:#2f5c3c;font-weight:700}td.n{color:#a8442c;font-weight:700}
+.card{background:#fff;border:1px solid #e5ded0;border-radius:12px;padding:14px;margin-bottom:16px}
+.card.ref{border-color:#c8a951;background:#fffdf5}
+.hd{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.nm{font-weight:700;font-size:15.5px}
+.b{font-size:11.5px;padding:2px 9px;border-radius:9px;background:#e6f0e8;color:#2f5c3c;font-weight:600}
+.card.ref .b{background:#f6eccd;color:#7a6320}
+textarea{width:100%;height:270px;font-family:ui-monospace,Menlo,monospace;font-size:12.3px;line-height:1.64;padding:12px;border:1px solid #e5ded0;border-radius:8px;background:#fcfbf8;resize:vertical;color:#2a2620}
+button{border:1px solid #1c1a17;background:#1c1a17;color:#fff;border-radius:8px;padding:11px 22px;font-size:15px;cursor:pointer;font-weight:700;margin-top:10px}
+button.done{background:#4a7c59;border-color:#4a7c59}
+</style></head><body>
+<h1>🎬 섬 골격 → 구름 편 이식 <small>코덱스 성공본 기준</small></h1>
+<div class="note">
+<b>분석 — 제가 넣은 것이 문제였고, 제가 뺀 것은 문제가 아니었습니다.</b>
+<table>
+<tr><th>항목</th><th>코덱스 성공본(섬)</th><th>제 v9</th></tr>
+<tr><td>손·도구 차단</td><td class="y">Never 블록에 <code>hands, pens, pencils, brushes, visible drawing tools</code> + subjects 끝 <code>There are no ... drawing tools anywhere</code></td><td class="n">긍정문만 (부정문이 소환한다고 판단해 제거)</td></tr>
+<tr><td>펜 추적 조항</td><td class="y">없음</td><td class="n"><code>moving point ... advancing tip</code> 삽입</td></tr>
+<tr><td>구도 문장</td><td class="y">없음</td><td class="n"><code>central three-quarters</code> 삽입</td></tr>
+<tr><td><code>engraving</code></td><td class="y">있음</td><td class="n">제거</td></tr>
+<tr><td><code>dark-charcoal</code></td><td class="y">있음</td><td class="n">제거</td></tr>
+<tr><td><code>Audio:</code> 블록</td><td class="y">있음</td><td class="n">없음</td></tr>
+</table>
+<b>부정문(Never 블록)이 손을 막았습니다.</b> 제가 <code>hands</code> <code>pens</code>를 소환어로 보고 지운 게 잘못이었습니다. 그리고 <code>moving point</code> <code>tip</code> 조항 없이도 그려짐이 잘 나왔습니다 — 제 조항이 오히려 도구를 불렀습니다.<br><br>
+<b>이식 방식</b> — 섬 편의 <code>From 5.5-8s ... Nothing assembles, transforms or flies into place; the changing water level simply reveals ...</code> 구조를 그대로 썼습니다. 물이 빠지며 하나의 섬이 드러나듯, <b>구름이 흐르며 같은 윤곽이 고래로도 우주선으로도 읽힌다</b>로 바꿨습니다.
+</div>
+<div class="card">
+<div class="hd"><span class="nm">구름을 보는 두 시선</span><span class="b">섬 골격 이식본</span></div>
+<textarea readonly id="t0">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static locked-off camera, one continuous 8-second take. The only visible subjects throughout the sequence are one long slow-drifting cloud, two small upright picture panels standing far apart on a low grassy ridge below it, one whale-shaped outline inside the left panel, one spaceship-shaped outline inside the right panel, and restrained transparent watercolor. There are no people, animals, vehicles, buildings, signs, letters or drawing tools anywhere in the scene.
+0-4s: fine dark-charcoal linework appears progressively from the empty white field. The low grassy ridge is revealed first through many clean short line segments, followed by the two picture panels standing apart with open white space between them. The long cloud is drawn next as thin open contour segments only. The whale outline and the spaceship outline appear last, each staying entirely inside its own panel. Every detail becomes visible sequentially, never all at once.
+4-8s: a highly diluted watercolor wash develops gently in several light transparent layers. Begin with the palest blue-grey along the upper edge of the cloud, add a restrained meadow green across the ridge, and finish with one faint warm ochre breath inside the left panel only. The white surface remains clearly visible through every wash, with generous untouched white space surrounding the illustration. The cloud stays almost entirely unpainted.
+From 5.5-8s, the long cloud drifts slowly in one continuous natural motion. As it moves, its lower contour lines up with the whale outline in the left panel, and moments later the same contour lines up with the spaceship outline in the right panel. Nothing assembles, transforms or flies into place; the slow drift simply reveals that one single cloud edge already contained both readings. Previously revealed lines stay crisp and completely stable.
+The finished composition clearly shows that one and the same cloud holds a whale curve and a spaceship silhouette at once, depending on which panel it is read against.
+Style: delicate fine-line engraving, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for thoughtful young learners.
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+Never: text, letters, numbers, labels, arrows, maps, diagrams, puzzle pieces, geometric fragments, birds, human figures, hands, pens, pencils, brushes, visible drawing tools, easels, picture frames stacked in rows, split screens, solid saturated color, dense cross-hatching, heavy dark outlines, paint splatter, paper texture, visible paper grain, camera movement, cuts, fade-in or dissolve.</textarea>
+<button id="b0" onclick="cp(0)">📋 프롬프트 복사</button></div>
+<div class="card ref">
+<div class="hd"><span class="nm">⭐ 섬 편</span><span class="b">코덱스 성공본 · 기준</span></div>
+<textarea readonly id="t1">Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. High-key lighting. Static locked-off camera, one continuous 8-second take. The only visible subjects throughout the sequence are three rocky peaks rising from shallow coastal water, a low submerged ridge connecting them, a few small tide pools, and restrained transparent watercolor. There are no people, boats, buildings, signs, letters or drawing tools anywhere in the scene.
+0-4s: fine dark-charcoal linework appears progressively from the empty white field. Three separate rocky peaks are revealed first through many clean short line segments, each standing apart with open white space between them. A few sparse rock textures and small tide pools appear next. Only the upper edges of the shallow water are drawn, so the three peaks initially seem like unrelated small islands. Every detail becomes visible sequentially, never all at once.
+4-8s: a highly diluted watercolor wash develops gently in several light transparent layers. Begin with the palest mineral grey on the three rocky peaks, add a restrained sand beige near their bases, and finish with a thin breath of clear turquoise in the shallow water. The white surface remains clearly visible through every wash, with generous untouched white space surrounding the illustration.
+From 5.5-8s, the shallow water slowly withdraws in one continuous natural motion. As the waterline lowers, one long low ridge is uncovered between the three peaks. Its clean outer contour becomes fully visible, connecting the apparently separate forms into one clearly defined island. Two tiny tide pools remain within the exposed ridge. Nothing assembles, transforms or flies into place; the changing water level simply reveals the continuous landform that was already there. Previously revealed lines stay crisp and completely stable.
+The finished composition clearly shows that what first appeared to be three confusing separate islands is one connected island with three peaks. The final continuous shoreline defines the whole form.
+Style: delicate fine-line engraving, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for thoughtful young learners.
+Audio: complete silence throughout. No music, no sound effects, no narration and no ambient sound.
+Never: text, letters, numbers, labels, arrows, maps, diagrams, puzzle pieces, geometric fragments, birds, human figures, hands, pens, pencils, brushes, visible drawing tools, picture frames, split screens, solid saturated color, dense cross-hatching, heavy dark outlines, paint splatter, paper texture, visible paper grain, camera movement, cuts, fade-in or dissolve.</textarea>
+<button id="b1" onclick="cp(1)">📋 프롬프트 복사</button></div>
+<script>
+function cp(i){const t=document.getElementById('t'+i),b=document.getElementById('b'+i);
+const d=()=>{b.textContent='✓ 복사됨';b.classList.add('done');setTimeout(()=>{b.textContent='📋 프롬프트 복사';b.classList.remove('done')},1500)};
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t.value).then(d).catch(()=>{t.select();document.execCommand('copy');d()})}
+else{t.removeAttribute('readonly');t.select();t.setSelectionRange(0,999999);document.execCommand('copy');t.setAttribute('readonly','');window.getSelection().removeAllRanges();d()}}
+</script></body></html>

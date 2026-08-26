@@ -1,0 +1,2374 @@
+[
+  {
+    "id": "ch1-06",
+    "chapter": 1,
+    "n": "06",
+    "title": "곶을 돌아 열리는 만",
+    "sub": "미지의 풍경",
+    "poster": "public/learning/ch1/scene-ch1-10-poster.jpg?v=4",
+    "levelOneWords": [
+      "bay",
+      "coast",
+      "flow",
+      "pool"
+    ],
+    "levelTwoWords": [
+      "adventure",
+      "cape",
+      "channel",
+      "flood"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch1-07",
+    "chapter": 1,
+    "n": "07",
+    "title": "고대의 원형 경기장",
+    "sub": "돌로 쌓아 올린 거대한 구조",
+    "poster": "public/learning/ch1/scene-ch1-04-poster.jpg",
+    "levelOneWords": [
+      "ruin",
+      "empire",
+      "structure",
+      "stage"
+    ],
+    "levelTwoWords": [
+      "huge",
+      "solid",
+      "site",
+      "repeat"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch1-08",
+    "chapter": 1,
+    "n": "08",
+    "title": "별을 보는 망원경",
+    "sub": "밤하늘을 향해 세운 눈",
+    "poster": "public/learning/ch1/scene-ch1-05-poster.jpg",
+    "levelOneWords": [
+      "aim",
+      "heaven",
+      "shine",
+      "silver"
+    ],
+    "levelTwoWords": [
+      "instrument",
+      "observe",
+      "sight",
+      "distance"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch1-09",
+    "chapter": 1,
+    "n": "09",
+    "title": "눈 덮인 숲의 오로라",
+    "sub": "겨울 하늘이 흔들리는 밤",
+    "poster": "public/learning/ch1/scene-ch1-06-poster.jpg",
+    "levelOneWords": [
+      "freeze",
+      "shade",
+      "purple",
+      "pine"
+    ],
+    "levelTwoWords": [
+      "branch",
+      "atmosphere",
+      "spread",
+      "fold"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch1-10",
+    "chapter": 1,
+    "n": "10",
+    "title": "하늘을 나는 열기구",
+    "sub": "구름 사이로 떠오르다",
+    "poster": "public/learning/ch1/scene-ch1-07-poster.jpg",
+    "levelOneWords": [
+      "balloon",
+      "float",
+      "journey",
+      "adventure"
+    ],
+    "levelTwoWords": [
+      "tour",
+      "rise",
+      "atmosphere",
+      "height"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-01",
+    "chapter": 2,
+    "n": "01",
+    "title": "참나무 아래 초원",
+    "sub": "생명이 시작되는 곳",
+    "poster": "public/learning/ch2/scene-ch2-02-poster.jpg",
+    "levelOneWords": [
+      "tree",
+      "leaf",
+      "grass",
+      "root"
+    ],
+    "levelTwoWords": [
+      "branch",
+      "seed",
+      "soil",
+      "bark"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-02",
+    "chapter": 2,
+    "n": "02",
+    "title": "평원의 기린과 얼룩말",
+    "sub": "더불어 사는 동물들",
+    "poster": "public/learning/ch2/scene-ch2-03-poster.jpg",
+    "levelOneWords": [
+      "animal",
+      "herd",
+      "tail",
+      "neck"
+    ],
+    "levelTwoWords": [
+      "spot",
+      "stripe",
+      "plain",
+      "graze"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-03",
+    "chapter": 2,
+    "n": "03",
+    "title": "진흙 속 개구리",
+    "sub": "비 온 뒤의 풍경",
+    "poster": "public/learning/ch2/scene-ch2-05-poster.jpg",
+    "levelOneWords": [
+      "frog",
+      "jump",
+      "mud",
+      "bank"
+    ],
+    "levelTwoWords": [
+      "pond",
+      "insect",
+      "catch",
+      "hide"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-04",
+    "chapter": 2,
+    "n": "04",
+    "title": "언덕을 오르는 양떼",
+    "sub": "줄지어 걷는 초원의 아침",
+    "poster": "public/learning/ch2/scene-ch2-01-poster.jpg",
+    "levelOneWords": [
+      "sheep",
+      "lamb",
+      "wool",
+      "fence"
+    ],
+    "levelTwoWords": [
+      "mount",
+      "valley",
+      "path",
+      "surround"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-11",
+    "chapter": 2,
+    "n": "11",
+    "title": "숲길을 걷는 여우",
+    "sub": "낙엽 위에 남는 발자국",
+    "poster": "public/learning/ch4/Red_fox_walking_on_path_202608101458-poster.jpg",
+    "levelOneWords": [
+      "branch",
+      "leaf",
+      "path",
+      "bush"
+    ],
+    "levelTwoWords": [
+      "log",
+      "trunk",
+      "bark",
+      "trace"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-12",
+    "chapter": 2,
+    "n": "12",
+    "title": "바람 뒤의 거미줄",
+    "sub": "끊어진 줄을 다시 잇다",
+    "poster": "public/learning/ch4/Spider_drawing_on_white_background_202608101458-poster.jpg",
+    "levelOneWords": [
+      "string",
+      "net",
+      "thin",
+      "connect"
+    ],
+    "levelTwoWords": [
+      "attach",
+      "pattern",
+      "trap",
+      "tight"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-13",
+    "chapter": 2,
+    "n": "13",
+    "title": "잎 사이의 위장자",
+    "sub": "보이지 않던 것을 알아보다",
+    "poster": "public/learning/ch4/Leaf_insect_on_twig_202608101458-poster.jpg",
+    "levelOneWords": [
+      "bug",
+      "leaf",
+      "branch",
+      "rest"
+    ],
+    "levelTwoWords": [
+      "stick",
+      "sharp",
+      "nut",
+      "similar"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch4-01",
+    "chapter": 4,
+    "n": "01",
+    "title": "자료실의 분류벽 (카드 목록장)",
+    "sub": "학교의 모든 기록",
+    "poster": "public/learning/ch4/Pencil_drawing_of_library_cabinet_202608071752-poster.jpg",
+    "levelOneWords": [
+      "catalog",
+      "arrange",
+      "list",
+      "article"
+    ],
+    "levelTwoWords": [
+      "chart",
+      "graph",
+      "magazine",
+      "clip"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch4-02",
+    "chapter": 4,
+    "n": "02",
+    "title": "무대 원고 편집실 (타자기)",
+    "sub": "이야기가 시작되는 곳",
+    "poster": "public/learning/ch4/Mechanical_typewriter_202608071752-poster.jpg",
+    "levelOneWords": [
+      "edit",
+      "text",
+      "spell",
+      "language"
+    ],
+    "levelTwoWords": [
+      "poem",
+      "comedy",
+      "drama",
+      "scene"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch4-03",
+    "chapter": 4,
+    "n": "03",
+    "title": "여행기록 보존대 (양장본)",
+    "sub": "먼 곳의 기억들",
+    "poster": "public/learning/ch4/Archival_sorting_table_202608071752-poster.jpg",
+    "levelOneWords": [
+      "diary",
+      "document",
+      "record",
+      "photograph"
+    ],
+    "levelTwoWords": [
+      "dictionary",
+      "essay",
+      "envelope",
+      "object"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch5-01",
+    "chapter": 5,
+    "n": "01",
+    "title": "놀이공원 대관람차",
+    "sub": "빙글빙글 돌아가는 풍경",
+    "poster": "public/learning/ch3/scene-ch3-01-poster.jpg",
+    "levelOneWords": [
+      "wheel",
+      "ride",
+      "park",
+      "spin"
+    ],
+    "levelTwoWords": [
+      "high",
+      "view",
+      "sky",
+      "fun"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch5-02",
+    "chapter": 5,
+    "n": "02",
+    "title": "물보라 롤러코스터",
+    "sub": "아찔한 스피드",
+    "poster": "public/learning/ch3/scene-ch3-02-poster.jpg",
+    "levelOneWords": [
+      "track",
+      "speed",
+      "scream",
+      "drop"
+    ],
+    "levelTwoWords": [
+      "water",
+      "splash",
+      "fast",
+      "thrill"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch5-03",
+    "chapter": 5,
+    "n": "03",
+    "title": "범퍼카 타는 아이들",
+    "sub": "쾅쾅 부딪히는 재미",
+    "poster": "public/learning/ch3/scene-ch3-03-poster.jpg",
+    "levelOneWords": [
+      "car",
+      "bump",
+      "drive",
+      "laugh"
+    ],
+    "levelTwoWords": [
+      "seat",
+      "steer",
+      "crash",
+      "play"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch5-04",
+    "chapter": 5,
+    "n": "04",
+    "title": "드롭타워 꼭대기",
+    "sub": "떨어지기 직전의 순간",
+    "poster": "public/learning/ch3/Riders_on_drop_tower_summit_202608062009-poster.jpg",
+    "levelOneWords": [
+      "tower",
+      "seat",
+      "rise",
+      "height"
+    ],
+    "levelTwoWords": [
+      "fear",
+      "scream",
+      "grab",
+      "tight"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch5-05",
+    "chapter": 5,
+    "n": "05",
+    "title": "곰인형을 뽑다",
+    "sub": "고리를 던져 얻은 상",
+    "poster": "public/learning/ch3/Girl_lifts_won_teddy_bear_202608061648-poster.jpg",
+    "levelOneWords": [
+      "prize",
+      "award",
+      "hug",
+      "proud"
+    ],
+    "levelTwoWords": [
+      "lift",
+      "reach",
+      "cheer",
+      "joy"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch7-01",
+    "chapter": 7,
+    "n": "01",
+    "title": "거울을 보는 시선",
+    "sub": "표정을 살피다",
+    "poster": "public/learning/ch7/ch7_02-poster.jpg",
+    "levelOneWords": [
+      "cheek",
+      "jaw",
+      "glance"
+    ],
+    "levelTwoWords": [
+      "stare",
+      "sight"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch7-02",
+    "chapter": 7,
+    "n": "02",
+    "title": "아픈 사람과 휴식",
+    "sub": "열과 통증을 가라앉히다",
+    "poster": "public/learning/ch7/ch7_03-poster.jpg",
+    "levelOneWords": [
+      "fever",
+      "pain",
+      "medicine"
+    ],
+    "levelTwoWords": [
+      "patient",
+      "weak",
+      "rest"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "asleep",
+        "잠든"
+      ],
+      [
+        "ill",
+        "아픈"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch7-03",
+    "chapter": 7,
+    "n": "03",
+    "title": "머그잔과 휴식",
+    "sub": "마음의 평온과 기쁨",
+    "poster": "public/learning/ch7/ch7_04-poster.jpg",
+    "levelOneWords": [
+      "joy",
+      "laugh",
+      "peace",
+      "calm"
+    ],
+    "levelTwoWords": [
+      "relax",
+      "comfort",
+      "delight"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "relief",
+        "안도"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch7-04",
+    "chapter": 7,
+    "n": "04",
+    "title": "알람시계와 걱정",
+    "sub": "마음속 불안과 혼란",
+    "poster": "public/learning/ch7/ch7_05-poster.jpg",
+    "levelOneWords": [
+      "anger",
+      "annoy",
+      "anxious",
+      "fear"
+    ],
+    "levelTwoWords": [
+      "panic",
+      "shock",
+      "trouble",
+      "upset"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch8-01",
+    "chapter": 8,
+    "n": "01",
+    "title": "공항과 비행기",
+    "sub": "활주로를 떠나는 여행",
+    "poster": "public/learning/ch8/ch8_01-poster.jpg",
+    "levelOneWords": [
+      "airline",
+      "airport",
+      "exit",
+      "flight"
+    ],
+    "levelTwoWords": [
+      "gate",
+      "plane",
+      "seat",
+      "tour"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch8-02",
+    "chapter": 8,
+    "n": "02",
+    "title": "자전거와 수레",
+    "sub": "피크닉을 향해 달리다",
+    "poster": "public/learning/ch8/ch8_02-poster.jpg",
+    "levelOneWords": [
+      "cycle",
+      "cart",
+      "picnic"
+    ],
+    "levelTwoWords": [
+      "motor",
+      "vehicle"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "brake",
+        "브레이크"
+      ],
+      [
+        "gear",
+        "기어"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch8-03",
+    "chapter": 8,
+    "n": "03",
+    "title": "공원 벤치와 배낭",
+    "sub": "풀밭 위의 나들이",
+    "poster": "public/learning/ch8/ch8_03-poster.jpg",
+    "levelOneWords": [
+      "pack",
+      "bench",
+      "blanket",
+      "tie"
+    ],
+    "levelTwoWords": [
+      "pocket",
+      "lawn",
+      "branch"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "oak",
+        "참나무"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch8-04",
+    "chapter": 8,
+    "n": "04",
+    "title": "궁전과 근위병",
+    "sub": "경계와 임무 수행",
+    "poster": "public/learning/ch8/ch8_04-poster.jpg",
+    "levelOneWords": [
+      "soldier",
+      "guard",
+      "army",
+      "weapon"
+    ],
+    "levelTwoWords": [
+      "officer",
+      "uniform",
+      "post",
+      "duty"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch9-01",
+    "chapter": 9,
+    "n": "01",
+    "title": "바다를 보는 석상",
+    "sub": "풀언덕에 선 거대한 형상",
+    "poster": "public/learning/ch4/Moai_statues_standing_on_grass_202608071553-poster.jpg",
+    "levelOneWords": [
+      "coast",
+      "ocean",
+      "shore",
+      "stare"
+    ],
+    "levelTwoWords": [
+      "giant",
+      "figure",
+      "edge",
+      "lawn"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch10-01",
+    "chapter": 10,
+    "n": "01",
+    "title": "새벽 안개 낀 시골길",
+    "sub": "안개가 걷히는 아침",
+    "poster": "public/learning/ch10/ch10_01-poster.jpg",
+    "levelOneWords": [
+      "fog",
+      "dawn",
+      "countryside"
+    ],
+    "levelTwoWords": [
+      "dirt",
+      "dust",
+      "smoke"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "village",
+        "마을"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch10-02",
+    "chapter": 10,
+    "n": "02",
+    "title": "폭풍우와 물결",
+    "sub": "바위섬의 파도와 물개",
+    "poster": "public/learning/ch10/ch10_02-poster.jpg",
+    "levelOneWords": [
+      "storm",
+      "tide",
+      "wave"
+    ],
+    "levelTwoWords": [
+      "current",
+      "stream",
+      "seal"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "blow",
+        "불다"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch10-03",
+    "chapter": 10,
+    "n": "03",
+    "title": "녹는 얼음과 김",
+    "sub": "온도가 오르는 공장 지대",
+    "poster": "public/learning/ch10/ch10_04-poster.jpg",
+    "levelOneWords": [
+      "freeze",
+      "melt"
+    ],
+    "levelTwoWords": [
+      "steam",
+      "temperature"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "factory",
+        "공장"
+      ],
+      [
+        "degree",
+        "도"
+      ],
+      [
+        "climate",
+        "기후"
+      ],
+      [
+        "steel",
+        "강철"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch11-01",
+    "chapter": 11,
+    "n": "01",
+    "title": "사막의 혼천의",
+    "sub": "별자리를 재는 황동 고리",
+    "poster": "public/learning/ch4/Armillary_sphere_ring_rotating_202608071553-poster.jpg",
+    "levelOneWords": [
+      "desert",
+      "site",
+      "region",
+      "pole"
+    ],
+    "levelTwoWords": [
+      "round",
+      "scale",
+      "broad",
+      "pile"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch11-02",
+    "chapter": 11,
+    "n": "02",
+    "title": "황동 현미경과 광물",
+    "sub": "작은 것을 크게 보는 눈",
+    "poster": "public/learning/ch4/Brass_microscope_drawing_on_paper_202608071553-poster.jpg",
+    "levelOneWords": [
+      "instrument",
+      "detail",
+      "sample",
+      "metal"
+    ],
+    "levelTwoWords": [
+      "examine",
+      "inspect",
+      "element",
+      "tiny"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch11-03",
+    "chapter": 11,
+    "n": "03",
+    "title": "측량기와 곧은 길",
+    "sub": "땅을 재어 길을 놓다",
+    "poster": "public/learning/ch4/Surveyor_instrument_202608071553-poster.jpg",
+    "levelOneWords": [
+      "measure",
+      "survey",
+      "technique",
+      "skill"
+    ],
+    "levelTwoWords": [
+      "route",
+      "flat",
+      "straight",
+      "level"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch12-01",
+    "chapter": 12,
+    "n": "01",
+    "title": "캠핑과 밤 이야기",
+    "sub": "모닥불 곁의 신비",
+    "poster": "public/learning/ch12/ch12_01-poster.jpg",
+    "levelOneWords": [
+      "tale",
+      "magic",
+      "ghost"
+    ],
+    "levelTwoWords": [
+      "mystery",
+      "shadow"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "flame",
+        "불꽃"
+      ],
+      [
+        "aloud",
+        "소리 내어"
+      ],
+      [
+        "chat",
+        "이야기 나누다"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch12-02",
+    "chapter": 12,
+    "n": "02",
+    "title": "아치창문 서재",
+    "sub": "경이로운 생각의 자리",
+    "poster": "public/learning/ch12/ch12_02-poster.jpg",
+    "levelOneWords": [
+      "fancy",
+      "fantastic",
+      "marvel"
+    ],
+    "levelTwoWords": [
+      "wonder",
+      "brilliant"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "curious",
+        "궁금한"
+      ],
+      [
+        "fascinate",
+        "마음을 사로잡다"
+      ],
+      [
+        "strange",
+        "이상한"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch12-03",
+    "chapter": 12,
+    "n": "03",
+    "title": "책 속의 비밀 미로",
+    "sub": "단서를 찾아 퍼즐을 풀다",
+    "poster": "public/learning/ch12/ch12_03-poster.jpg",
+    "levelOneWords": [
+      "trick",
+      "puzzle",
+      "clue"
+    ],
+    "levelTwoWords": [
+      "match",
+      "secret",
+      "sign"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "indicate",
+        "가리키다"
+      ],
+      [
+        "expose",
+        "드러내다"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch12-04",
+    "chapter": 12,
+    "n": "04",
+    "title": "천사와 파스텔 하늘",
+    "sub": "평화로운 믿음과 영혼",
+    "poster": "public/learning/ch12/ch12_04-poster.jpg",
+    "levelOneWords": [
+      "angel",
+      "heaven",
+      "soul"
+    ],
+    "levelTwoWords": [
+      "spirit",
+      "presence",
+      "faith"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        20
+      ],
+      [
+        80,
+        20
+      ],
+      [
+        20,
+        80
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        30
+      ],
+      [
+        70,
+        30
+      ],
+      [
+        30,
+        70
+      ],
+      [
+        70,
+        70
+      ]
+    ],
+    "추가단어": [
+      [
+        "doubt",
+        "의심"
+      ],
+      [
+        "glory",
+        "영광"
+      ]
+    ],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  }
+]

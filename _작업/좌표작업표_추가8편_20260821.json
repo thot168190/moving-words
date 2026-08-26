@@ -1,0 +1,479 @@
+[
+  {
+    "id": "ch2-05",
+    "chapter": 2,
+    "n": "05",
+    "title": "둥지에 돌아온 새",
+    "sub": "작은 것을 지키는 자리",
+    "poster": "public/learning/ch2/scene-ch2-04-poster.jpg",
+    "levelOneWords": [
+      "nest",
+      "wing",
+      "loose",
+      "tight"
+    ],
+    "levelTwoWords": [
+      "shelter",
+      "protect",
+      "tiny",
+      "rest"
+    ],
+    "levelOneSpots_현재": [
+      [
+        62,
+        26
+      ],
+      [
+        50,
+        52
+      ],
+      [
+        30,
+        45
+      ],
+      [
+        78,
+        60
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        30,
+        20
+      ],
+      [
+        70,
+        20
+      ],
+      [
+        30,
+        75
+      ],
+      [
+        75,
+        75
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-06",
+    "chapter": 2,
+    "n": "06",
+    "title": "통나무 아래의 딱정벌레",
+    "sub": "쓰러진 나무가 품은 것",
+    "poster": "public/learning/ch2/scene-ch2-06-poster.jpg",
+    "levelOneWords": [
+      "log",
+      "bug",
+      "trunk",
+      "hole"
+    ],
+    "levelTwoWords": [
+      "crawl",
+      "beneath",
+      "hide",
+      "dirt"
+    ],
+    "levelOneSpots_현재": [
+      [
+        18,
+        18
+      ],
+      [
+        82,
+        18
+      ],
+      [
+        20,
+        78
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        28,
+        28
+      ],
+      [
+        72,
+        28
+      ],
+      [
+        30,
+        72
+      ],
+      [
+        70,
+        72
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-07",
+    "chapter": 2,
+    "n": "07",
+    "title": "풀숲을 가르는 뱀",
+    "sub": "매끄럽게 흐르는 몸",
+    "poster": "public/learning/ch2/scene-ch2-07-poster.jpg",
+    "levelOneWords": [
+      "snake",
+      "slide",
+      "smooth",
+      "shade"
+    ],
+    "levelTwoWords": [
+      "twist",
+      "narrow",
+      "stretch",
+      "still"
+    ],
+    "levelOneSpots_현재": [
+      [
+        58,
+        40
+      ],
+      [
+        30,
+        52
+      ],
+      [
+        76,
+        48
+      ],
+      [
+        45,
+        62
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        28,
+        28
+      ],
+      [
+        72,
+        28
+      ],
+      [
+        30,
+        72
+      ],
+      [
+        70,
+        72
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-09",
+    "chapter": 2,
+    "n": "09",
+    "title": "개미의 긴 줄",
+    "sub": "함께 옮기는 길",
+    "poster": "public/learning/ch2/scene-ch2-09-poster.jpg",
+    "levelOneWords": [
+      "ant",
+      "species",
+      "unite",
+      "lane"
+    ],
+    "levelTwoWords": [
+      "load",
+      "gather",
+      "bean",
+      "wild"
+    ],
+    "levelOneSpots_현재": [
+      [
+        18,
+        18
+      ],
+      [
+        82,
+        18
+      ],
+      [
+        20,
+        78
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        46,
+        42
+      ],
+      [
+        68,
+        44
+      ],
+      [
+        34,
+        58
+      ],
+      [
+        52,
+        60
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch2-10",
+    "chapter": 2,
+    "n": "10",
+    "title": "새장 문이 열린 날",
+    "sub": "열려 있는 문",
+    "poster": "public/learning/ch2/scene-ch2-10-poster.jpg",
+    "levelOneWords": [
+      "cage",
+      "pet",
+      "feed",
+      "release"
+    ],
+    "levelTwoWords": [
+      "wire",
+      "bar",
+      "swing",
+      "within"
+    ],
+    "levelOneSpots_현재": [
+      [
+        18,
+        18
+      ],
+      [
+        82,
+        18
+      ],
+      [
+        20,
+        78
+      ],
+      [
+        80,
+        80
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        28,
+        28
+      ],
+      [
+        72,
+        28
+      ],
+      [
+        30,
+        72
+      ],
+      [
+        70,
+        72
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch6-02",
+    "chapter": 6,
+    "n": "02",
+    "title": "과일 접시",
+    "sub": "신선한 과일의 색감",
+    "poster": "public/learning/ch3/scene-ch3-17-poster.jpg",
+    "levelOneWords": [
+      "pear",
+      "melon",
+      "lemon",
+      "plate"
+    ],
+    "levelTwoWords": [
+      "strawberry",
+      "sour",
+      "sort",
+      "amount",
+      "spare"
+    ],
+    "levelOneSpots_현재": [
+      [
+        18,
+        45
+      ],
+      [
+        44,
+        34
+      ],
+      [
+        51,
+        64
+      ],
+      [
+        73,
+        51
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        20,
+        30
+      ],
+      [
+        50,
+        20
+      ],
+      [
+        80,
+        30
+      ],
+      [
+        30,
+        75
+      ],
+      [
+        70,
+        75
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch6-05",
+    "chapter": 6,
+    "n": "05",
+    "title": "프라이팬의 고기",
+    "sub": "지글지글 익어가는 고기",
+    "poster": "public/learning/ch3/scene-ch3-20-poster.jpg",
+    "levelOneWords": [
+      "fry",
+      "pan",
+      "dish",
+      "crisp"
+    ],
+    "levelTwoWords": [
+      "bacon",
+      "pork",
+      "chip",
+      "wrap"
+    ],
+    "levelOneSpots_현재": [
+      [
+        25,
+        25
+      ],
+      [
+        75,
+        25
+      ],
+      [
+        25,
+        75
+      ],
+      [
+        75,
+        75
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        28,
+        63
+      ],
+      [
+        17,
+        43
+      ],
+      [
+        52,
+        52
+      ],
+      [
+        68,
+        30
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  },
+  {
+    "id": "ch6-06",
+    "chapter": 6,
+    "n": "06",
+    "title": "장 보고 온 저녁",
+    "sub": "풍성한 저녁 식탁",
+    "poster": "public/learning/ch3/scene-ch3-21-poster.jpg",
+    "levelOneWords": [
+      "grocery",
+      "supper",
+      "honey",
+      "snack",
+      "sweet"
+    ],
+    "levelTwoWords": [
+      "pie",
+      "hunger",
+      "consume"
+    ],
+    "levelOneSpots_현재": [
+      [
+        20,
+        25
+      ],
+      [
+        50,
+        18
+      ],
+      [
+        80,
+        25
+      ],
+      [
+        30,
+        75
+      ],
+      [
+        70,
+        75
+      ]
+    ],
+    "sceneSpots_현재": [
+      [
+        39,
+        62
+      ],
+      [
+        73,
+        47
+      ],
+      [
+        73,
+        77
+      ]
+    ],
+    "추가단어": [],
+    "levelOneSpots_새로": "<코다리가 채운다>",
+    "sceneSpots_새로": "<코다리가 채운다>"
+  }
+]

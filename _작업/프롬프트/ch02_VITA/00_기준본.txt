@@ -1,0 +1,27 @@
+[대표님 확정 — 2026-08-11 "이게 가장 나았어"]
+[VITA 6편 공통 기준본. 아래 대괄호 부분만 편마다 교체한다.]
+
+Cinematic progressive line-reveal animation on a solid pure bright white background (#FFFFFF), edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame, and the subjects sit directly on that white with nothing underneath them - no sheet, no board, no panel, no card, no mat, no textured surface and no visible edge or border of any kind is ever present behind or around them. High-key lighting. The main illustration is centered and occupies the central three-quarters of the frame, with equal narrow breathing margins on the left and right. The subjects remain centered while both outer edges stay clear. Static locked-off camera, one continuous 8-second take.
+
+[슬롯 A · 피사체 목록] The only visible subjects throughout the sequence are ...
+
+0-4s: hair-thin pale graphite linework appears progressively from the empty white field. Throughout the whole sequence the frame contains only the flat white surface and the marks already made on it; nothing else is ever present in the frame at any moment. Each line is drawn as a moving point that travels from one end to the other, its advancing tip clearly visible the whole way, one line at a time, so the eye can follow the growing tip of every single stroke. Nothing is revealed by a sweeping wipe and nothing fades into view - every line extends from its own tip. [슬롯 B · 그리는 순서]
+
+[슬롯 C · 주인공 디테일] ... alone carries the finest detail in the whole frame and is drawn with far more strokes than anything else: ... The [나머지 요소들] stay deliberately economical by comparison, with most of each of those forms left free of internal lines, so the [주인공] reads as the most finely observed thing on the page.
+
+4-7s: an extremely pale, water-heavy watercolor wash develops gently. [슬롯 D · 색 3종]. All color remains low-saturation and transparent, with white showing through every wash. No area becomes dark, dense or fully filled. All surrounding space stays untouched pure white with no wash of any kind spreading behind the subjects.
+
+7-8s: nothing moves and nothing changes. Every subject stays exactly where it was drawn, fully complete and fully visible, and simply holds still. [슬롯 E · 사라지면 안 되는 것 재지정] No element is erased, faded, redrawn, relocated or cleaned up at any moment.
+
+The finished composition still contains every subject listed above, [주요 피사체] included and fully intact, and nothing more, all lines crisp and completely stable, resting inside generous untouched white space.
+
+Style: master-level fine-line illustration with exceptionally thin, precise pale graphite strokes and sophisticated control, luminous transparent watercolor, restrained tonal contrast, generous white space, sophisticated museum-quality editorial illustration for an adult natural-history atlas, mature and understated, with hairline strokes and no heavy outlines anywhere.
+
+Audio: none. This is a silent piece.
+
+Never: text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets of paper, paper texture, visible paper grain, panels, mats, borders, background rectangles, repeated parallel hatching, cross-hatching, engraving-style shading, black ink masses, heavy dark outlines, grey-dominant mood, sumi-e style, dark watercolor, saturated green, pink or yellow or orange background wash, paint blooms behind the subjects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in or dissolve, music, background score, sound effects, narration, voice, ambient sound, any subject disappearing or being erased.
+
+[변경 이력]
+- 마지막 동작 블록 제거 → 사라짐 문제 해결 (v3에서 확정)
+- densely woven 문단 삭제 → 채색 진해지는 문제 해결
+- Audio 블록 축약 → 긍정문에서 narration/voice 제거 (음성 소환 차단)

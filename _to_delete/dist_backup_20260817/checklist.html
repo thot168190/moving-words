@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카카오페이 / 서브몰 심사 최종 점검 체크리스트</title>
+  <style>
+    :root {
+      --primary: #fee500;
+      --primary-dark: #191919;
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #212529;
+      --text-muted: #6c757d;
+      --border: #e9ecef;
+      --success: #2b8a3e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 20px 15px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    header {
+      background: var(--primary);
+      color: var(--primary-dark);
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    header p { font-size: 0.9rem; opacity: 0.85; }
+    
+    .progress-card {
+      background: var(--card-bg);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    .progress-bar-bg {
+      background: var(--border);
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .progress-bar-fill {
+      background: var(--success);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    .section {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-item:last-child { border-bottom: none; }
+    
+    .check-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      accent-color: var(--primary-dark);
+      cursor: pointer;
+    }
+    
+    .check-label {
+      font-size: 0.95rem;
+      flex: 1;
+    }
+    .check-item.done .check-label {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .tag-badge {
+      display: inline-block;
+      background: #ffe3e3;
+      color: #e03131;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+    }
+    
+    .auto-done {
+      background: #ebfbee;
+      border: 1px solid #d3f9d8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>카카오페이 / 서브몰 심사 체크리스트</h1>
+    <p>대표님께서 하나씩 클릭하여 완료 체크하실 수 있습니다.</p>
+  </header>
+
+  <div class="progress-card">
+    <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:0.9rem;">
+      <span>전체 준비 진행률</span>
+      <span id="progress-text">0 / 0 (0%)</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- 서류 1 -->
+  <div class="section">
+    <div class="section-title">📄 [서류 1] 서브몰 심사자료 (.pptx)</div>
+    
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c1">
+      <span class="check-label">https://inkword.site URL 및 9,900원 상품 금액 명시</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c2">
+      <span class="check-label">랜딩 / 로그인 / 학습장 / 이용권 팝업 / 결제창 캡처 슬라이드 포함</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c3">
+      <span class="check-label">가격표 밑 '서비스 제공 시기' 문구 포함 캡처 화면</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c4">
+      <span class="check-label">심사관 접속용 테스트 계정 (ID / PW) 슬라이드 기재</span>
+    </label>
+  </div>
+
+  <!-- 서류 2 -->
+  <div class="section">
+    <div class="section-title">📝 [서류 2] 이용계약서 (.docx) 및 구비서류</div>
+    
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c5">
+      <span class="check-label">계약서 맨 뒤 대표자 인감 날인 또는 서명 완료</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c6">
+      <span class="check-label">사업자등록증 사본 및 정산용 통장 사본 첨부</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c7">
+      <span class="check-label">대표자 신분증 사본 <span class="tag-badge">주민번호 뒷자리 마스킹 필수!</span></span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c8">
+      <span class="check-label">통신판매업 신고증 사본 첨부</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c9">
+      <span class="check-label">인감증명서 (인감 날인 시 3개월 이내 발급분)</span>
+    </label>
+  </div>
+
+  <!-- 메일 회신 -->
+  <div class="section">
+    <div class="section-title">✉️ [메일] 보완 회신 메일 전송</div>
+    
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c10">
+      <span class="check-label">포트원 담당자(pg_on) 포함 전체 답장 지정</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c11">
+      <span class="check-label">연동 완료 예정일 기재 ("키 수령 후 2영업일 이내")</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="chk" id="c12">
+      <span class="check-label">본문에 심사용 테스트 계정 (ID / PW) 포함</span>
+    </label>
+  </div>
+
+  <!-- 사이트 자동완료 -->
+  <div class="section auto-done">
+    <div class="section-title" style="color:#2b8a3e;">🌐 [사이트] 코다리 자동 배포 완료 (수정 필요 없음)</div>
+    
+    <label class="check-item done">
+      <input type="checkbox" checked disabled>
+      <span class="check-label">푸터 사업자 정보 (상호, 대표, 주소, 연락처) 표기 완</span>
+    </label>
+    <label class="check-item done">
+      <input type="checkbox" checked disabled>
+      <span class="check-label">서비스 제공 시기 문구 ("결제 완료 즉시 이용 가능") 표기 완</span>
+    </label>
+    <label class="check-item done">
+      <input type="checkbox" checked disabled>
+      <span class="check-label">7일 이내 환불 규정 및 코리아포트원 위탁약관 표기 완</span>
+    </label>
+  </div>
+</div>
+
+<script>
+  const checkboxes = document.querySelectorAll('.chk');
+  const progressText = document.getElementById('progress-text');
+  const progressFill = document.getElementById('progress-fill');
+
+  function updateProgress() {
+    const total = checkboxes.length;
+    let checked = 0;
+
+    checkboxes.forEach(chk => {
+      const parent = chk.closest('.check-item');
+      if (chk.checked) {
+        checked++;
+        parent.classList.add('done');
+        localStorage.setItem(chk.id, 'true');
+      } else {
+        parent.classList.remove('done');
+        localStorage.removeItem(chk.id);
+      }
+    });
+
+    const percent = Math.round((checked / total) * 100);
+    progressText.innerText = `${checked} / ${total} (${percent}%)`;
+    progressFill.style.width = percent + '%';
+  }
+
+  checkboxes.forEach(chk => {
+    if (localStorage.getItem(chk.id) === 'true') {
+      chk.checked = true;
+    }
+    chk.addEventListener('change', updateProgress);
+  });
+
+  updateProgress();
+</script>
+</body>
+</html>

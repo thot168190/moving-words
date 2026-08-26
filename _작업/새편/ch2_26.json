@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "26",
+  "title": "화려한 호랑나비",
+  "sub": "우아한 날갯짓의 나비",
+  "video": "ch2/ch2_26.mp4",
+  "img": "ch2/ch2_26-poster.jpg",
+  "levelOne": [
+    [
+      "argue",
+      "argue",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "pair",
+      "양 날개 한 쌍",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "arrest",
+      "arrest",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "aside",
+      "aside",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "assess",
+      "assess",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "assign",
+      "assign",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "assist",
+      "assist",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "grace",
+      "기품있는 자태",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

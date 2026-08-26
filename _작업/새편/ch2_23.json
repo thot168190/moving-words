@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "23",
+  "title": "키 큰 해바라기",
+  "sub": "담장 옆 활짝 핀 꽃",
+  "video": "ch2/ch2_23.mp4",
+  "img": "ch2/ch2_23-poster.jpg",
+  "levelOne": [
+    [
+      "annual",
+      "한해살이 화초",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "allow",
+      "allow",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "alter",
+      "alter",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "although",
+      "although",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "continue",
+      "계속 자라다",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "direct",
+      "태양을 향하다",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "regular",
+      "규칙적 배열",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "altogether",
+      "altogether",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

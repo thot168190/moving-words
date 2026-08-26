@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "33",
+  "title": "정원 달팽이",
+  "sub": "나선형 껍질을 진 달팽이",
+  "video": "ch2/ch2_33.mp4",
+  "img": "ch2/ch2_33-poster.jpg",
+  "levelOne": [
+    [
+      "brand",
+      "brand",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "breast",
+      "breast",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "breath",
+      "breath",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "brief",
+      "brief",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "budget",
+      "budget",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "burst",
+      "burst",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "bury",
+      "bury",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "calculate",
+      "calculate",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}

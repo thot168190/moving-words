@@ -1,0 +1,76 @@
+{
+  "chapter": 2,
+  "n": "30",
+  "title": "단풍 씨앗 날개",
+  "sub": "빙글빙글 날아가는 날개 씨앗",
+  "video": "ch2/ch2_30.mp4",
+  "img": "ch2/ch2_30-poster.jpg",
+  "levelOne": [
+    [
+      "beer",
+      "beer",
+      [
+        35,
+        30
+      ]
+    ],
+    [
+      "beg",
+      "beg",
+      [
+        72,
+        28
+      ]
+    ],
+    [
+      "belief",
+      "belief",
+      [
+        28,
+        70
+      ]
+    ],
+    [
+      "belong",
+      "belong",
+      [
+        68,
+        72
+      ]
+    ]
+  ],
+  "levelTwo": [
+    [
+      "benefit",
+      "benefit",
+      [
+        48,
+        15
+      ]
+    ],
+    [
+      "bet",
+      "bet",
+      [
+        78,
+        52
+      ]
+    ],
+    [
+      "beyond",
+      "beyond",
+      [
+        22,
+        45
+      ]
+    ],
+    [
+      "billion",
+      "billion",
+      [
+        58,
+        85
+      ]
+    ]
+  ]
+}
