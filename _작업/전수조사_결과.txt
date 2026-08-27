@@ -1,0 +1,342 @@
+=== 157편 전 장면 단어 매칭 전수조사 리포트 ===
+
+[Chapter 1] (14편)
+  01. 빛을 보내는 등대 (ch1/scene-ch1-02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: tower(탑), island(섬), shine(빛나다), shore(물가), warn(경고하다), cliff(절벽), guide(안내하다), flash(번쩍임)
+  02. 바람을 타는 범선 (ch1/scene-ch1-03-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: rope(밧줄), flag(깃발), journey(여정), row(노를 젓다), sail(돛), deck(갑판), port(항구), navy(해군)
+  03. 돌고래가 따라오는 배 (ch1/scene-ch1-09-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: follow(따라오다), float(떠 있다), reflect(비추다), silver(은빛), dolphin(돌고래), leap(도약하다), calm(고요한), distance(먼 거리)
+  04. 고래와 깊은 바다 (ch1/scene-ch1-01-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: whale(고래), ocean(대양), wave(파도), surface(수면), rise(솟아오르다), dive(잠수하다), spray(물보라), bubble(거품)
+  05. 깊은 바다의 산호 협곡 (ch1/scene-ch1-08-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: sink(가라앉다), shadow(그늘), enormous(거대한), among(사이에), stream(흐름), beneath(아래로), narrow(좁은), rough(거친)
+  06. 곶을 돌아 열리는 만 (ch1/scene-ch1-10-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: bay(만), coast(해안), flow(흐르다), pool(웅덩이), adventure(모험), cape(곶), channel(물길), flood(밀려들다)
+  07. 고대의 원형 경기장 (ch1/scene-ch1-04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: ruin(폐허), empire(제국), structure(구조물), stage(무대), huge(거대한), solid(단단한), site(유적터), repeat(되풀이하다)
+  08. 별을 보는 망원경 (ch1/scene-ch1-05-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: aim(겨누다), heaven(하늘), instrument(기구), observe(관찰하다), sight(시야)
+  09. 눈 덮인 숲의 오로라 (ch1/scene-ch1-06-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: freeze(얼다), shade(그늘), purple(보라), pine(소나무), branch(가지), atmosphere(대기), spread(퍼지다), fold(접히다)
+  10. 하늘을 나는 열기구 (ch1/scene-ch1-07-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: balloon(열기구), tour(여행), height(높이)
+  11. 옷걸이의 옷 (ch3/scene-ch3-06-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: sweater(스웨터), jeans(청바지), scarf(목도리), glove(장갑), pocket(주머니)
+  12. 맑은 욕실 (ch3/scene-ch3-07-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: shower(샤워기), toilet(변기), tap(수도꼭지), towel(수건), mirror(거울)
+  13. 계단 옆 거실 (ch3/scene-ch3-08-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: stairs(계단), shelf(선반), livingroom(거실), ceiling(천장), sheet(얇은 판)
+  14. 램프 곁의 담요 (ch3/scene-ch3-09-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: furniture(가구), bench(벤치), lamp(램프), blanket(담요), carpet(카펫)
+
+[Chapter 2] (18편)
+  01. 참나무 아래 초원 (ch2/scene-ch2-02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: tree(나무), leaf(나뭇잎), grass(풀), root(뿌리), branch(나뭇가지), seed(씨앗), soil(흙), bark(나무껍질)
+  02. 평원의 기린과 얼룩말 (ch2/scene-ch2-03-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: animal(동물), herd(무리), tail(꼬리), neck(목), spot(점), stripe(줄무늬), plain(평원), graze(풀을 뜯다)
+  03. 진흙 속 개구리 (ch2/scene-ch2-05-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: frog(개구리), jump(뛰다), mud(진흙), bank(둑), pond(연못), insect(곤충), catch(잡다), hide(숨다)
+  04. 언덕을 오르는 양떼 (ch2/scene-ch2-01-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: sheep(양), lamb(새끼 양), wool(양털), fence(울타리), mount(산), valley(계곡), path(오솔길), surround(둘러싸다)
+  05. 둥지에 돌아온 새 (ch2/scene-ch2-04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: nest(둥지), wing(날개), loose(느슨한), tight(단단한), shelter(보금자리), protect(지키다), tiny(아주 작은), rest(머물다)
+  06. 통나무 아래의 딱정벌레 (ch2/scene-ch2-06-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: log(통나무), bug(벌레), trunk(줄기), hole(구멍), crawl(기어가다), beneath(아래에), dirt(흙)
+  07. 풀숲을 가르는 뱀 (ch2/scene-ch2-07-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: snake(뱀), slide(미끄러지다), smooth(매끄러운), shade(그늘), twist(비틀다), narrow(좁은), stretch(뻗다), still(가만히)
+  08. 솔방울이 여는 씨앗집 (ch2/scene-ch2-08-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: pine(소나무), plant(식물), bloom(피다), shell(껍질), thick(두꺼운), spread(퍼지다), secure(안전하게 하다), expand(벌어지다)
+  09. 개미의 긴 줄 (ch2/scene-ch2-09-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: ant(개미), species(종), unite(뭉치다), lane(좁은 길), load(싣다), gather(모으다), bean(콩), wild(야생의)
+  10. 새장 문이 열린 날 (ch2/scene-ch2-10-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: cage(새장), pet(반려동물), feed(먹이를 주다), release(놓아주다), wire(철사), bar(창살), swing(흔들리다), within(안에)
+  11. 숲길을 걷는 여우 (ch4/Red_fox_walking_on_path_202608101458-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: bush(덤불), trace(자취)
+  12. 바람 뒤의 거미줄 (ch4/Spider_drawing_on_white_background_202608101458-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: string(줄), net(그물), thin(가느다란), connect(잇다), attach(붙이다), pattern(무늬), trap(덫), stable(안정된 구조)
+  13. 잎 사이의 위장자 (ch4/Leaf_insect_on_twig_202608101458-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: unit(생물 개체), specific(특이한 모습), seem(~처럼 보이다), demonstrate(나뭇잎처럼 보이다)
+  14. 숲속의 도토리 (ch2/ch2_17-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: link(꼭지 연결부), definite(단단한 껍질), develop(열매가 여물다), separate(가지에서 떨어지다), defense(씨앗 방어)
+  15. 줄무늬 깃털 (ch2/ch2_18-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: fur(부드러운 솜털), mark(깃털 무늬 자국), gentle(부드러운), swallow(하늘로 날아가다)
+  16. 물가의 푸른 잠자리 (ch2/ch2_19-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: nerve(그물망 날개맥), chest(단단한 가슴), rush(빠르게 날다), chase(먹이를 쫓다), bounce(공중에서 튕기다), muscle(꼬리 마디)
+  17. 날개 달린 단풍 씨앗 (ch2/ch2_20-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: balance(공중 비행 균형), feature(날개 모양 특징), progress(멀리 나아가다)
+  18. 둥지 속 푸른 새알 (ch2/ch2_22-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: pregnant(생명을 품은), health(건강히 자라다), bury(포근히 묻어두다)
+
+[Chapter 3] (21편)
+  01. 조용한 부엌 (ch3/scene-ch3-10-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: oven(오븐), microwave(전자레인지), lid(뚜껑), tray(쟁반), bin(쓰레기통)
+  02. 벽돌집과 지붕 (ch3/scene-ch3-11-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: roof(지붕), garage(차고), cottage(시골집), brick(벽돌), villa(별장)
+  03. 창고 벽의 연장 (ch3/scene-ch3-12-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: rope(밧줄), chain(사슬), lock(자물쇠), wire(철사), pipe(파이프), iron(다리미)
+  04. 빨랫줄과 집게 (ch3/scene-ch3-13-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: string(끈), bar(막대), clip(집게), pin(핀), cotton(면), tank(탱크)
+  05. 현관 구석의 잡동사니 (ch3/scene-ch3-14-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: fit(맞다), boot(부츠), mess(엉망), cable(케이블), dump(버리다), curl(감기다)
+  06. 거울 앞 선반 (ch3/scene-ch3-15-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: blonde(금발), uniform(제복), suit(정장), mask(마스크), shave(면도하다), bare(드러난)
+  07. 화분 속 새싹 (ch3/ch3_11-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: shape(모양새), single(한 포기), extend(뻗어나가다), contain(담고 있다), alive(살아 있는), breathe(숨 쉬다), develop(자라나다)
+  08. 물뿌리개와 모종삽 (ch3/ch3_12-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: tool(연장), handle(손잡이), dig(파다), operate(다루다)
+  09. 유리 온실 병 (ch3/ch3_13-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: triangle(세모), volume(부피), empty(비어 있는), include(함께 들어 있다), remain(그대로 있다)
+  10. 꽃가위와 라벤더 (ch3/ch3_14-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: pair(한 쌍), piece(조각), divide(가르다), snap(싹둑 자르다), remove(쳐내다), bend(휘다)
+  11. 그루터기 위 새집 (ch3/ch3_15-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: frame(뼈대), block(토막), settle(자리 잡다), survive(견디어 내다)
+  12. 바구니에 담은 가을 (ch3/ch3_16-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: bunch(다발), mass(덩어리), plenty(넉넉함), several(여럿의), gain(거두다)
+  13. 꽃을 누르는 나무틀 (ch3/ch3_17-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: square(네모), link(잇는 쇠), shut(꽉 닫다), bind(묶어 두다), constant(변함없는), maintain(그대로 지키다)
+  14. 외발 손수레 (ch3/ch3_18-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: wide(넓은), step(발판), roll(구르다), drag(끌다), force(밀어붙이는 힘), shift(옮기다)
+  15. 유리로 지은 온실 (ch3/ch3_19-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: grand(웅장한), upper(위쪽의), internal(안쪽의), raise(높이다)
+  16. 울타리 앞 해바라기 (ch3/ch3_20-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: regular(고르게 늘어선), combine(엇갈려 짜이다), grace(우아함·기품), super(아주 큰), continue(계속 자라다)
+  17. 호랑나비의 날갯짓 (ch2/ch2_16-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: equal(대칭인 날개), odd(특이한 무늬), amaze(놀라운 자태), adapt(자연에 적응하다), vary(다채롭다), gesture(날갯짓)
+  18. 나뭇가지 위 푸른 박새 (ch2/ch2_14-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: breast(가슴 깃털), grace(우아함·기품), awake(잠에서 깨어나다), hear(소리에 귀 기울이다), lean(가지에 앉다)
+  19. 잎사귀 위 무당벌레 (ch2/ch2_15-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: cell(등껍질 조직), nail(발톱 끝), bite(잎을 갉아먹다), poison(독성 분비물), sense(더듬이 감각), slip(미끄러지다)
+  20. 정원의 돌 모이그릇 (ch2/ch2_21-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: source(먹이의 원천), district(모이통 구역), chew(곡식을 씹다), approach(새들이 다가오다)
+  21. 나선형 껍질의 달팽이 (ch2/ch2_23-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: toe(배다리 발끝), wound(상처를 조심하다)
+
+[Chapter 4] (11편)
+  01. 자료실의 분류벽 (카드 목록장) (ch4/Pencil_drawing_of_library_cabinet_202608071752-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: catalog(목록), arrange(정리하다), list(명단), article(기사), chart(도표), graph(그래프), magazine(잡지), clip(클립)
+  02. 무대 원고 편집실 (타자기) (ch4/Mechanical_typewriter_202608071752-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: edit(편집하다), text(글자), spell(철자), language(언어), poem(시), comedy(희극), drama(드라마), scene(장면)
+  03. 여행기록 보존대 (양장본) (ch4/Archival_sorting_table_202608071752-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: diary(일기장), document(문서), record(기록하다), photograph(사진), dictionary(사전), essay(수필), envelope(봉투), object(사물)
+  04. 이젤과 화판 (ch4/ch4_04-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: belief(belief·학습), benefit(benefit·학습), bet(bet·학습), beyond(beyond·학습), billion(billion·도구), bit(bit·도구)
+  05. 만년필과 잉크 (ch4/ch4_14-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: conscious(conscious·학습), consider(consider·학습), contact(contact·학습), contest(contest·학습), context(context·도구), contract(contract·도구)
+  06. 돋보기와 렌즈 (ch4/ch4_15-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: contribute(contribute·학습), converse(converse·학습), convince(convince·학습), cope(cope·학습), correct(correct·도구), cough(cough·도구)
+  07. 탁상 핸드벨 (ch4/ch4_16-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: council(council·학습), county(county·학습), credit(credit·학습), crown(crown·학습), cruel(cruel·도구), cure(cure·도구)
+  08. 잉크병과 스포이트 (ch4/ch4_17-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: cute(cute·학습), dare(dare·학습), darling(darling·학습), deal(deal·학습), debate(debate·도구), debt(debt·도구)
+  09. 나무 독서대 (ch4/ch4_18-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: define(define·학습), delay(delay·학습), demand(demand·학습), dentist(dentist·학습), deny(deny·도구), depend(depend·도구)
+  10. 클립과 압정 (ch4/ch4_22-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: due(due·학습), each(each·학습), earn(earn·학습), ease(ease·학습), economy(economy·도구), effect(effect·도구)
+  11. 황동 인장 스탬프 (ch4/ch4_23-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: either(either·학습), elect(elect·학습), electric(electric·학습), else(else·학습), embarrass(embarrass·도구), emotion(emotion·도구)
+
+[Chapter 5] (16편)
+  01. 놀이공원 대관람차 (ch3/scene-ch3-01-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: wheel(바퀴), ride(타다), park(공원), spin(돌다), high(높은), view(전망), sky(하늘), fun(재미)
+  02. 물보라 롤러코스터 (ch3/scene-ch3-02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: track(트랙), speed(속도), scream(비명), drop(떨어지다), water(물), splash(물보라), fast(빠른), thrill(스릴)
+  03. 범퍼카 타는 아이들 (ch3/scene-ch3-03-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: car(자동차), bump(부딪히다), drive(운전하다), laugh(웃다), seat(좌석), steer(조종하다), crash(충돌), play(놀다)
+  04. 드롭타워 꼭대기 (ch3/Riders_on_drop_tower_summit_202608062009-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: tower(탑), rise(솟아오르다), height(높이), fear(두려움), grab(붙잡다), tight(꽉)
+  05. 곰인형을 뽑다 (ch3/Girl_lifts_won_teddy_bear_202608061648-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: prize(상품), award(상), hug(껴안다), proud(자랑스러운), lift(들어올리다), reach(닿다), cheer(환호하다), joy(기쁨)
+  06. 서재 정리대와 고서 (ch5/ch5_06-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: transport(수송·탈것), traffic(교통), discipline(질서·규율), prevent(예방하다), van(승합차), accident(사고), avoid(조심하다·피하다)
+  07. 판사봉과 법전 (ch5/ch5_07-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: switch(전환하다), law(법규·규칙), legal(합법의·정상), instruct(지시하다), direct(지휘하다·가리키다), order(순서·명령), standard(기준·표준)
+  08. 항구와 닻 (ch5/ch5_08-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: motion(움직임), steady(안정된), rapid(신속한·급격한), effort(노력·힘), parade(행렬), forward(앞으로)
+  09. 벌통과 꿀단지 (ch5/ch5_09-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: alarm(경보·사이렌), ambulance(구급차·구조), pump(펌프·소화전), crisis(위기·화재), deliver(전달하다·공급), threat(위협·위험), assist(돕다·구조)
+  10. 물레와 도자기 (ch5/ch5_10-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: cop(경찰), justice(정의·공정), arrest(단속·체포), crime(범죄), civil(시민의), innocent(무고한·시민), punish(처벌하다)
+  11. 온실과 분무기 (ch5/ch5_11-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: rail(철도·선로), engine(기관·엔진), coal(석탄), station(기차역), burst(뿜어져 나오다), advance(전진하다)
+  12. 동판 에칭 판화 (ch5/ch5_12-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: inform(알리다·통지), section(구간·구역), label(표지·라벨), limit(제한·한계), locate(위치하다), common(공통의·일반)
+  13. 오크통과 포도 (ch5/ch5_13-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: alter(바꾸다·전환), choice(선택), transfer(환승·갈아타기), proceed(나아가다), manage(관리하다), item(항목·부품)
+  14. 양팔저울과 추 (ch5/ch5_14-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: rocket(로켓·비행체), foreign(외국의·해외), leave(떠나다·출발), capital(수도·대도시), vision(시야·전망), schedule(일정·시각표)
+  15. 천구의와 궤도 (ch5/ch5_15-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: captain(선장), guest(손님·승객), belong(소속되다·선적), reserve(예약하다·비축), share(함께 타다·나누다), crowd(군중·승객들)
+  16. 스쿨버스와 정지판 (ch5/ch5_16-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: automatic(자동의), monitor(계량화면), charge(충전·요금), supply(공급하다·주유), rate(요율·비율), value(가치·금액)
+
+[Chapter 6] (10편)
+  01. 끓는 냄비와 주전자 (ch3/scene-ch3-18-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: boil(끓이다), kettle(주전자), pour(따르다), sauce(소스), pot(냄비), stir(젓다), crack(깨뜨리다), tin(통조림 깡통)
+  02. 도마 위에서 다듬기 (ch3/scene-ch3-19-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: bowl(볼 그릇), mix(섞다), pepper(후추), mushroom(버섯), chop(다지다), powder(가루), press(누르다), rub(문지르다), wipe(닦다)
+  03. 프라이팬의 고기 (ch3/scene-ch3-20-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: fry(튀기다), pan(프라이팬), dish(접시), crisp(바삭바삭한), bacon(베이컨), pork(돼지고기), chip(조각), wrap(싸다)
+  04. 물레와 점토 (ch4/ch4_05-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: bitter(bitter·학습), blame(blame·학습), blank(blank·학습), bless(bless·학습), blind(blind·도구), bomb(bomb·도구)
+  05. 재봉틀과 실토리 (ch4/ch4_06-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: bond(bond·학습), boom(boom·학습), bore(bore·학습), boss(boss·학습), bother(bother·도구), bow(bow·도구)
+  06. 목공 대패와 대팻밥 (ch4/ch4_07-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: brain(brain·학습), brand(brand·학습), breath(breath·학습), brief(brief·학습), budget(budget·도구), capable(capable·도구)
+  07. 가죽 펀치와 가죽 (ch4/ch4_08-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: career(career·학습), cast(cast·학습), castle(castle·학습), category(category·학습), cause(cause·도구), chairman(chairman·도구)
+  08. 스테인드글라스 조각 (ch4/ch4_09-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: challenge(challenge·학습), champion(champion·학습), character(character·학습), characteristic(characteristic·학습), charm(charm·도구), chief(chief·도구)
+  09. 석고상과 조각주걱 (ch4/ch4_10-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: cinema(cinema·학습), circumstance(circumstance·학습), citizen(citizen·학습), claim(claim·학습), clerk(clerk·도구), client(client·도구)
+  10. 양장본 책과 리본 (ch4/ch4_21-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: disturb(disturb·학습), divorce(divorce·학습), domestic(domestic·학습), donate(donate·학습), dozen(dozen·도구), drug(drug·도구)
+
+[Chapter 7] (11편)
+  01. 거울을 보는 시선 (ch7/ch7_02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: cheek(볼), jaw(턱), glance(흘긋 보다), stare(응시하다), sight(시야)
+  02. 아픈 사람과 휴식 (ch7/ch7_03-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: fever(열), pain(통증), medicine(약), patient(환자), weak(약한), rest(머물다), asleep(잠든), ill(아픈)
+  03. 머그잔과 휴식 (ch7/ch7_04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: joy(기쁨), laugh(웃다), peace(평화), calm(고요한), relax(긴장을 풀다), comfort(편안함), delight(즐거움), relief(안도)
+  04. 알람시계와 걱정 (ch7/ch7_05-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: anger(화), annoy(짜증나게 하다), anxious(불안한), fear(두려움), panic(겁에 질림), shock(충격), trouble(걱정거리), upset(속상한)
+  05. 캠핑 주전자와 머그컵 (ch8/ch8_09-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: although(although·활동), altogether(altogether·활동), amuse(amuse·활동), analysis(analysis·활동), announce(announce·캠핑), annual(annual·캠핑)
+  06. 접이식 포켓 나이프 (ch8/ch8_11-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: appreciate(appreciate·활동), argue(argue·활동), aside(aside·활동), assess(assess·활동), sharp(날카로운), assign(assign·캠핑)
+  07. 무쇠 팬과 모닥불 화덕 (ch8/ch8_12-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: associate(associate·활동), assume(assume·활동), attack(attack·활동), attempt(attempt·활동), attend(attend·캠핑), attention(attention·캠핑)
+  08. 보온병과 스테인리스 컵 (ch8/ch8_13-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: attitude(attitude·활동), attract(attract·활동), audience(audience·활동), average(average·활동), aware(aware·캠핑), awkward(awkward·캠핑)
+  09. 가지런한 아침상 (ch3/scene-ch3-16-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: rice(밥), toast(토스트), tea(차), meal(식사), lay(놓이다), neat(정갈한), total(전체), pure(순수한)
+  10. 과일 접시 (ch3/scene-ch3-17-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: pear(배), melon(멜론), lemon(레몬), plate(접시), strawberry(딸기), sour(신 맛의), sort(종류), amount(양), spare(여분의)
+  11. 장 보고 온 저녁 (ch3/scene-ch3-21-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: grocery(식료품), supper(저녁 식사), honey(꿀), snack(간식), sweet(달콤한), pie(파이), hunger(배고픔), consume(소비하다)
+
+[Chapter 8] (10편)
+  01. 공항과 비행기 (ch8/ch8_01-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: airline(항공사), airport(공항), exit(출구), flight(항공편), gate(탑승구), plane(비행기), seat(좌석), tour(여행)
+  02. 자전거와 수레 (ch8/ch8_02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: cycle(자전거), cart(수레), picnic(소풍), motor(모터(전동기)), vehicle(차량), brake(브레이크), gear(기어)
+  03. 공원 벤치와 배낭 (ch8/ch8_03-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: pack(짐을 싸다), bench(벤치), blanket(담요), tie(묶다), pocket(주머니), lawn(잔디밭), branch(가지), oak(참나무)
+  04. 궁전과 근위병 (ch8/ch8_04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: soldier(군인), guard(경비병), army(군대), weapon(무기), officer(장교), uniform(제복), post(지키는 자리), duty(임무)
+  05. 삼각 캠핑 텐트와 의자 (ch8/ch8_05-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: escape(탈출·떠나다), able(able·활동), absolute(absolute·활동), accent(accent·활동), accept(accept·캠핑), access(access·캠핑)
+  06. 황동 랜턴의 불꽃 (ch8/ch8_06-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: battery(전지·배터리), account(account·활동), accuse(accuse·활동), achieve(achieve·활동), admire(admire·캠핑), admit(admit·캠핑)
+  07. 가죽 등산화와 지팡이 (ch8/ch8_07-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: adopt(adopt·활동), advantage(advantage·활동), advertise(advertise·활동), advice(advice·활동), advise(advise·캠핑), affair(affair·캠핑)
+  08. 원목 카누와 노 (ch8/ch8_08-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: affect(affect·활동), afford(afford·활동), agent(agent·활동), aid(aid·활동), alcohol(alcohol·캠핑), allow(allow·캠핑)
+  09. 손도끼와 장작더미 (ch8/ch8_10-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: strike(내리치다·타격), apart(apart·활동), appeal(appeal·활동), appear(appear·활동), apply(apply·캠핑), appoint(appoint·캠핑)
+  10. 황동 나침반과 지도 (ch8/ch8_14-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: background(background·활동), band(band·활동), target(목표점·방향), search(탐색하다·찾다), seek(찾다·구하다), toward(~을 향하여)
+
+[Chapter 9] (11편)
+  01. 바다를 보는 석상 (ch4/Moai_statues_standing_on_grass_202608071553-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: coast(해안), ocean(바다), shore(물가), stare(응시하다), giant(거대한), figure(형상), edge(가장자리), lawn(풀밭)
+  02. 그랜드 피아노와 건반 (ch9/ch9_02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: glue(glue·음악), tone(음조·음색), perform(연주하다·공연), opinion(opinion·음악), pop(pop·연주), entertain(즐겁게 하다)
+  03. 어쿠스틱 기타와 울림통 (ch9/ch9_03-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: tune(선율·조율하다), quit(quit·음악), folk(민요·사람들), fellow(친구·동료), suspect(suspect·연주), mate(벗·친구)
+  04. 클래식 바이올린과 활 (ch9/ch9_04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: opera(오페라·가극), theater(공연장·극장), express(표현하다·연주), master(거장·연주자), especial(especial·연주), without(without·연주)
+  05. 황동 트럼펫과 밸브 (ch9/ch9_05-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: loud(소리가 큰·우렁찬), concentrate(concentrate·음악), influence(influence·음악), bang(쿵 하는 소리), mental(mental·연주), possible(possible·연주)
+  06. 원목 메트로놈의 진동추 (ch9/ch9_06-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: beat(박자·박동), exhaust(exhaust·음악), evidence(evidence·음악), individual(individual·음악), shame(shame·연주), respond(respond·연주)
+  07. 중후한 첼로와 엔드핀 (ch9/ch9_07-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: giraffe(giraffe·음악), estimate(estimate·음악), fortunate(fortunate·음악), experiment(experiment·음악), insure(insure·연주), honor(명예·영예)
+  08. 알토 색소폰과 키패드 (ch9/ch9_08-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: plus(plus·음악), particular(particular·음악), humor(해학·유머), mood(분위기·무드), salary(salary·연주), pride(자부심·자긍심)
+  09. 프렌치 호른과 원형 관 (ch9/ch9_09-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: secretary(secretary·음악), nut(nut·음악), major(웅장한·주요한), intense(강렬한 울림), extreme(극치의 선율), communicate(communicate·연주)
+  10. 은빛 플루트와 취구 (ch9/ch9_10-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: whistle(휘파람·맑은소리), self(self·음악), thief(thief·음악), quality(quality·음악), immediate(immediate·연주), satisfy(satisfy·연주)
+  11. 흑단 클라리넷과 벨 (ch9/ch9_11-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: noise(소리·음향), prime(prime·음악), govern(govern·음악), pronounce(소리내다·발음), struggle(struggle·연주), gun(gun·연주)
+
+[Chapter 10] (13편)
+  01. 새벽 안개 낀 시골길 (ch10/ch10_01-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: fog(안개), dawn(새벽), countryside(시골), dirt(흙·먼지), dust(먼지), smoke(연기), village(마을)
+  02. 폭풍우와 물결 (ch10/ch10_02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: storm(폭풍), tide(조수), wave(파도), current(물살·해류), stream(시내·흐름), seal(바다표범), blow(불다)
+  03. 녹는 얼음과 김 (ch10/ch10_04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: freeze(얼다), melt(녹다), steam(김), temperature(온도), factory(공장), degree(도), climate(기후), steel(강철)
+  04. 먹구름과 번개 뇌우 (ch10/ch10_05-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: moreover(moreover·날씨), refuse(refuse·날씨), except(except·날씨), replace(replace·날씨), forth(forth·자연), income(income·자연)
+  05. 맑은 하늘의 칠색 무지개 (ch10/ch10_06-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: rainbow(무지개), message(message·날씨), general(general·날씨), sum(sum·날씨), propose(propose·자연), spoil(spoil·자연)
+  06. 숲길에 자욱한 아침 안개 (ch10/ch10_07-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: prefer(prefer·날씨), which(which·날씨), possess(possess·날씨), extra(extra·날씨), native(native·자연), topic(topic·자연)
+  07. 나뭇가지에 맺힌 서리 (ch10/ch10_08-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: junior(junior·날씨), physical(physical·날씨), league(league·날씨), pardon(pardon·날씨), rat(rat·자연), provide(provide·자연)
+  08. 기와 처마 끝의 고드름 (ch10/ch10_09-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: polite(polite·날씨), sudden(sudden·날씨), report(report·날씨), therefore(therefore·날씨), politics(politics·자연), rude(rude·자연)
+  09. 사막의 거대한 모래폭풍 (ch10/ch10_10-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: detect(detect·날씨), title(title·날씨), rule(rule·날씨), sweep(쓸고 지나가다), forgive(forgive·자연), retire(retire·자연)
+  10. 바다 위의 회오리 용오름 (ch10/ch10_11-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: calculate(calculate·날씨), found(found·날씨), unless(unless·날씨), create(create·날씨), serious(serious·자연), yell(yell·자연)
+  11. 단풍잎을 날리는 가을바람 (ch10/ch10_12-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: invest(invest·날씨), support(support·날씨), practice(practice·날씨), century(century·날씨), sew(sew·자연), reason(reason·자연)
+  12. 풀잎 끝에 맺힌 아침 이슬 (ch10/ch10_13-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: stuff(stuff·날씨), university(university·날씨), potential(potential·날씨), shoulder(shoulder·날씨), slave(slave·자연), count(count·자연)
+  13. 호수 위에 피는 물안개 (ch10/ch10_14-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: hire(hire·날씨), beer(beer·날씨), principle(principle·날씨), terrible(terrible·날씨), person(person·자연), hesitate(hesitate·자연)
+
+[Chapter 11] (13편)
+  01. 사막의 혼천의 (ch4/Armillary_sphere_ring_rotating_202608071553-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: desert(사막), site(유적터), region(지역), pole(기둥), round(둥근), scale(크기), broad(드넓은), pile(더미)
+  02. 황동 현미경과 광물 (ch4/Brass_microscope_drawing_on_paper_202608071553-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: instrument(기구), detail(세부), sample(표본), metal(금속), examine(살펴보다), inspect(검사하다), element(원소), tiny(아주 작은)
+  03. 측량기와 곧은 길 (ch4/Surveyor_instrument_202608071553-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: measure(재다), survey(측량하다), technique(기술), skill(솜씨), route(길), flat(평평한), straight(곧은), level(수평)
+  04. 초승달과 은은한 별빛 (ch11/ch11_04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: research(research·우주), indeed(indeed·우주), simple(simple·우주), society(society·우주), prepare(prepare·천체), theory(theory·천체)
+  05. 밤하늘을 가로지르는 은하수 (ch11/ch11_05-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: content(content·우주), matter(matter·우주), wage(wage·우주), fault(fault·우주), grant(grant·천체), main(main·천체)
+  06. 꼬리를 길게 끄는 혜성 (ch11/ch11_06-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: frankly(frankly·우주), select(select·우주), regard(regard·우주), smash(smash·우주), upon(upon·천체), rare(드문·희귀한)
+  07. 붉은 사막의 행성 화성 (ch11/ch11_07-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: planet(행성), pub(pub·우주), involve(involve·우주), paragraph(paragraph·우주), suggest(suggest·천체), imagine(imagine·천체)
+  08. 거대한 얼음 고리의 토성 (ch11/ch11_08-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: yet(yet·우주), minor(minor·우주), previous(previous·우주), vote(vote·우주), employ(employ·천체), calendar(calendar·천체)
+  09. 밤하늘을 수놓는 초록 오로라 (ch11/ch11_09-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: overall(overall·우주), recommend(recommend·우주), spend(spend·우주), frustrate(frustrate·우주), then(then·천체), guilt(guilt·천체)
+  10. 태양을 가리는 개기일식 (ch11/ch11_10-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: interrupt(interrupt·우주), event(event·우주), steal(steal·우주), stomach(stomach·우주), shout(shout·천체), grade(grade·천체)
+  11. 달 표면의 충돌 분화구 (ch11/ch11_11-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: neighbor(neighbor·우주), improve(improve·우주), tongue(tongue·우주), responsible(responsible·우주), similar(similar·천체), modern(modern·천체)
+  12. 우주를 관측하는 전파망원경 (ch11/ch11_12-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: expert(expert·우주), forever(forever·우주), treat(treat·우주), real(real·우주), necessary(necessary·천체), battle(battle·천체)
+  13. 시공간을 왜곡하는 블랙홀 (ch11/ch11_13-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: till(till·우주), pull(끌어당기다), license(license·우주), display(display·우주), screen(screen·천체), volunteer(volunteer·천체)
+
+[Chapter 12] (9편)
+  01. 캠핑과 밤 이야기 (ch12/ch12_01-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: tale(이야기), magic(마법), ghost(유령), mystery(수수께끼), shadow(그림자), flame(불꽃), aloud(소리 내어), chat(이야기 나누다)
+  02. 아치창문 서재 (ch12/ch12_02-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: fancy(상상), fantastic(환상적인), marvel(놀라운 것), wonder(신기해하다), brilliant(눈부신), curious(궁금한), fascinate(마음을 사로잡다), strange(이상한)
+  03. 책 속의 비밀 미로 (ch12/ch12_03-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: trick(속임수), puzzle(풀어야 할 문제), clue(단서), match(짝을 맞추다), secret(비밀), sign(표시), indicate(가리키다), expose(드러내다)
+  04. 천사와 파스텔 하늘 (ch12/ch12_04-poster.jpg) -> ✅ 기존 매칭 / 확인 필요
+     단어: angel(천사), heaven(하늘·천국), soul(영혼), spirit(정신), presence(곁에 있음), faith(믿음), doubt(의심), glory(영광)
+  05. 판화 롤러와 목판 (ch4/ch4_11-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: coach(coach·학습), coin(coin·학습), command(command·학습), comment(comment·학습), commerce(commerce·도구), committee(committee·도구)
+  06. 베틀과 북 (ch4/ch4_12-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: community(community·학습), compare(compare·학습), complain(complain·학습), complete(complete·학습), complicate(complicate·도구), concept(concept·도구)
+  07. 핀셋과 보석 (ch4/ch4_13-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: concern(concern·학습), concert(concert·학습), confident(confident·학습), confirm(confirm·학습), conflict(conflict·도구), confuse(confuse·도구)
+  08. 탁상 스테이플러 (ch4/ch4_19-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: depress(depress·학습), describe(describe·학습), deserve(deserve·학습), desire(desire·학습), desperate(desperate·도구), despite(despite·도구)
+  09. 휴대용 연필깎이 (ch4/ch4_20-poster.jpg) -> ❌ 알파벳 억지 주입
+     단어: destroy(destroy·학습), determine(determine·학습), diet(diet·학습), disappoint(disappoint·학습), disc(disc·도구), disgust(disgust·도구)
+
+==========================================
+총계: 157편 중 억지 알파벳 주입 의심 29편, 기존/기타 128편
