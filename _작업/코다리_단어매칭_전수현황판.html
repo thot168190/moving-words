@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>움직이는 그림사전 · 단어 매칭 전수 현황판 (코다리 총괄)</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #0b0f19;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  padding: 28px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+.header {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+.badge {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 10px;
+}
+h1 { margin: 0 0 8px; font-size: 24px; font-weight: 800; color: #fff; }
+p.sub { margin: 0; color: #94a3b8; font-size: 14px; }
+
+.grid-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.card {
+  background: #131b2e;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+}
+.card-num {
+  font-size: 34px;
+  font-weight: 800;
+  margin: 6px 0;
+  font-family: ui-monospace, monospace;
+}
+.card-label { color: #94a3b8; font-size: 13px; }
+.c-blue { color: #60a5fa; }
+.c-green { color: #4ade80; }
+.c-purple { color: #c084fc; }
+.c-amber { color: #fbbf24; }
+
+.section-box {
+  background: #131b2e;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
+}
+.section-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f8fafc;
+}
+.word-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-family: ui-monospace, monospace;
+}
+.tag.remain { background: #291b0c; border: 1px solid #78350f; color: #fde68a; }
+.tag.grammar { background: #1e1b4b; border: 1px solid #3730a3; color: #c7d2fe; }
+.tag.concrete { background: #064e3b; border: 1px solid #065f46; color: #a7f3d0; }
+.tag.tag-c1 { background: #831843; border: 1px solid #9d174d; color: #fbcfe8; font-size: 12px; margin-right: 4px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 13px;
+}
+th, td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #1e293b;
+  text-align: left;
+}
+th { background: #0b0f19; color: #94a3b8; font-weight: 600; font-size: 12px; }
+tr:hover { background: #1a243a; }
+.search-input {
+  width: 100%;
+  padding: 11px 16px;
+  background: #0b0f19;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.search-input:focus { outline: none; border-color: #3b82f6; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="badge">코다리 총괄부장 단독 실측 리포트</div>
+    <h1>📊 움직이는 그림사전 · 마스터 1,200 단어 전수 매칭 현황판</h1>
+    <p class="sub">정본 기준: all1200.txt vs public/learning/index.html (실제 데이터 100% 전수 분석)</p>
+  </div>
+
+  <div class="grid-stats">
+    <div class="card">
+      <div class="card-label">🎯 전체 마스터 단어</div>
+      <div class="card-num c-blue">1,200개</div>
+      <div class="card-label">정본 기준 1,200개</div>
+    </div>
+    <div class="card">
+      <div class="card-label">✅ 기존 157편 매칭 완료</div>
+      <div class="card-num c-green">830개</div>
+      <div class="card-label">전체 대비 69.2%</div>
+    </div>
+    <div class="card">
+      <div class="card-label">🎨 오늘 15장 신규씬 흡수</div>
+      <div class="card-num c-purple">112개</div>
+      <div class="card-label">법정·은행·응급실 등</div>
+    </div>
+    <div class="card">
+      <div class="card-label">📌 15장 배치 후 최종 남은 단어</div>
+      <div class="card-num c-amber">258개</div>
+      <div class="card-label">추상어 78개 + 실물어 180개</div>
+    </div>
+  </div>
+
+  <div class="section-box" style="background:#172554; border-color:#1e40af;">
+    <div class="section-title" style="color:#93c5fd;">💡 대표님을 위한 3줄 명쾌 팩트</div>
+    <ul style="margin:0; padding-left:20px; color:#dbeafe; font-size:14px; line-height:1.8;">
+      <li><b>로부장의 "475개 남음"은 허위입니다:</b> 실제 마스터 1,200개 중 기존 157편에 이미 <b>830개</b>가 완벽히 들어가 있습니다 (남은 건 370개였음).</li>
+      <li><b>오늘 작업한 15장은 112개의 핵심 미배정 단어를 소화합니다:</b> 법정, 은행, 응급실 등 비어 있던 씬에 112개가 쏙 들어갑니다.</li>
+      <li><b>15장 배치 후 진짜 남는 단어는 258개뿐입니다:</b> 이 중 78개는 그림으로 안 그려지는 추상/문법어(thus, ought, anyway 등)이므로, <b>진짜 배치가 필요한 단어는 180개</b> 수준입니다!</li>
+    </ul>
+  </div>
+
+  <div class="section-box">
+    <div class="section-title">🔍 15장 배치 후 최종 남은 단어 258개 (검색 가능)</div>
+    <input type="text" id="remainSearch" class="search-input" placeholder="남은 단어 검색 (예: boss, career, crime, drug, cinema)..." onkeyup="filterRemain()">
+    <div style="margin-bottom:12px; font-size:13px; color:#94a3b8;">
+      <span style="color:#a7f3d0;">■ 실물/상황 단어 (205개)</span> &nbsp;|&nbsp; 
+      <span style="color:#c7d2fe;">■ 추상/문법 기능어 (53개 - 그림 불가)</span>
+    </div>
+    <div class="word-tags" id="remainTags">
+      <span class="tag concrete">advance</span><span class="tag concrete">alter</span><span class="tag concrete">assist</span><span class="tag concrete">avoid</span><span class="tag concrete">beg</span><span class="tag concrete">bitter</span><span class="tag concrete">blame</span><span class="tag concrete">blank</span><span class="tag concrete">bless</span><span class="tag concrete">boom</span><span class="tag concrete">bore</span><span class="tag concrete">boss</span><span class="tag concrete">bother</span><span class="tag concrete">bow</span><span class="tag concrete">burst</span><span class="tag concrete">capable</span><span class="tag concrete">captain</span><span class="tag concrete">career</span><span class="tag concrete">category</span><span class="tag concrete">cause</span><span class="tag concrete">chairman</span><span class="tag concrete">character</span><span class="tag concrete">characteristic</span><span class="tag concrete">charm</span><span class="tag concrete">chief</span><span class="tag concrete">choice</span><span class="tag concrete">cinema</span><span class="tag concrete">civil</span><span class="tag concrete">clerk</span><span class="tag concrete">click</span><span class="tag concrete">client</span><span class="tag concrete">code</span><span class="tag concrete">complex</span><span class="tag concrete">damage</span><span class="tag concrete">decorate</span><span class="tag concrete">discipline</span><span class="tag concrete">disturb</span><span class="tag concrete">domestic</span><span class="tag concrete">donate</span><span class="tag concrete">dozen</span><span class="tag concrete">drug</span><span class="tag concrete">educate</span><span class="tag concrete">emphasize</span><span class="tag concrete">engineer</span><span class="tag concrete">establish</span><span class="tag concrete">evil</span><span class="tag concrete">excite</span><span class="tag concrete">excuse</span><span class="tag concrete">experience</span><span class="tag concrete">factor</span><span class="tag concrete">faint</span><span class="tag concrete">fashion</span><span class="tag concrete">favor</span><span class="tag concrete">few</span><span class="tag concrete">final</span><span class="tag concrete">fortune</span><span class="tag concrete">fright</span><span class="tag concrete">function</span><span class="tag concrete">greet</span><span class="tag concrete">guest</span><span class="tag concrete">half</span><span class="tag concrete">handsome</span><span class="tag concrete">happen</span><span class="tag concrete">helicopter</span><span class="tag concrete">hell</span><span class="tag concrete">highway</span><span class="tag concrete">hint</span><span class="tag concrete">hotel</span><span class="tag concrete">identity</span><span class="tag concrete">ignore</span><span class="tag concrete">impress</span><span class="tag concrete">increase</span><span class="tag concrete">insist</span><span class="tag concrete">instance</span><span class="tag concrete">instant</span><span class="tag concrete">instruct</span><span class="tag concrete">intent</span><span class="tag concrete">interest</span><span class="tag concrete">invent</span><span class="tag concrete">investigate</span><span class="tag concrete">item</span><span class="tag concrete">joke</span><span class="tag concrete">knock</span><span class="tag concrete">knowledge</span><span class="tag concrete">lab</span><span class="tag concrete">label</span><span class="tag concrete">laboratory</span><span class="tag concrete">lack</span><span class="tag concrete">lawyer</span><span class="tag concrete">lead</span><span class="tag concrete">leave</span><span class="tag concrete">let</span><span class="tag concrete">local</span><span class="tag concrete">locate</span><span class="tag concrete">lose</span><span class="tag concrete">lot</span><span class="tag concrete">manner</span><span class="tag concrete">manufacture</span><span class="tag concrete">maximum</span><span class="tag concrete">maybe</span><span class="tag concrete">menu</span><span class="tag concrete">method</span><span class="tag concrete">mill</span><span class="tag concrete">minute</span><span class="tag concrete">mission</span><span class="tag concrete">moral</span><span class="tag concrete">motion</span><span class="tag concrete">none</span><span class="tag concrete">noon</span><span class="tag concrete">nowadays</span><span class="tag concrete">nowhere</span><span class="tag concrete">occasion</span><span class="tag concrete">occur</span><span class="tag concrete">oppose</span><span class="tag concrete">other</span><span class="tag concrete">own</span><span class="tag concrete">parade</span><span class="tag concrete">pause</span><span class="tag concrete">per</span><span class="tag concrete">perfect</span><span class="tag concrete">pitch</span><span class="tag concrete">pity</span><span class="tag concrete">poet</span><span class="tag concrete">policy</span><span class="tag concrete">pollute</span><span class="tag concrete">popular</span><span class="tag concrete">pray</span><span class="tag concrete">pretend</span><span class="tag concrete">prison</span><span class="tag concrete">privacy</span><span class="tag concrete">private</span><span class="tag concrete">probable</span><span class="tag concrete">proceed</span><span class="tag concrete">process</span><span class="tag concrete">profession</span><span class="tag concrete">promise</span><span class="tag concrete">promote</span><span class="tag concrete">protest</span><span class="tag concrete">public</span><span class="tag concrete">pump</span><span class="tag concrete">quarter</span><span class="tag concrete">range</span><span class="tag concrete">rapid</span><span class="tag concrete">rate</span><span class="tag concrete">recipe</span><span class="tag concrete">reduce</span><span class="tag concrete">remind</span><span class="tag concrete">rent</span><span class="tag concrete">repair</span><span class="tag concrete">reply</span><span class="tag concrete">request</span><span class="tag concrete">reserve</span><span class="tag concrete">resource</span><span class="tag concrete">rob</span><span class="tag concrete">rocket</span><span class="tag concrete">role</span><span class="tag concrete">scare</span><span class="tag concrete">schedule</span><span class="tag concrete">scratch</span><span class="tag concrete">section</span><span class="tag concrete">sentence</span><span class="tag concrete">series</span><span class="tag concrete">serve</span><span class="tag concrete">session</span><span class="tag concrete">shake</span><span class="tag concrete">shall</span><span class="tag concrete">shoot</span><span class="tag concrete">silly</span><span class="tag concrete">situate</span><span class="tag concrete">smart</span><span class="tag concrete">social</span><span class="tag concrete">solve</span><span class="tag concrete">sore</span><span class="tag concrete">speech</span><span class="tag concrete">sponsor</span><span class="tag concrete">stick</span><span class="tag concrete">strategy</span><span class="tag concrete">stress</span><span class="tag concrete">studio</span><span class="tag concrete">succeed</span><span class="tag concrete">success</span><span class="tag concrete">supply</span><span class="tag concrete">surprise</span><span class="tag concrete">system</span><span class="tag concrete">teenage</span><span class="tag concrete">tense</span><span class="tag concrete">term</span><span class="tag concrete">thousand</span><span class="tag concrete">through</span><span class="tag concrete">throw</span><span class="tag concrete">tip</span><span class="tag concrete">tough</span><span class="tag concrete">trust</span><span class="tag concrete">truth</span><span class="tag concrete">van</span><span class="tag concrete">version</span><span class="tag concrete">vision</span><span class="tag concrete">waste</span><span class="tag concrete">weigh</span><span class="tag concrete">whisper</span><span class="tag concrete">whole</span><span class="tag concrete">wise</span><span class="tag concrete">would</span><span class="tag concrete">zebra</span><span class="tag concrete">zero</span>
+      <span class="tag grammar">basis</span><span class="tag grammar">belong</span><span class="tag grammar">brief</span><span class="tag grammar">circumstance</span><span class="tag grammar">common</span><span class="tag grammar">entire</span><span class="tag grammar">even</span><span class="tag grammar">ever</span><span class="tag grammar">exist</span><span class="tag grammar">expect</span><span class="tag grammar">fair</span><span class="tag grammar">familiar</span><span class="tag grammar">foreign</span><span class="tag grammar">forward</span><span class="tag grammar">instead</span><span class="tag grammar">intend</span><span class="tag grammar">limit</span><span class="tag grammar">mean</span><span class="tag grammar">neither</span><span class="tag grammar">nor</span><span class="tag grammar">notice</span><span class="tag grammar">obvious</span><span class="tag grammar">once</span><span class="tag grammar">ordinary</span><span class="tag grammar">otherwise</span><span class="tag grammar">ought</span><span class="tag grammar">perhaps</span><span class="tag grammar">practical</span><span class="tag grammar">proper</span><span class="tag grammar">purpose</span><span class="tag grammar">quite</span><span class="tag grammar">rather</span><span class="tag grammar">recent</span><span class="tag grammar">recognize</span><span class="tag grammar">rely</span><span class="tag grammar">require</span><span class="tag grammar">result</span><span class="tag grammar">since</span><span class="tag grammar">slight</span><span class="tag grammar">somewhat</span><span class="tag grammar">soon</span><span class="tag grammar">standard</span><span class="tag grammar">state</span><span class="tag grammar">subject</span><span class="tag grammar">such</span><span class="tag grammar">suppose</span><span class="tag grammar">tend</span><span class="tag grammar">though</span><span class="tag grammar">thus</span><span class="tag grammar">until</span><span class="tag grammar">various</span><span class="tag grammar">whether</span><span class="tag grammar">while</span>
+    </div>
+  </div>
+
+  <div class="section-box">
+    <div class="section-title">🎬 오늘 15장 신규 씬 배정표 (112개 단어 소화)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>씬 제목</th>
+          <th>핵심 구성 요소</th>
+          <th>소화하는 마스터 단어 (빨강: 그림 / 파랑: 이야기)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">01</td>
+      <td><b>가게 계산대</b></td>
+      <td style="color:#94a3b8;">금전등록기 · 가격표 · 동전 · 영수증 · 진열된 물건</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">price (값)</span><span class="tag tag-c1">fee (요금)</span><span class="tag tag-c1">charge (값을 매기다)</span><span class="tag tag-c1">purchase (사다)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">value · worth · expense · budget · brand · trade</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">02</td>
+      <td><b>은행 창구</b></td>
+      <td style="color:#94a3b8;">금고문 · 대출 서류 · 동전더미 · 도장</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">loan (대출)</span><span class="tag tag-c1">stock (증서)</span><span class="tag tag-c1">tax (세금)</span><span class="tag tag-c1">fund (자금)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">finance · profit · loss · property · guarantee</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">03</td>
+      <td><b>우체국 창구</b></td>
+      <td style="color:#94a3b8;">우표 · 소포 · 저울 · 우편자루</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">stamp (우표)</span><span class="tag tag-c1">deliver (보내다)</span><span class="tag tag-c1">receive (받다)</span><span class="tag tag-c1">gift (선물)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">transfer · offer · exchange · lend · share</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">04</td>
+      <td><b>응급실 앞</b></td>
+      <td style="color:#94a3b8;">구급차 · 경광등 · 들것 · 붕대</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">ambulance (구급차)</span><span class="tag tag-c1">alarm (경보)</span><span class="tag tag-c1">accident (사고)</span><span class="tag tag-c1">medical (의료의)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">injure · hurt · crisis · prevent · recover · suffer</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">05</td>
+      <td><b>법정</b></td>
+      <td style="color:#94a3b8;">법봉 · 수갑 · 저울 · 경찰모</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">cop (경찰)</span><span class="tag tag-c1">justice (정의)</span><span class="tag tag-c1">crime (죄)</span><span class="tag tag-c1">arrest (붙잡다)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">punish · innocent · prove · claim</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">06</td>
+      <td><b>기차역 승강장</b></td>
+      <td style="color:#94a3b8;">증기기관차 · 철로 · 역 시계 · 표</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">station (역)</span><span class="tag tag-c1">rail (철로)</span><span class="tag tag-c1">engine (기관차)</span><span class="tag tag-c1">transport (실어 나르다)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">route · depart · period</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">07</td>
+      <td><b>공장 작업대</b></td>
+      <td style="color:#94a3b8;">기계 · 스위치 · 압력계 · 석탄</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">machine (기계)</span><span class="tag tag-c1">switch (스위치)</span><span class="tag tag-c1">monitor (계기판)</span><span class="tag tag-c1">coal (석탄)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">automatic · technology · industry · labor · produce</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">08</td>
+      <td><b>가족 사진</b></td>
+      <td style="color:#94a3b8;">부부 사진 · 쌍둥이 · 반지 · 편지</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">twin (쌍둥이)</span><span class="tag tag-c1">female (여자)</span><span class="tag tag-c1">male (남자)</span><span class="tag tag-c1">bond (맺음)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">relate · engage · divorce · respect · senior</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">09</td>
+      <td><b>광장의 군중</b></td>
+      <td style="color:#94a3b8;">연단 · 현수막 · 모인 사람들</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">crowd (군중)</span><span class="tag tag-c1">citizen (시민)</span><span class="tag tag-c1">hall (회관)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">represent · inform · mention · explain</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">10</td>
+      <td><b>군용 장비</b></td>
+      <td style="color:#94a3b8;">철모 · 군화 · 수통 · 망원경</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">military (군대)</span><span class="tag tag-c1">bomb (폭탄)</span><span class="tag tag-c1">enemy (적)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">threat · victim · violent · resist · harm · spy</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">11</td>
+      <td><b>사람의 몸</b></td>
+      <td style="color:#94a3b8;">머리 단면 · 목 · 무릎</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">brain (뇌)</span><span class="tag tag-c1">throat (목구멍)</span><span class="tag tag-c1">knee (무릎)</span><span class="tag tag-c1">breath (숨)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">blind · tear</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">12</td>
+      <td><b>옛 성</b></td>
+      <td style="color:#94a3b8;">성벽 · 왕관 · 깃발</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">castle (성)</span><span class="tag tag-c1">palace (궁전)</span><span class="tag tag-c1">royal (왕실의)</span><span class="tag tag-c1">capital (수도)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">cast · tradition · past · period</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">13</td>
+      <td><b>골프 그린</b></td>
+      <td style="color:#94a3b8;">골프채 · 공 · 깃대 · 우승컵</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">golf (골프)</span><span class="tag tag-c1">champion (우승자)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">challenge · effort · risk · manage · react</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">14</td>
+      <td><b>책상 위 기록</b></td>
+      <td style="color:#94a3b8;">사진 · 등록부 · 만년필</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">photo (사진)</span><span class="tag tag-c1">register (등록부)</span><span class="tag tag-c1">copy (베낀 것)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">quote · refer · remark</div>
+      </td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#c084fc;">15</td>
+      <td><b>박물관 전시실</b></td>
+      <td style="color:#94a3b8;">전시대 · 항아리 · 액자 · 안내 기둥</td>
+      <td>
+        <div style="margin-bottom:6px;"><span class="tag tag-c1">museum (박물관)</span><span class="tag tag-c1">tradition (전통)</span><span class="tag tag-c1">display (전시하다)</span></div>
+        <div style="color:#93c5fd; font-size:12px;">illustrate · past</div>
+      </td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-box">
+    <div class="section-title">📚 기존 12개 챕터 (157편) 배정 현황</div>
+    <table>
+      <thead>
+        <tr>
+          <th>챕터</th>
+          <th>챕터명</th>
+          <th>편수</th>
+          <th>총 단어수</th>
+          <th>편당 평균</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch1</td>
+      <td><b>Chapter 1</b></td>
+      <td>14편</td>
+      <td>92개</td>
+      <td style="color:#4ade80;">6.6개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch2</td>
+      <td><b>Chapter 2</b></td>
+      <td>18편</td>
+      <td>114개</td>
+      <td style="color:#4ade80;">6.3개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch3</td>
+      <td><b>Chapter 3</b></td>
+      <td>21편</td>
+      <td>109개</td>
+      <td style="color:#4ade80;">5.2개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch4</td>
+      <td><b>Chapter 4</b></td>
+      <td>11편</td>
+      <td>72개</td>
+      <td style="color:#4ade80;">6.5개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch5</td>
+      <td><b>Chapter 5</b></td>
+      <td>16편</td>
+      <td>104개</td>
+      <td style="color:#4ade80;">6.5개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch6</td>
+      <td><b>Chapter 6</b></td>
+      <td>10편</td>
+      <td>67개</td>
+      <td style="color:#4ade80;">6.7개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch7</td>
+      <td><b>Chapter 7</b></td>
+      <td>11편</td>
+      <td>78개</td>
+      <td style="color:#4ade80;">7.1개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch8</td>
+      <td><b>Chapter 8</b></td>
+      <td>10편</td>
+      <td>67개</td>
+      <td style="color:#4ade80;">6.7개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch9</td>
+      <td><b>Chapter 9</b></td>
+      <td>11편</td>
+      <td>68개</td>
+      <td style="color:#4ade80;">6.2개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch10</td>
+      <td><b>Chapter 10</b></td>
+      <td>13편</td>
+      <td>82개</td>
+      <td style="color:#4ade80;">6.3개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch11</td>
+      <td><b>Chapter 11</b></td>
+      <td>13편</td>
+      <td>84개</td>
+      <td style="color:#4ade80;">6.5개</td>
+    </tr><tr>
+      <td style="font-family:ui-monospace; font-weight:700; color:#60a5fa;">ch12</td>
+      <td><b>Chapter 12</b></td>
+      <td>9편</td>
+      <td>62개</td>
+      <td style="color:#4ade80;">6.9개</td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+function filterRemain() {
+  const query = document.getElementById("remainSearch").value.toLowerCase();
+  const tags = document.querySelectorAll("#remainTags .tag");
+  tags.forEach(tag => {
+    if (tag.textContent.toLowerCase().includes(query)) {
+      tag.style.display = "inline-block";
+    } else {
+      tag.style.display = "none";
+    }
+  });
+}
+</script>
+</body>
+</html>

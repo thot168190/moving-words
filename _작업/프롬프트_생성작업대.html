@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🎬 신규 영상 생성 프롬프트 작업대 (코다리 총괄)</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #090d16;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  padding: 24px;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.header {
+  background: linear-gradient(135deg, #1e1b4b, #0f172a);
+  border: 1px solid #312e81;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+.badge {
+  display: inline-block;
+  background: #6366f1;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+}
+h1 { margin: 0 0 8px; font-size: 24px; font-weight: 800; color: #fff; }
+p.sub { margin: 0; color: #94a3b8; font-size: 14px; }
+
+.card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.card:hover { border-color: #374151; }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.num-badge {
+  background: #374151;
+  color: #fbbf24;
+  font-weight: 800;
+  font-family: ui-monospace, monospace;
+  font-size: 15px;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+.ch-badge {
+  background: #1e293b;
+  color: #94a3b8;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.copy-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.copy-btn:hover { background: #1d4ed8; }
+.copy-btn:active { transform: scale(0.96); }
+.copy-btn.copied {
+  background: #059669 !important;
+}
+
+.card-meta {
+  background: #0b0f19;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.meta-row { margin-bottom: 6px; }
+.meta-row:last-child { margin-bottom: 0; }
+.meta-row b { color: #94a3b8; margin-right: 6px; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: ui-monospace, monospace;
+}
+.tag.l1 { background: #831843; color: #fbcfe8; font-weight: 700; }
+.tag.l2 { background: #1e3a8a; color: #bfdbfe; }
+
+.prompt-box {
+  background: #030712;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 14px 16px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+pre {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="badge">검증 100% 통과 line-reveal 골격</div>
+    <h1>🎬 신규 25편 영상 생성 프롬프트 작업대</h1>
+    <p class="sub">버튼 한 번만 누르면 프롬프트가 즉시 복사됩니다. 영상 생성 툴에 붙여넣고 만드신 뒤, <code>01_...mp4</code>, <code>02_...mp4</code>로 저장하시면 됩니다!</p>
+  </div>
+
+  
+    <div class="card" id="card_01">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">01</span>
+          <h2 class="card-title">우체국 창구</h2>
+          <span class="ch-badge">기본 chch5</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(1, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 우체국 카운터·소포·우편자루</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">clerk</span> <span class="tag l1">stamp</span> <span class="tag l1">label</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">deliver</span> <span class="tag l2">receive</span> <span class="tag l2">transfer</span> <span class="tag l2">offer</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_1">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one wooden post office counter with an arched clerk opening, one square parcel box tied with twine, and one canvas mail sack leaning against the counter. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the counter outline first, then the arched opening, then the parcel with its twine, and finally the slumped mail sack. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint warm tan along the counter front, the palest wheat tint on the parcel, and a whisper of cool grey on the sack. The arched opening stays almost entirely white. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the twine bow on the parcel loosens a few millimetres and settles. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a post office counter with a parcel and a mail sack. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_02">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">02</span>
+          <h2 class="card-title">응급실 앞</h2>
+          <span class="ch-badge">기본 chch6</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(2, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 구급차·경광등·들것</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">ambulance</span> <span class="tag l1">alarm</span> <span class="tag l1">accident</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">injure</span> <span class="tag l2">hurt</span> <span class="tag l2">medical</span> <span class="tag l2">crisis</span> <span class="tag l2">prevent</span> <span class="tag l2">avoid</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_2">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one boxy ambulance van with a cross marking on its side, one small beacon lamp on its roof, and one folded wheeled stretcher standing beside it. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the ambulance body outline first, then the wheels and windows, then the roof beacon, and finally the folded stretcher frame. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only the palest cool grey on the van panels, a faint rose tint on the cross marking, and a whisper of warm amber on the beacon. The stretcher stays almost entirely white. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the roof beacon brightens faintly once and dims again. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as an ambulance with a stretcher beside it. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_03">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">03</span>
+          <h2 class="card-title">변호사 사무실</h2>
+          <span class="ch-badge">기본 chch4</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(3, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 서류가방·서류뭉치·도장</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">lawyer</span> <span class="tag l1">client</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">justice</span> <span class="tag l2">civil</span> <span class="tag l2">policy</span> <span class="tag l2">moral</span> <span class="tag l2">standard</span> <span class="tag l2">private</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_3">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one open leather document case, one stack of folded papers beside it, and one small desk seal with a turned handle. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the case outline and its buckled flap first, then the fanned edges of the paper stack, and finally the seal with its handle. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint tan along the case edges, the palest cream on the paper stack, and a whisper of cool grey on the seal. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the top folded paper lifts a millimetre at its corner and settles back. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a document case with papers and a desk seal. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_04">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">04</span>
+          <h2 class="card-title">기차역 승강장</h2>
+          <span class="ch-badge">기본 chch5</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(4, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 증기기관차·철로·역 시계</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">station</span> <span class="tag l1">rail</span> <span class="tag l1">engine</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">transport</span> <span class="tag l2">proceed</span> <span class="tag l2">schedule</span> <span class="tag l2">period</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_4">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one steam locomotive standing at a platform, two parallel steel rails running beneath it, and one round hanging station clock with a blank face. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the locomotive boiler and chimney first, then the driving wheels, then the two rails with a few sleepers, and finally the round clock and its bracket. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint cool grey along the locomotive body, the palest steel-blue on the rails, and a whisper of warm tan on the clock rim. The clock face stays white. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: a small wisp of pale grey steam rises from the chimney and drifts. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a steam locomotive at a platform with a station clock. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_05">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">05</span>
+          <h2 class="card-title">박물관 전시실</h2>
+          <span class="ch-badge">기본 chch4</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(5, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 전시대 위 항아리·벽에 걸린 액자 둘·벨벳 줄 기둥</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">museum</span> <span class="tag l1">hall</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">tradition</span> <span class="tag l2">represent</span> <span class="tag l2">past</span> <span class="tag l2">familiar</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_5">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one low display plinth carrying an ancient two-handled clay urn, two empty picture frames hanging on the wall behind, and one velvet rope barrier post standing in front. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the plinth outline first, then the swelling body and looped handles of the urn, then the two hanging frames, and finally the barrier post with its draped rope. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint terracotta on the shoulder of the urn, the palest grey along the plinth edge, and a whisper of dusty rose on the draped rope. The frames stay almost entirely white. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the draped rope sways a few millimetres and comes to rest. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a museum display with an urn, wall frames and a rope barrier. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_06">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">06</span>
+          <h2 class="card-title">호텔 로비</h2>
+          <span class="ch-badge">기본 chch5</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(6, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 프런트 데스크·열쇠 걸이·호출벨·여행가방</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">hotel</span> <span class="tag l1">guest</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">serve</span> <span class="tag l2">rent</span> <span class="tag l2">charge</span> <span class="tag l2">reserve</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_6">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one hotel reception desk, one wall rack of small open pigeonholes with room keys hanging on hooks behind it, one domed call bell on the counter, and one leather travel case standing on the floor. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the reception desk outline first, then the grid of open pigeonholes with a few hanging keys, then the domed call bell, and finally the travel case with its straps. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint walnut tone along the desk front, a whisper of warm tan on the travel case, and the palest amber on the bell dome. The key rack stays almost entirely white. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: one hanging key swings a few millimetres on its hook and stills. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a hotel reception desk with a key rack, a call bell and a travel case. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_07">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">07</span>
+          <h2 class="card-title">영화관</h2>
+          <span class="ch-badge">기본 chch4</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(7, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 영사기·필름 릴 둘·필름 띠</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">cinema</span> <span class="tag l1">studio</span> <span class="tag l1">photo</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">version</span> <span class="tag l2">popular</span> <span class="tag l2">fashion</span> <span class="tag l2">copy</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_7">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one cinema film projector, two spoked film reels mounted on it, and one trailing strip of perforated film hanging from the lower reel. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the projector body outline first, then the lens barrel, then the two circular reels with their cut-out spokes, and finally the winding film strip. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint cool grey on the projector body, the palest amber on the lens rim, and a whisper of warm tan on the film strip. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the upper reel turns a quarter revolution and stops. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a cinema projector with two reels and a strip of film. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_08">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">08</span>
+          <h2 class="card-title">옛 성</h2>
+          <span class="ch-badge">기본 chch11</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(8, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 성벽·아치문·왕관</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">castle</span> <span class="tag l1">palace</span> <span class="tag l1">royal</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">cast</span> <span class="tag l2">capital</span> <span class="tag l2">chief</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_8">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one stone castle keep with square battlements along its top, one arched wooden gate set into its base, and one banded crown resting on a small cushion in front. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the outline of the keep first, then the square battlements, then the arched gate with its few studs, and finally the crown and the folds of its cushion. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint sandstone tone along a few stone courses, the palest oak on the gate planks, and small points of warm tan on the crown. Most wall surfaces stay bare white. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: one small jewel on the crown catches a faint pale gleam and fades. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a castle keep with an arched gate and a crown. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_09">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">09</span>
+          <h2 class="card-title">감옥 창살</h2>
+          <span class="ch-badge">기본 chch4</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(9, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 쇠창살 다섯·가로대·자물쇠</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">prison</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">crime</span> <span class="tag l2">punish</span> <span class="tag l2">privacy</span> <span class="tag l2">discipline</span> <span class="tag l2">innocent</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_9">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are five vertical iron bars, one horizontal crossbar joining them, and one heavy padlock hanging from a ring on the crossbar. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw each vertical bar in turn as a single thin line, then the crossbar and its riveted collars, and finally the shackle and body of the hanging padlock. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint cool grey along the bars, a few specks of pale rust at the joints, and the palest grey on the padlock body. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the hanging padlock swings a few millimetres on its ring and stills. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as iron prison bars with a padlock hanging from them. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_10">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">10</span>
+          <h2 class="card-title">전화 교환대</h2>
+          <span class="ch-badge">기본 chch6</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(10, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 교환기 판·플러그 코드·레버</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">switch</span> <span class="tag l1">code</span> <span class="tag l1">click</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">instant</span> <span class="tag l2">technology</span> <span class="tag l2">automatic</span> <span class="tag l2">rapid</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_10">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one telephone switchboard panel with rows of round jack sockets, one braided cord with a tapered plug lying across it, and one small toggle lever at the side. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the rectangular panel outline first, then the evenly spaced rows of round sockets, then the coiled braided cord with its plug, and finally the small toggle lever. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint olive-grey along the panel edge, the palest amber on the socket rims, and a whisper of cool blue on the braided cord. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the small toggle lever tips down a millimetre and holds. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a telephone switchboard with a plug cord and a lever. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_11">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">11</span>
+          <h2 class="card-title">제분소 맷돌</h2>
+          <span class="ch-badge">기본 chch6</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(11, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 돌 맷돌·밀가루 자루·나무 삽</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">mill</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">produce</span> <span class="tag l2">labor</span> <span class="tag l2">manufacture</span> <span class="tag l2">establish</span> <span class="tag l2">industry</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_11">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one round stone mill wheel standing upright, one open flour sack slumped beside it, and one wooden scoop resting against the sack. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the circular rim of the mill stone first, then its radial dressing grooves, then the sagging folds of the flour sack, and finally the bowl and handle of the wooden scoop. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint cool grey along the rim of the mill stone, the palest cream on the spilled flour, and a whisper of honey-brown on the wooden scoop. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: a small pinch of pale flour slides down the sack and settles. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a stone mill wheel with a flour sack and a wooden scoop. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_12">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">12</span>
+          <h2 class="card-title">소화전과 관</h2>
+          <span class="ch-badge">기본 chch6</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(12, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 소화전·감긴 관·놋쇠 노즐</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">pump</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">assist</span> <span class="tag l2">favor</span> <span class="tag l2">recover</span> <span class="tag l2">react</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_12">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one cast iron fire hydrant with a domed cap, one coiled canvas hose lying flat beside it, and one tapered brass nozzle resting on the coil. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the hydrant body and its domed cap first, then the side outlets, then the flat spiral coils of the hose, and finally the tapered nozzle. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint rose tone along the hydrant ridges, the palest oatmeal on the coiled hose, and a whisper of warm amber on the nozzle. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: one outer coil of the hose relaxes outward a few millimetres and stops. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a fire hydrant with a coiled hose and a nozzle. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_13">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">13</span>
+          <h2 class="card-title">발사대의 로켓</h2>
+          <span class="ch-badge">기본 chch11</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(13, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 로켓·지지탑·연기</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">rocket</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">mission</span> <span class="tag l2">success</span> <span class="tag l2">advance</span> <span class="tag l2">forward</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_13">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one tall rocket standing upright on a launch stand with a tapered nose cone and three angled fins, and one lattice service tower standing beside it. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the tall cylindrical body of the rocket first, then the tapered nose cone, then the three fins and the stage joint rings, and finally the criss-cross lattice of the service tower. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only the palest ivory along the rocket hull, a few faint apricot bands at the stage joints, and a whisper of cool grey on the lattice tower. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: a thin curl of pale vapour drifts from the rocket base and fades. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a rocket standing on a launch stand beside a service tower. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_14">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">14</span>
+          <h2 class="card-title">거리 행진</h2>
+          <span class="ch-badge">기본 chch5</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(14, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 악대차·나팔·삼각깃발</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">van</span> <span class="tag l1">parade</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">excite</span> <span class="tag l2">social</span> <span class="tag l2">boom</span> <span class="tag l2">lead</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_14">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one open-sided parade van hung with triangular bunting, one brass marching horn resting on its bed, and two small pennant flags fixed at its corners. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the van body outline first, then its spoked wheels, then the draped triangular bunting, then the curled tubing and flared bell of the horn, and finally the two pennants. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint sky-blue along the van panels, the palest amber on the horn bell, and a whisper of rose on the bunting. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the strung bunting lifts a few millimetres in a breath of air and settles. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a parade van with bunting, a marching horn and pennants. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_15">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">15</span>
+          <h2 class="card-title">가게 계산대</h2>
+          <span class="ch-badge">기본 chch7</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(15, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 금전등록기·종이띠·가격표</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">price</span> <span class="tag l1">fee</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">purchase</span> <span class="tag l2">value</span> <span class="tag l2">worth</span> <span class="tag l2">expense</span> <span class="tag l2">budget</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_15">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one antique mechanical cash register with a row of round keys and a blank round dial above them, one blank paper strip curling from its slot, and one small tag hanging from a string at its side. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the stepped body of the register first, then its rounded crown, then the row of round keys and the blank dial, then the curling paper strip, and finally the small hanging tag. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint bronze-grey along the register mouldings, the palest cream on the paper strip, and a whisper of warm tan on the tag. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the curled paper strip unrolls a few millimetres and stops. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a mechanical cash register with a paper strip and a tag. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_16">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">16</span>
+          <h2 class="card-title">은행 창구</h2>
+          <span class="ch-badge">기본 chch7</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(16, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 금고문·장부·동전더미</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">loan</span> <span class="tag l1">stock</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">finance</span> <span class="tag l2">fund</span> <span class="tag l2">loss</span> <span class="tag l2">profit</span> <span class="tag l2">tax</span> <span class="tag l2">property</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_16">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one circular bank vault door with a spoked wheel lock, one closed leather account book lying flat beside it, and one short stacked column of coins. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the concentric rings of the vault door first, then the radial spokes of the wheel lock and the hinge column, then the closed boards of the account book, and finally the stacked disc edges of the coin column. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint cool grey along the vault rings, the palest sage on the account book cover, and a whisper of warm amber on the coin edges. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the spoked wheel lock turns one eighth of a revolution and stops. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a bank vault door with an account book and a stack of coins. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_17">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">17</span>
+          <h2 class="card-title">식당 차림표</h2>
+          <span class="ch-badge">기본 chch7</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(17, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 나무 안내판·수첩·양념병 둘</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">menu</span> <span class="tag l1">recipe</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">bitter</span> <span class="tag l2">supply</span> <span class="tag l2">brand</span> <span class="tag l2">guarantee</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_17">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one small hinged wooden board stand with a blank panel, one closed cloth-bound notebook lying beside it, and two small glass seasoning bottles with stoppers. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the hinged wooden frame first, then the blank panel inside it, then the stitched spine and cover of the notebook, and finally the two bottles with their stoppers. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint pine tone along the wooden frame, the palest sage inside the panel, and a whisper of warm amber in the two bottles. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: one small bottle rocks a single millimetre and settles upright. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a wooden board stand with a notebook and two seasoning bottles. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_18">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">18</span>
+          <h2 class="card-title">사람의 머리와 목</h2>
+          <span class="ch-badge">기본 chch8</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(18, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 머리 단면·목·무릎 관절</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">brain</span> <span class="tag l1">throat</span> <span class="tag l1">knee</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">blind</span> <span class="tag l2">breath</span> <span class="tag l2">tear</span> <span class="tag l2">faint</span> <span class="tag l2">suffer</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_18">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one human head shown in profile with the brain cross-section visible inside it, one throat passage drawn beside it, and one knee joint drawn below them. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the profile contour of the head first, then the folded convolutions of the brain section, then the tubular throat passage with its rings, and finally the hinged bones of the knee joint. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint dusty rose inside the brain section, the palest beige along the skin contour, and a whisper of ivory on the knee bones. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: a faint pale tint spreads a little further through the brain section and holds. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as an anatomical plate of a head, a throat and a knee joint. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_19">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">19</span>
+          <h2 class="card-title">증기 압력계</h2>
+          <span class="ch-badge">기본 chch6</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(19, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 압력계·배관·밸브</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">monitor</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">limit</span> <span class="tag l2">maximum</span> <span class="tag l2">range</span> <span class="tag l2">slight</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_19">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one round brass pressure gauge with a blank round dial and a slender needle, one riveted pipe elbow below it, and one spoked hand wheel valve on the pipe. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the circular bezel of the gauge first, then the blank dial and its slender needle, then the riveted seams of the pipe elbow, and finally the spoked rim of the hand wheel valve. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint amber along the gauge bezel, the palest cream inside the blank dial, and a whisper of cool grey on the pipe and valve. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the gauge needle swings a few degrees upward and steadies. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a pressure gauge on a pipe elbow with a hand wheel valve. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_20">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">20</span>
+          <h2 class="card-title">석탄 광차</h2>
+          <span class="ch-badge">기본 chch10</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(20, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 석탄 더미·광차·삽</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">coal</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">waste</span> <span class="tag l2">pollute</span> <span class="tag l2">weigh</span> <span class="tag l2">dozen</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_20">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one iron mining cart heaped with angular coal lumps, two short rails beneath its wheels, and one shovel leaning against its side. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the riveted body panels of the cart first, then its small spoked wheels, then the faceted outlines of the heaped coal lumps, then the two short rails, and finally the shaft and blade of the shovel. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint cool slate along the coal facets, the palest iron-brown on the cart panels, and a whisper of grey on the rails and shovel. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: one small coal lump slides down the heap and stops. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a mining cart heaped with coal, with rails and a shovel. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_21">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">21</span>
+          <h2 class="card-title">가족 사진틀</h2>
+          <span class="ch-badge">기본 chch9</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(21, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 타원 액자·작은 로켓·반지 둘</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">twin</span> <span class="tag l1">female</span> <span class="tag l1">male</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">bond</span> <span class="tag l2">relate</span> <span class="tag l2">engage</span> <span class="tag l2">divorce</span> <span class="tag l2">respect</span> <span class="tag l2">senior</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_21">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one oval carved picture frame holding two soft portrait silhouettes, one small oval locket resting beside it, and two plain wedding rings. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the carved oval frame first, then the two soft portrait silhouettes inside it, then the hinged rim of the locket, and finally the two plain circular rings. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint walnut along the carved frame, the palest umber on the portrait silhouettes, and a whisper of warm amber on the locket and rings. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the small locket lid opens a few millimetres and stops. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as an oval portrait frame with a locket and two rings. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_22">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">22</span>
+          <h2 class="card-title">광장의 군중</h2>
+          <span class="ch-badge">기본 chch9</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(22, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 연단·현수막·모인 사람들</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">crowd</span> <span class="tag l1">citizen</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">protest</span> <span class="tag l2">oppose</span> <span class="tag l2">insist</span> <span class="tag l2">claim</span> <span class="tag l2">speech</span> <span class="tag l2">public</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_22">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one wooden speaker podium standing on paving, one cloth banner strung between two poles behind it, and six small standing figures gathered in front of it. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the panelled front and slanted top of the podium first, then the two poles and the sagging banner between them, and finally the simple standing outlines of the six figures. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint sandstone along the podium front, the palest cream on the banner cloth, and a whisper of muted blue and rose on the small figures. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the strung banner lifts a few millimetres at its centre and settles. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a town square with a speaker podium, a banner and a small crowd. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_23">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">23</span>
+          <h2 class="card-title">군용 장비</h2>
+          <span class="ch-badge">기본 chch4</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(23, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 철모·군화·수통</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">military</span> <span class="tag l1">bomb</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">enemy</span> <span class="tag l2">threat</span> <span class="tag l2">victim</span> <span class="tag l2">violent</span> <span class="tag l2">resist</span> <span class="tag l2">harm</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_23">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one steel military helmet with a chin strap, one laced field boot standing beside it, and one metal canteen flask with a webbing strap. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the domed shell and rolled rim of the helmet first, then its buckled chin strap, then the eyelets and stitched sole of the boot, and finally the flattened canteen and its strap. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint olive along the helmet shell, the palest brown on the boot leather, and a whisper of khaki on the webbing strap. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the buckled chin strap of the helmet swings a few millimetres and stills. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a military helmet, a field boot and a canteen flask. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_24">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">24</span>
+          <h2 class="card-title">신문 인쇄기</h2>
+          <span class="ch-badge">기본 chch12</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(24, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 활자판·롤러·접힌 종이</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">register</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">inform</span> <span class="tag l2">mention</span> <span class="tag l2">emphasize</span> <span class="tag l2">quote</span> <span class="tag l2">refer</span> <span class="tag l2">remark</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_24">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one cast metal tray divided into small compartments holding blank printing blocks, one inking roller with a turned handle resting beside it, and one folded blank paper sheet. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the compartment grid of the tray first, then the rows of small blank blocks, then the cylindrical roller with its bent handle, and finally the creased folds of the paper sheet. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint cool slate along the tray edges, the palest honey on the roller handle, and a whisper of cream on the folded paper. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the inking roller turns a quarter revolution in place and stops. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a printing tray of blank blocks with a roller and a folded sheet. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+    <div class="card" id="card_25">
+      <div class="card-header">
+        <div class="card-title-group">
+          <span class="num-badge">25</span>
+          <h2 class="card-title">골프 그린</h2>
+          <span class="ch-badge">기본 chch8</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(25, event)">📋 프롬프트 1초 복사</button>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row"><b>구성 사물:</b> 퍼터·공·깃대</div>
+        <div class="meta-row"><b>L1 (그림 단어):</b> <span class="tag l1">golf</span></div>
+        <div class="meta-row"><b>L2 (이야기 단어):</b> <span class="tag l2">champion</span> <span class="tag l2">challenge</span> <span class="tag l2">effort</span> <span class="tag l2">risk</span> <span class="tag l2">manage</span></div>
+      </div>
+      <div class="prompt-box">
+        <pre id="prompt_25">Cinematic progressive line-reveal animation on a solid pure bright white background, edge to edge. The very first frame is an entirely empty pure white field. The background is one single continuous field of pure white reaching every edge of the frame. The subjects sit directly on that white with nothing underneath them: no sheet, board, panel, card, mat, textured surface, visible edge or border. High-key lighting. The centered illustration occupies the central three-quarters of the frame with equal narrow white margins on both sides. Static locked-off camera, one continuous 8-second take. The only visible subjects are one gently sloping putting green with a round cup hole, one flagstick standing in the cup with a small plain flag, one golf ball resting near the rim, and one putter club lying on the grass. These are the only objects present. No people, hands, animals, signs or drawing tools appear. 0-4s: soft pale silver-grey graphite strokes appear progressively from the empty white field, each stroke drawn with natural hand variation—firmer where it begins and fading slightly, nothing measured, vectorized or stamped. The illustration draws itself. Each pale silver-grey graphite line appears progressively from its own endpoint, one complete line at a time. The lines themselves extend gradually across the empty field; no object, tool, tip, hand or instrument is ever visible. Nothing appears through a wipe, fade or dissolve. Draw the gentle contour of the green and the circular cup rim first, then the slender flagstick and its small flag, then the dimpled sphere of the ball, and finally the angled head and shaft of the putter. Use only a few economical contour lines for every object. Leave most interiors as untouched white space. No dense texture, no heavy shading and no realistic surface rendering. 4-7s: an extremely pale, transparent watercolor wash develops gently inside the drawn contours. Use only a faint sage along a few contours of the green, the palest rose on the small flag, and a whisper of cool grey on the ball and putter head. White remains clearly visible through every wash. No dark, dense or fully filled areas. No color spreads behind the objects. The illustration remains airy, quiet and clearly hand-drawn. 7-8s: the small flag on the flagstick lifts a few millimetres and settles. All subjects remain 100% fully visible, crisp, opaque and completely still. No object fades, dissolves, disappears, morphs or changes position. The finished composition still contains every subject listed above and nothing more, all lines crisp and completely stable, resting inside generous untouched white space. The finished image reads immediately as a putting green with a flagstick, a ball and a putter. Style: delicate fine-line editorial illustration, exceptionally thin pale silver-grey graphite contours, sparse selective detail, luminous transparent watercolor, low saturation, restrained tonal contrast, generous untouched white space, mature and understated, illustrated rather than realistic, never photorealistic and never a children's cartoon. Audio: absolutely no audio of any kind. The output is completely silent with an empty audio track. No music, score, instruments, melody, ambient tone, sound effects, foley, narration, voice or background hum. Never: hex codes, color codes, #FFFFFF, printed text, cabinet marks, fading out, opacity loss, ghosting, disappearing objects, vanishing objects, text, letters, numbers, labels, arrows, diagrams, human figures, hands, pens, pencils, brushes, drawing tools, picture frames, split screens, sheets, paper texture, visible paper grain, panels, mats, borders, background rectangles, photorealistic rendering, realistic still-life photography, CGI, 3D render, glossy surfaces, dense hatching, cross-hatching, engraving, black ink masses, heavy outlines, grey-dominant mood, sumi-e, dark watercolor, saturated colors, pink, yellow or orange background wash, paint blooms behind the objects, fully painted surfaces, paint splatter, camera movement, cuts, fade-in, dissolve, music, sound effects, or any subject disappearing.</pre>
+      </div>
+    </div>
+    
+</div>
+
+<script>
+function copyPrompt(id, evt) {
+  const pre = document.getElementById("prompt_" + id);
+  const text = pre.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = evt.target;
+    const oldText = btn.innerText;
+    btn.innerText = "✅ 복사 완료!";
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.innerText = oldText;
+      btn.classList.remove("copied");
+    }, 1500);
+  });
+}
+</script>
+</body>
+</html>

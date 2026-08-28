@@ -1,0 +1,3050 @@
+{
+"slots": [
+{
+"ch": "1",
+"n": "01",
+"title": "빛을 보내는 등대",
+"sub": "해안에서 보내는 첫 신호",
+"have": 8,
+"free": 0,
+"words": [
+"tower",
+"island",
+"shine",
+"warn",
+"cliff",
+"shore",
+"guide",
+"flash"
+]
+},
+{
+"ch": "1",
+"n": "02",
+"title": "바람을 타는 범선",
+"sub": "수평선을 향해 떠나다",
+"have": 8,
+"free": 0,
+"words": [
+"sail",
+"deck",
+"rope",
+"flag",
+"journey",
+"row",
+"port",
+"navy"
+]
+},
+{
+"ch": "1",
+"n": "03",
+"title": "돌고래가 따라오는 배",
+"sub": "은빛 바다 위 도약",
+"have": 8,
+"free": 0,
+"words": [
+"dolphin",
+"follow",
+"leap",
+"calm",
+"float",
+"reflect",
+"silver",
+"distance"
+]
+},
+{
+"ch": "1",
+"n": "04",
+"title": "고래와 깊은 바다",
+"sub": "깊은 바다에서 만난 것",
+"have": 8,
+"free": 0,
+"words": [
+"whale",
+"ocean",
+"wave",
+"surface",
+"rise",
+"dive",
+"spray",
+"bubble"
+]
+},
+{
+"ch": "1",
+"n": "05",
+"title": "깊은 바다의 산호 협곡",
+"sub": "빛이 닿는 마지막 깊이",
+"have": 8,
+"free": 0,
+"words": [
+"sink",
+"shadow",
+"enormous",
+"among",
+"stream",
+"beneath",
+"narrow",
+"rough"
+]
+},
+{
+"ch": "1",
+"n": "06",
+"title": "곶을 돌아 열리는 만",
+"sub": "미지의 풍경",
+"have": 8,
+"free": 0,
+"words": [
+"adventure",
+"bay",
+"cape",
+"channel",
+"coast",
+"flood",
+"flow",
+"pool"
+]
+},
+{
+"ch": "1",
+"n": "07",
+"title": "고대의 원형 경기장",
+"sub": "돌로 쌓아 올린 거대한 구조",
+"have": 8,
+"free": 0,
+"words": [
+"ruin",
+"empire",
+"structure",
+"stage",
+"huge",
+"solid",
+"site",
+"repeat"
+]
+},
+{
+"ch": "1",
+"n": "08",
+"title": "별을 보는 망원경",
+"sub": "밤하늘을 향해 세운 눈",
+"have": 5,
+"free": 3,
+"words": [
+"aim",
+"heaven",
+"instrument",
+"observe",
+"sight"
+]
+},
+{
+"ch": "1",
+"n": "09",
+"title": "눈 덮인 숲의 오로라",
+"sub": "겨울 하늘이 흔들리는 밤",
+"have": 8,
+"free": 0,
+"words": [
+"freeze",
+"shade",
+"purple",
+"pine",
+"branch",
+"atmosphere",
+"spread",
+"fold"
+]
+},
+{
+"ch": "1",
+"n": "10",
+"title": "하늘을 나는 열기구",
+"sub": "구름 사이로 떠오르다",
+"have": 3,
+"free": 5,
+"words": [
+"balloon",
+"tour",
+"height"
+]
+},
+{
+"ch": "1",
+"n": "11",
+"title": "옷걸이의 옷",
+"sub": "스웨터와 청바지",
+"have": 5,
+"free": 3,
+"words": [
+"sweater",
+"jeans",
+"scarf",
+"glove",
+"pocket"
+]
+},
+{
+"ch": "1",
+"n": "12",
+"title": "맑은 욕실",
+"sub": "수건과 거울",
+"have": 5,
+"free": 3,
+"words": [
+"shower",
+"toilet",
+"tap",
+"towel",
+"mirror"
+]
+},
+{
+"ch": "1",
+"n": "13",
+"title": "계단 옆 거실",
+"sub": "선반과 거실",
+"have": 5,
+"free": 3,
+"words": [
+"stairs",
+"shelf",
+"livingroom",
+"ceiling",
+"sheet"
+]
+},
+{
+"ch": "1",
+"n": "14",
+"title": "램프 곁의 담요",
+"sub": "벤치와 담요",
+"have": 5,
+"free": 3,
+"words": [
+"furniture",
+"bench",
+"lamp",
+"blanket",
+"carpet"
+]
+},
+{
+"ch": "2",
+"n": "01",
+"title": "참나무 아래 초원",
+"sub": "생명이 시작되는 곳",
+"have": 8,
+"free": 0,
+"words": [
+"tree",
+"leaf",
+"grass",
+"root",
+"branch",
+"seed",
+"soil",
+"bark"
+]
+},
+{
+"ch": "2",
+"n": "02",
+"title": "평원의 기린과 얼룩말",
+"sub": "더불어 사는 동물들",
+"have": 8,
+"free": 0,
+"words": [
+"animal",
+"herd",
+"tail",
+"neck",
+"spot",
+"stripe",
+"plain",
+"graze"
+]
+},
+{
+"ch": "2",
+"n": "03",
+"title": "진흙 속 개구리",
+"sub": "비 온 뒤의 풍경",
+"have": 8,
+"free": 0,
+"words": [
+"frog",
+"jump",
+"mud",
+"bank",
+"pond",
+"insect",
+"catch",
+"hide"
+]
+},
+{
+"ch": "2",
+"n": "04",
+"title": "언덕을 오르는 양떼",
+"sub": "줄지어 걷는 초원의 아침",
+"have": 8,
+"free": 0,
+"words": [
+"sheep",
+"lamb",
+"wool",
+"fence",
+"mount",
+"valley",
+"path",
+"surround"
+]
+},
+{
+"ch": "2",
+"n": "05",
+"title": "둥지에 돌아온 새",
+"sub": "작은 것을 지키는 자리",
+"have": 8,
+"free": 0,
+"words": [
+"nest",
+"wing",
+"loose",
+"tight",
+"shelter",
+"protect",
+"tiny",
+"rest"
+]
+},
+{
+"ch": "2",
+"n": "06",
+"title": "통나무 아래의 딱정벌레",
+"sub": "쓰러진 나무가 품은 것",
+"have": 7,
+"free": 1,
+"words": [
+"log",
+"bug",
+"trunk",
+"hole",
+"crawl",
+"beneath",
+"dirt"
+]
+},
+{
+"ch": "2",
+"n": "07",
+"title": "풀숲을 가르는 뱀",
+"sub": "매끄럽게 흐르는 몸",
+"have": 8,
+"free": 0,
+"words": [
+"snake",
+"slide",
+"smooth",
+"shade",
+"twist",
+"narrow",
+"stretch",
+"still"
+]
+},
+{
+"ch": "2",
+"n": "08",
+"title": "솔방울이 여는 씨앗집",
+"sub": "열려야 퍼진다",
+"have": 8,
+"free": 0,
+"words": [
+"pine",
+"plant",
+"bloom",
+"shell",
+"thick",
+"spread",
+"secure",
+"expand"
+]
+},
+{
+"ch": "2",
+"n": "09",
+"title": "개미의 긴 줄",
+"sub": "함께 옮기는 길",
+"have": 8,
+"free": 0,
+"words": [
+"ant",
+"species",
+"unite",
+"lane",
+"load",
+"gather",
+"bean",
+"wild"
+]
+},
+{
+"ch": "2",
+"n": "10",
+"title": "새장 문이 열린 날",
+"sub": "열려 있는 문",
+"have": 8,
+"free": 0,
+"words": [
+"cage",
+"pet",
+"feed",
+"release",
+"wire",
+"bar",
+"swing",
+"within"
+]
+},
+{
+"ch": "2",
+"n": "11",
+"title": "숲길을 걷는 여우",
+"sub": "낙엽 위에 남는 발자국",
+"have": 2,
+"free": 6,
+"words": [
+"bush",
+"trace"
+]
+},
+{
+"ch": "2",
+"n": "12",
+"title": "바람 뒤의 거미줄",
+"sub": "끊어진 줄을 다시 잇다",
+"have": 8,
+"free": 0,
+"words": [
+"string",
+"net",
+"thin",
+"connect",
+"attach",
+"pattern",
+"trap",
+"stable"
+]
+},
+{
+"ch": "2",
+"n": "13",
+"title": "잎 사이의 위장자",
+"sub": "보이지 않던 것을 알아보다",
+"have": 4,
+"free": 4,
+"words": [
+"unit",
+"specific",
+"seem",
+"demonstrate"
+]
+},
+{
+"ch": "2",
+"n": "14",
+"title": "숲속의 도토리",
+"sub": "단단한 깍지를 쓴 열매",
+"have": 5,
+"free": 3,
+"words": [
+"link",
+"definite",
+"develop",
+"separate",
+"defense"
+]
+},
+{
+"ch": "2",
+"n": "15",
+"title": "줄무늬 깃털",
+"sub": "바람에 날아든 새의 깃",
+"have": 4,
+"free": 4,
+"words": [
+"fur",
+"mark",
+"gentle",
+"swallow"
+]
+},
+{
+"ch": "2",
+"n": "16",
+"title": "물가의 푸른 잠자리",
+"sub": "투명한 날개로 날다",
+"have": 6,
+"free": 2,
+"words": [
+"nerve",
+"chest",
+"rush",
+"chase",
+"bounce",
+"muscle"
+]
+},
+{
+"ch": "2",
+"n": "17",
+"title": "날개 달린 단풍 씨앗",
+"sub": "바람 타고 흩날리는 씨앗",
+"have": 3,
+"free": 5,
+"words": [
+"balance",
+"feature",
+"progress"
+]
+},
+{
+"ch": "2",
+"n": "18",
+"title": "둥지 속 푸른 새알",
+"sub": "따뜻하게 품은 새 생명",
+"have": 3,
+"free": 5,
+"words": [
+"pregnant",
+"health",
+"bury"
+]
+},
+{
+"ch": "3",
+"n": "01",
+"title": "조용한 부엌",
+"sub": "전자레인지와 오븐",
+"have": 5,
+"free": 3,
+"words": [
+"oven",
+"microwave",
+"lid",
+"tray",
+"bin"
+]
+},
+{
+"ch": "3",
+"n": "02",
+"title": "벽돌집과 지붕",
+"sub": "시골집과 차고",
+"have": 5,
+"free": 3,
+"words": [
+"roof",
+"garage",
+"cottage",
+"brick",
+"villa"
+]
+},
+{
+"ch": "3",
+"n": "03",
+"title": "창고 벽의 연장",
+"sub": "선반과 연장들",
+"have": 6,
+"free": 2,
+"words": [
+"rope",
+"chain",
+"lock",
+"wire",
+"pipe",
+"iron"
+]
+},
+{
+"ch": "3",
+"n": "04",
+"title": "빨랫줄과 집게",
+"sub": "바람에 날리는 천",
+"have": 6,
+"free": 2,
+"words": [
+"string",
+"bar",
+"clip",
+"pin",
+"cotton",
+"tank"
+]
+},
+{
+"ch": "3",
+"n": "05",
+"title": "현관 구석의 잡동사니",
+"sub": "어질러진 물건들",
+"have": 6,
+"free": 2,
+"words": [
+"fit",
+"boot",
+"mess",
+"cable",
+"dump",
+"curl"
+]
+},
+{
+"ch": "3",
+"n": "06",
+"title": "거울 앞 선반",
+"sub": "몸단장 도구들",
+"have": 6,
+"free": 2,
+"words": [
+"blonde",
+"uniform",
+"suit",
+"mask",
+"shave",
+"bare"
+]
+},
+{
+"ch": "3",
+"n": "07",
+"title": "화분 속 새싹",
+"sub": "흙에서 자라나는 초록 잎",
+"have": 7,
+"free": 1,
+"words": [
+"shape",
+"single",
+"extend",
+"contain",
+"alive",
+"breathe",
+"develop"
+]
+},
+{
+"ch": "3",
+"n": "08",
+"title": "물뿌리개와 모종삽",
+"sub": "흙을 고르는 두 연장",
+"have": 4,
+"free": 4,
+"words": [
+"tool",
+"handle",
+"dig",
+"operate"
+]
+},
+{
+"ch": "3",
+"n": "09",
+"title": "유리 온실 병",
+"sub": "유리 안에 담긴 작은 뜰",
+"have": 5,
+"free": 3,
+"words": [
+"triangle",
+"volume",
+"empty",
+"include",
+"remain"
+]
+},
+{
+"ch": "3",
+"n": "10",
+"title": "꽃가위와 라벤더",
+"sub": "한 줄기를 골라 자르다",
+"have": 6,
+"free": 2,
+"words": [
+"pair",
+"piece",
+"divide",
+"snap",
+"remove",
+"bend"
+]
+},
+{
+"ch": "3",
+"n": "11",
+"title": "그루터기 위 새집",
+"sub": "나무 밑동에 앉은 작은 집",
+"have": 4,
+"free": 4,
+"words": [
+"frame",
+"block",
+"settle",
+"survive"
+]
+},
+{
+"ch": "3",
+"n": "12",
+"title": "바구니에 담은 가을",
+"sub": "호박과 보리 이삭",
+"have": 5,
+"free": 3,
+"words": [
+"bunch",
+"mass",
+"plenty",
+"several",
+"gain"
+]
+},
+{
+"ch": "3",
+"n": "13",
+"title": "꽃을 누르는 나무틀",
+"sub": "네 귀를 조여 말리다",
+"have": 6,
+"free": 2,
+"words": [
+"square",
+"link",
+"shut",
+"bind",
+"constant",
+"maintain"
+]
+},
+{
+"ch": "3",
+"n": "14",
+"title": "외발 손수레",
+"sub": "바퀴 하나로 나르다",
+"have": 6,
+"free": 2,
+"words": [
+"wide",
+"step",
+"roll",
+"drag",
+"force",
+"shift"
+]
+},
+{
+"ch": "3",
+"n": "15",
+"title": "유리로 지은 온실",
+"sub": "빛을 들이는 집",
+"have": 4,
+"free": 4,
+"words": [
+"grand",
+"upper",
+"internal",
+"raise"
+]
+},
+{
+"ch": "3",
+"n": "16",
+"title": "울타리 앞 해바라기",
+"sub": "고르게 늘어선 씨앗",
+"have": 5,
+"free": 3,
+"words": [
+"regular",
+"combine",
+"gorgeous",
+"super",
+"continue"
+]
+},
+{
+"ch": "3",
+"n": "17",
+"title": "호랑나비의 날갯짓",
+"sub": "화려한 대칭 날개",
+"have": 6,
+"free": 2,
+"words": [
+"equal",
+"odd",
+"amaze",
+"adapt",
+"vary",
+"gesture"
+]
+},
+{
+"ch": "3",
+"n": "18",
+"title": "나뭇가지 위 푸른 박새",
+"sub": "청아하게 지저귀는 작은 새",
+"have": 5,
+"free": 3,
+"words": [
+"breast",
+"grace",
+"awake",
+"hear",
+"lean"
+]
+},
+{
+"ch": "3",
+"n": "19",
+"title": "잎사귀 위 무당벌레",
+"sub": "풀잎을 기어가는 점박이",
+"have": 6,
+"free": 2,
+"words": [
+"cell",
+"nail",
+"bite",
+"poison",
+"sense",
+"slip"
+]
+},
+{
+"ch": "3",
+"n": "20",
+"title": "정원의 돌 모이그릇",
+"sub": "새들이 모여드는 그릇",
+"have": 4,
+"free": 4,
+"words": [
+"source",
+"district",
+"chew",
+"approach"
+]
+},
+{
+"ch": "3",
+"n": "21",
+"title": "나선형 껍질의 달팽이",
+"sub": "천천히 기어가는 여정",
+"have": 2,
+"free": 6,
+"words": [
+"toe",
+"wound"
+]
+},
+{
+"ch": "4",
+"n": "01",
+"title": "자료실의 분류벽 (카드 목록장)",
+"sub": "학교의 모든 기록",
+"have": 8,
+"free": 0,
+"words": [
+"catalog",
+"arrange",
+"list",
+"article",
+"chart",
+"graph",
+"magazine",
+"clip"
+]
+},
+{
+"ch": "4",
+"n": "02",
+"title": "무대 원고 편집실 (타자기)",
+"sub": "이야기가 시작되는 곳",
+"have": 8,
+"free": 0,
+"words": [
+"edit",
+"text",
+"spell",
+"language",
+"poem",
+"comedy",
+"drama",
+"scene"
+]
+},
+{
+"ch": "4",
+"n": "03",
+"title": "여행기록 보존대 (양장본)",
+"sub": "먼 곳의 기억들",
+"have": 8,
+"free": 0,
+"words": [
+"diary",
+"document",
+"record",
+"photograph",
+"dictionary",
+"essay",
+"envelope",
+"object"
+]
+},
+{
+"ch": "4",
+"n": "04",
+"title": "이젤과 화판",
+"sub": "이젤 · 화판",
+"have": 6,
+"free": 2,
+"words": [
+"belief",
+"benefit",
+"bet",
+"beyond",
+"billion",
+"bit"
+]
+},
+{
+"ch": "4",
+"n": "05",
+"title": "만년필과 잉크",
+"sub": "만년필과 잉크방울",
+"have": 6,
+"free": 2,
+"words": [
+"conscious",
+"consider",
+"contact",
+"contest",
+"context",
+"contract"
+]
+},
+{
+"ch": "4",
+"n": "06",
+"title": "돋보기와 렌즈",
+"sub": "돋보기와 손잡이",
+"have": 6,
+"free": 2,
+"words": [
+"contribute",
+"converse",
+"convince",
+"cope",
+"correct",
+"cough"
+]
+},
+{
+"ch": "4",
+"n": "07",
+"title": "탁상 핸드벨",
+"sub": "핸드벨과 손잡이",
+"have": 6,
+"free": 2,
+"words": [
+"council",
+"county",
+"credit",
+"crown",
+"cruel",
+"cure"
+]
+},
+{
+"ch": "4",
+"n": "08",
+"title": "잉크병과 스포이트",
+"sub": "잉크병과 스포이트",
+"have": 6,
+"free": 2,
+"words": [
+"cute",
+"dare",
+"darling",
+"deal",
+"debate",
+"debt"
+]
+},
+{
+"ch": "4",
+"n": "09",
+"title": "나무 독서대",
+"sub": "독서대와 클립",
+"have": 6,
+"free": 2,
+"words": [
+"define",
+"delay",
+"demand",
+"dentist",
+"deny",
+"depend"
+]
+},
+{
+"ch": "4",
+"n": "10",
+"title": "클립과 압정",
+"sub": "클립과 고정압정",
+"have": 6,
+"free": 2,
+"words": [
+"due",
+"each",
+"earn",
+"ease",
+"economy",
+"effect"
+]
+},
+{
+"ch": "4",
+"n": "11",
+"title": "황동 인장 스탬프",
+"sub": "스탬프와 손잡이",
+"have": 6,
+"free": 2,
+"words": [
+"either",
+"elect",
+"electric",
+"else",
+"embarrass",
+"emotion"
+]
+},
+{
+"ch": "5",
+"n": "01",
+"title": "놀이공원 대관람차",
+"sub": "빙글빙글 돌아가는 풍경",
+"have": 8,
+"free": 0,
+"words": [
+"wheel",
+"ride",
+"park",
+"spin",
+"high",
+"view",
+"sky",
+"fun"
+]
+},
+{
+"ch": "5",
+"n": "02",
+"title": "물보라 롤러코스터",
+"sub": "아찔한 스피드",
+"have": 8,
+"free": 0,
+"words": [
+"track",
+"speed",
+"scream",
+"drop",
+"water",
+"splash",
+"fast",
+"thrill"
+]
+},
+{
+"ch": "5",
+"n": "03",
+"title": "범퍼카 타는 아이들",
+"sub": "쾅쾅 부딪히는 재미",
+"have": 8,
+"free": 0,
+"words": [
+"car",
+"bump",
+"drive",
+"laugh",
+"seat",
+"steer",
+"crash",
+"play"
+]
+},
+{
+"ch": "5",
+"n": "04",
+"title": "드롭타워 꼭대기",
+"sub": "떨어지기 직전의 순간",
+"have": 6,
+"free": 2,
+"words": [
+"tower",
+"rise",
+"height",
+"fear",
+"grab",
+"tight"
+]
+},
+{
+"ch": "5",
+"n": "05",
+"title": "곰인형을 뽑다",
+"sub": "고리를 던져 얻은 상",
+"have": 8,
+"free": 0,
+"words": [
+"prize",
+"award",
+"hug",
+"proud",
+"lift",
+"reach",
+"cheer",
+"joy"
+]
+},
+{
+"ch": "5",
+"n": "06",
+"title": "서재 정리대와 고서",
+"sub": "선반 · 고서",
+"have": 6,
+"free": 2,
+"words": [
+"shelf",
+"clip",
+"neat",
+"record",
+"arrange",
+"contain"
+]
+},
+{
+"ch": "5",
+"n": "07",
+"title": "판사봉과 법전",
+"sub": "판사봉 · 법전",
+"have": 6,
+"free": 2,
+"words": [
+"law",
+"judge",
+"strike",
+"order",
+"rule",
+"legal"
+]
+},
+{
+"ch": "5",
+"n": "08",
+"title": "항구와 닻",
+"sub": "항구 · 닻",
+"have": 6,
+"free": 2,
+"words": [
+"port",
+"rope",
+"chain",
+"wave",
+"tie",
+"steady"
+]
+},
+{
+"ch": "5",
+"n": "09",
+"title": "벌통과 꿀단지",
+"sub": "벌통 · 꿀",
+"have": 6,
+"free": 2,
+"words": [
+"honey",
+"sweet",
+"roof",
+"pure",
+"wild",
+"feed"
+]
+},
+{
+"ch": "5",
+"n": "10",
+"title": "물레와 도자기",
+"sub": "물레 · 도자기",
+"have": 6,
+"free": 2,
+"words": [
+"pot",
+"round",
+"tool",
+"roll",
+"shape",
+"surface"
+]
+},
+{
+"ch": "5",
+"n": "11",
+"title": "온실과 분무기",
+"sub": "온실 · 분무기",
+"have": 6,
+"free": 2,
+"words": [
+"plant",
+"leaf",
+"spray",
+"shine",
+"alive",
+"pour"
+]
+},
+{
+"ch": "5",
+"n": "12",
+"title": "동판 에칭 판화",
+"sub": "동판 · 판화",
+"have": 6,
+"free": 2,
+"words": [
+"plate",
+"press",
+"pattern",
+"mark",
+"skill",
+"detail"
+]
+},
+{
+"ch": "5",
+"n": "13",
+"title": "오크통과 포도",
+"sub": "오크통 · 포도",
+"have": 6,
+"free": 2,
+"words": [
+"tap",
+"bunch",
+"firm",
+"flow",
+"solid",
+"spread"
+]
+},
+{
+"ch": "5",
+"n": "14",
+"title": "양팔저울과 추",
+"sub": "저울 · 분동",
+"have": 6,
+"free": 2,
+"words": [
+"scale",
+"balance",
+"measure",
+"level",
+"equal",
+"exact"
+]
+},
+{
+"ch": "5",
+"n": "15",
+"title": "천구의와 궤도",
+"sub": "천구의 · 궤도",
+"have": 6,
+"free": 2,
+"words": [
+"pole",
+"chart",
+"sight",
+"frame",
+"guide",
+"metal"
+]
+},
+{
+"ch": "5",
+"n": "16",
+"title": "스쿨버스와 정지판",
+"sub": "버스 · 정지판",
+"have": 6,
+"free": 2,
+"words": [
+"route",
+"traffic",
+"vehicle",
+"direct",
+"sign",
+"warn"
+]
+},
+{
+"ch": "6",
+"n": "01",
+"title": "끓는 냄비와 주전자",
+"sub": "부엌의 온기",
+"have": 8,
+"free": 0,
+"words": [
+"boil",
+"kettle",
+"pour",
+"sauce",
+"pot",
+"stir",
+"crack",
+"tin"
+]
+},
+{
+"ch": "6",
+"n": "02",
+"title": "도마 위에서 다듬기",
+"sub": "요리 준비의 순간",
+"have": 9,
+"free": 0,
+"words": [
+"bowl",
+"mix",
+"pepper",
+"mushroom",
+"chop",
+"powder",
+"press",
+"rub",
+"wipe"
+]
+},
+{
+"ch": "6",
+"n": "03",
+"title": "프라이팬의 고기",
+"sub": "지글지글 익어가는 고기",
+"have": 8,
+"free": 0,
+"words": [
+"fry",
+"pan",
+"dish",
+"crisp",
+"bacon",
+"pork",
+"chip",
+"wrap"
+]
+},
+{
+"ch": "6",
+"n": "04",
+"title": "물레와 점토",
+"sub": "물레 · 점토",
+"have": 6,
+"free": 2,
+"words": [
+"shape",
+"spin",
+"round",
+"firm",
+"skill",
+"surface"
+]
+},
+{
+"ch": "6",
+"n": "05",
+"title": "재봉틀과 실토리",
+"sub": "재봉틀 · 실토리",
+"have": 6,
+"free": 2,
+"words": [
+"machine",
+"sew",
+"wheel",
+"steel",
+"iron",
+"straight"
+]
+},
+{
+"ch": "6",
+"n": "06",
+"title": "목공 대패와 대팻밥",
+"sub": "대패 · 대팻밥",
+"have": 6,
+"free": 2,
+"words": [
+"handle",
+"sharp",
+"shave",
+"curl",
+"flat",
+"slide"
+]
+},
+{
+"ch": "6",
+"n": "07",
+"title": "가죽 펀치와 가죽",
+"sub": "펀치 · 가죽",
+"have": 6,
+"free": 2,
+"words": [
+"punch",
+"hole",
+"metal",
+"tight",
+"row",
+"strike"
+]
+},
+{
+"ch": "6",
+"n": "08",
+"title": "스테인드글라스 조각",
+"sub": "유리 · 꽃잎",
+"have": 6,
+"free": 2,
+"words": [
+"piece",
+"frame",
+"pattern",
+"shine",
+"fit",
+"thin"
+]
+},
+{
+"ch": "6",
+"n": "09",
+"title": "석고상과 조각주걱",
+"sub": "석고상 · 주걱",
+"have": 6,
+"free": 2,
+"words": [
+"tool",
+"feature",
+"smooth",
+"edge",
+"mark",
+"solid"
+]
+},
+{
+"ch": "6",
+"n": "10",
+"title": "양장본 책과 리본",
+"sub": "책 · 리본",
+"have": 6,
+"free": 2,
+"words": [
+"bind",
+"thick",
+"record",
+"detail",
+"sheet",
+"contain"
+]
+},
+{
+"ch": "7",
+"n": "01",
+"title": "거울을 보는 시선",
+"sub": "표정을 살피다",
+"have": 5,
+"free": 3,
+"words": [
+"cheek",
+"jaw",
+"glance",
+"stare",
+"sight"
+]
+},
+{
+"ch": "7",
+"n": "02",
+"title": "아픈 사람과 휴식",
+"sub": "열과 통증을 가라앉히다",
+"have": 8,
+"free": 0,
+"words": [
+"fever",
+"pain",
+"medicine",
+"patient",
+"weak",
+"rest",
+"asleep",
+"ill"
+]
+},
+{
+"ch": "7",
+"n": "03",
+"title": "머그잔과 휴식",
+"sub": "마음의 평온과 기쁨",
+"have": 8,
+"free": 0,
+"words": [
+"joy",
+"laugh",
+"peace",
+"calm",
+"relax",
+"comfort",
+"delight",
+"relief"
+]
+},
+{
+"ch": "7",
+"n": "04",
+"title": "알람시계와 걱정",
+"sub": "마음속 불안과 혼란",
+"have": 8,
+"free": 0,
+"words": [
+"anger",
+"annoy",
+"anxious",
+"fear",
+"panic",
+"shock",
+"trouble",
+"upset"
+]
+},
+{
+"ch": "7",
+"n": "05",
+"title": "캠핑 주전자와 머그컵",
+"sub": "따뜻하게 끓이는 차",
+"have": 6,
+"free": 2,
+"words": [
+"although",
+"altogether",
+"amuse",
+"analysis",
+"announce",
+"annual"
+]
+},
+{
+"ch": "7",
+"n": "06",
+"title": "접이식 포켓 나이프",
+"sub": "다용도 캠핑 칼",
+"have": 6,
+"free": 2,
+"words": [
+"appreciate",
+"argue",
+"aside",
+"assess",
+"sharp",
+"assign"
+]
+},
+{
+"ch": "7",
+"n": "07",
+"title": "무쇠 팬과 모닥불 화덕",
+"sub": "돌 화덕 위의 조리",
+"have": 6,
+"free": 2,
+"words": [
+"associate",
+"assume",
+"attack",
+"attempt",
+"attend",
+"attention"
+]
+},
+{
+"ch": "7",
+"n": "08",
+"title": "보온병과 스테인리스 컵",
+"sub": "온도를 지키는 병",
+"have": 6,
+"free": 2,
+"words": [
+"attitude",
+"attract",
+"audience",
+"average",
+"aware",
+"awkward"
+]
+},
+{
+"ch": "7",
+"n": "09",
+"title": "가지런한 아침상",
+"sub": "정갈하게 차려진 식사",
+"have": 8,
+"free": 0,
+"words": [
+"rice",
+"toast",
+"tea",
+"meal",
+"lay",
+"neat",
+"total",
+"pure"
+]
+},
+{
+"ch": "7",
+"n": "10",
+"title": "과일 접시",
+"sub": "신선한 과일의 색감",
+"have": 9,
+"free": 0,
+"words": [
+"pear",
+"melon",
+"lemon",
+"plate",
+"strawberry",
+"sour",
+"sort",
+"amount",
+"spare"
+]
+},
+{
+"ch": "7",
+"n": "11",
+"title": "장 보고 온 저녁",
+"sub": "풍성한 저녁 식탁",
+"have": 8,
+"free": 0,
+"words": [
+"grocery",
+"supper",
+"honey",
+"snack",
+"sweet",
+"pie",
+"hunger",
+"consume"
+]
+},
+{
+"ch": "8",
+"n": "01",
+"title": "공항과 비행기",
+"sub": "활주로를 떠나는 여행",
+"have": 8,
+"free": 0,
+"words": [
+"airline",
+"airport",
+"exit",
+"flight",
+"gate",
+"plane",
+"seat",
+"tour"
+]
+},
+{
+"ch": "8",
+"n": "02",
+"title": "자전거와 수레",
+"sub": "피크닉을 향해 달리다",
+"have": 7,
+"free": 1,
+"words": [
+"cycle",
+"cart",
+"picnic",
+"motor",
+"vehicle",
+"brake",
+"gear"
+]
+},
+{
+"ch": "8",
+"n": "03",
+"title": "공원 벤치와 배낭",
+"sub": "풀밭 위의 나들이",
+"have": 8,
+"free": 0,
+"words": [
+"pack",
+"bench",
+"blanket",
+"tie",
+"pocket",
+"lawn",
+"branch",
+"oak"
+]
+},
+{
+"ch": "8",
+"n": "04",
+"title": "궁전과 근위병",
+"sub": "경계와 임무 수행",
+"have": 8,
+"free": 0,
+"words": [
+"soldier",
+"guard",
+"army",
+"weapon",
+"officer",
+"uniform",
+"post",
+"duty"
+]
+},
+{
+"ch": "8",
+"n": "05",
+"title": "삼각 캠핑 텐트와 의자",
+"sub": "숲속에 펼친 쉼터",
+"have": 6,
+"free": 2,
+"words": [
+"escape",
+"able",
+"absolute",
+"accent",
+"accept",
+"access"
+]
+},
+{
+"ch": "8",
+"n": "06",
+"title": "황동 랜턴의 불꽃",
+"sub": "어둠을 밝히는 등불",
+"have": 6,
+"free": 2,
+"words": [
+"battery",
+"account",
+"accuse",
+"achieve",
+"admire",
+"admit"
+]
+},
+{
+"ch": "8",
+"n": "07",
+"title": "가죽 등산화와 지팡이",
+"sub": "거친 산길을 오르다",
+"have": 6,
+"free": 2,
+"words": [
+"adopt",
+"advantage",
+"advertise",
+"advice",
+"advise",
+"affair"
+]
+},
+{
+"ch": "8",
+"n": "08",
+"title": "원목 카누와 노",
+"sub": "물살을 가르는 패들",
+"have": 6,
+"free": 2,
+"words": [
+"affect",
+"afford",
+"agent",
+"aid",
+"alcohol",
+"allow"
+]
+},
+{
+"ch": "8",
+"n": "09",
+"title": "손도끼와 장작더미",
+"sub": "장작을 패는 메아리",
+"have": 6,
+"free": 2,
+"words": [
+"strike",
+"apart",
+"appeal",
+"appear",
+"apply",
+"appoint"
+]
+},
+{
+"ch": "8",
+"n": "10",
+"title": "황동 나침반과 지도",
+"sub": "방향을 찾는 바늘",
+"have": 6,
+"free": 2,
+"words": [
+"background",
+"band",
+"target",
+"search",
+"seek",
+"toward"
+]
+},
+{
+"ch": "9",
+"n": "01",
+"title": "바다를 보는 석상",
+"sub": "풀언덕에 선 거대한 형상",
+"have": 8,
+"free": 0,
+"words": [
+"coast",
+"ocean",
+"shore",
+"stare",
+"giant",
+"figure",
+"edge",
+"lawn"
+]
+},
+{
+"ch": "9",
+"n": "02",
+"title": "그랜드 피아노와 건반",
+"sub": "올라간 댐퍼와 울림",
+"have": 6,
+"free": 2,
+"words": [
+"glue",
+"tone",
+"perform",
+"opinion",
+"pop",
+"entertain"
+]
+},
+{
+"ch": "9",
+"n": "03",
+"title": "어쿠스틱 기타와 울림통",
+"sub": "여섯 줄의 맑은 소리",
+"have": 6,
+"free": 2,
+"words": [
+"tune",
+"quit",
+"folk",
+"fellow",
+"suspect",
+"mate"
+]
+},
+{
+"ch": "9",
+"n": "04",
+"title": "클래식 바이올린과 활",
+"sub": "현을 스치는 부드러운 선율",
+"have": 6,
+"free": 2,
+"words": [
+"opera",
+"theater",
+"express",
+"master",
+"especial",
+"without"
+]
+},
+{
+"ch": "9",
+"n": "05",
+"title": "황동 트럼펫과 밸브",
+"sub": "울려 퍼지는 나팔 소리",
+"have": 6,
+"free": 2,
+"words": [
+"loud",
+"concentrate",
+"influence",
+"bang",
+"mental",
+"possible"
+]
+},
+{
+"ch": "9",
+"n": "06",
+"title": "원목 메트로놈의 진동추",
+"sub": "박자를 맞추는 일정한 소리",
+"have": 6,
+"free": 2,
+"words": [
+"beat",
+"exhaust",
+"evidence",
+"individual",
+"shame",
+"respond"
+]
+},
+{
+"ch": "9",
+"n": "07",
+"title": "중후한 첼로와 엔드핀",
+"sub": "낮고 깊은 공명",
+"have": 6,
+"free": 2,
+"words": [
+"giraffe",
+"estimate",
+"fortunate",
+"experiment",
+"insure",
+"honor"
+]
+},
+{
+"ch": "9",
+"n": "08",
+"title": "알토 색소폰과 키패드",
+"sub": "재즈의 자유로운 음색",
+"have": 6,
+"free": 2,
+"words": [
+"plus",
+"particular",
+"humor",
+"mood",
+"salary",
+"pride"
+]
+},
+{
+"ch": "9",
+"n": "09",
+"title": "프렌치 호른과 원형 관",
+"sub": "둥글게 감긴 관의 울림",
+"have": 6,
+"free": 2,
+"words": [
+"secretary",
+"nut",
+"major",
+"intense",
+"extreme",
+"communicate"
+]
+},
+{
+"ch": "9",
+"n": "10",
+"title": "은빛 플루트와 취구",
+"sub": "맑고 청아한 새소리",
+"have": 6,
+"free": 2,
+"words": [
+"whistle",
+"self",
+"thief",
+"quality",
+"immediate",
+"satisfy"
+]
+},
+{
+"ch": "9",
+"n": "11",
+"title": "흑단 클라리넷과 벨",
+"sub": "목관의 따뜻한 호흡",
+"have": 6,
+"free": 2,
+"words": [
+"noise",
+"prime",
+"govern",
+"pronounce",
+"struggle",
+"gun"
+]
+},
+{
+"ch": "10",
+"n": "01",
+"title": "새벽 안개 낀 시골길",
+"sub": "안개가 걷히는 아침",
+"have": 7,
+"free": 1,
+"words": [
+"fog",
+"dawn",
+"countryside",
+"dirt",
+"dust",
+"smoke",
+"village"
+]
+},
+{
+"ch": "10",
+"n": "02",
+"title": "폭풍우와 물결",
+"sub": "바위섬의 파도와 물개",
+"have": 7,
+"free": 1,
+"words": [
+"storm",
+"tide",
+"wave",
+"current",
+"stream",
+"seal",
+"blow"
+]
+},
+{
+"ch": "10",
+"n": "03",
+"title": "녹는 얼음과 김",
+"sub": "온도가 오르는 공장 지대",
+"have": 8,
+"free": 0,
+"words": [
+"freeze",
+"melt",
+"steam",
+"temperature",
+"factory",
+"degree",
+"climate",
+"steel"
+]
+},
+{
+"ch": "10",
+"n": "04",
+"title": "먹구름과 번개 뇌우",
+"sub": "하늘을 가르는 벼락",
+"have": 6,
+"free": 2,
+"words": [
+"moreover",
+"refuse",
+"except",
+"replace",
+"forth",
+"income"
+]
+},
+{
+"ch": "10",
+"n": "05",
+"title": "맑은 하늘의 칠색 무지개",
+"sub": "비 갠 뒤의 일곱 빛깔",
+"have": 6,
+"free": 2,
+"words": [
+"rainbow",
+"message",
+"general",
+"sum",
+"propose",
+"spoil"
+]
+},
+{
+"ch": "10",
+"n": "06",
+"title": "숲길에 자욱한 아침 안개",
+"sub": "나무 사이로 스미는 박명",
+"have": 6,
+"free": 2,
+"words": [
+"prefer",
+"which",
+"possess",
+"extra",
+"native",
+"topic"
+]
+},
+{
+"ch": "10",
+"n": "07",
+"title": "나뭇가지에 맺힌 서리",
+"sub": "새벽 추위가 빚은 결정",
+"have": 6,
+"free": 2,
+"words": [
+"junior",
+"physical",
+"league",
+"pardon",
+"rat",
+"provide"
+]
+},
+{
+"ch": "10",
+"n": "08",
+"title": "기와 처마 끝의 고드름",
+"sub": "녹아내리다 굳은 얼음",
+"have": 6,
+"free": 2,
+"words": [
+"polite",
+"sudden",
+"report",
+"therefore",
+"politics",
+"rude"
+]
+},
+{
+"ch": "10",
+"n": "09",
+"title": "사막의 거대한 모래폭풍",
+"sub": "붉은 먼지바람의 장벽",
+"have": 6,
+"free": 2,
+"words": [
+"detect",
+"title",
+"rule",
+"sweep",
+"forgive",
+"retire"
+]
+},
+{
+"ch": "10",
+"n": "10",
+"title": "바다 위의 회오리 용오름",
+"sub": "하늘로 솟구치는 물기둥",
+"have": 6,
+"free": 2,
+"words": [
+"calculate",
+"found",
+"unless",
+"create",
+"serious",
+"yell"
+]
+},
+{
+"ch": "10",
+"n": "11",
+"title": "단풍잎을 날리는 가을바람",
+"sub": "바스락거리는 숲",
+"have": 6,
+"free": 2,
+"words": [
+"invest",
+"support",
+"practice",
+"century",
+"sew",
+"reason"
+]
+},
+{
+"ch": "10",
+"n": "12",
+"title": "풀잎 끝에 맺힌 아침 이슬",
+"sub": "투명한 물방울의 영롱함",
+"have": 6,
+"free": 2,
+"words": [
+"stuff",
+"university",
+"potential",
+"shoulder",
+"slave",
+"count"
+]
+},
+{
+"ch": "10",
+"n": "13",
+"title": "호수 위에 피는 물안개",
+"sub": "수면 위로 피어오르는 김",
+"have": 6,
+"free": 2,
+"words": [
+"hire",
+"beer",
+"principle",
+"terrible",
+"person",
+"hesitate"
+]
+},
+{
+"ch": "11",
+"n": "01",
+"title": "사막의 혼천의",
+"sub": "별자리를 재는 황동 고리",
+"have": 8,
+"free": 0,
+"words": [
+"desert",
+"site",
+"region",
+"pole",
+"round",
+"scale",
+"broad",
+"pile"
+]
+},
+{
+"ch": "11",
+"n": "02",
+"title": "황동 현미경과 광물",
+"sub": "작은 것을 크게 보는 눈",
+"have": 8,
+"free": 0,
+"words": [
+"instrument",
+"examine",
+"inspect",
+"detail",
+"sample",
+"element",
+"metal",
+"tiny"
+]
+},
+{
+"ch": "11",
+"n": "03",
+"title": "측량기와 곧은 길",
+"sub": "땅을 재어 길을 놓다",
+"have": 8,
+"free": 0,
+"words": [
+"measure",
+"survey",
+"technique",
+"skill",
+"route",
+"flat",
+"straight",
+"level"
+]
+},
+{
+"ch": "11",
+"n": "04",
+"title": "초승달과 은은한 별빛",
+"sub": "어두운 밤하늘의 은빛 조각",
+"have": 6,
+"free": 2,
+"words": [
+"research",
+"indeed",
+"simple",
+"society",
+"prepare",
+"theory"
+]
+},
+{
+"ch": "11",
+"n": "05",
+"title": "밤하늘을 가로지르는 은하수",
+"sub": "수억 개의 별이 흐르는 강",
+"have": 6,
+"free": 2,
+"words": [
+"content",
+"matter",
+"wage",
+"fault",
+"grant",
+"main"
+]
+},
+{
+"ch": "11",
+"n": "06",
+"title": "꼬리를 길게 끄는 혜성",
+"sub": "우주를 질주하는 얼음 덩어리",
+"have": 6,
+"free": 2,
+"words": [
+"frankly",
+"select",
+"regard",
+"smash",
+"upon",
+"rare"
+]
+},
+{
+"ch": "11",
+"n": "07",
+"title": "붉은 사막의 행성 화성",
+"sub": "메마른 분화구와 협곡",
+"have": 6,
+"free": 2,
+"words": [
+"planet",
+"pub",
+"involve",
+"paragraph",
+"suggest",
+"imagine"
+]
+},
+{
+"ch": "11",
+"n": "08",
+"title": "거대한 얼음 고리의 토성",
+"sub": "빛나는 환을 두른 거인",
+"have": 6,
+"free": 2,
+"words": [
+"yet",
+"minor",
+"previous",
+"vote",
+"employ",
+"calendar"
+]
+},
+{
+"ch": "11",
+"n": "09",
+"title": "밤하늘을 수놓는 초록 오로라",
+"sub": "빛의 장막이 일렁이다",
+"have": 6,
+"free": 2,
+"words": [
+"overall",
+"recommend",
+"spend",
+"frustrate",
+"then",
+"guilt"
+]
+},
+{
+"ch": "11",
+"n": "10",
+"title": "태양을 가리는 개기일식",
+"sub": "interrupt·우주 · event·우주",
+"have": 6,
+"free": 2,
+"words": [
+"interrupt",
+"event",
+"steal",
+"stomach",
+"shout",
+"grade"
+]
+},
+{
+"ch": "11",
+"n": "11",
+"title": "달 표면의 충돌 분화구",
+"sub": "운석이 남긴 태고의 흔적",
+"have": 6,
+"free": 2,
+"words": [
+"neighbor",
+"improve",
+"tongue",
+"responsible",
+"similar",
+"modern"
+]
+},
+{
+"ch": "11",
+"n": "12",
+"title": "우주를 관측하는 전파망원경",
+"sub": "먼 별의 신호를 모으다",
+"have": 6,
+"free": 2,
+"words": [
+"expert",
+"forever",
+"treat",
+"real",
+"necessary",
+"battle"
+]
+},
+{
+"ch": "11",
+"n": "13",
+"title": "시공간을 왜곡하는 블랙홀",
+"sub": "빛조차 빨아들이는 소용돌이",
+"have": 6,
+"free": 2,
+"words": [
+"till",
+"pull",
+"license",
+"display",
+"screen",
+"volunteer"
+]
+},
+{
+"ch": "12",
+"n": "01",
+"title": "캠핑과 밤 이야기",
+"sub": "모닥불 곁의 신비",
+"have": 8,
+"free": 0,
+"words": [
+"tale",
+"magic",
+"ghost",
+"mystery",
+"shadow",
+"flame",
+"aloud",
+"chat"
+]
+},
+{
+"ch": "12",
+"n": "02",
+"title": "아치창문 서재",
+"sub": "경이로운 생각의 자리",
+"have": 8,
+"free": 0,
+"words": [
+"fancy",
+"fantastic",
+"marvel",
+"wonder",
+"brilliant",
+"curious",
+"fascinate",
+"strange"
+]
+},
+{
+"ch": "12",
+"n": "03",
+"title": "책 속의 비밀 미로",
+"sub": "단서를 찾아 퍼즐을 풀다",
+"have": 8,
+"free": 0,
+"words": [
+"trick",
+"puzzle",
+"clue",
+"match",
+"secret",
+"sign",
+"indicate",
+"expose"
+]
+},
+{
+"ch": "12",
+"n": "04",
+"title": "천사와 파스텔 하늘",
+"sub": "평화로운 믿음과 영혼",
+"have": 8,
+"free": 0,
+"words": [
+"angel",
+"heaven",
+"soul",
+"spirit",
+"presence",
+"faith",
+"doubt",
+"glory"
+]
+},
+{
+"ch": "12",
+"n": "05",
+"title": "판화 롤러와 목판",
+"sub": "롤러 · 목판",
+"have": 6,
+"free": 2,
+"words": [
+"coach",
+"coin",
+"command",
+"comment",
+"commerce",
+"committee"
+]
+},
+{
+"ch": "12",
+"n": "06",
+"title": "베틀과 북",
+"sub": "베틀 · 북",
+"have": 6,
+"free": 2,
+"words": [
+"community",
+"compare",
+"complain",
+"complete",
+"complicate",
+"concept"
+]
+},
+{
+"ch": "12",
+"n": "07",
+"title": "핀셋과 보석",
+"sub": "핀셋 · 보석",
+"have": 6,
+"free": 2,
+"words": [
+"concern",
+"concert",
+"confident",
+"confirm",
+"conflict",
+"confuse"
+]
+},
+{
+"ch": "12",
+"n": "08",
+"title": "탁상 스테이플러",
+"sub": "스테이플러와 받침",
+"have": 6,
+"free": 2,
+"words": [
+"depress",
+"describe",
+"deserve",
+"desire",
+"desperate",
+"despite"
+]
+},
+{
+"ch": "12",
+"n": "09",
+"title": "휴대용 연필깎이",
+"sub": "연필깎이와 칼날",
+"have": 6,
+"free": 2,
+"words": [
+"destroy",
+"determine",
+"diet",
+"disappoint",
+"disc",
+"disgust"
+]
+}
+],
+"rest": {
+"absolutely": "",
+"accident": "",
+"active": "",
+"actual": "",
+"additional": "",
+"advance": "",
+"alarm": "",
+"alter": "",
+"alternative": "",
+"ambulance": "",
+"ancient": "",
+"anybody": "",
+"apparently": "",
+"appropriate": "",
+"arrest": "",
+"artist": "",
+"assist": "",
+"automatic": "",
+"avoid": "",
+"basically": "",
+"basis": "",
+"bedroom": "",
+"beg": "",
+"belong": "",
+"bitter": "",
+"blame": "",
+"bless": "",
+"blind": "",
+"blood": "",
+"bomb": "",
+"bond": "",
+"boom": "",
+"bore": "",
+"boss": "",
+"bother": "",
+"bottom": "",
+"bow": "",
+"brain": "",
+"brand": "",
+"breath": "",
+"brief": "",
+"budget": "",
+"burst": "",
+"cancer": "",
+"capable": "",
+"career": "",
+"carefully": "",
+"cash": "",
+"cast": "",
+"castle": "",
+"category": "",
+"cause": "",
+"chairman": "",
+"challenge": "",
+"champion": "",
+"chapter": "",
+"character": "",
+"characteristic": "",
+"charge": "",
+"charm": "",
+"chief": "",
+"choice": "",
+"cigarette": "",
+"cinema": "영화관",
+"circumstance": "",
+"citizen": "",
+"civil": "",
+"claim": "",
+"clerk": "",
+"click": "",
+"client": "",
+"coal": "",
+"code": "",
+"colleague": "",
+"collect": "",
+"collection": "",
+"comfortable": "",
+"commercial": "",
+"commit": "",
+"common": "",
+"complex": "",
+"conclude": "",
+"conduct": "",
+"connection": "",
+"consequence": "",
+"consideration": "",
+"construction": "",
+"contrast": "",
+"contribution": "",
+"cop": "",
+"crime": "",
+"crisis": "",
+"critical": "",
+"crowd": "",
+"cultural": "",
+"currently": "",
+"damage": "",
+"dangerous": "",
+"dear": "",
+"decline": "",
+"decorate": "",
+"decrease": "",
+"deliver": "",
+"delivery": "",
+"depth": "",
+"difficulty": "",
+"directly": "",
+"discipline": "",
+"disturb": "",
+"divorce": "",
+"domestic": "",
+"donate": "",
+"double": "",
+"dozen": "",
+"driver": "",
+"drug": "",
+"editor": "",
+"educate": "",
+"effective": "",
+"effort": "",
+"egg": "",
+"emerge": "",
+"emphasize": "",
+"enable": "",
+"enemy": "",
+"engage": "",
+"engineer": "",
+"ensure": "",
+"entire": "",
+"environmental": "",
+"equipment": "",
+"essential": "",
+"establish": "",
+"even": "",
+"eventually": "",
+"ever": "",
+"evil": "",
+"exchange": "",
+"exist": "",
+"expect": "",
+"expense": "",
+"expensive": "",
+"experience": "",
+"explain": "",
+"expression": "",
+"extent": "",
+"extremely": "",
+"factor": "",
+"failure": "",
+"faint": "",
+"familiar": "",
+"fan": "",
+"fashion": "",
+"favor": "",
+"fee": "",
+"female": "",
+"final": "",
+"finance": "",
+"football": "",
+"foreign": "",
+"fortune": "",
+"forward": "",
+"freedom": "",
+"fright": "",
+"fully": "",
+"function": "",
+"fund": "",
+"funny": "",
+"generate": "",
+"gift": "",
+"global": "",
+"golf": "",
+"greet": "",
+"guarantee": "",
+"guest": "",
+"hang": "",
+"hardly": "",
+"harm": "",
+"healthy": "",
+"heat": "",
+"helicopter": "",
+"hell": "",
+"highly": "",
+"highway": "큰길·고속도로",
+"hint": "",
+"historical": "",
+"host": "",
+"identity": "",
+"ignore": "",
+"illustrate": "",
+"importance": "",
+"impossible": "",
+"impress": "",
+"improvement": "",
+"increase": "",
+"independent": "",
+"industry": "",
+"inform": "",
+"initial": "",
+"injure": "",
+"innocent": "",
+"insist": "",
+"instance": "",
+"instant": "",
+"instead": "",
+"instruct": "",
+"insurance": "",
+"intend": "",
+"intent": "",
+"introduction": "",
+"invent": "",
+"investigate": "",
+"investigation": "",
+"invite": "",
+"item": "",
+"joke": "",
+"justice": "",
+"knowledge": "",
+"lab": "",
+"label": "",
+"labor": "",
+"laboratory": "",
+"lack": "",
+"lawyer": "",
+"lend": "",
+"length": "",
+"limit": "",
+"loan": "",
+"local": "",
+"locate": "",
+"location": "",
+"loss": "",
+"mainly": "",
+"majority": "",
+"male": "",
+"manage": "",
+"manner": "",
+"manufacture": "",
+"marriage": "",
+"maximum": "",
+"maybe": "",
+"mean": "",
+"medical": "",
+"mention": "",
+"menu": "",
+"method": "",
+"military": "",
+"mill": "",
+"minister": "",
+"mission": "",
+"mistake": "",
+"monitor": "",
+"moral": "",
+"mostly": "",
+"motion": "",
+"murder": "",
+"museum": "박물관",
+"negative": "",
+"neither": "",
+"nobody": "",
+"none": "",
+"noon": "정오",
+"nor": "",
+"normally": "",
+"notice": "",
+"novel": "",
+"nowadays": "",
+"nowhere": "",
+"objective": "",
+"obvious": "",
+"occasion": "",
+"occur": "",
+"offer": "",
+"onto": "",
+"oppose": "",
+"opposite": "",
+"ordinary": "",
+"otherwise": "",
+"ought": "",
+"own": "",
+"owner": "",
+"package": "",
+"palace": "궁전",
+"parade": "",
+"partner": "",
+"past": "",
+"pause": "",
+"payment": "",
+"per": "",
+"perfect": "",
+"perhaps": "",
+"period": "",
+"phenomenon": "",
+"photo": "",
+"pitch": "",
+"pity": "",
+"pleasure": "",
+"poet": "",
+"policy": "",
+"pollute": "오염시키다",
+"popular": "",
+"possibly": "",
+"powerful": "",
+"practical": "",
+"pray": "",
+"preserve": "",
+"pretend": "",
+"prevent": "",
+"price": "",
+"primary": "",
+"prison": "교도소",
+"privacy": "",
+"private": "",
+"probable": "",
+"procedure": "",
+"proceed": "",
+"process": "",
+"produce": "",
+"profession": "",
+"profit": "",
+"promise": "",
+"promote": "",
+"proper": "",
+"property": "",
+"protest": "",
+"prove": "",
+"public": "",
+"pump": "",
+"punish": "",
+"purchase": "",
+"purpose": "",
+"quarter": "",
+"quite": "",
+"quote": "",
+"rail": "",
+"range": "",
+"rapid": "",
+"rate": "",
+"rather": "",
+"react": "",
+"reaction": "",
+"reader": "",
+"reality": "",
+"recall": "",
+"receive": "",
+"recent": "",
+"recipe": "",
+"recognize": "",
+"recover": "",
+"reduce": "",
+"refer": "",
+"reform": "",
+"register": "",
+"relate": "",
+"relative": "",
+"relatively": "",
+"religious": "",
+"rely": "",
+"remark": "",
+"remind": "",
+"rent": "",
+"repair": "",
+"reply": "",
+"represent": "",
+"request": "",
+"require": "",
+"requirement": "",
+"reserve": "",
+"resist": "",
+"resource": "",
+"respect": "",
+"result": "",
+"reveal": "",
+"risk": "",
+"rob": "",
+"role": "",
+"royal": "",
+"safe": "",
+"safety": "",
+"scare": "",
+"schedule": "",
+"scheme": "",
+"scientist": "",
+"scratch": "",
+"section": "",
+"senior": "",
+"sentence": "",
+"series": "",
+"serve": "",
+"session": "",
+"sex": "",
+"shake": "",
+"share": "",
+"silly": "",
+"since": "",
+"situate": "",
+"slight": "",
+"slightly": "",
+"smart": "",
+"social": "",
+"solve": "",
+"somewhat": "",
+"somewhere": "",
+"sore": "",
+"speaker": "",
+"speech": "",
+"sponsor": "",
+"spy": "",
+"standard": "",
+"state": "",
+"status": "",
+"stock": "",
+"strategy": "",
+"strength": "",
+"stress": "",
+"studio": "작업실",
+"subject": "",
+"succeed": "",
+"success": "",
+"such": "",
+"suffer": "",
+"suggestion": "",
+"supply": "",
+"suppose": "",
+"system": "",
+"tax": "",
+"tear": "",
+"technical": "",
+"technology": "",
+"teenage": "",
+"tend": "",
+"tense": "",
+"term": "",
+"though": "",
+"threat": "",
+"throat": "",
+"thus": "",
+"tip": "",
+"tire": "",
+"totally": "",
+"tough": "",
+"trade": "",
+"tradition": "",
+"transfer": "",
+"transport": "",
+"trend": "",
+"trial": "",
+"trust": "",
+"truth": "",
+"twin": "",
+"unfortunately": "",
+"union": "",
+"value": "",
+"van": "",
+"various": "",
+"vast": "",
+"version": "",
+"victim": "",
+"violence": "",
+"violent": "",
+"vision": "",
+"visitor": "",
+"weigh": "",
+"whereas": "",
+"whether": "",
+"while": "",
+"whisper": "",
+"whole": "",
+"wine": "",
+"wise": "",
+"wonderful": "",
+"worth": "",
+"would": "",
+"writer": "",
+"zebra": "얼룩말"
+}
+}
