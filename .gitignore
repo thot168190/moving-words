@@ -6,6 +6,8 @@ dist-final
 .DS_Store
 *.mjs
 *.log
+*.bak*
 광고.mp4
 광고.vrew
+
 
