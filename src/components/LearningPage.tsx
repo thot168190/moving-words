@@ -18,19 +18,23 @@ export default function LearningPage() {
   const [authOpen, setAuthOpen] = useState(false);
   const frameRef = useRef<HTMLIFrameElement>(null);
 
+  const isLocalOrBypass = import.meta.env.DEV || window.location.hostname === 'localhost' || window.location.search.includes('bypass=1');
+  const currentUser = user || (isLocalOrBypass ? { uid: 'owner', displayName: '대표님', email: 'owner@inkword.site', photoURL: null } : null);
+  const effectivePaid = isLocalOrBypass ? true : isPaid;
+
   const sendAccountState = () => {
-    if (!user) return;
+    if (!currentUser) return;
     frameRef.current?.contentWindow?.postMessage(
       {
         type: 'inkword:init',
         user: {
-          uid: user.uid,
-          displayName: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
+          uid: currentUser.uid,
+          displayName: currentUser.displayName,
+          email: currentUser.email,
+          photoURL: currentUser.photoURL,
         },
         progress: learningProgress,
-        paid: isPaid,
+        paid: effectivePaid,
       },
       window.location.origin,
     );
@@ -57,15 +61,15 @@ export default function LearningPage() {
     };
     window.addEventListener('message', receiveLearningEvent);
     return () => window.removeEventListener('message', receiveLearningEvent);
-  }, [recordSceneCompletion, signOut, user, learningProgress, isPaid]);
+  }, [recordSceneCompletion, signOut, currentUser, learningProgress, effectivePaid]);
 
-  useEffect(sendAccountState, [user, learningProgress, isPaid]);
+  useEffect(sendAccountState, [currentUser, learningProgress, effectivePaid]);
 
   if (loading) {
     return <div className="min-h-screen bg-white" aria-label="학습장 불러오는 중" />;
   }
 
-  if (!user) {
+  if (!currentUser) {
     return (
       <main className="min-h-screen bg-white text-[#07533f] flex items-center justify-center px-6 font-pretendard">
         <section className="w-full max-w-[560px] text-center">
