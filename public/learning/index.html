@@ -191,8 +191,8 @@
 </head>
 <body>
   <script>
-    // 정적 학습장 주소를 직접 열어 로그인 확인을 우회하지 못하도록 앱의 학습 진입점으로 보냅니다.
-    if(window===window.top)window.location.replace('/#learn');
+    // 정적 학습장 주소를 직접 열어 로그인 확인을 우회하지 못하도록 앱의 학습 진입점으로 보냅니다 (로컬 개발 및 미리보기 제외).
+    if(window===window.top && location.hostname!=='localhost' && location.hostname!=='127.0.0.1' && location.protocol!=='file:' && !location.search.includes('preview=1'))window.location.replace('/#learn');
   </script>
   <header class="topbar">
     <div class="topbar-inner">
@@ -20779,31 +20779,6 @@
       el.onclick=()=>{if(w.locked){if(w.needsPurchase){openGate()}else{notify('앞 챕터를 완주하면 학습할 수 있습니다.')}return}document.querySelectorAll('.work').forEach(x=>x.classList.remove('current'));el.classList.add('current');activeWork=w;mainVideo.pause();mainVideo.src=w.video;mainVideo.load();mainVideo.playbackRate=playbackRates[playbackRateIndex];mainPoster.src=w.img;mainPoster.alt=`${w.title} 학습 영상 대표 화면`;document.getElementById('nowLabel').textContent=`LEARNING · ${w.n}`;document.getElementById('mainTitle').textContent=w.title;document.getElementById('mainSub').textContent=wordLevel===1?'장면을 바로 읽는 핵심 단어부터 시작합니다.':'같은 장면에서 한 단계 깊은 어휘로 확장합니다.';renderWords(w);viewer.classList.remove('playing');pauseMain();scrollTo({top:80,behavior:'smooth'})};
     }); }
     
-    // Auto-enter chapter if ch parameter is in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const autoCh = Number(urlParams.get('ch'));
-    const autoScene = Number(urlParams.get('scene'));
-    if (autoCh && autoCh >= 1 && autoCh <= 14) {
-      loadChapter(autoCh);
-      const chapterTitle = chapters[autoCh - 1];
-      const headH2 = document.getElementById('chapterDetail')?.querySelector('.section-head h2');
-      if (headH2) headH2.textContent = `챕터 ${autoCh} · ${chapterTitle}`;
-      enterChapter();
-      if (autoScene && works[autoScene - 1]) {
-        const targetWork = works[autoScene - 1];
-        activeWork = targetWork;
-        document.querySelectorAll('.work').forEach(x => x.classList.remove('current'));
-        const targetEl = document.querySelector(`.work[data-index="${autoScene - 1}"]`);
-        if (targetEl) targetEl.classList.add('current');
-        mainVideo.src = targetWork.video;
-        mainVideo.load();
-        mainPoster.src = targetWork.img;
-        document.getElementById('nowLabel').textContent = `LEARNING · ${targetWork.n}`;
-        document.getElementById('mainTitle').textContent = targetWork.title;
-        renderWords(targetWork);
-      }
-    }
-  
 document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.currentTarget.classList.toggle('off',!previews);e.currentTarget.setAttribute('aria-label',`미리보기 자동재생 ${previews?'켜짐':'꺼짐'}`);notify(`미리보기 자동재생을 ${previews?'켰습니다.':'껐습니다.'}`)};
     const homeView=document.getElementById('homeView'),chapterDetail=document.getElementById('chapterDetail');
     const welcomeEl=document.querySelector('.welcome'),viewerLayout=document.querySelector('.viewer-layout'),homePlayerAnchor=document.getElementById('homePlayerAnchor');
@@ -21100,6 +21075,34 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
     })();
     function notify(msg){const n=document.getElementById('notice');n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),1900)}
     try{window.parent.postMessage({type:'inkword:ready'},'*');}catch(e){}
+
+    // Auto-enter chapter if ch parameter is in URL
+    function handleAutoEnter() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const autoCh = Number(urlParams.get("ch"));
+      const autoScene = Number(urlParams.get("scene"));
+      if (autoCh && autoCh >= 1 && autoCh <= 14) {
+        loadChapter(autoCh);
+        const chapterTitle = chapters[autoCh - 1];
+        const headH2 = document.getElementById("chapterDetail")?.querySelector(".section-head h2");
+        if (headH2) headH2.textContent = `챕터 ${autoCh} · ${chapterTitle}`;
+        enterChapter();
+        if (autoScene && works[autoScene - 1]) {
+          const targetWork = works[autoScene - 1];
+          activeWork = targetWork;
+          document.querySelectorAll(".work").forEach(x => x.classList.remove("current"));
+          const targetEl = document.querySelector(`.work[data-index="${autoScene - 1}"]`);
+          if (targetEl) targetEl.classList.add("current");
+          mainVideo.src = targetWork.video;
+          mainVideo.load();
+          mainPoster.src = targetWork.img;
+          document.getElementById("nowLabel").textContent = `LEARNING · ${targetWork.n}`;
+          document.getElementById("mainTitle").textContent = targetWork.title;
+          renderWords(targetWork);
+        }
+      }
+    }
+    handleAutoEnter();
   </script>
 </body>
 </html>
