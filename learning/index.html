@@ -191,8 +191,8 @@
 </head>
 <body>
   <script>
-    // 정적 학습장 주소를 직접 열어 로그인 확인을 우회하지 못하도록 앱의 학습 진입점으로 보냅니다 (로컬 개발 및 미리보기 제외).
-    if(window===window.top && location.hostname!=='localhost' && location.hostname!=='127.0.0.1' && location.protocol!=='file:' && !location.search.includes('preview=1'))window.location.replace('/#learn');
+    // 정적 학습장 주소를 직접 열어 로그인 확인을 우회하지 못하도록 앱의 학습 진입점으로 보냅니다.
+    if(window===window.top)window.location.replace('/#learn');
   </script>
   <header class="topbar">
     <div class="topbar-inner">
@@ -309,7 +309,7 @@
   <div class="notice" id="notice"></div>
 
   <script>
-    let isPaid = (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.protocol === 'file:' || location.search.includes('paid=1') || true);
+    let isPaid = false;
     let currentChapterId = 1;
     let works = [];
     let levelOneWords = [];
@@ -20794,8 +20794,7 @@ document.getElementById('previewToggle').onclick=e=>{previews=!previews;e.curren
     document.querySelectorAll('.chapter-card').forEach(card=>card.onclick=()=>{
       const ch = Number(card.dataset.chapter);
       {
-        const isPreviewQuery = location.search.includes('preview=1') || location.search.includes('ch=3') || location.search.includes('paid=1');
-        if (!isPaid && ch > 2 && !isPreviewQuery) {
+        if (!isPaid && ch > 2) {
           openGate();
           return;
         }
