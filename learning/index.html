@@ -42,12 +42,12 @@
     .viewer img{transition:opacity .35s}.viewer.playing img{opacity:0;pointer-events:none}
     /* 화면 아래 단어도 재생바에 가려지지 않고 눌리도록 단어 층을 가장 위에 둡니다. */
     .word-overlay{position:absolute;inset:0;z-index:4;pointer-events:none}
-    .scene-word{position:absolute;transform:translate(-50%,-50%) translateY(7px);border:0;background:transparent;padding:4px;color:var(--forest);font-family:Pretendard,sans-serif;font-size:clamp(17px,1.7vw,25px);font-weight:800;letter-spacing:-.025em;line-height:1.05;white-space:nowrap;cursor:pointer;pointer-events:auto;opacity:0;transition:opacity .28s,transform .28s,color .18s;paint-order:stroke fill;-webkit-text-stroke:6px rgba(255,255,255,.96);text-shadow:0 2px 7px rgba(255,255,255,1)}
+    .scene-word{position:absolute;transform:translate(-50%,-50%) translateY(7px);border:0;background:transparent;padding:4px;color:#111;font-family:Pretendard,sans-serif;font-size:clamp(17px,1.7vw,25px);font-weight:800;letter-spacing:-.025em;line-height:1.05;white-space:nowrap;cursor:pointer;pointer-events:auto;opacity:0;transition:opacity .28s,transform .28s,color .18s;paint-order:stroke fill;-webkit-text-stroke:6px rgba(255,255,255,.96);text-shadow:0 2px 7px rgba(255,255,255,1)}
     .scene-word.long-word{font-size:clamp(23px,2vw,32px);-webkit-text-stroke:5px rgba(255,255,255,.97)}
     .scene-word.very-long-word{font-size:clamp(20px,1.7vw,28px);-webkit-text-stroke:5px rgba(255,255,255,.98)}
     .scene-word.visible{opacity:1;transform:translate(-50%,-50%) translateY(0)}
     .scene-word:hover,.scene-word.speaking{color:#b97800;transform:translate(-50%,-50%) scale(1.05)}
-    .scene-word span{position:static!important;display:block;margin:2px 0 0;padding:0!important;transform:none!important;background:transparent!important;color:var(--forest)!important;font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:22px;font-weight:800;letter-spacing:-.025em;line-height:1.08;white-space:nowrap;opacity:1!important;pointer-events:none;paint-order:stroke fill;-webkit-text-stroke:4px rgba(255,255,255,.98);text-shadow:0 1px 5px #fff;border:0!important;border-radius:0!important}
+    .scene-word span{position:static!important;display:block;margin:2px 0 0;padding:0!important;transform:none!important;background:transparent!important;color:#111!important;font-family:WantedSans,"Apple SD Gothic Neo",sans-serif;font-size:22px;font-weight:800;letter-spacing:-.025em;line-height:1.08;white-space:nowrap;opacity:1!important;pointer-events:none;paint-order:stroke fill;-webkit-text-stroke:4px rgba(255,255,255,.98);text-shadow:0 1px 5px #fff;border:0!important;border-radius:0!important}
     .scene-word:hover span,.scene-word:focus-visible span,.scene-word.speaking span{opacity:1!important;color:#9c6700!important}
     .viewer-controls{position:absolute;inset:auto 0 0 0;padding:70px 24px 20px;background:linear-gradient(transparent,rgba(18,25,23,.65));display:flex;align-items:center;gap:16px;color:#fff;opacity:0;transition:.25s;z-index:3}.viewer:hover .viewer-controls,.viewer:focus-within .viewer-controls{opacity:1}
     .round-control{width:42px;height:42px;border:1px solid rgba(255,255,255,.65);border-radius:50%;background:rgba(0,0,0,.18);color:#fff;cursor:pointer}.timeline{height:3px;background:rgba(255,255,255,.4);flex:1}.timeline i{height:100%;width:0;background:#fff;display:block}.time{font-size:12px;font-variant-numeric:tabular-nums}
@@ -118,10 +118,10 @@
       .viewer-layout{grid-template-columns:minmax(0,calc(100% - 366px)) 340px;gap:26px;isolation:isolate}
       .viewer{width:100%;max-width:100%;min-width:0;z-index:0}
       .now{position:relative;width:100%;min-width:0;padding-left:18px!important;background:#fff;z-index:5}
-      .scene-word{font-size:clamp(22px,1.9vw,33px);-webkit-text-stroke:5px rgba(255,255,255,.96)}
-      .scene-word.long-word{font-size:clamp(20px,1.7vw,29px)}
-      .scene-word.very-long-word{font-size:clamp(17px,1.45vw,24px)}
-      .scene-word span{font-size:16px;font-weight:800}
+      .scene-word{font-size:clamp(26px,2.3vw,40px);-webkit-text-stroke:5px rgba(255,255,255,.96)}
+      .scene-word.long-word{font-size:clamp(23px,2vw,35px)}
+      .scene-word.very-long-word{font-size:clamp(19px,1.7vw,29px)}
+      .scene-word span{font-size:28px;font-weight:800}
       .viewer-controls{padding:48px 18px 14px}
       .now{padding:18px 0}
       .now h2{font-size:27px;margin:9px 0 7px}
@@ -345,6 +345,10 @@
             "물가"
           ],
           [
+            "light",
+            "빛"
+          ],
+          [
             "flash",
             "번쩍임"
           ],
@@ -355,10 +359,6 @@
           [
             "warn",
             "경고하다"
-          ],
-          [
-            "distance",
-            "먼 거리"
           ]
         ]
       },
@@ -384,6 +384,10 @@
           [
             "deck",
             "갑판"
+          ],
+          [
+            "wave",
+            "물결"
           ],
           [
             "journey",
@@ -427,16 +431,20 @@
             "고요한"
           ],
           [
-            "reflect",
-            "비추다"
-          ],
-          [
             "follow",
             "따라오다"
           ],
           [
+            "reflect",
+            "비추다"
+          ],
+          [
             "distance",
             "먼 거리"
+          ],
+          [
+            "horizon",
+            "수평선"
           ]
         ]
       },
@@ -451,10 +459,6 @@
           [
             "whale",
             "고래"
-          ],
-          [
-            "surface",
-            "수면"
           ],
           [
             "spray",
@@ -473,8 +477,16 @@
             "거품"
           ],
           [
+            "surface",
+            "수면"
+          ],
+          [
             "enormous",
             "거대한"
+          ],
+          [
+            "fin",
+            "지느러미"
           ]
         ]
       },
@@ -498,6 +510,14 @@
             "좁은"
           ],
           [
+            "dive",
+            "잠수하다"
+          ],
+          [
+            "sand",
+            "모래"
+          ],
+          [
             "beneath",
             "아래로"
           ],
@@ -506,16 +526,12 @@
             "거친"
           ],
           [
-            "dive",
-            "잠수하다"
-          ],
-          [
             "current",
             "물살·해류"
           ],
           [
-            "enormous",
-            "거대한"
+            "coral",
+            "산호"
           ]
         ]
       },
@@ -527,6 +543,22 @@
         "img": "ch1/scene-ch1-10-poster.jpg",
         "words": [
           [
+            "pool",
+            "웅덩이"
+          ],
+          [
+            "boat",
+            "배"
+          ],
+          [
+            "rock",
+            "바위"
+          ],
+          [
+            "cloud",
+            "구름"
+          ],
+          [
             "bay",
             "만"
           ],
@@ -535,28 +567,16 @@
             "해안"
           ],
           [
-            "pool",
-            "웅덩이"
-          ],
-          [
             "cape",
             "곶"
-          ],
-          [
-            "surround",
-            "둘러싸다"
           ],
           [
             "channel",
             "물길"
           ],
           [
-            "adventure",
-            "모험"
-          ],
-          [
-            "flood",
-            "밀려들다"
+            "surround",
+            "둘러싸다"
           ]
         ]
       },
@@ -568,14 +588,6 @@
         "img": "ch1/scene-ch1-04-poster.jpg",
         "words": [
           [
-            "ruin",
-            "폐허"
-          ],
-          [
-            "structure",
-            "구조물"
-          ],
-          [
             "repeat",
             "되풀이하다"
           ],
@@ -584,24 +596,32 @@
             "단단한"
           ],
           [
-            "site",
-            "유적터"
-          ],
-          [
             "past",
             "과거"
           ],
           [
             "huge",
-            "거대한"
-          ],
-          [
-            "empire",
-            "제국"
+            "커다란"
           ],
           [
             "battle",
             "싸움"
+          ],
+          [
+            "ruin",
+            "폐허"
+          ],
+          [
+            "structure",
+            "구조물"
+          ],
+          [
+            "site",
+            "유적터"
+          ],
+          [
+            "empire",
+            "제국"
           ]
         ]
       },
@@ -613,24 +633,24 @@
         "img": "ch1/scene-ch1-05-poster.jpg",
         "words": [
           [
-            "instrument",
-            "기구"
+            "star",
+            "별"
           ],
           [
-            "toward",
-            "~을 향하여"
+            "moon",
+            "달"
           ],
           [
-            "heaven",
+            "sky",
             "하늘"
           ],
           [
-            "aim",
-            "겨누다"
+            "night",
+            "밤"
           ],
           [
-            "sight",
-            "시야"
+            "instrument",
+            "기구"
           ],
           [
             "observe",
@@ -641,8 +661,8 @@
             "궁금한"
           ],
           [
-            "detect",
-            "알아내다"
+            "sight",
+            "시야"
           ]
         ]
       },
@@ -653,10 +673,6 @@
         "video": "ch1/scene-ch1-06.mp4",
         "img": "ch1/scene-ch1-06-poster.jpg",
         "words": [
-          [
-            "freeze",
-            "얼다"
-          ],
           [
             "purple",
             "보라"
@@ -674,8 +690,20 @@
             "접히다"
           ],
           [
+            "snow",
+            "눈"
+          ],
+          [
+            "freeze",
+            "얼다"
+          ],
+          [
             "atmosphere",
             "대기"
+          ],
+          [
+            "glow",
+            "어슴푸레 빛나다"
           ]
         ]
       },
@@ -691,16 +719,24 @@
             "퍼지다"
           ],
           [
+            "wonder",
+            "신기해하다"
+          ],
+          [
+            "forest",
+            "숲"
+          ],
+          [
+            "field",
+            "들판"
+          ],
+          [
             "brilliant",
             "눈부신"
           ],
           [
             "gorgeous",
             "화려한"
-          ],
-          [
-            "wonder",
-            "신기해하다"
           ],
           [
             "marvel",
@@ -720,20 +756,20 @@
             "열기구"
           ],
           [
-            "float",
-            "떠 있다"
+            "tour",
+            "여행"
+          ],
+          [
+            "basket",
+            "바구니"
+          ],
+          [
+            "fly",
+            "날다"
           ],
           [
             "height",
             "높이"
-          ],
-          [
-            "rise",
-            "솟다"
-          ],
-          [
-            "tour",
-            "여행"
           ],
           [
             "beyond",
@@ -753,32 +789,32 @@
         "img": "ch4/Moai_statues_standing_on_grass_202608071553-poster.jpg",
         "words": [
           [
-            "coast",
-            "해안"
+            "giant",
+            "거인"
           ],
           [
-            "shore",
-            "물가"
+            "stone",
+            "돌"
+          ],
+          [
+            "grass",
+            "풀"
+          ],
+          [
+            "face",
+            "얼굴"
+          ],
+          [
+            "hill",
+            "언덕"
           ],
           [
             "figure",
             "형상"
           ],
           [
-            "ocean",
-            "바다"
-          ],
-          [
             "stare",
             "응시하다"
-          ],
-          [
-            "giant",
-            "거대한"
-          ],
-          [
-            "lawn",
-            "풀밭"
           ],
           [
             "represent",
@@ -798,28 +834,24 @@
             "성"
           ],
           [
-            "palace",
-            "궁전"
-          ],
-          [
             "crown",
             "왕관"
           ],
           [
+            "wall",
+            "벽"
+          ],
+          [
+            "gold",
+            "금빛"
+          ],
+          [
+            "palace",
+            "궁전"
+          ],
+          [
             "royal",
             "왕실의"
-          ],
-          [
-            "tradition",
-            "전통"
-          ],
-          [
-            "past",
-            "과거"
-          ],
-          [
-            "empire",
-            "제국"
           ],
           [
             "glory",
@@ -843,20 +875,28 @@
             "박물관"
           ],
           [
+            "jar",
+            "항아리"
+          ],
+          [
+            "glass",
+            "유리"
+          ],
+          [
+            "sign",
+            "안내판"
+          ],
+          [
+            "stand",
+            "받침대"
+          ],
+          [
             "display",
             "전시하다"
           ],
           [
             "object",
             "사물"
-          ],
-          [
-            "tradition",
-            "전통"
-          ],
-          [
-            "past",
-            "과거"
           ],
           [
             "value",
@@ -884,10 +924,6 @@
             "공항"
           ],
           [
-            "flight",
-            "항공편"
-          ],
-          [
             "gate",
             "탑승구"
           ],
@@ -900,16 +936,24 @@
             "출구"
           ],
           [
-            "route",
-            "길"
-          ],
-          [
             "leave",
             "떠나다"
           ],
           [
+            "flight",
+            "항공편"
+          ],
+          [
+            "route",
+            "길"
+          ],
+          [
             "airline",
             "항공사"
+          ],
+          [
+            "engine",
+            "엔진"
           ]
         ]
       },
@@ -921,14 +965,6 @@
         "img": "ch8/ch8_04-poster.jpg",
         "words": [
           [
-            "soldier",
-            "군인"
-          ],
-          [
-            "guard",
-            "경비병"
-          ],
-          [
             "uniform",
             "제복"
           ],
@@ -937,12 +973,28 @@
             "지키는 자리"
           ],
           [
-            "weapon",
-            "무기"
+            "boot",
+            "장화"
           ],
           [
-            "officer",
-            "장교"
+            "helmet",
+            "투구"
+          ],
+          [
+            "glove",
+            "장갑"
+          ],
+          [
+            "soldier",
+            "군인"
+          ],
+          [
+            "guard",
+            "경비병"
+          ],
+          [
+            "weapon",
+            "무기"
           ],
           [
             "duty",
@@ -951,10 +1003,6 @@
           [
             "honor",
             "명예"
-          ],
-          [
-            "discipline",
-            "규율"
           ]
         ]
       }
@@ -978,8 +1026,8 @@
           "물가"
         ],
         [
-          "flash",
-          "번쩍임"
+          "light",
+          "빛"
         ]
       ],
       [
@@ -998,6 +1046,10 @@
         [
           "deck",
           "갑판"
+        ],
+        [
+          "wave",
+          "물결"
         ]
       ],
       [
@@ -1020,16 +1072,16 @@
         [
           "calm",
           "고요한"
+        ],
+        [
+          "follow",
+          "따라오다"
         ]
       ],
       [
         [
           "whale",
           "고래"
-        ],
-        [
-          "surface",
-          "수면"
         ],
         [
           "spray",
@@ -1062,57 +1114,33 @@
           "좁은"
         ],
         [
-          "beneath",
-          "아래로"
-        ],
-        [
-          "rough",
-          "거친"
-        ],
-        [
           "dive",
           "잠수하다"
         ],
         [
-          "current",
-          "물살·해류"
+          "sand",
+          "모래"
         ]
       ],
       [
-        [
-          "bay",
-          "만"
-        ],
-        [
-          "coast",
-          "해안"
-        ],
         [
           "pool",
           "웅덩이"
         ],
         [
-          "cape",
-          "곶"
+          "boat",
+          "배"
         ],
         [
-          "surround",
-          "둘러싸다"
+          "rock",
+          "바위"
         ],
         [
-          "channel",
-          "물길"
+          "cloud",
+          "구름"
         ]
       ],
       [
-        [
-          "ruin",
-          "폐허"
-        ],
-        [
-          "structure",
-          "구조물"
-        ],
         [
           "repeat",
           "되풀이하다"
@@ -1120,31 +1148,39 @@
         [
           "solid",
           "단단한"
+        ],
+        [
+          "past",
+          "과거"
+        ],
+        [
+          "huge",
+          "커다란"
+        ],
+        [
+          "battle",
+          "싸움"
         ]
       ],
       [
         [
-          "instrument",
-          "기구"
+          "star",
+          "별"
         ],
         [
-          "toward",
-          "~을 향하여"
+          "moon",
+          "달"
         ],
         [
-          "heaven",
+          "sky",
           "하늘"
         ],
         [
-          "aim",
-          "겨누다"
+          "night",
+          "밤"
         ]
       ],
       [
-        [
-          "freeze",
-          "얼다"
-        ],
         [
           "purple",
           "보라"
@@ -1160,6 +1196,10 @@
         [
           "fold",
           "접히다"
+        ],
+        [
+          "snow",
+          "눈"
         ]
       ],
       [
@@ -1168,12 +1208,16 @@
           "퍼지다"
         ],
         [
-          "brilliant",
-          "눈부신"
+          "wonder",
+          "신기해하다"
         ],
         [
-          "gorgeous",
-          "화려한"
+          "forest",
+          "숲"
+        ],
+        [
+          "field",
+          "들판"
         ]
       ],
       [
@@ -1182,46 +1226,38 @@
           "열기구"
         ],
         [
-          "float",
-          "떠 있다"
+          "tour",
+          "여행"
         ],
         [
-          "height",
-          "높이"
+          "basket",
+          "바구니"
         ],
         [
-          "rise",
-          "솟다"
+          "fly",
+          "날다"
         ]
       ],
       [
         [
-          "coast",
-          "해안"
-        ],
-        [
-          "shore",
-          "물가"
-        ],
-        [
-          "figure",
-          "형상"
-        ],
-        [
-          "ocean",
-          "바다"
-        ],
-        [
-          "stare",
-          "응시하다"
-        ],
-        [
           "giant",
-          "거대한"
+          "거인"
         ],
         [
-          "lawn",
-          "풀밭"
+          "stone",
+          "돌"
+        ],
+        [
+          "grass",
+          "풀"
+        ],
+        [
+          "face",
+          "얼굴"
+        ],
+        [
+          "hill",
+          "언덕"
         ]
       ],
       [
@@ -1230,12 +1266,16 @@
           "성"
         ],
         [
-          "palace",
-          "궁전"
-        ],
-        [
           "crown",
           "왕관"
+        ],
+        [
+          "wall",
+          "벽"
+        ],
+        [
+          "gold",
+          "금빛"
         ]
       ],
       [
@@ -1244,22 +1284,26 @@
           "박물관"
         ],
         [
-          "display",
-          "전시하다"
+          "jar",
+          "항아리"
         ],
         [
-          "object",
-          "사물"
+          "glass",
+          "유리"
+        ],
+        [
+          "sign",
+          "안내판"
+        ],
+        [
+          "stand",
+          "받침대"
         ]
       ],
       [
         [
           "airport",
           "공항"
-        ],
-        [
-          "flight",
-          "항공편"
         ],
         [
           "gate",
@@ -1274,19 +1318,11 @@
           "출구"
         ],
         [
-          "route",
-          "길"
+          "leave",
+          "떠나다"
         ]
       ],
       [
-        [
-          "soldier",
-          "군인"
-        ],
-        [
-          "guard",
-          "경비병"
-        ],
         [
           "uniform",
           "제복"
@@ -1296,13 +1332,25 @@
           "지키는 자리"
         ],
         [
-          "weapon",
-          "무기"
+          "boot",
+          "장화"
+        ],
+        [
+          "helmet",
+          "투구"
+        ],
+        [
+          "glove",
+          "장갑"
         ]
       ]
     ],
     "levelTwoWords": [
       [
+        [
+          "flash",
+          "번쩍임"
+        ],
         [
           "indicate",
           "가리키다"
@@ -1310,10 +1358,6 @@
         [
           "warn",
           "경고하다"
-        ],
-        [
-          "distance",
-          "먼 거리"
         ]
       ],
       [
@@ -1336,62 +1380,90 @@
           "비추다"
         ],
         [
-          "follow",
-          "따라오다"
-        ],
-        [
           "distance",
           "먼 거리"
-        ]
-      ],
-      [
-        [
-          "enormous",
-          "거대한"
-        ]
-      ],
-      [
-        [
-          "enormous",
-          "거대한"
-        ]
-      ],
-      [
-        [
-          "adventure",
-          "모험"
         ],
         [
-          "flood",
-          "밀려들다"
+          "horizon",
+          "수평선"
         ]
       ],
       [
+        [
+          "surface",
+          "수면"
+        ],
+        [
+          "enormous",
+          "거대한"
+        ],
+        [
+          "fin",
+          "지느러미"
+        ]
+      ],
+      [
+        [
+          "beneath",
+          "아래로"
+        ],
+        [
+          "rough",
+          "거친"
+        ],
+        [
+          "current",
+          "물살·해류"
+        ],
+        [
+          "coral",
+          "산호"
+        ]
+      ],
+      [
+        [
+          "bay",
+          "만"
+        ],
+        [
+          "coast",
+          "해안"
+        ],
+        [
+          "cape",
+          "곶"
+        ],
+        [
+          "channel",
+          "물길"
+        ],
+        [
+          "surround",
+          "둘러싸다"
+        ]
+      ],
+      [
+        [
+          "ruin",
+          "폐허"
+        ],
+        [
+          "structure",
+          "구조물"
+        ],
         [
           "site",
           "유적터"
         ],
         [
-          "past",
-          "과거"
-        ],
-        [
-          "huge",
-          "거대한"
-        ],
-        [
           "empire",
           "제국"
-        ],
-        [
-          "battle",
-          "싸움"
         ]
       ],
       [
         [
-          "sight",
-          "시야"
+          "instrument",
+          "기구"
         ],
         [
           "observe",
@@ -1402,20 +1474,32 @@
           "궁금한"
         ],
         [
-          "detect",
-          "알아내다"
+          "sight",
+          "시야"
         ]
       ],
       [
+        [
+          "freeze",
+          "얼다"
+        ],
         [
           "atmosphere",
           "대기"
+        ],
+        [
+          "glow",
+          "어슴푸레 빛나다"
         ]
       ],
       [
         [
-          "wonder",
-          "신기해하다"
+          "brilliant",
+          "눈부신"
+        ],
+        [
+          "gorgeous",
+          "화려한"
         ],
         [
           "marvel",
@@ -1424,8 +1508,8 @@
       ],
       [
         [
-          "tour",
-          "여행"
+          "height",
+          "높이"
         ],
         [
           "beyond",
@@ -1438,26 +1522,26 @@
       ],
       [
         [
+          "figure",
+          "형상"
+        ],
+        [
+          "stare",
+          "응시하다"
+        ],
+        [
           "represent",
           "대표하다"
         ]
       ],
       [
         [
+          "palace",
+          "궁전"
+        ],
+        [
           "royal",
           "왕실의"
-        ],
-        [
-          "tradition",
-          "전통"
-        ],
-        [
-          "past",
-          "과거"
-        ],
-        [
-          "empire",
-          "제국"
         ],
         [
           "glory",
@@ -1470,12 +1554,12 @@
       ],
       [
         [
-          "tradition",
-          "전통"
+          "display",
+          "전시하다"
         ],
         [
-          "past",
-          "과거"
+          "object",
+          "사물"
         ],
         [
           "value",
@@ -1492,18 +1576,34 @@
       ],
       [
         [
-          "leave",
-          "떠나다"
+          "flight",
+          "항공편"
+        ],
+        [
+          "route",
+          "길"
         ],
         [
           "airline",
           "항공사"
+        ],
+        [
+          "engine",
+          "엔진"
         ]
       ],
       [
         [
-          "officer",
-          "장교"
+          "soldier",
+          "군인"
+        ],
+        [
+          "guard",
+          "경비병"
+        ],
+        [
+          "weapon",
+          "무기"
         ],
         [
           "duty",
@@ -1512,15 +1612,15 @@
         [
           "honor",
           "명예"
-        ],
-        [
-          "discipline",
-          "규율"
         ]
       ]
     ],
     "sceneSpots": [
       [
+        [
+          47.0,
+          16.0
+        ],
         [
           12.0,
           40.2
@@ -1528,10 +1628,6 @@
         [
           66.0,
           73.8
-        ],
-        [
-          87.0,
-          46.0
         ]
       ],
       [
@@ -1554,62 +1650,90 @@
           80.0
         ],
         [
-          30.0,
-          68.0
-        ],
-        [
           70.0,
           36.0
+        ],
+        [
+          91.7,
+          45.4
         ]
       ],
       [
+        [
+          30.0,
+          80.0
+        ],
         [
           14.0,
           36.0
-        ]
-      ],
-      [
-        [
-          40.0,
-          36.0
-        ]
-      ],
-      [
-        [
-          57.5,
-          64.0
         ],
         [
-          50.0,
-          80.0
+          47.0,
+          64.0
         ]
       ],
       [
+        [
+          48.0,
+          88.0
+        ],
+        [
+          80.0,
+          72.0
+        ],
+        [
+          70.0,
+          14.0
+        ],
+        [
+          12.0,
+          58.0
+        ]
+      ],
+      [
+        [
+          38.0,
+          69.8
+        ],
+        [
+          18.0,
+          86.0
+        ],
+        [
+          20.0,
+          48.8
+        ],
+        [
+          74.5,
+          70.0
+        ],
+        [
+          12.0,
+          63.2
+        ]
+      ],
+      [
+        [
+          30.0,
+          13.0
+        ],
+        [
+          48.3,
+          56.0
+        ],
         [
           20.0,
           88.0
         ],
         [
-          66.0,
-          20.0
-        ],
-        [
-          14.0,
-          40.0
-        ],
-        [
           52.0,
           30.0
-        ],
-        [
-          76.0,
-          60.0
         ]
       ],
       [
         [
-          46.9,
-          52.0
+          30.4,
+          48.5
         ],
         [
           72.0,
@@ -1620,30 +1744,42 @@
           66.0
         ],
         [
-          58.7,
-          62.0
+          46.9,
+          52.0
         ]
       ],
       [
         [
-          89.2,
+          50.0,
+          88.0
+        ],
+        [
+          89.1,
           15.0
+        ],
+        [
+          50.0,
+          25.0
         ]
       ],
       [
         [
-          50.6,
+          68.2,
           22.0
         ],
         [
+          22.0,
+          25.0
+        ],
+        [
           70.8,
-          7.0
+          7.4
         ]
       ],
       [
         [
-          44.0,
-          78.0
+          41.6,
+          8.0
         ],
         [
           69.2,
@@ -1656,26 +1792,26 @@
       ],
       [
         [
+          13.0,
+          60.0
+        ],
+        [
+          12.0,
+          42.0
+        ],
+        [
           54.0,
-          56.0
+          57.3
         ]
       ],
       [
         [
-          48.0,
-          12.2
+          22.0,
+          42.0
         ],
         [
-          50.0,
-          27.9
-        ],
-        [
-          24.0,
-          58.0
-        ],
-        [
-          75.0,
-          40.0
+          70.0,
+          26.0
         ],
         [
           60.0,
@@ -1688,40 +1824,56 @@
       ],
       [
         [
-          22.8,
-          35.0
+          64.3,
+          42.0
         ],
         [
-          49.9,
-          41.3
+          28.0,
+          46.0
         ],
         [
-          56.4,
-          21.2
+          74.0,
+          56.0
         ],
         [
-          44.1,
-          26.9
+          58.0,
+          74.0
         ],
         [
-          54.5,
-          6.9
+          78.0,
+          12.0
         ]
       ],
       [
         [
-          66.8,
-          25.0
+          62.0,
+          42.0
+        ],
+        [
+          60.0,
+          70.0
         ],
         [
           79.2,
           25.0
+        ],
+        [
+          37.0,
+          58.0
         ]
       ],
       [
         [
-          39.5,
-          35.0
+          43.4,
+          49.3
+        ],
+        [
+          30.0,
+          18.0
+        ],
+        [
+          41.0,
+          80.0
         ],
         [
           74.6,
@@ -1729,11 +1881,7 @@
         ],
         [
           56.7,
-          20.0
-        ],
-        [
-          78.4,
-          41.5
+          20.4
         ]
       ]
     ],
@@ -1749,15 +1897,15 @@
         ],
         [
           22.0,
-          25.8
+          26.5
         ],
         [
           76.0,
           88.2
         ],
         [
-          47.0,
-          16.0
+          14.0,
+          13.3
         ]
       ],
       [
@@ -1776,6 +1924,10 @@
         [
           42.0,
           66.0
+        ],
+        [
+          20.0,
+          86.0
         ]
       ],
       [
@@ -1797,17 +1949,17 @@
         ],
         [
           84.0,
-          58.0
+          58.6
+        ],
+        [
+          30.0,
+          68.0
         ]
       ],
       [
         [
           40.0,
           44.0
-        ],
-        [
-          30.0,
-          80.0
         ],
         [
           50.0,
@@ -1840,57 +1992,33 @@
           62.2
         ],
         [
-          48.0,
-          88.0
-        ],
-        [
-          80.0,
-          72.0
-        ],
-        [
           64.0,
           30.0
         ],
         [
-          70.0,
-          14.0
+          20.0,
+          89.0
         ]
       ],
       [
-        [
-          38.0,
-          69.8
-        ],
-        [
-          18.0,
-          86.0
-        ],
         [
           32.0,
           84.2
         ],
         [
-          20.0,
-          48.8
+          47.0,
+          78.0
         ],
         [
-          12.0,
-          63.2
+          56.0,
+          63.0
         ],
         [
-          74.5,
-          70.0
+          45.0,
+          17.0
         ]
       ],
       [
-        [
-          30.0,
-          13.0
-        ],
-        [
-          48.3,
-          56.0
-        ],
         [
           30.7,
           64.0
@@ -1898,31 +2026,39 @@
         [
           62.0,
           80.0
+        ],
+        [
+          66.0,
+          20.0
+        ],
+        [
+          14.0,
+          40.0
+        ],
+        [
+          76.0,
+          60.0
         ]
       ],
       [
         [
-          30.4,
-          48.5
+          30.0,
+          14.0
         ],
         [
-          19.2,
-          30.0
+          67.0,
+          25.0
         ],
         [
-          60.0,
-          18.0
+          22.0,
+          33.0
         ],
         [
-          32.8,
-          33.5
+          86.0,
+          44.0
         ]
       ],
       [
-        [
-          50.0,
-          88.0
-        ],
         [
           84.0,
           42.0
@@ -1938,20 +2074,28 @@
         [
           10.8,
           25.0
+        ],
+        [
+          18.0,
+          76.0
         ]
       ],
       [
         [
-          37.1,
+          37.6,
           22.0
         ],
         [
-          68.2,
+          51.5,
           22.0
         ],
         [
-          23.4,
-          25.0
+          50.0,
+          80.0
+        ],
+        [
+          14.0,
+          88.0
         ]
       ],
       [
@@ -1960,46 +2104,38 @@
           28.0
         ],
         [
-          56.7,
-          30.0
-        ],
-        [
-          41.6,
-          8.0
-        ],
-        [
-          52.4,
-          12.0
-        ]
-      ],
-      [
-        [
-          91.2,
-          64.0
-        ],
-        [
-          69.5,
+          30.0,
           60.0
         ],
         [
-          28.2,
-          28.0
+          44.0,
+          80.0
         ],
         [
-          80.3,
-          57.0
-        ],
-        [
-          15.8,
-          24.0
-        ],
+          55.0,
+          30.0
+        ]
+      ],
+      [
         [
           26.0,
           63.0
         ],
         [
-          55.0,
+          25.0,
+          45.0
+        ],
+        [
+          62.0,
           72.0
+        ],
+        [
+          25.0,
+          25.0
+        ],
+        [
+          62.0,
+          44.7
         ]
       ],
       [
@@ -2008,36 +2144,44 @@
           42.9
         ],
         [
-          22.0,
-          42.0
-        ],
-        [
           50.0,
           60.0
+        ],
+        [
+          28.0,
+          56.0
+        ],
+        [
+          37.0,
+          62.0
         ]
       ],
       [
         [
-          40.7,
-          12.5
+          41.2,
+          8.0
         ],
         [
-          61.4,
-          35.5
+          38.0,
+          30.0
         ],
         [
-          39.1,
-          41.2
-        ]
-      ],
-      [
-        [
-          6.6,
-          28.0
+          24.0,
+          14.0
         ],
         [
           62.0,
-          42.0
+          25.0
+        ],
+        [
+          36.7,
+          62.0
+        ]
+      ],
+      [
+        [
+          10.0,
+          15.0
         ],
         [
           18.6,
@@ -2052,30 +2196,30 @@
           36.0
         ],
         [
-          60.0,
-          70.0
+          66.8,
+          25.0
         ]
       ],
       [
         [
-          43.4,
-          49.3
-        ],
-        [
-          45.9,
-          16.8
-        ],
-        [
-          53.3,
+          53.8,
           34.3
         ],
         [
-          58.8,
+          59.1,
           52.0
         ],
         [
-          34.4,
-          20.6
+          47.7,
+          63.0
+        ],
+        [
+          48.0,
+          7.4
+        ],
+        [
+          40.5,
+          33.0
         ]
       ]
     ]
@@ -2095,32 +2239,28 @@
             "나무"
           ],
           [
-            "leaf",
-            "잎"
-          ],
-          [
             "grass",
             "풀"
-          ],
-          [
-            "branch",
-            "나뭇가지"
           ],
           [
             "root",
             "뿌리"
           ],
           [
-            "shade",
-            "그늘"
-          ],
-          [
             "soil",
             "흙"
           ],
           [
+            "shade",
+            "그늘"
+          ],
+          [
             "bark",
             "나무껍질"
+          ],
+          [
+            "wide",
+            "넓은"
           ]
         ]
       },
@@ -2140,16 +2280,24 @@
             "꼬리"
           ],
           [
+            "leg",
+            "다리"
+          ],
+          [
+            "rock",
+            "바위"
+          ],
+          [
             "herd",
             "무리"
           ],
           [
-            "stripe",
-            "줄무늬"
-          ],
-          [
             "plain",
             "평원"
+          ],
+          [
+            "dust",
+            "먼지"
           ]
         ]
       },
@@ -2161,24 +2309,32 @@
         "img": "ch2/scene-ch2-03-poster.jpg",
         "words": [
           [
-            "neck",
-            "목"
-          ],
-          [
-            "spot",
-            "점"
+            "giraffe",
+            "기린"
           ],
           [
             "zebra",
             "얼룩말"
           ],
           [
-            "giraffe",
-            "기린"
+            "neck",
+            "목"
           ],
           [
-            "wild",
-            "야생의"
+            "mark",
+            "얼룩무늬"
+          ],
+          [
+            "graze",
+            "풀을 뜯다"
+          ],
+          [
+            "wander",
+            "어슬렁거리다"
+          ],
+          [
+            "distant",
+            "멀리 있는"
           ]
         ]
       },
@@ -2202,14 +2358,6 @@
             "둑"
           ],
           [
-            "hide",
-            "숨다"
-          ],
-          [
-            "appear",
-            "나타나다"
-          ],
-          [
             "mud",
             "진흙"
           ],
@@ -2218,8 +2366,16 @@
             "연못"
           ],
           [
+            "appear",
+            "나타나다"
+          ],
+          [
             "bounce",
             "튀다"
+          ],
+          [
+            "edge",
+            "물가"
           ]
         ]
       },
@@ -2235,32 +2391,32 @@
             "양"
           ],
           [
-            "wool",
-            "양털"
+            "lamb",
+            "새끼 양"
           ],
           [
-            "valley",
-            "계곡"
+            "wool",
+            "양털"
           ],
           [
             "path",
             "오솔길"
           ],
           [
-            "lead",
-            "이끌다"
+            "hill",
+            "언덕"
           ],
           [
-            "lamb",
-            "새끼 양"
+            "valley",
+            "계곡"
           ],
           [
-            "mount",
-            "산"
+            "flock",
+            "떼"
           ],
           [
-            "surround",
-            "둘러싸다"
+            "slope",
+            "비탈"
           ]
         ]
       },
@@ -2276,18 +2432,6 @@
             "둥지"
           ],
           [
-            "wing",
-            "날개"
-          ],
-          [
-            "shelter",
-            "보금자리"
-          ],
-          [
-            "protect",
-            "지키다"
-          ],
-          [
             "tiny",
             "아주 작은"
           ],
@@ -2296,8 +2440,24 @@
             "머물다"
           ],
           [
+            "bird",
+            "새"
+          ],
+          [
+            "egg",
+            "알"
+          ],
+          [
+            "shelter",
+            "보금자리"
+          ],
+          [
             "belong",
             "속하다"
+          ],
+          [
+            "protect",
+            "지키다"
           ]
         ]
       },
@@ -2322,15 +2482,15 @@
           ],
           [
             "trunk",
-            "줄기"
+            "나무 몸통"
+          ],
+          [
+            "dirt",
+            "땅바닥"
           ],
           [
             "crawl",
             "기어가다"
-          ],
-          [
-            "dirt",
-            "흙"
           ],
           [
             "beneath",
@@ -2362,24 +2522,24 @@
             "매끄러운"
           ],
           [
-            "twist",
-            "비틀다"
+            "still",
+            "가만히"
           ],
           [
-            "narrow",
-            "좁은"
+            "twist",
+            "비틀다"
           ],
           [
             "stretch",
             "뻗다"
           ],
           [
-            "still",
-            "가만히"
-          ],
-          [
             "poison",
             "독"
+          ],
+          [
+            "narrow",
+            "좁은"
           ]
         ]
       },
@@ -2391,8 +2551,8 @@
         "img": "ch2/scene-ch2-08-poster.jpg",
         "words": [
           [
-            "shell",
-            "껍질"
+            "cone",
+            "솔방울"
           ],
           [
             "thick",
@@ -2401,10 +2561,6 @@
           [
             "spread",
             "퍼지다"
-          ],
-          [
-            "seed",
-            "씨앗"
           ],
           [
             "pine",
@@ -2432,8 +2588,20 @@
         "img": "ch2/scene-ch2-09-poster.jpg",
         "words": [
           [
-            "lane",
-            "좁은 길"
+            "ant",
+            "개미"
+          ],
+          [
+            "bean",
+            "콩"
+          ],
+          [
+            "line",
+            "줄"
+          ],
+          [
+            "carry",
+            "나르다"
           ],
           [
             "load",
@@ -2444,20 +2612,8 @@
             "모으다"
           ],
           [
-            "bean",
-            "콩"
-          ],
-          [
-            "ant",
-            "개미"
-          ],
-          [
             "unite",
             "뭉치다"
-          ],
-          [
-            "count",
-            "세다"
           ],
           [
             "series",
@@ -2481,16 +2637,8 @@
             "먹이다"
           ],
           [
-            "release",
-            "놓아주다"
-          ],
-          [
             "bar",
             "창살"
-          ],
-          [
-            "within",
-            "안에"
           ],
           [
             "cage",
@@ -2499,6 +2647,14 @@
           [
             "wire",
             "철사"
+          ],
+          [
+            "release",
+            "놓아주다"
+          ],
+          [
+            "within",
+            "안에"
           ],
           [
             "escape",
@@ -2518,24 +2674,24 @@
         "img": "ch4/Red_fox_walking_on_path_202608101458-poster.jpg",
         "words": [
           [
+            "fox",
+            "여우"
+          ],
+          [
             "bush",
             "덤불"
           ],
           [
-            "trace",
-            "자취"
-          ],
-          [
-            "remain",
-            "남아 있다"
+            "forest",
+            "숲"
           ],
           [
             "wild",
             "야생의"
           ],
           [
-            "escape",
-            "달아나다"
+            "trace",
+            "자취"
           ],
           [
             "search",
@@ -2559,36 +2715,32 @@
         "img": "ch4/Spider_drawing_on_white_background_202608101458-poster.jpg",
         "words": [
           [
-            "string",
-            "줄"
+            "spider",
+            "거미"
           ],
           [
-            "net",
-            "그물"
+            "web",
+            "거미줄"
           ],
           [
             "thin",
             "가느다란"
           ],
           [
+            "catch",
+            "잡다"
+          ],
+          [
             "connect",
             "잇다"
-          ],
-          [
-            "attach",
-            "붙이다"
-          ],
-          [
-            "pattern",
-            "무늬"
           ],
           [
             "trap",
             "덫"
           ],
           [
-            "stable",
-            "안정된 구조"
+            "dew",
+            "이슬"
           ]
         ]
       },
@@ -2600,32 +2752,32 @@
         "img": "ch4/Leaf_insect_on_twig_202608101458-poster.jpg",
         "words": [
           [
-            "seem",
-            "~처럼 보이다"
+            "insect",
+            "곤충"
+          ],
+          [
+            "twig",
+            "잔가지"
           ],
           [
             "hide",
             "숨다"
           ],
           [
+            "shape",
+            "모양"
+          ],
+          [
+            "seem",
+            "~처럼 보이다"
+          ],
+          [
             "pretend",
             "~인 척하다"
           ],
           [
-            "specific",
-            "특이한"
-          ],
-          [
             "recognize",
             "알아보다"
-          ],
-          [
-            "vary",
-            "다채롭다"
-          ],
-          [
-            "demonstrate",
-            "보여 주다"
           ],
           [
             "expose",
@@ -2641,24 +2793,28 @@
         "img": "ch2/ch2_17-poster.jpg",
         "words": [
           [
-            "separate",
-            "갈라지다"
-          ],
-          [
-            "shell",
-            "껍질"
-          ],
-          [
             "nut",
             "견과"
           ],
           [
-            "develop",
-            "자라다"
+            "cap",
+            "뚜껑"
           ],
           [
-            "definite",
-            "뚜렷한"
+            "stem",
+            "줄기"
+          ],
+          [
+            "hard",
+            "단단한"
+          ],
+          [
+            "separate",
+            "갈라지다"
+          ],
+          [
+            "develop",
+            "자라다"
           ],
           [
             "defense",
@@ -2674,20 +2830,32 @@
         "img": "ch2/ch2_18-poster.jpg",
         "words": [
           [
-            "gentle",
+            "feather",
+            "깃털"
+          ],
+          [
+            "stripe",
+            "줄무늬"
+          ],
+          [
+            "soft",
             "부드러운"
+          ],
+          [
+            "tip",
+            "끝"
+          ],
+          [
+            "pattern",
+            "무늬"
           ],
           [
             "loose",
             "느슨한"
           ],
           [
-            "fur",
-            "털"
-          ],
-          [
-            "pattern",
-            "무늬"
+            "delicate",
+            "섬세한"
           ]
         ]
       },
@@ -2699,24 +2867,28 @@
         "img": "ch2/ch2_19-poster.jpg",
         "words": [
           [
-            "nerve",
-            "그물망 날개맥"
-          ],
-          [
             "wing",
             "날개"
           ],
           [
-            "muscle",
-            "마디"
+            "eye",
+            "눈"
           ],
           [
-            "rush",
-            "빠르게 날다"
+            "body",
+            "몸통"
           ],
           [
             "noise",
             "시끄러운 소리"
+          ],
+          [
+            "nerve",
+            "날개맥"
+          ],
+          [
+            "muscle",
+            "마디"
           ],
           [
             "motion",
@@ -2736,6 +2908,18 @@
             "씨앗"
           ],
           [
+            "pair",
+            "한 쌍"
+          ],
+          [
+            "light",
+            "가벼운"
+          ],
+          [
+            "fall",
+            "떨어지다"
+          ],
+          [
             "apart",
             "떨어져"
           ],
@@ -2744,16 +2928,8 @@
             "균형"
           ],
           [
-            "wing",
-            "날개"
-          ],
-          [
-            "feature",
-            "특징"
-          ],
-          [
-            "progress",
-            "나아가다"
+            "spin",
+            "빙그르르 돌다"
           ]
         ]
       },
@@ -2769,28 +2945,28 @@
             "가지"
           ],
           [
-            "awake",
-            "깨어 있는"
-          ],
-          [
             "cute",
             "귀여운"
-          ],
-          [
-            "breast",
-            "가슴"
           ],
           [
             "hear",
             "듣다"
           ],
           [
-            "grace",
-            "우아함"
-          ],
-          [
             "lean",
             "기대다"
+          ],
+          [
+            "awake",
+            "깨어 있는"
+          ],
+          [
+            "breast",
+            "가슴"
+          ],
+          [
+            "grace",
+            "우아함"
           ],
           [
             "whistle",
@@ -2814,20 +2990,24 @@
             "점"
           ],
           [
+            "back",
+            "등"
+          ],
+          [
+            "round",
+            "둥근"
+          ],
+          [
             "sense",
             "감각"
           ],
           [
             "slip",
-            "미끄러지다"
+            "발을 헛디디다"
           ],
           [
             "odd",
             "특이한"
-          ],
-          [
-            "cell",
-            "조직"
           ]
         ]
       },
@@ -2839,24 +3019,32 @@
         "img": "ch2/ch2_23-poster.jpg",
         "words": [
           [
-            "toe",
-            "발끝"
+            "snail",
+            "달팽이"
           ],
           [
             "shell",
             "껍질"
           ],
           [
-            "trace",
-            "자취"
+            "horn",
+            "더듬이"
+          ],
+          [
+            "slow",
+            "느린"
+          ],
+          [
+            "spiral",
+            "나선"
           ],
           [
             "journey",
             "여정"
           ],
           [
-            "own",
-            "소유하다"
+            "curve",
+            "굽은 선"
           ]
         ]
       },
@@ -2872,20 +3060,20 @@
             "초록 화초"
           ],
           [
-            "leaf",
-            "잎"
+            "pot",
+            "화분"
           ],
           [
-            "shine",
-            "유리창 햇빛"
+            "glass",
+            "유리"
           ],
           [
             "alive",
             "살아 있는"
           ],
           [
-            "pour",
-            "물을 주다"
+            "drop",
+            "물방울"
           ],
           [
             "spray",
@@ -2894,6 +3082,10 @@
           [
             "provide",
             "대어 주다"
+          ],
+          [
+            "moist",
+            "축축한"
           ]
         ]
       }
@@ -2905,32 +3097,16 @@
           "나무"
         ],
         [
-          "leaf",
-          "잎"
-        ],
-        [
           "grass",
           "풀"
-        ],
-        [
-          "branch",
-          "나뭇가지"
         ],
         [
           "root",
           "뿌리"
         ],
         [
-          "shade",
-          "그늘"
-        ],
-        [
           "soil",
           "흙"
-        ],
-        [
-          "bark",
-          "나무껍질"
         ]
       ],
       [
@@ -2943,34 +3119,30 @@
           "꼬리"
         ],
         [
-          "herd",
-          "무리"
+          "leg",
+          "다리"
         ],
         [
-          "stripe",
-          "줄무늬"
-        ],
-        [
-          "plain",
-          "평원"
+          "rock",
+          "바위"
         ]
       ],
       [
         [
-          "neck",
-          "목"
-        ],
-        [
-          "spot",
-          "점"
+          "giraffe",
+          "기린"
         ],
         [
           "zebra",
           "얼룩말"
         ],
         [
-          "giraffe",
-          "기린"
+          "neck",
+          "목"
+        ],
+        [
+          "mark",
+          "얼룩무늬"
         ]
       ],
       [
@@ -2987,14 +3159,6 @@
           "둑"
         ],
         [
-          "hide",
-          "숨다"
-        ],
-        [
-          "appear",
-          "나타나다"
-        ],
-        [
           "mud",
           "진흙"
         ],
@@ -3009,28 +3173,20 @@
           "양"
         ],
         [
-          "wool",
-          "양털"
+          "lamb",
+          "새끼 양"
         ],
         [
-          "valley",
-          "계곡"
+          "wool",
+          "양털"
         ],
         [
           "path",
           "오솔길"
         ],
         [
-          "lead",
-          "이끌다"
-        ],
-        [
-          "lamb",
-          "새끼 양"
-        ],
-        [
-          "mount",
-          "산"
+          "hill",
+          "언덕"
         ]
       ],
       [
@@ -3039,24 +3195,20 @@
           "둥지"
         ],
         [
-          "wing",
-          "날개"
-        ],
-        [
-          "shelter",
-          "보금자리"
-        ],
-        [
-          "protect",
-          "지키다"
-        ],
-        [
           "tiny",
           "아주 작은"
         ],
         [
           "rest",
           "머물다"
+        ],
+        [
+          "bird",
+          "새"
+        ],
+        [
+          "egg",
+          "알"
         ]
       ],
       [
@@ -3074,19 +3226,11 @@
         ],
         [
           "trunk",
-          "줄기"
-        ],
-        [
-          "crawl",
-          "기어가다"
+          "나무 몸통"
         ],
         [
           "dirt",
-          "흙"
-        ],
-        [
-          "beneath",
-          "아래"
+          "땅바닥"
         ]
       ],
       [
@@ -3103,22 +3247,14 @@
           "매끄러운"
         ],
         [
-          "twist",
-          "비틀다"
-        ],
-        [
-          "narrow",
-          "좁은"
-        ],
-        [
-          "stretch",
-          "뻗다"
+          "still",
+          "가만히"
         ]
       ],
       [
         [
-          "shell",
-          "껍질"
+          "cone",
+          "솔방울"
         ],
         [
           "thick",
@@ -3129,46 +3265,26 @@
           "퍼지다"
         ],
         [
-          "seed",
-          "씨앗"
-        ],
-        [
           "pine",
           "소나무"
-        ],
-        [
-          "expand",
-          "벌어지다"
-        ],
-        [
-          "burst",
-          "터지다"
         ]
       ],
       [
         [
-          "lane",
-          "좁은 길"
-        ],
-        [
-          "load",
-          "싣다"
-        ],
-        [
-          "gather",
-          "모으다"
+          "ant",
+          "개미"
         ],
         [
           "bean",
           "콩"
         ],
         [
-          "ant",
-          "개미"
+          "line",
+          "줄"
         ],
         [
-          "unite",
-          "뭉치다"
+          "carry",
+          "나르다"
         ]
       ],
       [
@@ -3181,16 +3297,8 @@
           "먹이다"
         ],
         [
-          "release",
-          "놓아주다"
-        ],
-        [
           "bar",
           "창살"
-        ],
-        [
-          "within",
-          "안에"
         ],
         [
           "cage",
@@ -3203,98 +3311,110 @@
       ],
       [
         [
+          "fox",
+          "여우"
+        ],
+        [
           "bush",
           "덤불"
         ],
         [
-          "trace",
-          "자취"
+          "forest",
+          "숲"
+        ],
+        [
+          "wild",
+          "야생의"
         ]
       ],
       [
         [
-          "string",
-          "줄"
+          "spider",
+          "거미"
         ],
         [
-          "net",
-          "그물"
+          "web",
+          "거미줄"
         ],
         [
           "thin",
           "가느다란"
         ],
         [
-          "connect",
-          "잇다"
-        ],
-        [
-          "attach",
-          "붙이다"
-        ],
-        [
-          "pattern",
-          "무늬"
+          "catch",
+          "잡다"
         ]
       ],
       [
         [
-          "seem",
-          "~처럼 보이다"
+          "insect",
+          "곤충"
+        ],
+        [
+          "twig",
+          "잔가지"
         ],
         [
           "hide",
           "숨다"
         ],
         [
-          "pretend",
-          "~인 척하다"
+          "shape",
+          "모양"
         ]
       ],
       [
-        [
-          "separate",
-          "갈라지다"
-        ],
-        [
-          "shell",
-          "껍질"
-        ],
         [
           "nut",
           "견과"
+        ],
+        [
+          "cap",
+          "뚜껑"
+        ],
+        [
+          "stem",
+          "줄기"
+        ],
+        [
+          "hard",
+          "단단한"
         ]
       ],
       [
         [
-          "gentle",
+          "feather",
+          "깃털"
+        ],
+        [
+          "stripe",
+          "줄무늬"
+        ],
+        [
+          "soft",
           "부드러운"
         ],
         [
-          "loose",
-          "느슨한"
-        ],
-        [
-          "fur",
-          "털"
-        ],
-        [
-          "pattern",
-          "무늬"
+          "tip",
+          "끝"
         ]
       ],
       [
-        [
-          "nerve",
-          "그물망 날개맥"
-        ],
         [
           "wing",
           "날개"
         ],
         [
-          "muscle",
-          "마디"
+          "eye",
+          "눈"
+        ],
+        [
+          "body",
+          "몸통"
+        ],
+        [
+          "noise",
+          "시끄러운 소리"
         ]
       ],
       [
@@ -3303,16 +3423,16 @@
           "씨앗"
         ],
         [
-          "apart",
-          "떨어져"
+          "pair",
+          "한 쌍"
         ],
         [
-          "balance",
-          "균형"
+          "light",
+          "가벼운"
         ],
         [
-          "wing",
-          "날개"
+          "fall",
+          "떨어지다"
         ]
       ],
       [
@@ -3321,16 +3441,16 @@
           "가지"
         ],
         [
-          "awake",
-          "깨어 있는"
-        ],
-        [
           "cute",
           "귀여운"
         ],
         [
-          "breast",
-          "가슴"
+          "hear",
+          "듣다"
+        ],
+        [
+          "lean",
+          "기대다"
         ]
       ],
       [
@@ -3341,20 +3461,32 @@
         [
           "spot",
           "점"
+        ],
+        [
+          "back",
+          "등"
+        ],
+        [
+          "round",
+          "둥근"
         ]
       ],
       [
         [
-          "toe",
-          "발끝"
+          "snail",
+          "달팽이"
         ],
         [
           "shell",
           "껍질"
         ],
         [
-          "trace",
-          "자취"
+          "horn",
+          "더듬이"
+        ],
+        [
+          "slow",
+          "느린"
         ]
       ],
       [
@@ -3363,55 +3495,117 @@
           "초록 화초"
         ],
         [
-          "leaf",
-          "잎"
+          "pot",
+          "화분"
         ],
         [
-          "shine",
-          "유리창 햇빛"
+          "glass",
+          "유리"
         ],
         [
           "alive",
           "살아 있는"
         ],
         [
-          "pour",
-          "물을 주다"
-        ],
-        [
-          "spray",
-          "분무기 물뿌림"
+          "drop",
+          "물방울"
         ]
       ]
     ],
     "levelTwoWords": [
-      [],
-      [],
       [
         [
-          "wild",
-          "야생의"
+          "shade",
+          "그늘"
+        ],
+        [
+          "bark",
+          "나무껍질"
+        ],
+        [
+          "wide",
+          "넓은"
         ]
       ],
       [
+        [
+          "herd",
+          "무리"
+        ],
+        [
+          "plain",
+          "평원"
+        ],
+        [
+          "dust",
+          "먼지"
+        ]
+      ],
+      [
+        [
+          "graze",
+          "풀을 뜯다"
+        ],
+        [
+          "wander",
+          "어슬렁거리다"
+        ],
+        [
+          "distant",
+          "멀리 있는"
+        ]
+      ],
+      [
+        [
+          "appear",
+          "나타나다"
+        ],
         [
           "bounce",
           "튀다"
+        ],
+        [
+          "edge",
+          "물가"
         ]
       ],
       [
         [
-          "surround",
-          "둘러싸다"
+          "valley",
+          "계곡"
+        ],
+        [
+          "flock",
+          "떼"
+        ],
+        [
+          "slope",
+          "비탈"
         ]
       ],
       [
+        [
+          "shelter",
+          "보금자리"
+        ],
         [
           "belong",
           "속하다"
+        ],
+        [
+          "protect",
+          "지키다"
         ]
       ],
       [
+        [
+          "crawl",
+          "기어가다"
+        ],
+        [
+          "beneath",
+          "아래"
+        ],
         [
           "bite",
           "물다"
@@ -3419,15 +3613,31 @@
       ],
       [
         [
-          "still",
-          "가만히"
+          "twist",
+          "비틀다"
+        ],
+        [
+          "stretch",
+          "뻗다"
         ],
         [
           "poison",
           "독"
+        ],
+        [
+          "narrow",
+          "좁은"
         ]
       ],
       [
+        [
+          "expand",
+          "벌어지다"
+        ],
+        [
+          "burst",
+          "터지다"
+        ],
         [
           "source",
           "근원"
@@ -3435,8 +3645,16 @@
       ],
       [
         [
-          "count",
-          "세다"
+          "load",
+          "싣다"
+        ],
+        [
+          "gather",
+          "모으다"
+        ],
+        [
+          "unite",
+          "뭉치다"
         ],
         [
           "series",
@@ -3444,6 +3662,14 @@
         ]
       ],
       [
+        [
+          "release",
+          "놓아주다"
+        ],
+        [
+          "within",
+          "안에"
+        ],
         [
           "escape",
           "탈출"
@@ -3455,16 +3681,8 @@
       ],
       [
         [
-          "remain",
-          "남아 있다"
-        ],
-        [
-          "wild",
-          "야생의"
-        ],
-        [
-          "escape",
-          "달아나다"
+          "trace",
+          "자취"
         ],
         [
           "search",
@@ -3481,30 +3699,30 @@
       ],
       [
         [
+          "connect",
+          "잇다"
+        ],
+        [
           "trap",
           "덫"
         ],
         [
-          "stable",
-          "안정된 구조"
+          "dew",
+          "이슬"
         ]
       ],
       [
         [
-          "specific",
-          "특이한"
+          "seem",
+          "~처럼 보이다"
+        ],
+        [
+          "pretend",
+          "~인 척하다"
         ],
         [
           "recognize",
           "알아보다"
-        ],
-        [
-          "vary",
-          "다채롭다"
-        ],
-        [
-          "demonstrate",
-          "보여 주다"
         ],
         [
           "expose",
@@ -3513,27 +3731,40 @@
       ],
       [
         [
-          "develop",
-          "자라다"
+          "separate",
+          "갈라지다"
         ],
         [
-          "definite",
-          "뚜렷한"
+          "develop",
+          "자라다"
         ],
         [
           "defense",
           "방어"
         ]
       ],
-      [],
       [
         [
-          "rush",
-          "빠르게 날다"
+          "pattern",
+          "무늬"
         ],
         [
-          "noise",
-          "시끄러운 소리"
+          "loose",
+          "느슨한"
+        ],
+        [
+          "delicate",
+          "섬세한"
+        ]
+      ],
+      [
+        [
+          "nerve",
+          "날개맥"
+        ],
+        [
+          "muscle",
+          "마디"
         ],
         [
           "motion",
@@ -3542,26 +3773,30 @@
       ],
       [
         [
-          "feature",
-          "특징"
+          "apart",
+          "떨어져"
         ],
         [
-          "progress",
-          "나아가다"
+          "balance",
+          "균형"
+        ],
+        [
+          "spin",
+          "빙그르르 돌다"
         ]
       ],
       [
         [
-          "hear",
-          "듣다"
+          "awake",
+          "깨어 있는"
+        ],
+        [
+          "breast",
+          "가슴"
         ],
         [
           "grace",
           "우아함"
-        ],
-        [
-          "lean",
-          "기대다"
         ],
         [
           "whistle",
@@ -3575,62 +3810,136 @@
         ],
         [
           "slip",
-          "미끄러지다"
+          "발을 헛디디다"
         ],
         [
           "odd",
           "특이한"
-        ],
-        [
-          "cell",
-          "조직"
         ]
       ],
       [
+        [
+          "spiral",
+          "나선"
+        ],
         [
           "journey",
           "여정"
         ],
         [
-          "own",
-          "소유하다"
+          "curve",
+          "굽은 선"
         ]
       ],
       [
         [
+          "spray",
+          "분무기 물뿌림"
+        ],
+        [
           "provide",
           "대어 주다"
+        ],
+        [
+          "moist",
+          "축축한"
         ]
       ]
     ],
     "sceneSpots": [
-      [],
-      [],
       [
         [
-          89.9,
-          66.0
+          13.9,
+          88.0
+        ],
+        [
+          25.0,
+          60.0
+        ],
+        [
+          82.0,
+          60.0
         ]
       ],
       [
         [
-          64.0,
+          80.1,
+          65.0
+        ],
+        [
+          47.0,
+          86.0
+        ],
+        [
+          60.0,
+          74.0
+        ]
+      ],
+      [
+        [
+          86.0,
+          83.5
+        ],
+        [
+          88.0,
+          70.5
+        ],
+        [
+          92.2,
+          42.0
+        ]
+      ],
+      [
+        [
+          59.8,
+          66.5
+        ],
+        [
+          64.6,
           80.9
+        ],
+        [
+          33.0,
+          76.5
         ]
       ],
       [
         [
-          85.0,
-          45.0
+          51.0,
+          45.8
+        ],
+        [
+          28.0,
+          18.0
+        ],
+        [
+          10.0,
+          42.0
         ]
       ],
       [
         [
-          29.1,
-          67.0
+          56.4,
+          78.0
+        ],
+        [
+          14.0,
+          60.0
+        ],
+        [
+          62.0,
+          22.0
         ]
       ],
       [
+        [
+          63.7,
+          56.8
+        ],
+        [
+          35.0,
+          64.2
+        ],
         [
           64.0,
           71.2
@@ -3638,23 +3947,47 @@
       ],
       [
         [
-          16.0,
-          72.4
+          59.0,
+          63.7
+        ],
+        [
+          88.5,
+          61.0
         ],
         [
           24.0,
           43.7
+        ],
+        [
+          74.7,
+          58.0
         ]
       ],
       [
         [
-          45.0,
+          51.1,
+          45.0
+        ],
+        [
+          71.0,
+          60.0
+        ],
+        [
+          44.8,
           63.0
         ]
       ],
       [
         [
-          68.8,
+          58.6,
+          55.5
+        ],
+        [
+          52.2,
+          70.5
+        ],
+        [
+          79.6,
           49.0
         ],
         [
@@ -3664,7 +3997,15 @@
       ],
       [
         [
-          33.0,
+          19.5,
+          47.7
+        ],
+        [
+          45.0,
+          25.0
+        ],
+        [
+          33.5,
           45.0
         ],
         [
@@ -3674,16 +4015,8 @@
       ],
       [
         [
-          35.0,
-          72.0
-        ],
-        [
-          63.3,
-          51.0
-        ],
-        [
-          74.7,
-          51.0
+          52.3,
+          72.2
         ],
         [
           90.6,
@@ -3700,59 +4033,72 @@
       ],
       [
         [
+          27.5,
+          57.5
+        ],
+        [
           58.1,
           55.0
         ],
         [
-          48.0,
-          78.0
+          72.0,
+          34.0
         ]
       ],
       [
         [
-          55.0,
-          59.8
+          25.0,
+          30.8
+        ],
+        [
+          31.0,
+          45.2
         ],
         [
           60.6,
           44.8
         ],
         [
-          62.0,
-          29.8
-        ],
-        [
-          44.0,
-          78.0
-        ],
-        [
-          72.0,
-          59.9
+          86.0,
+          44.0
         ]
       ],
       [
         [
-          40.5,
-          61.4
+          47.0,
+          47.0
         ],
         [
-          56.4,
-          32.7
+          40.2,
+          61.4
         ],
         [
           31.2,
           34.7
         ]
       ],
-      [],
       [
         [
-          18.0,
-          31.0
+          65.2,
+          40.0
         ],
         [
-          23.0,
-          57.0
+          47.3,
+          65.8
+        ],
+        [
+          65.0,
+          58.0
+        ]
+      ],
+      [
+        [
+          36.1,
+          33.0
+        ],
+        [
+          52.0,
+          42.0
         ],
         [
           70.0,
@@ -3761,64 +4107,76 @@
       ],
       [
         [
-          58.9,
-          43.0
+          71.2,
+          31.0
         ],
         [
-          20.0,
-          50.0
+          45.7,
+          49.0
+        ],
+        [
+          86.0,
+          36.0
         ]
       ],
       [
         [
-          40.1,
-          27.7
+          52.3,
+          26.0
+        ],
+        [
+          41.0,
+          56.4
         ],
         [
           53.3,
           44.0
         ],
         [
-          45.0,
-          70.8
-        ],
-        [
-          28.6,
+          28.4,
           31.0
         ]
       ],
       [
         [
           45.0,
-          26.0
+          24.5
         ],
         [
           76.9,
           62.2
         ],
         [
-          52.0,
-          49.0
-        ],
-        [
-          89.1,
-          53.0
+          28.0,
+          62.0
         ]
       ],
       [
+        [
+          28.0,
+          58.0
+        ],
         [
           55.5,
           67.0
         ],
         [
-          51.4,
-          50.0
+          42.0,
+          82.0
         ]
       ],
       [
         [
+          59.4,
+          29.7
+        ],
+        [
           70.0,
-          47.2
+          46.9
+        ],
+        [
+          72.0,
+          60.3
         ]
       ]
     ],
@@ -3829,57 +4187,45 @@
           30.0
         ],
         [
-          59.0,
-          24.0
-        ],
-        [
           74.0,
           83.0
-        ],
-        [
-          40.0,
-          32.0
         ],
         [
           24.1,
           74.8
         ],
         [
-          13.9,
-          88.0
-        ],
-        [
           27.0,
           89.2
-        ],
-        [
-          25.0,
-          60.0
         ]
       ],
       [
         [
           42.3,
-          51.8
+          50.4
         ],
         [
           33.6,
           66.1
         ],
         [
-          80.1,
-          65.0
+          46.0,
+          63.4
         ],
         [
-          68.3,
-          60.8
-        ],
-        [
-          47.0,
-          86.0
+          10.0,
+          44.0
         ]
       ],
       [
+        [
+          55.3,
+          51.6
+        ],
+        [
+          70.0,
+          75.2
+        ],
         [
           53.0,
           37.2
@@ -3887,23 +4233,15 @@
         [
           31.5,
           50.3
-        ],
-        [
-          70.0,
-          75.2
-        ],
-        [
-          55.3,
-          51.6
         ]
       ],
       [
         [
-          48.7,
+          48.4,
           68.8
         ],
         [
-          52.9,
+          52.3,
           83.8
         ],
         [
@@ -3911,76 +4249,56 @@
           83.0
         ],
         [
-          30.0,
-          66.0
+          37.0,
+          89.5
         ],
         [
-          60.1,
-          66.5
-        ],
-        [
-          44.1,
-          86.0
-        ],
-        [
-          71.1,
+          71.7,
           58.0
         ]
       ],
       [
         [
-          60.9,
+          60.5,
           60.2
-        ],
-        [
-          71.1,
-          56.0
-        ],
-        [
-          51.0,
-          45.8
-        ],
-        [
-          47.0,
-          83.0
-        ],
-        [
-          10.0,
-          30.0
         ],
         [
           41.0,
           68.0
         ],
         [
-          70.0,
-          31.0
+          71.5,
+          56.0
+        ],
+        [
+          47.0,
+          83.0
+        ],
+        [
+          18.0,
+          26.0
         ]
       ],
       [
         [
-          39.9,
-          75.8
+          28.0,
+          86.0
         ],
         [
-          56.3,
-          44.0
-        ],
-        [
-          45.0,
-          61.4
-        ],
-        [
-          44.7,
-          32.7
-        ],
-        [
-          67.0,
+          68.6,
           74.0
         ],
         [
           43.0,
           47.1
+        ],
+        [
+          49.0,
+          30.0
+        ],
+        [
+          38.0,
+          70.0
         ]
       ],
       [
@@ -4001,21 +4319,13 @@
           39.6
         ],
         [
-          63.7,
-          56.8
-        ],
-        [
           23.0,
           67.0
-        ],
-        [
-          35.0,
-          64.2
         ]
       ],
       [
         [
-          49.5,
+          47.4,
           45.0
         ],
         [
@@ -4023,76 +4333,48 @@
           58.0
         ],
         [
-          61.2,
+          60.3,
           49.3
         ],
         [
-          59.0,
-          63.7
-        ],
-        [
-          73.6,
-          58.0
-        ],
-        [
-          86.6,
-          61.0
+          16.0,
+          72.4
         ]
       ],
       [
         [
-          33.5,
+          33.3,
           71.0
         ],
         [
-          39.3,
+          38.6,
           38.0
         ],
         [
-          57.3,
+          57.8,
           68.7
-        ],
-        [
-          68.1,
-          67.8
         ],
         [
           20.0,
           42.0
-        ],
-        [
-          51.0,
-          45.0
-        ],
-        [
-          62.7,
-          53.5
         ]
       ],
       [
-        [
-          25.0,
-          68.0
-        ],
-        [
-          58.6,
-          55.5
-        ],
-        [
-          52.6,
-          70.5
-        ],
-        [
-          63.4,
-          69.9
-        ],
         [
           59.0,
           41.1
         ],
         [
-          79.6,
-          49.0
+          63.8,
+          69.9
+        ],
+        [
+          30.0,
+          55.0
+        ],
+        [
+          74.0,
+          62.0
         ]
       ],
       [
@@ -4105,16 +4387,8 @@
           70.0
         ],
         [
-          20.0,
-          47.7
-        ],
-        [
           72.9,
           35.0
-        ],
-        [
-          45.0,
-          25.0
         ],
         [
           64.1,
@@ -4128,115 +4402,127 @@
       [
         [
           68.0,
+          52.0
+        ],
+        [
+          68.0,
           79.7
         ],
         [
-          52.3,
-          72.2
-        ]
-      ],
-      [
-        [
-          35.0,
-          27.3
-        ],
-        [
-          47.0,
-          45.0
-        ],
-        [
-          60.0,
-          25.0
-        ],
-        [
-          28.0,
-          56.0
-        ],
-        [
-          68.9,
-          50.0
-        ],
-        [
-          36.0,
-          41.7
-        ]
-      ],
-      [
-        [
-          25.0,
-          30.8
-        ],
-        [
-          45.8,
-          44.8
-        ],
-        [
-          32.6,
-          45.2
-        ]
-      ],
-      [
-        [
-          47.0,
-          47.0
-        ],
-        [
-          43.4,
-          32.3
-        ],
-        [
-          51.5,
-          62.0
-        ]
-      ],
-      [
-        [
-          54.0,
-          49.0
-        ],
-        [
-          47.0,
-          65.8
-        ],
-        [
-          42.0,
-          80.2
+          20.0,
+          24.0
         ],
         [
           50.0,
-          28.0
+          40.0
         ]
       ],
       [
         [
-          36.1,
-          33.0
+          41.5,
+          58.0
         ],
+        [
+          52.0,
+          18.0
+        ],
+        [
+          26.0,
+          30.0
+        ],
+        [
+          28.0,
+          44.5
+        ]
+      ],
+      [
+        [
+          44.6,
+          44.0
+        ],
+        [
+          72.0,
+          58.0
+        ],
+        [
+          60.0,
+          74.0
+        ],
+        [
+          24.0,
+          68.0
+        ]
+      ],
+      [
+        [
+          51.8,
+          62.0
+        ],
+        [
+          48.0,
+          34.0
+        ],
+        [
+          48.0,
+          14.0
+        ],
+        [
+          62.0,
+          60.0
+        ]
+      ],
+      [
+        [
+          50.8,
+          44.0
+        ],
+        [
+          52.0,
+          21.1
+        ],
+        [
+          36.7,
+          72.0
+        ],
+        [
+          48.0,
+          7.9
+        ]
+      ],
+      [
         [
           70.0,
           29.0
         ],
         [
-          52.0,
-          42.0
+          48.0,
+          25.0
+        ],
+        [
+          48.0,
+          62.0
+        ],
+        [
+          23.0,
+          57.0
         ]
       ],
       [
         [
-          33.7,
+          33.2,
           43.0
         ],
         [
-          71.2,
-          31.0
-        ],
-        [
-          45.2,
-          49.0
-        ],
-        [
-          25.0,
+          48.0,
           28.0
+        ],
+        [
+          18.0,
+          24.0
+        ],
+        [
+          76.0,
+          62.0
         ]
       ],
       [
@@ -4245,16 +4531,16 @@
           67.0
         ],
         [
-          52.3,
-          26.0
-        ],
-        [
           42.7,
           42.1
         ],
         [
-          41.0,
-          56.4
+          40.3,
+          27.7
+        ],
+        [
+          45.0,
+          70.8
         ]
       ],
       [
@@ -4265,20 +4551,32 @@
         [
           42.0,
           49.0
+        ],
+        [
+          52.0,
+          37.5
+        ],
+        [
+          60.0,
+          58.0
         ]
       ],
       [
         [
-          44.5,
-          75.0
+          70.0,
+          62.0
         ],
         [
           39.6,
           44.0
         ],
         [
-          22.0,
-          76.0
+          80.0,
+          24.0
+        ],
+        [
+          20.0,
+          72.0
         ]
       ],
       [
@@ -4287,24 +4585,20 @@
           45.0
         ],
         [
-          25.0,
-          30.0
+          20.0,
+          62.0
         ],
         [
-          41.2,
-          30.0
+          48.0,
+          43.2
         ],
         [
           45.0,
-          55.0
+          56.1
         ],
         [
-          76.4,
-          32.8
-        ],
-        [
-          59.4,
-          30.0
+          30.0,
+          28.0
         ]
       ]
     ]
@@ -4323,10 +4617,6 @@
             "오븐"
           ],
           [
-            "boil",
-            "끓이다"
-          ],
-          [
             "microwave",
             "전자레인지"
           ],
@@ -4341,6 +4631,10 @@
           [
             "bin",
             "쓰레기통"
+          ],
+          [
+            "boil",
+            "끓이다"
           ],
           [
             "dump",
@@ -4360,28 +4654,28 @@
             "지붕"
           ],
           [
-            "garage",
-            "차고"
+            "brick",
+            "벽돌"
           ],
           [
-            "establish",
-            "세우다"
+            "solid",
+            "단단한"
+          ],
+          [
+            "window",
+            "창문"
+          ],
+          [
+            "garage",
+            "차고"
           ],
           [
             "cottage",
             "시골집"
           ],
           [
-            "brick",
-            "벽돌"
-          ],
-          [
-            "shelter",
-            "살 곳"
-          ],
-          [
-            "solid",
-            "단단한"
+            "establish",
+            "세우다"
           ]
         ]
       },
@@ -4405,24 +4699,24 @@
             "자물쇠"
           ],
           [
-            "tight",
-            "단단한"
-          ],
-          [
-            "repair",
-            "고치다"
-          ],
-          [
             "wire",
             "철사"
+          ],
+          [
+            "iron",
+            "다리미"
           ],
           [
             "pipe",
             "파이프"
           ],
           [
-            "iron",
-            "다리미"
+            "tight",
+            "꽉 조인"
+          ],
+          [
+            "repair",
+            "고치다"
           ]
         ]
       },
@@ -4438,10 +4732,6 @@
             "끈"
           ],
           [
-            "bar",
-            "막대"
-          ],
-          [
             "clip",
             "집게"
           ],
@@ -4452,6 +4742,10 @@
           [
             "cotton",
             "면"
+          ],
+          [
+            "bar",
+            "막대"
           ],
           [
             "tank",
@@ -4471,32 +4765,32 @@
         "img": "ch3/scene-ch3-14-poster.jpg",
         "words": [
           [
-            "pile",
-            "더미"
-          ],
-          [
-            "stuff",
-            "물건"
-          ],
-          [
-            "lose",
-            "잃다"
-          ],
-          [
             "boot",
             "부츠"
           ],
           [
-            "curl",
-            "감기다"
+            "shoe",
+            "신발"
+          ],
+          [
+            "bag",
+            "자루"
           ],
           [
             "mess",
             "어질러짐"
           ],
           [
-            "spare",
-            "여분의"
+            "curl",
+            "감기다"
+          ],
+          [
+            "pile",
+            "더미"
+          ],
+          [
+            "stuff",
+            "물건"
           ],
           [
             "various",
@@ -4524,16 +4818,16 @@
             "정장"
           ],
           [
-            "handsome",
-            "잘생긴"
-          ],
-          [
             "mask",
             "마스크"
           ],
           [
             "shave",
             "면도하다"
+          ],
+          [
+            "handsome",
+            "잘생긴"
           ],
           [
             "bare",
@@ -4561,14 +4855,6 @@
             "살아 있는"
           ],
           [
-            "continue",
-            "계속하다"
-          ],
-          [
-            "extend",
-            "뻗어나가다"
-          ],
-          [
             "pot",
             "화분"
           ],
@@ -4579,6 +4865,14 @@
           [
             "contain",
             "담다"
+          ],
+          [
+            "extend",
+            "뻗어나가다"
+          ],
+          [
+            "continue",
+            "계속하다"
           ]
         ]
       },
@@ -4594,20 +4888,28 @@
             "연장"
           ],
           [
-            "handle",
-            "손잡이"
-          ],
-          [
             "dig",
             "파다"
+          ],
+          [
+            "pour",
+            "따르다"
+          ],
+          [
+            "drop",
+            "물방울"
           ],
           [
             "bend",
             "휘다"
           ],
           [
-            "pour",
-            "따르다"
+            "spout",
+            "주둥이"
+          ],
+          [
+            "metal",
+            "쇠"
           ]
         ]
       },
@@ -4619,36 +4921,32 @@
         "img": "ch3/ch3_13-poster.jpg",
         "words": [
           [
-            "include",
-            "포함하다"
+            "stone",
+            "돌"
           ],
           [
-            "plant",
-            "식물"
+            "sharp",
+            "뾰족한"
           ],
           [
-            "empty",
-            "비어 있는"
+            "inside",
+            "안쪽"
           ],
           [
-            "remain",
-            "남아 있다"
+            "thick",
+            "두꺼운"
           ],
           [
             "triangle",
             "세모"
           ],
           [
-            "contain",
-            "담다"
+            "hold",
+            "담아 두다"
           ],
           [
-            "content",
-            "담긴 것"
-          ],
-          [
-            "secure",
-            "안전하게 하다"
+            "include",
+            "포함하다"
           ]
         ]
       },
@@ -4660,32 +4958,32 @@
         "img": "ch3/ch3_14-poster.jpg",
         "words": [
           [
-            "pair",
-            "한 쌍"
+            "flower",
+            "꽃"
           ],
           [
-            "piece",
-            "조각"
+            "stem",
+            "줄기"
+          ],
+          [
+            "cut",
+            "자르다"
+          ],
+          [
+            "hand",
+            "손"
           ],
           [
             "divide",
             "가르다"
           ],
           [
-            "prefer",
-            "더 좋아하다"
-          ],
-          [
-            "snap",
-            "싹둑 자르다"
-          ],
-          [
-            "remove",
-            "쳐내다"
-          ],
-          [
             "select",
             "골라내다"
+          ],
+          [
+            "piece",
+            "조각"
           ]
         ]
       },
@@ -4697,16 +4995,24 @@
         "img": "ch3/ch3_15-poster.jpg",
         "words": [
           [
-            "frame",
-            "뼈대"
+            "house",
+            "집"
+          ],
+          [
+            "hole",
+            "구멍"
+          ],
+          [
+            "wood",
+            "나무"
           ],
           [
             "block",
             "토막"
           ],
           [
-            "survive",
-            "견디다"
+            "frame",
+            "뼈대"
           ],
           [
             "settle",
@@ -4715,14 +5021,6 @@
           [
             "shelter",
             "보금자리"
-          ],
-          [
-            "found",
-            "세우다"
-          ],
-          [
-            "stick",
-            "붙이다"
           ]
         ]
       },
@@ -4734,6 +5032,22 @@
         "img": "ch3/ch3_16-poster.jpg",
         "words": [
           [
+            "basket",
+            "바구니"
+          ],
+          [
+            "pumpkin",
+            "호박"
+          ],
+          [
+            "wheat",
+            "밀"
+          ],
+          [
+            "round",
+            "둥근"
+          ],
+          [
             "plenty",
             "넉넉함"
           ],
@@ -4742,20 +5056,8 @@
             "여럿의"
           ],
           [
-            "bowl",
-            "바구니 그릇"
-          ],
-          [
             "bunch",
             "다발"
-          ],
-          [
-            "gain",
-            "거두다"
-          ],
-          [
-            "mass",
-            "덩어리"
           ]
         ]
       },
@@ -4800,16 +5102,8 @@
         "img": "ch3/ch3_18-poster.jpg",
         "words": [
           [
-            "wide",
-            "넓은"
-          ],
-          [
-            "roll",
-            "구르다"
-          ],
-          [
-            "empty",
-            "비어 있는"
+            "cart",
+            "수레"
           ],
           [
             "wheel",
@@ -4820,16 +5114,20 @@
             "손잡이"
           ],
           [
-            "pull",
-            "끌어당기다"
+            "empty",
+            "비어 있는"
           ],
           [
-            "cart",
-            "수레"
+            "roll",
+            "구르다"
           ],
           [
             "drag",
             "끌다"
+          ],
+          [
+            "balance",
+            "균형"
           ]
         ]
       },
@@ -4841,32 +5139,32 @@
         "img": "ch3/ch3_19-poster.jpg",
         "words": [
           [
-            "raise",
-            "높이다"
+            "glass",
+            "유리"
+          ],
+          [
+            "door",
+            "문"
+          ],
+          [
+            "post",
+            "기둥"
+          ],
+          [
+            "high",
+            "높은"
           ],
           [
             "structure",
             "구조물"
           ],
           [
-            "through",
-            "통하여"
-          ],
-          [
-            "create",
-            "만들어 내다"
-          ],
-          [
-            "grand",
-            "웅장한"
-          ],
-          [
             "upper",
             "위쪽의"
           ],
           [
-            "internal",
-            "안쪽의"
+            "grand",
+            "웅장한"
           ]
         ]
       },
@@ -4878,24 +5176,32 @@
         "img": "ch3/ch3_20-poster.jpg",
         "words": [
           [
-            "regular",
-            "고르게 늘어선"
-          ],
-          [
-            "single",
-            "한 송이"
-          ],
-          [
             "fence",
             "울타리"
+          ],
+          [
+            "petal",
+            "꽃잎"
+          ],
+          [
+            "seed",
+            "씨"
           ],
           [
             "bloom",
             "피다"
           ],
           [
-            "combine",
-            "엇갈려 짜이다"
+            "single",
+            "한 송이"
+          ],
+          [
+            "regular",
+            "고르게 늘어선"
+          ],
+          [
+            "cross",
+            "엇갈리다"
           ]
         ]
       },
@@ -4927,12 +5233,12 @@
             "주머니"
           ],
           [
-            "fashion",
-            "유행"
-          ],
-          [
             "match",
             "짝을 맞추다"
+          ],
+          [
+            "fashion",
+            "유행"
           ]
         ]
       },
@@ -4989,10 +5295,6 @@
             "계단 발판"
           ],
           [
-            "upon",
-            "~위에"
-          ],
-          [
             "stairs",
             "계단"
           ],
@@ -5003,6 +5305,10 @@
           [
             "ceiling",
             "천장"
+          ],
+          [
+            "upon",
+            "~위에"
           ]
         ]
       },
@@ -5013,10 +5319,6 @@
         "video": "ch3/scene-ch3-09.mp4",
         "img": "ch3/scene-ch3-09-poster.jpg",
         "words": [
-          [
-            "furniture",
-            "가구"
-          ],
           [
             "bench",
             "벤치"
@@ -5030,16 +5332,20 @@
             "담요"
           ],
           [
-            "shade",
-            "그늘"
-          ],
-          [
             "carpet",
             "카펫"
           ],
           [
             "cable",
             "전선"
+          ],
+          [
+            "shade",
+            "그늘"
+          ],
+          [
+            "furniture",
+            "가구"
           ]
         ]
       }
@@ -5051,8 +5357,20 @@
           "오븐"
         ],
         [
-          "boil",
-          "끓이다"
+          "microwave",
+          "전자레인지"
+        ],
+        [
+          "lid",
+          "뚜껑"
+        ],
+        [
+          "tray",
+          "쟁반"
+        ],
+        [
+          "bin",
+          "쓰레기통"
         ]
       ],
       [
@@ -5061,12 +5379,16 @@
           "지붕"
         ],
         [
-          "garage",
-          "차고"
+          "brick",
+          "벽돌"
         ],
         [
-          "establish",
-          "세우다"
+          "solid",
+          "단단한"
+        ],
+        [
+          "window",
+          "창문"
         ]
       ],
       [
@@ -5083,12 +5405,8 @@
           "자물쇠"
         ],
         [
-          "tight",
-          "단단한"
-        ],
-        [
-          "repair",
-          "고치다"
+          "wire",
+          "철사"
         ]
       ],
       [
@@ -5097,22 +5415,34 @@
           "끈"
         ],
         [
-          "bar",
-          "막대"
+          "clip",
+          "집게"
+        ],
+        [
+          "pin",
+          "핀"
+        ],
+        [
+          "cotton",
+          "면"
         ]
       ],
       [
         [
-          "pile",
-          "더미"
+          "boot",
+          "부츠"
         ],
         [
-          "stuff",
-          "물건"
+          "shoe",
+          "신발"
         ],
         [
-          "lose",
-          "잃다"
+          "bag",
+          "자루"
+        ],
+        [
+          "mess",
+          "어질러짐"
         ]
       ],
       [
@@ -5129,8 +5459,12 @@
           "정장"
         ],
         [
-          "handsome",
-          "잘생긴"
+          "mask",
+          "마스크"
+        ],
+        [
+          "shave",
+          "면도하다"
         ]
       ],
       [
@@ -5147,8 +5481,12 @@
           "살아 있는"
         ],
         [
-          "continue",
-          "계속하다"
+          "pot",
+          "화분"
+        ],
+        [
+          "soil",
+          "흙"
         ]
       ],
       [
@@ -5157,84 +5495,88 @@
           "연장"
         ],
         [
-          "handle",
-          "손잡이"
-        ],
-        [
           "dig",
           "파다"
         ],
         [
-          "bend",
-          "휘다"
-        ],
-        [
           "pour",
           "따르다"
+        ],
+        [
+          "drop",
+          "물방울"
         ]
       ],
       [
         [
-          "include",
-          "포함하다"
+          "stone",
+          "돌"
         ],
         [
-          "plant",
-          "식물"
+          "sharp",
+          "뾰족한"
         ],
         [
-          "empty",
-          "비어 있는"
+          "inside",
+          "안쪽"
         ],
         [
-          "remain",
-          "남아 있다"
+          "thick",
+          "두꺼운"
         ]
       ],
       [
         [
-          "pair",
-          "한 쌍"
+          "flower",
+          "꽃"
         ],
         [
-          "piece",
-          "조각"
+          "stem",
+          "줄기"
         ],
         [
-          "divide",
-          "가르다"
+          "cut",
+          "자르다"
         ],
         [
-          "prefer",
-          "더 좋아하다"
+          "hand",
+          "손"
         ]
       ],
       [
         [
-          "frame",
-          "뼈대"
+          "house",
+          "집"
+        ],
+        [
+          "hole",
+          "구멍"
+        ],
+        [
+          "wood",
+          "나무"
         ],
         [
           "block",
           "토막"
-        ],
-        [
-          "survive",
-          "견디다"
         ]
       ],
       [
         [
-          "plenty",
-          "넉넉함"
+          "basket",
+          "바구니"
         ],
         [
-          "several",
-          "여럿의"
+          "pumpkin",
+          "호박"
         ],
         [
-          "bowl",
-          "바구니 그릇"
+          "wheat",
+          "밀"
+        ],
+        [
+          "round",
+          "둥근"
         ]
       ],
       [
@@ -5245,20 +5587,20 @@
         [
           "shut",
           "꽉 닫다"
+        ],
+        [
+          "bind",
+          "묶어 두다"
+        ],
+        [
+          "press",
+          "누르다"
         ]
       ],
       [
         [
-          "wide",
-          "넓은"
-        ],
-        [
-          "roll",
-          "구르다"
-        ],
-        [
-          "empty",
-          "비어 있는"
+          "cart",
+          "수레"
         ],
         [
           "wheel",
@@ -5269,44 +5611,40 @@
           "손잡이"
         ],
         [
-          "pull",
-          "끌어당기다"
-        ],
-        [
-          "cart",
-          "수레"
+          "empty",
+          "비어 있는"
         ]
       ],
       [
         [
-          "raise",
-          "높이다"
+          "glass",
+          "유리"
         ],
         [
-          "structure",
-          "구조물"
+          "door",
+          "문"
         ],
         [
-          "through",
-          "통하여"
+          "post",
+          "기둥"
         ],
         [
-          "create",
-          "만들어 내다"
+          "high",
+          "높은"
         ]
       ],
       [
-        [
-          "regular",
-          "고르게 늘어선"
-        ],
-        [
-          "single",
-          "한 송이"
-        ],
         [
           "fence",
           "울타리"
+        ],
+        [
+          "petal",
+          "꽃잎"
+        ],
+        [
+          "seed",
+          "씨"
         ],
         [
           "bloom",
@@ -5333,14 +5671,6 @@
         [
           "pocket",
           "주머니"
-        ],
-        [
-          "fashion",
-          "유행"
-        ],
-        [
-          "match",
-          "짝을 맞추다"
         ]
       ],
       [
@@ -5375,10 +5705,6 @@
           "계단 발판"
         ],
         [
-          "upon",
-          "~위에"
-        ],
-        [
           "stairs",
           "계단"
         ],
@@ -5388,10 +5714,6 @@
         ]
       ],
       [
-        [
-          "furniture",
-          "가구"
-        ],
         [
           "bench",
           "벤치"
@@ -5405,28 +5727,16 @@
           "담요"
         ],
         [
-          "shade",
-          "그늘"
+          "carpet",
+          "카펫"
         ]
       ]
     ],
     "levelTwoWords": [
       [
         [
-          "microwave",
-          "전자레인지"
-        ],
-        [
-          "lid",
-          "뚜껑"
-        ],
-        [
-          "tray",
-          "쟁반"
-        ],
-        [
-          "bin",
-          "쓰레기통"
+          "boil",
+          "끓이다"
         ],
         [
           "dump",
@@ -5435,48 +5745,40 @@
       ],
       [
         [
+          "garage",
+          "차고"
+        ],
+        [
           "cottage",
           "시골집"
         ],
         [
-          "brick",
-          "벽돌"
-        ],
-        [
-          "shelter",
-          "살 곳"
-        ],
-        [
-          "solid",
-          "단단한"
+          "establish",
+          "세우다"
         ]
       ],
       [
         [
-          "wire",
-          "철사"
+          "iron",
+          "다리미"
         ],
         [
           "pipe",
           "파이프"
         ],
         [
-          "iron",
-          "다리미"
+          "tight",
+          "꽉 조인"
+        ],
+        [
+          "repair",
+          "고치다"
         ]
       ],
       [
         [
-          "clip",
-          "집게"
-        ],
-        [
-          "pin",
-          "핀"
-        ],
-        [
-          "cotton",
-          "면"
+          "bar",
+          "막대"
         ],
         [
           "tank",
@@ -5489,20 +5791,16 @@
       ],
       [
         [
-          "boot",
-          "부츠"
-        ],
-        [
           "curl",
           "감기다"
         ],
         [
-          "mess",
-          "어질러짐"
+          "pile",
+          "더미"
         ],
         [
-          "spare",
-          "여분의"
+          "stuff",
+          "물건"
         ],
         [
           "various",
@@ -5511,12 +5809,8 @@
       ],
       [
         [
-          "mask",
-          "마스크"
-        ],
-        [
-          "shave",
-          "면도하다"
+          "handsome",
+          "잘생긴"
         ],
         [
           "bare",
@@ -5525,56 +5819,65 @@
       ],
       [
         [
+          "contain",
+          "담다"
+        ],
+        [
           "extend",
           "뻗어나가다"
         ],
         [
-          "pot",
-          "화분"
-        ],
-        [
-          "soil",
-          "흙"
-        ],
-        [
-          "contain",
-          "담다"
+          "continue",
+          "계속하다"
         ]
       ],
-      [],
+      [
+        [
+          "bend",
+          "휘다"
+        ],
+        [
+          "spout",
+          "주둥이"
+        ],
+        [
+          "metal",
+          "쇠"
+        ]
+      ],
       [
         [
           "triangle",
           "세모"
         ],
         [
-          "contain",
-          "담다"
+          "hold",
+          "담아 두다"
         ],
         [
-          "content",
-          "담긴 것"
-        ],
-        [
-          "secure",
-          "안전하게 하다"
+          "include",
+          "포함하다"
         ]
       ],
       [
         [
-          "snap",
-          "싹둑 자르다"
-        ],
-        [
-          "remove",
-          "쳐내다"
+          "divide",
+          "가르다"
         ],
         [
           "select",
           "골라내다"
+        ],
+        [
+          "piece",
+          "조각"
         ]
       ],
       [
+        [
+          "frame",
+          "뼈대"
+        ],
         [
           "settle",
           "자리 잡다"
@@ -5582,39 +5885,23 @@
         [
           "shelter",
           "보금자리"
-        ],
-        [
-          "found",
-          "세우다"
-        ],
-        [
-          "stick",
-          "붙이다"
         ]
       ],
       [
+        [
+          "plenty",
+          "넉넉함"
+        ],
+        [
+          "several",
+          "여럿의"
+        ],
         [
           "bunch",
           "다발"
-        ],
-        [
-          "gain",
-          "거두다"
-        ],
-        [
-          "mass",
-          "덩어리"
         ]
       ],
       [
-        [
-          "bind",
-          "묶어 두다"
-        ],
-        [
-          "press",
-          "누르다"
-        ],
         [
           "constant",
           "변함없는"
@@ -5626,31 +5913,56 @@
       ],
       [
         [
+          "roll",
+          "구르다"
+        ],
+        [
           "drag",
           "끌다"
+        ],
+        [
+          "balance",
+          "균형"
         ]
       ],
       [
         [
-          "grand",
-          "웅장한"
+          "structure",
+          "구조물"
         ],
         [
           "upper",
           "위쪽의"
         ],
         [
-          "internal",
-          "안쪽의"
+          "grand",
+          "웅장한"
         ]
       ],
       [
         [
-          "combine",
-          "엇갈려 짜이다"
+          "single",
+          "한 송이"
+        ],
+        [
+          "regular",
+          "고르게 늘어선"
+        ],
+        [
+          "cross",
+          "엇갈리다"
         ]
       ],
-      [],
+      [
+        [
+          "match",
+          "짝을 맞추다"
+        ],
+        [
+          "fashion",
+          "유행"
+        ]
+      ],
       [
         [
           "rub",
@@ -5665,16 +5977,24 @@
         [
           "ceiling",
           "천장"
+        ],
+        [
+          "upon",
+          "~위에"
         ]
       ],
       [
         [
-          "carpet",
-          "카펫"
-        ],
-        [
           "cable",
           "전선"
+        ],
+        [
+          "shade",
+          "그늘"
+        ],
+        [
+          "furniture",
+          "가구"
         ]
       ]
     ],
@@ -5685,8 +6005,20 @@
           75.0
         ],
         [
-          38.6,
-          57.0
+          24.0,
+          40.0
+        ],
+        [
+          58.0,
+          43.0
+        ],
+        [
+          48.4,
+          53.0
+        ],
+        [
+          61.0,
+          83.7
         ]
       ],
       [
@@ -5695,12 +6027,16 @@
           31.0
         ],
         [
-          67.0,
-          56.0
+          11.0,
+          52.8
         ],
         [
-          46.7,
-          45.0
+          15.0,
+          67.2
+        ],
+        [
+          44.4,
+          55.8
         ]
       ],
       [
@@ -5717,12 +6053,8 @@
           49.0
         ],
         [
-          46.1,
-          80.0
-        ],
-        [
-          44.0,
-          61.2
+          59.6,
+          40.0
         ]
       ],
       [
@@ -5731,22 +6063,34 @@
           37.0
         ],
         [
-          15.0,
-          56.0
+          30.0,
+          38.0
+        ],
+        [
+          61.0,
+          40.0
+        ],
+        [
+          39.6,
+          57.0
         ]
       ],
       [
         [
-          54.0,
-          35.8
+          27.0,
+          49.0
         ],
         [
-          64.2,
-          36.1
+          37.0,
+          64.0
         ],
         [
-          65.0,
-          21.7
+          62.0,
+          48.0
+        ],
+        [
+          46.0,
+          45.5
         ]
       ],
       [
@@ -5755,7 +6099,7 @@
           25.7
         ],
         [
-          52.1,
+          52.4,
           49.0
         ],
         [
@@ -5763,8 +6107,12 @@
           53.0
         ],
         [
-          20.0,
-          40.0
+          27.6,
+          60.0
+        ],
+        [
+          38.7,
+          60.0
         ]
       ],
       [
@@ -5781,94 +6129,102 @@
           8.3
         ],
         [
-          40.0,
-          37.0
+          35.0,
+          65.7
+        ],
+        [
+          36.0,
+          51.4
         ]
       ],
       [
         [
           34.0,
-          56.0
+          56.6
         ],
         [
-          68.0,
-          75.0
-        ],
-        [
-          68.0,
-          47.0
-        ],
-        [
-          16.0,
-          49.0
+          74.0,
+          40.0
         ],
         [
           62.0,
-          32.0
+          32.6
+        ],
+        [
+          66.0,
+          58.0
         ]
       ],
       [
         [
-          42.9,
-          75.0
-        ],
-        [
-          44.0,
-          49.0
-        ],
-        [
-          47.5,
-          21.0
-        ],
-        [
-          57.1,
+          50.0,
           72.0
+        ],
+        [
+          38.0,
+          29.5
+        ],
+        [
+          63.0,
+          56.0
+        ],
+        [
+          24.0,
+          46.0
         ]
       ],
       [
         [
-          30.0,
-          35.0
+          52.0,
+          28.0
         ],
         [
-          65.0,
-          31.3
+          50.0,
+          64.0
         ],
         [
-          48.4,
-          69.0
+          28.0,
+          24.0
         ],
         [
-          65.0,
-          45.7
+          88.0,
+          64.0
         ]
       ],
       [
         [
-          34.1,
-          53.0
+          45.0,
+          28.0
+        ],
+        [
+          46.3,
+          46.0
+        ],
+        [
+          65.0,
+          38.0
         ],
         [
           42.4,
           81.7
-        ],
-        [
-          54.6,
-          75.0
         ]
       ],
       [
         [
-          36.8,
-          63.0
-        ],
-        [
-          70.7,
-          35.0
-        ],
-        [
-          22.2,
+          28.0,
           58.0
+        ],
+        [
+          60.6,
+          70.0
+        ],
+        [
+          70.4,
+          22.9
+        ],
+        [
+          37.0,
+          40.0
         ]
       ],
       [
@@ -5879,72 +6235,68 @@
         [
           61.0,
           77.7
+        ],
+        [
+          23.0,
+          17.0
+        ],
+        [
+          39.6,
+          47.0
         ]
       ],
       [
         [
-          44.4,
-          34.8
-        ],
-        [
-          61.0,
-          65.0
-        ],
-        [
-          56.6,
-          40.0
+          42.0,
+          49.2
         ],
         [
           72.0,
           60.0
         ],
         [
-          20.6,
-          18.3
+          18.0,
+          19.7
         ],
         [
-          7.1,
-          27.0
-        ],
-        [
-          42.0,
-          49.2
+          56.6,
+          40.0
         ]
       ],
       [
         [
           45.0,
-          17.2
+          30.0
         ],
         [
-          46.5,
-          46.6
+          45.0,
+          58.7
         ],
         [
-          63.5,
-          43.0
+          30.0,
+          42.0
         ],
         [
-          27.8,
-          49.7
+          45.0,
+          12.0
         ]
       ],
       [
-        [
-          43.0,
-          40.0
-        ],
-        [
-          35.0,
-          25.0
-        ],
         [
           42.0,
           83.0
         ],
         [
-          50.0,
+          36.0,
           20.0
+        ],
+        [
+          45.0,
+          38.6
+        ],
+        [
+          52.0,
+          25.4
         ]
       ],
       [
@@ -5967,14 +6319,6 @@
         [
           41.0,
           62.0
-        ],
-        [
-          54.0,
-          33.3
-        ],
-        [
-          58.0,
-          19.0
         ]
       ],
       [
@@ -6009,10 +6353,6 @@
           43.7
         ],
         [
-          35.7,
-          60.2
-        ],
-        [
           22.2,
           58.1
         ],
@@ -6023,15 +6363,11 @@
       ],
       [
         [
-          36.2,
-          60.0
-        ],
-        [
           51.7,
           62.0
         ],
         [
-          55.9,
+          55.4,
           28.0
         ],
         [
@@ -6039,28 +6375,16 @@
           58.0
         ],
         [
-          66.1,
-          30.0
+          35.0,
+          80.0
         ]
       ]
     ],
     "sceneSpots": [
       [
         [
-          24.0,
-          40.0
-        ],
-        [
-          58.0,
-          43.0
-        ],
-        [
-          48.4,
-          53.0
-        ],
-        [
-          61.0,
-          83.7
+          38.6,
+          57.0
         ],
         [
           68.0,
@@ -6069,48 +6393,40 @@
       ],
       [
         [
-          29.7,
+          67.0,
+          56.0
+        ],
+        [
+          29.3,
           50.0
         ],
         [
-          11.0,
-          52.8
-        ],
-        [
-          45.0,
-          30.0
-        ],
-        [
-          15.0,
-          67.2
+          46.7,
+          43.2
         ]
       ],
       [
         [
-          59.6,
-          40.0
+          27.0,
+          46.0
         ],
         [
           55.0,
           17.0
         ],
         [
-          27.0,
-          46.0
+          46.1,
+          80.0
+        ],
+        [
+          44.0,
+          61.2
         ]
       ],
       [
         [
-          30.0,
-          38.0
-        ],
-        [
-          61.0,
-          40.0
-        ],
-        [
-          39.6,
-          57.0
+          15.0,
+          56.0
         ],
         [
           65.0,
@@ -6123,34 +6439,26 @@
       ],
       [
         [
-          27.0,
-          49.0
-        ],
-        [
           73.0,
           58.0
         ],
         [
-          57.0,
-          50.4
+          51.0,
+          24.0
         ],
         [
-          38.0,
-          61.0
+          72.0,
+          32.0
         ],
         [
-          40.8,
-          34.0
+          39.8,
+          32.5
         ]
       ],
       [
         [
-          27.6,
-          60.0
-        ],
-        [
-          39.0,
-          60.0
+          20.0,
+          40.0
         ],
         [
           17.3,
@@ -6159,98 +6467,91 @@
       ],
       [
         [
+          36.0,
+          83.0
+        ],
+        [
           64.6,
           45.0
         ],
         [
-          35.0,
-          65.7
-        ],
-        [
-          36.0,
-          51.4
-        ],
-        [
-          36.0,
-          83.0
+          40.0,
+          37.0
         ]
       ],
-      [],
       [
         [
-          32.5,
-          18.0
+          16.0,
+          49.0
+        ],
+        [
+          56.0,
+          19.4
         ],
         [
           30.0,
-          40.0
+          43.4
+        ]
+      ],
+      [
+        [
+          32.5,
+          16.5
         ],
         [
-          56.2,
-          52.0
+          63.0,
+          72.0
         ],
         [
-          72.8,
+          30.0,
+          86.0
+        ]
+      ],
+      [
+        [
+          66.0,
           50.0
+        ],
+        [
+          20.0,
+          45.0
+        ],
+        [
+          65.0,
+          31.3
         ]
       ],
       [
         [
-          27.0,
-          49.4
+          35.7,
+          50.0
         ],
         [
-          60.6,
-          69.0
+          24.0,
+          66.0
         ],
         [
-          33.0,
-          20.7
+          66.0,
+          62.0
         ]
       ],
       [
         [
-          46.9,
-          45.3
+          45.4,
+          58.0
         ],
         [
-          50.0,
-          31.0
+          71.0,
+          36.1
         ],
         [
-          36.1,
-          67.3
-        ],
-        [
-          46.9,
-          59.7
-        ]
-      ],
-      [
-        [
-          58.4,
+          57.7,
           30.0
-        ],
-        [
-          61.0,
-          67.0
-        ],
-        [
-          36.0,
-          44.0
         ]
       ],
       [
         [
-          23.0,
-          17.0
-        ],
-        [
-          40.0,
-          47.0
-        ],
-        [
-          53.0,
+          53.4,
           49.0
         ],
         [
@@ -6260,31 +6561,56 @@
       ],
       [
         [
+          61.0,
+          65.0
+        ],
+        [
           22.0,
-          32.7
+          33.0
+        ],
+        [
+          38.0,
+          14.0
         ]
       ],
       [
         [
-          26.0,
-          35.3
+          46.5,
+          45.9
         ],
         [
-          49.1,
-          31.6
+          62.0,
+          20.0
         ],
         [
-          50.0,
-          61.6
+          20.0,
+          62.0
         ]
       ],
       [
         [
-          27.0,
-          83.0
+          62.0,
+          10.0
+        ],
+        [
+          60.0,
+          58.0
+        ],
+        [
+          28.0,
+          70.0
         ]
       ],
-      [],
+      [
+        [
+          58.0,
+          19.0
+        ],
+        [
+          54.0,
+          33.3
+        ]
+      ],
       [
         [
           78.4,
@@ -6299,16 +6625,24 @@
         [
           39.0,
           13.0
+        ],
+        [
+          35.7,
+          60.2
         ]
       ],
       [
         [
-          35.0,
-          80.0
-        ],
-        [
           68.0,
           72.0
+        ],
+        [
+          66.6,
+          30.0
+        ],
+        [
+          36.2,
+          60.0
         ]
       ]
     ]
@@ -8431,7 +8765,7 @@
           ],
           [
             "lab",
-            "실험 플라스크"
+            "실험실"
           ],
           [
             "laboratory",
@@ -9251,7 +9585,7 @@
       [
         [
           "lab",
-          "실험 플라스크"
+          "실험실"
         ],
         [
           "laboratory",
@@ -10137,7 +10471,7 @@
           ],
           [
             "tin",
-            "통조림 깡통"
+            "깡통"
           ]
         ]
       },
@@ -10211,7 +10545,7 @@
           ],
           [
             "chip",
-            "조각"
+            "감자칩"
           ]
         ]
       },
@@ -10437,7 +10771,7 @@
           ],
           [
             "edge",
-            "조각칼의 날"
+            "가장자리"
           ],
           [
             "solid",
@@ -11129,7 +11463,7 @@
         ],
         [
           "tin",
-          "통조림 깡통"
+          "깡통"
         ]
       ],
       [
@@ -11161,7 +11495,7 @@
         ],
         [
           "chip",
-          "조각"
+          "감자칩"
         ]
       ],
       [
@@ -11233,7 +11567,7 @@
       [
         [
           "edge",
-          "조각칼의 날"
+          "가장자리"
         ],
         [
           "solid",
@@ -14613,7 +14947,7 @@
           ],
           [
             "level",
-            "수평"
+            "단계"
           ],
           [
             "measure",
@@ -14642,7 +14976,7 @@
           ],
           [
             "level",
-            "수평을 이루다"
+            "단계"
           ],
           [
             "weigh",
@@ -14797,7 +15131,7 @@
         ],
         [
           "level",
-          "수평"
+          "단계"
         ]
       ],
       [
@@ -14807,7 +15141,7 @@
         ],
         [
           "level",
-          "수평을 이루다"
+          "단계"
         ],
         [
           "weigh",
@@ -20712,7 +21046,7 @@
     // 가로형 모험 지도의 세 섬에 네 개씩 놓인 원형 학습 지점과 맞춥니다.
     const chapterSpots=[[24.3,25.4],[13.4,44.7],[31.2,44.4],[26.1,70.3],[48.4,22.6],[45.3,41.7],[59.8,48.3],[52.4,70.6],[77.8,20.9],[73.6,38.2],[86.8,50.3],[78.6,70.4],[37.5,85.0],[64.5,85.0]];
     const chapterGrid=document.getElementById('chapterGrid');
-    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${(i<=1 || isPaid)?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${chapterLatin[i]}, ${chapterGuide[i].replace(' · ', ', ')}${i<=1?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${(i<=1 || isPaid)?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-latin" lang="la">${chapterLatin[i]}</span><span class="label-guide" lang="ko">${chapterGuide[i]}</span></h3><em class="ch-count">${((chapterData[i+1]||{}).works||[]).length ? ((chapterData[i+1].works.length)+"편") : ""}</em></button>`).join('');
+    chapterGrid.innerHTML=chapters.map((name,i)=>`<button class="chapter-card ${(i<=1 || ((chapterData[i+1]||{}).works||[]).length)?'open':'locked-chapter'}" style="--x:${chapterSpots[i][0]}%;--y:${chapterSpots[i][1]}%" data-chapter="${i+1}" aria-label="챕터 ${i+1}, ${chapterLatin[i]}, ${chapterGuide[i].replace(' · ', ', ')}${i<=1?', 학습 가능':', 잠김'}"><small>CHAPTER ${String(i+1).padStart(2,'0')}</small>${(i<=1 || ((chapterData[i+1]||{}).works||[]).length)?'':'<i class="key" aria-hidden="true"></i>'}<h3><span class="label-latin" lang="la">${chapterLatin[i]}</span><span class="label-guide" lang="ko">${chapterGuide[i]}</span></h3><em class="ch-count">${((chapterData[i+1]||{}).works||[]).length ? ((chapterData[i+1].works.length)+"편") : ""}</em></button>`).join('');
     const shelf=document.getElementById('shelf');
 
 
